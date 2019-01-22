@@ -1,4 +1,4 @@
-﻿--[[ Script contendo o module #anvilwar, #mestre, #pistas, e #true_false. Compilado às 19h45 (UTC) 21/01/2019. ]]--
+﻿--[[ Script contendo o module #anvilwar, #mestre, #fall, #pistas, e #true_false. Compilado às 19h45 (UTC) 21/01/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
