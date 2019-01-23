@@ -3372,18 +3372,6 @@ function eventLoop(p,f)
 		functs.level=4
 		showTextSmall("Difficulty increased to 4")
 	end
-	if f <= 88000 and f >= 87400 and functs.level == 4 then
-		functs.level=5
-		showTextSmall("Difficulty increased to 5")
-	end
-	if f <= 78000 and f >= 77400 and functs.level == 5 then
-		functs.level=6
-		showTextSmall("Difficulty increased to 6")
-	end
-	if f <= 68000 and f >= 67400 and functs.level == 6 then
-		functs.level=7
-		showTextSmall("Difficulty increased to 7")
-	end
 end
 function eventPlayerDied(name)
 	if functs.running == true then
