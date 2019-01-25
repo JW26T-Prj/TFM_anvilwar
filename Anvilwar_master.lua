@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #pistas, e #true_false. Compilado às 14h38 (UTC) 24/01/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #pistas, e #true_false. Compilado às 19h56 (UTC) 25/01/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.37",
+	_VERSION = "1.38",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -3151,8 +3151,8 @@ tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176"}
-objects={2,201,202,203,204,205,206,207,208,209}
+maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381"}
+objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
 bar=""
@@ -3180,7 +3180,7 @@ function eventChatCommand(name,message)
 		end
 		if message == "reset" then
 			maps={}
-			maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176"}
+			maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381"}
 			tfm.exec.chatMessage("<J>The map rotation has been redefined to default.")
 		end
 	end
@@ -3190,7 +3190,7 @@ function eventNewGame()
 	functs.level=0
 	functs.count=10
 	times=0
-	tfm.exec.setGameTime(105)
+	tfm.exec.setGameTime(90)
 	removeText()
 	winner=false
 	actual_map=tfm.get.room.currentMap
@@ -3207,23 +3207,23 @@ function showTextSmall(text)
 end
 function changeBar()
 	if functs.level == 1 then
-		bar="<font face='Lucida Console'><VP>|-<J>--<R>----<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>█───<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 2 then
-		bar="<font face='Lucida Console'><VP>||<J>--<R>----<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>██──<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 3 then
-		bar="<font face='Lucida Console'><VP>||<J>|-<R>----<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>███─<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 4 then
-		bar="<font face='Lucida Console'><VP>||<J>||<R>----<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 5 then
-		bar="<font face='Lucida Console'><VP>||<J>||<R>|---<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>█─<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 6 then
-		bar="<font face='Lucida Console'><VP>||<J>||<R>||--<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 7 then
-		bar="<font face='Lucida Console'><VP>||<J>||<R>|||-<font face='Verdana'>"
-	elseif functs.level == 8 then
-		bar="<font face='Lucida Console'><VP>||<J>||<R>||||<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>█─<font face='Verdana'>"
+	elseif functs.level >= 8 then
+		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>██<font face='Verdana'>"
 	else
-		bar="<font face='Lucida Console'><VP>--<J>--<R>----<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>────<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	end
 end
 function removeText()
@@ -3237,7 +3237,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventLoop(p,f)
-	ui.setMapName("<J>#objects RTM 2401.002   <BL>|   <J>"..actual_creator.." <BL>- "..actual_map.."   <BL>|   <N>Difficulty : "..bar.."<")
+	ui.setMapName("<J>#objects RTM 2502.003   <BL>|   <J>"..actual_creator.." <BL>- "..actual_map.."   <BL>|   <N>Difficulty : "..bar.."<")
 	if f <= 3000 and functs.running == true and winner == false then
 		for name,player in pairs(tfm.get.room.playerList) do
 			tfm.exec.giveCheese(name)
@@ -3272,8 +3272,14 @@ function eventLoop(p,f)
 				functs.level=functs.level+1
 			end
 			loop=0
-			for i=1,functs.level do
-				throw()
+			if functs.level <= 5 then
+				for i=1,functs.level do
+					throw()
+				end
+			else
+				for i=1,5 do
+					throw()
+				end
 			end
 		end
 	end
@@ -3307,7 +3313,7 @@ end
 tfm.exec.newGame(maps[math.random(#maps)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.37<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.38<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
