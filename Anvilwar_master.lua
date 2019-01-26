@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #pistas, e #true_false. Compilado às 19h56 (UTC) 25/01/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #pistas, e #true_false. Compilado às 13h22 (UTC) 26/01/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.38",
+	_VERSION = "1.38.1",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -3151,7 +3151,7 @@ tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381"}
+maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040"}
 objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
@@ -3180,7 +3180,7 @@ function eventChatCommand(name,message)
 		end
 		if message == "reset" then
 			maps={}
-			maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381"}
+			maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040"}
 			tfm.exec.chatMessage("<J>The map rotation has been redefined to default.")
 		end
 	end
@@ -3237,7 +3237,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventLoop(p,f)
-	ui.setMapName("<J>#objects RTM 2502.003   <BL>|   <J>"..actual_creator.." <BL>- "..actual_map.."   <BL>|   <N>Difficulty : "..bar.."<")
+	ui.setMapName("<J>#objects RTM 2603.004   <BL>|   <J>"..actual_creator.." <BL>- "..actual_map.."   <BL>|   <N>Difficulty : "..bar.."<")
 	if f <= 3000 and functs.running == true and winner == false then
 		for name,player in pairs(tfm.get.room.playerList) do
 			tfm.exec.giveCheese(name)
@@ -3313,7 +3313,7 @@ end
 tfm.exec.newGame(maps[math.random(#maps)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.38<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.38.1<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
