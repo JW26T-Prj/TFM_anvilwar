@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #pistas, e #true_false. Compilado às 13h22 (UTC) 26/01/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2, #pistas, e #true_false. Compilado às 15h38 (UTC) 31/01/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.38.1",
+	_VERSION = "1.39",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -2110,7 +2110,7 @@ function eventPopupAnswer(id,name,answer)
 	if id == 1 then
 		if tfm.get.room.playerList[name].isShaman then
 			if tfm.get.room.currentMap == "@7417328" then
-				if string.len(answer) >= 180 then
+				if string.len(answer) >= 230 then
 					tfm.exec.chatMessage(""..text.textLongQuestion.."",name)
 				elseif string.len(answer) <= 5 then
 					tfm.exec.chatMessage(""..text.textShortQuestion.."",name)
@@ -2184,11 +2184,11 @@ pergunta=""
 tempo=10
 resposta=""
 unlocked=true -- bloqueia ou desbloqueia a execução do script
-for _,f in next,{"help","rodar","run","limite","q","r","time"} do
+for _,f in next,{"help","rodar","run","limite","q","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 29",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 30",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -2234,7 +2234,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 29",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 30",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2280,7 +2280,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation29",
+welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation30",
 dancar = "أرقص!",
 sentar = "إجلس!",
 confetar = "قُم برمي 5 أوراق!",
@@ -2409,11 +2409,6 @@ function eventChatCommand(name,message)
 	if name == "Jessiewind26#2546" or name == "Caitlyndma7#0000" then
 		if(message:sub(0,1) == "q") then
 			pergunta=message:sub(3)
-		end
-	end
-	if name == "Jessiewind26#2546" or name == "Caitlyndma7#0000" then
-		if(message:sub(0,1) == "r") then
-			resposta=message:sub(3)
 		end
 	end
 	if name == "Jessiewind26#2546" or name == "Caitlyndma7#0000" then
@@ -2610,6 +2605,9 @@ function getCommand()
 	if active == 33 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#29CC06'><font size='25'><p align='center'>"..pergunta.."",nil,25,20,750,40,0x0C2301,0x5DD872,0.96,true)
 		tfm.exec.setGameTime(tempo)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
 	end
 	if active == 34 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#29CC06'><font size='25'><p align='center'>"..text.preesquerda200.."",nil,25,20,750,40,0x0C2301,0x5DD872,0.96,true)
@@ -2639,11 +2637,6 @@ function eventChatMessage(name,message)
 	end
 	if active == 31 then
 		if string.upper(message) == string.upper(name) then
-			data[name].c=1
-		end
-	end
-	if active == 33 then
-		if string.upper(message) == string.upper(resposta) then
 			data[name].c=1
 		end
 	end
@@ -3312,8 +3305,108 @@ function eventPlayerDied(name)
 end
 tfm.exec.newGame(maps[math.random(#maps)])
 end
+initFall = function()
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.disableAutoScore(true)
+tfm.exec.disablePhysicalConsumables(true)
+tfm.exec.disableMinimalistMode(true)
+xml2=''
+creator=""
+position=0
+objective=100
+enabled=false
+map=""
+mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965"}
+lobby="@7404106"
+changed=false
+function eventChatCommand(name,message)
+	if(message:sub(1,3) == "obj") then
+		if name == "Vaicntaefeto#0000" then
+			objective=tonumber(message:sub(5))
+			tfm.exec.chatMessage("<J>Objective changed to: "..objetivo,nil)
+		end
+	end
+end
+function eventNewGame()
+	if enabled == true then
+		position=0
+		if changed == false and enabled == true then
+			xml2=tfm.get.room.xmlMapInfo.xml
+			creator=tfm.get.room.xmlMapInfo.author
+			map=tfm.get.room.currentMap
+			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
+			ui.setMapName("<J>Loading map. Please wait...<")
+		else
+			ui.removeTextArea(0,nil)
+		end
+	else
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.0",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("Welcome to Fall Racing 2.0! Script made by <b>Vaicntaefeto#0000</b>.<")
+		tfm.exec.setGameTime(60)
+	end
+end
+function eventLoop(p,f)
+	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
+		tfm.exec.newGame(xml2)
+		changed=true
+		ui.setMapName("<J>#fall 2.0   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+	end
+	if f <= 1 and enabled == true then
+		changed=false
+		tfm.exec.newGame(mapas[math.random(#mapas)])
+	end
+	if enabled == false and f >= 1000 then
+		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffff00'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,370,600,32,0,0,1.0,true)
+	end
+	if f <= 1 and enabled == false then
+		for i=10,11 do
+			ui.removeTextArea(i,nil)
+		end
+		enabled=true
+		tfm.exec.newGame(mapas[math.random(#mapas)])
+		for name,player in pairs(tfm.get.room.playerList) do
+			tfm.exec.setPlayerScore(name,0,false)
+		end
+	end
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].score >= objective and enabled == true then
+			enabled=false
+			tfm.exec.newGame(lobby)
+			tfm.exec.chatMessage("<VP><b>Congratulations!</b> "..name.." wins the game with "..tfm.get.room.playerList[name].score.." points!")
+		end
+	end
+end
+function eventPlayerWon(name)
+	position=position+1
+	if position == 1 then
+		tfm.exec.setGameTime(20)
+	end
+	if position <= 8 then
+		tfm.exec.setPlayerScore(name,10-position,true)
+	else
+		tfm.exec.setPlayerScore(name,1,true)
+	end
+end
+function eventPlayerDied(name)
+	if tfm.get.room.playerList[name].x > 2400 then
+		tfm.exec.respawnPlayer(name)
+		tfm.exec.giveCheese(name)
+		tfm.exec.playerVictory(name)
+	end
+end
+function eventNewPlayer(name)
+	if enabled == false then
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.0",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("Welcome to Fall Racing 2.0! Script made by <b>Vaicntaefeto#0000</b>.<")
+	end
+	tfm.exec.chatMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 3GB of RAM to work without problems.<J><br><br>Script made by Vaicntaefeto#0000")
+end
+tfm.exec.newGame(lobby)
+end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.38.1<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.39<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
@@ -3327,6 +3420,9 @@ elseif string.find(tfm.get.room.name,"pistas") then
 elseif string.find(tfm.get.room.name,"objects") then
 	active = "objects"
 	initObjects()
+elseif string.find(tfm.get.room.name,"fall2") then
+	active = "fall2"
+	initFall()
 else
 	active = "anvilwar"
 	initAnvilwar()
