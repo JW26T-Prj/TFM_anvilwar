@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2, #pistas, e #true_false. Compilado às 15h38 (UTC) 31/01/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #fall, #pistas, e #true_false. Compilado às 17h09 (UTC) 01/02/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.39",
+	_VERSION = "1.40",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1759,7 +1759,7 @@ shaman=""
 lock=false
 minutos=6;
 modo="desativado"
-for _,f in next,{"admin77","admin78","limite","return"} do
+for _,f in next,{"admin77","admin78","limite","return","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 mapa="@7417328"
@@ -1863,13 +1863,13 @@ function eventChatCommand(name,message)
 		end
 	elseif message == "admin77" then
 		if modo == "desativado" then
-		if name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+		if name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" then
 			changeMap()
 			tfm.exec.setShaman(message:sub(50))
 		end end
 	elseif message == "return" then
 		if modo == "pergunta" then
-		if name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+		if name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" then
 			tempa=20
 			temp2=3
 			modo="desativado"
@@ -1889,16 +1889,16 @@ function eventChatCommand(name,message)
 		end end
 	elseif(message:sub(1,7) == "admin78") then
 		if modo == "desativado" then
-		if name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+		if name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" then
 			tfm.exec.setPlayerScore(message:sub(9),8001,false)
 			changeMap()
 		end end
 	elseif(message:sub(0,4) == "kill") then
-		if name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+		if name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" then
 			tfm.exec.killPlayer(message:sub(6))
 		end
 	elseif(message:sub(0,6) == "limite") then
-		if name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+		if name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" then
 			minutos=tonumber(message:sub(8))
 			if minutos > 15 then
 				tfm.exec.chatMessage("Time limit: 15 minutes.",nil)
@@ -2003,7 +2003,7 @@ function eventLoop(pass,tempo)
 			end
 		end
 	end
-	tfm.exec.setUIMapName("True or False - RTM 1.132")
+	tfm.exec.setUIMapName("True or False - RTM 1.133")
 	if modo == "pergunta" then
 		tempa=tempa-0.5
 	end
@@ -3312,20 +3312,21 @@ tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableMinimalistMode(true)
+tfm.exec.setRoomMaxPlayers(24)
 xml2=''
 creator=""
 position=0
 objective=100
 enabled=false
 map=""
-mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965"}
+mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413"}
 lobby="@7404106"
 changed=false
 function eventChatCommand(name,message)
 	if(message:sub(1,3) == "obj") then
 		if name == "Vaicntaefeto#0000" then
 			objective=tonumber(message:sub(5))
-			tfm.exec.chatMessage("<J>Objective changed to: "..objetivo,nil)
+			tfm.exec.chatMessage("<J>Objective changed to: "..objective,nil)
 		end
 	end
 end
@@ -3401,12 +3402,12 @@ function eventNewPlayer(name)
 		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.0",nil,330,42,400,100,0,0,1.0,true)
 		ui.setMapName("Welcome to Fall Racing 2.0! Script made by <b>Vaicntaefeto#0000</b>.<")
 	end
-	tfm.exec.chatMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 3GB of RAM to work without problems.<J><br><br>Script made by Vaicntaefeto#0000")
+	tfm.exec.chatMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 3GB of RAM to work without problems.<J><br><br>Script made by Vaicntaefeto#0000",name)
 end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.39<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.40<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
