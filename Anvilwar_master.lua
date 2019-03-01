@@ -2,7 +2,7 @@
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.43",
+	_VERSION = "1.43.1",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -23,7 +23,7 @@ avs_list={}
 mods_list={"Flaysama#5935","Ashearcher#0000","Leonardodsss#0000","Jarvanfender#0000","Marcelohacki#0000","Felipe#0799"}
 managers_list={"Nasus_assassin#1534","Spectra_phantom#6089"}
 admins_list={"Jessiewind26#2546","Zed#9431"}
-level6_list={"Forzaldenon#0000","Jhinsword350#0000","Jeredy_suno#0886"}
+level6_list={"Forzaldenon#0000","Jhinsword350#0000",""}
 scoreloop=0
 sudden_death=false
 local temp_name=""
@@ -1834,13 +1834,13 @@ function eventChatCommand(name,message)
 		end
 	elseif message == "admin77" then
 		if modo == "desativado" then
-		if name == "Forzaldenon#0000" or name == "Linkventusx5#0000" then
+		if name == "Forzaldenon#0000" or name == "Spectra_phantom#6089" then
 			changeMap()
 			tfm.exec.setShaman(message:sub(50))
 		end end
 	elseif message == "return" then
 		if modo == "pergunta" then
-		if name == "Forzaldenon#0000" or name == "Linkventusx5#0000" then
+		if name == "Forzaldenon#0000" or name == "Spectra_phantom#6089" then
 			tempa=20
 			temp2=3
 			modo="desativado"
@@ -1860,16 +1860,16 @@ function eventChatCommand(name,message)
 		end end
 	elseif(message:sub(1,7) == "admin78") then
 		if modo == "desativado" then
-		if name == "Forzaldenon#0000" or name == "Linkventusx5#0000" then
+		if name == "Forzaldenon#0000" or name == "Spectra_phantom#6089" then
 			tfm.exec.setPlayerScore(message:sub(9),8001,false)
 			changeMap()
 		end end
 	elseif(message:sub(0,4) == "kill") then
-		if name == "Forzaldenon#0000" or name == "Linkventusx5#0000" then
+		if name == "Forzaldenon#0000" or name == "Spectra_phantom#6089" then
 			tfm.exec.killPlayer(message:sub(6))
 		end
 	elseif(message:sub(0,6) == "limite") then
-		if name == "Forzaldenon#0000" or name == "Linkventusx5#0000" then
+		if name == "Forzaldenon#0000" or name == "Spectra_phantom#6089" then
 			minutos=tonumber(message:sub(8))
 			if minutos > 15 then
 				tfm.exec.chatMessage("Time limit: 15 minutes.",nil)
@@ -1879,7 +1879,7 @@ function eventChatCommand(name,message)
 			end
 		end
 	elseif(message:sub(0,8) == "kazarina") then
-		if name == "Forzaldenon#0000" or name == "Linkventusx5#0000" then
+		if name == "Forzaldenon#0000" or name == "Spectra_phantom#6089" then
 			local texto=message:sub(10)
 			tfm.exec.chatMessage("<J><b>• [Kazarina] </b>"..texto.."")
 		end
@@ -2164,7 +2164,7 @@ for _,f in next,{"help","rodar","run","limite","q","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 32",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 33",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -2210,7 +2210,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 32",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 33",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2256,7 +2256,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation32",
+welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation33",
 dancar = "أرقص!",
 sentar = "إجلس!",
 confetar = "قُم برمي 5 أوراق!",
@@ -2365,6 +2365,9 @@ function eventNewGame()
 		if data[name] then
 			data[name].c=0
 		end
+	end
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J>Os envios de mapas para o module #mestre estão liberados!<br><b>https://atelier801.com/topic?f=796133&t=915772&p=1#m8</b>")
 	end
 	rodadas=math.floor(10+(rato/2))
 end
@@ -3108,23 +3111,23 @@ function eventLoop(p,f)
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
-		if name == "Jessiewind26#2546" or name == "Linkventusx5#0000" or name == "Miss_fortune#9548"  then
+		if name == "Jessiewind26#2546" or name == "Spectra_phantom#6089" or name == "Miss_fortune#9548"  then
 			tfm.exec.chatMessage(text.cancel,nil)
 			tfm.exec.newGame(mapa)
 		end
 	end
 	if(message:sub(1,6) == "limite") then
-		if name == "Jessiewind26#2546" or name == "Linkventusx5#0000" or name == "Miss_fortune#9548"  then
+		if name == "Jessiewind26#2546" or name == "Spectra_phantom#6089" or name == "Miss_fortune#9548"  then
 			limite=tonumber(message:sub(8))
 		end
 	end
 	if(message:sub(1,5) == "ratos") then
-		if name == "Jessiewind26#2546" or name == "Linkventusx5#0000" or name == "Miss_fortune#9548"  then
+		if name == "Jessiewind26#2546" or name == "Spectra_phantom#6089" or name == "Miss_fortune#9548"  then
 			tfm.exec.setRoomMaxPlayers(message:sub(7))
 		end
 	end
 	if(message:sub(1,6) == "shaman") then
-		if name == "Jessiewind26#2546" or name == "Linkventusx5#0000" or name == "Miss_fortune#9548"  then
+		if name == "Jessiewind26#2546" or name == "Spectra_phantom#6089" or name == "Miss_fortune#9548"  then
 			tfm.exec.setPlayerScore(message:sub(8),9999,false)
 			tfm.exec.newGame(mapa)
 		end
@@ -3213,7 +3216,7 @@ function eventPlayerDied(name)
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.43<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.43.1<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
