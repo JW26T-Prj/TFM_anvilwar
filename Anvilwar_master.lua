@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 12h58 (UTC) 17/03/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 21h11 (UTC) 23/03/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.45",
+	_VERSION = "1.46",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1730,10 +1730,12 @@ shaman=""
 lock=false
 minutos=6;
 modo="desativado"
-for _,f in next,{"admin77","admin78","limite","return","kill","kazarina"} do
+for _,f in next,{"admin77","admin78","limite","return","kill","kazarina","modo"} do
 	system.disableChatCommandDisplay(f)
 end
 mapa="@7417328"
+mapa2="@7345757"
+mod=0
 lang = {}
 
 lang.br = {
@@ -1749,7 +1751,7 @@ lang.br = {
   textTimeOut = "O tempo da partida acabou! Outro shaman será escolhido.",
   textTimeLeave = "Tempo esgotado! Outro shaman será escolhido.",
   textTrueFalse = "Envie SIM se a resposta for verdadeira ou NÃO se a resposta for falsa.",
-  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.136:<br>- Correção nas perguntas",
+  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.137:<br>- Correção de pequenos bugs",
   textHelp = "<J>Quando o shaman fizer uma pergunta, você deverá ir no campo TRUE se a resposta for verdadeira ou no campo FALSE se a resposta for falsa. Aqueles que errarem serão eliminados da partida. O processo continua até que sobre um vencedor, que será o novo shaman.<br>Se você for o shaman, digite !per para fazer uma pergunta.<br><br>- Script desenvolvido atualmente por Forzaldenon#0000, ideia original por Haxhhhhhhhhh.",
   textGotShaman = "<J>Você é o shaman. Digite <b>!per</b> para fazer uma pergunta.<br>Você tem 1 minuto para fazer sua pergunta, ou outro shaman entrará em seu lugar.<br><br>Digite <b>!skip</b> para pular sua vez de shaman.",
   textLowTime = "O tempo da partida está acabando.",
@@ -1772,7 +1774,7 @@ lang.en = {
   textTimeOut = "The game time is gone! Other shaman has been choosed.",
   textTimeLeave = "Time is up! Other shaman has been choosed.",
   textTrueFalse = "Send YES if the answer is TRUE or send NO if the answer is FALSE.",
-  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.136:<br>- Questions correction",
+  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.137:<br>- Small bug corrections",
   textHelp = "<J>When the shaman make the question, You must go to the TRUE side if the answer is true or go to the FALSE side if the answer is false. If you err the answer, you will be eliminated of the game. The process continue until someone win the game, which will be the new shaman.<br>If you are the shaman, type !per to make a question.<br><br>Suggestions and problems report to Forzaldenon#0000.",
   textGotShaman = "<J>You are the shaman. Type <b>!per</b> to make a question.<br>You have 1 minute to make the question, or other shaman will enter in your place.<br><br>Type <b>!skip</b> to skip your shaman turn.",
   textLowTime = "The match time is ending.",
@@ -1809,7 +1811,7 @@ function eventPlayerLeft(name)
 	obterJogadores()
 end
 function eventChatCommand(name,message)
-	if tfm.get.room.currentMap == "@7417328" then
+	if tfm.get.room.currentMap == "@7417328" or tfm.get.room.currentMap == "@7345757" then
 	if message == "f5" then
 		if name == "Forzaldenon#0000" then
 			t=true;
@@ -1881,7 +1883,19 @@ function eventChatCommand(name,message)
 	elseif(message:sub(0,8) == "kazarina") then
 		if name == "Forzaldenon#0000" or name == "Morganadxana#0000" then
 			local texto=message:sub(10)
-			tfm.exec.chatMessage("<J><b>• [Kazarina] </b>"..texto.."")
+			if mod == 0 then
+				tfm.exec.chatMessage("<J><b>• [Kazarina] </b>"..texto.."")
+			elseif mod == 1 then
+				tfm.exec.chatMessage("<font color='#00ffff'><b>• [Kazarina] </b>"..texto.."")
+			end
+		end
+	elseif message == "modo" then
+		if name == "Forzaldenon#0000" or name == "Morganadxana#0000" then
+			if mod == 0 then
+				mod=1
+			else
+				mod=0
+			end
 		end
 	elseif message == "help" then
 		tfm.exec.chatMessage("<N>"..text.textHelp.."",name)
@@ -1892,7 +1906,12 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br><VP>As avaliações de mapas estão abertas!<br>https://atelier801.com/topic?f=816221&t=924786<br>")
+		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br>")
+	end
+	if modo == 1 then
+		tfm.exec.snow(800,800)
+	else
+		tfm.exec.snow(0,0)
 	end
 	ui.removeTextArea(27,nil)
 	tfm.exec.setGameTime(63)
@@ -1982,7 +2001,7 @@ function eventLoop(pass,tempo)
 			end
 		end
 	end
-	tfm.exec.setUIMapName("True or False - RTM 1.136")
+	tfm.exec.setUIMapName("True or False - RTM 1.137")
 	if modo == "pergunta" then
 		tempa=tempa-0.5
 	end
@@ -2134,7 +2153,11 @@ function eventPlayerDied(name)
 	end
 end
 function changeMap()
-	tfm.exec.newGame(mapa)
+	if mod == 0 then
+		tfm.exec.newGame(mapa)
+	elseif mod == 1 then
+		tfm.exec.newGame(mapa2)
+	end
 end
 changeMap()
 end
@@ -2167,7 +2190,7 @@ for _,f in next,{"help","rodar","run","limite","q","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 35",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 36",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -2215,7 +2238,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 35",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 36",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2263,7 +2286,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation35",
+welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation36",
 dancar = "أرقص!",
 sentar = "إجلس!",
 confetar = "قُم برمي 5 أوراق!",
@@ -2313,7 +2336,7 @@ playingmap = "Playing map",
 created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 35",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 36",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2408,7 +2431,7 @@ function eventPlayerDied(name)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br><VP>As avaliações de mapas estão abertas!<br>https://atelier801.com/topic?f=816221&t=924786<br>")
+		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br>")
 	end
 	ui.removeTextArea(0,nil)
 	rodada=0
@@ -3051,10 +3074,12 @@ function eventLoop(passado,faltando)
 		end
 	end
 	for name,player in pairs(tfm.get.room.playerList) do
-		if data[name].c == 1 then
-			tfm.exec.setNameColor(name,0x00ff00)
-		else
-			tfm.exec.setNameColor(name,0xc2c2da)
+		if data[name] then
+			if data[name].c == 1 then
+				tfm.exec.setNameColor(name,0x00ff00)
+			else
+				tfm.exec.setNameColor(name,0xc2c2da)
+			end
 		end
 	end
 end
@@ -3178,7 +3203,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 9<")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 10<")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
@@ -3209,7 +3234,7 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br><VP>As avaliações de mapas estão abertas!<br>https://atelier801.com/topic?f=816221&t=924786<br>")
+		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br>")
 	end
 	loop=0
 	ui.removeTextArea(1,nil)
@@ -3245,6 +3270,17 @@ function eventChatMessage(name,message)
 			valendo=false
 			tfm.exec.setGameTime(64)
 			tfm.exec.chatMessage("<VP>"..name.." "..text.win.." "..string.upper(resposta).."",nil)
+			resposta=""
+			ui.removeTextArea(1,nil)
+			ui.removeTextArea(2,nil)
+			ui.removeTextArea(3,nil)
+		end
+	end
+	if string.find(string.upper(message),string.upper(resposta)) then
+		if tfm.get.room.playerList[name].isShaman == true then
+			tfm.exec.chatMessage(text.cancelled,name)
+			valendo=false
+			tfm.exec.setGameTime(64)
 			resposta=""
 			ui.removeTextArea(1,nil)
 			ui.removeTextArea(2,nil)
@@ -3331,7 +3367,7 @@ function eventChatCommand(n,m)
 			tfm.exec.chatMessage("<font color='#ff3000'>A rodada foi cancelada. Próxima rodada em 5 segundos.",nil) end end end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br><VP>As avaliações de mapas estão abertas!<br>https://atelier801.com/topic?f=816221&t=924786<br>")
+		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br>")
 	end
 	id=0;
 	novo=3
@@ -3509,7 +3545,7 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br><VP>As avaliações de mapas estão abertas!<br>https://atelier801.com/topic?f=816221&t=924786<br>")
+		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0true_false = Verdadeiro ou Falso<br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0brpic = Pictionary remaked BR by Miss_fortune#9548<br>/sala #anvilwar0objects = Objects<br><br>")
 	end
 	functs.running=false
 	functs.level=0
@@ -3638,7 +3674,7 @@ end
 tfm.exec.newGame(maps[math.random(#maps)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.45<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.46<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 	if string.find(tfm.get.room.name,"true_false") then
 		active = "true_false"
