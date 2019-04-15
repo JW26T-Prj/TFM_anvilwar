@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 14h43 (UTC) 14/04/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 14h43 (UTC) 14/04/2019 e atualizado às 14h44 (UTC) 15/04/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.49",
+	_VERSION = "1.49.1",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1613,7 +1613,7 @@ lang.br = {
   textTimeOut = "O tempo da partida acabou! Outro shaman será escolhido.",
   textTimeLeave = "Tempo esgotado! Outro shaman será escolhido.",
   textTrueFalse = "Envie SIM se a resposta for verdadeira ou NÃO se a resposta for falsa.",
-  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.139:<br>- Correção de pequenos bugs",
+  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.140:<br>- Correção de pequenos bugs",
   textHelp = "<J>Quando o shaman fizer uma pergunta, você deverá ir no campo TRUE se a resposta for verdadeira ou no campo FALSE se a resposta for falsa. Aqueles que errarem serão eliminados da partida. O processo continua até que sobre um vencedor, que será o novo shaman.<br>Se você for o shaman, digite !per para fazer uma pergunta.<br><br>- Script desenvolvido atualmente por Forzaldenon#0000.",
   textGotShaman = "<J>Você é o shaman. Digite <b>!per</b> para fazer uma pergunta.<br>Você tem 1 minuto para fazer sua pergunta, ou outro shaman entrará em seu lugar.<br><br>Digite <b>!skip</b> para pular sua vez de shaman.",
   textLowTime = "O tempo da partida está acabando.",
@@ -1636,7 +1636,7 @@ lang.en = {
   textTimeOut = "The game time is gone! Other shaman has been choosed.",
   textTimeLeave = "Time is up! Other shaman has been choosed.",
   textTrueFalse = "Send YES if the answer is TRUE or send NO if the answer is FALSE.",
-  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.139:<br>- Small bug corrections",
+  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.140:<br>- Small bug corrections",
   textHelp = "<J>When the shaman make the question, You must go to the TRUE side if the answer is true or go to the FALSE side if the answer is false. If you err the answer, you will be eliminated of the game. The process continue until someone win the game, which will be the new shaman.<br>If you are the shaman, type !per to make a question.<br><br>Suggestions and problems report to Forzaldenon#0000.",
   textGotShaman = "<J>You are the shaman. Type <b>!per</b> to make a question.<br>You have 1 minute to make the question, or other shaman will enter in your place.<br><br>Type <b>!skip</b> to skip your shaman turn.",
   textLowTime = "The match time is ending.",
@@ -1696,12 +1696,6 @@ function eventChatCommand(name,message)
 				ui.addPopup(1,2,""..text.textPergunta.."",name,250,125,350,true)
 			end
 		end
-	elseif message == "admin77" then
-		if modo == "desativado" then
-		if name == "Forzaldenon#0000" or name == "Dhanny_mheyran#6701" then
-			changeMap()
-			tfm.exec.setShaman(message:sub(50))
-		end end
 	elseif message == "return" then
 		if modo == "pergunta" then
 		if name == "Forzaldenon#0000" or name == "Dhanny_mheyran#6701" then
@@ -1735,20 +1729,14 @@ function eventChatCommand(name,message)
 	elseif(message:sub(0,6) == "limite") then
 		if name == "Forzaldenon#0000" or name == "Dhanny_mheyran#6701" then
 			minutos=tonumber(message:sub(8))
-			if minutos > 15 then
-				tfm.exec.chatMessage("Time limit: 15 minutes.",nil)
-				minutos=15
+			if minutos > 10 then
+				tfm.exec.chatMessage("Time limit: 10 minutes.",nil)
+				minutos=10
+			elseif minutos < 1 then
+				tfm.exec.chatMessage("Time limit: 1 minutes.",nil)
+				minutos=1
 			else
 				tfm.exec.chatMessage("Time limit: "..minutos.." minutes.",nil)
-			end
-		end
-	elseif(message:sub(0,8) == "kazarina") then
-		if name == "Forzaldenon#0000" or name == "Dhanny_mheyran#6701" then
-			local texto=message:sub(10)
-			if tfm.get.room.currentMap == "@7417328" then
-				tfm.exec.chatMessage("<J><b>• [Kazarina] </b>"..texto.."")
-			else
-				tfm.exec.chatMessage("<font color='#00ffff'><b>• [Lissandra] </b>"..texto.."")
 			end
 		end
 	elseif message == "modo" then
@@ -1863,7 +1851,7 @@ function eventLoop(pass,tempo)
 			end
 		end
 	end
-	tfm.exec.setUIMapName("True or False - RTM 1.139")
+	tfm.exec.setUIMapName("True or False - RTM 1.140")
 	if modo == "pergunta" then
 		tempa=tempa-0.5
 	end
@@ -1970,7 +1958,7 @@ function eventPopupAnswer(id,name,answer)
 	if id == 1 then
 		if tfm.get.room.playerList[name].isShaman then
 			if tfm.get.room.currentMap == "@7417328" or tfm.get.room.currentMap == "@7345757" then
-				if string.len(answer) >= 230 then
+				if string.len(answer) >= 210 then
 					tfm.exec.chatMessage(""..text.textLongQuestion.."",name)
 				elseif string.len(answer) <= 10 then
 					tfm.exec.chatMessage(""..text.textShortQuestion.."",name)
@@ -3211,7 +3199,8 @@ tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612"}
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest"}
 objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
@@ -3231,17 +3220,8 @@ function eventChatCommand(name,message)
 		if (message:sub(0,3) == "run") then
 			tfm.exec.newGame(message:sub(5))
 		end
-		if (message:sub(0,3) == "add") then
-			table.insert(maps,tostring(message:sub(5)))
-			tfm.exec.chatMessage("<J>The map <b>"..tostring(message:sub(5)).."</b> has been added to the map rotation.")
-		end
 		if message == "restart" then
-			tfm.exec.newGame(maps[math.random(#maps)])
-		end
-		if message == "reset" then
-			maps={}
-			maps={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@4677521"}
-			tfm.exec.chatMessage("<J>The map rotation has been redefined to default.")
+			tfm.exec.newGame(mapas[math.random(#mapas)])
 		end
 	end
 end
@@ -3253,7 +3233,7 @@ function eventNewGame()
 	functs.level=0
 	functs.count=10
 	times=0
-	tfm.exec.setGameTime(90)
+	tfm.exec.setGameTime(100)
 	removeText()
 	winner=false
 	actual_map=tfm.get.room.currentMap
@@ -3262,7 +3242,18 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
-		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
+		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+		end
+	end
+end
+function showBar()
+	for i=1,19 do
+		if mapas[i] == tfm.get.room.currentMap then
+			if map_names[i] == "" then
+				ui.setMapName("<J>#objects RTM 3006.007   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+			else
+				ui.setMapName("<J>#objects RTM 3006.007   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+			end
 		end
 	end
 end
@@ -3306,7 +3297,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventLoop(p,f)
-	ui.setMapName("<J>#objects RTM 2805.006   <BL>|   <J>"..actual_creator.." <BL>- "..actual_map.."   <BL>|   <N>Difficulty : "..bar.."<")
+	showBar()
 	if f <= 3000 and functs.running == true and winner == false then
 		for name,player in pairs(tfm.get.room.playerList) do
 			tfm.exec.giveCheese(name)
@@ -3315,8 +3306,13 @@ function eventLoop(p,f)
 			showText("Time is up!")
 		end
 	end
+	if p >= 1000 and p <= 1600 then
+		if mapas[i] == tfm.get.room.currentMap then
+			tfm.exec.chatMessage("Playing map <J>"..tfm.get.room.currentMap.."<BL> made by <J>"..tfm.get.room.xmlMapInfo.author)
+		end
+	end
 	if f <= 1 and functs.running == false then
-		tfm.exec.newGame(maps[math.random(#maps)])
+		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 	if functs.running == false and winner == false and p < 20000 then
 		functs.count=functs.count-0.5
@@ -3379,10 +3375,10 @@ function eventPlayerDied(name)
 		end
 	end
 end
-tfm.exec.newGame(maps[math.random(#maps)])
+tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.49<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.49.1<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
