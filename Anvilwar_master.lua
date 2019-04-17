@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 14h43 (UTC) 14/04/2019 e atualizado às 14h44 (UTC) 15/04/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 14h43 (UTC) 14/04/2019 e atualizado às 00h42 (UTC) 17/04/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.49.1",
+	_VERSION = "1.49.2",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -3199,8 +3199,8 @@ tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485"}
-map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest"}
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall"}
 objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
@@ -3378,7 +3378,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.49.1<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.49.2<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
