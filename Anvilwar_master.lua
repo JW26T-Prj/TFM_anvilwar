@@ -3247,7 +3247,7 @@ function eventNewGame()
 	end
 end
 function showBar()
-	for i=1,19 do
+	for i=1,21 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
 				ui.setMapName("<J>#objects RTM 3006.007   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
