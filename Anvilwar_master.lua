@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 23h36 (UTC) 18/04/2019 e atualizado às 01h14 (UTC) 19/04/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 14h57 (UTC) 19/04/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.50.1",
+	_VERSION = "1.51",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -2014,7 +2014,7 @@ tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(40)
+tfm.exec.setRoomMaxPlayers(35)
 mapas={6788085,6788183,6789853,6791944,6792470,6808957,6810292,6821950,6830799,6866406,6866549,6788693,6788728,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6789272,6790912,6833993}
 active=0 -- códigos active: -2 = número de ratos insuficiente, -1 = partida encerrada, 0 = partida não iniciada ou intervalo e 1 ou mais = comandos operando
 vivo=0 -- número de ratos vivos
@@ -2036,7 +2036,7 @@ for _,f in next,{"help","mapa","reset","run","limite","q","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 39<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/raw/ZFn0rNPz",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 40<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/raw/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -2065,11 +2065,15 @@ lang.br = {
 	predireita30 = "Pressione 30 vezes a tecla para DIREITA!",
 	preesquerda60 = "Pressione 60 vezes a tecla para ESQUERDA!",
 	predireita60 = "Pressione 60 vezes a tecla para DIREITA!",
-	preesquerda200 = "Pressione 200 vezes a tecla para ESQUERDA!",
-	predireita200 = "Pressione 200 vezes a tecla para DIREITA!",
+	preesquerda200 = "Pressione 100 vezes a tecla para ESQUERDA!",
+	predireita200 = "Pressione 100 vezes a tecla para DIREITA!",
 	espaco = "Pressione a barra de espaço 20 vezes!",
 	nome = "Digite o seu nome no jogo (com #número).",
 	ndance = "Não dance!",
+	pergunta1 = "Quanto é ",
+	rats = "Há quantos ratos nessa sala?",
+	pergunta2 = "Quanto é a raiz quadrada de ",
+	pergunta1_2 = "elevado ao quadrado",
 	mestre = "Mestre Mandou",
 	map = "Mapa",
 	time = "Tempo",
@@ -2084,7 +2088,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 39<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 40<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2113,11 +2117,15 @@ lang.en = {
 	predireita30 = "Press 30 times the RIGHT key!",
 	preesquerda60 = "Press 60 times the LEFT key!",
 	predireita60 = "Press 60 times the RIGHT key!",
-	preesquerda200 = "Press 200 times the LEFT key!",
-	predireita200 = "Press 200 times the RIGHT key!",
+	preesquerda200 = "Press 100 times the LEFT key!",
+	predireita200 = "Press 100 times the RIGHT key!",
 	espaco = "Press 20 times the SPACEBAR!",
 	nome = "Type your nickname (with #number)!",
 	ndance = "Don't dance!",
+	pergunta1 = "How much is ",
+	rats = "How many rats are in this room?",
+	pergunta2 = "How much is the square root of ",
+	pergunta1_2 = "squared",
 	mestre = "Master Says",
 	map = "Map",
 	time = "Time",
@@ -2132,7 +2140,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation39<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation40<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 dancar = "أرقص!",
 sentar = "إجلس!",
 confetar = "قُم برمي 5 أوراق!",
@@ -2161,14 +2169,18 @@ preesquerda30 = "إضغط 30 مرة على زر السهم الأيسر",
 predireita30 = "إضغط 30 مرة على زر السهم الأيمن",
 preesquerda60 = "إضغط 60 مرة على زر السهم الأيسر",
 predireita60 = "إضغط 60 مرة على زر السهم الأيمن",
-preesquerda200 = "إضغط 200 مرة على زر السهم الأيسر",
-predireita200 = "إضغط 200 مرة على زر السهم الأيمن",
+preesquerda100 = "إضغط 100 مرة على زر السهم الأيسر",
+predireita100 = "إضغط 100 مرة على زر السهم الأيمن",
 espaco = "إضغط 20 مرة على زر المسافة",
 nome = "إكتب إسمك (مع رقم الهاشتاج #)ـ",
 abracar = "أعطِ حُضن لأي فأر!",
 beijar = "قُم بتقبيل اي فأر",
 ndance = "لا ترقص!",
 mestre = "الرئيس يقول",
+pergunta1 = "How much is ",
+rats = "How many rats are in this room?",
+pergunta2 = "How much is the square root of ",
+pergunta1_2 = "squared",
 map = "خريطة",
 time = "الوقت",
 mice = "الفئران",
@@ -2182,7 +2194,7 @@ playingmap = "Playing map",
 created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 39<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 40<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2211,11 +2223,15 @@ preesquerda30 = "Presiona 30 veces la tecla IZQUIERDA!",
 predireita30 = "Presiona 30 veces la tecla DERECHA!",
 preesquerda60 = "Presiona 60 veces la tecla IZQUIERDA!",
 predireita60 = "Presiona 60 veces la tecla DERECHA!",
-preesquerda200 = "Presione 200 veces la tecla IZQUIERDA!",
-predireita200 = "Presione 200 veces la tecla DERECHA!",
+preesquerda200 = "Presione 100 veces la tecla IZQUIERDA!",
+predireita200 = "Presione 100 veces la tecla DERECHA!",
 espaco = "Presione 20 veces la barra espaciadora!",
 nome = "Escribe tu apodo (con #numero incluido)",
 ndance = "¡No bailes!",
+pergunta1 = "Cuanto es",
+rats = "How many rats are in this room?",
+pergunta2 = " la raíz cuadrada de ",
+pergunta1_2 = "alto al cuadrado",
 mestre = "Simón dice",
 map = "Mapa",
 time = "Hora",
@@ -2304,7 +2320,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,37)
+	active=math.random(1,41)
 	getCommand()
 end
 function eventChatCommand(name,message)
@@ -2574,14 +2590,37 @@ function getCommand()
 		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
 	if active == 38 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(18)
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.rats.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(6)
 	end
 	if active == 39 then
+		local numero1=math.random(0,50)
+		local numero2=math.random(0,50)
+		resposta=tostring(numero1+numero2)
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta1.." "..numero1.." + "..numero2.."?",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 40 then
+		local numero1=math.random(0,30)
+		resposta=tostring(numero1*numero1)
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta1.." "..numero1.." "..text.pergunta1_2.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 41 then
+		local numero1=math.random(0,30)
+		resposta=tostring(numero1)
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta2..""..numero1*numero1.."?",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(8)
+	end
+	if active == 42 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(18)
 	end
-	if active == 40 then
+	if active == 43 then
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(18)
+	end
+	if active == 44 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..pergunta.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(tempo)
 	end
@@ -2605,6 +2644,16 @@ function eventChatMessage(name,message)
 	end
 	if active == 31 then
 		if string.upper(message) == string.upper(name) then
+			data[name].c=1
+		end
+	end
+	if active == 38 then
+		if message == tostring(rato) then
+			data[name].c=1
+		end
+	end
+	if active == 39 or active == 40 or active == 41 then
+		if message == resposta then
 			data[name].c=1
 		end
 	end
@@ -2802,6 +2851,40 @@ function eventKeyboard(name,id,down,x,y)
 			end
 		end
 	end
+	if active == 42 then
+		if id == 39 or id == 68 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			data[name].s=data[name].s+1
+			if data[name].s >= 100 then
+				data[name].c=1
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 43 then
+		if id == 37 or id == 65 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			data[name].s=data[name].s+1
+			if data[name].s >= 100 then
+				data[name].c=1
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
 end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
@@ -2917,7 +3000,7 @@ function eventLoop(passado,faltando)
 		ui.removeTextArea(1,nil)
 		ui.removeTextArea(2,nil)
 		active=0
-		if rodada == 4 or rodada == 6 or rodada == 8 or rodada == 10 then
+		if rodada == 4 or rodada == 6 or rodada == 8 or rodada == 10 or rodada == 12 then
 			dificuldade=dificuldade+1
 		end
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -3187,7 +3270,7 @@ initObjects = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(18)
+tfm.exec.setRoomMaxPlayers(20)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
@@ -3244,9 +3327,9 @@ function showBar()
 	for i=1,23 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 3107.008   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 3208.009   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 3107.008   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 3208.009   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -3305,11 +3388,6 @@ function eventLoop(p,f)
 	end
 	if f <= 1 and functs.running == false then
 		tfm.exec.newGame(mapas[math.random(#mapas)])
-	end
-	if p >= 12000 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.giveMeep(name)
-		end
 	end
 	if functs.running == false and winner == false and p < 20000 then
 		functs.count=functs.count-0.5
@@ -3375,7 +3453,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.50<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.51<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
