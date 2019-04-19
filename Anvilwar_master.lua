@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 23h36 (UTC) 18/04/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects e #true_false. Compilado às 23h36 (UTC) 18/04/2019 e atualizado às 01h14 (UTC) 19/04/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.50",
+	_VERSION = "1.50.1",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1609,7 +1609,7 @@ lang.br = {
   textTimeOut = "O tempo da partida acabou! Outro shaman será escolhido.",
   textTimeLeave = "Tempo esgotado! Outro shaman será escolhido.",
   textTrueFalse = "Envie SIM se a resposta for verdadeira ou NÃO se a resposta for falsa.",
-  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.140:<br>- Correção de pequenos bugs",
+  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.141:<br>- Correção de pequenos bugs",
   textHelp = "<J>Quando o shaman fizer uma pergunta, você deverá ir no campo TRUE se a resposta for verdadeira ou no campo FALSE se a resposta for falsa. Aqueles que errarem serão eliminados da partida. O processo continua até que sobre um vencedor, que será o novo shaman.<br>Se você for o shaman, digite !per para fazer uma pergunta.<br><br>- Script desenvolvido atualmente por Forzaldenon#0000.",
   textGotShaman = "<J>Você é o shaman. Digite <b>!per</b> para fazer uma pergunta.<br>Você tem 1 minuto para fazer sua pergunta, ou outro shaman entrará em seu lugar.<br><br>Digite <b>!skip</b> para pular sua vez de shaman.",
   textLowTime = "O tempo da partida está acabando.",
@@ -1632,7 +1632,7 @@ lang.en = {
   textTimeOut = "The game time is gone! Other shaman has been choosed.",
   textTimeLeave = "Time is up! Other shaman has been choosed.",
   textTrueFalse = "Send YES if the answer is TRUE or send NO if the answer is FALSE.",
-  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.140:<br>- Small bug corrections",
+  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.141:<br>- Small bug corrections",
   textHelp = "<J>When the shaman make the question, You must go to the TRUE side if the answer is true or go to the FALSE side if the answer is false. If you err the answer, you will be eliminated of the game. The process continue until someone win the game, which will be the new shaman.<br>If you are the shaman, type !per to make a question.<br><br>Suggestions and problems report to Forzaldenon#0000.",
   textGotShaman = "<J>You are the shaman. Type <b>!per</b> to make a question.<br>You have 1 minute to make the question, or other shaman will enter in your place.<br><br>Type <b>!skip</b> to skip your shaman turn.",
   textLowTime = "The match time is ending.",
@@ -1679,7 +1679,7 @@ function eventChatCommand(name,message)
 		if tfm.get.room.playerList[name].isShaman then
 			obterJogadores()
 			tfm.exec.chatMessage("<R>"..text.textSkip.."",nil)
-			eventChatCommand("Forzaldenon#0000","admin77") end			
+			eventChatCommand("Forzaldenon#0000","admin78") end			
 	elseif message == "v5" then
 		if name == "Forzaldenon#0000" then
 			f=true;
@@ -1708,7 +1708,7 @@ function eventChatCommand(name,message)
 				tfm.exec.movePlayer(name,400,1,false,1,1,false)
 			end
 			if rcount == 3 then
-				eventChatCommand("Forzaldenon#0000","admin77")
+				eventChatCommand("Forzaldenon#0000","admin78")
 				rcount=0
 			end
 		end end
@@ -1790,7 +1790,7 @@ function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.chatMessage("<ROSE>Isn't allowed the use of shaman objects in this module.",nil)
-			eventChatCommand("Forzaldenon#0000","admin77")
+			eventChatCommand("Forzaldenon#0000","admin78")
 		end
 	end
 end
@@ -1843,11 +1843,11 @@ function eventLoop(pass,tempo)
 					end
 				end
 				tfm.exec.chatMessage("<R>"..text.textTimeOut.."",nil)
-				eventChatCommand("Forzaldenon#0000","admin77")
+				eventChatCommand("Forzaldenon#0000","admin78")
 			end
 		end
 	end
-	tfm.exec.setUIMapName("True or False - RTM 1.140")
+	tfm.exec.setUIMapName("True or False - RTM 1.141")
 	if modo == "pergunta" then
 		tempa=tempa-0.5
 	end
