@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects, #clickwar e #true_false. Compilado às 22h36 (UTC) 20/04/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects, #clickwar e #true_false. Compilado às 13h09 (UTC) 23/04/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.53",
+	_VERSION = "1.54",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -53,7 +53,7 @@ for _,f in next,{"help","powerups","set","tc","p","rank","data_score","score","k
 	system.disableChatCommandDisplay(f)
 end
 mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495501","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539"}
-map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","The Stone of Driftblade"}
+map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","The Stone of Driftblade",""}
 lang = {}
 lang.br = {
 	win_vermelho = "<R><b>GG Time Vermelho!</b><br>A próxima partida será iniciada em 15 segundos.",
@@ -77,7 +77,7 @@ lang.br = {
 	inv1 = "acionou o powerup Modo Imortal!",
 	inv2 = "<br>Neste powerup, você ficará imortal durante 4 turnos do seu time. Esta habilidade só pode ser utilizada uma vez por partida.",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 10620.100",
+	bar = "#anvilwar - RTM 10721.101",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. Use as teclas F1 a F5 para usar poderes especiais.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. Use as teclas de F1 a F5 para usar poderes especiais (para saber quais são, digite !powerups). A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Jessiewind26#2546 e Zed#9431<br>Powerups: Jhinsword350#0000 e Vidaloka9999#0000<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -143,7 +143,7 @@ lang.en = {
 	inv1 = "used the powerup Immortal Mode!",
 	inv2 = "<br>On this powerup, you be immortal during the next 4 turns. This powerup only can be used 1 time per game.",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 10620.100",
+	bar = "#anvilwar - RTM 10721.101",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. Use the F1 to F5 keys to use powerups.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. Use the F1 to F5 keys to use powerups (type !powerups). The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Jessiewind26#2546 and Zed#9431<br>Powerups: Jhinsword350#0000 and Vidaloka9999#0000<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -209,7 +209,7 @@ fly2 = "<br>On this powerup, the size of your mice will be reduced at 50%. This 
 inv1 = "إستخدم قوة عدم الموت",
 inv2 = "<br>بإستخدام هذه القوة، لن يمكنك الموت لمدة 4 جولات من الضرب، يمكنك إستخدامها مرة واحدة فقط في الجولة الواحدة",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 10620.100",
+bar = "#anvilwar - RTM 10721.101",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Jessiewind26#2546 and Zed#9431<br>نظام القوة: Jhinsword350#0000 and Vidaloka9999#0000<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -275,7 +275,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	inv1 = "usó el powerup Modo Inmortal!",
 	inv2 = "<br>Con este powerup serás inmortal durante los próximos 4 turnos. Solo puedes usarlo 1 vez por ronda.",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 10620.100",
+	bar = "#anvilwar - RTM 10721.101",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. Usa las teclas F1 al F5 para usar los powerups.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. Usa las teclas F1 al F5 para usar los powerups (escribe !powerups). El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Jessiewind26#2546 y Zed#9431<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -341,7 +341,7 @@ lang.de = {
 	inv1 = "benutzte den Powerup Immortal Mode!",
 	inv2 = "<br>Bei diesem Powerup bist du in den nächsten 4 Runden unsterblich. Dieses Powerup kann nur einmal pro Spiel verwendet werden.",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 10620.100",
+	bar = "#anvilwar - RTM 10721.101",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Verwenden Sie die Tasten F1 bis F5, um Powerups zu verwenden.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Verwenden Sie die Tasten F1 bis F5, um Powerups zu verwenden (Typ !powerups). Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Jessiewind26#2546 und Zed#9431<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -779,22 +779,24 @@ function eventLoop(passado,faltando)
 			if count == 0 then
 				for name,player in pairs(tfm.get.room.playerList) do
 					tfm.exec.chatMessage(text.starting,name)
-					if data[name].team == "azul" then
-						data[name].matchs=data[name].matchs+1
-						tfm.exec.respawnPlayer(name)
-						tfm.exec.movePlayer(name,1000,180,false,0,0,false)
-						table.insert(play_azul,name)
-						tfm.exec.setPlayerScore(name,0,false)
-					elseif data[name].team == "vermelho" then
-						data[name].matchs=data[name].matchs+1
-						tfm.exec.respawnPlayer(name)
-						tfm.exec.movePlayer(name,600,180,false,0,0,false)
-						table.insert(play_vermelho,name)
-						tfm.exec.setPlayerScore(name,0,false)
-					else
-						tfm.exec.movePlayer(name,800,-2000,false,0,0,false)
-						tfm.exec.setPlayerScore(name,-1,false)
-						kills=0
+					if data[name] then
+						if data[name].team == "azul" then
+							data[name].matchs=data[name].matchs+1
+							tfm.exec.respawnPlayer(name)
+							tfm.exec.movePlayer(name,1000,180,false,0,0,false)
+							table.insert(play_azul,name)
+							tfm.exec.setPlayerScore(name,0,false)
+						elseif data[name].team == "vermelho" then
+							data[name].matchs=data[name].matchs+1
+							tfm.exec.respawnPlayer(name)
+							tfm.exec.movePlayer(name,600,180,false,0,0,false)
+							table.insert(play_vermelho,name)
+							tfm.exec.setPlayerScore(name,0,false)
+						else
+							tfm.exec.movePlayer(name,800,-2000,false,0,0,false)
+							tfm.exec.setPlayerScore(name,-1,false)
+							kills=0
+						end
 					end
 				end
 			end
@@ -1084,9 +1086,11 @@ function eventPlayerDied(name)
 	end
 end
 function eventPlayerLeft(name)
-	ratos=ratos-1
-	data[name].killed=-1
-	data[name].team=""
+	if data[name] then
+		ratos=ratos-1
+		data[name].killed=-1
+		data[name].team=""
+	end
 end
 function showBar()
 	for i=1,70 do
@@ -1969,11 +1973,11 @@ pergunta="Interval"
 tempo=10
 resposta=""
 unlocked=true -- bloqueia ou desbloqueia a execução do script
-for _,f in next,{"help","mapa","reset","run","limite","q","time"} do
+for _,f in next,{"run","q","r","mapa","reset","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 42<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/raw/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 43<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/raw/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -2025,7 +2029,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 42<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 43<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2077,7 +2081,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation42<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation43<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 dancar = "أرقص!",
 sentar = "إجلس!",
 confetar = "قُم برمي 5 أوراق!",
@@ -2131,7 +2135,7 @@ playingmap = "Playing map",
 created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 42<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 43<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2542,21 +2546,21 @@ function getCommand()
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta1.." "..numero1.." + "..numero2.."?",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(10)
 	end
-	if active == 41 then
+	if active == 40 then
 		local numero1=math.random(0,10)
 		resposta=tostring(numero1)
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta2..""..numero1*numero1.."?",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(16)
 	end
-	if active == 42 then
+	if active == 41 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(18)
 	end
-	if active == 43 then
+	if active == 42 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(18)
 	end
-	if active == 44 then
+	if active == 43 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..pergunta.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(tempo)
 	end
@@ -3411,6 +3415,7 @@ remain=10
 last_win=""
 times=1;
 enabled=false
+tfm.exec.setRoomMaxPlayers(25)
 function split(t,s)
 	local a={}
 	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
@@ -3580,7 +3585,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<N>Click War RTM 2312.006  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
+		ui.setMapName("<N>Click War RTM 2413.007  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
@@ -3614,7 +3619,7 @@ function eventLoop(pass,falt)
 end
 function eventPlayerDied(name)
 	if name == last_win and times >= 2 then
-		tfm.exec.chatMessage("The victory sequence of <R>"..last_win.."<J> has been ended!")
+		tfm.exec.chatMessage("<J>The victory sequence of <R>"..last_win.."<J> has been ended!")
 		times=1
 	end
 	local i=0
@@ -3728,7 +3733,7 @@ end
 tfm.exec.newGame("#10")
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.53<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.54<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
