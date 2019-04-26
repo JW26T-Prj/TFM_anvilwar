@@ -2,7 +2,7 @@
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.54",
+	_VERSION = "1.55",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1539,7 +1539,7 @@ lang.br = {
   textTimeOut = "O tempo da partida acabou! Outro shaman será escolhido.",
   textTimeLeave = "Tempo esgotado! Outro shaman será escolhido.",
   textTrueFalse = "Envie SIM se a resposta for verdadeira ou NÃO se a resposta for falsa.",
-  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.142:<br>- Melhorias nas perguntas",
+  textEnter = "<b>Bem-vindo ao module True or False!</b><br><BL>Para maiores informações sobre o jogo, digite !help.<br><br><VP>Atualização RTM 1.143:<br>- Correção de pequenos bugs",
   textHelp = "<J>Quando o shaman fizer uma pergunta, você deverá ir no campo TRUE se a resposta for verdadeira ou no campo FALSE se a resposta for falsa. Aqueles que errarem serão eliminados da partida. O processo continua até que sobre um vencedor, que será o novo shaman.<br>Se você for o shaman, digite !per para fazer uma pergunta.<br><br>- Script desenvolvido atualmente por Forzaldenon#0000.",
   textGotShaman = "<J>Você é o shaman. Digite <b>!per</b> para fazer uma pergunta.<br>Você tem 1 minuto para fazer sua pergunta, ou outro shaman entrará em seu lugar.<br><br>Digite <b>!skip</b> para pular sua vez de shaman.",
   textLowTime = "O tempo da partida está acabando.",
@@ -1562,7 +1562,7 @@ lang.en = {
   textTimeOut = "The game time is gone! Other shaman has been choosed.",
   textTimeLeave = "Time is up! Other shaman has been choosed.",
   textTrueFalse = "Send YES if the answer is TRUE or send NO if the answer is FALSE.",
-  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.142:<br>- Updates on questions",
+  textEnter = "<b>Welcome to module True or False!</b><br><V>For more information of the game, type !help.<br><br><VP>Update RTM 1.143:<br>- Small bug corrections",
   textHelp = "<J>When the shaman make the question, You must go to the TRUE side if the answer is true or go to the FALSE side if the answer is false. If you err the answer, you will be eliminated of the game. The process continue until someone win the game, which will be the new shaman.<br>If you are the shaman, type !per to make a question.<br><br>Suggestions and problems report to Forzaldenon#0000.",
   textGotShaman = "<J>You are the shaman. Type <b>!per</b> to make a question.<br>You have 1 minute to make the question, or other shaman will enter in your place.<br><br>Type <b>!skip</b> to skip your shaman turn.",
   textLowTime = "The match time is ending.",
@@ -1655,9 +1655,9 @@ function eventChatCommand(name,message)
 	elseif(message:sub(0,6) == "limite") then
 		if name == "Forzaldenon#0000" or name == "Shun_kazami#7014" then
 			minutos=tonumber(message:sub(8))
-			if minutos > 10 then
-				tfm.exec.chatMessage("Time limit: 10 minutes.",nil)
-				minutos=10
+			if minutos > 12 then
+				tfm.exec.chatMessage("Time limit: 12 minutes.",nil)
+				minutos=12
 			elseif minutos < 1 then
 				tfm.exec.chatMessage("Time limit: 1 minutes.",nil)
 				minutos=1
@@ -1788,7 +1788,7 @@ function eventLoop(pass,tempo)
 			end
 		end
 	end
-	tfm.exec.setUIMapName("True or False - RTM 1.142")
+	tfm.exec.setUIMapName("True or False - RTM 1.143")
 	if modo == "pergunta" then
 		tempa=tempa-0.5
 	end
@@ -1857,12 +1857,12 @@ function eventLoop(pass,tempo)
 	end
 	if tfm.get.room.currentMap == "@7417328" or tfm.get.room.currentMap == "@7345757" then
 	if vivo == 1 then
-		if tempo < 59000 then
+		if tempo < 59000 and ratos >= 3 then
 			tfm.exec.setPlayerScore(shaman,8000,false)
 			changeMap()
 		end
 	end
-	if vivo <= 0 then
+	if vivo <= 0 and ratos >= 3 then
 		tfm.exec.setGameTime(5)
 		obterJogadores()
 		changeMap()
@@ -1977,7 +1977,7 @@ for _,f in next,{"run","q","r","mapa","reset","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 - Versão RTM Compilação 43<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/raw/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 44<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/raw/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -2011,10 +2011,7 @@ lang.br = {
 	espaco = "Pressione a barra de espaço 20 vezes!",
 	nome = "Digite o seu nome no jogo (com #número).",
 	ndance = "Não dance!",
-	pergunta1 = "Quanto é ",
 	rats = "Há quantos ratos nessa sala?",
-	pergunta2 = "Quanto é a raiz quadrada de ",
-	pergunta1_2 = "elevado ao quadrado",
 	mestre = "Mestre Mandou",
 	map = "Mapa",
 	time = "Tempo",
@@ -2029,7 +2026,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 - Version RTM Compilation 43<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 and the Spectra Advanced Module Group - Version RTM Compilation 44<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2063,10 +2060,7 @@ lang.en = {
 	espaco = "Press 20 times the SPACEBAR!",
 	nome = "Type your nickname (with #number)!",
 	ndance = "Don't dance!",
-	pergunta1 = "How much is ",
 	rats = "How many rats are in this room?",
-	pergunta2 = "How much is the square root of ",
-	pergunta1_2 = "squared",
 	mestre = "Master Says",
 	map = "Map",
 	time = "Time",
@@ -2081,7 +2075,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 - الإصدار RTM Compilation43<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+welcome = "<N>مرحبآ في نمط الرئيس! في هذا النمط يجب عليك فعل كل مايقوله الرئيس . <ROSE><br>لو أردت المساعدة قم بِكتابة الامر !help<br><VP>تم صنع النمط عن طريق Jessiewind26#2546 and the Spectra Advanced Module Group - الإصدار RTM Compilation44<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 dancar = "أرقص!",
 sentar = "إجلس!",
 confetar = "قُم برمي 5 أوراق!",
@@ -2118,10 +2112,7 @@ abracar = "أعطِ حُضن لأي فأر!",
 beijar = "قُم بتقبيل اي فأر",
 ndance = "لا ترقص!",
 mestre = "الرئيس يقول",
-pergunta1 = "How much is ",
 rats = "How many rats are in this room?",
-pergunta2 = "How much is the square root of ",
-pergunta1_2 = "squared",
 map = "خريطة",
 time = "الوقت",
 mice = "الفئران",
@@ -2135,7 +2126,7 @@ playingmap = "Playing map",
 created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 - Versión RTM Compilation 43<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 44<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/raw/ZFn0rNPz",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2169,10 +2160,7 @@ predireita200 = "Presione 100 veces la tecla DERECHA!",
 espaco = "Presione 20 veces la barra espaciadora!",
 nome = "Escribe tu apodo (con #numero incluido)",
 ndance = "¡No bailes!",
-pergunta1 = "Cuanto es",
 rats = "How many rats are in this room?",
-pergunta2 = " la raíz cuadrada de ",
-pergunta1_2 = "alto al cuadrado",
 mestre = "Simón dice",
 map = "Mapa",
 time = "Hora",
@@ -2261,7 +2249,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,40)
+	active=math.random(1,38)
 	getCommand()
 end
 function eventChatCommand(name,message)
@@ -2540,27 +2528,14 @@ function getCommand()
 		tfm.exec.setGameTime(6)
 	end
 	if active == 39 then
-		local numero1=math.random(0,10)
-		local numero2=math.random(0,10)
-		resposta=tostring(numero1+numero2)
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta1.." "..numero1.." + "..numero2.."?",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 40 then
-		local numero1=math.random(0,10)
-		resposta=tostring(numero1)
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pergunta2..""..numero1*numero1.."?",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(16)
-	end
-	if active == 41 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(18)
 	end
-	if active == 42 then
+	if active == 40 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(18)
 	end
-	if active == 43 then
+	if active == 41 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..pergunta.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(tempo)
 	end
@@ -2592,7 +2567,7 @@ function eventChatMessage(name,message)
 			data[name].c=1
 		end
 	end
-	if active == 39 or active == 40 or active == 41 or active == 43 then
+	if active == 41 then
 		if message == resposta then
 			data[name].c=1
 		end
@@ -3733,7 +3708,7 @@ end
 tfm.exec.newGame("#10")
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.54<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.55<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
