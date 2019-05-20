@@ -2,7 +2,7 @@
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.58",
+	_VERSION = "1.58.1",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1525,6 +1525,8 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if not tfm.get.room.playerList[name].isShaman then
 			limits.mices_alive=limits.mices_alive+1
+		else
+			tfm.exec.setPlayerScore(name,-1,false)
 		end
 	end
 	questions.round=0
@@ -1641,8 +1643,7 @@ function eventChatCommand(name,message)
 				for name,player in pairs(tfm.get.room.playerList) do
 					tfm.exec.killPlayer(name)
 				end
-				current_mode="return"
-				tfm.exec.setGameTime(5)
+				reset()
 				tfm.exec.chatMessage("<R>This shaman has been skipped.")
 			end
 		end
@@ -3028,7 +3029,7 @@ winner=false
 functs={running=false,level=0,count=10}
 times=0
 function eventChatCommand(name,message)
-	if name == "Jessiewind26#2546" then
+	if name == "Jessiewind26#2546" or name == "Forzaldenon#0000" then
 		if message == "help" then
 			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the boxes and win the game!<br><br>Module made by Jessiewind26#2546 and the Spectra Advanced Module Group")
 		end
@@ -3201,7 +3202,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.58<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.58.1<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
