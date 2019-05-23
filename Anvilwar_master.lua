@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #pool, #fall2, #objects, #questions e #true_false. Compilado às 18h43 (UTC) 19/05/2019 e atualizado às 17h04 (UTC) 20/05/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #pool, #fall2, #objects, #questions e #true_false. Compilado às 12h46 (UTC) 23/05/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.58.2",
+	_VERSION = "1.59",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -1508,17 +1508,18 @@ tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.disableAfkDeath(true)
+tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disablePhysicalConsumables(true)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
 kazarina={name="Kazarina"}
-for _,f in next,{"per","skip","kazarina","limits","return","cancel","at","change"} do
+for _,f in next,{"per","skip","kazarina","limits","return","cancel","at","change","admin78"} do
 	system.disableChatCommandDisplay(f)
 end
 current_mode=""
 answer_time=20
 remain_time=0
-game_map='<C><P DS="m;200,-40,600,-40" aie="" H="401" /><Z><S><S H="400" L="400" o="980f4" X="200" c="4" Y="200" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="400" o="8d1e04" X="600" c="4" Y="200" T="12" H="400" /><S L="20" o="0" H="280" X="400" Y="180" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="40" o="0" X="20" Y="200" T="12" H="400" /><S L="40" o="0" X="780" H="400" Y="200" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="800" o="0" X="400" c="3" Y="20" T="12" H="40" /><S X="360" L="40" o="0" H="80" c="3" Y="-40" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="40" o="0" X="440" c="3" Y="-40" T="12" H="80" /><S X="400" L="800" o="0" H="42" c="3" Y="381" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="40" o="0" H="80" c="3" Y="-40" T="12" X="20" /><S X="780" L="40" o="0" H="80" c="3" Y="-40" T="12" P="0,0,0,0.2,0,0,0,0" /><S H="40" L="800" o="0" X="400" c="3" Y="295" T="12" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DC Y="-15" X="400" /></D><O /><L><VL n="Layer1" l="-1" /><JD c="000000,2,1,1" P1="158,129" P2="181,172" /><JD c="000000,2,1,1" P1="145,138" P2="170,121" /><JD c="000000,2,1,1" P1="187,147" P2="198,164" /><JD c="000000,2,1,1" P1="188,146" P2="200,140" /><JD c="000000,2,1,1" P1="210,136" P2="221,151" /><JD c="000000,2,1,1" P1="221,151" P2="234,144" /><JD c="000000,2,1,1" P1="234,144" P2="224,130" /><JD c="000000,2,1,1" P1="244,129" P2="256,123" /><JD c="000000,2,1,1" P1="256,123" P2="249,114" /><JD c="000000,2,1,1" P1="249,114" P2="236,123" /><JD c="000000,2,1,1" P1="237,123" P2="250,141" /><JD c="000000,2,1,1" P1="250,141" P2="262,134" /><JD c="000000,2,1,1" P1="557,128" P2="586,82" /><JD c="000000,2,1,1" P1="586,82" P2="610,93" /><JD c="000000,2,1,1" P1="571,107" P2="595,117" /><JD c="000000,2,1,1" P1="594,139" P2="604,121" /><JD c="000000,2,1,1" P1="604,121" P2="621,128" /><JD c="000000,2,1,1" P1="621,128" P2="609,146" /><JD c="000000,2,1,1" P1="600,132" P2="612,137" /><JD c="000000,2,1,1" P1="633,132" P2="621,149" /><JD c="000000,2,1,1" P1="622,149" P2="637,155" /><JD c="000000,2,1,1" P1="644,157" P2="655,162" /><JD c="000000,2,1,1" P1="655,162" P2="661,152" /><JD c="000000,2,1,1" P1="661,152" P2="650,146" /><JD c="000000,2,1,1" P1="650,146" P2="657,134" /><JD c="000000,2,1,1" P1="657,134" P2="667,140" /><JD c="000000,2,1,1" P1="691,152" P2="678,144" /><JD c="000000,2,1,1" P1="678,144" P2="665,166" /><JD c="000000,2,1,1" P1="665,166" P2="678,175" /><JD c="000000,2,1,1" P1="670,156" P2="683,163" /><L /></L></Z></C>'
+game_map="@7605289"
 for name,player in pairs(tfm.get.room.playerList) do
 	tfm.exec.setPlayerScore(name,0,false)
 end
@@ -1626,6 +1627,12 @@ function eventChatCommand(name,message)
 			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
 				answer_time=tonumber(message:sub(4))
 				tfm.exec.chatMessage("Answer time: "..answer_time.."")
+			end
+		end
+		if(message:sub(0,7) == "admin78") then
+			if current_mode == "waiting" then
+				tfm.exec.setPlayerScore(message:sub(9),10001,false)
+				reset()
 			end
 		end
 		if message == "return" then
@@ -2872,11 +2879,6 @@ function eventChatCommand(name,message)
 			tfm.exec.newGame(mapa)
 		end
 	end
-	if message == "kazarina" then
-		if name == "Jessiewind26#2546" or name == "Spectra_phantom#6089" or name == "Miss_fortune#9548"  then
-			tfm.exec.chatMessage("<J><b>• [Kazarina]</b> ")
-		end
-	end
 	if message == "help" then
 		tfm.exec.chatMessage(text.help,name)
 	end
@@ -3026,8 +3028,8 @@ tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7594559"}
-map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","Pirate Ship"}
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition"}
 objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
@@ -3076,12 +3078,12 @@ function eventNewGame()
 	end
 end
 function showBar()
-	for i=1,23 do
+	for i=1,22 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 3511.012   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 3613.013   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 3511.012   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 3613.013   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -3436,6 +3438,7 @@ function eventNewPlayer(name)
 		tfm.exec.setGameTime(60)
 		tfm.exec.setPlayerScore(name,1,true)
 	end
+	tfm.exec.chatMessage("Use the !p command to make a questions when you are the shaman.",name)
 end
 function eventLoop(p,f)
 	if f <= 1 then
@@ -3470,7 +3473,7 @@ end
 trocarMapa()
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.58.2<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.59<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
