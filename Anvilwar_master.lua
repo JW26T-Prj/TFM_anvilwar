@@ -1,8 +1,10 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #pool, #fall2, #objects, #questions e #true_false. Compilado às 12h46 (UTC) 23/05/2019. ]]--
+-- AVISO IMPORTANTE: Eu (Jessiewind26#2546) irei deixar o Transformice dentro de alguns dias. Esta será a última compilação do #anvilwar sob meu comando. Todas as próximas atualizações serão comandadas por Spectra_phantom#6089, líder do time de modules na qual faço parte. No entanto, as atualizações continuarão sendo postadas neste canal normalmente.
+
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #pool, #fall2, #objects, e #true_false. Compilado às 00h14 (UTC) 01/06/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.59",
+	_VERSION = "1.60",
 	_AUTHOR = "Jessiewind26#2546"
 }
 
@@ -21,8 +23,8 @@ caps={azul="",vermelho=""}
 play_vermelho={}
 avs_list={}
 mods_list={}
-managers_list={"Nasus_assassin#1534","Spectra_phantom#6089"}
-admins_list={"Jessiewind26#2546","Zed#9431"}
+managers_list={"Nasus_assassin#1534"}
+admins_list={"Jessiewind26#2546","Zed#9431","Spectra_phantom#6089"}
 ninjas_list={"Shun_kazami#7014","Gus_grav#7473"}
 scoreloop=0
 sudden_death=false
@@ -78,7 +80,7 @@ lang.br = {
 	inv1 = "acionou o powerup Modo Imortal!",
 	inv2 = "<br>Neste powerup, você ficará imortal durante 4 turnos do seu time. Esta habilidade só pode ser utilizada uma vez por partida.",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 11003.103",
+	bar = "#anvilwar - RTM 12000.104",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. Use as teclas F1 a F5 para usar poderes especiais.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. Use as teclas de F1 a F5 para usar poderes especiais (para saber quais são, digite !powerups). A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Jessiewind26#2546 e Zed#9431<br>Powerups: Jhinsword350#0000 e Vidaloka9999#0000<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -144,7 +146,7 @@ lang.en = {
 	inv1 = "used the powerup Immortal Mode!",
 	inv2 = "<br>On this powerup, you be immortal during the next 4 turns. This powerup only can be used 1 time per game.",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 11003.103",
+	bar = "#anvilwar - RTM 12000.104",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. Use the F1 to F5 keys to use powerups.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. Use the F1 to F5 keys to use powerups (type !powerups). The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Jessiewind26#2546 and Zed#9431<br>Powerups: Jhinsword350#0000 and Vidaloka9999#0000<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -210,7 +212,7 @@ fly2 = "<br>On this powerup, the size of your mice will be reduced at 50%. This 
 inv1 = "إستخدم قوة عدم الموت",
 inv2 = "<br>بإستخدام هذه القوة، لن يمكنك الموت لمدة 4 جولات من الضرب، يمكنك إستخدامها مرة واحدة فقط في الجولة الواحدة",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 11003.103",
+bar = "#anvilwar - RTM 12000.104",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Jessiewind26#2546 and Zed#9431<br>نظام القوة: Jhinsword350#0000 and Vidaloka9999#0000<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -276,7 +278,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	inv1 = "usó el powerup Modo Inmortal!",
 	inv2 = "<br>Con este powerup serás inmortal durante los próximos 4 turnos. Solo puedes usarlo 1 vez por ronda.",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 11003.103",
+	bar = "#anvilwar - RTM 12000.104",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. Usa las teclas F1 al F5 para usar los powerups.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. Usa las teclas F1 al F5 para usar los powerups (escribe !powerups). El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Jessiewind26#2546 y Zed#9431<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -342,7 +344,7 @@ lang.de = {
 	inv1 = "benutzte den Powerup Immortal Mode!",
 	inv2 = "<br>Bei diesem Powerup bist du in den nächsten 4 Runden unsterblich. Dieses Powerup kann nur einmal pro Spiel verwendet werden.",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 11003.103",
+	bar = "#anvilwar - RTM 12000.104",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Verwenden Sie die Tasten F1 bis F5, um Powerups zu verwenden.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Verwenden Sie die Tasten F1 bis F5, um Powerups zu verwenden (Typ !powerups). Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Jessiewind26#2546 und Zed#9431<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -1263,9 +1265,7 @@ end
 function eventNewGame()
 	advanceLevel()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0objects = Objects<br>/sala #anvilwar0pool = Piscina<br><R>* <J>/sala #anvilwar0true_false = Verdadeiro ou Falso<br><R>* <J>/sala #anvilwar0fall2 = Queda Livre de Velocidade<br><R>* <J>/sala #anvilwar0questions = Corrida das Perguntas<br><br>As salas que possuem um <R>* <J>não são de responsabilidade de Jessiewind26#2546.<br>")
-	else
-		tfm.exec.chatMessage("<J>Hey, please check all the #anvilwar modules!<br><br>/room #anvilwar0mestre = Simon Says (or Master Says)<br>/room #anvilwar0pistas = 3-tips Game<br>/room #anvilwar0objects = Objects<br>/room #anvilwar0pool = Pool<br>/room #anvilwar0true_false = True or False<br>/room #anvilwar0fall2 = Fall Racing<br>/room #anvilwar0questions = Questions Race")
+		tfm.exec.chatMessage("<J>Aviso: Dentro de alguns dias, o module #anvilwar sairá de meu comando e passará para Spectra_phantom#6089. Todas as salas comandadas por mim passarão por uma reforma completa. Estarei deixando o Transformice neste intervalo, e quero deixá-lo em boas mãos.")
 	end
 	ui.removeTextArea(501,nil)
 	for i=11,297 do
@@ -1783,7 +1783,7 @@ for _,f in next,{"run","q","r","mapa","reset","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 46<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Jessiewind26#2546 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 47<br><br>Agora você pode jogar Mestre Mandou no cafofo de sua tribo!<br>Link do script: https://pastebin.com/ZFn0rNPz<br><br>Funcorps, agora vocês podem rodar Mestre Mandou nas suas salas!<br>Link do script para funcorps: https://pastebin.com/raw/e1nBcDEE",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1832,7 +1832,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 and the Spectra Advanced Module Group - Version RTM Compilation 46, translated to English by Spectra_phantom#6089<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/ZFn0rNPz",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Jessiewind26#2546 and the Spectra Advanced Module Group - Version RTM Compilation 476, translated to English by Spectra_phantom#6089<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/ZFn0rNPz",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1881,7 +1881,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقJessiewind26#2546 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 46, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/ZFn0rNPz",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقJessiewind26#2546 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 47, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/ZFn0rNPz",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1930,7 +1930,7 @@ lang.ar = {
 	created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 46<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/ZFn0rNPz",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Jessiewind26#2546 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 47<br><br>Now you can play Master Says on your tribehouse!<br>Link of the script: https://pastebin.com/ZFn0rNPz",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2026,9 +2026,7 @@ function eventPlayerDied(name)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0objects = Objects<br>/sala #anvilwar0pool = Piscina<br><R>* <J>/sala #anvilwar0true_false = Verdadeiro ou Falso<br><R>* <J>/sala #anvilwar0fall2 = Queda Livre de Velocidade<br><R>* <J>/sala #anvilwar0questions = Corrida das Perguntas<br><br>As salas que possuem um <R>* <J>não são de responsabilidade de Jessiewind26#2546.<br>")
-	else
-		tfm.exec.chatMessage("<J>Hey, please check all the #anvilwar modules!<br><br>/room #anvilwar0mestre = Simon Says (or Master Says)<br>/room #anvilwar0pistas = 3-tips Game<br>/room #anvilwar0objects = Objects<br>/room #anvilwar0pool = Pool<br>/room #anvilwar0true_false = True or False<br>/room #anvilwar0fall2 = Fall Racing<br>/room #anvilwar0questions = Questions Race")
+		tfm.exec.chatMessage("<J>Aviso: Dentro de alguns dias, o module #anvilwar sairá de meu comando e passará para Spectra_phantom#6089. Todas as salas comandadas por mim passarão por uma reforma completa. Estarei deixando o Transformice neste intervalo, e quero deixá-lo em boas mãos.")
 	end
 	ui.removeTextArea(0,nil)
 	rodada=0
@@ -2059,35 +2057,35 @@ function sortearComandos()
 	getCommand()
 end
 function eventChatCommand(name,message)
-	if name == "Jessiewind26#2546" then
+	if name == "Spectra_phantom#6089" then
 		if(message:sub(0,3) == "run") then
 				active=tonumber(message:sub(5))
 				getCommand()
 		end
 	end
-	if name == "Jessiewind26#2546" then
+	if name == "Spectra_phantom#6089" then
 		if(message:sub(0,1) == "q") then
 			pergunta=message:sub(3)
 		end
 	end
-	if name == "Jessiewind26#2546" then
+	if name == "Spectra_phantom#6089" then
 		if(message:sub(0,1) == "r") then
 			resposta=message:sub(3)
 		end
 	end
-	if name == "Jessiewind26#2546" then
+	if name == "Spectra_phantom#6089" then
 		if(message:sub(0,4) == "mapa") then
 			tfm.exec.newGame(message:sub(6))
 			active=0
 		end
 	end
-	if name == "Jessiewind26#2546" then
+	if name == "Spectra_phantom#6089" then
 		if message == "reset" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 			active=0
 		end
 	end
-	if name == "Jessiewind26#2546" then
+	if name == "Spectra_phantom#6089" then
 		if(message:sub(0,4) == "time") then
 			tempo=message:sub(6)
 		end
@@ -2859,7 +2857,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 15<")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 16<")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
@@ -2885,9 +2883,7 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0objects = Objects<br>/sala #anvilwar0pool = Piscina<br><R>* <J>/sala #anvilwar0true_false = Verdadeiro ou Falso<br><R>* <J>/sala #anvilwar0fall2 = Queda Livre de Velocidade<br><R>* <J>/sala #anvilwar0questions = Corrida das Perguntas<br><br>As salas que possuem um <R>* <J>não são de responsabilidade de Jessiewind26#2546.<br>")
-	else
-		tfm.exec.chatMessage("<J>Hey, please check all the #anvilwar modules!<br><br>/room #anvilwar0mestre = Simon Says (or Master Says)<br>/room #anvilwar0pistas = 3-tips Game<br>/room #anvilwar0objects = Objects<br>/room #anvilwar0pool = Pool<br>/room #anvilwar0true_false = True or False<br>/room #anvilwar0fall2 = Fall Racing<br>/room #anvilwar0questions = Questions Race")
+		tfm.exec.chatMessage("<J>Aviso: Dentro de alguns dias, o module #anvilwar sairá de meu comando e passará para Spectra_phantom#6089. Todas as salas comandadas por mim passarão por uma reforma completa. Estarei deixando o Transformice neste intervalo, e quero deixá-lo em boas mãos.")
 	end
 	loop=0
 	ui.removeTextArea(1,nil)
@@ -3039,7 +3035,7 @@ winner=false
 functs={running=false,level=0,count=10}
 times=0
 function eventChatCommand(name,message)
-	if name == "Jessiewind26#2546" or name == "Forzaldenon#0000" then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" then
 		if message == "help" then
 			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the boxes and win the game!<br><br>Module made by Jessiewind26#2546 and the Spectra Advanced Module Group")
 		end
@@ -3056,9 +3052,7 @@ function eventChatCommand(name,message)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Confiram os sub-modos disponíveis da sala #anvilwar:<br><br>/sala #anvilwar0mestre = Mestre Mandou<br>/sala #anvilwar0pistas = Jogo das 3 Pistas<br>/sala #anvilwar0objects = Objects<br>/sala #anvilwar0pool = Piscina<br><R>* <J>/sala #anvilwar0true_false = Verdadeiro ou Falso<br><R>* <J>/sala #anvilwar0fall2 = Queda Livre de Velocidade<br><R>* <J>/sala #anvilwar0questions = Corrida das Perguntas<br><br>Você agora pode jogar este module com o recurso de MEEP na /sala #anvilwar0objectsmeep.<br>")
-	else
-		tfm.exec.chatMessage("<J>Hey, please check all the #anvilwar modules!<br><br>/room #anvilwar0mestre = Simon Says (or Master Says)<br>/room #anvilwar0pistas = 3-tips Game<br>/room #anvilwar0objects = Objects<br>/room #anvilwar0pool = Pool<br>/room #anvilwar0true_false = True or False<br>/room #anvilwar0fall2 = Fall Racing<br>/room #anvilwar0questions = Questions Race")
+		tfm.exec.chatMessage("<J>Aviso: Dentro de alguns dias, o module #anvilwar sairá de meu comando e passará para Spectra_phantom#6089. Todas as salas comandadas por mim passarão por uma reforma completa. Estarei deixando o Transformice neste intervalo, e quero deixá-lo em boas mãos.")
 	end
 	functs.running=false
 	functs.level=0
@@ -3081,9 +3075,9 @@ function showBar()
 	for i=1,22 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 3613.013   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 3714.014   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 3613.013   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 3714.014   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -3325,155 +3319,7 @@ end
 tfm.exec.newGame(lobby)
 end
 
-initQuestions = function()
-casas=5
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(30)
-tfm.exec.disableAfkDeath(true)
-mapa3='<C><P L="900" /><Z><S><S P="0,0,0.3,0.2,0,0,0,0" L="900" o="ffffff" X="450" N="" Y="386" T="12" H="28" /><S L="20" o="ffffff" X="300" H="400" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" H="400" Y="200" T="12" X="10" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" H="150" Y="269" T="12" X="385" /><S L="20" o="ffffff" H="150" X="470" Y="334" T="12" P="0,0,0,0,180,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" X="640" Y="319" T="12" H="150" /><S P="0,0,0,0,270,0,0,0" L="20" o="ffffff" X="555" Y="254" T="12" H="150" /><S L="20" o="ffffff" X="825" H="150" Y="239" T="12" P="0,0,0,0,90,0,0,0" /><S L="20" o="ffffff" X="725" H="150" Y="239" T="12" P="0,0,0,0,270,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" H="400" Y="200" T="12" X="890" /><S L="900" o="ffffff" H="40" X="450" Y="20" T="12" P="0,0,0,0,0,0,0,0" /></S><D><T Y="382" D="" X="843" /><F Y="368" D="" X="841" /><DS Y="360" X="149" /><DC Y="231" X="559" /><P P="0,0" C="0" Y="0" T="34" X="0" /><P C="0" Y="0" T="34" X="90" P="0,0" /><P P="0,0" Y="374" T="37" X="379" /><P P="0,0" Y="374" T="37" X="535" /><P P="0,0" Y="374" T="37" X="575" /><P P="0,0" Y="375" T="37" X="682" /><P P="0,0" Y="373" T="37" X="717" /><P P="0,0" Y="375" T="37" X="751" /><P P="0,0" Y="73" T="35" X="439" /><P P="0,0" Y="65" T="35" X="763" /><P P="0,0" Y="125" T="36" X="602" /><P P="0,0" Y="82" T="38" X="781" /><P P="0,0" Y="258" T="33" X="384" /><P P="0,0" Y="218" T="31" X="382" /><P P="0,0" Y="375" T="26" X="237" /><P P="0,0" Y="375" T="22" X="66" /></D><O /></Z></C>'
-mapa5='<C><P L="1240" /><Z><S><S L="1240" o="ffffff" X="620" H="28" N="" Y="386" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" H="400" Y="200" T="12" X="300" /><S L="20" o="ffffff" H="400" X="10" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S L="20" o="ffffff" H="150" X="385" Y="269" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" X="470" Y="334" T="12" H="150" /><S L="20" o="ffffff" X="640" H="150" Y="319" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" X="555" H="150" Y="254" T="12" P="0,0,0,0,270,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" H="150" Y="239" T="12" X="725" /><S L="20" o="ffffff" H="400" X="1230" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="1240" o="ffffff" X="640" Y="20" T="12" H="40" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" H="150" Y="304" T="12" X="810" /><S L="20" o="ffffff" H="200" X="980" Y="312" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" H="150" X="895" Y="222" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="240" o="ffffff" X="1110" Y="205" T="12" H="20" /></S><D><T Y="378" D="" X="1190" /><F Y="368" D="" X="1189" /><DS Y="360" X="149" /><DC Y="231" X="559" /><P C="0" Y="0" T="34" X="0" P="0,0" /><P C="0" Y="0" T="34" P="0,0" X="422" /><P X="379" Y="374" T="37" P="0,0" /><P X="535" Y="374" T="37" P="0,0" /><P X="575" Y="374" T="37" P="0,0" /><P X="682" Y="375" T="37" P="0,0" /><P X="717" Y="373" T="37" P="0,0" /><P X="751" Y="375" T="37" P="0,0" /><P X="439" Y="73" T="35" P="0,0" /><P X="763" Y="65" T="35" P="0,0" /><P X="602" Y="125" T="36" P="0,0" /><P X="781" Y="82" T="38" P="0,0" /><P X="384" Y="258" T="33" P="0,0" /><P X="382" Y="218" T="31" P="0,0" /><P X="237" Y="375" T="26" P="0,0" /><P X="66" Y="375" T="22" P="0,0" /><P P="0,0" Y="376" T="37" X="845" /><P P="0,0" Y="374" T="37" X="876" /><P P="0,0" Y="375" T="37" X="906" /><P P="0,0" Y="374" T="37" X="939" /><P P="0,0" Y="374" T="37" X="1013" /><P P="0,0" Y="379" T="37" X="1044" /><P P="0,0" Y="377" T="37" X="1077" /><P P="0,0" Y="380" T="37" X="1115" /><P P="0,0" Y="378" T="37" X="1147" /></D><O /></Z></C>'
-mapa7='<C><P L="1580" /><Z><S><S L="1580" o="ffffff" H="28" X="790" N="" Y="386" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" X="300" Y="200" T="12" H="400" /><S L="20" o="ffffff" X="10" H="400" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S L="20" o="ffffff" X="385" H="150" Y="269" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" H="150" Y="334" T="12" X="470" /><S L="20" o="ffffff" H="150" X="640" Y="319" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" H="150" X="555" Y="254" T="12" P="0,0,0,0,270,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" X="725" Y="239" T="12" H="150" /><S L="20" o="ffffff" X="1570" H="400" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="1580" o="ffffff" H="40" Y="20" T="12" X="790" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" X="810" Y="304" T="12" H="150" /><S L="20" o="ffffff" X="980" H="200" Y="312" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" X="895" H="150" Y="222" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" H="200" Y="295" T="12" X="1150" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" H="150" Y="205" T="12" X="1065" /><S L="20" o="ffffff" H="200" X="1320" Y="278" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" H="150" X="1235" Y="188" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" X="1455" Y="171" T="12" H="250" /></S><D><T Y="379" D="" X="1534" /><F Y="368" D="" X="1532" /><DS Y="360" X="149" /><DC Y="231" X="559" /><P C="0" Y="0" T="34" X="0" P="0,0" /><P C="0" Y="0" T="34" P="0,0" X="765" /><P X="379" Y="374" T="37" P="0,0" /><P X="535" Y="374" T="37" P="0,0" /><P X="575" Y="374" T="37" P="0,0" /><P X="682" Y="375" T="37" P="0,0" /><P X="717" Y="373" T="37" P="0,0" /><P X="751" Y="375" T="37" P="0,0" /><P X="439" Y="73" T="35" P="0,0" /><P X="763" Y="65" T="35" P="0,0" /><P X="781" Y="82" T="38" P="0,0" /><P X="384" Y="258" T="33" P="0,0" /><P X="237" Y="375" T="26" P="0,0" /><P X="66" Y="375" T="22" P="0,0" /><P P="0,0" Y="376" T="37" X="845" /><P P="0,0" Y="374" T="37" X="876" /><P P="0,0" Y="375" T="37" X="906" /><P P="0,0" Y="374" T="37" X="939" /><P P="0,0" Y="374" T="37" X="1013" /><P P="0,0" Y="375" T="37" X="1038" /><P P="0,0" Y="376" T="37" X="1063" /><P P="0,0" Y="377" T="37" X="1113" /><P P="0,0" Y="375" T="37" X="1089" /><P P="0,0" Y="376" T="37" X="1174" /><P P="0,0" Y="375" T="37" X="1194" /><P P="0,0" Y="375" T="37" X="1215" /><P P="0,0" Y="373" T="37" X="1239" /><P P="0,0" Y="373" T="37" X="1263" /><P P="0,0" Y="376" T="37" X="1288" /><P P="0,0" Y="373" T="37" X="1347" /><P P="0,0" Y="372" T="37" X="1372" /><P P="0,0" Y="372" T="37" X="1398" /><P P="0,0" Y="372" T="37" X="1421" /><P P="0,0" Y="373" T="37" X="1445" /><P P="0,0" Y="374" T="37" X="1468" /><P P="0,0" Y="372" T="37" X="1493" /></D><O /></Z></C>'
-function trocarMapa()
-	if casas == 3 then
-		tfm.exec.newGame(mapa3)
-	elseif casas == 5 then
-		tfm.exec.newGame(mapa5)
-	elseif casas == 7 then
-		tfm.exec.newGame(mapa7)
-	end
-end
-tfm.exec.setGameTime(60)
-palavra=""
-pergunta=""
-data={}
-players_table={}
-system.disableChatCommandDisplay("setxa")
-system.disableChatCommandDisplay("rounds")
-for name,player in pairs(tfm.get.room.playerList) do
-	newData={
-	["p"]=0;
-	}
-	data[name] = newData;
-end
-function eventChatCommand(name,message)
-	if message == "q" then
-		if tfm.get.room.playerList[name].isShaman then
-			ui.addPopup(0,2,"Type the question:",name,350,175,200,true)
-		end
-	end
-	if name == "Nasus_assassin#1534" or name == "Spectra_phantom#6089" then
-	if(message:sub(0,5) == "setxa") then
-		tfm.exec.setPlayerScore(message:sub(7),10,false)
-		trocarMapa()
-	end
-	if(message:sub(0,6) == "rounds") then
-		if message:sub(8) == "3" or message:sub(8) == "5" or message:sub(8) == "7" then
-			casas=tonumber(message:sub(8))
-		else
-			tfm.exec.chatMessage("Not allowed",name)
-		end
-	end
-	end
-end
-function eventChatMessage(name,message)
-	if message == palavra and not tfm.get.room.playerList[name].isShaman then
-			data[name].p=data[name].p+1
-			palavra=""
-			pergunta=""
-			ui.addPopup(2,0,"",nil,6000,6000,0,false)
-			tfm.exec.setPlayerScore(name,1,true)
-			if data[name].p == 1 then
-				tfm.exec.movePlayer(name,380,360,false,1,1,false)
-			elseif data[name].p == 2 then
-				tfm.exec.movePlayer(name,550,360,false,1,1,false)
-			elseif data[name].p == 3 then
-				tfm.exec.movePlayer(name,720,360,false,1,1,false)
-			elseif data[name].p == 4 then
-				tfm.exec.movePlayer(name,890,360,false,1,1,false)
-			elseif data[name].p == 5 then
-				tfm.exec.movePlayer(name,1060,360,false,1,1,false)
-			elseif data[name].p == 6 then
-				tfm.exec.movePlayer(name,1230,360,false,1,1,false)
-			elseif data[name].p == 7 then
-				tfm.exec.movePlayer(name,1400,360,false,1,1,false)
-			end
-			tfm.exec.chatMessage("<VP>"..name.." answered correctly! The answer was "..string.upper(message).."")
-		end
-end
-function eventPopupAnswer(id,name,answer)
-	if id == 0 then
-		pergunta=answer;
-		ui.addPopup(1,2,"Type the answer:",name,350,275,200,true)
-	end
-	if id == 1 then
-		ui.addPopup(2,0,"<font size='16'>"..pergunta.."",NIL,0,60,800,true)
-		tfm.exec.setGameTime(60)
-		palavra=answer;
-	end	
-end
-function eventNewPlayer(name)
-	tfm.exec.setUIMapName("Questions Race v9.4 [32-bit version] remaked by Nasus_assassin#1534<")
-	tfm.exec.respawnPlayer(name)
-	if not data[name] then
-		table.insert(players_table,name)
-		data[name]={p=0}
-	else
-		if data[name].p == 1 then
-			tfm.exec.movePlayer(name,380,360,false,1,1,false)
-		elseif data[name].p == 2 then
-			tfm.exec.movePlayer(name,550,360,false,1,1,false)
-		elseif data[name].p == 3 then
-			tfm.exec.movePlayer(name,720,360,false,1,1,false)
-		elseif data[name].p == 4 then
-			tfm.exec.movePlayer(name,890,360,false,1,1,false)
-		elseif data[name].p == 5 then
-			tfm.exec.movePlayer(name,1060,360,false,1,1,false)
-		elseif data[name].p == 6 then
-			tfm.exec.movePlayer(name,1230,360,false,1,1,false)
-		elseif data[name].p == 7 then
-			tfm.exec.movePlayer(name,1400,360,false,1,1,false)
-		end
-		tfm.exec.setGameTime(60)
-		tfm.exec.setPlayerScore(name,1,true)
-	end
-	tfm.exec.chatMessage("Use the !p command to make a questions when you are the shaman.",name)
-end
-function eventLoop(p,f)
-	if f <= 1 then
-		trocarMapa()
-	end
-end
-function eventNewGame()
-	ui.addPopup(2,0,"",nil,6000,6000,0,false)
-	tfm.exec.setUIMapName("Questions Race v9.4 [32-bit version] remaked by Nasus_assassin#1534<")
-	for id,name in pairs(players_table) do
-		data[name].p=0
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		tfm.exec.setPlayerScore(name,1,false)
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.setPlayerScore(name,-2,false)
-		end
-	end
-	tfm.exec.setGameTime(60)
-end
-function eventPlayerWon(name)
-	tfm.exec.setGameTime(5)
-end
-function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.chatMessage("<ROSE>Is not allowed the use of shaman objects.",nil)
-			trocarMapa()
-		end
-	end
-end
-trocarMapa()
-end
-
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.59<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.60<br>by Jessiewind26#2546<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
@@ -3493,9 +3339,6 @@ elseif string.find(tfm.get.room.name,"objects") then
 elseif string.find(tfm.get.room.name,"fall2") then
 	active = "fall2"
 	initFall2()
-elseif string.find(tfm.get.room.name,"questions") then
-	active = "questions"
-	initQuestions()
 else
 	active = "anvilwar"
 	initAnvilwar()
