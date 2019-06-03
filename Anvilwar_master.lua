@@ -1,11 +1,8 @@
--- Caso não tenha entendido, acessar o arquivo anterior.
--- Primeira atualização do anvilwar sob o comando geral de Spectra_phantom#6089. Submodos que antes eram meus foram passados para outros.
-
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #fall2, #objects e #true_false. Compilado às 22h13 (UTC) 02/06/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #fall2, #objects e #true_false. Compilado às 20h37 (UTC) 03/06/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.61.1",
+	_VERSION = "1.62",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -16,13 +13,61 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-for _,f in next,{"help","so","kill","ban","unban","ck","tt","rv"} do
+for _,f in next,{"tt","rv"} do
 	system.disableChatCommandDisplay(f)
 end
 data={}
 maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495501","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421"}
 game={loop=0,red_cap="",blue_cap="",selected_map="",blue_players={},red_players={},current_mode="",play_time=15,timeouts_red=3,red_count=0,blue_count=0,timeouts_blue=3,random_count=0,mices_on_room=0,remain=0,red_list={},blue_list={},actual_turn="",actual_player="",game_time=0,game_alpha=1,game_seconds=0,anvil_power=5,kills_count=0}
 players_table={}
+lang = {}
+lang.en = {
+	player_not_found = "Player not found or you don't have points to revive this player.",
+	enter = "Enter",
+	timeout_request = "requested a timeout.",
+	capitain = "You are the capitain of your team.<br><br>You can revive a dead ally from your team using the !rv [name] command and transfer your points to other player using !tt [name]. <br>Check the help for other informations about the capitains.",
+	turn = "It's your turn to play. Use the CTRL and SHIFT keys to change the anvil power and SPACEBAR to throw the anvil.",
+	welcome_bar = "Welcome to the new #anvilwar! Developed and remaked by Gus_grav#7473.<",
+	no_mices = "Is needed at least 3 mices on room to play #anvilwar.",
+	choose_teams = "It's time to choose the teams!",
+	get_ready = "Get ready! The match will start on a few seconds!",
+	oh_no = "Oh no!",
+	team_kill = "killed a player from your team:",
+	suicide = "The following player committed suicide:",
+	randomising = "Please wait, randomising map...",
+	time_up = "Time is up! Other player will throw the anvil.",
+	victory_red_1 = "Victory of the <b>RED</b> team!<br>The next match will start on a few seconds...",
+	victory_blue_1 = "Victory of the <b>BLUE</b> team!<br>The next match will start on a few seconds...",
+	draw_game = "<b>DRAW!</b><br>The next match will start on a few seconds...",
+	join_red = "You joined the RED team.",
+	join_blue = "You joined the BLUE team."
+}
+lang.br = {
+	player_not_found = "Jogador não encontrado ou você não possui pontos para isso.",
+	enter = "Entrar",
+	timeout_request = "pediu tempo.",
+	capitain = "Você é o capitão de sua equipe.<br><br>Você pode reviver aliados mortos de sua equipe usando o comando !rv [nome] e transferir seus pontos para outro jogador usando !tt [nome]. <br>Cheque a ajuda para mais informações sobre capitães.",
+	turn = "É a sua vez de jogar. Use as teclas CTRL e SHIFT para alterar a potência da bigorna e a BARRA DE ESPAÇO para atirar.",
+	welcome_bar = "Bem-vindo ao novo #anvilwar. Desenvolvido por Gus_grav#7473 e traduzido por Spectra_phantom#6089.<",
+	no_mices = "São necessários pelo menos 3 ratos na sala para jogar #anvilwar.",
+	choose_teams = "É hora de escolher os times!",
+	get_ready = "Se prepare! A partida vai começar em instantes!",
+	oh_no = "Oh não!",
+	team_kill = "matou um companheiro de equipe:",
+	suicide = "O seguinte jogador cometeu suicídio:",
+	randomising = "Aguarde, estamos sorteando os mapas.",
+	time_up = "Tempo esgotado! Outro jogador será escolhido para atirar.",
+	victory_red_1 = "Vitória do time <b>VERMELHO</b>!<br>A próxima partida vai começar em instantes...",
+	victory_blue_1 = "Vitória do time <b>AZUL</b>!<br>A próxima partida vai começar em instantes...",
+	draw_game = "<b>EMPATE!</b><br>A próxima partida vai começar em instantes...",
+	join_red = "Você entrou no time VERMELHO.",
+	join_blue = "Você entrou no time AZUL."
+}
+if tfm.get.room.community == "br" then
+	text = lang.br
+else
+	text = lang.en
+end
 function displayLobbyText(text)
 	ui.addTextArea(11,"<p align='center'><font face='Bahnscrift SemiLight,Segoe UI,Arial'><font size='20'>"..text.."",nil,260,74,280,78,0,0,1,true)
 end
@@ -45,7 +90,7 @@ function eventChatCommand(name,message)
 					end
 					tfm.exec.setPlayerScore(name,-30,true)
 				else
-					tfm.exec.chatMessage("Player not found or you don't have points to revive this player.")
+					tfm.exec.chatMessage(text.player_not_found)
 				end
 			end
 		end
@@ -57,7 +102,7 @@ function eventChatCommand(name,message)
 				tfm.exec.setPlayerScore(name,0,false)
 				tfm.exec.chatMessage("Success!")
 			else
-				tfm.exec.chatMessage("Player not found or you don't have points to transfer points to this player.")
+				tfm.exec.chatMessage(text.player_not_found)
 			end
 		end
 	end
@@ -71,6 +116,11 @@ function eventNewPlayer(name)
 	if not data[name] then
 		table.insert(players_table,name)
 		data[name]={wins=0,matchs=0,kills=0,team="",killed=-2,max_ks=0,multi_kills=0,gpoints=0,experience=0,req_exp=10,powerups={}}
+	end
+	if game.current_mode == "team_choose" then
+		ui.addTextArea(15,"<a href='event:enter_red'><p align='center'><font size='14'>"..text.enter.."",name,120,260,80,24,0x010101,0x010101,1.0,true)
+		ui.addTextArea(16,"<a href='event:enter_blue'><p align='center'><font size='14'>"..text.enter.."",name,600,260,80,24,0x010101,0x010101,1.0,true)
+		tfm.exec.respawnPlayer(name)
 	end
 end
 for name,player in pairs(tfm.get.room.playerList) do
@@ -86,6 +136,7 @@ function eventKeyboard(name,id,down,x,y)
 				tfm.exec.addShamanObject(10,x-30,y-40,0,game.anvil_power*-1.72,-7.7,false)
 			end
 			game.current_mode="count_kills"
+			tfm.exec.setGameTime(15)
 		end
 	end
 	if id == 17 then
@@ -102,12 +153,12 @@ function eventKeyboard(name,id,down,x,y)
 			if name == game.red_cap or name == game.blue_cap then
 				if data[name].team == "red" and game.timeouts_red > 0 then
 					game.current_mode="paused"
-					tfm.exec.chatMessage(""..name.." requested a timeout.")
+					tfm.exec.chatMessage(""..name.." "..text.timeout_request.."")
 					game.timeouts_red=game.timeouts_red-1
 				end
 				if data[name].team == "blue" and game.timeouts_blue > 0 then
 					game.current_mode="paused"
-					tfm.exec.chatMessage(""..name.." requested a timeout.")
+					tfm.exec.chatMessage(""..name.." "..text.timeout_request.."")
 					game.timeouts_blue=game.timeouts_blue-1
 				end
 			end
@@ -126,8 +177,8 @@ end
 function chooseCapitains()
 	game.red_cap=game.red_list[math.random(#game.red_list)]
 	game.blue_cap=game.blue_list[math.random(#game.blue_list)]
-	tfm.exec.chatMessage("You are the capitain of your team.<br><br>You can revive a dead ally from your team using the !rv [name] command and transfer your points to other player using !tt [name]. <br>Check the help for other informations about the capitains.",game.red_cap)
-	tfm.exec.chatMessage("You are the capitain of your team.<br><br>You can revive a dead ally from your team using the !rv [name] command and transfer your points to other player using !tt [name]. <br>Check the help for other informations about the capitains.",game.blue_cap)
+	tfm.exec.chatMessage(text.capitain,game.red_cap)
+	tfm.exec.chatMessage(text.capitain,game.blue_cap)
 	tfm.exec.setNameColor(game.red_cap,0xff0000)
 	tfm.exec.setNameColor(game.blue_cap,0xff)
 end
@@ -152,10 +203,10 @@ function sortPlayersTurn()
 		end
 		if game.actual_turn == "blue" then
 			game.actual_player=game.blue_list[math.random(#game.blue_list)]
-			tfm.exec.chatMessage("It's your turn to play. Use the CTRL and SHIFT keys to change the anvil power and SPACEBAR to throw the anvil.",game.actual_player)
+			tfm.exec.chatMessage(text.turn,game.actual_player)
 		elseif game.actual_turn == "red" then
 			game.actual_player=game.red_list[math.random(#game.red_list)]
-			tfm.exec.chatMessage("It's your turn to play. Use the CTRL and SHIFT keys to change the anvil power and SPACEBAR to throw the anvil.",game.actual_player)
+			tfm.exec.chatMessage(text.turn,game.actual_player)
 		end
 		game.play_time=15
 	end
@@ -172,29 +223,54 @@ function resetGame()
 	for i=10,20 do
 		ui.removeTextArea(i)
 	end
-	ui.setMapName("Welcome to the new #anvilwar! Developed and remaked by Jannawindmax#0000. UNDER CONSTRUCTION<")
+	ui.setMapName(text.welcome_bar)
 	game.mices_on_room=0
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.setPlayerScore(name,0,false)
 		game.mices_on_room=game.mices_on_room+1
+		tfm.exec.setNameColor(name,0xd7d7e6)
+		data[name].team=""
 	end
 	if game.mices_on_room < 2 then
 		game.current_mode="wait_mices"
 		displayLobbyText("Oops!")
 		tfm.exec.setGameTime(10)
-		displayLargeLobbyText("Is needed at least 3 mices on room to play #anvilwar.")
+		displayLargeLobbyText(text.no_mices)
 	else
 		game.current_mode="team_choose"
 		tfm.exec.setGameTime(40)
-		displayLobbyText("It's time to choose the teams!")
+		displayLobbyText(text.choose_teams)
 		ui.addTextArea(13,"",nil,6,270,310,70,0xff0000,0xff0000,0.67,true)
 		ui.addTextArea(14,"",nil,484,270,310,70,0xff,0xff,0.67,true)
-		ui.addTextArea(15,"<a href='event:enter_red'><p align='center'><font size='14'>Enter",nil,120,260,80,24,0x010101,0x010101,1.0,true)
-		ui.addTextArea(16,"<a href='event:enter_blue'><p align='center'><font size='14'>Enter",nil,600,260,80,24,0x010101,0x010101,1.0,true)
+		for name,player in pairs(tfm.get.room.playerList) do
+			ui.addTextArea(15,"<a href='event:enter_red'><p align='center'><font size='14'>"..text.enter.."",name,120,260,80,24,0x010101,0x010101,1.0,true)
+			ui.addTextArea(16,"<a href='event:enter_blue'><p align='center'><font size='14'>"..text.enter.."",name,600,260,80,24,0x010101,0x010101,1.0,true)
+		end
 	end
 end
 function eventPlayerLeft(name)
 	game.mices_on_room=game.mices_on_room-1
+	if data[name].team == "red" then
+		game.red_list={}
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead and data[name].team == "red" then
+				table.insert(game.red_list,name)
+				if game.current_mode == "waiting_start" then
+					game.red_count=game.red_count-1
+				end
+			end
+		end
+	elseif data[name].team == "blue" then
+		game.blue_list={}
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead and data[name].team == "blue" then
+				table.insert(game.blue_list,name)
+				if game.current_mode == "waiting_start" then
+					game.blue_count=game.blue_count-1
+				end
+			end
+		end
+	end
 end
 function eventNewGame()
 	if game.current_mode == "random2" then
@@ -211,8 +287,11 @@ function eventNewGame()
 			end
 		end
 		tfm.exec.setGameTime(27)
-		ui.setMapName("#anvilwar version RTM II 20106.105 - UNDER CONSTRUCTION!!<")
-		tfm.exec.chatMessage("Get ready! The match will start on a few seconds!")
+		ui.setMapName("#anvilwar version RTM II 20207.001 - UNDER CONSTRUCTION!!<")
+		tfm.exec.chatMessage(text.get_ready)
+	end
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J>POR FAVOR, LEIA ISTO ANTES DE JOGAR!<br><br><b>https://atelier801.com/topic?f=686054&t=932136</b>")
 	end
 end
 function eventPlayerDied(name)
@@ -253,11 +332,11 @@ function eventPlayerDied(name)
 		game.loop=game.loop-0.5
 		if data[game.actual_player].team == data[name].team then
 			tfm.exec.setPlayerScore(game.actual_player,-3,true)
-			tfm.exec.chatMessage("<J>Oh no! "..game.actual_player.." killed a player from your team: <b>"..name.."</b>.")
+			tfm.exec.chatMessage("<J>"..text.oh_no.." "..game.actual_player.." "..text.team_kill.." <b>"..name.."</b>.")
 		end
 		if name == game.actual_player then
 			tfm.exec.setPlayerScore(name,-5,false)
-			tfm.exec.chatMessage("The following player committed suicide: "..game.actual_player"")
+			tfm.exec.chatMessage(""..text.suicide.." "..game.actual_player.."")
 		end
 	end
 end
@@ -311,7 +390,7 @@ function eventLoop(passed,remain)
 	if game.current_mode == "random1" then
 		game.selected_map=maps[math.random(#maps)]
 		game.random_count=game.random_count+1
-		displayLobbyText("Please wait, randomising map...")
+		displayLobbyText(text.randomising)
 		ui.addTextArea(10,"<p align='center'><font face='Bahnscrift SemiLight,Segoe UI,Arial'><font size='34'><font color='#ffffff'>"..game.selected_map.."",nil,290,98,240,78,0,0,1,true)
 		if game.random_count >= 10 then
 			tfm.exec.setGameTime(7)
@@ -365,7 +444,7 @@ function eventLoop(passed,remain)
 		scorePanel(game.alpha)
 		if remain < 1 then
 			game.current_mode="count_kills"
-			tfm.exec.chatMessage("Time is up! Other player will throw the anvil.")
+			tfm.exec.chatMessage(text.time_up)
 		end
 	end
 	if game.current_mode == "count_kills" then
@@ -405,7 +484,7 @@ function declareWinRed()
 	for id,name in pairs(game.blue_players) do
 		tfm.exec.playEmote(name,2)
 	end
-	tfm.exec.chatMessage("<R>Victory of the <b>RED</b> team!<br>The next match will start on a few seconds...")
+	tfm.exec.chatMessage("<R>"..text.victory_red_1.."")
 end
 function declareWinBlue()
 	tfm.exec.setGameTime(15)
@@ -418,7 +497,7 @@ function declareWinBlue()
 	for id,name in pairs(game.red_players) do
 		tfm.exec.playEmote(name,2)
 	end
-	tfm.exec.chatMessage("<BL>Victory of the <b>BLUE</b> team!<br>The next match will start on a few seconds...")
+	tfm.exec.chatMessage("<BL>"..text.victory_blue_1.."")
 end
 function declareDraw()
 	tfm.exec.setGameTime(30)
@@ -429,7 +508,7 @@ function declareDraw()
 	for id,name in pairs(game.red_players) do
 		tfm.exec.playEmote(name,8)
 	end
-	tfm.exec.chatMessage("<J><b>DRAW!</b><br>The next match will start on a few seconds...")
+	tfm.exec.chatMessage("<J>"..text.draw_game.."")
 end
 function checkPlayersAlive()
 	game.loop=0
@@ -450,23 +529,23 @@ function checkPlayersAlive()
 	end
 end
 function eventTextAreaCallback(id,name,callback)
-	if callback == "enter_red" then
+	if callback == "enter_red" and data[name].team == "" then
 		data[name].team="red"
 		table.insert(game.red_players,name)
 		tfm.exec.movePlayer(name,200,288)
 		for i=15,16 do
 			ui.removeTextArea(i,name)
 		end
-		tfm.exec.chatMessage("<R>You joined the RED team.",name)
+		tfm.exec.chatMessage("<R>"..text.join_red.."",name)
 		game.red_count=game.red_count+1
-	elseif callback == "enter_blue" then
+	elseif callback == "enter_blue" and data[name].team == "" then
 		data[name].team="blue"
 		table.insert(game.blue_players,name)
 		tfm.exec.movePlayer(name,600,288)
 		for i=15,16 do
 			ui.removeTextArea(i,name)
 		end
-		tfm.exec.chatMessage("<BL>You joined the BLUE team.",name)
+		tfm.exec.chatMessage("<BL>"..text.join_blue.."",name)
 		game.blue_count=game.blue_count+1
 	end
 end
@@ -756,7 +835,7 @@ for _,f in next,{"run","q","r","mapa","reset","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Tryndavayron#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 48",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 - Versão RTM Compilação 48",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -798,14 +877,14 @@ lang.br = {
 	round = "Rodada",
 	mices = "Esta sala requer pelo menos 4 ratos.",
 	difficulty = "Dificuldade",
-	creator = "Module criado por Tryndavayron#0000",
+	creator = "Module criado por Darakdarkus7#0000",
 	segundos = "segundos.",
 	fim = "Partida encerrada! Próxima partida iniciando em ",
 	playingmap = "Rodando mapa",
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Tryndavayron#0000 and the Spectra Advanced Module Group - Version RTM Compilation 486, translated to English by Spectra_phantom#6089",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 - Version RTM Compilation 48, translated to English by Spectra_phantom#6089",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -847,14 +926,14 @@ lang.en = {
 	round = "Round",
 	mices = "This room requires at least 4 players.",
 	difficulty = "Difficulty",
-	creator = "Module created by Tryndavayron#0000",
+	creator = "Module created by Darakdarkus7#0000",
 	segundos = "seconds.",
 	fim = "End of match! The next match will start on ",
 	playingmap = "Playing map",
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقTryndavayron#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 48, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4865]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 - الإصدار : RTM Compilation 48, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4865]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -896,14 +975,14 @@ lang.ar = {
 	round = "الجولة",
 	mices = "هذه الغرفة تطلب على الأقل 4 لاعبين",
 	difficulty = "الصعوبة",
-	creator = "صُنع النمط عن طريق Tryndavayron#0000",
+	creator = "صُنع النمط عن طريق Darakdarkus7#0000",
 	segundos = "ثوانٍ.",
 	fim = "نهاية الجولة! ستبدأ الجولة التالية في غضون ",
 	playingmap = "بدأ الخارطة",
 	created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Tryndavayron#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 48",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 - Versión RTM Compilation 48",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -945,7 +1024,7 @@ mice = "Ratones",
 round = "Redondo",
 mices = "Esta sala requiere al menos 4 jugadores",
 difficulty = "Dificultad",
-creator = "Módulo creado por Tryndavayron#0000",
+creator = "Módulo creado por Darakdarkus7#0000",
 segundos = "segundos.",
 fim = "¡Fin del partido! El próximo partido comenzará el ",
 playingmap = "Mapa de juego",
@@ -999,7 +1078,7 @@ function eventPlayerDied(name)
 end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Aviso: Dentro de alguns dias, o module #anvilwar sairá de meu comando e passará para Spectra_phantom#6089. Todas as salas comandadas por mim passarão por uma reforma completa. Estarei deixando o Transformice neste intervalo, e quero deixá-lo em boas mãos.")
+		tfm.exec.chatMessage("<J>POR FAVOR, LEIA ISTO ANTES DE JOGAR!<br><br><b>https://atelier801.com/topic?f=686054&t=932136</b>")
 	end
 	ui.removeTextArea(0,nil)
 	rodada=0
@@ -1030,35 +1109,35 @@ function sortearComandos()
 	getCommand()
 end
 function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Tryndavayron#0000" then
+	if name == "Spectra_phantom#6089" or name == "Darakdarkus7#0000" then
 		if(message:sub(0,3) == "run") then
 				active=tonumber(message:sub(5))
 				getCommand()
 		end
 	end
-	if name == "Spectra_phantom#6089" or name == "Tryndavayron#0000" then
+	if name == "Spectra_phantom#6089" or name == "Darakdarkus7#0000" then
 		if(message:sub(0,1) == "q") then
 			pergunta=message:sub(3)
 		end
 	end
-	if name == "Spectra_phantom#6089" or name == "Tryndavayron#0000" then
+	if name == "Spectra_phantom#6089" or name == "Darakdarkus7#0000" then
 		if(message:sub(0,1) == "r") then
 			resposta=message:sub(3)
 		end
 	end
-	if name == "Spectra_phantom#6089" or name == "Tryndavayron#0000" then
+	if name == "Spectra_phantom#6089" or name == "Darakdarkus7#0000" then
 		if(message:sub(0,4) == "mapa") then
 			tfm.exec.newGame(message:sub(6))
 			active=0
 		end
 	end
-	if name == "Spectra_phantom#6089" or name == "Tryndavayron#0000" then
+	if name == "Spectra_phantom#6089" or name == "Darakdarkus7#0000" then
 		if message == "reset" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
 			active=0
 		end
 	end
-	if name == "Spectra_phantom#6089" or name == "Tryndavayron#0000" then
+	if name == "Spectra_phantom#6089" or name == "Darakdarkus7#0000" then
 		if(message:sub(0,4) == "time") then
 			tempo=message:sub(6)
 		end
@@ -1874,6 +1953,9 @@ function eventNewGame()
 		rato=rato+1
 		tfm.exec.setPlayerScore(name,0,false)
 	end
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J>POR FAVOR, LEIA ISTO ANTES DE JOGAR!<br><br><b>https://atelier801.com/topic?f=686054&t=932136</b>")
+	end
 end
 function eventChatMessage(name,message)
 	 if string.upper(message) == string.upper(resposta) and valendo == true then
@@ -2005,6 +2087,9 @@ function showBar()
 				ui.setMapName("<J>#objects RTM 4001.015   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
+	end
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J>POR FAVOR, LEIA ISTO ANTES DE JOGAR!<br><br><b>https://atelier801.com/topic?f=686054&t=932136</b>")
 	end
 end
 function showText(text)
@@ -2245,7 +2330,7 @@ end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.61.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.62<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
