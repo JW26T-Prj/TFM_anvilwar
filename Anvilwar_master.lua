@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #fall2, #objects e #true_false. Compilado às 20h37 (UTC) 03/06/2019 e atualizado às 20h21 (UTC) 04/06/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #fall2, #objects e #true_false. Compilado às 20h37 (UTC) 03/06/2019 e atualizado às 20h56 (UTC) 04/06/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.62.1",
+	_VERSION = "1.62.2",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -835,7 +835,7 @@ for _,f in next,{"run","q","r","mapa","reset","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 - Versão RTM Compilação 48",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 - Versão RTM Compilação 49",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -884,7 +884,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 - Version RTM Compilation 48, translated to English by Spectra_phantom#6089",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 - Version RTM Compilation 49, translated to English by Spectra_phantom#6089",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -933,7 +933,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 - الإصدار : RTM Compilation 48, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 - الإصدار : RTM Compilation 49, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -982,7 +982,7 @@ lang.ar = {
 	created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 - Versión RTM Compilation 48",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 - Versión RTM Compilation 49",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -1377,14 +1377,6 @@ function getCommand()
 		tfm.exec.setGameTime(6)
 	end
 	if active == 38 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(18)
-	end
-	if active == 39 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda200.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(18)
-	end
-	if active == 40 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..pergunta.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(tempo)
 	end
@@ -1411,12 +1403,12 @@ function eventChatMessage(name,message)
 			data[name].c=1
 		end
 	end
-	if active == 38 then
+	if active == 37 then
 		if message == tostring(rato) then
 			data[name].c=1
 		end
 	end
-	if active == 40 then
+	if active == 38 then
 		if tostring(message) == tostring(resposta) then
 			data[name].c=1
 		end
@@ -1573,80 +1565,12 @@ function eventKeyboard(name,id,down,x,y)
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 39 then
-		if id == 37 or id == 65 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 200 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 38 then
-		if id == 39 or id == 68 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 200 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
-		end
-	end
 	if active == 30 then
 		if id == 32 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
 				data[name].c=1
 			end
-		end
-	end
-	if active == 42 then
-		if id == 39 or id == 68 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 100 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 43 then
-		if id == 37 or id == 65 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 100 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
 		end
 	end
 end
@@ -2330,7 +2254,7 @@ end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.62.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.62.2<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
