@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #fall2, #objects e #true_false. Compilado às 20h37 (UTC) 03/06/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #fall2, #objects e #true_false. Compilado às 20h37 (UTC) 03/06/2019 e atualizado às 20h21 (UTC) 04/06/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.62",
+	_VERSION = "1.62.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -933,7 +933,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 - الإصدار : RTM Compilation 48, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4865]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 - الإصدار : RTM Compilation 48, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -2330,7 +2330,7 @@ end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.62<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.62.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
