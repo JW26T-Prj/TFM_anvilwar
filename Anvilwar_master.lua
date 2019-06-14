@@ -1,5 +1,5 @@
---[[ Script compilado às 00h52 (UTC) 14/06/2019. ]]--
---[[ Como as pessoas não estão jogando os submodos e devido a decadência recorrente do Transformice, todos os submodos do #anvilwar foram removidos e apenas a sala #anvilwar foi mantida. Abraços, Spectra ]]--
+--[[ Script compilado às 00h52 (UTC) 14/06/2019 e atualizado às 17h16 (UTC) 14/06/2019. ]]--
+--[[ Como as pessoas não estão jogando os submodos e devido a decadência recorrente do Transformice, todos os submodos do #anvilwar foram removidos e apenas a sala #anvilwar original foi mantida. No entanto, a sala está livre para outros colocarem seus submodos, se necessário. Abraços, Spectra ]]--
 
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
@@ -283,7 +283,7 @@ function eventNewGame()
 		tfm.exec.chatMessage(text.get_ready)
 	end
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>POR FAVOR, LEIA ISTO ANTES DE JOGAR!<br><br><b>https://atelier801.com/topic?f=686054&t=932136</b>")
+		tfm.exec.chatMessage("<J>Como os jogadores não estão mais utilizando os submodos, todos eles foram removidos e apenas a sala #anvilwar original foi mantida.")
 	end
 end
 function eventPlayerDied(name)
@@ -542,4 +542,4 @@ function eventTextAreaCallback(id,name,callback)
 	end
 end
 resetGame()
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.63<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.63.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
