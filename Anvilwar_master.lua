@@ -1,9 +1,8 @@
---[[ Devido a problemas com o module #anvilwar em relação aos timers, as versões anteriores foram carregadas. Com elas, todos os submodos que estavam ativos foram adicionados novamente. ]]--
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #longjump, #objects, e #true_false. Compilado às 21h35 (UTC) 25/06/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #objects, e #true_false. Compilado às 19h45 (UTC) 01/07/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.64",
+	_VERSION = "1.65",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1310,6 +1309,8 @@ function eventNewGame()
 		end
 	end
 	questions.round=0
+	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
+	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
 end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
@@ -1559,7 +1560,7 @@ for _,f in next,{"run","q","r","mapa","reset","time"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 50",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 51",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1591,7 +1592,6 @@ lang.br = {
 	espaco = "Pressione a barra de espaço 20 vezes!",
 	nome = "Digite o seu nome no jogo (com #número).",
 	ndance = "Não dance!",
-	rats = "Há quantos ratos nessa sala?",
 	mestre = "Mestre Mandou",
 	map = "Mapa",
 	time = "Tempo",
@@ -1606,7 +1606,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 and the Spectra Advanced Module Group - Version RTM Compilation 50",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 and the Spectra Advanced Module Group - Version RTM Compilation 51",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1638,7 +1638,6 @@ lang.en = {
 	espaco = "Press 20 times the SPACEBAR!",
 	nome = "Type your nickname (with #number)!",
 	ndance = "Don't dance!",
-	rats = "How many rats are in this room?",
 	mestre = "Master Says",
 	map = "Map",
 	time = "Time",
@@ -1653,7 +1652,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 50, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 51, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1685,7 +1684,6 @@ lang.ar = {
 	espaco = "أضغط على زر المسافة 20 مرة!",
 	nome = "اكتب اسمك (مع رقم #الهاشتاج)ـ",
 	ndance = "لا ترقص!",
-	rats = "كم عدد الفئران في هذه الغرفة؟",
 	mestre = "الرئيس يقول",
 	map = "الخريطة",
 	time = "الوقت",
@@ -1700,7 +1698,7 @@ lang.ar = {
 	created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 50",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 51",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -1732,7 +1730,6 @@ predireita60 = "Presiona 60 veces la tecla DERECHA!",
 espaco = "Presione 20 veces la barra espaciadora!",
 nome = "Escribe tu apodo (con #numero incluido)",
 ndance = "¡No bailes!",
-rats = "How many rats are in this room?",
 mestre = "Simón dice",
 map = "Mapa",
 time = "Hora",
@@ -2086,10 +2083,6 @@ function getCommand()
 		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
 	if active == 37 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.rats.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(6)
-	end
-	if active == 38 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..pergunta.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(tempo)
 	end
@@ -2117,11 +2110,6 @@ function eventChatMessage(name,message)
 		end
 	end
 	if active == 37 then
-		if message == tostring(rato) then
-			data[name].c=1
-		end
-	end
-	if active == 38 then
 		if tostring(message) == tostring(resposta) then
 			data[name].c=1
 		end
@@ -2347,7 +2335,7 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
-		if active == 21 or active == 34 then
+		if active == 21 or active == 33 or active == 34 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if player.y < 300 then
 					tfm.exec.killPlayer(name)
@@ -2850,79 +2838,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-initLongJump = function()
-data={}
-recorde=0
-tfm.exec.setRoomMaxPlayers(25)
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.newGame('<C><P L="19660" G="0,9" H="1000" /><Z><S><S L="3000" H="700" X="1500" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="3000" X="4500" H="700" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="3000" X="7500" H="700" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="3000" H="700" X="10500" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="3000" X="13500" H="700" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="3000" H="700" X="16500" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="3000" X="19500" H="700" Y="650" T="9" P="0,0,,,,0,0,0" /><S L="440" H="177" X="385" Y="307" T="2" P="0,0,0,1.8,30,0,0,0" /><S L="240" H="880" X="120" Y="560" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" o="324650" X="-5" H="861" Y="92" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="3000" o="324650" H="10" Y="-604" T="12" X="1490" /><S L="3000" o="324650" H="10" X="4490" Y="-604" T="12" P="0,0,0,0,0,0,0,0" /><S L="3000" X="1740" H="20" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /><S L="3000" H="20" X="4740" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /><S L="3000" H="20" X="7740" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /><S L="3000" X="10740" H="20" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /><S L="3000" H="20" X="13740" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /><S L="3000" H="20" X="16740" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /><S L="3000" H="20" X="19740" Y="991" T="6" P="0,0,9999,0.2,0,0,0,0" /></S><D><DS Y="107" X="124" /><F Y="115" X="112" /><F Y="115" X="135" /><F Y="101" X="125" /></D><O /></Z></C>')
-system.disableChatCommandDisplay("ddddda")
-function eventChatCommand(n,m)
-	if m == "ddddda" then
-		tfm.exec.chatMessage("Reboot",nil)
-		recorde=0
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].recorde=0
-		end
-	end
-end
-function eventPlayerDied(n)
-	tfm.exec.respawnPlayer(n)
-end
-function eventNewPlayer(n)
-	tfm.exec.setUIMapName("Long Jump v1.10.1 - Script made by Miss_fortune#9548 and Rivenbagassa#0000<")
-	newData={
-		["x"]=0;
-		["position"]=0;
-		["x2"]=0;
-		["recorde"]=0;
-			}
-	data[n]=newData;
-	tfm.exec.respawnPlayer(n)
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-function eventPlayerDied(n)
-	tfm.exec.respawnPlayer(n)
-end
-function eventLoop()
-	for name,player in pairs(tfm.get.room.playerList) do
-		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 4000 |||||||||| 8000 ||||||||| 12000 ||||||||| 16000 ||",nil,20,20,670,20,0x000001,0x000001,0.8,true)
-		ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
-		ui.addTextArea(6,"<p align='center'><font size='20'><b><font color='#008000'><font face='Courier New'>"..data[name].recorde.."",name,700,68,80,22,0x00ff00,0x00ff00,0.9,true)
-		ui.addTextArea(7,"<p align='center'><font size='20'><b><font color='#800080'><font face='Courier New'>"..recorde.."",name,700,98,80,22,0xff00ff,0x800080,0.9,true)
-		if tfm.get.room.playerList[name].x < 0 then
-			data[name].x=tfm.get.room.playerList[name].x+19660
-		elseif tfm.get.room.playerList[name].x > 0 and data[name].x2 > 9830 then
-			data[name].x=tfm.get.room.playerList[name].x+19660
-		else
-			data[name].x=tfm.get.room.playerList[name].x
-		end
-		if tfm.get.room.playerList[name].y >= 962 then
-			tfm.exec.chatMessage("<J>Your distance: <b>"..data[name].x.."</b> pixels.",name)
-			if data[name].x > data[name].recorde then
-				data[name].recorde=data[name].x
-				tfm.exec.chatMessage("<br><VP>New pessoal high score: <b>"..data[name].x.." pixels</b>.",name)
-				tfm.exec.setPlayerScore(name,data[name].x,false)
-			end
-			if data[name].x > recorde then
-				recorde=data[name].x
-				tfm.exec.chatMessage("<br><ROSE>New high score on game: <b>"..data[name].x.." pixels</b>, made by "..name.."!")
-				tfm.exec.setPlayerScore(name,data[name].x,false)
-			end
-			tfm.exec.movePlayer(name,120,100,false,0,0,false)
-		end
-		ui.addTextArea(3,"",name,30,48,tfm.get.room.playerList[name].x/23.6,5,0xff0000,0x800000,0.9,true)
-		ui.addTextArea(4,"",name,30+data[name].recorde/23.6,48,1,5,0x00ff00,0x008000,0.9,true)
-		ui.addTextArea(5,"",nil,30+recorde/23.6,48,1,5,0xff00ff,0x800080,0.9,true)
-	end
-end
-end
-
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.64<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.65<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
@@ -2936,9 +2852,6 @@ elseif string.find(tfm.get.room.name,"pistas") or string.find(tfm.get.room.name,
 elseif string.find(tfm.get.room.name,"objects") then
 	active = "objects"
 	initObjects()
-elseif string.find(tfm.get.room.name,"salto") or string.find(tfm.get.room.name,"longjump") then
-	active = "longjump"
-	initLongJump()
 else
 	active = "anvilwar"
 	initAnvilwar()
