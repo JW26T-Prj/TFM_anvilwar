@@ -1815,7 +1815,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,37)
+	active=math.random(1,36)
 	getCommand()
 end
 function eventChatCommand(name,message)
