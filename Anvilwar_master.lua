@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, e #true_false. Compilado às 19h13 (UTC) 23/07/2019 e atualizado às 23h48 (UTC) 23/07/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, e #true_false. Compilado às 14h03 (UTC) 25/07/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.66.1",
+	_VERSION = "1.67",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -13,7 +13,8 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-powerups={choosed="",r_azul=false,r_vermelho=false,multi_count=0,int_azul=2,int_vermelho=2,immortal=false,immortal2=false}
+powerups={choosed="",r_azul=false,r_vermelho=false,multi_count=0,int_azul=2,int_vermelho=2,immortal=false,immortal2=false,double=false,triple=false,objeto=false,explosion=false}
+objetos={1,2,3,4,6,7,10,23,32,34,35,39,45,46,54,60,61,62,65,67,68,69,89,90,95}
 play_azul={}
 players_table={}
 caps={azul="",vermelho=""}
@@ -67,7 +68,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 13256.105",
+	bar = "#anvilwar - RTM 14025.106",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Gus_grav#7473 e Zed#9431<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -80,7 +81,7 @@ lang.br = {
 	seconds30 = "<ROSE>Faltam 30 segundos!",
 	seconds10 = "<ROSE>Faltam 10 segundos!",
 	teamchat = "<J>Você pode usar o comando !tc [mensagem] para falar apenas com o seu time.<br><br>Você pode ver seu perfil no jogo digitando !p e o ranking temporário digitando !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Ajuda</a>  |  <a href='event:profile'>Perfil</a>  |  <a href='event:cap'>Capitão</a>  |  <a href='event:cmd'>Comandos</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Ajuda</a>  |  <a href='event:profile'>Perfil</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitão</a>  |  <a href='event:cmd'>Comandos</a>",
 	powerupslist = "Lista de Poderes",
 	profile = "Use o comando !p para ver o seu perfil. Use !p [nome] para ver o perfil de outra pessoa.",
 	starting = "<VP>A partida está prestes a começar. Preparem-se!",
@@ -104,6 +105,16 @@ lang.br = {
 	created = "criado por",
 	red_int_text = "<R>A equipe vermelha pediu tempo.",
 	blue_int_text = "<BL>A equipe azul pediu tempo.",
+	double = "acionou o powerup Bigorna Dupla!",
+	double2 = "<br>Neste powerup, você atira 2 bigornas de uma vez.",
+	triple = "acionou o powerup Bigorna Tripla!",
+	triple2 = "<br>Neste powerup, você atira 3 bigornas de uma vez.",
+	objeto1 = "acionou o powerup Tiro Aleatório!",
+	objeto2 = "<br>Neste powerup, ao pressionar a barra de espaço, você vai atirar um objeto aleatório de shaman. Caso você tenha usado a habilidade Bigorna Dupla, você irá atirar 2 objetos ao invés de um.",
+	exp1 = "acionou o powerup Olha a Explosão!",
+	exp2 = "<br>Neste powerup, você pode gerar uma explosão clicando em um local do time inimigo.<br>Você possui 5 segundos para explodir!",
+	inv1 = "acionou o powerup Modo Imortal!",
+	inv2 = "<br>Neste powerup, você ficará imortal durante 4 turnos do seu time. Esta habilidade só pode ser utilizada uma vez por partida.",
 }
 lang.en = {
 	win_vermelho = "<R><b>The RED team wins!</b><br>The next match will start in 15 seconds.",
@@ -117,7 +128,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 13256.105",
+	bar = "#anvilwar - RTM 14025.106",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Gus_grav#7473 and Zed#9431<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -130,7 +141,7 @@ lang.en = {
 	seconds30 = "<ROSE>30 seconds remaining!",
 	seconds10 = "<ROSE>10 seconds remaining!",
 	teamchat = "<J>You can use the command !tc [message] to speak with your team.<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Help</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:cap'>Capitain</a>  |  <a href='event:cmd'>Commands</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Help</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitain</a>  |  <a href='event:cmd'>Commands</a>",
 	powerupslist = "Powerups List",
 	profile = "Use the !p command to view your profile and use !p [username] to view the profile of another user.",
 	starting = "<VP>The match will start on a few seconds. Get ready!",
@@ -154,6 +165,16 @@ lang.en = {
 	created = "created by",
 	red_int_text = "<R>The red team requested a timeout.",
 	blue_int_text = "<BL>The blue team requested a timeout.",
+	double = "used the powerup Double Anvil!",
+	double2 = "",
+	triple = "used the powerup Triple Anvil!",
+	triple2 = "",
+	objeto1 = "used the powerup Random Shoot!",
+	objeto2 = "<br>On this powerup, you will shoot a random shaman object instead of a anvil. If you have used the Double Anvil powerup, you can shoot 2 objects instead of one.",
+	exp1 = "used the powerup Explosion!",
+	exp2 = "<br>On this powerup, you can cause a explosion clicking on enemy area with your mouse.<br>You have 5 seconds to cause your explosion.",
+	inv1 = "used the powerup Immortal Mode!",
+	inv2 = "<br>On this powerup, you be immortal during the next 4 turns. This powerup only can be used 1 time per game.",
 }
 lang.ar = {
 	win_vermelho = "<R><b>فاز الفريق الأحمر!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
@@ -171,7 +192,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 13256.105",
+bar = "#anvilwar - RTM 14025.106",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Gus_grav#7473 and Zed#9431<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -184,7 +205,7 @@ seconds = "<ROSE>60 ثانية متبقية",
 seconds30 = "<ROSE>30 ثانية متبقية!",
 seconds10 = "<ROSE>10 ثوانٍ متبقية!",
 teamchat = "<J>إستخم الإيعاز !tc [msg] للتكلم مع أعضاء فريقك<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
-menu_bar = "<p align='center'><a href='event:help'>Help</a> | <a href='event:profile'>Profile</a> | <a href='event:cap'>Capitain</a> | <a href='event:cmd'>Commands</a>",
+menu_bar = "<p align='center'><a href='event:help'>Help</a> | <a href='event:profile'>Profile</a> | <a href='event:powerups'>Powerups</a> | <a href='event:cap'>Capitain</a> | <a href='event:cmd'>Commands</a>",
 powerupslist = "Powerups List",
 profile = "إستخدم !p لرؤية ملفك وأستخدم !p name لرؤية ملف لاعب أخر ",
 starting = "<VP>ستبدأ المباراة غي غضون بضعة ثواني، إستعد!",
@@ -208,6 +229,16 @@ playingmap = "Playing map",
 created = "created by",
 red_int_text = "<R>The red team requested a timeout.",
 blue_int_text = "<BL>The blue team requested a timeout.",
+double = "used the powerup Double Anvil!",
+double2 = "",
+triple = "used the powerup Triple Anvil!",
+triple2 = "",
+objeto1 = "استخدم powerup عشوائية تبادل لاطلاق النار!",
+objeto2 = "<ar>على هذا powerup ، سوف تقوم بتصوير كائن شامان عشوائي بدلا من السندان. إذا كنت قد استخدمت Powerup مزدوج السندان ، يمكنك تبادل اثنين من الأشياء بدلا من واحدة.",
+exp1 = "used the powerup Explosion!",
+exp2 = "<ar>على هذا powerup ،عندك 5 ثوان لتسبب انفجارك.",
+inv1 = "تستخدم powerup وضع الخالد!",
+inv2 = "<br> على هذا powerup ، تكون خالدة خلال ال 4 المقبلة. يمكن استخدام هذه الطاقة فقط مرة واحدة لكل لعبة.",
 }
 lang.es = {
 	win_vermelho = "<R><b>¡Ha ganado el equipo ROJO!</b><br>La próxima ronda comenzará en 15 segundos.",
@@ -221,7 +252,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 13256.105",
+	bar = "#anvilwar - RTM 14025.106",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Gus_grav#7473 y Zed#9431<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -234,7 +265,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	seconds30 = "<ROSE>¡Quedan 30 segundos!",
 	seconds10 = "<ROSE>¡Quedan 10 segundos!",
 	teamchat = "<J>Puedes usar el comando !tc [mensaje] para hablar con tu equipo.<br><br>Puedes ver tu perfil escribiendo !p y el ranking temporal escribiendo !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Ayuda</a>  |  <a href='event:profile'>Perfil</a>  |  <a href='event:cap'>Capitán</a>  |  <a href='event:cmd'>Comandos</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Ayuda</a>  |  <a href='event:profile'>Perfil</a> | <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitán</a>  |  <a href='event:cmd'>Comandos</a>",
 	powerupslist = "Lista de Powerups",
 	profile = "Usa el comando !p para ver tu perfil y usa !p [apodo] para ver el de otra persona.",
 	starting = "<VP>La ronda comenzará en unos segundos. ¡Prepárate!",
@@ -258,6 +289,16 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	created = "creado por",
 	red_int_text = "<R>The red team requested a timeout.",
 	blue_int_text = "<BL>The blue team requested a timeout.",
+	double = "usó el powerup Doble Yunque!",
+	double2 = "",
+	triple = "usó el powerup Triple Yunque!",
+	triple2 = "",
+	objeto1 = "usó el de powerup Tiro Aleatorio!",
+	objeto2 = "<br>Con este powerup lanzarás un objeto de chamán aleatorio en lugar de un yunque. Si has usado el powerup Doble Yunque puedes lanzar 2 objetos en vez de 1.",
+	exp1 = "usó el powerup Explosión!",
+	exp2 = "<br>Con este powerup puedes provocar una explosión clicando en área enemigo con tu ratón.<br>Tienes 5 segundos para provocar la explosión.",
+	inv1 = "usó el powerup Modo Inmortal!",
+	inv2 = "<br>Con este powerup serás inmortal durante los próximos 4 turnos. Solo puedes usarlo 1 vez por ronda.",
 }
 lang.de = {
 	win_vermelho = "<R><b>Das ROTE Team gewinnt!</b><br>Das nächste Spiel beginnt in 15 Sekunden.",
@@ -271,7 +312,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 13256.105",
+	bar = "#anvilwar - RTM 14025.106",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Gus_grav#7473 und Zed#9431<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -308,6 +349,16 @@ lang.de = {
 	created = "erstellt von",
 	red_int_text = "<R>The red team requested a timeout.",
 	blue_int_text = "<BL>The blue team requested a timeout.",
+	double = "used the powerup Double Anvil!",
+	double2 = "",
+	triple = "used the powerup Triple Anvil!",
+	triple2 = "",
+	objeto1 = "used the powerup Random Shoot!",
+	objeto2 = "<br>On this powerup, you will shoot a random shaman object instead of a anvil. If you have used the Double Anvil powerup, you can shoot 2 objects instead of one.",
+	exp1 = "used the powerup Explosion!",
+	exp2 = "<br>On this powerup, you can cause a explosion clicking on enemy area with your mouse.<br>You have 5 seconds to cause your explosion.",
+	inv1 = "used the powerup Immortal Mode!",
+	inv2 = "<br>On this powerup, you be immortal during the next 4 turns. This powerup only can be used 1 time per game.",
 }
 
 if tfm.get.room.community == "br" then
@@ -511,6 +562,9 @@ function eventChatCommand(name,message)
 	end
 	if message == "cap" then
 		menuShow(name,text.cmds,text.cap,80)
+	end
+	if message == "powerups" then
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 6pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 8pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 18pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 20pt - Required Level: 4 - Function: <a href='event:power5'>Show</a><br>",105)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -898,6 +952,13 @@ function eventLoop(passado,faltando)
 		ui.removeTextArea(2201,nil)
 	end
 end
+function eventMouse(name,x,y)
+	if powerups.explosion == true and actual_player == name then
+		tfm.exec.explosion(x,y,30,120,true)
+		tfm.exec.displayParticle(12,x,y,0,0,0,0,nil)
+		powerups.explosion=false
+	end
+end
 function eventPlayerDied(name)
 	if count < 10 then
 		if data[name].team == "azul" then
@@ -1021,9 +1082,35 @@ function eventKeyboard(name,key,down,x,y)
 					set_name=""
 					ui.removeTextArea(4003,nil)
 					if data[name].team == "azul" then
-						tfm.exec.addShamanObject(10,x,y-60,0,(4+power*2)*-1,-8)
+						if powerups.objeto == true then
+							tfm.exec.addShamanObject(objetos[math.random(#objetos)],x,y-60,0,(4+power*2)*-1,-8)
+							powerups.objeto=false
+						else
+							tfm.exec.addShamanObject(10,x,y-60,0,(4+power*2)*-1,-8)
+							if powerups.double == true then
+								tfm.exec.addShamanObject(10,x+40,y-60,0,(4+power*2)*-1,-8)
+								powerups.double=false
+							end
+							if powerups.triple == true then
+								tfm.exec.addShamanObject(10,x+80,y-60,0,(4+power*2)*-1,-8)
+								powerups.triple=false
+							end
+						end
 					elseif data[name].team == "vermelho" then
-						tfm.exec.addShamanObject(10,x,y-60,0,4+power*2,-8)
+						if powerups.objeto == true then
+							tfm.exec.addShamanObject(objetos[math.random(#objetos)],x,y-60,0,4+power*2,-8)
+							powerups.objeto=false
+						else
+							tfm.exec.addShamanObject(10,x,y-60,0,4+power*2,-8)
+							if powerups.double == true then
+								tfm.exec.addShamanObject(10,x-40,y-60,0,4+power*2,-8)
+								powerups.double=false
+							end
+							if powerups.triple == true then
+								tfm.exec.addShamanObject(10,x-80,y-60,0,4+power*2,-8)
+								powerups.triple=false
+							end
+						end
 					end
 					anvil_launched=true
 				end
@@ -1056,6 +1143,67 @@ function eventKeyboard(name,key,down,x,y)
 					end
 				else
 					tfm.exec.chatMessage(text.funct,name)
+				end
+			end
+			if key == 112 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 6 then
+					if data[name].nivel >= 1 then
+						powerups.double=true
+						tfm.exec.chatMessage("<VP>"..name.." "..text.double.."")
+						tfm.exec.setPlayerScore(name,-6,true)
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
+			if key == 113 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 12 then
+					if data[name].nivel >= 2 then
+						powerups.double=true
+						powerups.triple=true
+						tfm.exec.chatMessage("<VP>"..name.." "..text.triple.."")
+						tfm.exec.setPlayerScore(name,-12,true)
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
+			if key == 114 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 8 then
+					if data[name].nivel >= 2 then
+						powerups.objeto=true
+						tfm.exec.chatMessage("<VP>"..name.." "..text.objeto1.."")
+						tfm.exec.setPlayerScore(name,-8,true)
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
+			if key == 115 then
+				if valendo == true and actual_player == name and powerups.explosion == false and tfm.get.room.playerList[name].score >= 18 then
+					if data[name].nivel >= 3 then
+						powerups.explosion=true
+						tfm.exec.chatMessage("<VP>"..name.." "..text.exp1.."")
+						tfm.exec.setPlayerScore(name,-18,true)
+						anvil_launched=true
+						loop=12
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
+			if key == 116 then
+				if valendo == true and actual_player == name and data[name].immortal2 == false and tfm.get.room.playerList[name].score >= 20 then
+					if data[name].nivel >= 4 then
+						data[name].immortal=true
+						data[name].immortal2=true
+						tfm.exec.setNameColor(name,0x00ff00)
+						tfm.exec.setPlayerScore(name,-20,true)
+						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.inv1.."")
+						tfm.exec.chatMessage(text.inv2,name)
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
 				end
 			end
 		end
@@ -1148,6 +1296,24 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "help" then
 		eventChatCommand(name,"help")
+	end
+	if callback == "powerups" then
+		eventChatCommand(name,"powerups")
+	end
+	if callback == "power1" then
+		tfm.exec.chatMessage(text.double2,name)
+	end
+	if callback == "power2" then
+		tfm.exec.chatMessage(text.triple2,name)
+	end
+	if callback == "power3" then
+		tfm.exec.chatMessage(text.objeto2,name)
+	end
+	if callback == "power4" then
+		tfm.exec.chatMessage(text.exp2,name)
+	end
+	if callback == "power5" then
+		tfm.exec.chatMessage(text.inv2,name)
 	end
 	if callback == "profile" then
 		tfm.exec.chatMessage(text.profile,name)
@@ -2440,7 +2606,7 @@ times=0
 function eventChatCommand(name,message)
 	if name == "Reksai_void2600#6638" or name == "Forzaldenon#0000" then
 		if message == "help" then
-			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the boxes and win the game!<br><br>Module made by Reksai_void2600#6638 and the Spectra Advanced Module Group")
+			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Reksai_void2600#6638 and the Spectra Advanced Module Group")
 		end
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
@@ -2470,14 +2636,17 @@ function eventNewGame()
 		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
 		end
 	end
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J>Agora você também pode enviar seus mapas para o Objects! Link do tópico:<br><b>https://atelier801.com/topic?f=816221&t=933046</b>")
+	end
 end
 function showBar()
 	for i=1,27 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 4633.017   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 4734.018   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 4633.017   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 4734.018   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -2608,7 +2777,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.66.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.67<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
