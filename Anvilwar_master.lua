@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pool e #objects. Compilado às 13h27 (UTC) 15/09/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pool e #objects. Compilado às 13h27 (UTC) 15/09/2019 e atualizado às 16h58 (UTC) 15/09/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.70",
+	_VERSION = "1.70.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1282,6 +1282,9 @@ function eventNewGame()
 	end
 	tfm.exec.setGameTime(30)
 	showBar()
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00pool = Master Pool<br>")
+	end
 end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
@@ -1458,11 +1461,10 @@ vivo=0 -- número de ratos vivos
 rato=0 -- número de ratos na sala
 dificuldade=1 -- dificuldade da partida (alterada automaticamente)
 rodadas=0 -- o limite de rodadas das partidas é calculado automaticamente
-string="" -- variável usada no comando 33
 rodada=0 -- número da rodada atual, não altere
-number=0 -- variável usada no comando 11
-xpos=0 -- variável usada nos comandos 21, 22 e 23
-ypos=0 -- variável usada nos comandos 24 e 25
+number=0
+xpos=0
+ypos=0
 data={} -- variável que define os dados dos jogadores
 lang={} -- não alterar, variável que define a linguagem dos textos
 pergunta="Interval"
@@ -1724,7 +1726,7 @@ function eventNewGame()
 	end
 	rodadas=math.floor(10+(rato/3))
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("As avaliações de mapas para o Mestre Mandou estão abertas!<br><b>https://atelier801.com/topic?f=816221&t=931246&p=1</b>")
+		tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00pool = Master Pool<br><br>As avaliações de mapas para o Mestre Mandou estão abertas!<br><b>https://atelier801.com/topic?f=816221&t=931246&p=1</b>")
 	else
 		tfm.exec.chatMessage("Send your map to the Master Says module!<br><b>https://atelier801.com/topic?f=816221&t=931246&p=1</b>")
 	end
@@ -2374,7 +2376,9 @@ function eventNewGame()
 		end
 	end
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<J>Agora você também pode enviar seus mapas para o Objects! Link do tópico:<br><b>https://atelier801.com/topic?f=816221&t=933046</b>")
+		tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00pool = Master Pool<br><br>Agora você também pode enviar seus mapas para o Objects! Link do tópico:<br><b>https://atelier801.com/topic?f=816221&t=933046</b>")
+	else
+		tfm.exec.chatMessage("Send your map to the Master Says module!<br><b>https://atelier801.com/topic?f=816221&t=931246&p=1</b>")
 	end
 end
 function showBar()
@@ -2529,6 +2533,9 @@ run_time=0
 function eventNewPlayer(name)
 	tfm.exec.respawnPlayer(name)
 	ui.setMapName("<font color='#14ACEE'><font size='12'>The Master Pool 5.1 - Advanced LUA Map made by Spectra Advanced Module Group<")
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00pool = Master Pool<br>")
+	end
 end
 function eventPlayerDied(name)
 	eventNewPlayer(name)
@@ -2558,7 +2565,7 @@ function eventLoop()
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.70<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.70.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	tfm.exec.chatMessage("<R>This room was disabled due to inactivity.")
