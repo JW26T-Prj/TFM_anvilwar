@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pool, #true_false, #clickwar, #pistas e #objects. Compilado às 00h42 (UTC) 17/09/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pool, #true_false, #clickwar, #pistas e #objects. Compilado às 22h20 (UTC) 23/09/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.71",
+	_VERSION = "1.72",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -12,7 +12,7 @@ initAnvilwar = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.setRoomMaxPlayers(30)
+tfm.exec.setRoomMaxPlayers(26)
 powerups={choosed="",r_azul=false,r_vermelho=false,multi_count=0,int_azul=2,int_vermelho=2,immortal=false,immortal2=false,double=false,triple=false,objeto=false,explosion=false}
 objetos={1,2,3,4,6,7,10,23,32,34,35,39,45,46,54,60,61,62,65,67,68,69,89,90,95}
 play_azul={}
@@ -1468,10 +1468,9 @@ initMestre = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAutoScore(true)
 tfm.exec.disableAfkDeath(true)
 tfm.exec.setRoomMaxPlayers(35)
-mapas={6788085,6788183,6789853,6791944,6792470,6808957,6810292,6821950,6830799,6866406,6866549,6788693,6788728,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6789272,6790912,6833993}
+mapas={3110915,6788085,6788183,6789853,6791944,6792470,6808957,6810292,6821950,6830799,6866406,6866549,6788693,6788728,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6789272,6790912,6833993}
 active=0 -- códigos active: -2 = número de ratos insuficiente, -1 = partida encerrada, 0 = partida não iniciada ou intervalo e 1 ou mais = comandos operando
 vivo=0 -- número de ratos vivos
 rato=0 -- número de ratos na sala
@@ -1492,7 +1491,7 @@ for _,f in next,{"run","q","r","mapa","reset","time","pw","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 53",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 54",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1538,7 +1537,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 and the Spectra Advanced Module Group - Version RTM Compilation 53",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 and the Spectra Advanced Module Group - Version RTM Compilation 54",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1584,7 +1583,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 53, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 54, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1630,7 +1629,7 @@ lang.ar = {
 	created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 53",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 54",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2021,7 +2020,7 @@ function eventChatMessage(name,message)
 	if active == 11 then
 		data[name].c=1
 	end
-	if active == 13 or active == 15 then
+	if active == 12 or active == 14 then
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
@@ -2031,11 +2030,6 @@ function eventChatMessage(name,message)
 	end
 	if active == 29 then
 		if string.upper(message) == string.upper(name) then
-			data[name].c=1
-		end
-	end
-	if active == 35 then
-		if tostring(message) == tostring(resposta) then
 			data[name].c=1
 		end
 	end
@@ -2405,9 +2399,9 @@ function showBar()
 	for i=1,29 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 4936.020   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 5037.021   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 4936.020   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 5037.021   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -2422,25 +2416,23 @@ function showTextSmall(text)
 end
 function changeBar()
 	if functs.level == 1 then
-		bar="<font face='Consolas'><VP>█───<J>──<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>█───<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 2 then
-		bar="<font face='Consolas'><VP>██──<J>──<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>██──<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 3 then
-		bar="<font face='Consolas'><VP>███─<J>──<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>███─<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 4 then
-		bar="<font face='Consolas'><VP>████<J>──<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 5 then
-		bar="<font face='Consolas'><VP>████<J>█─<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>█─<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 6 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>──<font face='Verdana'>"
 	elseif functs.level == 7 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>█──<font face='Verdana'>"
-	elseif functs.level == 8 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>██─<font face='Verdana'>"
-	elseif functs.level >= 9 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>███<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>█─<font face='Verdana'>"
+	elseif functs.level >= 8 then
+		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>██<font face='Verdana'>"
 	else
-		bar="<font face='Consolas'><VP>────<J>──<font color='#ff0000'>───<font face='Verdana'>"
+		bar="<font face='Consolas'><VP>────<J>──<font color='#ff0000'>──<font face='Verdana'>"
 	end
 end
 function removeText()
@@ -2495,17 +2487,17 @@ function eventLoop(p,f)
 		if loop >= 10-functs.level and winner == false then
 			removeText()
 			times=times+1
-			if times >= 3 and functs.level <= 8 then
+			if times >= 3 and functs.level <= 7 then
 				times=0
 				functs.level=functs.level+1
 			end
 			loop=0
-			if functs.level <= 5 then
+			if functs.level <= 6 then
 				for i=1,functs.level do
 					throw()
 				end
 			else
-				for i=1,5 do
+				for i=1,6 do
 					throw()
 				end
 			end
@@ -2545,6 +2537,7 @@ initPool = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAfkDeath(true)
+tfm.exec.setRoomMaxPlayers(48)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.newGame("@7601768")
@@ -2593,6 +2586,7 @@ tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoScore(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.disableAfkDeath(true)
+tfm.exec.setRoomMaxPlayers(35)
 tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disablePhysicalConsumables(true)
 limits={questions=10,time=7,mices_alive=0}
@@ -2883,7 +2877,7 @@ remain=10
 last_win=""
 times=1;
 enabled=false
-tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.setRoomMaxPlayers(28)
 function split(t,s)
 	local a={}
 	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
@@ -3210,7 +3204,7 @@ tfm.exec.disableAfkDeath(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableMortCommand(true)
-tfm.exec.setRoomMaxPlayers(24)
+tfm.exec.setRoomMaxPlayers(22)
 pergunta=0
 valendo=false
 limite=6 -- Variável usada para armazenar o limite de partidas
@@ -3441,7 +3435,7 @@ function eventPlayerDied(name)
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.71<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.72<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
