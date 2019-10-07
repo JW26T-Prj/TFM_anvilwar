@@ -1,4 +1,4 @@
---[[ Script contendo o module #anvilwar, #mestre, #pool, #true_false, #clickwar, #pistas e #objects. Compilado às 22h20 (UTC) 23/09/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pool, #true_false, #clickwar, #pistas e #objects. Compilado às 12h34 (UTC) 07/10/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
@@ -23,7 +23,7 @@ avs_list={}
 mods_list={}
 managers_list={"Nasus_assassin#1534"}
 admins_list={"Tryndavayron#0000","Zed#9431","Spectra_phantom#6089"}
-ninjas_list={"Shun_kazami#7014","Reksai_void2600#6638","Jhinsword350#0000"}
+ninjas_list={"Shun_kazami#7014","Tryndavayron#0000","Jhinsword350#0000"}
 scoreloop=0
 sudden_death=false
 local temp_name=""
