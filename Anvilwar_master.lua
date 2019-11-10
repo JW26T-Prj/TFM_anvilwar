@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #fall2, #true_false, #clickwar, #pictiomon, #pistas e #objects. Compilado às 14h26 (UTC) 11/10/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #fall2, #true_false, #clickwar, #pictiomon, #pistas e #objects. Compilado às 14h14 (UTC) 10/11/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.74",
+	_VERSION = "1.75",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -68,7 +68,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 15270.109",
+	bar = "#anvilwar - RTM 15371.110",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Zed#9431 e Tryndavayron#0000<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -128,7 +128,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 15270.109",
+	bar = "#anvilwar - RTM 15371.110",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Zed#9431 and Tryndavayron#0000<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -192,7 +192,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 15270.109",
+bar = "#anvilwar - RTM 15371.110",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Zed#9431 and Tryndavayron#0000<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -252,7 +252,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 15270.109",
+	bar = "#anvilwar - RTM 15371.110",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Zed#9431 y Tryndavayron#0000<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -312,7 +312,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 15270.109",
+	bar = "#anvilwar - RTM 15371.110",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Zed#9431 und Tryndavayron#0000<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -574,7 +574,7 @@ function eventChatCommand(name,message)
 		menuShow(name,text.cmds,text.cap,80)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 6pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 8pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 18pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 20pt - Required Level: 4 - Function: <a href='event:power5'>Show</a><br>",105)
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 6pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 8pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 22pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 30pt - Required Level: 4 - Function: <a href='event:power5'>Show</a><br>",105)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -1196,11 +1196,11 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 115 then
-				if valendo == true and actual_player == name and powerups.explosion == false and tfm.get.room.playerList[name].score >= 18 then
+				if valendo == true and actual_player == name and powerups.explosion == false and tfm.get.room.playerList[name].score >= 22 then
 					if data[name].nivel >= 3 then
 						powerups.explosion=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.exp1.."")
-						tfm.exec.setPlayerScore(name,-18,true)
+						tfm.exec.setPlayerScore(name,-22,true)
 						anvil_launched=true
 						loop=12
 					else
@@ -1209,12 +1209,12 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 116 then
-				if valendo == true and actual_player == name and data[name].immortal2 == false and tfm.get.room.playerList[name].score >= 20 then
+				if valendo == true and actual_player == name and data[name].immortal2 == false and tfm.get.room.playerList[name].score >= 30 then
 					if data[name].nivel >= 4 then
 						data[name].immortal=true
 						data[name].immortal2=true
 						tfm.exec.setNameColor(name,0x00ff00)
-						tfm.exec.setPlayerScore(name,-20,true)
+						tfm.exec.setPlayerScore(name,-30,true)
 						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.inv1.."")
 						tfm.exec.chatMessage(text.inv2,name)
 					else
@@ -1491,7 +1491,7 @@ for _,f in next,{"run","q","r","mapa","reset","time","pw","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 54",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Darakdarkus7#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 55",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1537,7 +1537,7 @@ lang.br = {
 	created = "criado por"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 and the Spectra Advanced Module Group - Version RTM Compilation 54",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Darakdarkus7#0000 and the Spectra Advanced Module Group - Version RTM Compilation 55",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1583,7 +1583,7 @@ lang.en = {
 	created = "created by"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 54, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقDarakdarkus7#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 55, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1629,7 +1629,7 @@ lang.ar = {
 	created = "created by"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 54",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Darakdarkus7#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 55",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -1813,7 +1813,7 @@ function getCommand()
 	end
 	if active == 4 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.mouse.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(6)
+		tfm.exec.setGameTime(5)
 	end
 	if active == 5 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.beijos.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
@@ -1833,14 +1833,14 @@ function getCommand()
 	end
 	if active == 9 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.esquerda.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1 -- isto indica que todos permanecerão vivos
 		end
 	end
 	if active == 10 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.direita.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(8)
+		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -1939,19 +1939,19 @@ function getCommand()
 	end
 	if active == 24 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda30.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(9)
+		tfm.exec.setGameTime(7)
 	end
 	if active == 25 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita30.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(9)
+		tfm.exec.setGameTime(7)
 	end
 	if active == 26 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda60.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(15)
+		tfm.exec.setGameTime(12)
 	end
 	if active == 27 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita60.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(15)
+		tfm.exec.setGameTime(12)
 	end
 	if active == 28 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.espaco.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
@@ -3295,7 +3295,7 @@ system.disableChatCommandDisplay("kazarina")
 mapa="@4677521" -- Variável usada para armazenar o mapa do module
 lang = {}
 lang.br = {
-	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Spectra_phantom#6089 e os membros da Spectra Advanced Module Group. Créditos adicionais a Hecarimjhenx#0000 e Miss_fortune#9548",
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Spectra_phantom#6089 e os membros da Spectra Advanced Module Group. Traduzido por Shun_kazami#7014. Créditos adicionais a Hecarimjhenx#0000 e Miss_fortune#9548",
 	time = "<R>Tempo esgotado! A resposta era ",
 	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
 	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
@@ -3366,7 +3366,7 @@ function eventLoop(p,f)
 		ui.removeTextArea(2,nil)
 		ui.removeTextArea(3,nil)
 		valendo=false
-		tfm.exec.setGameTime(64)
+		tfm.exec.setGameTime(63)
 	end
 	if pergunta == limite and valendo == false then
 		tfm.exec.chatMessage(text.fim,nil)
@@ -3390,7 +3390,7 @@ function eventLoop(p,f)
 	if valendo == true and f <= 39000 then
 		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
 	end
-	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 20<")
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 21<")
 end
 function eventChatCommand(name,message)
 	if message == "skip" then
@@ -3689,7 +3689,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.74<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.75<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
