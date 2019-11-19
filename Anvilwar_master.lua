@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #fall2, #true_false, #clickwar, #pictiomon, #pistas e #objects. Compilado às 14h14 (UTC) 10/11/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #fall2, #true_false, #clickwar, #pictiomon, #pistas e #objects. Compilado às 21h43 (UTC) 19/11/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.75",
+	_VERSION = "1.76",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -2358,9 +2358,9 @@ winner=false
 functs={running=false,level=0,count=10}
 times=0
 function eventChatCommand(name,message)
-	if name == "Reksai_void2600#6638" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
 		if message == "help" then
-			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Reksai_void2600#6638 and the Spectra Advanced Module Group")
+			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Spectra_phantom#6089 and the Spectra Advanced Module Group")
 		end
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
@@ -2392,18 +2392,15 @@ function eventNewGame()
 	end
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-		tfm.exec.chatMessage("<J>Agora você também pode enviar seus mapas para o Objects! Link do tópico:<br><b>https://atelier801.com/topic?f=816221&t=933046</b>")
-	else
-		tfm.exec.chatMessage("Send your map to the Master Says module!<br><b>https://atelier801.com/topic?f=816221&t=931246&p=1</b>")
 	end
 end
 function showBar()
 	for i=1,29 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 5037.021   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 5138.022   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 5037.021   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 5138.022   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -2448,7 +2445,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Reksai_void2600#6638 and the Spectra Advanced Module Group",name)
+	tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Spectra_phantom#6089 and the Spectra Advanced Module Group",name)
 end
 function eventLoop(p,f)
 	showBar()
@@ -3678,14 +3675,59 @@ function sortearpalavra()
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
+initFalling = function()
+for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
+	tfm.exec["disable"..f](true)
+end
+tfm.exec.setRoomMaxPlayers(35)
+ground_id=20
+loop=-20
+grounds={0,5,6,7,10,11,12}
+maps={'<C><P H="400" L="1600" /><Z><S><S L="10" X="800" H="10" v="10000" Y="70" T="0" P="0,0,0,0,0,0,0,0" /></S><D><DS Y="50" X="800" /></D><O /></Z></C>','<C><P L="1600" D="x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,188,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,376,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,564,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,752,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,940,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1128,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1316,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1504,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,0,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,188,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,376,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,564,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,752,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,940,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1128,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1316,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1504,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,0,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,188,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,376,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,564,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,752,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,940,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1128,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1316,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1504,374;" H="561" /><Z><S><S P="0,0,0.3,0.2,0,0,0,0" L="1000" o="3d95b8" X="-500" c="4" Y="280" T="12" H="1000" /><S H="1000" L="3000" o="3d95b8" X="800" c="4" Y="-500" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S H="1000" L="1000" o="3d95b8" X="2100" c="4" Y="280" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="3d95b8" X="800" c="4" Y="1061" T="12" H="1000" /><S L="10" X="800" H="10" Y="80" v="10000" T="0" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="60" X="800" /></D><O /></Z></C>','<C><P H="600" L="1600" /><Z><S><S X="800" L="3000" o="50010" H="3000" c="4" Y="200" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="100020" X="800" c="4" Y="300" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="150030" H="10" c="4" Y="3180" T="13" X="800" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="200040" X="800" c="4" Y="3140" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="5d0097" X="800" c="4" Y="3200" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="8200d3" X="800" c="4" Y="3260" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="ab00ff" X="800" c="4" Y="3320" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="be39ff" X="800" c="4" Y="3380" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="dc94ff" X="800" c="4" Y="3440" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="efcdff" X="800" c="4" Y="3500" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="fcecff" X="800" c="4" N="" Y="3560" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" X="800" v="10000" Y="80" T="0" H="10" /></S><D><P X="599" Y="440" T="110" P="0,0" /><P X="413" Y="400" T="110" P="0,0" /><P X="1116" Y="397" T="110" P="0,0" /><P X="1086" Y="371" T="111" P="0,0" /><P X="1118" Y="395" T="111" P="0,0" /><DS Y="60" X="800" /></D><O /></Z></C>','<C><P H="550" L="1600" DS="m;800,60,800,59" /><Z><S><S c="4" L="3000" o="535e64" H="1000" X="800" Y="-450" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="3e464b" X="800" c="4" Y="100" T="12" H="100" /><S H="100" L="3000" o="32373b" X="800" c="4" Y="200" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="222527" X="800" c="4" Y="300" T="12" H="100" /><S H="100" L="3000" o="191b1c" X="800" c="4" Y="400" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="131415" X="800" c="4" Y="500" T="12" H="100" /><S H="1000" L="3000" o="a0b0b" X="800" c="4" Y="1050" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" H="10" v="10000" X="800" Y="85" T="0" P="0,0,0.3,0.2,0,0,0,0" /></S><D><P P="1,0" Y="453" T="45" X="85" /><P X="882" Y="453" T="45" P="1,0" /><P P="1,0" Y="453" T="45" X="1679" /></D><O /></Z></C>'}
+function eventNewGame()
+	ground_id=20
+	loop=-20
+	for i=1,20 do
+		size=math.random(20,50)
+		tfm.exec.addPhysicObject(i,math.random(100,1500),math.random(125,375),{
+		type=grounds[math.random(#grounds)],
+		width=size,
+		height=size,
+		friction=0.3,
+		groundCollision=true,
+		miceCollision=true,
+		color=math.random(1,2147483647)
+		})
+		tfm.exec.setGameTime(60)
+	end
+end
+function eventLoop(p,f)
+	ui.setMapName("Falling Grounds - <R>Beta 2.0 <J>module made by Nasus_assassin#1534 and Spectra_phantom#6089<")
+	loop=loop+1
+	if loop >= 4 and ground_id >= 2 then
+		tfm.exec.removePhysicObject(ground_id)
+		ground_id=ground_id-1
+		loop=0
+	end
+	if f <= 1 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+		end
+		tfm.exec.newGame(maps[math.random(#maps)])
+	end
+end
+tfm.exec.newGame(maps[math.random(#maps)])
+end
+
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7631682")
-tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00fall2 = Fall Racing<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00clickwar = Guerra de Cliques<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00pictiomon = Pictionary remaked<br>")
+tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00fall2 = Fall Racing<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00clickwar = Guerra de Cliques<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00pictiomon = Pictionary remaked<br>/sala #anvilwar00falling = Falling Grounds (Beta)<br>")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00fall2 = Fall Racing<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00clickwar = Guerra de Cliques<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00pictiomon = Pictionary remaked<br>",name)
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00fall2 = Fall Racing<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00clickwar = Guerra de Cliques<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00pictiomon = Pictionary remaked<br>/sala #anvilwar00falling = Falling Grounds (Beta)<br>",name)
 end
 end
 
@@ -3712,6 +3754,9 @@ elseif string.find(tfm.get.room.name,"pistas") then
 elseif string.find(tfm.get.room.name,"pictiomon") then
 	active = "pictiomon"
 	initMon()
+elseif string.find(tfm.get.room.name,"falling") then
+	active = "falling"
+	initFalling()
 elseif string.find(tfm.get.room.name,"rooms") then
 	active = "rooms"
 	Rooms()
