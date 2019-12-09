@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #true_false, #watercatch, #pistas, #falling e #objects. Compilado às 14h34 (UTC) 08/12/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #true_false, #watercatch, #pistas, #objects. Compilado às 15h15 (UTC) 09/12/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.78",
+	_VERSION = "1.79",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1300,7 +1300,7 @@ function eventNewGame()
 	showBar()
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-		tfm.exec.chatMessage("<br><BL><b>Tem module novo nesta compilação! ./sala #anvilwar00watercatch</b>")
+		tfm.exec.chatMessage("<br><BL>Tem module novo nesta compilação! ./sala #anvilwar00watercatch")
 	end
 end
 function eventTextAreaCallback(id,name,callback)
@@ -1748,7 +1748,7 @@ function eventNewGame()
 	rodadas=math.floor(10+(rato/3))
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-		tfm.exec.chatMessage("<br><BL><b>Tem module novo nesta compilação! ./sala #anvilwar00watercatch</b>")
+		tfm.exec.chatMessage("<br><BL>Tem module novo nesta compilação! ./sala #anvilwar00watercatch")
 	end
 	tfm.exec.setNameColor(admin,0xff0000)
 end
@@ -2391,7 +2391,7 @@ function eventNewGame()
 	end
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-		tfm.exec.chatMessage("<br><BL><b>Tem module novo nesta compilação! ./sala #anvilwar00watercatch</b>")
+		tfm.exec.chatMessage("<br><BL>Tem module novo nesta compilação! ./sala #anvilwar00watercatch")
 	end
 end
 function showBar()
@@ -2577,7 +2577,7 @@ function eventNewGame()
 	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-		tfm.exec.chatMessage("<br><BL><b>Tem module novo nesta compilação! ./sala #anvilwar00watercatch</b>")
+		tfm.exec.chatMessage("<br><BL>Tem module novo nesta compilação! ./sala #anvilwar00watercatch")
 	end
 end
 function eventNewPlayer(name)
@@ -2980,6 +2980,7 @@ function eventNewGame()
 	end
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
+		tfm.exec.chatMessage("<br><BL>Tem module novo nesta compilação! ./sala #anvilwar00watercatch")
 	end
 end
 function eventChatMessage(name,message)
@@ -3049,64 +3050,22 @@ function eventPlayerDied(name)
 end
 end
 
-initFalling = function()
-for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand"} do
-	tfm.exec["disable"..f](true)
-end
-tfm.exec.setRoomMaxPlayers(35)
-ground_id=20
-loop=-20
-grounds={0,5,6,7,10,11,12}
-maps={'<C><P H="400" L="1600" /><Z><S><S L="10" X="800" H="10" v="10000" Y="70" T="0" P="0,0,0,0,0,0,0,0" /></S><D><DS Y="50" X="800" /></D><O /></Z></C>','<C><P L="1600" D="x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,188,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,376,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,564,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,752,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,940,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1128,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1316,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1504,0;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,0,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,188,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,376,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,564,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,752,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,940,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1128,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1316,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1504,187;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,0,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,188,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,376,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,564,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,752,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,940,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1128,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1316,374;x_transformice/x_evt/x_evt_20/azctnlhkqsf/fond-eau.jpg,1504,374;" H="561" /><Z><S><S P="0,0,0.3,0.2,0,0,0,0" L="1000" o="3d95b8" X="-500" c="4" Y="280" T="12" H="1000" /><S H="1000" L="3000" o="3d95b8" X="800" c="4" Y="-500" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S H="1000" L="1000" o="3d95b8" X="2100" c="4" Y="280" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="3d95b8" X="800" c="4" Y="1061" T="12" H="1000" /><S L="10" X="800" H="10" Y="80" v="10000" T="0" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="60" X="800" /></D><O /></Z></C>','<C><P H="600" L="1600" /><Z><S><S X="800" L="3000" o="50010" H="3000" c="4" Y="200" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="100020" X="800" c="4" Y="300" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="150030" H="10" c="4" Y="3180" T="13" X="800" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="200040" X="800" c="4" Y="3140" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="5d0097" X="800" c="4" Y="3200" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="8200d3" X="800" c="4" Y="3260" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="ab00ff" X="800" c="4" Y="3320" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="be39ff" X="800" c="4" Y="3380" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="dc94ff" X="800" c="4" Y="3440" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="efcdff" X="800" c="4" Y="3500" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="fcecff" X="800" c="4" N="" Y="3560" T="13" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" X="800" v="10000" Y="80" T="0" H="10" /></S><D><P X="599" Y="440" T="110" P="0,0" /><P X="413" Y="400" T="110" P="0,0" /><P X="1116" Y="397" T="110" P="0,0" /><P X="1086" Y="371" T="111" P="0,0" /><P X="1118" Y="395" T="111" P="0,0" /><DS Y="60" X="800" /></D><O /></Z></C>','<C><P H="550" L="1600" DS="m;800,60,800,59" /><Z><S><S c="4" L="3000" o="535e64" H="1000" X="800" Y="-450" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="3e464b" X="800" c="4" Y="100" T="12" H="100" /><S H="100" L="3000" o="32373b" X="800" c="4" Y="200" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="222527" X="800" c="4" Y="300" T="12" H="100" /><S H="100" L="3000" o="191b1c" X="800" c="4" Y="400" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="3000" o="131415" X="800" c="4" Y="500" T="12" H="100" /><S H="1000" L="3000" o="a0b0b" X="800" c="4" Y="1050" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" H="10" v="10000" X="800" Y="85" T="0" P="0,0,0.3,0.2,0,0,0,0" /></S><D><P P="1,0" Y="453" T="45" X="85" /><P X="882" Y="453" T="45" P="1,0" /><P P="1,0" Y="453" T="45" X="1679" /></D><O /></Z></C>'}
-function eventNewGame()
-	ground_id=20
-	loop=-20
-	for i=1,20 do
-		size=math.random(20,50)
-		tfm.exec.addPhysicObject(i,math.random(100,1500),math.random(125,375),{
-		type=grounds[math.random(#grounds)],
-		width=size,
-		height=size,
-		friction=0.3,
-		groundCollision=true,
-		miceCollision=true,
-		color=math.random(1,2147483647)
-		})
-		tfm.exec.setGameTime(60)
-	end
-end
-function eventLoop(p,f)
-	ui.setMapName("Falling Grounds - <R>Beta 2.0 <J>module made by Nasus_assassin#1534 and Spectra_phantom#6089<")
-	loop=loop+1
-	if loop >= 4 and ground_id >= 2 then
-		tfm.exec.removePhysicObject(ground_id)
-		ground_id=ground_id-1
-		loop=0
-	end
-	if f <= 1 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.giveCheese(name)
-			tfm.exec.playerVictory(name)
-		end
-		tfm.exec.newGame(maps[math.random(#maps)])
-	end
-end
-tfm.exec.newGame(maps[math.random(#maps)])
-end
-
 initWatercatch = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disableDebugCommand(true)
+tfm.exec.setRoomMaxPlayers(30)
 shaman=""
 alives=0
 data={}
 mode="hide"
-map='<C><P F="1" L="6000" G="0,6" H="3400" /><Z><S><S L="500" X="126" H="500" Y="900" T="5" P="0,0,0.3,0.2,40,0,0,0" /><S L="1300" H="600" X="126" Y="511" T="5" P="0,0,0.3,0.2,5,0,0,0" /><S L="500" H="1300" X="3179" Y="693" T="5" P="0,0,0.3,0.2,-70,0,0,0" /><S L="500" X="1846" H="500" Y="1020" T="5" P="0,0,0.3,0.2,-70,0,0,0" /><S L="500" X="2330" H="900" Y="636" T="5" P="0,0,0.3,0.2,10,0,0,0" /><S L="500" X="831" H="500" Y="622" T="5" P="0,0,0.3,0.2,40,0,0,0" /><S L="500" H="500" X="669" Y="1279" T="5" P="0,0,0.3,0.2,40,0,0,0" /><S L="2500" X="-576" H="1500" Y="1383" T="5" P="0,0,0.3,0.2,60,0,0,0" /><S L="500" H="1000" X="1504" Y="809" T="5" P="0,0,0.3,0.2,40,0,0,0" /><S L="600" X="512" H="500" Y="2683" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="1100" H="900" X="1196" Y="2585" T="5" P="0,0,0.3,0.2,-15,0,0,0" /><S L="500" H="1000" X="2237" Y="1542" T="5" P="0,0,0.3,0.2,2,0,0,0" /><S L="2900" H="1000" X="3039" Y="3473" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="1900" X="3296" H="1000" Y="2820" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="500" X="3132" H="1000" Y="1607" T="5" P="0,0,0.3,0.2,-40,0,0,0" /><S L="500" H="1000" X="4463" Y="1184" T="5" P="0,0,0.3,0.2,-70,0,0,0" /><S L="500" X="5232" H="1000" Y="1184" T="5" P="0,0,0.3,0.2,70,0,0,0" /><S L="1000" H="2000" X="5646" Y="999" T="5" P="0,0,0.3,0.2,150,0,0,0" /><S L="2900" H="1200" X="5326" Y="2412" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="1000" X="6211" H="2000" Y="-650" T="5" P="0,0,0.3,0.2,140,0,0,0" /><S L="1000" H="2000" X="7175" Y="904" T="5" P="0,0,0.3,0.2,170,0,0,0" /><S L="1400" X="6320" H="2000" Y="2583" T="5" P="0,0,0.3,0.2,200,0,0,0" /><S L="1200" H="2000" X="6589" Y="3838" T="5" P="0,0,0.3,0.2,240,0,0,0" /><S L="1400" X="4582" H="1900" Y="4805" T="5" P="0,0,0.3,0.2,95,0,0,0" /><S L="2400" H="1900" X="3091" Y="5430" T="5" P="0,0,0.3,0.2,75,0,0,0" /><S L="1400" X="1236" H="1900" Y="5161" T="5" P="0,0,0.3,0.2,95,0,0,0" /><S L="1400" H="2900" X="-151" Y="6709" T="5" P="0,0,0.3,0.2,155,0,0,0" /><S L="2500" X="827" H="2500" Y="3741" T="5" P="0,0,0.3,0.2,80,0,0,0" /><S L="1400" H="3000" X="8324" Y="1047" T="5" P="0,0,0.3,0.2,160,0,0,0" /><S L="2400" X="6801" H="1400" Y="-143" T="5" P="0,0,0.3,0.2,190,0,0,0" /><S L="2500" H="1500" X="-1323" Y="-10" T="5" P="0,0,0.3,0.2,100,0,0,0" /><S L="1800" X="7040" H="2000" Y="4852" T="5" P="0,0,0.3,0.2,280,0,0,0" /><S L="2400" H="2000" X="5831" Y="6631" T="5" P="0,0,0.3,0.2,340,0,0,0" /><S L="2400" X="4351" H="2000" Y="6530" T="5" P="0,0,0.3,0.2,5,0,0,0" /><S L="1400" X="1087" H="1900" Y="6591" T="5" P="0,0,0.3,0.2,95,0,0,0" /><S L="1400" H="1900" X="1904" Y="6696" T="5" P="0,0,0.3,0.2,85,0,0,0" /><S L="10" X="220" H="51" v="63000" Y="68" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="66" X="250" H="10" v="63000" Y="96" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" X="284" H="51" v="63000" Y="71" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="69" X="252" H="10" v="63000" Y="50" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,,,,0,0,0" L="3000" X="700" v="1" Y="1900" T="9" H="3000" /><S P="0,0,,,,0,0,0" L="3000" X="3700" v="1" Y="1900" T="9" H="3000" /><S P="0,0,,,,0,0,0" L="3000" X="6700" v="1" Y="1900" T="9" H="3000" /></S><D><DC Y="78" X="249" /></D><O /><L><VL n="water" l="-1" /><JD c="0fc28c,250,0.76,1" P2="8000,525" P1="-1000,525" /><JD c="0fc28c,250,0.76,1" P2="8000,775" P1="-1000,775" /><JD c="0fc28c,250,0.76,1" P2="8000,1025" P1="-1000,1025" /><JD c="0fc28c,250,0.76,1" P2="8000,1275" P1="-1000,1275" /><JD c="0eb580,250,0.77,1" P2="8000,1525" P1="-1000,1525" /><JD c="0da874,250,0.78,1" P2="8000,1775" P1="-1000,1775" /><JD c="0c9c6a,250,0.79,1" P2="8000,2025" P1="-1000,2025" /><JD c="0b8f61,250,0.8,1" P2="8000,2275" P1="-1000,2275" /><JD c="0a8258,250,0.81,1" P2="8000,2525" P1="-1000,2525" /><JD c="09754f,250,0.82,1" P2="8000,2775" P1="-1000,2775" /><JD c="086946,250,0.83,1" P2="8000,3025" P1="-1000,3025" /><JD c="075c3d,250,0.84,1" P2="8000,3275" P1="-1000,3275" /><JD c="064f34,250,0.85,1" P2="8000,3525" P1="-1000,3525" /><JD c="05422b,250,0.86,1" P2="8000,3775" P1="-1000,3775" /><JD c="043623,250,0.87,1" P2="8000,4025" P1="-1000,4025" /><JD c="11db9b,16,0.95,0" P2="8000,400" P1="-1000,400" /><L /></L></Z></C>'
+map="@7664077"
 tfm.exec.newGame(map)
 function eventPlayerDied(n)
-	alives=alives-1
+	if not tfm.get.room.playerList[n].isShaman then
+		alives=alives-1
+	end
 	if alives <= 0 then
 		mode="end"
 		tfm.exec.setGameTime(15)
@@ -3152,10 +3111,11 @@ for n,p in pairs(tfm.get.room.playerList) do
 	end
 end
 tfm.exec.setGameTime(60)
-tfm.exec.chatMessage("<J>Bem-vindos ao module Beta #watercatch! O objetivo dele é fugir do shaman, se escondendo dentro do lago e tomando cuidado para não morrer afogado!<br><br>Module em versão <R>BETA<J> criado por Spectra_phantom#6089 e traduzido para o português por Shun_kazami#7014.")
+tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br>")
+tfm.exec.chatMessage("<J>Bem-vindos ao module Beta #watercatch! O objetivo dele é fugir do shaman, se escondendo dentro do lago e tomando cuidado para não morrer afogado!<br><br>Module criado por Spectra_phantom#6089. Mapa feito por Namideepwin#0000.")
 end
 function eventLoop(p,r)
-ui.setMapName("#waterfall! Version 0612.000 <R>Beta<J> by Spectra_phantom#6089<")
+ui.setMapName("#watercatch! Version 0914.000 <R>Beta 3<J> by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='22'><font face='Bahnschrift'><p align='center'>0"..m.." : "..s.."",nil,340,24,120,28,0x000001,0x000001,1.0,true)
@@ -3172,8 +3132,8 @@ for n,q in pairs(tfm.get.room.playerList) do
 		data[n].x=tfm.get.room.playerList[n].x
 		data[n].yp=tfm.get.room.playerList[n].y
 		if mode == "game" then
-			if q.x >= data[shaman].x - 100 and q.x <= data[shaman].x + 100 then
-			if q.y >= data[shaman].yp - 100 and q.y <= data[shaman].yp + 100 then
+			if q.x >= data[shaman].x - 80 and q.x <= data[shaman].x + 80 then
+			if q.y >= data[shaman].yp - 80 and q.y <= data[shaman].yp + 80 then
 			if not tfm.get.room.playerList[n].isShaman then
 			tfm.exec.killPlayer(n)
 			end
@@ -3181,18 +3141,16 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		end
 		if not tfm.get.room.playerList[n].isDead then
-			if tfm.get.room.playerList[n].y < 400 then
+			if tfm.get.room.playerList[n].y < 175 then
 				if data[n].o < 100 then
 					data[n].o=data[n].o+1
 				end
 					data[n].y=0
 				else
-					data[n].y=((tfm.get.room.playerList[n].y-400)/240)^2
-					if data[n].y < 10 then
-						data[n].o=data[n].o-0.5
-					elseif data[n].y > 10 and data[n].y < 100 then
-						data[n].o=data[n].o-1
-					elseif data[n].y > 100 then
+					data[n].y=((tfm.get.room.playerList[n].y-175)/180)^2
+					if data[n].y < 8 then
+						data[n].o=data[n].o-0.75
+					elseif data[n].y > 8 then
 						data[n].o=data[n].o-1.5
 					end
 				if data[n].o <= 0 then
@@ -3203,41 +3161,33 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		ui.addTextArea(0,"<font size='15'><font face='Bahnschrift SemiLight'>O₂Meter",n,12,372,68,20,0x181818,0x090909,1.0,true)
 		if data[n].o > 30 then
-			ui.addTextArea(10,"",n,88,372,data[n].o*2,20,0x0080ff,0x0060ff,1.0,true)
+			ui.addTextArea(10,"",n,88,382,data[n].o*2,10,0x0080ff,0x0060ff,1.0,true)
 		else
-			ui.addTextArea(10,"",n,88,372,data[n].o*2,20,0xff8000,0xff6000,1.0,true)
+			ui.addTextArea(10,"",n,88,382,data[n].o*2,10,0xff8000,0xff6000,1.0,true)
 		end
-	ui.addTextArea(1,"<font size='15'><font face='Bahnschrift SemiLight'>Deepness",n,726,24,74,20,0x181818,0x090909,1.0,true)
-	ui.addTextArea(11,"",n,778,52,20,math.sqrt(data[n].y)*15,0x808080,0x393939,1.0,true)
-	ui.addTextArea(12,"<font size='13'><font face='Bahnschrift SemiLight'>"..math.floor(data[n].y).."m",n,722,52,50,18,0x222222,0x111111,1.0,true)
 	end
 	end
 end
 if r <= 2000 and mode == "hide" then
 	mode="game"
-	tfm.exec.setGameTime(300)
+	tfm.exec.setGameTime(180)
 	ui.removeTextArea(22,nil)
 	tfm.exec.chatMessage("<J>O shaman foi liberto! Salve-se quem puder! Chegou perto dele, morreu!")
-	for n,p in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[n].isShaman then
-		tfm.exec.movePlayer(n,math.random(250,5000),1000,false,0,0,false)
-		end
-	end
 end
 if r <= 1000 and mode == "game" then
-mode="end"
 tfm.exec.setGameTime(15)
+mode="end"
 local lives=0
 for n,p in pairs(tfm.get.room.playerList) do
 	if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
 	lives=lives+1
 	tfm.exec.giveCheese(n)
 	tfm.exec.playerVictory(n)
-	tfm.exec.chatMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Próxima partida iniciando em 15 segundos.")
 	end
 end
+tfm.exec.chatMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Próxima partida iniciando em 15 segundos.")
 end
-if r <= 1000 and mode == "end" then
+if r <= 1 and mode == "end" then
 tfm.exec.newGame(map)
 end
 end
@@ -3248,13 +3198,13 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7631682")
-tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00falling = Falling Grounds (Beta)<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)<br>")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)<br>")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00falling = Falling Grounds (Beta)<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)<br>")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)<br>")
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.78<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.79<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
@@ -3268,9 +3218,6 @@ elseif string.find(tfm.get.room.name,"objects") then
 elseif string.find(tfm.get.room.name,"pistas") then
 	active = "pistas"
 	initPistas()
-elseif string.find(tfm.get.room.name,"falling") then
-	active = "falling"
-	initFalling()
 elseif string.find(tfm.get.room.name,"watercatch") then
 	active = "watercatch"
 	initWatercatch()
