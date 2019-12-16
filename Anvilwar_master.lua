@@ -1,5 +1,3 @@
-tfm.get.room.name = "#anvilwar00pistas"
-
 --[[ Script contendo o module #anvilwar, #mestre, #pistas, #falling, #true_false, #watercatch, e #objects. Compilado às 21h29 (UTC) 16/12/2019. ]]--
 
 local modulo = {
