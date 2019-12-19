@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #pistas, #falling, #true_false, #watercatch, e #objects. Compilado às 16h42 (UTC) 18/12/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #pistas, #falling, #true_false, #watercatch, e #objects. Compilado às 14h16 (UTC) 19/12/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.81.1",
+	_VERSION = "1.81.2",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -20,6 +20,7 @@ players_table={}
 caps={azul="",vermelho=""}
 play_vermelho={}
 avs_list={}
+banned_list={"Brunomcord#0000","Engatao123#6775"}
 mods_list={"Nasus_assassin#1534"}
 managers_list={"Spectra_phantom#6089"}
 admins_list={"Zed#9431","Tryndavayron#0000"}
@@ -1294,6 +1295,11 @@ function eventNewGame()
 					giveCargos(name,6)
 				end
 			end
+			for id,name in pairs(banned_list) do
+				if data[name] then
+					giveCargos(name,-2)
+				end
+			end
 		end
 	end
 	tfm.exec.setGameTime(30)
@@ -1461,6 +1467,8 @@ function giveCargos(name,type)
 	elseif type == 6 and data[name] then
 		data[name].level=6
 		tfm.exec.setNameColor(name,0xFF0000)
+	elseif type == -2 and data[name] then
+		data[name].level=-2
 	end
 end
 end
@@ -3273,7 +3281,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.81.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.81.2<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
