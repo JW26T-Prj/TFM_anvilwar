@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #true_false, #watercatch, #perguntas e #pistas. Compilado às 18h30 (UTC) 25/12/2019. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #true_false, #watercatch, #perguntas e #pistas. Compilado às 21h14 (UTC) 27/12/2019. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.84",
+	_VERSION = "1.85",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -3034,163 +3034,15 @@ function eventPlayerDied(name)
 end
 end
 
-initPerguntas = function()
-casas=5
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(30)
-tfm.exec.disableAfkDeath(true)
-mapa3='<C><P L="900" /><Z><S><S P="0,0,0.3,0.2,0,0,0,0" L="900" o="ffffff" X="450" N="" Y="386" T="12" H="28" /><S L="20" o="ffffff" X="300" H="400" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" H="400" Y="200" T="12" X="10" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" H="150" Y="269" T="12" X="385" /><S L="20" o="ffffff" H="150" X="470" Y="334" T="12" P="0,0,0,0,180,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" X="640" Y="319" T="12" H="150" /><S P="0,0,0,0,270,0,0,0" L="20" o="ffffff" X="555" Y="254" T="12" H="150" /><S L="20" o="ffffff" X="825" H="150" Y="239" T="12" P="0,0,0,0,90,0,0,0" /><S L="20" o="ffffff" X="725" H="150" Y="239" T="12" P="0,0,0,0,270,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" H="400" Y="200" T="12" X="890" /><S L="900" o="ffffff" H="40" X="450" Y="20" T="12" P="0,0,0,0,0,0,0,0" /></S><D><T Y="382" D="" X="843" /><F Y="368" D="" X="841" /><DS Y="360" X="149" /><DC Y="231" X="559" /><P P="0,0" C="0" Y="0" T="34" X="0" /><P C="0" Y="0" T="34" X="90" P="0,0" /><P P="0,0" Y="374" T="37" X="379" /><P P="0,0" Y="374" T="37" X="535" /><P P="0,0" Y="374" T="37" X="575" /><P P="0,0" Y="375" T="37" X="682" /><P P="0,0" Y="373" T="37" X="717" /><P P="0,0" Y="375" T="37" X="751" /><P P="0,0" Y="73" T="35" X="439" /><P P="0,0" Y="65" T="35" X="763" /><P P="0,0" Y="125" T="36" X="602" /><P P="0,0" Y="82" T="38" X="781" /><P P="0,0" Y="258" T="33" X="384" /><P P="0,0" Y="218" T="31" X="382" /><P P="0,0" Y="375" T="26" X="237" /><P P="0,0" Y="375" T="22" X="66" /></D><O /></Z></C>'
-mapa5='<C><P L="1240" /><Z><S><S L="1240" o="ffffff" X="620" H="28" N="" Y="386" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" H="400" Y="200" T="12" X="300" /><S L="20" o="ffffff" H="400" X="10" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S L="20" o="ffffff" H="150" X="385" Y="269" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" X="470" Y="334" T="12" H="150" /><S L="20" o="ffffff" X="640" H="150" Y="319" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" X="555" H="150" Y="254" T="12" P="0,0,0,0,270,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" H="150" Y="239" T="12" X="725" /><S L="20" o="ffffff" H="400" X="1230" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="1240" o="ffffff" X="640" Y="20" T="12" H="40" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" H="150" Y="304" T="12" X="810" /><S L="20" o="ffffff" H="200" X="980" Y="312" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" H="150" X="895" Y="222" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="240" o="ffffff" X="1110" Y="205" T="12" H="20" /></S><D><T Y="378" D="" X="1190" /><F Y="368" D="" X="1189" /><DS Y="360" X="149" /><DC Y="231" X="559" /><P C="0" Y="0" T="34" X="0" P="0,0" /><P C="0" Y="0" T="34" P="0,0" X="422" /><P X="379" Y="374" T="37" P="0,0" /><P X="535" Y="374" T="37" P="0,0" /><P X="575" Y="374" T="37" P="0,0" /><P X="682" Y="375" T="37" P="0,0" /><P X="717" Y="373" T="37" P="0,0" /><P X="751" Y="375" T="37" P="0,0" /><P X="439" Y="73" T="35" P="0,0" /><P X="763" Y="65" T="35" P="0,0" /><P X="602" Y="125" T="36" P="0,0" /><P X="781" Y="82" T="38" P="0,0" /><P X="384" Y="258" T="33" P="0,0" /><P X="382" Y="218" T="31" P="0,0" /><P X="237" Y="375" T="26" P="0,0" /><P X="66" Y="375" T="22" P="0,0" /><P P="0,0" Y="376" T="37" X="845" /><P P="0,0" Y="374" T="37" X="876" /><P P="0,0" Y="375" T="37" X="906" /><P P="0,0" Y="374" T="37" X="939" /><P P="0,0" Y="374" T="37" X="1013" /><P P="0,0" Y="379" T="37" X="1044" /><P P="0,0" Y="377" T="37" X="1077" /><P P="0,0" Y="380" T="37" X="1115" /><P P="0,0" Y="378" T="37" X="1147" /></D><O /></Z></C>'
-mapa7='<C><P L="1580" /><Z><S><S L="1580" o="ffffff" H="28" X="790" N="" Y="386" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="20" o="ffffff" X="300" Y="200" T="12" H="400" /><S L="20" o="ffffff" X="10" H="400" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S L="20" o="ffffff" X="385" H="150" Y="269" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" H="150" Y="334" T="12" X="470" /><S L="20" o="ffffff" H="150" X="640" Y="319" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" H="150" X="555" Y="254" T="12" P="0,0,0,0,270,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" X="725" Y="239" T="12" H="150" /><S L="20" o="ffffff" X="1570" H="400" Y="200" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="1580" o="ffffff" H="40" Y="20" T="12" X="790" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" X="810" Y="304" T="12" H="150" /><S L="20" o="ffffff" X="980" H="200" Y="312" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" X="895" H="150" Y="222" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,180,0,0,0" L="20" o="ffffff" H="200" Y="295" T="12" X="1150" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" H="150" Y="205" T="12" X="1065" /><S L="20" o="ffffff" H="200" X="1320" Y="278" T="12" P="0,0,0,0,180,0,0,0" /><S L="20" o="ffffff" H="150" X="1235" Y="188" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="20" o="ffffff" X="1455" Y="171" T="12" H="250" /></S><D><T Y="379" D="" X="1534" /><F Y="368" D="" X="1532" /><DS Y="360" X="149" /><DC Y="231" X="559" /><P C="0" Y="0" T="34" X="0" P="0,0" /><P C="0" Y="0" T="34" P="0,0" X="765" /><P X="379" Y="374" T="37" P="0,0" /><P X="535" Y="374" T="37" P="0,0" /><P X="575" Y="374" T="37" P="0,0" /><P X="682" Y="375" T="37" P="0,0" /><P X="717" Y="373" T="37" P="0,0" /><P X="751" Y="375" T="37" P="0,0" /><P X="439" Y="73" T="35" P="0,0" /><P X="763" Y="65" T="35" P="0,0" /><P X="781" Y="82" T="38" P="0,0" /><P X="384" Y="258" T="33" P="0,0" /><P X="237" Y="375" T="26" P="0,0" /><P X="66" Y="375" T="22" P="0,0" /><P P="0,0" Y="376" T="37" X="845" /><P P="0,0" Y="374" T="37" X="876" /><P P="0,0" Y="375" T="37" X="906" /><P P="0,0" Y="374" T="37" X="939" /><P P="0,0" Y="374" T="37" X="1013" /><P P="0,0" Y="375" T="37" X="1038" /><P P="0,0" Y="376" T="37" X="1063" /><P P="0,0" Y="377" T="37" X="1113" /><P P="0,0" Y="375" T="37" X="1089" /><P P="0,0" Y="376" T="37" X="1174" /><P P="0,0" Y="375" T="37" X="1194" /><P P="0,0" Y="375" T="37" X="1215" /><P P="0,0" Y="373" T="37" X="1239" /><P P="0,0" Y="373" T="37" X="1263" /><P P="0,0" Y="376" T="37" X="1288" /><P P="0,0" Y="373" T="37" X="1347" /><P P="0,0" Y="372" T="37" X="1372" /><P P="0,0" Y="372" T="37" X="1398" /><P P="0,0" Y="372" T="37" X="1421" /><P P="0,0" Y="373" T="37" X="1445" /><P P="0,0" Y="374" T="37" X="1468" /><P P="0,0" Y="372" T="37" X="1493" /></D><O /></Z></C>'
-function trocarMapa()
-	if casas == 3 then
-		tfm.exec.newGame(mapa3)
-	elseif casas == 5 then
-		tfm.exec.newGame(mapa5)
-	elseif casas == 7 then
-		tfm.exec.newGame(mapa7)
-	end
-end
-tfm.exec.setGameTime(60)
-palavra=""
-pergunta=""
-data={}
-players_table={}
-system.disableChatCommandDisplay("setxa")
-system.disableChatCommandDisplay("rounds")
-for name,player in pairs(tfm.get.room.playerList) do
-	newData={
-	["p"]=0;
-	}
-	data[name] = newData;
-end
-function eventChatCommand(name,message)
-	if message == "q" then
-		if tfm.get.room.playerList[name].isShaman then
-			ui.addPopup(0,2,"Type the question:",name,350,175,200,true)
-		end
-	end
-	if name == "Akaliswayner#0000" or name == "Spectra_phantom#6089" then
-	if(message:sub(0,5) == "setxa") then
-		tfm.exec.setPlayerScore(message:sub(7),10,false)
-		trocarMapa()
-	end
-	if(message:sub(0,6) == "rounds") then
-		if message:sub(8) == "3" or message:sub(8) == "5" or message:sub(8) == "7" then
-			casas=tonumber(message:sub(8))
-		else
-			tfm.exec.chatMessage("Not allowed",name)
-		end
-	end
-	end
-end
-function eventChatMessage(name,message)
-	if message == palavra and not tfm.get.room.playerList[name].isShaman then
-			data[name].p=data[name].p+1
-			palavra=""
-			pergunta=""
-			ui.addPopup(2,0,"",nil,6000,6000,0,false)
-			tfm.exec.setPlayerScore(name,1,true)
-			if data[name].p == 1 then
-				tfm.exec.movePlayer(name,380,360,false,1,1,false)
-			elseif data[name].p == 2 then
-				tfm.exec.movePlayer(name,550,360,false,1,1,false)
-			elseif data[name].p == 3 then
-				tfm.exec.movePlayer(name,720,360,false,1,1,false)
-			elseif data[name].p == 4 then
-				tfm.exec.movePlayer(name,890,360,false,1,1,false)
-			elseif data[name].p == 5 then
-				tfm.exec.movePlayer(name,1060,360,false,1,1,false)
-			elseif data[name].p == 6 then
-				tfm.exec.movePlayer(name,1230,360,false,1,1,false)
-			elseif data[name].p == 7 then
-				tfm.exec.movePlayer(name,1400,360,false,1,1,false)
-			end
-			tfm.exec.chatMessage("<VP>"..name.." answered correctly! The answer was "..string.upper(message).."")
-		end
-end
-function eventPopupAnswer(id,name,answer)
-	if id == 0 then
-		pergunta=answer;
-		ui.addPopup(1,2,"Type the answer:",name,350,275,200,true)
-		ui.addPopup(2,0,"<font size='14'>"..pergunta.."",NIL,0,60,800,true)
-	end
-	if id == 1 then
-		tfm.exec.chatMessage("<ROSE>They can answer now!")
-		tfm.exec.setGameTime(60)
-		palavra=answer;
-	end	
-end
-function eventNewPlayer(name)
-	tfm.exec.setUIMapName("Questions Race v9.51 [32-bit version] remaked by Akaliswayner#0000<")
-	tfm.exec.respawnPlayer(name)
-	if not data[name] then
-		table.insert(players_table,name)
-		data[name]={p=0}
-	else
-		if data[name].p == 1 then
-			tfm.exec.movePlayer(name,380,360,false,1,1,false)
-		elseif data[name].p == 2 then
-			tfm.exec.movePlayer(name,550,360,false,1,1,false)
-		elseif data[name].p == 3 then
-			tfm.exec.movePlayer(name,720,360,false,1,1,false)
-		elseif data[name].p == 4 then
-			tfm.exec.movePlayer(name,890,360,false,1,1,false)
-		elseif data[name].p == 5 then
-			tfm.exec.movePlayer(name,1060,360,false,1,1,false)
-		elseif data[name].p == 6 then
-			tfm.exec.movePlayer(name,1230,360,false,1,1,false)
-		elseif data[name].p == 7 then
-			tfm.exec.movePlayer(name,1400,360,false,1,1,false)
-		end
-		tfm.exec.setGameTime(60)
-		tfm.exec.setPlayerScore(name,1,true)
-	end
-end
-function eventLoop(p,f)
-	if f <= 1 then
-		trocarMapa()
-	end
-end
-function eventNewGame()
-	ui.addPopup(2,0,"",NIL,-1234,-1234,123,true)
-	tfm.exec.setUIMapName("Questions Race v9.51 [32-bit version] remaked by Akaliswayner#0000<")
-	for id,name in pairs(players_table) do
-		data[name].p=0
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		tfm.exec.setPlayerScore(name,1,false)
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.setPlayerScore(name,-2,false)
-			tfm.exec.chatMessage("Type !q to make a question.",name)
-		end
-	end
-	tfm.exec.setGameTime(60)
-end
-function eventPlayerWon(name)
-	tfm.exec.setGameTime(5)
-end
-function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.chatMessage("<ROSE>Is not allowed the use of shaman objects.",nil)
-			trocarMapa()
-		end
-	end
-end
-trocarMapa()
-end
 
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7631682")
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00perguntas = Questions Race<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00perguntas = Questions Race<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00true_false = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00watercatch = WaterCatch! (Beta)")
 end
 end
 
@@ -3203,7 +3055,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.84<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.85<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"true_false") then
 	active = "true_false"
@@ -3217,9 +3069,6 @@ elseif string.find(tfm.get.room.name,"watercatch") then
 elseif string.find(tfm.get.room.name,"pistas") then
 	active = "pistas"
 	initPistas()
-elseif string.find(tfm.get.room.name,"perguntas") then
-	active = "perguntas"
-	initPerguntas()
 elseif string.find(tfm.get.room.name,"rooms") then
 	active = "rooms"
 	Rooms()
