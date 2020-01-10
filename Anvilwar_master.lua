@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #watercatch e #fall2. Compilado às 00h14 (UTC) 04/01/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #watercatch e #fall2. Compilado às 01h20 (UTC) 10/01/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.87",
+	_VERSION = "1.88",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1495,11 +1495,11 @@ pergunta=""
 tempo=10
 resposta=""
 unlocked=true -- bloqueia ou desbloqueia a execução do script
-for _,f in next,{"run","q","r","mapa","reset","time","pw","kill"} do
+for _,f in next,{"run","q","r","mapa","reset","time","pw","kill","rodar"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 59",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 60",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1542,10 +1542,12 @@ lang.br = {
 	segundos = "segundos.",
 	fim = "Partida encerrada! Próxima partida iniciando em ",
 	playingmap = "Rodando mapa",
-	created = "criado por"
+	created = "criado por",
+	abaixar = "Abaixem!",
+	action = "Façam qualquer ação!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 59",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 60",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1588,10 +1590,12 @@ lang.en = {
 	segundos = "seconds.",
 	fim = "End of match! The next match will start on ",
 	playingmap = "Playing map",
-	created = "created by"
+	created = "created by",
+	abaixar = "Turn down!",
+	action = "Do any action!"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 59, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 60, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1634,10 +1638,12 @@ lang.ar = {
 	segundos = "ثوانٍ.",
 	fim = "نهاية الجولة! ستبدأ الجولة التالية في غضون ",
 	playingmap = "بدأ الخارطة",
-	created = "created by"
+	created = "created by",
+	abaixar = "Turn down!",
+	action = "Do any action!"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 59",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 60",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -1680,7 +1686,9 @@ creator = "Módulo creado por Vaicntaefeto#0000",
 segundos = "segundos.",
 fim = "¡Fin del partido! El próximo partido comenzará el ",
 playingmap = "Mapa de juego",
-created = "creado por"
+created = "creado por",
+abaixar = "¡Bajar!",
+action = "¡Hacer cualquer acción!"
 }
 if tfm.get.room.community == "br" then
 	text = lang.br
@@ -1762,11 +1770,11 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,34)
+	active=math.random(1,36)
 	getCommand()
 end
 function eventChatCommand(name,message)
-	if name == "Vaicntaefeto#0000" or name == admin then
+	if name == "Vaicntaefeto#0000" or name == "Forzaldenon#0000" or name == admin then
 		if(message:sub(0,3) == "run") then
 				active=tonumber(message:sub(5))
 				getCommand()
@@ -1779,6 +1787,10 @@ function eventChatCommand(name,message)
 		end
 		if(message:sub(0,4) == "mapa") then
 			tfm.exec.newGame(message:sub(6))
+			active=0
+		end
+		if(message:sub(0,5) == "rodar") then
+			tfm.exec.newGame(message:sub(7))
 			active=0
 		end
 		if message == "reset" then
@@ -2017,6 +2029,14 @@ function getCommand()
 		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
 		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
+	if active == 35 then
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.abaixar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(7)
+	end
+	if active == 36 then
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.abaixar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(8)
+	end
 end
 function eventChatMessage(name,message)
 	if active == 11 then
@@ -2028,6 +2048,8 @@ function eventChatMessage(name,message)
 	if active == 16 then
 		if message == "2020" then
 			data[name].c=1
+		elseif message == "2019" then
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 29 then
@@ -2090,6 +2112,9 @@ function eventEmotePlayed(name,id)
 		if id == 0 or id == 10 then
 			tfm.exec.killPlayer(name)
 		end
+	end
+	if active == 36 then
+		data[name].c=1
 	end
 end
 function eventMouse(name,x,y)
@@ -2193,6 +2218,11 @@ function eventKeyboard(name,id,down,x,y)
 			if data[name].s >= 15 then
 				data[name].c=1
 			end
+		end
+	end
+	if active == 35 then
+		if id == 40 or id == 83 then
+			data[name].s=data[name].s+1
 		end
 	end
 end
@@ -2637,7 +2667,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.87<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.88<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"mestre") then
 	active = "mestre"
