@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #forca, #true_false, #objects e #pistas. Compilado às 16h13 (UTC) 15/02/2020 e atualizado às 22h02 (UTC) 16/02/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #true_false, #objects e #pistas. Compilado às 14h46 (UTC) 25/02/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.93.2",
+	_VERSION = "1.94",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -21,10 +21,10 @@ caps={azul="",vermelho=""}
 play_vermelho={}
 avs_list={}
 banned_list={}
-mods_list={"Nasus_assassin#1534"}
+mods_list={"Nasus_assassin#1534","Artikaa#7412"}
 managers_list={"Zed#9431"}
 admins_list={"Spectra_phantom#6089","Tryndavayron#0000"}
-ninjas_list={"Shun_kazami#7014","Dhanny_mheyran#6701","Varusofeyzan#0000"}
+ninjas_list={"Shun_kazami#7014","Hecarimjhenx#0000"}
 scoreloop=0
 sudden_death=false
 local temp_name=""
@@ -69,7 +69,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 17401.120",
+	bar = "#anvilwar - RTM 17502.121",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Tryndavayron#0000<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -78,8 +78,8 @@ lang.br = {
 	ajuda = "Ajuda",
 	credits = "Créditos",
 	mostrar = "Mostrar",
-	seconds = "<ROSE>Faltam 60 segundos!<br><br>Não é mais permitido reviver jogadores nos 60 segundos finais.",
-	seconds30 = "<ROSE>Faltam 30 segundos!",
+	seconds = "<ROSE>Faltam 60 segundos!",
+	seconds30 = "<ROSE>Faltam 30 segundos!<br><br>Não é mais permitido reviver jogadores nos 30 segundos finais.",
 	seconds10 = "<ROSE>Faltam 10 segundos!",
 	teamchat = "<J>Você pode usar o comando !tc [mensagem] para falar apenas com o seu time.<br><br>Você pode ver seu perfil no jogo digitando !p e o ranking temporário digitando !rank.",
 	menu_bar = "<p align='center'><a href='event:help'>Ajuda</a>  |  <a href='event:profile'>Perfil</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitão</a>  |  <a href='event:cmd'>Comandos</a>",
@@ -116,6 +116,8 @@ lang.br = {
 	exp2 = "<br>Neste powerup, você pode gerar uma explosão clicando em um local do time inimigo.<br>Você possui 5 segundos para explodir!",
 	inv1 = "acionou o powerup Modo Imortal!",
 	inv2 = "<br>Neste powerup, você ficará imortal durante 4 turnos do seu time. Esta habilidade só pode ser utilizada uma vez por partida.",
+	rs1 = "acionou o powerup Reduzir Tamanho!",
+	rs2 = "<br>Neste powerup, você reduzirá o tamanho do seu rato até o término da partida.",
 }
 lang.en = {
 	win_vermelho = "<R><b>The RED team wins!</b><br>The next match will start in 15 seconds.",
@@ -129,7 +131,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 17401.120",
+	bar = "#anvilwar - RTM 17502.121",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Tryndavayron#0000<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -138,8 +140,8 @@ lang.en = {
 	ajuda = "Help",
 	credits = "Credits",
 	mostrar = "Show",
-	seconds = "<ROSE>60 seconds remaining!<br>Isn't allowed to revive players at 60 final seconds.",
-	seconds30 = "<ROSE>30 seconds remaining!",
+	seconds = "<ROSE>60 seconds remaining!",
+	seconds30 = "<ROSE>30 seconds remaining!<br>Isn't allowed to revive players at 60 final seconds.",
 	seconds10 = "<ROSE>10 seconds remaining!",
 	teamchat = "<J>You can use the command !tc [message] to speak with your team.<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
 	menu_bar = "<p align='center'><a href='event:help'>Help</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitain</a>  |  <a href='event:cmd'>Commands</a>",
@@ -176,6 +178,8 @@ lang.en = {
 	exp2 = "<br>On this powerup, you can cause a explosion clicking on enemy area with your mouse.<br>You have 5 seconds to cause your explosion.",
 	inv1 = "used the powerup Immortal Mode!",
 	inv2 = "<br>On this powerup, you be immortal during the next 4 turns. This powerup only can be used 1 time per game.",
+	rs1 = "used the powerup Decrease Size!",
+	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 }
 lang.ar = {
 	win_vermelho = "<R><b>فاز الفريق الأحمر!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
@@ -193,7 +197,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 17401.120",
+bar = "#anvilwar - RTM 17502.121",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Tryndavayron#0000<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -202,8 +206,8 @@ teamKill2 = "قام بقتل عضو من فريقه!",
 ajuda = "المساعدة",
 credits = "Credits",
 mostrar = "أظهر",
-seconds = "<ROSE>60 ثانية متبقية<br>Isn't allowed to revive players at 60 final seconds.",
-seconds30 = "<ROSE>30 ثانية متبقية!",
+seconds = "<ROSE>60 ثانية متبقية!",
+seconds30 = "<ROSE>30 ثانية متبقية!<br>Isn't allowed to revive players at 30 final seconds.",
 seconds10 = "<ROSE>10 ثوانٍ متبقية!",
 teamchat = "<J>إستخم الإيعاز !tc [msg] للتكلم مع أعضاء فريقك<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
 menu_bar = "<p align='center'><a href='event:help'>Help</a> | <a href='event:profile'>Profile</a> | <a href='event:powerups'>Powerups</a> | <a href='event:cap'>Capitain</a> | <a href='event:cmd'>Commands</a>",
@@ -240,6 +244,8 @@ exp1 = "used the powerup Explosion!",
 exp2 = "<ar>على هذا powerup ،عندك 5 ثوان لتسبب انفجارك.",
 inv1 = "تستخدم powerup وضع الخالد!",
 inv2 = "<br> على هذا powerup ، تكون خالدة خلال ال 4 المقبلة. يمكن استخدام هذه الطاقة فقط مرة واحدة لكل لعبة.",
+rs1 = "used the powerup Decrease Size!",
+rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 }
 lang.es = {
 	win_vermelho = "<R><b>¡Ha ganado el equipo ROJO!</b><br>La próxima ronda comenzará en 15 segundos.",
@@ -253,7 +259,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 17401.120",
+	bar = "#anvilwar - RTM 17502.121",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Tryndavayron#0000<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -262,8 +268,8 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	ajuda = "Ayuda",
 	credits = "Créditos",
 	mostrar = "Mostrar",
-	seconds = "<ROSE>¡Quedan 60 segundos!<br>Isn't allowed to revive players at 60 final seconds.",
-	seconds30 = "<ROSE>¡Quedan 30 segundos!",
+	seconds = "<ROSE>¡Quedan 60 segundos!",
+	seconds30 = "<ROSE>¡Quedan 30 segundos!<br>Isn't allowed to revive players at 30 final seconds.",
 	seconds10 = "<ROSE>¡Quedan 10 segundos!",
 	teamchat = "<J>Puedes usar el comando !tc [mensaje] para hablar con tu equipo.<br><br>Puedes ver tu perfil escribiendo !p y el ranking temporal escribiendo !rank.",
 	menu_bar = "<p align='center'><a href='event:help'>Ayuda</a>  |  <a href='event:profile'>Perfil</a> | <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitán</a>  |  <a href='event:cmd'>Comandos</a>",
@@ -300,6 +306,8 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	exp2 = "<br>Con este powerup puedes provocar una explosión clicando en área enemigo con tu ratón.<br>Tienes 5 segundos para provocar la explosión.",
 	inv1 = "usó el powerup Modo Inmortal!",
 	inv2 = "<br>Con este powerup serás inmortal durante los próximos 4 turnos. Solo puedes usarlo 1 vez por ronda.",
+	rs1 = "used the powerup Decrease Size!",
+	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 }
 lang.de = {
 	win_vermelho = "<R><b>Das ROTE Team gewinnt!</b><br>Das nächste Spiel beginnt in 15 Sekunden.",
@@ -313,7 +321,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 17401.120",
+	bar = "#anvilwar - RTM 17502.121",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Tryndavayron#0000<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -322,8 +330,8 @@ lang.de = {
 	ajuda = "Hilfe",
 	credits = "Credits",
 	mostrar = "Zeigen",
-	seconds = "<ROSE>Noch 60 Sekunden!<br>Isn't allowed to revive players at 60 final seconds.",
-	seconds30 = "<ROSE>Noch 30 Sekunden!",
+	seconds = "<ROSE>Noch 60 Sekunden!",
+	seconds30 = "<ROSE>Noch 30 Sekunden!<br>Isn't allowed to revive players at 30 final seconds.",
 	seconds10 = "<ROSE>Noch 10 Sekunden!",
 	teamchat = "<J>Du kannst den Befehl !tc [message] um mit Ihrem Team zu sprechen.<br><br>Du kannst deine Profiltypisierung sehen !p und die Typisierung des temporären Tankens !rank.",
 	menu_bar = "<p align='center'><a href='event:help'>Help</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:cap'>Capitain</a>  |  <a href='event:cmd'>Commands</a>",
@@ -360,6 +368,8 @@ lang.de = {
 	exp2 = "<br>On this powerup, you can cause a explosion clicking on enemy area with your mouse.<br>You have 5 seconds to cause your explosion.",
 	inv1 = "used the powerup Immortal Mode!",
 	inv2 = "<br>On this powerup, you be immortal during the next 4 turns. This powerup only can be used 1 time per game.",
+	rs1 = "used the powerup Decrease Size!",
+	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 }
 
 if tfm.get.room.community == "br" then
@@ -527,7 +537,7 @@ function eventChatCommand(name,message)
 	if(message:sub(0,2) == "rv") then
 		if name == caps.azul or name == caps.vermelho and valendo == true and reset == false then
 			temp_name3=message:sub(4)
-			if data[temp_name3] and tempo >= 60 and sudden_death == false then
+			if data[temp_name3] and tempo >= 30 and sudden_death == false then
 				if tfm.get.room.playerList[name].score >= 30 then
 					tfm.exec.respawnPlayer(temp_name3)
 					if data[temp_name3].team == "azul" and powerups.r_azul == false then
@@ -575,7 +585,7 @@ function eventChatCommand(name,message)
 		menuShow(name,text.cmds,text.cap,80)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 6pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 8pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 22pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 30pt - Required Level: 4 - Function: <a href='event:power5'>Show</a><br>",105)
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 6pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 8pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 22pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 30pt - Required Level: 4 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 20pt - Required Level: 3 - Function: <a href='event:power6'>Show</a><br>",120)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -687,10 +697,10 @@ function eventLoop(passado,faltando)
 	if valendo == true and tempo < 60 and tempo > 59 and sudden_death == false then
 		tfm.exec.chatMessage(text.seconds,nil)
 	end
-	if valendo == true and tempo < 30 and tempo > 29 then
+	if valendo == true and tempo < 30 and tempo > 29 and sudden_death == false then
 		tfm.exec.chatMessage(text.seconds30,nil)
 	end
-	if valendo == true and tempo < 10 and tempo > 9 then
+	if valendo == true and tempo < 10 and tempo > 9 and sudden_death == false then
 		tfm.exec.chatMessage(text.seconds10,nil)
 	end
 	if valendo == true and reset == false and intervalo == false then
@@ -1231,6 +1241,18 @@ function eventKeyboard(name,key,down,x,y)
 					end
 				end
 			end
+			if key == 117 then
+				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 20 then
+					if data[name].nivel >= 3 then
+						tfm.exec.setPlayerScore(name,-20,true)
+						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.rs1.."")
+						tfm.exec.chatMessage(text.rs2,name)
+						tfm.exec.changePlayerSize(actual_player,0.6)
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
 		end
 	end
 end
@@ -1351,6 +1373,9 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "power5" then
 		tfm.exec.chatMessage(text.inv2,name)
+	end
+	if callback == "power6" then
+		tfm.exec.chatMessage(text.rs2,name)
 	end
 	if callback == "profile" then
 		tfm.exec.chatMessage(text.profile,name)
@@ -1507,7 +1532,7 @@ for _,f in next,{"run","q","r","mapa","reset","time","pw","kill","rodar"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 62",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 63",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1555,7 +1580,7 @@ lang.br = {
 	action = "Façam qualquer ação!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 62",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 63",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1603,7 +1628,7 @@ lang.en = {
 	action = "Do any action!"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 62, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 63, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1651,7 +1676,7 @@ lang.ar = {
 	action = "Do any action!"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 62",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 63",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -2044,6 +2069,13 @@ function getCommand()
 	if active == 36 then
 		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.action.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
 		tfm.exec.setGameTime(8)
+	end
+	if active == 37 then
+		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>NADA DE CTRL+C AQUI",nil,25,20,750,40,0x010101,0x121212,0.96,true)
+		tfm.exec.setGameTime(5)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
 	end
 end
 function eventChatMessage(name,message)
@@ -3106,7 +3138,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.93.2<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.94<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
