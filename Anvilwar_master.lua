@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #true_false, #objects e #pistas. Compilado às 16h20 (UTC) 16/03/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #true_false, #objects e #pistas. Compilado às 16h20 (UTC) 16/03/2020 e atualizado às 16h49 (UTC) 16/03/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.97",
+	_VERSION = "1.97.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1335,7 +1335,7 @@ function eventNewGame()
 	tfm.exec.setGameTime(30)
 	showBar()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><VP>As avaliações de mapas do module #anvilwar estão abertas!<br>https://atelier801.com/topic?f=816221&t=924786&p=1<br>")
 	end
 end
 function eventTextAreaCallback(id,name,callback)
@@ -1532,7 +1532,7 @@ for _,f in next,{"run","q","r","mapa","reset","time","pw","kill","rodar"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 64",
+	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 65",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1580,7 +1580,7 @@ lang.br = {
 	action = "Façam qualquer ação!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 64",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 65",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1628,7 +1628,7 @@ lang.en = {
 	action = "Do any action!"
 }
 lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 64, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
+	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 65, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
 	dancar = "ارقص!",
 	sentar = "اجلس!",
 	confetar = "قُم برمي 5 أوراق.",
@@ -1676,7 +1676,7 @@ lang.ar = {
 	action = "Do any action!"
 }
 lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 64",
+welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 65",
 dancar = "¡Danza!",
 sentar = "¡Sentarse!",
 confetar = "¡Lanza confeti 5 veces!",
@@ -1795,7 +1795,7 @@ function eventNewGame()
 	end
 	rodadas=math.floor(10+(rato/3))
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><R>ATENÇÃO: Versões antigas do Mestre Mandou que foram modificadas passarão a ser bloqueadas por questões de segurança.")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><R>ATENÇÃO: Versões antigas do Mestre Mandou que foram modificadas passarão a ser bloqueadas por questões de segurança.<br><VP>As avaliações de mapas para o Mestre Mandou estão abertas!<br>https://atelier801.com/topic?f=816221&t=931246<br>")
 	end
 	tfm.exec.setNameColor(admin,0xff0000)
 end
@@ -3137,7 +3137,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.97<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.97.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
