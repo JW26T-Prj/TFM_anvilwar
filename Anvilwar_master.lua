@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #true_false, #objects, #forca, #fall2 e #pistas. Compilado às 16h00 (UTC) 17/03/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #true_false, #objects, #forca, #fall2, #cd e #pistas. Compilado às 17h58 (UTC) 17/03/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.98",
+	_VERSION = "1.99",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -3903,14 +3903,336 @@ bestPlayer = randomPlayer()
 tfm.exec.newGame('@4677521')
 end
 
+initCD = function()
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
+do
+	tfm.exec["disable"..f](true)
+end
+data={}
+jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
+quant={assasinos=0,detetives=0,medicos=0,vitimas=0}
+limites={assasinos=0,detetives=0,medicos=0}
+admin="Rakan_raster#0000" -- colocar seu nome aqui, funcorp!
+modo="inicial"
+mapa="@4677521"
+contador=0
+tfm.exec.setRoomMaxPlayers(48)
+system.disableChatCommandDisplay("reiniciar")
+system.disableChatCommandDisplay("help")
+function eventChatCommand(name,comando)
+	if comando == "reiniciar" and name == admin then
+		tfm.exec.newGame(mapa)
+	end
+	if comando == "help" then
+		tfm.exec.chatMessage("Bem-vindo ao module Cidade Dorme. Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas. O jogo irá explicar tudo enquanto a partida ocorre.",name)
+	end
+end
+function eventNewGame()
+	ui.setMapName("Cidade Dorme! Module feito por Rakan_raster#0000.<")
+	contador=0
+	tfm.exec.setGameTime(5)
+	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
+	quant={assasinos=0,detetives=0,medicos=0}
+	modo="inicial"
+	for name,player in pairs(tfm.get.room.playerList) do
+		jogadores.vivos=jogadores.vivos+1
+		data[name]={type=0,morre=false}
+		table.insert(jogadores.lista,name)
+		if string.find(tfm.get.room.name,name) then
+			admin=name
+			tfm.exec.chatMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar a partida.")
+			print(admin)
+		end
+	end
+end
+function escolherAssasinos(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=1
+		quant.assasinos=quant.assasinos+1
+		tfm.exec.chatMessage("<R>"..name..", você foi escolhido(a) como assasino(a). Sua função será matar os outros jogadores. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
+	end
+end
+function escolherMedicos(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=2
+		quant.medicos=quant.medicos+1
+		tfm.exec.chatMessage("<N>"..name..", você foi escolhido(a) como médico(a). Sua função será salvar os jogadores dos assasinos. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
+	end
+end
+function escolherDetetives(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=3
+		quant.detetives=quant.detetives+1
+		tfm.exec.chatMessage("<VP>"..name..", você foi escolhido(a) como detetive. Sua função será descobrir e matar os assasinos vivos. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
+	end
+end
+function eventNewPlayer(name)
+	data[name]={type=-1,morre=false}
+	tfm.exec.chatMessage("Espere a próxima partida para jogar.",name)
+end
+function eventPlayerDied(name)
+	if data[name].type == 0 then
+		data[name].type=-1
+	end
+	if data[name].type == 1 then
+		quant.assasinos=quant.assasinos-1
+	elseif data[name].type == 2 then
+		quant.medicos=quant.medicos-1
+	elseif data[name].type == 3 then
+		quant.detetives=quant.detetives-1
+	end
+end
+function eventPlayerLeft(name)
+	jogadores.lista={}
+	for name,player in pairs(tfm.get.room.playerList) do
+	if not tfm.get.room.playerList[name].isDead then
+		table.insert(jogadores.lista,name)
+	end
+	end
+	if data[name].type == 1 and not tfm.get.room.playerList[name].isDead then
+		quant.assasinos=quant.assasinos-1
+	elseif data[name].type == 2 and not tfm.get.room.playerList[name].isDead then
+		quant.medicos=quant.medicos-1
+	elseif data[name].type == 3 and not tfm.get.room.playerList[name].isDead then
+		quant.detetives=quant.detetives-1
+	end
+	data[name].type=-1
+end
+function definirLimites()
+	if jogadores.vivos < 10 then
+		limites.assasinos=1; limites.medicos=1; limites.detetives=1;
+	elseif jogadores.vivos >= 10 and jogadores.vivos < 16 then
+		limites.assasinos=2; limites.medicos=1; limites.detetives=2;
+	elseif jogadores.vivos >= 16 and jogadores.vivos < 22 then
+		limites.assasinos=3; limites.medicos=2; limites.detetives=3;
+	elseif jogadores.vivos >= 22 and jogadores.vivos < 28 then
+		limites.assasinos=4; limites.medicos=3; limites.detetives=4;
+	elseif jogadores.vivos >= 28 and jogadores.vivos < 38 then
+		limites.assasinos=5; limites.medicos=3; limites.detetives=5;
+	elseif jogadores.vivos >= 38 then
+		limites.assasinos=6; limites.medicos=4; limites.detetives=5;
+	end
+end
+function sortearDetetives()
+	for i=1,limites.detetives do
+		local jogador=jogadores.lista[math.random(#jogadores.lista)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherDetetives(jogador)
+			jogadores.lista={}
+			for name,player in pairs(tfm.get.room.playerList) do
+				if data[name].type == 0 then
+					table.insert(jogadores.lista,name)
+				end
+			end
+		end
+	end
+end
+function sortearMedicos()
+	for i=1,limites.detetives do
+		local jogador=jogadores.lista[math.random(#jogadores.lista)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherMedicos(jogador)
+			jogadores.lista={}
+			for name,player in pairs(tfm.get.room.playerList) do
+				if data[name].type == 0 then
+					table.insert(jogadores.lista,name)
+				end
+			end
+		end
+	end
+	sortearDetetives()
+end
+function sortearAssasinos()
+	for i=1,limites.assasinos do
+		local jogador=jogadores.lista[math.random(#jogadores.lista)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherAssasinos(jogador)
+			jogadores.lista={}
+			for name,player in pairs(tfm.get.room.playerList) do
+				if data[name].type == 0 then
+					table.insert(jogadores.lista,name)
+				end
+			end
+		end
+	end
+	sortearMedicos()
+end
+function eventLoop()
+	contador=contador+0.5
+	if modo == "aguardando" then
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Module criado por Rakan_raster#0000<")
+	end
+	if contador == 1 then
+		if jogadores.vivos >= 5 then
+			tfm.exec.chatMessage("<J>Bem-vindos ao module Cidade Dorme. Neste module vocês deverão descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>Module criado por Rakan_raster#0000. Ideia original de Spectra_phantom#6089.<br><br>A partida será iniciada em 30 segundos.")
+		else
+			tfm.exec.chatMessage("<R>Número insuficiente de jogadores na sala.")
+			contador=-9998
+		end
+	end
+	if contador == 35 then
+		tfm.exec.chatMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><R>POR FAVOR, NINGUÉM DIGA QUEM É QUEM PORQUE ESTRAGA O JOGO!!")
+		definirLimites()
+	end
+	if contador == 40 then
+		sortearAssasinos()
+		modo="aguardando"
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name].type == 0 then
+				tfm.exec.chatMessage("<J>"..name..", você foi escolhido como vítima.",name)
+			end
+		end
+	end
+	if contador == 48 then
+		tfm.exec.chatMessage("<J>A rodada será iniciada em 10 segundos! SE PREPAREM!")
+		jogadores.vitimas=0
+	end
+	if contador == 58 then
+		tfm.exec.chatMessage("<VP>O JOGO COMEÇOU!")
+	end
+	if contador == 62 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].type == 1 then
+				ui.addPopup(101,2,""..name..", insira nesta caixa de diálogo o jogador que deseja matar. POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!:",name,10,325,780,true)
+			end
+		end
+	end
+	if contador == 82 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].type == 1 then
+				ui.addPopup(101,0,"",name,-1710,325,20,true)
+			end
+			if data[name] and data[name].type == 2 then
+				ui.addPopup(102,2,""..name..", insira nesta caixa de diálogo o jogador que deseja salvar dos assasinos. POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,325,780,true)
+			end
+		end
+	end
+	if contador == 102 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].type == 2 then
+				ui.addPopup(102,0,"",name,-1710,325,20,true)
+			end
+		end
+		tfm.exec.chatMessage("<VP>Tempo esgotado! Hora da verdade... VAMOS VER QUEM MORREU")
+	end
+	if contador == 107 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].morre == true then
+				tfm.exec.killPlayer(name)
+				if data[name].type == 0 then
+					tfm.exec.chatMessage("<R>Os assasinos mataram a vítima <b>"..name.."!</b>")
+				elseif data[name].type == 1 then
+					tfm.exec.chatMessage("<R>FOGO AMIGO! Os assasinos mataram o assasino <b>"..name.."!</b>")
+				elseif data[name].type == 2 then
+					tfm.exec.chatMessage("<R>Os assasinos mataram o médico <b>"..name.."!</b>")
+				elseif data[name].type == 3 then
+					tfm.exec.chatMessage("<R>Os assasinos mataram o detetive <b>"..name.."!</b>")
+				end
+			end
+		end
+		if jogadores.vitimas == 0 then
+			tfm.exec.chatMessage("<VP>Ufa! Ninguém foi morto!")
+		end
+	end
+	if contador == 115 then
+		if quant.assasinos == 0 then
+			tfm.exec.chatMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=970
+		elseif quant.detetives == 0 then
+			tfm.exec.chatMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=970
+		else
+			tfm.exec.chatMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
+		end
+	end
+	if contador == 117.5 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].type == 3 then
+				ui.addPopup(103,2,""..name..", insira nesta caixa de diálogo o jogador que você acha que é o assasino. POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!:",name,10,325,780,true)
+			end
+		end
+	end
+	if contador == 137.5 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].type == 3 then
+				ui.addPopup(103,0,"",name,-1910,325,20,true)
+			end
+		end
+		tfm.exec.chatMessage("<VP>Tempo esgotado! Vamos ver no que deu?")
+	end
+	if contador == 145 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if data[name] and data[name].morre == true then
+				tfm.exec.killPlayer(name)
+				if data[name].type == 0 then
+					tfm.exec.chatMessage("<R>OH NÃO! Os detetives mataram a vítima <b>"..name.."!</b>")
+				elseif data[name].type == 1 then
+					tfm.exec.chatMessage("<VP>Os detetives mataram o assasino<b>"..name.."!</b>")
+				elseif data[name].type == 2 then
+					tfm.exec.chatMessage("<R>OH NÃO! Os detetives mataram o médico <b>"..name.."!</b>")
+				elseif data[name].type == 3 then
+					tfm.exec.chatMessage("<R>FOGO AMIGO! Os detetives mataram o detetive <b>"..name.."!</b>")
+				end
+			end
+		end
+	end
+	if contador == 150 then
+		if quant.assasinos == 0 then
+			tfm.exec.chatMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=970
+		elseif quant.detetives == 0 then
+			tfm.exec.chatMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=970
+		else
+			tfm.exec.chatMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
+			contador=42
+		end
+	end
+	if contador >= 1000 then
+		tfm.exec.newGame(mapa)
+	end
+end
+function eventPopupAnswer(id,name,message)
+	if id == 101 then
+		if data[message] and not tfm.get.room.playerList[message].isDead then
+			data[message].morre=true
+			jogadores.vitimas=jogadores.vitimas+1
+			tfm.exec.chatMessage("Você decidiu matar o jogador "..message..".",name)
+		else
+			tfm.exec.chatMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto. NÃO SE ESQUEÇA DE COLOCAR A #TAG!!",name)
+		end
+	end
+	if id == 102 then
+		if data[message] and not message == name and not tfm.get.room.playerList[message].isDead then
+			if data[message].morre == true then
+				data[message].morre=false
+				jogadores.vitimas=jogadores.vitimas-1
+			end
+			tfm.exec.chatMessage("Você decidiu salvar o jogador "..message..".",name)
+		else
+			tfm.exec.chatMessage("<R>Escolha inválida. Você tentou salvar um jogador que não existe ou que já está morto. NÃO SE ESQUEÇA DE COLOCAR A #TAG!!",name)
+		end
+	end
+	if id == 103 then
+		if data[message] and not tfm.get.room.playerList[message].isDead then
+			data[message].morre=true
+			tfm.exec.chatMessage("Você acha que "..message.." é o assasino.",name)
+		else
+			tfm.exec.chatMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto. NÃO SE ESQUEÇA DE COLOCAR A #TAG!!",name)
+		end
+	end
+end
+tfm.exec.newGame(mapa)
+end
+
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7631682")
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00forca = Jogo da Forca<br>/sala #anvilwar00fall2 = Queda Livre de Velocidade")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00forca = Jogo da Forca<br>/sala #anvilwar00fall2 = Queda Livre de Velocidade<br>/sala #anvilwar00cd#[SEU NOME#TAG] = Cidade Dorme")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00forca = Jogo da Forca<br>/sala #anvilwar00fall2 = Queda Livre de Velocidade")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00forca = Jogo da Forca<br>/sala #anvilwar00fall2 = Queda Livre de Velocidade<br>/sala #anvilwar00cd#[SEU NOME#TAG] = Cidade Dorme")
 end
 end
 
@@ -3923,7 +4245,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.98<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.99<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
@@ -3946,6 +4268,9 @@ elseif string.find(tfm.get.room.name,"fall2") then
 elseif string.find(tfm.get.room.name,"forca") then
 	active = "forca"
 	initForca()
+elseif string.find(tfm.get.room.name,"cd") then
+	active = "cd"
+	initCD()
 elseif string.find(tfm.get.room.name,"rooms") then
 	active = "rooms"
 	Rooms()
