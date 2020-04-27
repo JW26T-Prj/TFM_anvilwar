@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects e #watercatch. Compilado às 14h34 (UTC) 10/04/2020. ]]--
+--[[ Script contendo o module #anvilwar, #truefalse, #objects, #pistas, #forca e #watercatch. Compilado às 18h56 (UTC) 27/04/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.104",
+	_VERSION = "1.105",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1551,906 +1551,7 @@ end
 end
 
 initMestre = function()
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(35)
-mapas={3110915,6788085,6788183,6789853,6791944,6792470,6808957,6810292,6821950,6830799,6866406,6866549,6788693,6788728,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6789272,6790912,6833993,7631682}
-active=0 -- códigos active: -2 = número de ratos insuficiente, -1 = partida encerrada, 0 = partida não iniciada ou intervalo e 1 ou mais = comandos operando
-vivo=0 -- número de ratos vivos
-rato=0 -- número de ratos na sala
-dificuldade=1 -- dificuldade da partida (alterada automaticamente)
-rodadas=0 -- o limite de rodadas das partidas é calculado automaticamente
-rodada=0 -- número da rodada atual, não altere
-number=0
-xpos=0
-ypos=0
-data={} -- variável que define os dados dos jogadores
-lang={} -- não alterar, variável que define a linguagem dos textos
-admin=""
-pergunta=""
-tempo=10
-resposta=""
-unlocked=true -- bloqueia ou desbloqueia a execução do script
-for _,f in next,{"run","q","r","mapa","reset","time","pw","kill","rodar"} do
-	system.disableChatCommandDisplay(f)
-end
-lang.br = {
-	welcome = "<N>Bem-vindo a sala Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<ROSE><br><VP>Script criado por Vaicntaefeto#0000 e os membros da Spectra Advanced Module Group - Versão RTM Compilação 66",
-	dancar = "Dance!",
-	sentar = "Sente!",
-	confetar = "Atire 5 confetes!",
-	mouse = "Clique na tela 10 vezes!",
-	beijos = "Dê 10 beijos!",
-	dormir = "Vocês estão com sono. Durmam para descansar.",
-	raiva = "Tigrounette é do mal! Fiquem com raiva dele!",
-	chorem = "Vocês não ganharam queijo :( Chorem!",
-	esquerda = "Não vá para a esquerda!",
-	direita = "Não vá para a direita!",
-	numero = "Digite o seguinte número: ",
-	digitar = "Digite qualquer coisa e mande para mim.",
-	falar = "Não falem nada!",
-	pular = "Não pulem!",
-	mexer = "Não se mexam!",
-	bandeira = "Balance a bandeira de qualquer país!",
-	ano = "Em que ano estamos?",
-	vesquerda = "Fique virado para a esquerda!",
-	vdireita = "Fique virado para a direita!",
-	quadradov = "Fique no quadrado vermelho!",
-	quadrado = "Fique no quadrado branco!",
-	retangulo = "Fique dentro do retângulo branco!",
-	retangulov = "Fique dentro do retângulo vermelho!",
-	nretangulo = "Não fique dentro do retângulo branco!",
-	preesquerda30 = "Pressione 30 vezes a tecla para ESQUERDA!",
-	predireita30 = "Pressione 30 vezes a tecla para DIREITA!",
-	preesquerda60 = "Pressione 60 vezes a tecla para ESQUERDA!",
-	predireita60 = "Pressione 60 vezes a tecla para DIREITA!",
-	espaco = "Pressione a barra de espaço 20 vezes!",
-	nome = "Digite o seu nome no jogo (com #número).",
-	ndance = "Não dance!",
-	mestre = "Mestre Mandou",
-	map = "Mapa",
-	time = "Tempo",
-	mice = "Ratos",
-	round = "Rodada",
-	mices = "Esta sala requer pelo menos 4 ratos.",
-	difficulty = "Dificuldade",
-	creator = "Module criado por Vaicntaefeto#0000",
-	segundos = "segundos.",
-	fim = "Partida encerrada! Próxima partida iniciando em ",
-	playingmap = "Rodando mapa",
-	created = "criado por",
-	abaixar = "Abaixem!",
-	action = "Façam qualquer ação!"
-}
-lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<ROSE><br><VP>Module created by Vaicntaefeto#0000 and the Spectra Advanced Module Group - Version RTM Compilation 66",
-	dancar = "Dance!",
-	sentar = "Sit!",
-	confetar = "Throw 5 confetti!",
-	mouse = "Click on screen 10 times!",
-	beijos = "Give 10 kisses!",
-	dormir = "They are sleepy. Sleep to rest.",
-	raiva = "Tigrounette is evil! Get angry with him!",
-	chorem = "No cheese for you. Cry!",
-	esquerda = "Don't go to the LEFT!",
-	direita = "Don't go to the RIGHT!",
-	numero = "Type this number: ",
-	digitar = "Type anything and send to me.",
-	falar = "Don't speak nothing!",
-	pular = "Don't jump!",
-	mexer = "Don't move!",
-	bandeira = "Balance the flag of anything country!",
-	ano = "What year are we?",
-	vesquerda = "Stay facing LEFT!",
-	vdireita = "Stay facing RIGHT!",
-	quadradov = "Stay on the red square!",
-	quadrado = "Stay on the white square!",
-	retangulo = "Stay on the white rectangle!",
-	retangulov = "Stay on the red rectangle!",
-	nretangulo = "Don't stay on the white rectangle!",
-	preesquerda30 = "Press 30 times the LEFT key!",
-	predireita30 = "Press 30 times the RIGHT key!",
-	preesquerda60 = "Press 60 times the LEFT key!",
-	predireita60 = "Press 60 times the RIGHT key!",
-	espaco = "Press 20 times the SPACEBAR!",
-	nome = "Type your nickname (with #number)!",
-	ndance = "Don't dance!",
-	mestre = "Master Says",
-	map = "Map",
-	time = "Time",
-	mice = "Mice",
-	round = "Round",
-	mices = "This room requires at least 4 players.",
-	difficulty = "Difficulty",
-	creator = "Module created by Vaicntaefeto#0000",
-	segundos = "seconds.",
-	fim = "End of match! The next match will start on ",
-	playingmap = "Playing map",
-	created = "created by",
-	abaixar = "Turn down!",
-	action = "Do any action!"
-}
-lang.ar = {
-	welcome = "<N>مرحبًا بكم في نمط الرئيس! في هذا النمط، عليك فعل كل مايقوله الرئيس!.<ROSE><br><VP>صُنع النمط عن طريقVaicntaefeto#0000 و the Spectra Advanced Module Group - الإصدار : RTM Compilation 66, تُرجم للغة العربية عن طريق اللاعب : [Vigo#4765]",
-	dancar = "ارقص!",
-	sentar = "اجلس!",
-	confetar = "قُم برمي 5 أوراق.",
-	mouse = "اضغط على الشاشة بالفأرة 10 مرات!",
-	beijos = "أعطي 10 قبلات!",
-	dormir = "إنهم يَشعرون بالنُعاس، نام لتستريح!",
-	raiva = "تايغرونيت شرير!، قُم بالغضب منه!",
-	chorem = "لم تلتقط أي قطعة من الجبن، ابكي!",
-	esquerda = "لا تذهب لليسار!",
-	direita = "لا تذهب لليمين!",
-	numero = "اكتب هذا الرقم: ",
-	digitar = "اكتب أيَّ شيء وارسله لي.",
-	falar = "لا تتحدث أو تقل أيَّ شيء.!",
-	pular = "لا تَقفز!",
-	mexer = "لا تتحرك!",
-	bandeira = "ارفع علم أي دول.",
-	ano = "في أي عام نحن؟",
-	vesquerda = "ابقى مواجهًا لليسار!",
-	vdireita = "ابقى مواجهًا لليمين!",
-	quadradov = "ابقى في المربع الأحمر!",
-	quadrado = "ابقى في المربع الأبيض",
-	retangulo = "ابقى في المستطيل الأبيض",
-	retangulov = "ابقى في المستطيل الأحمر!",
-	nretangulo = "لا تبقى في المستطيل الأبيض!",
-	preesquerda30 = "اضغط 30 مرة على زر السهم الأيسر!",
-	predireita30 = "اضغط 30 مرة على زر السهم الأيمن!",
-	preesquerda60 = "اضغط 60 مرة على زر السهم الأيسر!",
-	predireita60 = "اضغط 60 مرة على زر السهم الأيمن",
-	espaco = "أضغط على زر المسافة 20 مرة!",
-	nome = "اكتب اسمك (مع رقم #الهاشتاج)ـ",
-	ndance = "لا ترقص!",
-	mestre = "الرئيس يقول",
-	map = "الخريطة",
-	time = "الوقت",
-	mice = "الفئران",
-	round = "الجولة",
-	mices = "هذه الغرفة تطلب على الأقل 4 لاعبين",
-	difficulty = "الصعوبة",
-	creator = "صُنع النمط عن طريق Vaicntaefeto#0000",
-	segundos = "ثوانٍ.",
-	fim = "نهاية الجولة! ستبدأ الجولة التالية في غضون ",
-	playingmap = "بدأ الخارطة",
-	created = "created by",
-	abaixar = "Turn down!",
-	action = "Do any action!"
-}
-lang.es = {
-welcome = "<N> Bienvenido al módulo ¡Simón dice! En este módulo tienes que hacer todo lo que dice simón. <ROSE> <br> <VP> Módulo creado por Vaicntaefeto#0000 y los membros de Spectra Advanced Module Group - Versión RTM Compilation 66",
-dancar = "¡Danza!",
-sentar = "¡Sentarse!",
-confetar = "¡Lanza confeti 5 veces!",
-mouse = "¡Haga clic en la pantalla 10 veces!",
-beijos = "¡Lanza 10 besos!",
-dormir = "Tienen sueño. Duerman para descansar",
-raiva = "¡Tigrounette es malvado! ¡Enójate con él!",
-chorem = "No hay queso para ti. Llora!",
-esquerda = "¡No vayas a la IZQUIERDA!",
-direita = "¡No vayas a la DERECHA!",
-numero = "Escriba este número:",
-digitar = "Escribe cualquier cosa y mándamela",
-falar = "¡No hables nada!",
-pular = "¡No saltes!",
-mexer = "¡No te muevas!",
-bandeira = "¡Agita la bandera de cualquier país!",
-ano = "¿En qué año estamos?",
-vesquerda = "¡Quédate frente a la IZQUIERDA!",
-vdireita = "¡Mantente mirando a la DERECHA!",
-quadrado = "¡Quédate en el cuadrado blanco!",
-quadradov = "¡Quédate en el cuadrado rojo!",
-retangulo = "¡Quédate en el rectángulo blanco!",
-retangulov = "¡Quédate en el rectángulo rojo!",
-nretangulo = "¡No te quedes en el rectángulo blanco!",
-preesquerda30 = "Presiona 30 veces la tecla IZQUIERDA!",
-predireita30 = "Presiona 30 veces la tecla DERECHA!",
-preesquerda60 = "Presiona 60 veces la tecla IZQUIERDA!",
-predireita60 = "Presiona 60 veces la tecla DERECHA!",
-espaco = "Presione 20 veces la barra espaciadora!",
-nome = "Escribe tu apodo (con #numero incluido)",
-ndance = "¡No bailes!",
-mestre = "Simón dice",
-map = "Mapa",
-time = "Hora",
-mice = "Ratones",
-round = "Redondo",
-mices = "Esta sala requiere al menos 4 jugadores",
-difficulty = "Dificultad",
-creator = "Módulo creado por Vaicntaefeto#0000",
-segundos = "segundos.",
-fim = "¡Fin del partido! El próximo partido comenzará el ",
-playingmap = "Mapa de juego",
-created = "creado por",
-abaixar = "¡Bajar!",
-action = "¡Hacer cualquer acción!"
-}
-if tfm.get.room.community == "br" then
-	text = lang.br
-elseif tfm.get.room.community == "ar" then
-	text = lang.ar
-elseif tfm.get.room.community == "es" then
-	text = lang.es
-else
-	text = lang.en
-end
-function eventNewPlayer(name)
-	rato=rato+1
-	for k=32, 87 do
-		tfm.exec.bindKeyboard(name,k,false,true)
-	end
-	system.bindMouse(name,true)
-	newData={
-			["c"]=0;
-			["s"]=0;
-			};		
- 	data[name] = newData;
-	tfm.exec.chatMessage(""..text.welcome.."",name)
-	if string.find(tfm.get.room.name,name) then
-		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !mapa [@code] to run a custom map.",admin)
-	end
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-function eventPlayerDied(name)
-	if active >= 0 then
-		vivo=vivo-1
-		local i=0
-		local name
-		for pname,player in pairs(tfm.get.room.playerList) do
-			if not player.isDead then
-				i=i+1
-				name=pname
-			end
-		end
-		if i==0 then
-			active=-1
-		elseif i==1 then
-			active=-1
-			tfm.exec.giveCheese(name)
-			tfm.exec.playerVictory(name)
-			tfm.exec.setGameTime(10)
-		end
-	end
-end
-function eventNewGame()
-	ui.removeTextArea(0,nil)
-	rodada=0
-	active=0
-	vivo=0
-	rato=0
-	dificuldade=1
-	if unlocked == true then
-		tfm.exec.setGameTime(15)
-	else
-		tfm.exec.setGameTime(36000)
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		vivo=vivo+1
-		rato=rato+1
-		if data[name] then
-			data[name].c=0
-			data[name].key=0
-		end
-	end
-	rodadas=math.floor(10+(rato/3))
-	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Em breve, um novo Mestre Mandou para vocês, aguardem!<br>")
-	end
-	tfm.exec.setNameColor(admin,0xff0000)
-end
-function eventPlayerLeft()
-	rato=rato-1
-end
-function sortearComandos()
-	active=math.random(1,36)
-	getCommand()
-end
-function eventChatCommand(name,message)
-	if name == "Vaicntaefeto#0000" or name == "Forzaldenon#0000" or name == admin then
-		if(message:sub(0,3) == "run") then
-				active=tonumber(message:sub(5))
-				getCommand()
-		end
-		if(message:sub(0,1) == "q") then
-			pergunta=message:sub(3)
-		end
-		if(message:sub(0,1) == "r") then
-			resposta=message:sub(3)
-		end
-		if(message:sub(0,4) == "mapa") then
-			tfm.exec.newGame(message:sub(6))
-			active=0
-		end
-		if(message:sub(0,5) == "rodar") then
-			tfm.exec.newGame(message:sub(7))
-			active=0
-		end
-		if message == "reset" then
-			tfm.exec.newGame(mapas[math.random(#mapas)])
-			active=0
-		end
-		if(message:sub(0,4) == "time") then
-			tempo=message:sub(6)
-		end
-		if(message:sub(0,2) == "pw") then
-			tfm.exec.setRoomPassword(tostring(message:sub(4)))
-			if message:sub(4) == "" then
-				tfm.exec.chatMessage("Password cleared.",name)
-			else
-				tfm.exec.chatMessage("Password changed to: "..message:sub(4).."",name)
-			end
-		end
-	end
-end
-function getCommand()
-	rodada=rodada+1
-	for name,player in pairs(tfm.get.room.playerList) do
-		data[name].c=0
-		data[name].s=0
-	end
-	if active == 1 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.dancar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 2 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.sentar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 3 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.confetar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(6)
-	end
-	if active == 4 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.mouse.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 5 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.beijos.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(15)
-	end
-	if active == 6 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.dormir.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 7 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.raiva.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 8 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.chorem.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 9 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.esquerda.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1 -- isto indica que todos permanecerão vivos
-		end
-	end
-	if active == 10 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.direita.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 11 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.digitar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 12 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.falar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 13 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.pular.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 14 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.mexer.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 15 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.bandeira.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 16 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.ano.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 17 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.vesquerda.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 18 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.vdireita.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 19 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do quadrado branco
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.quadrado.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos,320,80,65,0xffffff,0xffffff,0.68,false)
-	end
-	if active == 20 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do retângulo branco
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.retangulo.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
-	end
-	if active == 21 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do retângulo branco
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.nretangulo.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
-	end
-	if active == 22 then
-		ypos=math.random(40,300) -- calcula aleatoriamente a posição do retângulo branco
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.retangulo.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,0,ypos,1600,60,0xffffff,0xffffff,0.68,false)
-	end
-	if active == 23 then
-		ypos=math.random(40,300) -- calcula aleatoriamente a posição do retângulo branco
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.nretangulo.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,0,ypos,1600,60,0xffffff,0xffffff,0.68,false)
-	end
-	if active == 24 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda30.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 25 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita30.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 26 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.preesquerda60.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(12)
-	end
-	if active == 27 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.predireita60.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(12)
-	end
-	if active == 28 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.espaco.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 29 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.nome.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(12)
-	end
-	if active == 30 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.ndance.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(6)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-	if active == 31 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do quadrado branco
-		local xpos2=math.random(60,650) -- calcula aleatoriamente a posição do quadrado vermelho
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.quadrado.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos,320,80,65,0xffffff,0xffffff,0.68,false)
-		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 32 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do quadrado branco
-		local xpos2=math.random(60,650) -- calcula aleatoriamente a posição do quadrado vermelho
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.quadradov.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xffffff,0xffffff,0.68,false)
-		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 33 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do quadrado branco
-		local xpos2=math.random(60,650) -- calcula aleatoriamente a posição do quadrado vermelho
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.retangulo.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
-		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 34 then
-		xpos=math.random(60,650) -- calcula aleatoriamente a posição do quadrado branco
-		local xpos2=math.random(60,650) -- calcula aleatoriamente a posição do quadrado vermelho
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.retangulov.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
-		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 35 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.abaixar.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 36 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>"..text.action.."",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 37 then
-		ui.addTextArea(0,"<font face='Segoe UI'><font color='#e5e5e5'><font size='25'><p align='center'>NADA DE CTRL+C AQUI",nil,25,20,750,40,0x010101,0x121212,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-	end
-end
-function eventChatMessage(name,message)
-	if active == 11 then
-		data[name].c=1
-	end
-	if active == 12 or active == 14 then
-		tfm.exec.killPlayer(name)
-	end
-	if active == 16 then
-		if message == "2020" then
-			data[name].c=1
-		elseif message == "2019" then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 29 then
-		if string.upper(message) == string.upper(name) then
-			data[name].c=1
-		end
-	end
-end
-function eventEmotePlayed(name,id)
-	if active == 1 then
-		if id == 0 or id == 10 then
-			data[name].c=1
-		end
-	end
-	if active == 2 then
-		if id == 8 then
-			data[name].c=1
-		end
-	end
-	if active == 3 then
-		if id == 9 then
-			data[name].s=data[name].s+1
-			if data[name].s >= 5 then
-				data[name].c=1
-			end
-		end
-	end
-	if active == 5 then
-		if id == 3 then
-			data[name].s=data[name].s+1
-			if data[name].s >= 10 then
-				data[name].c=1
-			end
-		end
-	end
-	if active == 6 then
-		if id == 6 then
-			data[name].c=1
-		end
-	end
-	if active == 7 then
-		if id == 4 then
-			data[name].c=1
-		end
-	end
-	if active == 8 then
-		if id == 2 then
-			data[name].c=1
-		end
-	end
-	if active == 14 then
-		tfm.exec.killPlayer(name)
-	end
-	if active == 15 then
-		if id == 10 then
-			data[name].c=1
-		end
-	end
-	if active == 30 then
-		if id == 0 or id == 10 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 36 then
-		data[name].c=1
-	end
-end
-function eventMouse(name,x,y)
-	if active == 4 then
-		data[name].s=data[name].s+1
-		if data[name].s >= 10 then
-			data[name].c=1
-		end
-	end
-end
-function eventKeyboard(name,id,down,x,y)
-	if active == 9 then
-		if id == 37 or id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 10 then
-		if id == 39 or id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 13 then
-		if id == 38 or id == 87 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 14 then
-		tfm.exec.killPlayer(name)
-	end
-	if active == 24 then
-		if id == 37 or id == 65 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 30 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 25 then
-		if id == 39 or id == 68 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 30 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 26 then
-		if id == 37 or id == 65 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 60 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 27 then
-		if id == 39 or id == 68 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			data[name].s=data[name].s+1
-			if data[name].s >= 60 then
-				data[name].c=1
-			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 28 then
-		if id == 32 then
-			data[name].s=data[name].s+1
-			if data[name].s >= 15 then
-				data[name].c=1
-			end
-		end
-	end
-	if active == 35 then
-		if id == 40 or id == 83 then
-			data[name].c=1
-		end
-	end
-end
-function eventLoop(passado,faltando)
-	local tempo=math.floor(faltando/1000)
-	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."<")
-	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."<")
-	end
-	if active >= 0 then
-		if passado > 1200 and passado < 1700 and unlocked == true then
-			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
-		end
-	end
-	if rato < 4 then
-		if tfm.get.room.currentMap == "@7277839" and unlocked == true then
-			active=-2
-			tfm.exec.setGameTime(8000)
-		else
-			if passado > 3000 and unlocked == true then
-				tfm.exec.newGame("@7277839")
-				tfm.exec.setGameTime(8000)
-				tfm.exec.chatMessage("<R>"..text.mices.."",nil)
-			end
-		end
-	end
-	if rato >= 4 then
-		if tfm.get.room.currentMap == "@7277839" and unlocked == true then
-			tfm.exec.newGame(mapas[math.random(#mapas)])
-			active=0
-		end
-	end
-	if active < 0 and faltando < 1 and unlocked == true then
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-	end
-	if active == 0 and faltando < 1000 then
-		if rodada < rodadas then
-			sortearComandos()
-		else
-			active=-1
-			tfm.exec.setGameTime(10)
-			for name,player in pairs(tfm.get.room.playerList) do
-				tfm.exec.giveCheese(true)
-				tfm.exec.playerVictory(true)
-			end
-		end
-	end
-	if active > 0 and faltando < 1 and rato > 1 then
-		if active == 17 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if tfm.get.room.playerList[name].isFacingRight == true then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 18 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if tfm.get.room.playerList[name].isFacingRight == false then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 19 or active == 31 or active == 32 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.y < 300 then
-					tfm.exec.killPlayer(name)
-				else
-					if player.x < xpos-20 or player.x > xpos+100 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 32 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.y < 300 then
-					tfm.exec.killPlayer(name)
-				else
-					if player.x < xpos-20 or player.x > xpos+100 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 20 or active == 33 or active == 34 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x < xpos or player.x > xpos+80 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 21 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x > xpos and player.x < xpos+80 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 22 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.y < ypos-10 or player.y > ypos+70 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 23 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.y > ypos-10 and player.y < ypos+70 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		ui.removeTextArea(0,nil)
-		ui.removeTextArea(1,nil)
-		ui.removeTextArea(2,nil)
-		active=0
-		if rodada == 4 or rodada == 6 or rodada == 8 or rodada == 10 or rodada == 12 then
-			dificuldade=dificuldade+1
-		end
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].key=0
-			if data[name].c == 0 then
-				tfm.exec.killPlayer(name)
-			end
-		end
-		if vivo > 4 then
-			tfm.exec.setGameTime(6-dificuldade)
-		else
-			tfm.exec.setGameTime(9-dificuldade)
-		end
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		if data[name] then
-			if data[name].c == 1 then
-				tfm.exec.setNameColor(name,0x00ff00)
-			else
-				tfm.exec.setNameColor(name,0xc2c2da)
-			end
-		end
-	end
-end
-tfm.exec.newGame("@7277839")
+tfm.exec.chatMessage("<R>#anvilwar00mestre is disabled due to maintenance.")
 end
 
 initTrue = function()
@@ -2727,8 +1828,8 @@ tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","add","reset","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571"}
-map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness"}
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls"}
 objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
@@ -2775,12 +1876,12 @@ function eventNewGame()
 	end
 end
 function showBar()
-	for i=1,29 do
+	for i=1,34 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 5239.023   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6040.024   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 5239.023   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6040.024   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -2992,7 +2093,7 @@ for n,p in pairs(tfm.get.room.playerList) do
 	end
 end
 tfm.exec.setGameTime(60)
-tfm.exec.chatMessage("<J><b>Bem-vindos ao module #watercatch!</b><br>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Mapa e tradução para o português feitos por Rakan_raster#0000.<br><br><R>Se aparecer apenas um mapa em branco quando a partida começar, basta relogar que o problema será resolvido. Isto é um problema de memória do Transformice e não do module.")
+tfm.exec.chatMessage("<J><b>Bem-vindos ao module #watercatch!</b><br>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Mapa e tradução para o português feitos por Rakan_raster#0000.<br><br><R>Se aparecer apenas um mapa em branco quando a partida começar, basta relogar que o problema será resolvido. Isto é um problema de memória do Transformice e não do module.<br><br><N>POR FAVOR, ALGUÉM MANDE UM MAPA MELHOR PRO SPECTRA, ESSE TÁ MT FEIO")
 end
 function eventLoop(p,r)
 ui.setMapName("#watercatch! Version RTM 1419.005 by Spectra_phantom#6089<")
@@ -3078,14 +2179,880 @@ end
 end
 end
 
+initPistas = function()
+tfm.exec.disableAllShamanSkills(true)
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.disableAutoTimeLeft(true)
+tfm.exec.disablePhysicalConsumables(true)
+tfm.exec.disableMortCommand(true)
+tfm.exec.setRoomMaxPlayers(22)
+pergunta=0
+valendo=false
+limite=6
+dica10=""
+dica9=""
+dica8=""
+resposta=""
+data={}
+admin=""
+tempo=999 -- NÃO ALTERAR!
+loop=0
+system.disableChatCommandDisplay("help")
+system.disableChatCommandDisplay("skip")
+system.disableChatCommandDisplay("shaman")
+system.disableChatCommandDisplay("limite")
+mapa="@4677521"
+lang = {}
+lang.br = {
+	welcome = "<J>Bem-vindo ao module do Jogo das 3 Pistas! Não sabe como jogar? Digite !help.<br><br>Script criado por Spectra_phantom#6089 e os membros da Spectra Advanced Module Group. Tradução e conceito original por Hecarimjhenx#0000.",
+	time = "<R>Tempo esgotado! A resposta era ",
+	fim = "<R>Partida encerrada! O jogador com melhor pontuação será o shaman!",
+	shaman = "<R>Acabou o tempo! Outro shaman será escolhido.",
+	c10p = "Dica valendo 10 pontos:",
+	c9p = "Dica valendo 9 pontos:",
+	c8p = "Dica valendo 8 pontos:",
+	module = "Jogo das 3 Pistas",
+	cancel = "<R>Rodada cancelada.",
+	question = "<VP>Pressione G para fazer uma pergunta.",
+	help = "<J>Como jogar:<br>Quando você tiver jogando, o shaman te dará 3 dicas. Se você acertar a pergunta, você ganha um número de pontos específico, dependendo de quanto tempo você demorou para responder. Quem tiver mais pontos no final vira o shaman do jogo.",
+	win = "acertou a resposta! A resposta era",
+	cancelled = "<R>O shaman não pode falar nada no chat durante seu turno.",
+	responder = "<ROSE>Podem responder agora!"
+}
+lang.en = {
+	welcome = "<J>Welcome to 3 Tips Game! If you want help, type !help.<br><br>Script made by Spectra_phantom#6089 and the Spectra Advanced Module Group.",
+	time = "<R>End of time! The answer was",
+	fim = "<R>The match ended! The best player will be the shaman.",
+	shaman = "<R>Time is gone! Other shaman will be selected.",
+	c10p = "Tip for 10 points:",
+	c9p = "Tip for 9 points:",
+	c8p = "Tip for 8 points:",
+	module = "3 Tips Game",
+	cancel = "<R>Cancelled match.",
+	question = "<VP>Press G to make a question.",
+	help = "<J>How to Play:<br>When you is playing, the shaman will make 3 tips. If you discover the answer, you win points, depending of time remaining to win. At final of the match, the player that get more points will be the shaman.",
+	win = "discovered the answer! The answer was",
+	cancelled = "<R>The shaman can't type nothing on the chat.",
+	responder = "<ROSE>You can answer now!"
+}
+if tfm.get.room.community == "br" then
+	text = lang.br
+else
+	text = lang.en
+end
+tfm.exec.newGame(mapa)
+rato=0
+function eventNewPlayer(name)
+	newData={
+		["played"]=0;
+			}
+	data[name]=newData;
+	tfm.exec.bindKeyboard(name,71,true,true)
+	tfm.exec.respawnPlayer(name)
+	tfm.exec.chatMessage(text.welcome,name)
+	if string.find(tfm.get.room.name,name) then
+		admin=name
+		tfm.exec.chatMessage("You are the administrator of this room. Your commands:<br>!skip = Skip the current shaman<br>!limite [number] = Change the limit of questions<br>!shaman [username] = Change the shaman",name)
+	end
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+function eventSummoningEnd(name,type,x,y,angle,vx,vy,obj)
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isShaman then
+			tfm.exec.chatMessage("<ROSE>Isn't allowed the use of shaman objects in this module.",nil)
+			tfm.exec.newGame(mapa)
+		end
+	end
+end
+function eventLoop(p,f)
+	loop=loop+1
+	tempo=math.ceil(f/1000)
+	if f < 2000 and valendo == true then
+		tfm.exec.chatMessage(""..text.time..""..resposta.."",nil)
+		ui.removeTextArea(1,nil)
+		ui.removeTextArea(2,nil)
+		ui.removeTextArea(3,nil)
+		valendo=false
+		tfm.exec.setGameTime(63)
+	end
+	if pergunta >= limite and valendo == false then
+		tfm.exec.chatMessage(text.fim,nil)
+		tfm.exec.newGame(mapa)
+	end
+	if f <= 100 then
+		tfm.exec.chatMessage(text.shaman,nil)
+		tfm.exec.newGame(mapa)
+	end
+	if loop == 10 then
+		for name,player in pairs(tfm.get.room.playerList) do
+			tfm.exec.setPlayerScore(name,0,false)
+		end
+	end
+	if valendo == true and f <= 59000 then
+		ui.addTextArea(1,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c10p.." <b>"..dica10.."",nil,5,30,780,32,0x000001,0x000001,0.9,true)
+	end
+	if valendo == true and f <= 49000 then
+		ui.addTextArea(2,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c9p.." <b>"..dica9.."",nil,5,70,780,32,0x000001,0x000001,0.9,true)
+	end
+	if valendo == true and f <= 39000 then
+		ui.addTextArea(3,"<font size='17'><p align='center'><font face='Segoe UI'><J>"..text.c8p.." <b>"..dica8.."",nil,5,110,780,32,0x000001,0x000001,0.9,true)
+	end
+	ui.setMapName("<J>"..text.module.."   <G>|   <N>Question : <V>"..pergunta.."/"..limite.."   <G>|   <N>Time : <V>"..tempo.."s   <G>|   <N>Compilation RTM 24<")
+end
+function eventChatCommand(name,message)
+	if message == "skip" then
+		if name == "Spectra_phantom#6089" or name == "Shun_kazami#7014" or name == "Forzaldenon#0000" or name == admin then
+			tfm.exec.chatMessage(text.cancel,nil)
+			tfm.exec.newGame(mapa)
+		end
+	end
+	if(message:sub(1,6) == "limite") then
+		if name == "Spectra_phantom#6089" or name == "Shun_kazami#7014" or name == "Forzaldenon#0000" or name == admin then
+			limite=tonumber(message:sub(8))
+		end
+	end
+	if(message:sub(1,6) == "shaman") then
+		if name == "Spectra_phantom#6089" or name == "Shun_kazami#7014" or name == "Forzaldenon#0000" or name == admin then
+			tfm.exec.setPlayerScore(message:sub(8),9999,false)
+			tfm.exec.newGame(mapa)
+		end
+	end
+	if message == "help" then
+		tfm.exec.chatMessage(text.help,name)
+	end
+end
+function eventNewGame()
+	loop=0
+	ui.removeTextArea(1,nil)
+	ui.removeTextArea(2,nil)
+	ui.removeTextArea(3,nil)
+	pistas={p10="",p9="",p8=""}
+	valendo=false
+	pergunta=0
+	tfm.exec.setGameTime(64)
+	rato=0
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isShaman then
+			if data[name] then
+				data[name].played=1
+				tfm.exec.chatMessage(text.question,name)
+			end
+		end
+		tfm.exec.bindKeyboard(name,71,true,true)
+		rato=rato+1
+		tfm.exec.setPlayerScore(name,0,false)
+	end
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
+	end
+end
+function eventChatMessage(name,message)
+	 if string.upper(message) == string.upper(resposta) and valendo == true then
+		if tfm.get.room.playerList[name].isShaman == false then
+			if tempo >= 50 then
+				tfm.exec.setPlayerScore(name,10,true)
+			elseif tempo >= 40 and tempo < 50 then
+				tfm.exec.setPlayerScore(name,9,true)
+			elseif tempo < 40 then
+				tfm.exec.setPlayerScore(name,8,true)
+			end
+			valendo=false
+			tfm.exec.setGameTime(64)
+			tfm.exec.chatMessage("<VP>"..name.." "..text.win.." "..string.upper(resposta).."",nil)
+			resposta=""
+			ui.removeTextArea(1,nil)
+			ui.removeTextArea(2,nil)
+			ui.removeTextArea(3,nil)
+		else
+			tfm.exec.chatMessage(text.cancel,name)
+			valendo=false
+			tfm.exec.newGame(mapa)
+			resposta=""
+			ui.removeTextArea(1,nil)
+			ui.removeTextArea(2,nil)
+			ui.removeTextArea(3,nil)
+		end
+	end
+end
+function eventKeyboard(name,key)
+	if tfm.get.room.playerList[name].isShaman then
+		ui.addPopup(0,2,text.c10p,name,350,125,200,true)
+	end
+end
+function eventPopupAnswer(id,name,answer)
+	if tfm.get.room.playerList[name].isShaman then
+	if id == 0 then
+		dica10=answer
+		ui.addPopup(1,2,text.c9p,name,350,125,200,true)
+	end
+	if id == 1 then
+		dica9=answer
+		ui.addPopup(2,2,text.c8p,name,350,125,200,true)
+	end
+	if id == 2 then
+		dica8=answer
+		ui.addPopup(3,2,"Insert the ANSWER:",name,350,125,200,true)
+	end
+	if id == 3 then
+		if string.len(answer) >= 2 and string.len(answer) <= 80 then
+			pergunta=pergunta+1
+			resposta=string.upper(answer)
+			tfm.exec.setGameTime(64)
+			valendo=true
+		else
+			ui.addPopup(3,2,"Insert the ANSWER:",name,350,125,200,true)
+		end
+	end
+	end
+end
+function eventPlayerDied(name)
+	if tfm.get.room.playerList[name].isShaman then
+		tfm.exec.newGame(mapa)
+	end
+end
+end
+
+initForca = function()
+tfm.exec.disableAfkDeath(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoScore(true)
+tfm.exec.disableAutoTimeLeft(true)
+system.disableChatCommandDisplay("skip")
+
+admin = "Forzaldenon#0000" -- insira seu nome!
+
+chars = {}
+
+lang = {}
+
+lang.br = {
+  ask_word = "<font face='Verdana'><font size='12'>Escolha uma palavra",
+  choose_word = "<font face='Verdana'><font size='12'>Escolha a sua palavra:<br>MÁXIMO 13 LETRAS!",
+  more_players = "<font face='Verdana'><font size='12'>Deve ter no mínimo <font color='#FF0000'>2</font> jogadores para brincar de forca.",
+  next_turn_1 = "<font face='Verdana'><font size='12'>Próximo turno em ",
+  next_turn_2 = "<font face='Verdana'><font size='12'> segundos",
+  turn_of_1 = "<font face='Verdana'><font size='12'>É a vez de ",
+  turn_of_2 = "<font face='Verdana'><font size='12'> | ",
+  turn_of_3 = "<font face='Verdana'><font size='12'>O script será reiniciado para a reobtenção dos jogadores presentes na sala.",
+  patientez = "<font face='Verdana'><font size='12'>Aguarde o líder escolher a palavra...",
+  word_found = "<font face='Verdana'><font size='12'>A palavra foi encontrada!",
+  word_not_found = "<font face='Verdana'><font size='12'>Mataram o boneco! A palavra era ",
+  time_out = "<font face='Verdana'><font size='12'>Acabou o tempo! ",
+  pass_turn = "<font face='Verdana'><font size='12'>Pergunta anulada. ",
+  quit = "<font face='Verdana'><font size='12'>O mestre do jogo saiu."
+}
+text = lang.br
+
+players = {}
+master = ""
+
+letters = {}
+invertLetters = {}
+
+word = ""
+hasDefinedWord = false
+
+timer = 0
+bestPlayer = ""
+pendu_level = 0
+
+beginReset = false
+hasToReset = false
+resetTimer = 0
+
+resetModule = false
+isTimeOut = false
+hasWon = false
+hasLost = false
+hasSkipped = false
+hasQuit = false
+
+lettersEntered = {}
+
+id = {}
+
+id["ask_word_main"] = 1
+id["ask_word_button"] = 2
+id["ask_word_popup"] = 3
+id["pendu"] = 4
+id["reset_timer"] = 5
+id["reset_timer_label"] = 6
+id["turn"] = 7
+id["turn_label"] = 8
+id["one_player"] = 9
+id["one_player_label"] = 10
+
+function eventNewGame()
+  updatePlayersList()
+
+  ui.removeTextArea(id["one_player"])
+  ui.removeTextArea(id["one_player_label"])
+
+  letters = {}
+  invertLetters = {}
+  word = ""
+  hasDefinedWord = false
+  timer = 0
+
+  if getNbPlayers() > 1 then
+    master = randomPlayer()
+    tfm.exec.movePlayer(master, 400, 90, false, 0, 0, false)
+
+    askWord()
+    drawPendu()
+  else
+    removeAll()
+
+    ui.addTextArea(id["one_player"], "", nil, 5, 110, 800, 25, 0xC0C0C0, 0x595959, 1f)
+    ui.addTextArea(id["one_player_label"], "<p align='center'><BL><font color='#000000'>"..text.more_players.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f)
+
+    drawWord()
+    drawPendu()
+  end
+end
+
+function eventPlayerDied(playerName)
+  tfm.exec.respawnPlayer(playerName)
+end
+
+function eventNewPlayer(playerName)
+  table.insert(players, playerName)
+
+  if getNbPlayers() == 2 then
+    tfm.exec.newGame('@4677521')
+  else
+    tfm.exec.respawnPlayer(playerName)
+    drawWord()
+    drawPendu()
+  end
+end
+
+function eventPlayerLeft(playerName)
+  local toRemove = 0
+
+  for i,p in pairs(players) do
+    if p==playerName then
+      toRemove = i
+    end
+  end
+
+  table.remove(players, toRemove)
+
+  if getNbPlayers() == 1 then
+    tfm.exec.newGame("@4677521")
+  else
+    if playerName==master then
+      hasQuit = true
+      reset()
+    end
+  end
+end
+
+function eventLoop(currentTime, timeRemaining)
+	if timeRemaining < 1 then
+		isTimeOut = true
+   		 reset()
+	end
+  timer = timer + 0.5
+  if beginReset then
+    ui.removeTextArea(id["ask_word_main"])
+    ui.removeTextArea(id["ask_word_button"])
+
+    resetTimer = resetTimer + 0.5
+
+    ui.addTextArea(id["reset_timer"], "", nil, 5, 110, 800, 25, 0xC0C0C0, 0x595959, 1f)
+    if isTimeOut then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.time_out.." <font color='#000000'>"..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
+		if ResetModule then ui.addTextArea(id["reset_timer_label"],"<p align='center'><font color='#000000'>O script será reiniciado para a reobtenção dos jogadores presentes na sala.</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
+    if hasWon then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.word_found.." <font color='#000000'>"..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
+    if hasLost then ui.addTextArea(id["reset_timer_label"], "<p align='center'><font color='#000000'>"..text.word_not_found.."</font><BL>"..word:gsub("^%l", string.upper).."<font color='#000000'> ! "..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
+    if hasSkiped then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.pass_turn.."<font color='#000000'> "..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
+    if hasQuit then ui.addTextArea(id["reset_timer_label"], "<p align='center'><BL>"..text.quit.."<font color='#000000'> "..text.next_turn_1.."<font color='#FF0000'>"..math.floor(7 - resetTimer).."</font>"..text.next_turn_2.."</font></p>", nil, 25, 115, 750, 30, 0xC0C0C0, 0xC0C0C0, 0f) end
+  end
+
+  checkBestPlayer()
+
+  if timer==25 and not hasDefinedWord and getNbPlayers() > 1 then
+    isTimeOut = true
+    reset()
+  end
+
+  if resetTimer==7 then
+    isTimeOut = false
+    hasWon = false
+    hasLost = false
+    hasSkiped = false
+    hasQuit = false
+		if resetModule == true then
+			tfm.exec.newGame('@4677521')
+			resetModule = false
+		end
+    hasToReset = true
+
+    reset()
+  end
+end
+
+function eventChatCommand(playerName, message)
+  local args = {}
+
+  for arg in message:gmatch("[^%s]+") do
+    table.insert(args, arg:lower())
+  end
+
+  if not hasLost and not hasSkiped and not hasQuit and args[1] ~= nil then
+    if args[1]==word and playerName ~= master and not hasWon then
+      local score = 0
+
+      for _,letter in pairs(letters) do
+        if letter=="_" then score = score + 872 end
+      end
+
+      tfm.exec.setPlayerScore(playerName, score, true)
+
+      local i = 1
+
+      while i <= word:len() do
+        if letters[i]~="_" then
+          invertLetters[i] = letters[i]
+          letters[i] = "_"
+        end
+
+        i = i + 1
+      end
+
+      drawWord()
+      hasWon = true
+      reset()
+    end
+
+    if message == "skip" and playerName==admin and not hasWon and not hasLost and not isTimeOut then
+      hasSkiped = true
+      reset()
+	  tfm.exec.chatMessage("<R>Esta palavra foi anulada: "..word.."",nil)
+    end
+
+	if message == "rodar" and playerName==admin then
+		tfm.exec.newGame('@4677521')
+	end
+
+	if message == "reset" and playerName==admin then
+		tfm.exec.chatMessage("<VP>O script será reiniciado para a obtenção dos jogadores.",nil)
+		beginReset = true
+		resetModule = true
+	end
+
+    if args[1]:len()==1 and hasDefinedWord and args[1]~= "_" and args[1]~="-" and args[1]~="'" and playerName ~= master then
+      local isEntered = false
+
+      for _,letter in pairs(lettersEntered) do
+        if letter==args[1] then
+          isEntered = true
+        end
+      end
+
+      if not isEntered then
+        local score = 0
+        local idsToRemove = {}
+        local isFalse = true
+
+        table.insert(lettersEntered, args[1])
+
+        for id,letter in pairs(letters) do
+          if letter==args[1] then
+            table.insert(idsToRemove, id)
+            isFalse = false
+          end
+        end
+
+        for _,idToRemove in pairs(idsToRemove) do
+          invertLetters[idToRemove] = letters[idToRemove]
+          letters[idToRemove] = "_"
+        end
+
+        score = #idsToRemove
+
+        if isFalse then
+          if tfm.get.room.playerList[playerName].score > 0 then score = -1 end
+          pendu_level = pendu_level + 1
+        end
+
+        tfm.exec.setPlayerScore(playerName, score, true)
+
+        drawWord()
+        drawPendu()
+      end
+    end
+  end
+end
+
+function eventTextAreaCallback(textAreaId, playerName, callback)
+  if callback=="callbackAskWord" then
+    ui.addPopup(id["ask_word_popup"], 2, text.choose_word, master, 300, 175, 200)
+  end
+end
+
+function eventPopupAnswer(popupId, playerName, answer)
+  if popupId==id["ask_word_popup"] and not isTimeOut and master==playerName then
+    local choosedWord = tostring(answer)
+
+    if checkWord(choosedWord) then
+      defineWord(choosedWord)
+      hasDefinedWord = true
+
+      askWord()
+		tfm.exec.setGameTime(60)
+		tfm.exec.chatMessage("<N>A palavra é: "..word.."",admin)
+
+      ui.removeTextArea(id["turn"])
+      ui.removeTextArea(id["turn_label"])
+    end
+  end
+end
+
+function askWord()
+  ui.removeTextArea(id["reset_timer"])
+  ui.removeTextArea(id["reset_timer_label"])
+  ui.removeTextArea(id["ask_word_main"])
+  ui.removeTextArea(id["ask_word_button"])
+
+  if not hasDefinedWord then
+    ui.addTextArea(id["ask_word_main"], "", master, 5, 110, 800, 35, 0xC0C0C0, 0x595959, 1f)
+    ui.addTextArea(id["ask_word_button"], "<p align='center'><a href='event:callbackAskWord'>"..text.ask_word.."</a></p>", master, 300, 120, 190, 16, 0x595959, 0x595959, 1f)
+	tfm.exec.chatMessage("<ROSE>Clique em 'Escolha uma palavra' para escolher uma palavra.<br>Não serão permitidas palavras completamente desconhecidas, com números e etc.<br>Você possui 25 segundos para escolher uma palavra, caso contrário sua vez será cancelada e outro entrará em seu lugar.",master)
+
+    for p,_ in pairs(tfm.get.room.playerList) do
+      if p~=master then
+        ui.addTextArea(id["turn"], "", p, 5, 110, 800, 25, 0xC0C0C0, 0x595959, 1f)
+        ui.addTextArea(id["turn_label"], "<p align='center'><font color='#000000'>"..text.turn_of_1.."</font><BL>"..master.."<font color='#000000'>"..text.turn_of_2..text.patientez.."</font></p>", p, 25, 115, 800, 30, 0xC0C0C0, 0xC0C0C0, 0f)
+      end
+    end
+  end
+end
+
+function defineWord(new_word)
+  word = string.lower(string.gsub(new_word, " ", "-"))
+
+  letters = {}
+
+  local i = 36
+
+  while i < 54 do
+    ui.removeTextArea(i)
+    i = i + 1
+  end
+
+  for letter in new_word:gmatch"." do
+    if letter==" " or letter=="-" then
+      table.insert(invertLetters, "-")
+      table.insert(letters, "_")
+    elseif letter=="'" then
+      table.insert(invertLetters, "'")
+      table.insert(letters, "_")
+    else
+      table.insert(letters, letter:lower())
+      table.insert(invertLetters, "_")
+    end
+  end
+
+  drawWord()
+  drawPendu()
+end
+
+function drawWord()
+  local textId = 36
+  local i = 1
+  local ancreX = 40
+
+  if #word==0 then
+    local i = 36
+
+    while i < 54 do
+      ui.removeTextArea(i)
+      i = i + 1
+    end
+  else
+    while i <= word:len() do
+      ui.addTextArea(textId, "<font face='Verdana'><p align='center'><font size='40' color='#ededed'>"..invertLetters[i]:upper().."</font></p>", nil, ancreX, 150, 40, 60, 0x010101, 0x010101, 1f)
+      ancreX = ancreX + 60
+      textId = textId + 1
+      i = i + 1
+    end
+
+    local finished = true
+    local j = 1
+
+    while j <= word:len() do
+      if invertLetters[j]=="_" then finished = false end
+      j = j + 1
+    end
+
+    if finished then
+      hasWon = true
+      reset()
+    end
+  end
+end
+
+function drawPendu()
+  local pendu = ""
+
+  if pendu_level==1 then
+    pendu = pendu.."<br /><br /><br /><br /><br /><br /><br /><br /><br /> _________"
+
+  elseif pendu_level==2 then
+    pendu = pendu.."<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==3 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==4 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /<br />"
+    pendu = pendu.."        |/<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==5 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /      |<br />"
+    pendu = pendu.."        |/<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==6 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /      |<br />"
+    pendu = pendu.."        |/        O<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==7 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /      |<br />"
+    pendu = pendu.."        |/        O<br />"
+    pendu = pendu.."        |        /|<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==8 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /      |<br />"
+    pendu = pendu.."        |/        O<br />"
+    pendu = pendu.."        |        /|\<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==9 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /      |<br />"
+    pendu = pendu.."        |/        O<br />"
+    pendu = pendu.."        |        /|\\<br />"
+    pendu = pendu.."        |         |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==10 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /      |<br />"
+    pendu = pendu.."        |/        O<br />"
+    pendu = pendu.."        |        /|\\<br />"
+    pendu = pendu.."        |         |<br />"
+    pendu = pendu.."        |        /<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.."        |<br />"
+    pendu = pendu.." ____|____"
+
+  elseif pendu_level==11 then
+    pendu = pendu.."        __________.__<br />"
+    pendu = pendu.."        |  /         |  <br />"
+    pendu = pendu.."        |/           O  <br />"
+    pendu = pendu.."        |           /|\\ <br />"
+    pendu = pendu.."        |            |  <br />"
+    pendu = pendu.."        |           / \\ <br />"
+    pendu = pendu.."        |               <br />"
+    pendu = pendu.."        |               <br />"
+    pendu = pendu.."        |               <br />"
+    pendu = pendu.." ____|____"
+
+    hasLost = true
+    reset()
+  end
+
+  ui.addTextArea(id["pendu"], pendu, nil, 323, 235, 135, 138, 0x010101, 0xFFFFFF, 0.5f)
+end
+
+function reset()
+  beginReset = true
+
+  if hasToReset then
+	tfm.exec.setGameTime(25)
+
+    if getNbPlayers() < 2 then
+      tfm.exec.newGame('@4677521')
+    else
+	letters = {}
+      invertLetters = {}
+      word = ""
+      hasDefinedWord = false
+      pendu_level = 0
+      beginReset = false
+      hasToReset = false
+      resetTimer = 0
+      lettersEntered = {}
+
+      drawWord()
+      drawPendu()
+
+      local randX = math.random(750)
+      tfm.exec.movePlayer(master, randX, 385, false, 0, 0, false)
+
+      local oldMaster = master
+
+      if getNbPlayers()~=1 then
+        if bestPlayer==oldMaster then
+          while master==oldMaster do
+            master = randomPlayer()
+          end
+        else
+          master = bestPlayer
+        end
+      else
+        master = bestPlayer
+      end
+
+      randX = math.random(750)
+
+      tfm.exec.movePlayer(master, randX, 90, false, 0, 0, false)
+      tfm.exec.setPlayerScore(master, 0, false)
+
+      timer = 0
+
+      askWord()
+    end
+  end
+end
+
+function removeAll()
+  ui.removeTextArea(id["ask_word_main"])
+  ui.removeTextArea(id["ask_word_button"])
+  ui.removeTextArea(id["ask_word_popup"])
+  ui.removeTextArea(id["pendu"])
+  ui.removeTextArea(id["reset_timer"])
+  ui.removeTextArea(id["reset_timer_label"])
+  ui.removeTextArea(id["turn"])
+  ui.removeTextArea(id["turn_label"])
+  ui.removeTextArea(id["one_player"])
+  ui.removeTextArea(id["one_player_label"])
+end
+
+function checkWord(word_arg)
+  if word_arg:len() >= 2 and word_arg:len() <= 13 then
+    for _,c in pairs(chars) do
+      if string.match(word_arg, c) then
+        return false
+      end
+    end
+
+    return true
+  else
+    return false
+  end
+end
+
+function checkBestPlayer()
+  topScore = 0
+  bestPlayer = randomPlayer()
+
+  for name,player in pairs(tfm.get.room.playerList) do
+    if player.score >= topScore then
+      topScore = player.score
+      bestPlayer = name
+    end
+  end
+end
+
+function getNbPlayers()
+  return #players
+end
+
+function updatePlayersList()
+  players = {}
+
+  for p,_ in pairs(tfm.get.room.playerList) do
+    table.insert(players, p)
+  end
+end
+
+function randomPlayer()
+  return players[math.random(1,#players)]
+end
+
+for name,player in pairs(tfm.get.room.playerList) do
+  tfm.exec.setPlayerScore(name, 0, false)
+end
+
+updatePlayersList()
+bestPlayer = randomPlayer()
+tfm.exec.newGame('@4677521')
+end
+
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7631682")
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00watercatch = WaterCatch")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00watercatch = WaterCatch<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00forca = Jogo da Forca")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00watercatch = WaterCatch")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00watercatch = WaterCatch<br>/sala #anvilwar00pistas = Jogo das 3 Pistas<br>/sala #anvilwar00forca = Jogo da Forca")
 end
 end
 
@@ -3098,7 +3065,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.104<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.105<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
@@ -3106,6 +3073,9 @@ if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"r
 elseif string.find(tfm.get.room.name,"mestre") then
 	active = "mestre"
 	initMestre()
+elseif string.find(tfm.get.room.name,"pistas") then
+	active = "pistas"
+	initPistas()
 elseif string.find(tfm.get.room.name,"true_false") or string.find(tfm.get.room.name,"truefalse") then
 	active = "true"
 	initTrue()
@@ -3115,6 +3085,9 @@ elseif string.find(tfm.get.room.name,"objects") then
 elseif string.find(tfm.get.room.name,"watercatch") then
 	active = "watercatch"
 	initWatercatch()
+elseif string.find(tfm.get.room.name,"forca") then
+	active = "forca"
+	initForca()
 elseif string.find(tfm.get.room.name,"rooms") then
 	active = "rooms"
 	Rooms()
