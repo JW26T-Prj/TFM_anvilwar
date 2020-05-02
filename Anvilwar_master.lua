@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects, #pistas, #forca e #watercatch. Compilado às 14h09 (UTC) 01/05/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects, #pistas, #forca e #watercatch. Compilado às 14h09 (UTC) 01/05/2020 e atualizado às 20h29 (UTC) 02/05/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.106",
+	_VERSION = "1.106.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1670,7 +1670,7 @@ function eventPlayerDied(name)
 		tfm.exec.setPlayerScore(shaman,20,false) end end
 function eventNewGame()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><BL>")
 	end
 	resetTabela()
 	valendo=true;
@@ -1700,7 +1700,7 @@ function eventMouse(name,x,y)
 			tfm.exec.setPlayerScore(name,1,false) end end end
 function eventChatCommand(n,m)
 	if m == "help" then
-		ui.addPopup(1,0,"<font align='center'><font size='30'>O Mestre Mandou<br><br><font align='left'><font size='13'>Neste script você deverá fazer o que o shaman te mandar, seja sentar, dar um beijo ou até mesmo mandar você dizer que é noob. Quem não fazer o que o shaman diz vai morrer automaticamente e o último que sobrar ganha o jogo.<br><br>Créditos:<br>Montagem: Vaicntaefeto#0000<br>Sugestões de comandos: Spectra_phantom#6089 e Fosfus7heads#0000<br>Testes: Jessiewind26#2546, Shun_kazami#7014 e Nasus_assassin#1534<br>Avaliação de mapas: Ashearcher e Skyrectarrow",n,112,88,537,true) end
+		ui.addPopup(1,0,"<font align='center'><font size='30'>O Mestre Mandou<br><br><font align='left'><font size='13'>Neste script você deverá fazer o que o shaman te mandar, seja sentar, dar um beijo ou até mesmo mandar você dizer que é noob. Quem não fazer o que o shaman diz vai morrer automaticamente e o último que sobrar ganha o jogo.<br><br>Créditos:<br>Montagem: Vaicntaefeto#0000<br>Sugestões de comandos: Spectra_phantom#6089 e Fosfus7heads#0000<br>Testes: Jessiewind26#2546, Shun_kazami#7014 e Nasus_assassin#1534<br>Avaliação de mapas: Ashearcher#0000 e Skyrectarrow#0000",n,112,88,537,true) end
 	if n == admin or n == admin1 or n == admin2 or n == admin3 or n == admin4 or n == admin5 or n == admin6 or n == admin7 or n == admin8 or n == admin9 then
 		if m == "mapa" then
 			tfm.exec.chatMessage("<VI>Quer ver seu mapa aparecendo? Mande-o para<br><b>https://atelier801.com/topic?f=816221&t=931246</b>",nil) end
@@ -3737,7 +3737,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.106<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.106.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
