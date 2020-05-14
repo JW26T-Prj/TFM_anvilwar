@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects e #pistas. Compilado às 18h46 (UTC) 14/05/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects e #pistas. Compilado às 18h46 (UTC) 14/05/2020 e atualizado às 23h17 (UTC) 14/05/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.109",
+	_VERSION = "1.109.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1563,7 +1563,7 @@ for _,f in next,{"command","run","pw","limit"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 1306.002 Beta",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 1407.003",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1595,8 +1595,6 @@ lang.br = {
 	espaco = "Pressione a barra de espaço 20 vezes!",
 	nome = "Digite o seu nome no jogo (com #número).",
 	ndance = "Não dance!",
-	shaman1 = "Todos são shamans! Invoquem uma bola!",
-	shaman2 = "Todos são shamans! Invoquem um balão!",
 	vampire = "Um jogador aleatório foi transformado em vampiro! Fujam dele!",
 	key1 = "Pressione a tecla Delete!",
 	action1 = "Dance, sente e durma!",
@@ -1623,7 +1621,7 @@ lang.br = {
 	action = "Façam qualquer ação!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 1306.002 Beta",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 1407.003",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1655,8 +1653,6 @@ lang.en = {
 	espaco = "Press 20 times the SPACEBAR!",
 	nome = "Type your nickname (with #number)!",
 	ndance = "Don't dance!",
-	shaman1 = "All mices now are shaman! Spawn a ball!",
-	shaman2 = "All mices now are shaman! Spawn a balloon!",
 	vampire = "A random player is now a vampire! Don't stay close!",
 	key1 = "Press the DELETE key!",
 	action1 = "Dance, sit and sleep!",
@@ -1769,7 +1765,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,50)
+	active=math.random(1,48)
 	getCommand()
 end
 function eventChatCommand(name,message)
@@ -2023,22 +2019,6 @@ function getCommand()
 		tfm.exec.setGameTime(8)
 	end
 	if active == 37 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.shaman1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
-		tfm.exec.setGameTime(16)
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.setShaman(name,true)
-			tfm.exec.setShamanMode(name,0)
-		end
-	end
-	if active == 38 then
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.shaman2.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
-		tfm.exec.setGameTime(16)
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.setShaman(name,true)
-			tfm.exec.setShamanMode(name,0)
-		end
-	end
-	if active == 39 then
 		local alives={}
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.vampire.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(30)
@@ -2051,26 +2031,26 @@ function getCommand()
 		vampire=alives[math.random(#alives)]
 		tfm.exec.setVampirePlayer(vampire,true)
 	end
-	if active == 40 then
+	if active == 38 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.key1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(8)
 	end
-	if active == 41 then
+	if active == 39 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.action1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(10)
 	end
-	if active == 42 then
+	if active == 40 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.laugh.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(5)
 	end
-	if active == 43 then
+	if active == 41 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.laugh2.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
 	end
-	if active == 44 then
+	if active == 42 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.stone.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(5)
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -2080,19 +2060,19 @@ function getCommand()
 			tfm.exec.addShamanObject(85,(i*80)-20,64,0,0,0,false)
 		end
 	end
-	if active == 45 then
+	if active == 43 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.noob.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(10)
 	end
-	if active == 46 then
+	if active == 44 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.action2.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(9)
 	end
-	if active == 47 then
+	if active == 45 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.jump.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(5)
 	end
-	if active == 48 then
+	if active == 46 then
 		xpos=math.random(60,650)
 		local xpos2=math.random(60,650)
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nretangulo.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
@@ -2103,24 +2083,14 @@ function getCommand()
 		ui.addTextArea(1,"",nil,xpos,0,80,400,0xffffff,0xffffff,0.68,false)
 		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
 	end
-	if active == 49 then
+	if active == 47 then
 		number=math.random(10000000,99999999)
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.number..""..number.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(11)
 	end
-	if active == 50 then
+	if active == 48 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.key.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(5)
-	end
-end
-function eventSummoningEnd(name,id,x,y)
-	if active == 37 then
-		if id == 6 or id >= 600 or id <= 699 then
-			data[name].c=1
-		end
-	end
-	if active == 38 and id >= 28 and id <= 31 then
-		data[name].c=1
 	end
 end
 function eventChatMessage(name,message)
@@ -2369,13 +2339,13 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 1306.002 <R>Beta<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 1407.003<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 1306.002 <R>Beta<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 1407.003<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 1306.002 <R>Beta<")
-		if passado > 1200 and passado < 1700 and unlocked == true and not tfm.get.room.currentMap == "@7692039" then
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 1407.003<")
+		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
 	end
@@ -3233,7 +3203,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.109<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.109.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
