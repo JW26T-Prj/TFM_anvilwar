@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects, #pistas e #watercatch. Compilado às 15h39 (UTC) 12/05/2020 e atualizado às 18h58 (UTC) 12/05/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects e #pistas. Compilado às 18h46 (UTC) 14/05/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.108.1",
+	_VERSION = "1.109",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -69,7 +69,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 18412.131",
+	bar = "#anvilwar - RTM 18513.132",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -93,7 +93,7 @@ lang.br = {
 	cap = "Este tipo de jogador (escolhido aleatoriamente) receberá 50% a mais de pontuação que os outros e poderá transferir seus pontos para outro jogador de sua equipe usando o comando !tt [nome].<br>Você também poderá utilizar o comando !rv [nome] para reviver UM membro morto de sua equipe.",
 	cap_text = "<br><VP>Você é o capitão da sua equipe.<br><br>Você irá receber 50% mais pontos por tempo vivo e poderá transferir pontos para outros jogadores usando o comando !tt [nome].<br>Você também poderá utilizar o comando !rv [nome] para reviver UM membro morto de sua equipe. Você também pode usar a tecla END no teclado para pedir até 2 intervalos de 20 segundos cada.",
 	score30 = "<R>Você precisa de 30 pontos para usar isto.",
-	advanced = "<VP>Você acaba de avançar para o nível ",
+	advanced = " acaba de avançar para o nível ",
 	tag_text = "<J>Não se esqueça de colocar a #tag no final do nome desejado! Caso contrário, o comando não irá funcionar!",
 	revivetext = "<J>O seguinte jogador reviveu: ",
 	yturn = "É a vez de: ",
@@ -132,7 +132,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 18412.131",
+	bar = "#anvilwar - RTM 18513.132",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -156,7 +156,7 @@ lang.en = {
 	cap = "This type of player (that is choosed randomly) will receive 50% more points and will get the ability of transfer your points to other players alive on the match using the !tt [name] command. You can use the !rv [name] command to revive ONE team player dead.",
 	cap_text = "<br><VP>You are the team capitain.<br><br>You will receive 50% more points than other team players and can transfer your points to other team players using the !tt [name] command. You can use the !rv [name] command to revive ONE team player dead. You also can use the END key on the keyboard to request up to 2 timeouts.",
 	score30 = "<R>You need 30 points to use this.",
-	advanced = "<VP>You reached the level ",
+	advanced = " reached the level ",
 	tag_text = "<J>Don't forget to insert the #tag on the target nickname, else this command don't will work!",
 	revivetext = "<J>The following player has been revived: ",
 	yturn = "Actual player: ",
@@ -199,7 +199,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 18412.131",
+bar = "#anvilwar - RTM 18513.132",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -223,7 +223,7 @@ caps = " تم إختياره ليصبح قائد الفريق. لرؤية الم
 cap = "الكابتن هو قائد الفريق، يتم إختياره عشوائيآ، سوف يحصل على نقاط بنسبة 50% أكثر من اللاعبين، اي جَني النقاط بسرعة!يمكنه تحويل النقاط للاعب أخر عن طريق الإيعاز ويمكنه إحياء لاعب مات من فريقه بإستخدام !rv [name] ولكن يتطلب 30 نقطة لذلك",
 cap_text = "<br><VP>أنت قائد الفريق<br><br>سوف تحصل على نقاط زائدة بنسبة 50% ويمكنك نق لنقاطك للاعب أخر بإستخدام !tt name أو إحياء لاعب أخر بإستخدام !rv name يتطلب الإحياء 30 نقطة",
 score30 = "<R>تحتاج 30 نقطة للقيام بهذا",
-advanced = "<VP>وصلت للستوى ",
+advanced = " reached the level ",
 tag_text = "<J>لا تنسى بوضع الهاشتاج على الإسم الذي تم إختياره, أو لن يعمل هذا الإيعاز",
 revivetext = "<J>هذا اللاعب قام بإستقبال : ",
 yturn = "اللاعب الحالي: ",
@@ -262,7 +262,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 18412.131",
+	bar = "#anvilwar - RTM 18513.132",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -286,7 +286,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	cap = "En esta compilación fue incluido la funcionalidad de jugador capitán. Este tipo de jugador (es elegido aleatoriamente) recibirá un 50% más de puntos y la posibilidad de transferir tus puntos a otros jugadores vivos en la ronda usando el comando !tt [apodo]. Puedes usar el comando !rv [apodo] para revivir UN jugador muerto del equipo.",
 	cap_text = "<br><VP>Eres el capitán del equipo.<br><br>Recibirás un 50% más de puntos y la posibilidad de transferir tus puntos a otros jugadores del equipo usando el comando !tt [apodo]. Puedes usar el comando !rv [apodo] command para revivir UN jugador muerto del equipo.",
 	score30 = "<R>Necesitas 30 puntos para usar esto.",
-	advanced = "<VP>Has alcanzado el nivel ",
+	advanced = " alcanzado el nivel ",
 	tag_text = "<J>No te olvides de colocar el #tag en el apodo del objetivo, o este comando no funcionará.",
 	revivetext = "<J>El siguiente jugador ha sido revivido: ",
 	yturn = "Jugador actual: ",
@@ -325,7 +325,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 18412.131",
+	bar = "#anvilwar - RTM 18513.132",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -349,7 +349,7 @@ lang.de = {
 	cap = "Auf dieser Zusammenstellung wurde die Funktionalität eines Capitain-Players integriert. Diese Art von Spieler (die zufällig ausgewählt wird) erhält 50% mehr Punkte und die Möglichkeit, Ihre Punkte auf andere Spieler zu übertragen, die im Spiel leben. !tt [name] Befehl. Sie können die Funktion !rv [name] Befehl, EINE Teamspielerin wiederzubeleben, die tot is.",
 	cap_text = "<br><VP>Du bist der Teamchef.<br><br>Du bekommst 50% mehr Punkte als andere Teammitglieder und kannst deine Punkte auf andere Teammitglieder übertragen !tt [name] Befehl. Sie können die Funktion !rv [name] Befehl, EINE Teamspielerin wiederzubeleben, die tot is.",
 	score30 = "<R>Du brauchst 30 Punkte, um das zu benutzen.",
-	advanced = "<VP>Du hast das Level erreicht ",
+	advanced = " hast das Level erreicht ",
 	tag_text = "<J>Vergiss nicht, das #Tag auf dem Ziel-Nicknamen einzufügen, sonst funktioniert dieser Befehl nicht!",
 	revivetext = "<J>Der folgende Spieler wurde wiederbelebt: ",
 	yturn = "Aktueller Spieler: ",
@@ -1524,7 +1524,7 @@ function advanceLevel()
 				data[name].exp=data[name].exp-data[name].maxp
 				data[name].maxp=data[name].maxp+50
 				data[name].nivel=data[name].nivel+1
-				tfm.exec.chatMessage(""..text.advanced..""..data[name].nivel.."!",name)
+				tfm.exec.chatMessage("<VP><b>"..name..""..text.advanced..""..data[name].nivel.."!")
 			end
 		end
 	end
@@ -2977,166 +2977,6 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-initWatercatch = function()
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAllShamanSkills(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.setRoomMaxPlayers(30)
-shaman=""
-alives=0
-cannons=3
-z=0
-data={}
-mode="hide"
-map="@7710965"
-tfm.exec.newGame(map)
-function eventPlayerDied(n)
-	if not tfm.get.room.playerList[n].isShaman then
-		alives=alives-1
-	end
-	if alives <= 0 then
-		mode="end"
-		tfm.exec.setGameTime(15)
-		tfm.exec.chatMessage("<R>O shaman matou todos os ratos e venceu o jogo!<br>Próxima rodada iniciando em 15 segundos.")
-	end
-	data[n].o=0
-	if mode == "hide" or mode == "game" then
-		if tfm.get.room.playerList[n].isShaman then
-			tfm.exec.chatMessage("<J>O shaman morreu, está AFK ou saiu da sala. Iniciando nova partida...")
-			tfm.exec.setPlayerScore(shaman,-1,false)
-			mode="end"
-			tfm.exec.setGameTime(10)
-			for n,p in pairs(tfm.get.room.playerList) do
-				if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
-					tfm.exec.giveCheese(n)
-					tfm.exec.playerVictory(n)
-				end
-			end
-		end
-	end
-end
-function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><b>Bem-vindos ao module #watercatch!</b><br>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Mapa e tradução para o português feitos por Rakan_raster#0000.<br><br><R>Se aparecer apenas um mapa em branco quando a partida começar, basta relogar que o problema será resolvido. Isto é um problema de memória do Transformice e não do module.",name)
-end
-function eventSummoningEnd(name,id,x,y)
-	cannons=cannons-1
-	if cannons >= 1 then
-		tfm.exec.chatMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
-	elseif cannons == 0 then
-		tfm.exec.chatMessage("<VP>O shaman não pode mais usar objetos!")
-	else
-		tfm.exec.killPlayer(shaman)
-	end
-end
-function eventNewGame()
-z=-1
-cannons=3
-ui.removeTextArea(22,nil)
-alives=0
-mode="hide"
-for n,p in pairs(tfm.get.room.playerList) do
-	if n:sub(1,1) == "*" then
-		tfm.exec.killPlayer(n)
-	end
-	alives=alives+1
-	newData={
-	["x"]=0;
-	["yp"]=0;
-	["y"]=0;
-	["o"]=100;
-	};		
- 	data[n] = newData;
-	tfm.exec.bindKeyboard(n,32,true,true)
-		if tfm.get.room.playerList[n].isShaman then
-		ui.addTextArea(22,"",n,-1000,-1000,3000,3000,0x000001,0x000001,1.0,true)
-		shaman=n
-		alives=alives-1
-	end
-end
-tfm.exec.setGameTime(60)
-tfm.exec.chatMessage("<J><b>Bem-vindos ao module #watercatch!</b><br>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Mapa e tradução para o português feitos por Rakan_raster#0000.<br><br><R>Se aparecer apenas um mapa em branco quando a partida começar, basta relogar que o problema será resolvido. Isto é um problema de memória do Transformice e não do module.")
-end
-function eventLoop(p,r)
-ui.setMapName("#watercatch! Version RTM 1722.008 by Spectra_phantom#6089<")
-local m=math.floor(r/60000)
-local s=math.floor((((m*60000)-r) * -1) / 1000)
-ui.addTextArea(-1,"<font size='22'><font face='Bahnschrift'><p align='center'>0"..m.." : "..s.."",nil,340,24,120,28,0x000001,0x000001,1.0,true)
-if s < 10 then
-	ui.addTextArea(-1,"<font size='22'><font face='Bahnschrift'><p align='center'>0"..m.." : 0"..s.."",nil,340,24,120,28,0x000001,0x000001,1.0,true)
-end
-if mode == "game" or mode == "hide" then
-	ui.addTextArea(30,"<font size='16'><font face='Bahnschrift SemiLight'><b>"..alives.."</b> mice(s) remaining",n,20,24,160,24,0x181818,0x090909,1.0,true)
-else
-ui.removeTextArea(30,nil)
-end
-for n,q in pairs(tfm.get.room.playerList) do
-	if data[n] then
-		data[n].x=tfm.get.room.playerList[n].x
-		data[n].yp=tfm.get.room.playerList[n].y
-		if mode == "game" then
-			if q.x >= data[shaman].x - 80 and q.x <= data[shaman].x + 80 then
-			if q.y >= data[shaman].yp - 80 and q.y <= data[shaman].yp + 80 then
-			if not tfm.get.room.playerList[n].isShaman then
-			tfm.exec.killPlayer(n)
-			end
-			end
-			end
-		end
-		if not tfm.get.room.playerList[n].isDead then
-			if tfm.get.room.playerList[n].y < 236 then
-				if data[n].o < 100 then
-					data[n].o=data[n].o+1
-				end
-					data[n].y=0
-				else
-					data[n].y=((tfm.get.room.playerList[n].y-175)/180)^2
-						if data[n].y < 10 then
-							data[n].o=data[n].o-0.75
-						elseif data[n].y > 10 then
-							data[n].o=data[n].o-2
-						end
-				if data[n].o <= 0 then
-					tfm.exec.killPlayer(n)
-					tfm.exec.chatMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
-				end
-			end
-		ui.addTextArea(0,"<font size='15'><font face='Bahnschrift SemiLight'>O₂Meter",n,12,372,68,20,0x181818,0x090909,1.0,true)
-		if data[n].o > 30 then
-			ui.addTextArea(10,"",n,88,388,data[n].o*2,6,0x0080ff,0x0060ff,1.0,true)
-		else
-			ui.addTextArea(10,"",n,88,388,data[n].o*2,6,0xff8000,0xff6000,1.0,true)
-		end
-	end
-	end
-end
-if r <= 2000 and mode == "hide" then
-	mode="game"
-	tfm.exec.setGameTime(150+(alives*2))
-	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão desativadas temporariamente.")
-end
-if r <= 1000 and mode == "game" then
-tfm.exec.setGameTime(15)
-mode="end"
-local lives=0
-for n,p in pairs(tfm.get.room.playerList) do
-	if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
-	lives=lives+1
-	tfm.exec.giveCheese(n)
-	tfm.exec.playerVictory(n)
-	end
-end
-tfm.exec.chatMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Iniciando nova partida...")
-end
-if r <= 1 and mode == "end" then
-tfm.exec.newGame(map)
-end
-end
-end
-
 initPistas = function()
 tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disableAutoNewGame(true)
@@ -3378,14 +3218,14 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7631682")
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00watercatch = WaterCatch<br>/sala #anvilwar00pistas = Jogo das 3 Pistas")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00pistas = Jogo das 3 Pistas")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00watercatch = WaterCatch<br>/sala #anvilwar00pistas = Jogo das 3 Pistas")
+	tfm.exec.chatMessage("<J><br>Confiram as salas disponíveis do module #anvilwar:<br><br>/sala #anvilwar = Anvilwar<br>/sala #anvilwar00mestre = Mestre Mandou<br>/sala #anvilwar00truefalse = True or False<br>/sala #anvilwar00objects = Objects<br>/sala #anvilwar00pistas = Jogo das 3 Pistas")
 end
 end
 
 Disabled = function()
-tfm.exec.newGame("@7631682",true)
+tfm.exec.newGame("@7692039",true)
 tfm.exec.setGameTime(15)
 tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled.",nil)
 function eventNewPlayer(n)
@@ -3393,7 +3233,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.108.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.109<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
@@ -3410,9 +3250,6 @@ elseif string.find(tfm.get.room.name,"true_false") or string.find(tfm.get.room.n
 elseif string.find(tfm.get.room.name,"objects") then
 	active = "objects"
 	initObjects()
-elseif string.find(tfm.get.room.name,"watercatch") then
-	active = "watercatch"
-	initWatercatch()
 elseif string.find(tfm.get.room.name,"rooms") then
 	active = "rooms"
 	Rooms()
