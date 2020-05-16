@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects e #pistas. Compilado às 13h32 (UTC) 16/05/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects e #pistas. Compilado às 13h32 (UTC) 16/05/2020 e atualizado às 19h37 (UTC) 16/05/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.110",
+	_VERSION = "1.110.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1563,7 +1563,7 @@ for _,f in next,{"command","run","pw","limit"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 1407.003",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 1508.004",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1621,7 +1621,7 @@ lang.br = {
 	action = "Façam qualquer ação!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 1407.003",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 1508.004",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -2110,17 +2110,17 @@ function eventChatMessage(name,message)
 			data[name].c=1
 		end
 	end
-	if active == 43 then
+	if active == 41 then
 		if string.find(message,"k") or string.find(message,"K") then
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 45 then
+	if active == 43 then
 		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" then
 			data[name].c=1
 		end
 	end
-	if active == 49 then
+	if active == 47 then
 		if message == tostring(number) then
 			data[name].c=1
 		end
@@ -2184,7 +2184,7 @@ function eventEmotePlayed(name,id)
 	if active == 36 then
 		data[name].c=1
 	end
-	if active == 41 then
+	if active == 39 then
 		if id == 0 and data[name].s == 0 then
 			data[name].s=1
 		end
@@ -2195,17 +2195,17 @@ function eventEmotePlayed(name,id)
 			data[name].c=1
 		end
 	end
-	if active == 42 then
+	if active == 40 then
 		if id == 1 then
 			data[name].c=1
 		end
 	end
-	if active == 43 then
+	if active == 41 then
 		if id == 1 then
 			tfm.exec.killPlayer(name)
 		end
 	end
-	if active == 46 then
+	if active == 44 then
 		if id == 2 and data[name].s == 0 then
 			data[name].s=1
 		end
@@ -2322,29 +2322,29 @@ function eventKeyboard(name,id,down,x,y)
 			data[name].c=1
 		end
 	end
-	if active == 40 then
+	if active == 38 then
 		if id == 46 then
 			data[name].c=1
 		end
 	end
-	if active == 47 then
+	if active == 45 then
 		if id == 38 or id == 87 then
 			data[name].c=1
 		end
 	end
-	if active == 50 then
+	if active == 48 then
 		data[name].c=1
 	end
 end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 1407.003<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 1508.004<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 1407.003<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 1508.004<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 1407.003<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 1508.004<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -3203,7 +3203,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.110<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.110.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
