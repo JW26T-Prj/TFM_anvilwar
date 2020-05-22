@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects, #fall2 e #pistas. Compilado às 14h43 (UTC) 20/05/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #truefalse, #objects, #fall2 e #pistas. Compilado às 14h43 (UTC) 20/05/2020 e atualizado às 15h41 (UTC) 22/05/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.111",
+	_VERSION = "1.111.1",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -1377,7 +1377,7 @@ function eventNewGame()
 	tfm.exec.setGameTime(30)
 	showBar()
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><VP>As avaliações de mapas do module #anvilwar estão abertas!<br>https://atelier801.com/topic?f=848834&t=936547<br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/zS9JcF</b>")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><VP>As avaliações de mapas do module #anvilwar estão abertas!<br>https://atelier801.com/topic?f=848834&t=936547<br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 	end
 end
 function eventTextAreaCallback(id,name,callback)
@@ -1767,7 +1767,7 @@ function eventNewGame()
 	end
 	rodadas=math.floor(15+(rato/3))
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/zS9JcF</b>")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 	else
 		tfm.exec.chatMessage("<ROSE><b>I need of translations of this module to French, Spanish and German. If you are interested, please contact Nasus_assassin#1534.</b>")
 	end
@@ -2609,7 +2609,7 @@ function eventNewGame()
 	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
 	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/zS9JcF</b>")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 	end
 end
 function eventNewPlayer(name)
@@ -2883,7 +2883,7 @@ function eventNewGame()
 		end
 	end
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br>As avaliações de mapas para o #objects estão abertas!<br>https://atelier801.com/topic?f=816221&t=933046&p=1<br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/zS9JcF</b>")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br>As avaliações de mapas para o #objects estão abertas!<br>https://atelier801.com/topic?f=816221&t=933046&p=1<br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 	end
 end
 function showBar()
@@ -3191,7 +3191,7 @@ function eventNewGame()
 		tfm.exec.setPlayerScore(name,0,false)
 	end
 	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/zS9JcF</b>")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 	end
 end
 function eventChatMessage(name,message)
@@ -3312,7 +3312,7 @@ function eventLoop(p,f)
 		changed=true
 		ui.setMapName("<J>#fall 2.3   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 		if tfm.get.room.community == "br" then
-			tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/zS9JcF</b>")
+			tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Participe do nosso grupo no Discord e fique por dentro das novas atualizações!<br><b>https://discord.gg/Bhk8q2D</b>")
 		end
 	end
 	if f <= 1 and enabled == true then
@@ -3396,7 +3396,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.111<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.111.1<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
