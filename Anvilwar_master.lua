@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2 e #de. Compilado às 14h43 (UTC) 29/05/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2 e #de. Compilado às 12h37 (UTC) 05/06/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.114",
+	_VERSION = "1.115",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -13,7 +13,7 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-powerups={choosed="",r_azul=false,r_vermelho=false,multi_count=0,int_azul=2,int_vermelho=2,immortal=false,immortal2=false,double=false,triple=false,objeto=false,explosion=false,sequence=false}
+powerups={choosed="",r_azul=false,r_vermelho=false,multi_count=0,int_azul=2,int_vermelho=2,immortal=false,immortal2=false,double=false,triple=false,objeto=false,explosion=false,sequence=false,giant1=false,giant2=false}
 objetos={1,2,3,4,6,7,10,23,32,34,35,39,45,46,54,60,61,62,65,67,68,69,89,90,95}
 play_azul={}
 players_table={}
@@ -54,8 +54,8 @@ count_vermelho=0
 for _,f in next,{"help","powerups","set","tc","p","score","kill","tt","rv","cap","cmd","ban","unban","rodar","pw","TC","shutdown","run"} do
 	system.disableChatCommandDisplay(f)
 end
-mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464"}
-map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v2)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","The Darkness Abyss","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","","","","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water"}
+mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192"}
+map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v2)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","The Darkness Abyss","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","","","","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze"}
 lang = {}
 lang.br = {
 	win_vermelho = "<R><b>GG Time Vermelho!</b><br>A próxima partida será iniciada em 15 segundos.",
@@ -69,7 +69,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 18816.135",
+	bar = "#anvilwar - RTM 18917.136",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) e Puiguirata#0000 (DE)",
@@ -119,6 +119,8 @@ lang.br = {
 	rs2 = "<br>Neste powerup, você reduzirá o tamanho do seu rato até o término da partida.",
 	sq1 = "acionou o powerup Sequência de Bigornas!",
 	sq2 = "<br>Neste powerup, você vai atirar várias bigornas em sequência.",
+	gi1 = "acionou o powerup Transformação Gigante!",
+	gi2 = "<br>Neste powerup, durante seu turno de atirar, você aumenta em 50% o tamanho de todos os jogadores do time inimigo. Esta habilidade também anula as habilidades de Reduzir Tamanho utilizadas pelo time inimigo.",
 }
 lang.en = {
 	win_vermelho = "<R><b>The RED team wins!</b><br>The next match will start in 15 seconds.",
@@ -132,7 +134,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 18816.135",
+	bar = "#anvilwar - RTM 18917.136",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -182,6 +184,8 @@ lang.en = {
 	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 	sq1 = "used the powerup Anvil Sequence!",
 	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
+	gi1 = "used the powerup Giant Transformation!",
+	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
 }
 lang.ar = {
 	win_vermelho = "<R><b>فاز الفريق الأحمر!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
@@ -199,7 +203,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 18816.135",
+bar = "#anvilwar - RTM 18917.136",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) and Puiguirata#0000 (DE)",
@@ -249,6 +253,8 @@ rs1 = "used the powerup Decrease Size!",
 rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 sq1 = "used the powerup Anvil Sequence!",
 sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
+gi1 = "used the powerup Giant Transformation!",
+gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
 }
 lang.es = {
 	win_vermelho = "<R><b>¡Ha ganado el equipo ROJO!</b><br>La próxima ronda comenzará en 15 segundos.",
@@ -262,7 +268,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 18816.135",
+	bar = "#anvilwar - RTM 18917.136",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES) y Puiguirata#0000 (DE)",
@@ -312,6 +318,8 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 	sq1 = "used the powerup Anvil Sequence!",
 	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
+	gi1 = "used the powerup Giant Transformation!",
+	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
 }
 lang.de = {
 	win_vermelho = "<R><b>Das ROTE Team gewinnt!</b><br>Das nächste Spiel beginnt in 15 Sekunden.",
@@ -325,7 +333,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 18816.135",
+	bar = "#anvilwar - RTM 18917.136",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) und Puiguirata#0000 (DE)",
@@ -375,6 +383,8 @@ lang.de = {
 	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
 	sq1 = "used the powerup Anvil Sequence!",
 	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
+	gi1 = "used the powerup Giant Transformation!",
+	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
 }
 
 if tfm.get.room.community == "br" then
@@ -596,7 +606,7 @@ function eventChatCommand(name,message)
 		menuShow(name,text.cmds,text.cap,80)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 6pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 8pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 22pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 30pt - Required Level: 4 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 20pt - Required Level: 3 - Function: <a href='event:power6'>Show</a><br>F7 (Anvil Sequence) - Cost: 30pt - Required Level: 3 - Function: <a href='event:power7'>Show</a><br>",140)
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 4pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 10pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 6pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 25pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 24pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power6'>Show</a><br>F7 (Anvil Sequence) - Cost: 24pt - Required Level: 4 - Function: <a href='event:power7'>Show</a><br>F8 (Giant Transformation) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power8'>Show</a><br>",156)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -786,13 +796,13 @@ function eventLoop(passado,faltando)
 							tfm.exec.respawnPlayer(name)
 							tfm.exec.movePlayer(name,1000,180,false,0,0,false)
 							table.insert(play_azul,name)
-							tfm.exec.setPlayerScore(name,0,false)
+							tfm.exec.setPlayerScore(name,50,false)
 						elseif data[name].team == "vermelho" then
 							data[name].matchs=data[name].matchs+1
 							tfm.exec.respawnPlayer(name)
 							tfm.exec.movePlayer(name,600,180,false,0,0,false)
 							table.insert(play_vermelho,name)
-							tfm.exec.setPlayerScore(name,0,false)
+							tfm.exec.setPlayerScore(name,50,false)
 						else
 							tfm.exec.movePlayer(name,800,-2000,false,0,0,false)
 							tfm.exec.setPlayerScore(name,-1,false)
@@ -924,6 +934,22 @@ function eventLoop(passado,faltando)
 				end
 			end
 			loop=12
+			if powerups.giant1 == true then
+				powerups.giant1=false
+				for name,player in pairs(tfm.get.room.playerList) do
+					if data[name] and data[name].team == "azul" then
+						tfm.exec.changePlayerSize(name,1)
+					end
+				end
+			end
+			if powerups.giant2 == true then
+				powerups.giant2=false
+				for name,player in pairs(tfm.get.room.playerList) do
+					if data[name] and data[name].team == "vermelho" then
+						tfm.exec.changePlayerSize(name,1)
+					end
+				end
+			end
 			resetPowers()
 			if valendo == true and reset == false then
 				if count_azul == 0 and count_vermelho == 0 then
@@ -1046,7 +1072,7 @@ function eventPlayerDied(name)
 				data[actual_player].max=kills
 				data[actual_player].exp=data[actual_player].exp+2*kills
 			end
-			if data[name].team == data[actual_player].team and anvil_launched == true then
+			if data[name].team == data[actual_player].team and anvil_launched == true and not actual_player == name then
 				tfm.exec.chatMessage("<J>"..text.teamkill1..""..actual_player.." "..text.teamKill2..": <b>"..name.."</b>.")
 				tfm.exec.setPlayerScore(actual_player,-2,true)
 				kills=kills-1
@@ -1113,7 +1139,7 @@ function eventNewPlayer(name)
 	ratos=ratos+1
 	if not data[name] then
 		table.insert(players_table,name)
-		data[name]={wins=0,matchs=0,kills=0,max=0,score=0,mks=0,killed=-1,team="",immortal=false,imatchs=0,immortal2=false,level=0,nivel=1,exp=0,maxp=50}
+		data[name]={wins=0,matchs=0,kills=0,max=0,score=0,mks=0,killed=-1,team="",immortal=false,imatchs=0,immortal2=false,level=0,nivel=10,exp=0,maxp=50}
 	end
 	showTeams(name)
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -1210,45 +1236,45 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 112 then
-				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 6 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 4 then
 					if data[name].nivel >= 1 then
 						powerups.double=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.double.."")
-						tfm.exec.setPlayerScore(name,-6,true)
+						tfm.exec.setPlayerScore(name,-4,true)
 					else
 						tfm.exec.chatMessage(text.level_error,name)
 					end
 				end
 			end
 			if key == 113 then
-				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 12 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 10 then
 					if data[name].nivel >= 2 then
 						powerups.double=true
 						powerups.triple=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.triple.."")
-						tfm.exec.setPlayerScore(name,-12,true)
+						tfm.exec.setPlayerScore(name,-10,true)
 					else
 						tfm.exec.chatMessage(text.level_error,name)
 					end
 				end
 			end
 			if key == 114 then
-				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 8 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 6 then
 					if data[name].nivel >= 2 then
 						powerups.objeto=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.objeto1.."")
-						tfm.exec.setPlayerScore(name,-8,true)
+						tfm.exec.setPlayerScore(name,-6,true)
 					else
 						tfm.exec.chatMessage(text.level_error,name)
 					end
 				end
 			end
 			if key == 115 then
-				if valendo == true and actual_player == name and powerups.explosion == false and tfm.get.room.playerList[name].score >= 22 then
+				if valendo == true and actual_player == name and powerups.explosion == false and tfm.get.room.playerList[name].score >= 25 then
 					if data[name].nivel >= 3 then
 						powerups.explosion=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.exp1.."")
-						tfm.exec.setPlayerScore(name,-22,true)
+						tfm.exec.setPlayerScore(name,-25,true)
 						anvil_launched=true
 						loop=12
 					else
@@ -1257,12 +1283,12 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 116 then
-				if valendo == true and actual_player == name and data[name].immortal2 == false and tfm.get.room.playerList[name].score >= 30 then
-					if data[name].nivel >= 4 then
+				if valendo == true and actual_player == name and data[name].immortal2 == false and tfm.get.room.playerList[name].score >= 24 then
+					if data[name].nivel >= 5 then
 						data[name].immortal=true
 						data[name].immortal2=true
 						tfm.exec.setNameColor(name,0x00ff00)
-						tfm.exec.setPlayerScore(name,-30,true)
+						tfm.exec.setPlayerScore(name,-24,true)
 						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.inv1.."")
 						tfm.exec.chatMessage(text.inv2,name)
 					else
@@ -1271,9 +1297,9 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 117 then
-				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 20 then
-					if data[name].nivel >= 3 then
-						tfm.exec.setPlayerScore(name,-20,true)
+				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 16 then
+					if data[name].nivel >= 4 then
+						tfm.exec.setPlayerScore(name,-16,true)
 						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.rs1.."")
 						tfm.exec.chatMessage(text.rs2,name)
 						tfm.exec.changePlayerSize(actual_player,0.6)
@@ -1283,12 +1309,38 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 118 then
-				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 30 and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true then
-					if data[name].nivel >= 3 then
-						tfm.exec.setPlayerScore(name,-30,true)
+				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 24 and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true then
+					if data[name].nivel >= 4 then
+						tfm.exec.setPlayerScore(name,-24,true)
 						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.sq1.."")
 						tfm.exec.chatMessage(text.sq2,name)
 						powerups.sequence=true
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
+			if key == 119 then
+				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 16 then
+					if data[name].nivel >= 4 then
+						tfm.exec.setPlayerScore(name,-16,true)
+						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.gi1.."")
+						tfm.exec.chatMessage(text.gi2,name)
+						if data[name].team == "vermelho" then
+							powerups.giant1=true
+							for name,player in pairs(tfm.get.room.playerList) do
+									if data[name].team == "azul" then
+										tfm.exec.changePlayerSize(name,1.5)
+									end
+							end
+						elseif data[name].team == "azul" then
+							powerups.giant2=true
+							for name,player in pairs(tfm.get.room.playerList) do
+									if data[name].team == "vermelho" then
+										tfm.exec.changePlayerSize(name,1.5)
+									end
+							end
+						end
 					else
 						tfm.exec.chatMessage(text.level_error,name)
 					end
@@ -1555,15 +1607,15 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847,2637755}
+mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847}
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; vampire="";
 admin=""
 unlocked=true
-for _,f in next,{"command","mapa","pw","limit"} do
+for _,f in next,{"command","mapa","pw","limit","run"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 1912.008",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2215.011",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1572,6 +1624,7 @@ lang.br = {
 	dormir = "Vocês estão com sono. Durmam para descansar.",
 	raiva = "Tigrounette é do mal! Fiquem com raiva dele!",
 	chorem = "Vocês não ganharam queijo :( Chorem!",
+	nchorem = "Não chorem!",
 	esquerda = "Não vá para a esquerda!",
 	direita = "Não vá para a direita!",
 	numero = "Digite o seguinte número: ",
@@ -1583,6 +1636,7 @@ lang.br = {
 	ano = "Em que ano estamos?",
 	vesquerda = "Fique virado para a esquerda!",
 	vdireita = "Fique virado para a direita!",
+	quadradoa = "Fique no quadrado azul!",
 	quadradov = "Fique no quadrado vermelho!",
 	quadrado = "Fique no quadrado branco!",
 	retangulo = "Fique dentro do retângulo branco!",
@@ -1613,6 +1667,7 @@ lang.br = {
 	freeze = "Todo mundo parado!",
 	transform = "Dance e durma!",
 	down1 = "Abaixem 3 vezes!",
+	kill = "Se matem!",
 	mestre = "Mestre Mandou",
 	map = "Mapa",
 	time = "Tempo",
@@ -1625,10 +1680,12 @@ lang.br = {
 	playingmap = "Rodando mapa",
 	created = "criado por",
 	abaixar = "Abaixem e se levantem!",
-	action = "Façam qualquer ação!"
+	action = "Façam qualquer ação!",
+	naction = "Não façam nenhuma ação!",
+	math = "Quanto é 1+1?"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 1912.008",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2215.011",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1637,6 +1694,7 @@ lang.en = {
 	dormir = "They are sleepy. Sleep to rest.",
 	raiva = "Tigrounette is evil! Get angry with him!",
 	chorem = "No cheese for you. Cry!",
+	nchorem = "Don't cry!",
 	esquerda = "Don't go to the LEFT!",
 	direita = "Don't go to the RIGHT!",
 	numero = "Type this number: ",
@@ -1648,6 +1706,7 @@ lang.en = {
 	ano = "What year are we?",
 	vesquerda = "Stay facing LEFT!",
 	vdireita = "Stay facing RIGHT!",
+	quadradoa = "Stay on the blue square!",
 	quadradov = "Stay on the red square!",
 	quadrado = "Stay on the white square!",
 	retangulo = "Stay on the white rectangle!",
@@ -1678,6 +1737,7 @@ lang.en = {
 	freeze = "Stop!",
 	transform = "Dance and sleep!",
 	down1 = "Turn down 3 times!",
+	kill = "Kill yourselves!",
 	mestre = "Master Says",
 	map = "Map",
 	time = "Time",
@@ -1690,10 +1750,12 @@ lang.en = {
 	playingmap = "Playing map",
 	created = "created by",
 	abaixar = "Turn down and get up!",
-	action = "Do any action!"
+	action = "Do any action!",
+	naction = "Don't do any action!",
+	math = "How much is 1+1?",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 1912.008",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2215.011",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1702,6 +1764,7 @@ lang.fr = {
 	dormir = "Tu es fatigué. Dors pour te reposer.",
 	raiva = "Tigrounette est méchant ! Mets-toi en colère contre lui !",
 	chorem = "Pas de fromage pour toi. Pleure !",
+	nchorem = "Ne pleure pas !",
 	esquerda = "Ne va pas vers la GAUCHE !",
 	direita = "Ne va pas vers la DROITE !",
 	numero = "Écris ce nombre : ",
@@ -1713,6 +1776,7 @@ lang.fr = {
 	ano = "En quelle année sommes-nous ?",
 	vesquerda = "Positionne-toi vers la GAUCHE !",
 	vdireita = "Positionne-toi vers la DROITE !",
+	quadradoa = "Reste dans le carré bleu !",
 	quadradov = "Reste dans le carré rouge !",
 	quadrado = "Reste dans le carré blanc !",
 	retangulo = "Reste dans le rectangle blanc !",
@@ -1743,6 +1807,7 @@ lang.fr = {
 	freeze = "Stop !",
 	transform = "Danse et dors !",
 	down1 = "Retourne-toi 3 fois !",
+	kill = "Tuez-vous !", 
 	mestre = "Jacques à dit",
 	map = "Carte",
 	time = "Temps",
@@ -1755,7 +1820,9 @@ lang.fr = {
 	playingmap = "Map chargé ",
 	created = "créée par",
 	abaixar = "Retourne-toi et lève-toi !",
-	action = "Ne fais rien !"
+	naction = "Ne fais rien !", 
+	action = "Faites n'importe quelle action !",
+	math = "Combien vaut 1 + 1?"
 }
 if tfm.get.room.community == "br" then
 	text = lang.br
@@ -1766,13 +1833,7 @@ else
 end
 function eventNewPlayer(name)
 	rato=rato+1
-	for k=32, 36 do
-		tfm.exec.bindKeyboard(name,k,false,true)
-	end
-	for k=37, 40 do
-		tfm.exec.bindKeyboard(name,k,true,true)
-	end
-	for k=41, 90 do
+	for k=32, 90 do
 		tfm.exec.bindKeyboard(name,k,false,true)
 	end
 	system.bindMouse(name,true)
@@ -1791,7 +1852,30 @@ for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
 function eventPlayerDied(name)
-	if active >= 0 then
+	if active >= 0 and active <= 55 then
+		vivo=vivo-1
+		local i=0
+		local name
+		for pname,player in pairs(tfm.get.room.playerList) do
+			if not player.isDead then
+				i=i+1
+				name=pname
+			end
+		end
+		if i==0 then
+			active=-1
+		elseif i==1 then
+			active=-1
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+			tfm.exec.setGameTime(10)
+		end
+	end
+	if active == 56 then
+		data[name].c=1
+		tfm.exec.respawnPlayer(name)
+	end
+	if active >= 57 then
 		vivo=vivo-1
 		local i=0
 		local name
@@ -1846,7 +1930,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,55)
+	active=math.random(1,61)
 	getCommand()
 end
 function eventChatCommand(name,message)
@@ -1857,6 +1941,10 @@ function eventChatCommand(name,message)
 		end
 		if(message:sub(0,4) == "mapa") then
 			tfm.exec.newGame(message:sub(6))
+			active=0
+		end
+		if(message:sub(0,3) == "run") then
+			tfm.exec.newGame(message:sub(5))
 			active=0
 		end
 		if(message:sub(0,5) == "limit") then
@@ -2102,7 +2190,7 @@ function getCommand()
 	if active == 37 then
 		local alives={}
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.vampire.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
-		tfm.exec.setGameTime(30)
+		tfm.exec.setGameTime(36)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 			if not tfm.get.room.playerList[name].isDead then
@@ -2210,6 +2298,50 @@ function getCommand()
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.down1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(9)
 	end
+	if active == 56 then
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.kill.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		tfm.exec.setGameTime(10)
+	end
+	if active == 57 then
+		xpos=math.random(60,650)
+		xpos2=math.random(60,650)
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.quadradov.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		tfm.exec.setGameTime(5)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
+		ui.addTextArea(1,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.68,false)
+		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
+	end
+	if active == 58 then
+		xpos=math.random(60,650)
+		xpos2=math.random(60,650)
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.quadradoa.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		tfm.exec.setGameTime(5)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
+		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.68,false)
+		ui.addTextArea(2,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.62,false)
+	end
+	if active == 59 then
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.naction.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
+		tfm.exec.setGameTime(7)
+	end
+	if active == 60 then
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.naction.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
+		tfm.exec.setGameTime(7)
+	end
+	if active == 61 then
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.math.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		tfm.exec.setGameTime(8)
+	end
 end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "command51" then
@@ -2246,6 +2378,11 @@ function eventChatMessage(name,message)
 	end
 	if active == 47 then
 		if message == tostring(number) then
+			data[name].c=1
+		end
+	end
+	if active == 61 then
+		if message == "2" then
 			data[name].c=1
 		end
 	end
@@ -2292,7 +2429,7 @@ function eventEmotePlayed(name,id)
 			data[name].c=1
 		end
 	end
-	if active == 14 then
+	if active == 14 or active == 59 then
 		tfm.exec.killPlayer(name)
 	end
 	if active == 15 then
@@ -2349,8 +2486,13 @@ function eventEmotePlayed(name,id)
 		if id == 0 and data[name].s == 0 then
 			data[name].s=1
 		end
-		if id == 4 and data[name].s == 1 then
+		if id == 6 and data[name].s == 1 then
 			data[name].c=1
+		end
+	end
+	if active == 60 then
+		if id == 2 then
+			tfm.exec.killPlayer(name)
 		end
 	end
 end			
@@ -2486,7 +2628,7 @@ function eventKeyboard(name,id,down,x,y)
 	if active == 55 then
 		if id == 38 or id == 87 then
 			data[name].s=data[name].s+1
-			if data[name].s >= 3 then
+			if data[name].s >= 1 then
 				data[name].c=1
 			end
 		end
@@ -2495,12 +2637,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 1912.008 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2215.011 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 1912.008 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2215.011 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 1912.008 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2215.011 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -2538,7 +2680,7 @@ function eventLoop(passado,faltando)
 			end
 		end
 	end
-	if active > 0 and faltando < 1 and rato > 1 then
+	if active > 0 and faltando < 1 and rato >= 2 then
 		if active == 17 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if tfm.get.room.playerList[name].isFacingRight == true then
@@ -2553,7 +2695,7 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
-		if active == 19 or active == 31 or active == 32 then
+		if active == 19 or active == 31 or active == 32 or active == 57 or active == 58 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if player.y < 300 then
 					tfm.exec.killPlayer(name)
@@ -3225,7 +3367,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.114<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.115<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
