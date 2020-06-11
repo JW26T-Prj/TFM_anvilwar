@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2, #watercatch e #clickwar. Compilado às 02h29 (UTC) 11/06/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2, #watercatch e #clickwar. Compilado às 19h48 (UTC) 11/06/2020. ]]--
 
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.117",
+	_VERSION = "1.118",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -69,7 +69,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 19119.138",
+	bar = "#anvilwar - RTM 19120.139",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Osmanyksk123#5925 (TR)",
@@ -134,7 +134,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 19119.138",
+	bar = "#anvilwar - RTM 19120.139",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Osmanyksk123#5925 (TR)",
@@ -203,7 +203,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 19119.138",
+bar = "#anvilwar - RTM 19120.139",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Osmanyksk123#5925 (TR)",
@@ -268,7 +268,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 19119.138",
+	bar = "#anvilwar - RTM 19120.139",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Osmanyksk123#5925 (TR)",
@@ -333,7 +333,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 19119.138",
+	bar = "#anvilwar - RTM 19120.139",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Osmanyksk123#5925 (TR)",
@@ -398,38 +398,38 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "#anvilwar - RTM 19119.138",
+	bar = "#anvilwar - RTM 19120.139",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
-	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için! Cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom # 6089 ve Reksai_void2600 # 6638 <br> Çeviriler: Nasus_assassin # 1534 (EN), Alexsaky # 7307 + Vigo # 4765 (AR), Dejavu # 2242 (ES), Puiguirata # 0000 (DE) ve Osmanyksk123 # 5925 (TR) ",
+	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
 	teamkill1 = "Oh hayır! ",
 	teamKill2 = "takımının bir oyuncusunu öldürdü",
 	ajuda = "Yardım",
 	credits = "Kredi",
-	mostrar = "Göstermek",
+	mostrar = "Göster",
 	seconds = "<ROSE> 60 saniye kaldı!",
-	seconds30 = "<ROSE> 30 saniye kaldı! <br> 30 son saniyede oyuncuları canlandırmasına izin verilmiyor.",
+	seconds30 = "<ROSE> 30 saniye kaldı! <br> 60 son saniyede oyuncuları canlandırmasına izin verilmiyor.",
 	seconds10 = "<ROSE> 10 saniye kaldı! ",
-	teamchat = "<J> Ekibinizle konuşmak için! Tc [message] komutunu kullanabilirsiniz. <br> <br> Profil yazınızı! P ve geçici tanking yazma! Rütbesini görebilirsiniz.",
+	teamchat = "<J> Ekibinizle konuşmak için !tc [message] komutunu kullanabilirsiniz. <br> <br> Profil yazınızı !p ve geçici tanking yazma! Rütbesini görebilirsiniz.",
 	menu_bar = "<p align = 'center'> <a href='event:help'> Yardım </a> | <a href='event:profile'> Profil </a> | <a href='event:powerups'> Güçlendirmeler </a> | <a href='event:cap'> Kişi Kişi </a> | <a href='event:cmd'> Komutlar </a> ",
 	powerupslist = "Powerups Listesi",
-	profile = "Profilinizi görüntülemek için! P komutunu kullanın ve başka bir kullanıcının profilini görüntülemek için !P [kullanıcı adı] kullanın.",
+	profile = "Profilinizi görüntülemek için !p komutunu kullanın ve başka bir kullanıcının profilini görüntülemek için !p [kullanıcı adı] kullanın.",
 	starting = "<VP> Maç birkaç saniye içinde başlayacak. Hazırlan!",
 	suicide = "Aşağıdaki oyuncu intihar etti: ",
 	ban = " tarafından oda yasaklandı ",
 	unban = " oda yasaklandı.",
 	caps = " ekip kişi olarak seçildi.",
-	cap = "(Rastgele seçilen) bu oyuncu türü% 50 daha fazla puan alır ve puanlarınızı! Tt [name] komutunu kullanarak maçta canlı olan diğer oyunculara aktarabilir. BİR takım oyuncusunu ölü olarak canlandırmak için! Rv [name] komutunu kullanabilirsiniz. ",
-	cap_text = "<br> <VP> Takım kişi sizsiniz. <br> <br> Diğer takım oyuncularına göre% 50 daha fazla puan alacaksınız ve! tt [name] komutunu kullanarak puanlarınızı diğer takım oyuncularına aktarabilirsiniz. BİR takım oyuncusunu ölü olarak canlandırmak için! Rv [name] komutunu kullanabilirsiniz. En fazla 2 zaman aşımı istemek için klavyedeki BİTİR tuşunu da kullanabilirsiniz. ",
+	cap = "(Rastgele seçilen) bu oyuncu türü %50 daha fazla puan alır ve puanlarınızı !tt [name] komutunu kullanarak maçta canlı olan diğer oyunculara aktarabilir. BİR takım oyuncusunu ölü olarak canlandırmak için !rv [name] komutunu kullanabilirsiniz. ",
+	cap_text = "<br> <VP> Takım kişi sizsiniz. <br> <br> Diğer takım oyuncularına göre %50 daha fazla puan alacaksınız ve !tt [name] komutunu kullanarak puanlarınızı diğer takım oyuncularına aktarabilirsiniz. BİR takım oyuncusunu ölü olarak canlandırmak için !rv [name] komutunu kullanabilirsiniz. En fazla 2 zaman aşımı istemek için klavyedeki BİTİR tuşunu da kullanabilirsiniz. ",
 	score30 = "<R>Bunu kullanmak için 30 puana ihtiyacınız var.",
 	advanced = " seviyeye ulaştı ",
 	tag_text = "<J># Etiketini hedef takma ada eklemeyi unutmayın, aksi takdirde bu komut çalışmaz! ",
 	revivetext = "<J> Aşağıdaki oyuncu canlandı: ",
 	yturn = "Gerçek oyuncu: ",
-	level_error = "<R> Bunu kullanacak seviyen yok. Seviyenizi görüntülemek için! P komutunu kullanın. ",
+	level_error = "<R> Bunu kullanacak seviyen yok. Seviyenizi görüntülemek için !p komutunu kullanın. ",
 	funct = "Fonksiyona izin verilmiyor ",
 	cmds = "Oyun komutları ",
-	commands = "•! Help = Oyun yardımını göster. <br> •! P [player] = Seçili oyuncunun profilini göster. Profilinizi göstermek için argüman olmadan! P yazın. <br> •! Tc [message] = Takımınızın diğer üyeleri ile sohbet edin. <br> <ROSE> * <N>! Rv [player] = Takımınızın ölü bir oyuncusunu canlandırın <br> <ROSE> * <N>! tt [player] = Puanlarınızı başka bir takım üyesine aktarın. <br> <br> <ROSE> * <N> ile işaretlenmiş komutlar ekibin özel kullanımı içindir. capitains. Bununla ilgili daha fazla bilgi görmek için! Cap komutunu kullanın. ",
+	commands = "• !help = Oyun yardımını göster. <br> • !p [player] = Seçili oyuncunun profilini göster. Profilinizi göstermek için argüman olmadan !p yazın. <br> •!tc [message] = Takımınızın diğer üyeleri ile sohbet edin. <br> <ROSE> * <N> !rv [player] = Takımınızın ölü bir oyuncusunu canlandırın <br> <ROSE> * <N> !tt [player] = Puanlarınızı başka bir takım üyesine aktarın. <br> <br> <ROSE> * <N> ile işaretlenmiş komutlar ekibin özel kullanımı içindir. capitains. Bununla ilgili daha fazla bilgi görmek için !caps komutunu kullanın. ",
 	playingmap = "Harita çalınıyor",
 	created = "tarafından yaratıldı",
 	red_int_text = "<R> Kırmızı takım bir mola istedi.",
@@ -449,7 +449,7 @@ lang.tr = {
 	sq1 = "açılış Örs Sırasını kullandı! ",
 	sq2 = "<br> Bu açılışta sırayla birçok örs çekeceksiniz. ",
 	gi1 = "Dev Dönüşüm dönüştürdü! ",
-	gi2 = "<br> Bu açılışta, atış sırası sırasında, düşman ekibinin tüm farelerinin boyutunu% 50 oranında artıracaksınız. Bu güçlendirme ayrıca 'Fareyi Azalt' güçlendirme ile tüm fareleri iptal eder."
+	gi2 = "<br> Bu açılışta, atış sırası sırasında, düşman ekibinin tüm farelerinin boyutunu% 50 oranında artıracaksınız. Bu güçlendirme ayrıca 'Fareyi Azalt' güçlendirme ile tüm fareleri iptal eder.",
 }
 
 if tfm.get.room.community == "br" then
@@ -1493,7 +1493,7 @@ function eventNewGame()
 			end
 		end
 	end
-	tfm.exec.setGameTime(30)
+	tfm.exec.setGameTime(40)
 	showBar()
 	if tfm.get.room.community == "br" then
 		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Deseja reportar bugs, enviar mapas ou falar algo com nossa equipe? Participe do nosso grupo no Discord:<br><b>https://discord.gg/Bhk8q2D</b>")
@@ -1686,7 +1686,7 @@ for _,f in next,{"command","mapa","pw","limit","run"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2417.013",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2518.014",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1710,6 +1710,7 @@ lang.br = {
 	quadradoa = "Fique no quadrado azul!",
 	quadradov = "Fique no quadrado vermelho!",
 	quadrado = "Fique no quadrado branco!",
+	nquadrado = "Não fique no quadrado branco!",
 	retangulo = "Fique dentro do retângulo branco!",
 	retangulov = "Fique dentro do retângulo vermelho!",
 	nretangulo = "Não fique dentro do retângulo branco!",
@@ -1756,7 +1757,7 @@ lang.br = {
 	math = "Quanto é 1+1?"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2417.013",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2518.014",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1780,6 +1781,7 @@ lang.en = {
 	quadradoa = "Stay on the blue square!",
 	quadradov = "Stay on the red square!",
 	quadrado = "Stay on the white square!",
+	nquadrado = "Don't stay on the white square!",
 	retangulo = "Stay on the white rectangle!",
 	retangulov = "Stay on the red rectangle!",
 	nretangulo = "Don't stay on the white rectangle!",
@@ -1826,7 +1828,7 @@ lang.en = {
 	math = "How much is 1+1?",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2417.013",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2518.014",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1850,6 +1852,7 @@ lang.fr = {
 	quadradoa = "Reste dans le carré bleu !",
 	quadradov = "Reste dans le carré rouge !",
 	quadrado = "Reste dans le carré blanc !",
+	nquadrado = "Ne reste dans le carré blanc !",
 	retangulo = "Reste dans le rectangle blanc !",
 	retangulov = "Reste dans le rectangle rouge !",
 	nretangulo = "Ne reste pas sur le rectangle blanc !",
@@ -1896,7 +1899,7 @@ lang.fr = {
 	math = "Combien vaut 1 + 1?"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE>Nasus_assassin#1534 (Spectra Advanced Module Group) tarafýndan oluþturulan model. Tercüme eden Osmanyksk123#5925. Versiyon RTM 2417.013",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE>Nasus_assassin#1534 (Spectra Advanced Module Group) tarafýndan oluþturulan model. Tercüme eden Osmanyksk123#5925. Versiyon RTM 2518.014",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -1920,6 +1923,7 @@ lang.tr = {
 	quadradoa = "Mavi meydanda kalýn!",
 	quadradov = "Kýzýl meydanda kalýn!",
 	quadrado = "Beyaz meydanda kalýn!",
+	nquadrado = "Beyaz meydanda kalmayın!",
 	retangulo = "Stay on the white rectangle!",
 	retangulov = "Kýrmýzý dikdörtgenin üzerinde kalýn!",
 	nretangulo = "Beyaz dikdörtgenin üzerinde kalmayýn!",
@@ -2073,7 +2077,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,60)
+	active=math.random(1,61)
 	getCommand()
 end
 function eventChatCommand(name,message)
@@ -2334,10 +2338,21 @@ function getCommand()
 		local alives={}
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.vampire.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(36)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-			if not tfm.get.room.playerList[name].isDead then
-				table.insert(alives,name)
+		if vivo >= 12 then
+			for i=1,2 do
+			for name,player in pairs(tfm.get.room.playerList) do
+				data[name].c=1
+				if not tfm.get.room.playerList[name].isDead then
+					table.insert(alives,name)
+				end
+			end
+			end
+		else
+			for name,player in pairs(tfm.get.room.playerList) do
+				data[name].c=1
+				if not tfm.get.room.playerList[name].isDead then
+					table.insert(alives,name)
+				end
 			end
 		end
 		vampire=alives[math.random(#alives)]
@@ -2473,6 +2488,15 @@ function getCommand()
 	if active == 60 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.math.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(8)
+	end
+	if active == 61 then
+		xpos=math.random(60,650)
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nquadrado.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		tfm.exec.setGameTime(5)
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].c=1
+		end
+		ui.addTextArea(1,"",nil,xpos,320,80,65,0xffffff,0xffffff,0.68,false)
 	end
 end
 function eventTextAreaCallback(id,name,callback)
@@ -2769,12 +2793,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2417.013 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2518.014 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2417.013 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2518.014 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2417.013 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2518.014 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -2889,6 +2913,13 @@ function eventLoop(passado,faltando)
 				tfm.exec.freezePlayer(name,false)
 			end
 		end
+		if active == 61 then
+			for name,player in pairs(tfm.get.room.playerList) do
+				if player.x > xpos-20 or player.x < xpos+100 then
+					tfm.exec.killPlayer(name)
+				end
+			end
+		end
 		ui.removeTextArea(0,nil)
 		ui.removeTextArea(1,nil)
 		ui.removeTextArea(2,nil)
@@ -2982,12 +3013,12 @@ function eventNewGame()
 	end
 end
 function showBar()
-	for i=1,34 do
+	for i=1,35 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 6242.026   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6343.027   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 6242.026   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6343.027   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -3758,7 +3789,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.117<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.118<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
