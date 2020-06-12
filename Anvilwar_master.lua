@@ -1,8 +1,8 @@
---[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2, #watercatch e #clickwar. Compilado às 19h48 (UTC) 11/06/2020 e atualizado às 22h43 (UTC) 12/06/2020. ]]--
+--[[ Script contendo o module #anvilwar, #mestre, #objects, #fall2, #watercatch e #clickwar. Compilado às 22h52 (UTC) 13/06/2020. ]]--
  
 local modulo = {
 	_NOME = "anvilwar",
-	_VERSION = "1.118.2",
+	_VERSION = "1.119",
 	_AUTHOR = "Spectra_phantom#6089"
 }
 
@@ -69,10 +69,10 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "#anvilwar - RTM 19222.141",
+	bar = "#anvilwar RTM 19323.142",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
-	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Osmanyksk123#5925 (TR)",
+	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
 	teamkill1 = "Oh não! ",
 	teamKill2 = "matou um companheiro de equipe",
 	ajuda = "Ajuda",
@@ -121,6 +121,8 @@ lang.br = {
 	sq2 = "<br>Neste powerup, você vai atirar várias bigornas em sequência.",
 	gi1 = "acionou o powerup Transformação Gigante!",
 	gi2 = "<br>Neste powerup, durante seu turno de atirar, você aumenta em 50% o tamanho de todos os jogadores do time inimigo. Esta habilidade também anula as habilidades de Reduzir Tamanho utilizadas pelo time inimigo.",
+	ar1 = "acionou o powerup Chuva de Bigornas!",
+	ar2 = "<br>Neste powerup, você fará cair várias bigornas do céu na área do time inimigo. O uso desta habilidade implicará na perda da sua vez de atirar.",
 }
 lang.en = {
 	win_vermelho = "<R><b>The RED team wins!</b><br>The next match will start in 15 seconds.",
@@ -134,10 +136,10 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "#anvilwar - RTM 19222.141",
+	bar = "#anvilwar RTM 19323.142",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
-	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Osmanyksk123#5925 (TR)",
+	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
 	teamkill1 = "Oh no! ",
 	teamKill2 = "has killed a player of her team",
 	ajuda = "Help",
@@ -186,6 +188,8 @@ lang.en = {
 	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
 	gi1 = "used the powerup Giant Transformation!",
 	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
+	ar1 = "used the powerup Anvil Rain!",
+	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 lang.ar = {
 	win_vermelho = "<R><b>فاز الفريق الأحمر!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
@@ -203,10 +207,10 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "#anvilwar - RTM 19222.141",
+bar = "#anvilwar RTM 19323.142",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
-help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Osmanyksk123#5925 (TR)",
+help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
 teamkill1 = "أوه لا!! ",
 teamKill2 = "قام بقتل عضو من فريقه!",
 ajuda = "المساعدة",
@@ -255,6 +259,8 @@ sq1 = "used the powerup Anvil Sequence!",
 sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
 gi1 = "used the powerup Giant Transformation!",
 gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
+ar1 = "used the powerup Anvil Rain!",
+ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 lang.es = {
 	win_vermelho = "<R><b>¡Ha ganado el equipo ROJO!</b><br>La próxima ronda comenzará en 15 segundos.",
@@ -268,10 +274,10 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "#anvilwar - RTM 19222.141",
+	bar = "#anvilwar RTM 19323.142",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
-	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Osmanyksk123#5925 (TR)",
+	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
 	teamkill1 = "¡Oh no! ",
 	teamKill2 = "ha matado a un jugador de su equipo",
 	ajuda = "Ayuda",
@@ -320,6 +326,8 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
 	gi1 = "used the powerup Giant Transformation!",
 	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
+	ar1 = "used the powerup Anvil Rain!",
+	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 lang.de = {
 	win_vermelho = "<R><b>Das ROTE Team gewinnt!</b><br>Das nächste Spiel beginnt in 15 Sekunden.",
@@ -333,10 +341,10 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "#anvilwar - RTM 19222.141",
+	bar = "#anvilwar RTM 19323.142",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
-	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Osmanyksk123#5925 (TR)",
+	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
 	teamkill1 = "Oh nein! ",
 	teamKill2 = "hat einen Spieler ihrer Mannschaft getötet.",
 	ajuda = "Hilfe",
@@ -385,6 +393,8 @@ lang.de = {
 	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
 	gi1 = "used the powerup Giant Transformation!",
 	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
+	ar1 = "used the powerup Anvil Rain!",
+	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 lang.tr = {
 	win_vermelho = "<R> <b> KIRMIZI takım kazanır! </b> <br> Bir sonraki maç 15 saniye içinde başlayacak.",
@@ -398,7 +408,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "#anvilwar - RTM 19222.141",
+	bar = "#anvilwar RTM 19323.142",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -450,6 +460,8 @@ lang.tr = {
 	sq2 = "<br> Bu açılışta sırayla birçok örs çekeceksiniz. ",
 	gi1 = "Dev Dönüşüm dönüştürdü! ",
 	gi2 = "<br> Bu açılışta, atış sırası sırasında, düşman ekibinin tüm farelerinin boyutunu% 50 oranında artıracaksınız. Bu güçlendirme ayrıca 'Fareyi Azalt' güçlendirme ile tüm fareleri iptal eder.",
+	ar1 = "used the powerup Anvil Rain!",
+	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 
 if tfm.get.room.community == "br" then
@@ -673,7 +685,7 @@ function eventChatCommand(name,message)
 		menuShow(name,text.cmds,text.cap,80)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 4pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 10pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 6pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 25pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 24pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power6'>Show</a><br>F7 (Anvil Sequence) - Cost: 24pt - Required Level: 4 - Function: <a href='event:power7'>Show</a><br>F8 (Giant Transformation) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power8'>Show</a><br>",156)
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 4pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 10pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 6pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 25pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 24pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power6'>Show</a><br>F7 (Anvil Sequence) - Cost: 24pt - Required Level: 4 - Function: <a href='event:power7'>Show</a><br>F8 (Giant Transformation) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power8'>Show</a><br>F9 (Anvil Rain) - Cost: 18pt - Required Level: 4 - Function: <a href='event:power9'>Show</a>",175)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -1123,11 +1135,11 @@ function eventPlayerDied(name)
 	if data[name].immortal == false then
 		if valendo == true and reset == false then
 			tfm.exec.setPlayerScore(name,-1,false)
-			tfm.exec.setPlayerScore(actual_player,3,true)
-			if actual_player == caps.vermelho or name == actual_player then
-				tfm.exec.setPlayerScore(actual_player,1,true)
-				data[actual_player].score=data[actual_player].score+1
-				data[actual_player].exp=data[actual_player].exp+1
+			tfm.exec.setPlayerScore(actual_player,2,true)
+			if actual_player == caps.vermelho or actual_player == caps.azul then
+				tfm.exec.setPlayerScore(actual_player,2,true)
+				data[actual_player].score=data[actual_player].score+3
+				data[actual_player].exp=data[actual_player].exp+5
 			end
 			data[actual_player].kills=data[actual_player].kills+1
 			data[actual_player].score=data[actual_player].score+5
@@ -1148,11 +1160,11 @@ function eventPlayerDied(name)
 				data[actual_player].exp=data[actual_player].exp-10
 			end
 		end
-		if name == actual_player and valendo == true and reset == false then
+		if valendo == true and reset == false then
 			tfm.exec.chatMessage(""..text.suicide..""..actual_player.."")
 			tfm.exec.setPlayerScore(actual_player,-1,false)
-			data[actual_player].score=data[actual_player].score-5
-			data[actual_player].exp=data[actual_player].exp-5
+			data[actual_player].score=data[actual_player].score-12
+			data[actual_player].exp=data[actual_player].exp-8
 		end
 	else
 		tfm.exec.respawnPlayer(name)
@@ -1413,6 +1425,27 @@ function eventKeyboard(name,key,down,x,y)
 					end
 				end
 			end
+			if key == 120 then
+				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 18 and anvil_launched == false then
+					if data[name].nivel >= 4 then
+						tfm.exec.setPlayerScore(name,-18,true)
+						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.ar1.."")
+						tfm.exec.chatMessage(text.ar2,name)
+						if data[name].team == "vermelho" then
+							for i=1,7 do
+								tfm.exec.addShamanObject(10,800+(100*i),50,0,0)
+							end
+						elseif data[name].team == "azul" then
+							for i=1,7 do
+								tfm.exec.addShamanObject(10,100*i,50,0,0)
+							end
+						end
+						anvil_launched=true
+					else
+						tfm.exec.chatMessage(text.level_error,name)
+					end
+				end
+			end
 		end
 	end
 end
@@ -1502,7 +1535,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,text.menu_bar,name,200,345,350,20,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,text.menu_bar,name,220,345,350,20,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
@@ -1543,6 +1576,9 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "power8" then
 		tfm.exec.chatMessage(text.gi2,name)
+	end
+	if callback == "power9" then
+		tfm.exec.chatMessage(text.ar2,name)
 	end
 	if callback == "profile" then
 		tfm.exec.chatMessage(text.profile,name)
@@ -1686,7 +1722,7 @@ for _,f in next,{"command","mapa","pw","limit","run"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2518.014",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2720.016",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1757,7 +1793,7 @@ lang.br = {
 	math = "Quanto é 1+1?"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2518.014",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2720.016",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1828,7 +1864,7 @@ lang.en = {
 	math = "How much is 1+1?",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2518.014",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2720.016",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1899,7 +1935,7 @@ lang.fr = {
 	math = "Combien vaut 1 + 1?"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE>Nasus_assassin#1534 (Spectra Advanced Module Group) tarafýndan oluþturulan model. Tercüme eden Osmanyksk123#5925. Versiyon RTM 2518.014",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE>Nasus_assassin#1534 (Spectra Advanced Module Group) tarafýndan oluþturulan model. Tercüme eden Osmanyksk123#5925. Versiyon RTM 2720.016",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2782,7 +2818,7 @@ function eventKeyboard(name,id,down,x,y)
 		end
 	end
 	if active == 55 then
-		if id == 38 or id == 87 then
+		if id == 40 or id == 83 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 1 then
 				data[name].c=1
@@ -2793,12 +2829,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2518.014 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2720.016 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2518.014 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2720.016 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2518.014 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2720.016 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -2915,7 +2951,7 @@ function eventLoop(passado,faltando)
 		end
 		if active == 61 then
 			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x > xpos-20 or player.x < xpos+100 then
+				if player.x > xpos-20 and player.x < xpos+100 then
 					tfm.exec.killPlayer(name)
 				end
 			end
@@ -2962,7 +2998,7 @@ tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.setRoomMaxPlayers(20)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAutoScore(true)
-for _,f in next,{"help","kill","run","add","reset","restart"} do
+for _,f in next,{"help","kill","run","restart","shutdown"} do
 	system.disableChatCommandDisplay(f)
 end
 mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915"}
@@ -2988,6 +3024,9 @@ function eventChatCommand(name,message)
 		end
 		if message == "restart" then
 			tfm.exec.newGame(mapas[math.random(#mapas)])
+		end
+		if message == "shutdown" then
+			system.exit()
 		end
 	end
 end
@@ -3016,9 +3055,9 @@ function showBar()
 	for i=1,35 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 6343.027   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6444.028   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 6343.027   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6444.028   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -3789,7 +3828,7 @@ tfm.exec.chatMessage("Due to security reasons, this room is permanently disabled
 end
 end
 
-tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.118.2<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
+tfm.exec.chatMessage("#anvilwar Universal Mode Loader version 1.119<br>by Spectra_phantom#6089<br><br>The requested room is loading or updating. Please wait...",nil)
 
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	active = ""
