@@ -1,12 +1,12 @@
--- Transformice #anvilwar module loader - Version 2.1
+-- Transformice #anvilwar module loader - Version 2.2
 -- By Spectra_phantom#6089
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #fall2, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.1",
-	_MAINV = "20116.146",
+	_VERSION = "2.2",
+	_MAINV = "20217.147",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -53,7 +53,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 20116.146",
+	bar = "<b>#anvilwar</b> RTM 20217.147",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -120,7 +120,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 20116.146",
+	bar = "<b>#anvilwar</b> RTM 20217.147",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -191,7 +191,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "<b>#anvilwar</b> RTM 20116.146",
+bar = "<b>#anvilwar</b> RTM 20217.147",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -258,7 +258,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 20116.146",
+	bar = "<b>#anvilwar</b> RTM 20217.147",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -325,7 +325,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 20116.146",
+	bar = "<b>#anvilwar</b> RTM 20217.147",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -392,7 +392,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 20116.146",
+	bar = "<b>#anvilwar</b> RTM 20217.147",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -905,7 +905,7 @@ function eventLoop(passado,faltando)
 			if count == 0 then
 				for name,player in pairs(tfm.get.room.playerList) do
 					tfm.exec.chatMessage(text.starting,name)
-					startingImg = tfm.exec.addImage("172b36628e4.png","",162,100,nil)
+					startingImg = tfm.exec.addImage("172b36628e4.png",nil,125,100,nil)
 					if data[name] then
 						if data[name].team == "azul" then
 							data[name].matchs=data[name].matchs+1
@@ -1002,6 +1002,23 @@ function eventLoop(passado,faltando)
 			play_vermelho={}
 			count_azul=0
 			count_vermelho=0
+			if tfm.get.room.community == "br" then
+				if kills == 2 then
+					tfm.exec.chatMessage("<ROSE>Double Kill de "..actual_player.."!")
+					doubleKillImg = tfm.exec.addImage("172b3661172.png",nil,125,100,nil)
+				elseif kills >= 3 then
+					tfm.exec.chatMessage("<ROSE>Multi Kill: "..kills.." kills de "..actual_player.."!")
+					multiKillImg = tfm.exec.addImage("172b3664054.png",nil,125,100,nil)
+				end
+			else
+				if kills == 2 then
+					tfm.exec.chatMessage("<ROSE>Double Kill of "..actual_player.."!")
+					doubleKillImg = tfm.exec.addImage("172b3661172.png",nil,125,100,nil)
+				elseif kills >= 3 then
+					tfm.exec.chatMessage("<ROSE>Multi Kill: "..kills.." kills of "..actual_player.."!")
+					multiKillImg = tfm.exec.addImage("172b3664054.png",nil,125,100,nil)
+				end
+			end
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].team == "azul" then
 					if data[name].killed == 0 then
@@ -1021,25 +1038,6 @@ function eventLoop(passado,faltando)
 						data[name].immortal=false
 						tfm.exec.chatMessage(text.inv3,name)
 						tfm.exec.setNameColor(name,0xd7d7e6)
-					end
-				end
-			end
-			if count_vermelho >= 1 and count_azul >= 1 then
-				if tfm.get.room.community == "br" then
-					if kills == 2 then
-						tfm.exec.chatMessage("<ROSE>Double Kill de "..actual_player.."!")
-						doubleKillImg = tfm.exec.addImage("172b3661172.png",nil,175,125)
-					elseif kills >= 3 then
-						tfm.exec.chatMessage("<ROSE>Multi Kill: "..kills.." kills de "..actual_player.."!")
-						multiKillImg = tfm.exec.addImage("172b3664054.png",nil,175,125)
-					end
-				else
-					if kills == 2 then
-						tfm.exec.chatMessage("<ROSE>Double Kill of "..actual_player.."!")
-						doubleKillImg = tfm.exec.addImage("172b3661172.png",nil,175,125)
-					elseif kills >= 3 then
-						tfm.exec.chatMessage("<ROSE>Multi Kill: "..kills.." kills of "..actual_player.."!")
-						multiKillImg = tfm.exec.addImage("172b3664054.png",nil,175,125)
 					end
 				end
 			end
@@ -1224,7 +1222,7 @@ function eventPlayerDied(name)
 				data[actual_player].exp=data[actual_player].exp-10
 			end
 		end
-		if data[actual_player] == name and valendo == true and reset == false then
+		if actual_player == name and valendo == true and reset == false then
 			tfm.exec.chatMessage(""..text.suicide..""..actual_player.."")
 			tfm.exec.setPlayerScore(actual_player,-1,false)
 			data[actual_player].score=data[actual_player].score-12
@@ -1712,7 +1710,7 @@ function winRed()
 		end
 	end
 	advanceLevel()
-	winRedImg = tfm.exec.addImage("172b36657c5.png","",125,100,nil)
+	winRedImg = tfm.exec.addImage("172b36657c5.png",nil,125,100,nil)
 end
 function winAzul()
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -1729,7 +1727,7 @@ function winAzul()
 		end
 	end
 	advanceLevel()
-	winBlueImg = tfm.exec.addImage("172b365fa02.png","",125,100,nil)
+	winBlueImg = tfm.exec.addImage("172b365fa02.png",nil,125,100,nil)
 end
 function advanceLevel()
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -1769,7 +1767,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847}
+mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847,6888884,6937148,7686598,7279612,6835934,7201360,6897042,7309605}
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; vampire="";
 admin=""
 unlocked=true
@@ -1778,7 +1776,7 @@ for _,f in next,{"command","mapa","pw","limit","run"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2720.016",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por Nasus_assassin#1534 (Spectra Advanced Module Group). Traduzido por Fosfus7heads#0000. Versão RTM 2821.017",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1813,7 +1811,6 @@ lang.br = {
 	espaco = "Pressione a barra de espaço 20 vezes!",
 	nome = "Digite o seu nome no jogo (com #número).",
 	ndance = "Não dance!",
-	vampire = "Um jogador aleatório foi transformado em vampiro! Fujam dele!",
 	key1 = "Pressione a tecla Delete!",
 	action1 = "Dance, sente e durma!",
 	laugh = "Agora RIAM!",
@@ -1846,10 +1843,11 @@ lang.br = {
 	abaixar = "Abaixem e se levantem!",
 	action = "Façam qualquer ação!",
 	naction = "Não façam nenhuma ação!",
-	math = "Quanto é 1+1?"
+	math = "Quanto é 1+1?",
+	ds = "Dance e sente!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2720.016",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by Nasus_assassin#1534 (Spectra Advanced Module Group). Version RTM 2821.017",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1884,7 +1882,6 @@ lang.en = {
 	espaco = "Press 20 times the SPACEBAR!",
 	nome = "Type your nickname (with #number)!",
 	ndance = "Don't dance!",
-	vampire = "A random player is now a vampire! Don't stay close!",
 	key1 = "Press the DELETE key!",
 	action1 = "Dance, sit and sleep!",
 	laugh = "Laugh!",
@@ -1918,9 +1915,10 @@ lang.en = {
 	action = "Do any action!",
 	naction = "Don't do any action!",
 	math = "How much is 1+1?",
+	ds = "Dance and sit!"
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2720.016",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par Nasus_assassin#1534 (Spectra Advanced Module Group). Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 2821.017",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1955,7 +1953,6 @@ lang.fr = {
 	espaco = "Appuie 20 fois sur la BARRE D'ESPACE !",
 	nome = "Écrit ton pseudo (avec le #tag) !",
 	ndance = "Ne dance pas !",
-	vampire = "Un joueur aléatoire est maintenant un vampire ! Ne vous rapprochez pas de lui !",
 	key1 = "Appuie sur la touche SUPPR !",
 	action1 = "Dance, assis-toi et dors !",
 	laugh = "Rigole !",
@@ -1988,10 +1985,11 @@ lang.fr = {
 	abaixar = "Retourne-toi et lève-toi !",
 	naction = "Ne fais rien !", 
 	action = "Faites n'importe quelle action !",
-	math = "Combien vaut 1 + 1?"
+	math = "Combien vaut 1 + 1?",
+	ds = "Danse et assis !"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE>Nasus_assassin#1534 (Spectra Advanced Module Group) tarafýndan oluþturulan model. Tercüme eden Osmanyksk123#5925. Versiyon RTM 2720.016",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE>Nasus_assassin#1534 (Spectra Advanced Module Group) tarafýndan oluþturulan model. Tercüme eden Osmanyksk123#5925. Versiyon RTM 2821.017",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2060,6 +2058,8 @@ lang.tr = {
 	action = "Herhangi bir iþlem yapýn!",
 	naction = "Hiçbir þey yapmayýn!",
 	math = "1 + 1 ne kadar?",
+	ds = "Dans ve sit!"
+
 }
 if tfm.get.room.community == "br" then
 	text = lang.br
@@ -2427,28 +2427,8 @@ function getCommand()
 		tfm.exec.setGameTime(8)
 	end
 	if active == 37 then
-		local alives={}
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.vampire.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
-		tfm.exec.setGameTime(36)
-		if vivo >= 12 then
-			for i=1,2 do
-			for name,player in pairs(tfm.get.room.playerList) do
-				data[name].c=1
-				if not tfm.get.room.playerList[name].isDead then
-					table.insert(alives,name)
-				end
-			end
-			end
-		else
-			for name,player in pairs(tfm.get.room.playerList) do
-				data[name].c=1
-				if not tfm.get.room.playerList[name].isDead then
-					table.insert(alives,name)
-				end
-			end
-		end
-		vampire=alives[math.random(#alives)]
-		tfm.exec.setVampirePlayer(vampire,true)
+		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.ds.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
+		tfm.exec.setGameTime(10)
 	end
 	if active == 38 then
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.key1.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
@@ -2693,6 +2673,14 @@ function eventEmotePlayed(name,id)
 	if active == 36 then
 		data[name].c=1
 	end
+	if active == 37 then
+		if id == 0 and data[name].s == 0 then
+			data[name].s=1
+		end
+		if id == 8 and data[name].s == 1 then
+			data[name].c=1
+		end
+	end
 	if active == 39 then
 		if id == 0 and data[name].s == 0 then
 			data[name].s=1
@@ -2885,12 +2873,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2720.016 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 2821.017 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2720.016 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 2821.017 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2720.016 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.." / "..rodadas.."  <BL>|  <N>Version RTM 2821.017 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -2993,13 +2981,6 @@ function eventLoop(passado,faltando)
 				end
 			end
 		end
-		if active == 37 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if tfm.get.room.playerList[name].isVampire then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
 		if active == 53 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				tfm.exec.freezePlayer(name,false)
@@ -3025,8 +3006,6 @@ function eventLoop(passado,faltando)
 			if data[name].c == 0 then
 				tfm.exec.killPlayer(name)
 			end
-			tfm.exec.setShaman(name,false)
-			tfm.exec.setVampirePlayer(name,false)
 		end
 		if vivo > 4 then
 			tfm.exec.setGameTime(6-dificuldade)
@@ -3784,16 +3763,16 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7692039")
-	tfm.exec.chatMessage("<J>/room #anvilwar = Anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00fall2<br>/room #anvilwar00clickwar<br>/room #anvilwar00watercatch")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00fall2<br>/room #anvilwar00clickwar<br>/room #anvilwar00watercatch")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar = Anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00fall2<br>/room #anvilwar00clickwar<br>/room #anvilwar00watercatch")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00fall2<br>/room #anvilwar00clickwar<br>/room #anvilwar00watercatch")
 end
 end
 
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.chatMessage("<VP>#anvilwar Multiple Module Loader revision 2<br>Version 2.1<br>By Spectra Advanced Module Group")
+tfm.exec.chatMessage("<VP>#anvilwar Multiple Module Loader revision 2<br>Version 2.2<br>By Spectra Advanced Module Group")
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	tfm.exec.chatMessage("<R>Not allowed")
 elseif string.find(tfm.get.room.name,"mestre") then
