@@ -1304,7 +1304,7 @@ function eventNewPlayer(name)
 	if name:sub(1,1) == "*" then
 		data[name].level=-1
 	end
-	splashDisplay = tfm.exec.addImage("172b36657c5.png","%1",125,100,nil)
+	splashDisplay = tfm.exec.addImage("172b36657c5.png","%1",125,100,name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
