@@ -1,12 +1,12 @@
--- Transformice #anvilwar module loader - Version 2.40
+-- Transformice #anvilwar module loader - Version 2.50
 -- By Spectra_phantom#6089
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #fall2, #watercatch, #forca.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.40",
-	_MAINV = "21642.153",
+	_VERSION = "2.50",
+	_MAINV = "21743.154",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -22,7 +22,7 @@ caps={azul="",vermelho=""}
 play_vermelho={}
 avs_list={}
 banned_list={}
-mods_list={"Dhanny_mheyran#6701","Marichamex#0000","Ddniemo#0000","Gmctf#0000","Star#8558","Aquawings#2537"}
+mods_list={"Dhanny_mheyran#6701","Marichamex#0000","Ddniemo#0000","Gmctf#0000"}
 managers_list={"Reksai_void2600#6638","Shun_kazami#7014","Nasus_assassin#1534"}
 admins_list={"Spectra_phantom#6089"}
 ninjas_list={"Varusofeyzan#0000","Forzaldenon#0000","Caitlyndma7#0000"}
@@ -38,8 +38,8 @@ count_vermelho=0
 for _,f in next,{"help","powerups","set","tc","p","score","kill","tt","rv","cap","cmd","ban","unban","rodar","pw","TC","shutdown","run","pt"} do
 	system.disableChatCommandDisplay(f)
 end
-mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247"}
-map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v2)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","The Darkness Abyss","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","","","","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4"}
+mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584"}
+map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v2)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","","","","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids"}
 lang = {}
 lang.br = {
 	win_vermelho = "<R><b>GG Time Vermelho!</b><br>A próxima partida será iniciada em 15 segundos.",
@@ -53,7 +53,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 21642.153",
+	bar = "<b>#anvilwar</b> RTM 21743.154",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -120,7 +120,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 21642.153",
+	bar = "<b>#anvilwar</b> RTM 21743.154",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -191,7 +191,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "<b>#anvilwar</b> RTM 21642.153",
+bar = "<b>#anvilwar</b> RTM 21743.154",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -258,7 +258,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 21642.153",
+	bar = "<b>#anvilwar</b> RTM 21743.154",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -325,7 +325,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 21642.153",
+	bar = "<b>#anvilwar</b> RTM 21743.154",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -392,7 +392,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 21642.153",
+	bar = "<b>#anvilwar</b> RTM 21743.154",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -1749,7 +1749,7 @@ for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6781398,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847,6888884,6937148,7686598,7279612,6835934,7201360,6897042,7309605,6958861,7250912,7252133,7252582,7252655,7253090,7254162,6514206,3766247,6356881,7491944,7750148,7616526}
+mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6781398,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847,6888884,6937148,7686598,7279612,6835934,7201360,6897042,7309605,6958861,7250912,7252133,7252582,7252655,7253090,7254162,6514206,3766247,6356881,7491944,7750148,7616526,7296284,6863706,7755685,7429544}
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; vampire=""; counter=0;
 admin=""
 unlocked=true
@@ -1758,7 +1758,7 @@ for _,f in next,{"command","mapa","pw","limit","run"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Traduzido por Fosfus7heads#0000. Versão RTM 3124.020",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Traduzido por Fosfus7heads#0000. Versão RTM 3326.022",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1829,7 +1829,7 @@ lang.br = {
 	ds = "Dance e sente!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Version RTM 3124.020",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Version RTM 3326.022",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1900,7 +1900,7 @@ lang.en = {
 	ds = "Dance and sit!"
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 3124.020",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 3326.022",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1952,7 +1952,7 @@ lang.fr = {
 	freeze = "Stop !",
 	transform = "Danse et dors !",
 	down1 = "Retourne-toi 3 fois !",
-	kill = "Tuez-vous !", 
+	kill = "Tuez-vous !",
 	mestre = "Jacques à dit",
 	map = "Carte",
 	time = "Temps",
@@ -1965,13 +1965,13 @@ lang.fr = {
 	playingmap = "Map chargé ",
 	created = "créée par",
 	abaixar = "Retourne-toi et lève-toi !",
-	naction = "Ne fais rien !", 
+	naction = "Ne fais rien !",
 	action = "Faites n'importe quelle action !",
 	math = "Combien vaut 1 + 1?",
 	ds = "Danse et assis !"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 3124.020",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 3326.022",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2061,7 +2061,7 @@ function eventNewPlayer(name)
 	newData={
 			["c"]=0;
 			["s"]=0;
-			};		
+			};
 	data[name] = newData;
 	tfm.exec.chatMessage(""..text.welcome.."",name)
 	if string.find(tfm.get.room.name,name) then
@@ -2149,7 +2149,7 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,61)
+	active=math.random(1,60)
 	getCommand()
 end
 function eventChatCommand(name,message)
@@ -2541,15 +2541,6 @@ function getCommand()
 		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.math.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
 		tfm.exec.setGameTime(8)
 	end
-	if active == 61 then
-		xpos=math.random(60,700)
-		ui.addTextArea(0,"<font face='Bahnschrift SemiLight,Arial'><font color='#202020'>#"..active.." <font size='22'><p align='center'><b>"..text.nquadrado.."",nil,25,364,750,40,0xffffff,0x808080,0.96,true)
-		tfm.exec.setGameTime(5)
-		for name,player in pairs(tfm.get.room.playerList) do
-			data[name].c=1
-		end
-		ui.addTextArea(1,"",nil,xpos,320,80,65,0xffffff,0xffffff,0.68,false)
-	end
 end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "command51" then
@@ -2713,7 +2704,7 @@ function eventEmotePlayed(name,id)
 			tfm.exec.killPlayer(name)
 		end
 	end
-end			
+end
 function eventMouse(name,x,y)
 	if active == 4 then
 		data[name].s=data[name].s+1
@@ -2855,12 +2846,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 3124.020 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 3326.022 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 3124.020 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 3326.022 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 3124.020 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 3326.022 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -2968,15 +2959,6 @@ function eventLoop(passado,faltando)
 				tfm.exec.freezePlayer(name,false)
 			end
 		end
-		if active == 61 then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x > xpos-20 or player.x < xpos+100 then
-					if player.y > 300 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
 		ui.removeTextArea(0,nil)
 		ui.removeTextArea(1,nil)
 		ui.removeTextArea(2,nil)
@@ -3010,272 +2992,6 @@ end
 tfm.exec.newGame("@7692039")
 end
 
-initTrueFalse = function()
-blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoScore(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(35)
-tfm.exec.disableAllShamanSkills(true)
-tfm.exec.disablePhysicalConsumables(true)
-limits={questions=10,time=7,mices_alive=0}
-questions={question="",answer="",round=0}
-admin=""
-kazarina={name="Barodius"}
-for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
-	system.disableChatCommandDisplay(f)
-end
-current_mode=""
-answer_time=20
-remain_time=0
-game_map="@7605289"
-for name,player in pairs(tfm.get.room.playerList) do
-	tfm.exec.setPlayerScore(name,0,false)
-end
-function eventNewGame()
-	tfm.exec.setNameColor(admin,0xFF0000)
-	ui.removeTextArea(0,nil)
-	limits.mices_alive=0
-	for name,player in pairs(tfm.get.room.playerList) do
-		if not tfm.get.room.playerList[name].isShaman then
-			limits.mices_alive=limits.mices_alive+1
-		else
-			tfm.exec.setPlayerScore(name,-1,false)
-		end
-		if name:sub(1,1) == "*" then
-		   	tfm.exec.killPlayer(name)
-		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
-		end
-	end
-	questions.round=0
-	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
-	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
-	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br>Deseja reportar bugs, enviar mapas ou falar algo com nossa equipe? Participe do nosso grupo no Discord:<br><b>https://discord.gg/Bhk8q2D</b>")
-	else
-		tfm.exec.chatMessage("<VP><b>You can see all the available #anvilwar rooms on /room #anvilwar00rooms.</b><br><br>Join at our Discord group and send maps, report bugs and chat with our team:<br><b>https://discord.gg/Bhk8q2D</b>")
-	end
-end
-function eventNewPlayer(name)
-	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("True or False II revision 2 Remaked by Spectra_phantom#6089<")
-	if string.find(tfm.get.room.name,name) then
-		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Your commands:<br>!cancel = Skip the current shaman<br>!return = Cancel the current question<br>!limits = Change the limit of questions",name)
-	end
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-function eventPlayerDied(name)
-	if not tfm.get.room.playerList[name].isShaman then
-		limits.mices_alive=limits.mices_alive-1
-	end
-end
-function reset()
-	tfm.exec.newGame(game_map)
-	tfm.exec.setGameTime(60)
-	current_mode="waiting"
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.setPlayerScore(name,-1,false)
-		end
-	end
-	ui.setMapName("True or False II revision 2 Remaked by Spectra_phantom#6089<")
-end
-function isTrue()
-	tfm.exec.chatMessage("<VP>The answer is TRUE!")
-	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
-end
-function isFalse()
-	tfm.exec.chatMessage("<R>The answer is FALSE!")
-	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
-end
-function eventPopupAnswer(id,name,answer)
-	if id == 0 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
-			limits.questions=tonumber(answer)
-			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 10)",name,350,175,200,true)
-		end
-	end
-	if id == 1 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 10 then
-			limits.time=tonumber(answer)
-			tfm.exec.chatMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
-		end
-	end
-	if id == 10 then
-		if string.len(answer) >= 10 and string.len(answer) <= 170 then
-			questions.question=answer
-			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
-		else
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-			tfm.exec.chatMessage("<R>Your question is too large or too short. Please type other question.",name)
-		end
-	end
-	if id == 11 then
-		if remain_time > 1 then
-			questions.answer=answer
-			questions.round=questions.round+1
-			current_mode="truefalse"
-			tfm.exec.setGameTime(answer_time)
-			for name,player in pairs(tfm.get.room.playerList) do
-				if not tfm.get.room.playerList[name].isShaman then
-					tfm.exec.movePlayer(name,400,330)
-				else
-					tfm.exec.movePlayer(name,400,1330)
-				end
-			end
-			tfm.exec.chatMessage("<N>"..questions.question.."")
-			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Bahnschrift SemiLight,Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
-			tfm.exec.chatMessage(questions.answer,"Spectra_phantom#6089")
-			tfm.exec.chatMessage(questions.answer,"Forzaldenon#0000")
-		end
-	end
-	if id == 20 then
-		if answer == "yes" then
-			reset()
-			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
-		end
-	end
-	if id == 30 then
-		if answer == "" then
-			kazarina.name="Barodius"
-		else
-			kazarina.name=answer
-		end
-	end
-end
-function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Miss_fortune#9548" or name == "Aphelios#1910" or name == admin then
-		if message == "limits" then
-			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
-		end
-		if(message:sub(0,2) == "at") then
-			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
-				answer_time=tonumber(message:sub(4))
-				tfm.exec.chatMessage("Answer time: "..answer_time.."s.")
-			end
-		end
-		if(message:sub(0,7) == "admin78") then
-			if current_mode == "waiting" then
-				tfm.exec.setPlayerScore(message:sub(9),10001,false)
-				reset()
-			end
-		end
-		if message == "return" then
-			if current_mode == "truefalse" then
-				for name,player in pairs(tfm.get.room.playerList) do
-					if not tfm.get.room.playerList[name].isShaman then
-						tfm.exec.movePlayer(name,400,-100)
-					end
-				end
-				current_mode="waiting"
-				tfm.exec.setGameTime(60)
-				tfm.exec.chatMessage("<R>This question has been cancelled.")
-				ui.removeTextArea(0,nil)
-			end
-		end
-		if message == "cancel" then
-			if current_mode == "truefalse" or current_mode == "waiting" then
-				for name,player in pairs(tfm.get.room.playerList) do
-					tfm.exec.killPlayer(name)
-				end
-				reset()
-				tfm.exec.chatMessage("<R>This shaman has been skipped.")
-			end
-		end
-		if message == "change" then
-			ui.addPopup(30,2,"Barodius?",name,350,175,200,true)
-		end
-	end
-	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
-		if message == "per" and limits.mices_alive >= 2 then
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-		end
-		if message == "skip" then
-			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
-		end
-	end
-end
-function eventLoop(time,remaining)
-	remain_time=remaining/1000
-	if remaining < 1 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>Time is up! Other shaman will be choosed.")
-	end
-	if remaining < 1000 and current_mode == "truefalse" then
-		ui.removeTextArea(0,nil)
-		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
-		tfm.exec.setGameTime(5)
-		current_mode="wait"
-	end
-	if remaining < 300 and current_mode == "wait" then
-		if questions.answer == "yes" then
-			isTrue()
-		else
-			isFalse()
-		end
-		tfm.exec.setGameTime(7)
-		current_mode="answer"
-	end
-	if remaining <= 1 and current_mode == "answer" then
-		if questions.answer == "yes" then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x > 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		else
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x < 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		end
-		tfm.exec.removePhysicObject(2)
-		current_mode="waiting"
-		tfm.exec.setGameTime(60)
-	end
-	if remaining < 55000 and limits.mices_alive <= 0 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>No winners!")
-	end
-	if remaining < 55000 and limits.mices_alive == 1 and current_mode == "waiting" then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
-				tfm.exec.setPlayerScore(name,10000,false)
-				reset()
-			end
-		end
-	end
-	if remaining < 55000 and remaining >= 54400 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead then
-				tfm.exec.setPlayerScore(name,1,true)
-				tfm.exec.displayParticle(15,player.x,player.y)
-			end
-		end
-		if questions.round >= limits.questions and current_mode == "waiting" then
-			reset()
-			tfm.exec.chatMessage("<R>Questions limit reached!")
-		end
-	end
-	if time > limits.time*60000 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>Time limit reached!")
-	end
-end
-reset()
-end
-
 initObjects = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
@@ -3297,7 +3013,7 @@ winner=false
 functs={running=false,level=0,count=8}
 times=0
 function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" or string.find(name,"#0001") or string.find(name,"#0010") or string.find(name,"#0015") or string.find(name,"#0020") then
 		if message == "help" then
 			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Spectra_phantom#6089 and the Spectra Advanced Module Group")
 		end
@@ -3340,9 +3056,9 @@ function showBar()
 	for i=1,35 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 6444.028   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6545.029   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			else
-				ui.setMapName("<J>#objects RTM 6444.028   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J>#objects RTM 6545.029   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
 			end
 		end
 	end
@@ -3379,7 +3095,7 @@ end
 function removeText()
 	for i=0,1 do
 		ui.removeTextArea(i,nil)
-	end	
+	end
 end
 function throw()
 	position=math.random(0,800)
@@ -4383,7 +4099,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.40<br>By Spectra Advanced Module Group")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.50<br>By Spectra Advanced Module Group")
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	tfm.exec.chatMessage("<R>Not allowed")
 elseif string.find(tfm.get.room.name,"mestre") then
