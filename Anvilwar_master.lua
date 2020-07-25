@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.50
+-- Transformice #anvilwar module loader - Version 2.51
 -- By Spectra_phantom#6089
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #fall2, #watercatch, #forca.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.50",
+	_VERSION = "2.51",
 	_MAINV = "21743.154",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -1745,20 +1745,31 @@ end
 end
 
 initMestre = function()
+admin="" -- If you are a FunCorp member, please change this with your nickname.
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.setRoomMaxPlayers(30)
-mapas={6788085,6788174,6788154,6788183,6788178,6784965,6788693,6788695,6788715,6788728,6788848,6789206,6788861,6789259,6789235,6789249,6789263,6789271,6789260,6789280,6789853,6789334,6790300,6790484,6790385,6790527,6790433,6790911,6790895,6790903,6791944,6790896,6791838,6791871,6789451,6792320,6792397,6792509,6792518,6792523,6793213,6793222,6794050,6789272,6790467,6798615,6799768,6793860,6799996,6799998,6801706,6799997,6789356,6789324,6789358,6789937,6808957,6792470,6810292,6802377,6806109,6803018,6803128,6821950,6809464,6809498,6811934,6822119,6822331,7631682,4411212,3110915,6830799,6781398,6866406,6866549,6859175,6834529,6866437,6812488,6876638,6876563,6885971,6888512,6893463,6900149,6907177,6892608,6982387,5328362,5957905,7055459,7290270,7290275,7404106,7404327,7382263,7394517,7405103,7400694,7400678,7412412,7412422,7431981,7354947,7525277,6983850,6892022,6981135,6943992,6879100,6885799,6885841,6886906,6754319,6790912,6833993,7711216,7721192,7146925,1429677,3398791,2684847,6888884,6937148,7686598,7279612,6835934,7201360,6897042,7309605,6958861,7250912,7252133,7252582,7252655,7253090,7254162,6514206,3766247,6356881,7491944,7750148,7616526,7296284,6863706,7755685,7429544}
-active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; vampire=""; counter=0;
-admin=""
+mapas={
+simple={6788085,6788174,6788154,6788715,6788728,6789259,6789271,6790527,6791838,6789451,6792397,6793213,6793222,6799768,6789356,6789937,6822331,7290270,7290275,6892022,6754319,7686598,7750148,7616526,7429544},
+scenarios={6788183,6784965,6789235,6789853,6790385,6791944,6801706,6792470,6806109,6821950,6866406,6866437,6885971,5328362,5957905,7055459,7525277,6981135,2684847,6835934,7252582},
+misc={6788178,6788693,6788695,6789272,6799996,6799998,6808957,6803018,6809464,6859175,6907177,7404327,7382263,6885799,6885841,6886906,6790912,6833993,7721192,7309605,6514206},
+arts={6788861,6789249,6790484,6790903,6792509,6792518,6792523,6794050,6789358,6830799,6866549,6834529,6812488,6876563,6888512,6893463,7431981,6879100,7146925,6937148,7252655,6356881},
+mech={6789280,6789334,6790895,6793860,6799997,6789324,6803128,6900149,6943992,6888884,7279612,7252133},
+geek={6791871,6802377,6811934,7631682,6876638,6892608,6982387,7404106,7405103,7400694,7400678,7412412,7412422,7491944,7755685},
+testing={6788848,6789206,6789260,6790433,6790911,6790896,6792320,6790467,6798615,6810292,6809498,6822119,3110915,6983850,7711216,6958861,7250912,7253090,7254162,6863706},
+troll={6789263,6790300,4411212,6781398,7394517,7354947,3398791,1347551,7201360,1429677,6897042,3766247,7296284}
+}
+active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; map_cat=-2;
+fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59}
+fc_mode=false
 unlocked=true
 xpos=0; xpos2=0;
-for _,f in next,{"command","mapa","pw","limit","run"} do
+for _,f in next,{"command","mapa","pw","limit","run","fc"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Traduzido por Fosfus7heads#0000. Versão RTM 3326.022",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 4128.024",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1829,7 +1840,7 @@ lang.br = {
 	ds = "Dance e sente!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Version RTM 3326.022",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 4128.024",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1900,7 +1911,7 @@ lang.en = {
 	ds = "Dance and sit!"
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 3326.022",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 4128.024",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1971,7 +1982,7 @@ lang.fr = {
 	ds = "Danse et assis !"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534 (Spectra Advanced Module Group)</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 3326.022",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 4128.024",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2066,7 +2077,7 @@ function eventNewPlayer(name)
 	tfm.exec.chatMessage(""..text.welcome.."",name)
 	if string.find(tfm.get.room.name,name) then
 		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !mapa [@code] to run a custom map.",admin)
+		tfm.exec.chatMessage("You are the administrator of this room. Use !pw [password] to change the password of the room and !mapa [@code] to run a custom map.<br><br>If you are a FunCorp member, type !fc to enable the FunCorp mode.",admin)
 	end
 end
 for name,player in pairs(tfm.get.room.playerList) do
@@ -2116,6 +2127,32 @@ function eventPlayerDied(name)
 		end
 	end
 end
+function selectMap()
+	map_cat=map_cat+1
+	if map_cat > 5 and fc_mode == false then
+		map_cat=0;
+	end
+	if map_cat > 7 then
+		map_cat=0;
+	end
+	if map_cat == 0 then
+		tfm.exec.newGame(mapas.simple[math.random(#mapas.simple)])
+	elseif map_cat == 1 then
+		tfm.exec.newGame(mapas.scenarios[math.random(#mapas.scenarios)])
+	elseif map_cat == 2 then
+		tfm.exec.newGame(mapas.misc[math.random(#mapas.misc)])
+	elseif map_cat == 3 then
+		tfm.exec.newGame(mapas.arts[math.random(#mapas.arts)])
+	elseif map_cat == 4 then
+		tfm.exec.newGame(mapas.mech[math.random(#mapas.mech)])
+	elseif map_cat == 5 then
+		tfm.exec.newGame(mapas.geek[math.random(#mapas.geek)])
+	elseif map_cat == 6 then
+		tfm.exec.newGame(mapas.testing[math.random(#mapas.testing)])
+	elseif map_cat == 7 then
+		tfm.exec.newGame(mapas.troll[math.random(#mapas.troll)])
+	end
+end
 function eventNewGame()
 	ui.removeTextArea(0,nil)
 	ui.removeTextArea(1,nil)
@@ -2149,11 +2186,15 @@ function eventPlayerLeft()
 	rato=rato-1
 end
 function sortearComandos()
-	active=math.random(1,60)
+	if fc_mode == false then
+		active=math.random(1,60)
+	else
+		active=tonumber(fc_cmds[math.random(#fc_cmds)])
+	end
 	getCommand()
 end
 function eventChatCommand(name,message)
-	if name == "Nasus_assassin#1534" or name == "Forzaldenon#0000" or name == "Tryndavayron#0000" or name == admin then
+	if name == "Nasus_assassin#1534" or name == "Forzaldenon#0000" or name == "Aphelios#1910" or name == admin then
 		if(message:sub(0,7) == "command") then
 				active=tonumber(message:sub(9))
 				getCommand()
@@ -2175,6 +2216,15 @@ function eventChatCommand(name,message)
 				tfm.exec.chatMessage("Password cleared.",name)
 			else
 				tfm.exec.chatMessage("Password changed to: "..message:sub(4).."",name)
+			end
+		end
+		if message == "fc" then
+			if fc_mode == false then
+				fc_mode=true
+				tfm.exec.chatMessage("<R>The FunCorp mode of this module is now enabled.")
+			else
+				fc_mode=false
+				tfm.exec.chatMessage("<R>The FunCorp mode of this module is now disabled.")
 			end
 		end
 	end
@@ -2846,12 +2896,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 3326.022 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 4128.024 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 3326.022 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 4128.024 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 3326.022 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 4128.024 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -2870,12 +2920,13 @@ function eventLoop(passado,faltando)
 	end
 	if rato >= 4 and passado >= 4000 then
 		if tfm.get.room.currentMap == "@7692039" and unlocked == true then
-			tfm.exec.newGame(mapas[math.random(#mapas)])
+			map_cat=-1
+			selectMap()
 			active=0
 		end
 	end
 	if active < 0 and faltando < 1 and unlocked == true then
-		tfm.exec.newGame(mapas[math.random(#mapas)])
+		selectMap()
 	end
 	if active == 0 and faltando < 1000 then
 		if rodada < rodadas then
@@ -2973,10 +3024,14 @@ function eventLoop(passado,faltando)
 				tfm.exec.killPlayer(name)
 			end
 		end
-		if vivo > 4 then
-			tfm.exec.setGameTime(6-dificuldade)
+		if fc_mode == false then
+			if vivo > 4 then
+				tfm.exec.setGameTime(6-dificuldade)
+				else
+				tfm.exec.setGameTime(9-dificuldade)
+			end
 		else
-			tfm.exec.setGameTime(9-dificuldade)
+			tfm.exec.setGameTime(6)
 		end
 	end
 	for name,player in pairs(tfm.get.room.playerList) do
@@ -2996,14 +3051,14 @@ initObjects = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(20)
+tfm.exec.setRoomMaxPlayers(25)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","restart","shutdown"} do
 	system.disableChatCommandDisplay(f)
 end
-mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915"}
-map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds"}
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915","@7114147","@7288402","@7756165","@7757983"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow"}
 objects={1,2,10,35,39,40,54,60,61,85,90,201,202,203,204,205,206,207,208,209}
 actual_map=""
 actual_creator=""
@@ -3013,10 +3068,10 @@ winner=false
 functs={running=false,level=0,count=8}
 times=0
 function eventChatCommand(name,message)
+	if message == "help" then
+		tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
+	end
 	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" or string.find(name,"#0001") or string.find(name,"#0010") or string.find(name,"#0015") or string.find(name,"#0020") then
-		if message == "help" then
-			tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Spectra_phantom#6089 and the Spectra Advanced Module Group")
-		end
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -3053,12 +3108,12 @@ function eventNewGame()
 	end
 end
 function showBar()
-	for i=1,35 do
+	for i=1,39 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J>#objects RTM 6545.029   <BL>|   <J>"..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7047.031<")
 			else
-				ui.setMapName("<J>#objects RTM 6545.029   <BL>|   <J>"..map_names[i].." <BL>- "..tfm.get.room.currentMap.."   <BL>|   <N>Difficulty : "..bar.."<")
+				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7047.031<")
 			end
 		end
 	end
@@ -3073,23 +3128,23 @@ function showTextSmall(text)
 end
 function changeBar()
 	if functs.level == 1 then
-		bar="<font face='Consolas'><VP>█───<J>──<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁　　　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
 	elseif functs.level == 2 then
-		bar="<font face='Consolas'><VP>██──<J>──<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂　　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
 	elseif functs.level == 3 then
-		bar="<font face='Consolas'><VP>███─<J>──<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
 	elseif functs.level == 4 then
-		bar="<font face='Consolas'><VP>████<J>──<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
 	elseif functs.level == 5 then
-		bar="<font face='Consolas'><VP>████<J>█─<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅　<font color='#ff0000'>　　<font face='Verdana'>"
 	elseif functs.level == 6 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>　　<font face='Verdana'>"
 	elseif functs.level == 7 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>█─<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇　<font face='Verdana'>"
 	elseif functs.level >= 8 then
-		bar="<font face='Consolas'><VP>████<J>██<font color='#ff0000'>██<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇█<font face='Verdana'>"
 	else
-		bar="<font face='Consolas'><VP>────<J>──<font color='#ff0000'>──<font face='Verdana'>"
+		bar="<font face='Segoe UI Symbol'><VP>　　　　<J>　　<font color='#ff0000'>　　<font face='Verdana'>"
 	end
 end
 function removeText()
@@ -3103,7 +3158,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>The objective of this room is survive! Don't touch on the objects and win the game!<br><br>Module made by Spectra_phantom#6089 and the Spectra Advanced Module Group",name)
+	tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 end
 function eventLoop(p,f)
 	showBar()
@@ -4099,7 +4154,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.50<br>By Spectra Advanced Module Group")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.51<br>By Spectra Advanced Module Group")
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	tfm.exec.chatMessage("<R>Not allowed")
 elseif string.find(tfm.get.room.name,"mestre") then
