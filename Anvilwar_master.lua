@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.62
+-- Transformice #anvilwar module loader - Version 2.63
 -- By Spectra_phantom#6089
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #fall2, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.62",
+	_VERSION = "2.63",
 	_MAINV = "21844.155",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -3323,7 +3323,7 @@ tfm.exec.setGameTime(60)
 tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000.")
 end
 function eventLoop(p,r)
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2025.011 by Spectra_phantom#6089<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2126.012 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -3396,7 +3396,7 @@ if r <= 2000 and mode == "hide" then
 	mode="game"
 	tfm.exec.setGameTime(150+(alives*2))
 	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão desativadas temporariamente.")
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão ATIVADAS. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
 end
 if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
@@ -3541,7 +3541,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.62<br>By Spectra Advanced Module Group")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.63<br>By Spectra Advanced Module Group")
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	tfm.exec.chatMessage("<R>Not allowed")
 elseif string.find(tfm.get.room.name,"mestre") then
