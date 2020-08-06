@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.70
+-- Transformice #anvilwar module loader - Version 2.71
 -- By Spectra_phantom#6089
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #fall2, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.70",
+	_VERSION = "2.71",
 	_MAINV = "21844.155",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -3259,6 +3259,7 @@ mode="hide"
 changed=false
 map="@7763582"
 xml=''
+tfm.exec.newGame(map)
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
 		alives=alives-1
@@ -3292,8 +3293,8 @@ function eventSummoningEnd(name,id,x,y)
 	end
 end
 function eventNewGame()
-ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 xml=tfm.get.room.xmlMapInfo.xml
+ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
 z=-1
@@ -3326,7 +3327,7 @@ end
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2227.013 by Spectra_phantom#6089<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2328.014 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -3367,14 +3368,14 @@ for n,q in pairs(tfm.get.room.playerList) do
 				data[n].y=0
 			else
 				if tfm.get.room.playerList[n].y <= 1020 then
-					data[n].o=data[n].o-0.8
+					data[n].o=data[n].o-0.9
 				elseif tfm.get.room.playerList[n].y > 1020 then
 					if tfm.get.room.playerList[n].x >= 2750 and tfm.get.room.playerList[n].x <= 3030 then
-						data[n].o=data[n].o-0.2
+						data[n].o=data[n].o-0.3
 					elseif tfm.get.room.playerList[n].x >= 1010 and tfm.get.room.playerList[n].x <= 1290 then
-						data[n].o=data[n].o-0.2
+						data[n].o=data[n].o-0.3
 					else
-						data[n].o=data[n].o-1.4
+						data[n].o=data[n].o-1.2
 					end
 				end
 			end
@@ -3384,19 +3385,19 @@ for n,q in pairs(tfm.get.room.playerList) do
 				tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 			end
 		end
-		ui.addTextArea(0,"<font size='10'><font face='DejaVu Sans Mono,Consolas'><R>Oxygen Meter | | | | 20 | | | | <N>| | | | | | | 40 | | | | | | | | | | | 60 | | | | | | | | | | | 80 | | | | | | | | | | | 100",n,20,369,760,14,0x181818,0x090909,0.7,true)
-		if data[n].o > 25 then
-			ui.addTextArea(10,"",n,10,390,data[n].o*7.8,3,0x0080ff,0x0060ff,1.0,true)
+		ui.addTextArea(0,"<font size='10'><font face='DejaVu Sans Mono,Consolas'><R>O² Meter | 20 | | <N>| | 40 | | | | 60 | | | | 80 | | | | 100",n,220,20,360,14,0x181818,0x090909,0.7,true)
+		if data[n].o > 30 then
+			ui.addTextArea(10,"",n,220,40,data[n].o*3.6,3,0x0080ff,0x0060ff,1.0,true)
 		elseif data[n].o > 0 then
-			ui.addTextArea(10,"",n,10,390,data[n].o*7.8,3,0xff8000,0xff6000,1.0,true)
+			ui.addTextArea(10,"",n,220,40,data[n].o*3.6,3,0xff8000,0xff6000,1.0,true)
 		elseif data[n].o <= 0 then
-			ui.addTextArea(10,"",n,10,390,3,3,0xff8000,0xff6000,1.0,true)
+			ui.addTextArea(10,"",n,220,40,3,3,0xff8000,0xff6000,1.0,true)
 		end
 	end
 end
 if r <= 2000 and mode == "hide" then
 	mode="game"
-	tfm.exec.setGameTime(150+(alives*2))
+	tfm.exec.setGameTime(135+(alives*5))
 	ui.removeTextArea(22,nil)
 	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão ATIVADAS. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
 end
@@ -3424,7 +3425,6 @@ else
 	end
 end
 end
-tfm.exec.newGame(map)
 end
 
 initFall2 = function()
@@ -3815,7 +3815,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.70<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.71<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
 	tfm.exec.chatMessage("<R>Not allowed")
 elseif string.find(tfm.get.room.name,"mestre") then
