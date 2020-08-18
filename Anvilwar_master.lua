@@ -1,5 +1,3 @@
-tfm.get.room.community = "br"
-
 -- Transformice #anvilwar module loader - Version 2.90
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 
