@@ -1,12 +1,14 @@
--- Transformice #anvilwar module loader - Version 2.81
+tfm.get.room.community = "br"
+
+-- Transformice #anvilwar module loader - Version 2.90
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 
--- Included sub-modules: #mestre, #truefalse, #objects, #fall2, #watercatch.
+-- Included sub-modules: #mestre, #truefalse, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.81",
-	_MAINV = "22046.157",
+	_VERSION = "2.90",
+	_MAINV = "23047.158",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -47,13 +49,12 @@ lang.br = {
 	sudden_death = "<VP><b>Morte Súbita!</b><br>A equipe que conseguir eliminar qualquer um adversário será declarada a vencedora.",
 	empate_text = "<J><b>Houve um empate!</b><br>A próxima partida será iniciada em 15 segundos.",
 	instructions = "Use as teclas de 1 a 9 para alterar a potência da bigorna e barra de espaço para atirar. Para ajuda digite !help.",
-	turn = "<VP>É a vez de",
 	timeout = "<J>Tempo esgotado! O atirador será alterado.",
 	enter_vermelho = "Entrar",
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 22046.157",
+	bar = "<b>#anvilwar</b> RTM 23047.158",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -75,7 +76,7 @@ lang.br = {
 	unban = " teve seu banimento removido da sala.",
 	caps = " foi escolhido para ser o capitão da equipe.",
 	cap = "Este tipo de jogador (escolhido aleatoriamente) receberá 50% a mais de pontuação que os outros e poderá transferir seus pontos para outro jogador de sua equipe usando o comando !tt [nome].<br>Ele também poderá utilizar o comando !rv [nome] para reviver UM membro morto de sua equipe e também podem usar o comando !pt [nome] para passar sua vez para outro jogador de sua equipe.",
-	cap_text = "<br><VP>Você é o capitão da sua equipe.<br><br>Você irá receber 50% mais pontos por tempo vivo e poderá transferir pontos para outros jogadores usando o comando !tt [nome].<br>Você também poderá utilizar o comando !rv [nome] para reviver UM membro morto de sua equipe. Você também pode usar a tecla END no teclado para pedir até 2 intervalos de 20 segundos cada.<br>Capitães também podem usar o comando !pt [nome] para passar sua vez para outro jogador de sua equipe.",
+	cap_text = "<br><VP>Você é o capitão da sua equipe.<br>Digite !cap para saber das funções dos capitães das equipes.",
 	score30 = "<R>Você precisa de 30 pontos para usar isto.",
 	advanced = " acaba de avançar para o nível ",
 	tag_text = "<J>Não se esqueça de colocar a #tag no final do nome desejado! Caso contrário, o comando não irá funcionar!",
@@ -114,13 +115,12 @@ lang.en = {
 	sudden_death = "<VP><b>SUDDEN DEATH!</b><br>The team that kill anyone of other team will won the match.",
 	empate_text = "<J><b>There was a draw!</b><br>The next match will start in 15 seconds.",
 	instructions = "Use the 1 to 9 keys to change the intensity of anvil and SPACEBAR to throw a anvil.",
-	turn = "<VP>It's turn of",
 	timeout = "<J>Time is over! The shooter will be changed.",
 	enter_vermelho = "Enter",
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 22046.157",
+	bar = "<b>#anvilwar</b> RTM 23047.158",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -142,7 +142,7 @@ lang.en = {
 	unban = " was unbanned of room.",
 	caps = " was choosed to be the team capitain.",
 	cap = "This type of player (that is choosed randomly) will receive 50% more points and will get the ability of transfer your points to other players alive on the match using the !tt [name] command. You can use the !rv [name] command to revive ONE team player dead.",
-	cap_text = "<br><VP>You are the team capitain.<br><br>You will receive 50% more points than other team players and can transfer your points to other team players using the !tt [name] command. You can use the !rv [name] command to revive ONE team player dead. You also can use the END key on the keyboard to request up to 2 timeouts.",
+	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
 	score30 = "<R>You need 30 points to use this.",
 	advanced = " reached the level ",
 	tag_text = "<J>Don't forget to insert the #tag on the target nickname, else this command don't will work!",
@@ -181,7 +181,6 @@ win_azul = "<BL><b>فاز الفريق الأزرق!</b><br>ستبدأ المع�
 sudden_death = "<VP><b>المعركة النهائية!</b><br>إذا قام أي أحد بقتل عضو في أي فريق أخر، سوف يفوز الفريق الذي قتل!",
 empate_text = "<J><b>تعادل!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
 instructions = "إستخدم مفاتيح لوحة التحكم من 1 الى 9 للتحكم في سرعة وقوة السندان.",
-turn = "<VP>إنه دور",
 timeout = "<J>إنتهى الوقت! سيتم تغيير الضارب",
 enter_vermelho = "بالدخول",
 enter_azul = "بالدخول",
@@ -191,7 +190,7 @@ bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقع�
 objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "<b>#anvilwar</b> RTM 22046.157",
+bar = "<b>#anvilwar</b> RTM 23047.158",
 intensity = "قوة الضرب وسرعته",
 your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -213,7 +212,7 @@ ban = " تم حظره من الغرفة من قبل ",
 unban = " تم فك حظره من الغرفة من قبل",
 caps = " تم إختياره ليصبح قائد الفريق. لرؤية المزيد عن هذا أكتب !cap أو استخدم قسم القائد في القائمة, ",
 cap = "الكابتن هو قائد الفريق، يتم إختياره عشوائيآ، سوف يحصل على نقاط بنسبة 50% أكثر من اللاعبين، اي جَني النقاط بسرعة!يمكنه تحويل النقاط للاعب أخر عن طريق الإيعاز ويمكنه إحياء لاعب مات من فريقه بإستخدام !rv [name] ولكن يتطلب 30 نقطة لذلك",
-cap_text = "<br><VP>أنت قائد الفريق<br><br>سوف تحصل على نقاط زائدة بنسبة 50% ويمكنك نق لنقاطك للاعب أخر بإستخدام !tt name أو إحياء لاعب أخر بإستخدام !rv name يتطلب الإحياء 30 نقطة",
+cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
 score30 = "<R>تحتاج 30 نقطة للقيام بهذا",
 advanced = " reached the level ",
 tag_text = "<J>لا تنسى بوضع الهاشتاج على الإسم الذي تم إختياره, أو لن يعمل هذا الإيعاز",
@@ -252,13 +251,12 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	sudden_death = "<VP><b>MUERTE SÚBITA!</b><br>El equipo que mate a alguien del otro equipo ganará esta ronda.",
 	empate_text = "<J><b>Hubo un empate!</b><br>La próxima ronda comenzará en 15 segundos.",
 	instructions = "Usa las teclas 1 al 9 para cambiar la intensidad del yunque y ESPACIO para lanzarlo.",
-	turn = "<VP>Es el turno de",
 	timeout = "<J>El tiempo ha terminado. El tirador será cambiado.",
 	enter_vermelho = "Unirse",
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 22046.157",
+	bar = "<b>#anvilwar</b> RTM 23047.158",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -280,7 +278,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	unban = " fue desbaneado de la sala.",
 	caps = " fue elegido para ser el capitán del equipo. Para ver más información acerca de esto, escribe el comando !cap o usa la sección de Capitán en el menú.",
 	cap = "En esta compilación fue incluido la funcionalidad de jugador capitán. Este tipo de jugador (es elegido aleatoriamente) recibirá un 50% más de puntos y la posibilidad de transferir tus puntos a otros jugadores vivos en la ronda usando el comando !tt [apodo]. Puedes usar el comando !rv [apodo] para revivir UN jugador muerto del equipo.",
-	cap_text = "<br><VP>Eres el capitán del equipo.<br><br>Recibirás un 50% más de puntos y la posibilidad de transferir tus puntos a otros jugadores del equipo usando el comando !tt [apodo]. Puedes usar el comando !rv [apodo] command para revivir UN jugador muerto del equipo.",
+	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
 	score30 = "<R>Necesitas 30 puntos para usar esto.",
 	advanced = " alcanzado el nivel ",
 	tag_text = "<J>No te olvides de colocar el #tag en el apodo del objetivo, o este comando no funcionará.",
@@ -319,13 +317,12 @@ lang.de = {
 	sudden_death = "<VP><b>PLÖTZLICHER TOD!</b><br>Das Team, das jemanden aus einem anderen Team tötet, gewinnt das Spiel.",
 	empate_text = "<J><b>Es gab ein Unentschieden!</b><br>Das nächste Spiel beginnt in 15 Sekunden.",
 	instructions = "Verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern und die Leertaste, um einen Amboss zu werfen.",
-	turn = "<VP>Es ist die Wende von",
 	timeout = "<J>Die Zeit ist vorbei! Der Schütze wird gewechselt.",
 	enter_vermelho = "Betreten",
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 22046.157",
+	bar = "<b>#anvilwar</b> RTM 23047.158",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -347,7 +344,7 @@ lang.de = {
 	unban = " wurde nicht aus dem Zimmer verbannt.",
 	caps = " wurde als Teamchef ausgewählt. Um mehr Informationen darüber zu erhalten, geben Sie Folgendes ein !cap Befehl oder verwenden Sie den Abschnitt Capitain im Menü des Moduls.",
 	cap = "Auf dieser Zusammenstellung wurde die Funktionalität eines Capitain-Players integriert. Diese Art von Spieler (die zufällig ausgewählt wird) erhält 50% mehr Punkte und die Möglichkeit, Ihre Punkte auf andere Spieler zu übertragen, die im Spiel leben. !tt [name] Befehl. Sie können die Funktion !rv [name] Befehl, EINE Teamspielerin wiederzubeleben, die tot is.",
-	cap_text = "<br><VP>Du bist der Teamchef.<br><br>Du bekommst 50% mehr Punkte als andere Teammitglieder und kannst deine Punkte auf andere Teammitglieder übertragen !tt [name] Befehl. Sie können die Funktion !rv [name] Befehl, EINE Teamspielerin wiederzubeleben, die tot is.",
+	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
 	score30 = "<R>Du brauchst 30 Punkte, um das zu benutzen.",
 	advanced = " hast das Level erreicht ",
 	tag_text = "<J>Vergiss nicht, das #Tag auf dem Ziel-Nicknamen einzufügen, sonst funktioniert dieser Befehl nicht!",
@@ -386,13 +383,12 @@ lang.tr = {
 	sudden_death = "<VP> <b> SUDDEN ÖLÜM! </b> <br> Başka takımlardan herhangi birini öldüren takım maçı kazanacak.",
 	empate_text = "<J> <b> Beraberlik oldu! </b> <br> Bir sonraki maç 15 saniye içinde başlayacak.",
 	instructions = "Örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını ve örs atmak için Ara Çubuğu'nu kullanın.",
-	turn = "<VP> Sıra sıra",
 	timeout = "<J> Zaman bitti! Atıcı değiştirilecek.",
 	enter_vermelho = "Giriş",
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 22046.157",
+	bar = "<b>#anvilwar</b> RTM 23047.158",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -414,7 +410,7 @@ lang.tr = {
 	unban = " oda yasaklandı.",
 	caps = " ekip kişi olarak seçildi.",
 	cap = "(Rastgele seçilen) bu oyuncu türü %50 daha fazla puan alır ve puanlarınızı !tt [name] komutunu kullanarak maçta canlı olan diğer oyunculara aktarabilir. BİR takım oyuncusunu ölü olarak canlandırmak için !rv [name] komutunu kullanabilirsiniz. ",
-	cap_text = "<br> <VP> Takım kişi sizsiniz. <br> <br> Diğer takım oyuncularına göre %50 daha fazla puan alacaksınız ve !tt [name] komutunu kullanarak puanlarınızı diğer takım oyuncularına aktarabilirsiniz. BİR takım oyuncusunu ölü olarak canlandırmak için !rv [name] komutunu kullanabilirsiniz. En fazla 2 zaman aşımı istemek için klavyedeki BİTİR tuşunu da kullanabilirsiniz. ",
+	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
 	score30 = "<R>Bunu kullanmak için 30 puana ihtiyacınız var.",
 	advanced = " seviyeye ulaştı ",
 	tag_text = "<J># Etiketini hedef takma ada eklemeyi unutmayın, aksi takdirde bu komut çalışmaz! ",
@@ -465,25 +461,25 @@ function changeMap()
 	tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 function showText1(text)
-	ui.addTextArea(4001,"<font size='18'><b><font face='Corbel'><p align='center'><font color='#400000'>"..text.."",nil,221,122,360,25,0x521202,0x000001,0.75,true)
-	ui.addTextArea(4002,"<font size='18'><b><font face='Corbel'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,121,360,25,0,0,0.99,true)
+	ui.addTextArea(4001,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#400000'>"..text.."",nil,221,108,360,25,0x521202,0x000001,0.75,true)
+	ui.addTextArea(4002,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,108,360,25,0,0,0.99,true)
 end
 function showText2(text)
-	ui.addTextArea(4001,"<font size='18'><b><font face='Corbel'><p align='center'><font color='#400000'>"..text.."",nil,221,122,360,25,0x021252,0x000001,0.75,true)
-	ui.addTextArea(4002,"<font size='18'><b><font face='Corbel'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,121,360,25,0,0,0.99,true)
+	ui.addTextArea(4001,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#400000'>"..text.."",nil,221,108,360,25,0x021252,0x000001,0.75,true)
+	ui.addTextArea(4002,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,108,360,25,0,0,0.99,true)
 end
 function menuShow(name,title,content,height)
-	ui.addTextArea(9000,"<B><J><font size='18'><font face='Corbel'><p align='center'>"..title.."",name,150,90,500,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='14'><font face='Corbel'>"..content.."",name,150,125,500,height,0x151515,0x3F3F3D,1.0,true)
-	ui.addTextArea(9006,"<font size='19'><font face='Corbel'><p align='center'><R><a href='event:closep'>X</a>",name,620,90,30,27,0,0,1.0,true)
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,150,130,500,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,150,165,500,height,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
 end
 function profileShow(name,title,content,height)
-	ui.addTextArea(9000,"<B><J><font size='18'><font face='Corbel'><p align='center'>"..title.."",name,250,90,300,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='14'><font face='Corbel'>"..content.."",name,250,125,300,height,0x151515,0x3F3F3D,1.0,true)
-	ui.addTextArea(9006,"<font size='19'><font face='Corbel'><p align='center'><R><a href='event:closep'>X</a>",name,520,90,30,27,0,0,1.0,true)
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,250,130,300,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,250,165,300,height,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,520,130,30,27,0,0,1.0,true)
 end
 function showPowerMeter(name)
-	ui.addTextArea(3500,"<font size='14'><font face='Corbel'><b><p align='center'>Anvil Power",name,250,350,290,19,0x010101,0x010101,0.75,true)
+	ui.addTextArea(3500,"<font size='12'><font face='Verdana'><b><p align='center'>Anvil Power",name,250,350,290,19,0x010101,0x010101,0.75,true)
 	if power >= 1 then ui.addTextArea(3501,"<font size='16'><font face='Consolas'><p align='center'><a href='event:sp1'>1</a>",name,250,377,23,20,0x008000,0x004000,0.95,true)
 	else ui.addTextArea(3501,"<font size='16'><font face='Consolas'><p align='center'><a href='event:sp1'>1</a>",name,250,377,23,20,0x000500,0x004000,0.95,true) end
 	if power >= 2 then ui.addTextArea(3502,"<font size='16'><font face='Consolas'><p align='center'><a href='event:sp2'>2</a>",name,283,377,23,20,0x008000,0x004000,0.95,true)
@@ -533,8 +529,8 @@ function eventChatCommand(name,message)
 		end
 
 		if tfm.get.room.playerList[nome] then
-			profileShow(name,nome,"<font size='13'><b>Level: "..data[nome].nivel.."</b><br><br>Experience: "..data[nome].exp.."/"..data[nome].maxp.."<br><br><br>Score: "..data[nome].score.."<br>Matchs played: "..data[nome].matchs.."<br><br>Kills: "..data[nome].kills.."<br>Wins: "..data[nome].wins.."<br>Max Killing Spree: "..data[nome].max.."<br>Multi Kills: "..data[nome].mks.."",200)
-			ui.addTextArea(9008,"",name,265,178,((data[nome].exp/data[nome].maxp)*260)+3,6,0xffffff,0x000001,nil,true)
+			profileShow(name,nome,"<font size='12'><b>Level: "..data[nome].nivel.."</b><br><br>Experience: "..data[nome].exp.."/"..data[nome].maxp.."<br><br><br>Score: "..data[nome].score.."<br>Matchs played: "..data[nome].matchs.."<br><br>Kills: "..data[nome].kills.."<br>Wins: "..data[nome].wins.."<br>Max Killing Spree: "..data[nome].max.."<br>Multi Kills: "..data[nome].mks.."",180)
+			ui.addTextArea(9008,"",name,265,223,((data[nome].exp/data[nome].maxp)*260)+3,6,0xffffff,0x000001,nil,true)
 		else
 			tfm.exec.chatMessage(text.funct,name)
 		end
@@ -600,17 +596,17 @@ function eventChatCommand(name,message)
 		if data[typer].team == "azul" then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].team == "azul" then
-					tfm.exec.chatMessage("<font color='#0080ff'>[Team Chat - "..typer.."] "..message:sub(4).."",name)
+					tfm.exec.chatMessage("<font color='#0080ff'>‣ <b>["..typer.."]</b> "..message:sub(4).."",name)
 				end
 			end
-			tfm.exec.chatMessage("<font color='#0080ff'>[Team Chat - "..typer.."] "..message:sub(4).."","Spectra_phantom#6089")
+			tfm.exec.chatMessage("<font color='#0080ff'>‣ <b>["..typer.."]</b> "..message:sub(4).."","Spectra_phantom#6089")
 		elseif data[typer].team == "vermelho" then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].team == "vermelho" then
-					tfm.exec.chatMessage("<font color='#fF7000'>[Team Chat - "..typer.."] "..message:sub(4).."",name)
+					tfm.exec.chatMessage("<font color='#fF7000'>‣ <b>["..typer.."]</b> "..message:sub(4).."",name)
 				end
 			end
-			tfm.exec.chatMessage("<font color='#fF7000'>[Team Chat - "..typer.."] "..message:sub(4).."","Spectra_phantom#6089")
+			tfm.exec.chatMessage("<font color='#fF7000'>‣ <b>["..typer.."]</b> "..message:sub(4).."","Spectra_phantom#6089")
 		else
 			tfm.exec.chatMessage(text.funct,name)
 		end
@@ -692,16 +688,16 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,text.ajuda,text.help,180)
+		menuShow(name,text.ajuda,text.help,160)
 	end
 	if message == "cmd" then
-		menuShow(name,text.cmds,text.commands,196)
+		menuShow(name,text.cmds,text.commands,166)
 	end
 	if message == "cap" then
-		menuShow(name,text.cmds,text.cap,110)
+		menuShow(name,text.cmds,text.cap,100)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 4pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 10pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 6pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 25pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 24pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power6'>Show</a><br>F7 (Anvil Sequence) - Cost: 24pt - Required Level: 4 - Function: <a href='event:power7'>Show</a><br>F8 (Giant Transformation) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power8'>Show</a><br>F9 (Anvil Rain) - Cost: 18pt - Required Level: 4 - Function: <a href='event:power9'>Show</a>",175)
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 4pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 10pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 6pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 25pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 24pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power6'>Show</a><br>F7 (Anvil Sequence) - Cost: 24pt - Required Level: 4 - Function: <a href='event:power7'>Show</a><br>F8 (Giant Transformation) - Cost: 16pt - Required Level: 4 - Function: <a href='event:power8'>Show</a><br>F9 (Anvil Rain) - Cost: 18pt - Required Level: 4 - Function: <a href='event:power9'>Show</a>",155)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -1126,13 +1122,13 @@ function eventLoop(passado,faltando)
 	if valendo == true and reset == false then
 		local minutos=math.floor(tempo/60)
 		local segundos=math.floor(tempo-(minutos*60))
-		ui.addTextArea(2228,"",nil,230,14,340,85,0x010101,0x010101,0.5,true)
-		ui.addTextArea(2221,"<p align='center'><font color='#000000'><font size='44'><font face='Corbel'><font color='#320000'>"..count_vermelho.."  <font color='#323232'>-  <font color='#000032'>"..count_azul.."",nil,322,14,160,60,0,0,1.0,true)
-		ui.addTextArea(2220,"<p align='center'><font color='#ff0000'><font size='44'><font face='Corbel'>"..count_vermelho.."  <N>-  <font color='#0000ff'>"..count_azul.."",nil,320,12,160,60,0,0,1.0,true)
-		ui.addTextArea(2225,"<p align='center'><font color='#321200'><font size='18'>TO: <b>"..powerups.int_vermelho.."</b>",nil,239,41,70,24,0,0,1.0,true)
-		ui.addTextArea(2224,"<p align='center'><font color='#f13811'><font size='18'>TO: <b>"..powerups.int_vermelho.."</b>",nil,240,43,70,24,0,0,1.0,true)
-		ui.addTextArea(2227,"<p align='center'><font color='#001232'><font size='18'>TO: <b>"..powerups.int_azul.."</b>",nil,481,41,70,24,0,0,1.0,true)
-		ui.addTextArea(2226,"<p align='center'><font color='#1138f1'><font size='18'>TO: <b>"..powerups.int_azul.."</b>",nil,480,43,70,24,0,0,1.0,true)
+		ui.addTextArea(2228,"",nil,230,14,340,85,0x010101,0x010101,0.8,true)
+		ui.addTextArea(2221,"<p align='center'><font color='#000000'><font size='36'><font face='Verdana'><font color='#320000'>"..count_vermelho.."  <font color='#323232'>-  <font color='#000032'>"..count_azul.."",nil,322,14,160,60,0,0,1.0,true)
+		ui.addTextArea(2220,"<p align='center'><font color='#ff0000'><font size='36'><font face='Verdana'>"..count_vermelho.."  <N>-  <font color='#0000ff'>"..count_azul.."",nil,320,12,160,60,0,0,1.0,true)
+		ui.addTextArea(2225,"<p align='center'><font color='#321200'><font size='14'>TO: <b>"..powerups.int_vermelho.."</b>",nil,239,41,70,24,0,0,1.0,true)
+		ui.addTextArea(2224,"<p align='center'><font color='#f13811'><font size='14'>TO: <b>"..powerups.int_vermelho.."</b>",nil,240,43,70,24,0,0,1.0,true)
+		ui.addTextArea(2227,"<p align='center'><font color='#001232'><font size='14'>TO: <b>"..powerups.int_azul.."</b>",nil,481,41,70,24,0,0,1.0,true)
+		ui.addTextArea(2226,"<p align='center'><font color='#1138f1'><font size='14'>TO: <b>"..powerups.int_azul.."</b>",nil,480,43,70,24,0,0,1.0,true)
 	if segundos >= 10 then
 		ui.addTextArea(2223,"<p align='center'><font color='#121212'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":"..segundos.."</b>",nil,341,63,120,36,0,0,1.0,true)
 		ui.addTextArea(2222,"<p align='center'><font color='#dfd8ce'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":"..segundos.."</b>",nil,340,62,120,36,0,0,1.0,true)
@@ -1231,6 +1227,11 @@ function eventPlayerDied(name)
 	end
 	if reset == true then
 		tfm.exec.respawnPlayer(name)
+		if data[name].team == "azul" then
+			tfm.exec.movePlayer(name,1000,200,false,0,0,false)
+		elseif data[name].team == "vermelho" then
+			tfm.exec.movePlayer(name,600,200,false,0,0,false)
+		end
 		tfm.exec.playEmote(name,0)
 	end
 end
@@ -3345,16 +3346,16 @@ local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
 ui.addTextArea(-2,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>0"..m..":"..s.."</b>",n,690,24,110,44,0,0,1.0,true)
-ui.addTextArea(-3,"<font size='14'><font face='Corbel'>remaining time",n,690,60,128,44,0,0,1.0,true)
+ui.addTextArea(-3,"<font size='14'><font face='Verdana'>remaining time",n,690,60,128,44,0,0,1.0,true)
 if s < 10 then
 	ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":0"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
 	ui.addTextArea(-2,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>0"..m..":0"..s.."</b>",n,690,24,110,44,0,0,1.0,true)
-	ui.addTextArea(-3,"<font size='14'><font face='Corbel'>remaining time",n,690,60,128,44,0,0,1.0,true)
+	ui.addTextArea(-3,"<font size='14'><font face='Verdana'>remaining time",n,690,60,128,44,0,0,1.0,true)
 end
 if mode == "game" or mode == "hide" then
 	ui.addTextArea(31,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>"..alives.."</b>",n,15,27,40,44,0,0,1.0,true)
 	ui.addTextArea(30,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>"..alives.."</b>",n,12,24,40,44,0,0,1.0,true)
-	ui.addTextArea(32,"<font size='14'><font face='Corbel'>mice(s) remaining",n,9,60,128,44,0,0,1.0,true)
+	ui.addTextArea(32,"<font size='14'><font face='Verdana'>mice(s) remaining",n,9,60,128,44,0,0,1.0,true)
 else
 	for i=30,32 do
 		ui.removeTextArea(i,nil)
@@ -3438,119 +3439,6 @@ else
 	end
 end
 end
-end
-
-initFall2 = function()
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.disableAutoScore(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableMortCommand(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.disableMinimalistMode(true)
-tfm.exec.setRoomMaxPlayers(22)
-xml2=''
-creator=""
-position=0
-objective=60
-enabled=false
-map=""
-mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
-system.disableChatCommandDisplay("obj")
-lobby="@7404106"
-changed=false
-function eventChatCommand(name,message)
-	if(message:sub(1,3) == "obj") then
-		if name == "Jhinsword350#0000" or name == "Vaicntaefeto#0000" or name == "Spectra_phantom#6089" then
-			objective=tonumber(message:sub(5))
-			tfm.exec.chatMessage("<J>Objective changed to: "..objective,name)
-		end
-	end
-end
-function eventNewGame()
-	if enabled == true then
-		position=0
-		if changed == false and enabled == true then
-			xml2=tfm.get.room.xmlMapInfo.xml
-			creator=tfm.get.room.xmlMapInfo.author
-			map=tfm.get.room.currentMap
-			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Loading map. Please wait...<")
-		else
-			ui.removeTextArea(0,nil)
-		end
-	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.3",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.3! Script made by <b>Vaicntaefeto#0000</b>.<")
-		tfm.exec.setGameTime(60)
-	end
-end
-function eventLoop(p,f)
-	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
-		tfm.exec.newGame(xml2)
-		changed=true
-		ui.setMapName("<J>#fall 2.3   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
-	end
-	if f <= 1 and enabled == true then
-		changed=false
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-	end
-	if enabled == false and f >= 1000 then
-		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffff00'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,370,600,32,0,0,1.0,true)
-	end
-	if f <= 10000 and f >= 9000 and enabled == false then
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.setPlayerScore(name,0,false)
-			changed=false
-		end
-	end
-	if f <= 1 and enabled == false then
-		for i=10,11 do
-			ui.removeTextArea(i,nil)
-		end
-		enabled=true
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.setPlayerScore(name,0,false)
-		end
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].score >= objective and enabled == true then
-			enabled=false
-			tfm.exec.newGame(lobby)
-			tfm.exec.chatMessage("<VP><b>Congratulations!</b> "..name.." wins the game with "..tfm.get.room.playerList[name].score.." points!")
-		end
-	end
-end
-function eventPlayerWon(name)
-	position=position+1
-	if position == 1 then
-		tfm.exec.setGameTime(20)
-	end
-	if position <= 8 then
-		tfm.exec.setPlayerScore(name,10-position,true)
-		tfm.exec.chatMessage("+ "..tostring(10-position).." points",name)
-	else
-		tfm.exec.setPlayerScore(name,1,true)
-		tfm.exec.chatMessage("+ 1 points",name)
-	end
-end
-function eventPlayerDied(name)
-	if tfm.get.room.playerList[name].x > 2400 then
-		tfm.exec.respawnPlayer(name)
-		tfm.exec.giveCheese(name)
-		tfm.exec.playerVictory(name)
-	end
-end
-function eventNewPlayer(name)
-	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.3",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.3! Script made by <b>Vaicntaefeto#0000</b>.<")
-	end
-	tfm.exec.chatMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 3GB of RAM to work without problems.<J><br><br>Script made by Vaicntaefeto#0000",name)
-end
-tfm.exec.newGame(lobby)
 end
 
 initTrueFalse = function()
@@ -3822,13 +3710,13 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7692039")
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00fall2<br>/room #anvilwar00watercatch")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00watercatch")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00fall2<br>/room #anvilwar00watercatch")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00truefalse<br>/room #anvilwar00objects<br>/room #anvilwar00watercatch")
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.81<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.90<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. The module will operate only in English.</b>")
 end
@@ -3843,9 +3731,6 @@ elseif string.find(tfm.get.room.name,"truefalse") or string.find(tfm.get.room.na
 elseif string.find(tfm.get.room.name,"objects") then
 	tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising submodule #objects...")
 	initObjects()
-elseif string.find(tfm.get.room.name,"fall2") then
-	tfm.exec.chatMessage("<br><VP>Detected keyword 'fall2' on room name.<br>Initialising submodule #fall2...")
-	initFall2()
 elseif string.find(tfm.get.room.name,"watercatch") then
 	tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising submodule #watercatch...")
 	initWatercatch()
