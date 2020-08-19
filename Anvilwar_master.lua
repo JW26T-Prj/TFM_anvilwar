@@ -1,12 +1,12 @@
--- Transformice #anvilwar module loader - Version 2.90
+-- Transformice #anvilwar module loader - Version 2.92
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.90",
-	_MAINV = "23047.158",
+	_VERSION = "2.92",
+	_MAINV = "23249.160",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -20,12 +20,11 @@ play_azul={}
 players_table={}
 caps={azul="",vermelho=""}
 play_vermelho={}
-avs_list={}
 banned_list={}
-mods_list={"Dhanny_mheyran#6701","Marichamex#0000","Ddniemo#0000","Gmctf#0000"}
-managers_list={"Reksai_void2600#6638","Shun_kazami#7014","Nasus_assassin#1534"}
-admins_list={"Spectra_phantom#6089"}
-ninjas_list={"Varusofeyzan#0000","Forzaldenon#0000","Aphelios#1910"}
+mods_list={"Marichamex#0000","Ddniemo#0000","Gmctf#0000","Soneum#0095","Dan#1407","Potinho1234#0000","Liviliviah#0000"}
+managers_list={"Shun_kazami#7014","Nasus_assassin#1534"}
+admins_list={"Spectra_phantom#6089","Reksai_void2600#6638"}
+ninjas_list={}
 scoreloop=0
 sudden_death=false
 local temp_name=""; local temp_name2=""; local temp_name3="";
@@ -35,7 +34,7 @@ ratos=0; loop=12; power=5; valendo=false; anvil_launched=false; set=false; objec
 count=0
 count_azul=0
 count_vermelho=0
-for _,f in next,{"help","powerups","set","tc","p","score","kill","tt","rv","cap","cmd","ban","unban","rodar","pw","TC","run","pt"} do
+for _,f in next,{"help","powerups","set","tc","p","score","kill","tt","rv","cap","cmd","ban","unban","rodar","pw","TC","run","pt","ranking"} do
 	system.disableChatCommandDisplay(f)
 end
 mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006"}
@@ -52,7 +51,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 23047.158",
+	bar = "<b>#anvilwar</b> RTM 23249.160",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -65,7 +64,7 @@ lang.br = {
 	seconds30 = "<ROSE>Faltam 30 segundos!<br><br>Não é mais permitido reviver jogadores nos 30 segundos finais.",
 	seconds10 = "<ROSE>Faltam 10 segundos!",
 	teamchat = "<J>Você pode usar o comando !tc [mensagem] para falar apenas com o seu time.<br><br>Você pode ver seu perfil no jogo digitando !p e o ranking temporário digitando !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Ajuda</a>  |  <a href='event:profile'>Perfil</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitão</a>  |  <a href='event:cmd'>Comandos</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:profile'>Perfil</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cap'>Capitão</a><br><a href='event:cmd'>Comandos</a><br><a href='event:ranking'>Ranking</a>",
 	powerupslist = "Lista de Poderes",
 	profile = "Use o comando !p para ver o seu perfil. Use !p [nome] para ver o perfil de outra pessoa.",
 	starting = "<VP>A partida está prestes a começar. Preparem-se!",
@@ -118,7 +117,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 23047.158",
+	bar = "<b>#anvilwar</b> RTM 23249.160",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -131,7 +130,7 @@ lang.en = {
 	seconds30 = "<ROSE>30 seconds remaining!<br>Isn't allowed to revive players at 30 final seconds.",
 	seconds10 = "<ROSE>10 seconds remaining!",
 	teamchat = "<J>You can use the command !tc [message] to speak with your team.<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Help</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitain</a>  |  <a href='event:cmd'>Commands</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Help</a><br><a href='event:profile'>Profile</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cap'>Capitain</a><br><a href='event:cmd'>Commands</a><br><a href='event:ranking'>Ranking</a>",
 	powerupslist = "Powerups List",
 	profile = "Use the !p command to view your profile and use !p [username] to view the profile of another user.",
 	starting = "<VP>The match will start on a few seconds. Get ready!",
@@ -175,77 +174,77 @@ lang.en = {
 }
 lang.ar = {
 	win_vermelho = "<R><b>فاز الفريق الأحمر!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
-win_azul = "<BL><b>فاز الفريق الأزرق!</b><br>ستبدأ المعركة التالية في غضون 15 ثانية!",
-sudden_death = "<VP><b>المعركة النهائية!</b><br>إذا قام أي أحد بقتل عضو في أي فريق أخر، سوف يفوز الفريق الذي قتل!",
-empate_text = "<J><b>تعادل!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
-instructions = "إستخدم مفاتيح لوحة التحكم من 1 الى 9 للتحكم في سرعة وقوة السندان.",
-timeout = "<J>إنتهى الوقت! سيتم تغيير الضارب",
-enter_vermelho = "بالدخول",
-enter_azul = "بالدخول",
-exit = "قم بالخروج من هذا الفريق",
-bomba1 = "إستخدم فرقعة الزمن، إحترس من الإنفجار!",
-bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقعة مختلفة في مكان العدو",
-objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
-objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
-inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-bar = "<b>#anvilwar</b> RTM 23047.158",
-intensity = "قوة الضرب وسرعته",
-your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
-help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
-teamkill1 = "أوه لا!! ",
-teamKill2 = "قام بقتل عضو من فريقه!",
-ajuda = "المساعدة",
-credits = "Credits",
-mostrar = "أظهر",
-seconds = "<ROSE>60 ثانية متبقية!",
-seconds30 = "<ROSE>30 ثانية متبقية!<br>Isn't allowed to revive players at 30 final seconds.",
-seconds10 = "<ROSE>10 ثوانٍ متبقية!",
-teamchat = "<J>إستخم الإيعاز !tc [msg] للتكلم مع أعضاء فريقك<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
-menu_bar = "<p align='center'><a href='event:help'>Help</a> | <a href='event:profile'>Profile</a> | <a href='event:powerups'>Powerups</a> | <a href='event:cap'>Capitain</a> | <a href='event:cmd'>Commands</a>",
-powerupslist = "Powerups List",
-profile = "إستخدم !p لرؤية ملفك وأستخدم !p name لرؤية ملف لاعب أخر ",
-starting = "<VP>ستبدأ المباراة غي غضون بضعة ثواني، إستعد!",
-suicide = "قام بالإنتحار ",
-ban = " تم حظره من الغرفة من قبل ",
-unban = " تم فك حظره من الغرفة من قبل",
-caps = " تم إختياره ليصبح قائد الفريق. لرؤية المزيد عن هذا أكتب !cap أو استخدم قسم القائد في القائمة, ",
-cap = "الكابتن هو قائد الفريق، يتم إختياره عشوائيآ، سوف يحصل على نقاط بنسبة 50% أكثر من اللاعبين، اي جَني النقاط بسرعة!يمكنه تحويل النقاط للاعب أخر عن طريق الإيعاز ويمكنه إحياء لاعب مات من فريقه بإستخدام !rv [name] ولكن يتطلب 30 نقطة لذلك",
-cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-score30 = "<R>تحتاج 30 نقطة للقيام بهذا",
-advanced = " reached the level ",
-tag_text = "<J>لا تنسى بوضع الهاشتاج على الإسم الذي تم إختياره, أو لن يعمل هذا الإيعاز",
-revivetext = "<J>هذا اللاعب قام بإستقبال : ",
-yturn = "اللاعب الحالي: ",
-level_error = "<R>لا تملك المستوى المطلوب لفعل هذا، لترى مستواك إكتب !p",
-funct = "الإيعاز غير مسموح",
-cmds = "إيعازات اللعبة : ",
-commands = "• !help لرؤية المساعدة<br>• !p [player] = لرؤية ملف لاعب، أكتب !p بدون أي شيئ لرؤية ملفك<br>• !tc [message] = المحادثة مع أعضاء فريقك<br><ROSE>* <N>!rv [player] = إحياء لاعب مات من فريقك، تطلب ان تكون القائد ومعك 30 نقطة<br><ROSE>* <N>!tt [player] = تقوم بنقل نقاطك للاعب أخر في الغرفة<br><br>الإيعازات المُعلمة بـ <ROSE>* <N> إيعازات فقط للقائد، لرؤية المزيد أكتب !cap",
-playingmap = "Playing map",
-created = "created by",
-red_int_text = "<R>The red team requested a timeout.",
-blue_int_text = "<BL>The blue team requested a timeout.",
-double = "used the powerup Double Anvil!",
-double2 = "",
-triple = "used the powerup Triple Anvil!",
-triple2 = "",
-objeto1 = "استخدم powerup عشوائية تبادل لاطلاق النار!",
-objeto2 = "<ar>على هذا powerup ، سوف تقوم بتصوير كائن شامان عشوائي بدلا من السندان. إذا كنت قد استخدمت Powerup مزدوج السندان ، يمكنك تبادل اثنين من الأشياء بدلا من واحدة.",
-exp1 = "used the powerup Explosion!",
-exp2 = "<ar>على هذا powerup ،عندك 5 ثوان لتسبب انفجارك.",
-inv1 = "تستخدم powerup وضع الخالد!",
-inv2 = "<br> على هذا powerup ، تكون خالدة خلال ال 4 المقبلة. يمكن استخدام هذه الطاقة فقط مرة واحدة لكل لعبة.",
-rs1 = "used the powerup Decrease Size!",
-rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
-sq1 = "used the powerup Anvil Sequence!",
-sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
-gi1 = "used the powerup Giant Transformation!",
-gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
-ar1 = "used the powerup Anvil Rain!",
-ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
+	win_azul = "<BL><b>فاز الفريق الأزرق!</b><br>ستبدأ المعركة التالية في غضون 15 ثانية!",
+	sudden_death = "<VP><b>المعركة النهائية!</b><br>إذا قام أي أحد بقتل عضو في أي فريق أخر، سوف يفوز الفريق الذي قتل!",
+	empate_text = "<J><b>تعادل!</b><br>ستبدأ المباراة التالية في غضون 15 ثانية!",
+	instructions = "إستخدم مفاتيح لوحة التحكم من 1 الى 9 للتحكم في سرعة وقوة السندان.",
+	timeout = "<J>إنتهى الوقت! سيتم تغيير الضارب",
+	enter_vermelho = "بالدخول",
+	enter_azul = "بالدخول",
+	exit = "قم بالخروج من هذا الفريق",
+	bomba1 = "إستخدم فرقعة الزمن، إحترس من الإنفجار!",
+	bomba2 = "<br>في هذه القوة، سوف يحدث إنفجار في بقعة مختلفة في مكان العدو",
+	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
+	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
+	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
+	bar = "<b>#anvilwar</b> RTM 23249.160",
+	intensity = "قوة الضرب وسرعته",
+	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
+	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
+	teamkill1 = "أوه لا!! ",
+	teamKill2 = "قام بقتل عضو من فريقه!",
+	ajuda = "المساعدة",
+	credits = "Credits",
+	mostrar = "أظهر",
+	seconds = "<ROSE>60 ثانية متبقية!",
+	seconds30 = "<ROSE>30 ثانية متبقية!<br>Isn't allowed to revive players at 30 final seconds.",
+	seconds10 = "<ROSE>10 ثوانٍ متبقية!",
+	teamchat = "<J>إستخم الإيعاز !tc [msg] للتكلم مع أعضاء فريقك<br><br>You can see your profile typing !p and the temporary tanking typing !rank.",
+	menu_bar = "<p align='center'><a href='event:help'>Help</a> | <a href='event:profile'>Profile</a> | <a href='event:powerups'>Powerups</a> | <a href='event:cap'>Capitain</a> | <a href='event:cmd'>Commands</a><br><a href='event:ranking'>Ranking</a>",
+	powerupslist = "Powerups List",
+	profile = "إستخدم !p لرؤية ملفك وأستخدم !p name لرؤية ملف لاعب أخر ",
+	starting = "<VP>ستبدأ المباراة غي غضون بضعة ثواني، إستعد!",
+	suicide = "قام بالإنتحار ",
+	ban = " تم حظره من الغرفة من قبل ",
+	unban = " تم فك حظره من الغرفة من قبل",
+	caps = " تم إختياره ليصبح قائد الفريق. لرؤية المزيد عن هذا أكتب !cap أو استخدم قسم القائد في القائمة, ",
+	cap = "الكابتن هو قائد الفريق، يتم إختياره عشوائيآ، سوف يحصل على نقاط بنسبة 50% أكثر من اللاعبين، اي جَني النقاط بسرعة!يمكنه تحويل النقاط للاعب أخر عن طريق الإيعاز ويمكنه إحياء لاعب مات من فريقه بإستخدام !rv [name] ولكن يتطلب 30 نقطة لذلك",
+	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
+	score30 = "<R>تحتاج 30 نقطة للقيام بهذا",
+	advanced = " reached the level ",
+	tag_text = "<J>لا تنسى بوضع الهاشتاج على الإسم الذي تم إختياره, أو لن يعمل هذا الإيعاز",
+	revivetext = "<J>هذا اللاعب قام بإستقبال : ",
+	yturn = "اللاعب الحالي: ",
+	level_error = "<R>لا تملك المستوى المطلوب لفعل هذا، لترى مستواك إكتب !p",
+	funct = "الإيعاز غير مسموح",
+	cmds = "إيعازات اللعبة : ",
+	commands = "• !help لرؤية المساعدة<br>• !p [player] = لرؤية ملف لاعب، أكتب !p بدون أي شيئ لرؤية ملفك<br>• !tc [message] = المحادثة مع أعضاء فريقك<br><ROSE>* <N>!rv [player] = إحياء لاعب مات من فريقك، تطلب ان تكون القائد ومعك 30 نقطة<br><ROSE>* <N>!tt [player] = تقوم بنقل نقاطك للاعب أخر في الغرفة<br><br>الإيعازات المُعلمة بـ <ROSE>* <N> إيعازات فقط للقائد، لرؤية المزيد أكتب !cap",
+	playingmap = "Playing map",
+	created = "created by",
+	red_int_text = "<R>The red team requested a timeout.",
+	blue_int_text = "<BL>The blue team requested a timeout.",
+	double = "used the powerup Double Anvil!",
+	double2 = "",
+	triple = "used the powerup Triple Anvil!",
+	triple2 = "",
+	objeto1 = "استخدم powerup عشوائية تبادل لاطلاق النار!",
+	objeto2 = "<ar>على هذا powerup ، سوف تقوم بتصوير كائن شامان عشوائي بدلا من السندان. إذا كنت قد استخدمت Powerup مزدوج السندان ، يمكنك تبادل اثنين من الأشياء بدلا من واحدة.",
+	exp1 = "used the powerup Explosion!",
+	exp2 = "<ar>على هذا powerup ،عندك 5 ثوان لتسبب انفجارك.",
+	inv1 = "تستخدم powerup وضع الخالد!",
+	inv2 = "<br> على هذا powerup ، تكون خالدة خلال ال 4 المقبلة. يمكن استخدام هذه الطاقة فقط مرة واحدة لكل لعبة.",
+	rs1 = "used the powerup Decrease Size!",
+	rs2 = "<br>On this powerup, the size of your mice will be decreased until the match ends.",
+	sq1 = "used the powerup Anvil Sequence!",
+	sq2 = "<br>On this powerup, you will shoot a lot of anvils in sequence.",
+	gi1 = "used the powerup Giant Transformation!",
+	gi2 = "<br>On this powerup, during your shooting turn, you will increase in 50% the size of all mices of enemy team. This powerup also cancels all the mices with the 'Decrease Size' powerup.",
+	ar1 = "used the powerup Anvil Rain!",
+	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 lang.es = {
 	win_vermelho = "<R><b>¡Ha ganado el equipo ROJO!</b><br>La próxima ronda comenzará en 15 segundos.",
-win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzará en 15 segundos.",
+	win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzará en 15 segundos.",
 	sudden_death = "<VP><b>MUERTE SÚBITA!</b><br>El equipo que mate a alguien del otro equipo ganará esta ronda.",
 	empate_text = "<J><b>Hubo un empate!</b><br>La próxima ronda comenzará en 15 segundos.",
 	instructions = "Usa las teclas 1 al 9 para cambiar la intensidad del yunque y ESPACIO para lanzarlo.",
@@ -254,7 +253,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 23047.158",
+	bar = "<b>#anvilwar</b> RTM 23249.160",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -267,7 +266,7 @@ win_azul = "<BL><b>¡Ha ganado el equipo AZUL!</b><br>La próxima ronda comenzar
 	seconds30 = "<ROSE>¡Quedan 30 segundos!<br>Isn't allowed to revive players at 30 final seconds.",
 	seconds10 = "<ROSE>¡Quedan 10 segundos!",
 	teamchat = "<J>Puedes usar el comando !tc [mensaje] para hablar con tu equipo.<br><br>Puedes ver tu perfil escribiendo !p y el ranking temporal escribiendo !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Ayuda</a>  |  <a href='event:profile'>Perfil</a> | <a href='event:powerups'>Powerups</a>  |  <a href='event:cap'>Capitán</a>  |  <a href='event:cmd'>Comandos</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Ayuda</a><br><a href='event:profile'>Perfil</a> | <a href='event:powerups'>Powerups</a><br><a href='event:cap'>Capitán</a><br><a href='event:cmd'>Comandos</a><br><a href='event:ranking'>Ranking</a>",
 	powerupslist = "Lista de Powerups",
 	profile = "Usa el comando !p para ver tu perfil y usa !p [apodo] para ver el de otra persona.",
 	starting = "<VP>La ronda comenzará en unos segundos. ¡Prepárate!",
@@ -320,7 +319,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 23047.158",
+	bar = "<b>#anvilwar</b> RTM 23249.160",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -333,7 +332,7 @@ lang.de = {
 	seconds30 = "<ROSE>Noch 30 Sekunden!<br>Isn't allowed to revive players at 30 final seconds.",
 	seconds10 = "<ROSE>Noch 10 Sekunden!",
 	teamchat = "<J>Du kannst den Befehl !tc [message] um mit Ihrem Team zu sprechen.<br><br>Du kannst deine Profiltypisierung sehen !p und die Typisierung des temporären Tankens !rank.",
-	menu_bar = "<p align='center'><a href='event:help'>Help</a>  |  <a href='event:powerups'>Powerups</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:cap'>Capitain</a>  |  <a href='event:cmd'>Commands</a>",
+	menu_bar = "<p align='center'><a href='event:help'>Help</a><br><a href='event:powerups'>Powerups</a><br><a href='event:profile'>Profile</a><br><a href='event:cap'>Capitain</a><br><a href='event:cmd'>Commands</a><br><a href='event:ranking'>Ranking</a>",
 	powerupslist = "Powerups List",
 	profile = "Verwenden Sie die !p Befehl, um Ihr Profil anzusehen und zu verwenden !p [username] um das Profil eines anderen Benutzers anzuzeigen.",
 	starting = "<VP>Das Spiel beginnt in wenigen Sekunden. Macht euch bereit!",
@@ -386,7 +385,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 23047.158",
+	bar = "<b>#anvilwar</b> RTM 23249.160",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -399,7 +398,7 @@ lang.tr = {
 	seconds30 = "<ROSE> 30 saniye kaldı! <br> 60 son saniyede oyuncuları canlandırmasına izin verilmiyor.",
 	seconds10 = "<ROSE> 10 saniye kaldı! ",
 	teamchat = "<J> Ekibinizle konuşmak için !tc [message] komutunu kullanabilirsiniz. <br> <br> Profil yazınızı !p ve geçici tanking yazma! Rütbesini görebilirsiniz.",
-	menu_bar = "<p align = 'center'> <a href='event:help'> Yardım </a> | <a href='event:profile'> Profil </a> | <a href='event:powerups'> Güçlendirmeler </a> | <a href='event:cap'> Kişi Kişi </a> | <a href='event:cmd'> Komutlar </a> ",
+	menu_bar = "<p align = 'center'> <a href='event:help'> Yardım </a><br><a href='event:profile'> Profil </a<br><a href='event:powerups'> Güçlendirmeler </a><br><a href='event:cap'> Kişi Kişi </a><br><a href='event:cmd'> Komutlar </a><br><a href='event:ranking'>Ranking</a>",
 	powerupslist = "Powerups Listesi",
 	profile = "Profilinizi görüntülemek için !p komutunu kullanın ve başka bir kullanıcının profilini görüntülemek için !p [kullanıcı adı] kullanın.",
 	starting = "<VP> Maç birkaç saniye içinde başlayacak. Hazırlan!",
@@ -441,19 +440,37 @@ lang.tr = {
 	ar1 = "used the powerup Anvil Rain!",
 	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
-
-if tfm.get.room.community == "br" then
-	text = lang.br
-elseif tfm.get.room.community == "ar" then
-	text = lang.ar
-elseif tfm.get.room.community == "es" then
-	text = lang.es
-elseif tfm.get.room.community == "de" then
-	text = lang.de
-elseif tfm.get.room.community == "tr" then
-	text = lang.tr
+if string.find(tfm.get.room.name,"*") then
+	do local _, nickname = pcall(nil)
+	tfm.get.room.owner = string.match(nickname, "(.-)%.")
+	end
+	if tfm.get.room.playerList[tfm.get.room.owner].community == "br" then
+		text = lang.br
+	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "ar" then
+		text = lang.ar
+	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "es" then
+		text = lang.es
+	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "de" then
+		text = lang.de
+	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "tr" then
+		text = lang.tr
+	else
+		text = lang.en
+	end
 else
-	text = lang.en
+	if tfm.get.room.community == "br" then
+		text = lang.br
+	elseif tfm.get.room.community == "ar" then
+		text = lang.ar
+	elseif tfm.get.room.community == "es" then
+		text = lang.es
+	elseif tfm.get.room.community == "de" then
+		text = lang.de
+	elseif tfm.get.room.community == "tr" then
+		text = lang.tr
+	else
+		text = lang.en
+	end
 end
 function changeMap()
 	tfm.exec.newGame(mapas[math.random(#mapas)])
@@ -517,6 +534,43 @@ function split(t,s)
 	end
 	return a
 end
+function eventRanking(name)
+	local sc = {}
+	for id, name in pairs(players_table) do
+		sc[#sc+1] = {n=name,s=data[name].score,f=data[name].wins,k=data[name].kills,r=(data[name].wins/data[name].matchs)*100}
+	end
+	table.sort(sc,function(a,b) return a.s>b.s end)
+	str1 = ''
+	str2 = ''
+	str3 = ''
+	str4 = ''
+	str5 = ''
+	for k,v in pairs(sc) do
+		if k < 12 then
+			if str ~= '' then
+				str1=str1.."<br><N>"..k.."   <VP>"..v.n..""
+				str2=str2.."<br><b><N>"..v.s.."</b>"
+				str3=str3.."<br><N>"..v.f..""
+				str4=str4.."<br><N>"..v.k..""
+				str5=str5.."<br><N>"..v.r..""
+			else
+				str1="<J>"..k.."   <VP>"..v.n..""
+				str2="<J><b>"..v.s.."</b>"
+				str3="<J>"..v.f..""
+				str4=str4.."<N>"..v.k..""
+				str5=str5.."<N>"..v.r..""
+			end
+		end
+	end
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>Room Ranking",name,150,130,500,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#    Name                         Score     Wins    Kills    WinRate%",name,150,165,500,200,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9005,"<font size='12'><font face='Consolas'>"..str1,name,150,165,500,200,0,0,1.0,true)
+	ui.addTextArea(9004,"<font size='12'><font face='Consolas'>"..str2,name,390,165,500,200,0,0,1.0,true)
+	ui.addTextArea(9003,"<font size='12'><font face='Consolas'>"..str3,name,458,165,500,200,0,0,1.0,true)
+	ui.addTextArea(9002,"<font size='12'><font face='Consolas'>"..str4,name,515,165,500,200,0,0,1.0,true)
+	ui.addTextArea(9001,"<font size='12'><font face='Consolas'>"..str5,name,577,165,500,200,0,0,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
+end
 function eventChatCommand(name,message)
 	local arg = split(message, " ")
 	if arg[1] == "p" then
@@ -533,15 +587,18 @@ function eventChatCommand(name,message)
 			tfm.exec.chatMessage(text.funct,name)
 		end
 	end
+	if message == "ranking" then
+		eventRanking(name)
+	end
 	if(message:sub(0,4) == "kill") then
-		if data[name].level >= 3 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 3 then
 			tfm.exec.killPlayer(message:sub(6))
 		else
 			tfm.exec.chatMessage(text.funct,name)
 		end
 	end
 	if(message:sub(0,2) == "pw") then
-		if data[name].level >= 4 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 4 then
 			tfm.exec.setRoomPassword(message:sub(4))
 			if message:sub(4) == "" then
 				tfm.exec.chatMessage("Password cleared.",name)
@@ -551,21 +608,21 @@ function eventChatCommand(name,message)
 		end
 	end
 	if(message:sub(0,5) == "rodar") then
-		if data[name].level >= 3 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 3 then
 			tfm.exec.newGame(mapas[tonumber(message:sub(7))])
 		else
 			tfm.exec.chatMessage(text.funct,name)
 		end
 	end
 	if(message:sub(0,3) == "run") then
-		if data[name].level >= 4 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 4 then
 			tfm.exec.newGame(message:sub(5))
 		else
 			tfm.exec.chatMessage(text.funct,name)
 		end
 	end
 	if(message:sub(0,3) == "ban") then
-		if data[name].level >= 3 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 3 then
 			if data[message:sub(5)] then
 				tfm.exec.killPlayer(message:sub(5))
 				data[message:sub(5)].level=-1
@@ -578,7 +635,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if(message:sub(0,5) == "unban") then
-		if data[name].level >= 3 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 3 then
 			if data[message:sub(7)] then
 				data[message:sub(7)].level=0
 				tfm.exec.chatMessage(""..message:sub(7)..""..text.unban.."")
@@ -594,23 +651,23 @@ function eventChatCommand(name,message)
 		if data[typer].team == "azul" then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].team == "azul" then
-					tfm.exec.chatMessage("<font color='#0080ff'>‣ <b>["..typer.."]</b> "..message:sub(4).."",name)
+					tfm.exec.chatMessage("<font color='#0080ff'>• <b>["..typer.."]</b> "..message:sub(4).."",name)
 				end
 			end
-			tfm.exec.chatMessage("<font color='#0080ff'>‣ <b>["..typer.."]</b> "..message:sub(4).."","Spectra_phantom#6089")
+			tfm.exec.chatMessage("<font color='#0080ff'>• <b>["..typer.."]</b> "..message:sub(4).."","Spectra_phantom#6089")
 		elseif data[typer].team == "vermelho" then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].team == "vermelho" then
-					tfm.exec.chatMessage("<font color='#fF7000'>‣ <b>["..typer.."]</b> "..message:sub(4).."",name)
+					tfm.exec.chatMessage("<font color='#fF7000'>• <b>["..typer.."]</b> "..message:sub(4).."",name)
 				end
 			end
-			tfm.exec.chatMessage("<font color='#fF7000'>‣ <b>["..typer.."]</b> "..message:sub(4).."","Spectra_phantom#6089")
+			tfm.exec.chatMessage("<font color='#fF7000'>• <b>["..typer.."]</b> "..message:sub(4).."","Spectra_phantom#6089")
 		else
 			tfm.exec.chatMessage(text.funct,name)
 		end
 	end
 	if(message:sub(0,3) == "set") then
-		if data[name].level >= 4 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 4 then
 			if data[message:sub(5)] then
 				set_name=message:sub(5)
 				set=true
@@ -678,7 +735,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if(message:sub(0,5) == "score") then
-		if data[name].level >= 4 or name == "Reksai_void2600#6638" or name == "Spectra_phantom#6089" then
+		if data[name].level >= 4 then
 			temp_name=message:sub(7)
 			ui.addPopup(906,2,"Score",name,350,175,200,true)
 		else
@@ -773,8 +830,8 @@ function showTeams(name)
 			tfm.exec.killPlayer(name)
 			tfm.exec.chatMessage("<R>This account was banned of #anvilwar room.",name)
 		else
-			ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>"..text.enter_vermelho.."</a></p>",name, 100, 165, 80, 20, 0x800000, 0x600000,1.0,true)
-			ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>"..text.enter_azul.."</a></p>",name, 600, 165, 80, 20, 0x80, 0x60,1.0,true)
+			ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>"..text.enter_vermelho.."</a></p>",name, 0, 378, 240, 20, 0x800000, 0x600000,1.0,true)
+			ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>"..text.enter_azul.."</a></p>",name, 560, 378, 240, 20, 0x80, 0x60,1.0,true)
 		end
 	end
 end
@@ -1121,8 +1178,8 @@ function eventLoop(passado,faltando)
 		local minutos=math.floor(tempo/60)
 		local segundos=math.floor(tempo-(minutos*60))
 		ui.addTextArea(2228,"",nil,230,14,340,85,0x010101,0x010101,0.8,true)
-		ui.addTextArea(2221,"<p align='center'><font color='#000000'><font size='36'><font face='Verdana'><font color='#320000'>"..count_vermelho.."  <font color='#323232'>-  <font color='#000032'>"..count_azul.."",nil,322,14,160,60,0,0,1.0,true)
-		ui.addTextArea(2220,"<p align='center'><font color='#ff0000'><font size='36'><font face='Verdana'>"..count_vermelho.."  <N>-  <font color='#0000ff'>"..count_azul.."",nil,320,12,160,60,0,0,1.0,true)
+		ui.addTextArea(2221,"<p align='center'><font color='#000000'><font size='36'><font face='Verdana'><font color='#320000'>"..count_vermelho.."  <font color='#323232'>-  <font color='#000032'>"..count_azul.."",nil,322,20,160,60,0,0,1.0,true)
+		ui.addTextArea(2220,"<p align='center'><font color='#ff0000'><font size='36'><font face='Verdana'>"..count_vermelho.."  <N>-  <font color='#0000ff'>"..count_azul.."",nil,320,18,160,60,0,0,1.0,true)
 		ui.addTextArea(2225,"<p align='center'><font color='#321200'><font size='14'>TO: <b>"..powerups.int_vermelho.."</b>",nil,239,41,70,24,0,0,1.0,true)
 		ui.addTextArea(2224,"<p align='center'><font color='#f13811'><font size='14'>TO: <b>"..powerups.int_vermelho.."</b>",nil,240,43,70,24,0,0,1.0,true)
 		ui.addTextArea(2227,"<p align='center'><font color='#001232'><font size='14'>TO: <b>"..powerups.int_azul.."</b>",nil,481,41,70,24,0,0,1.0,true)
@@ -1512,11 +1569,6 @@ function eventNewGame()
 				tfm.exec.bindKeyboard(name,i,true,true)
 			end
 			showTeams(name)
-			for id,name in pairs(avs_list) do
-				if data[name] then
-					giveCargos(name,2)
-				end
-			end
 			for id,name in pairs(mods_list) do
 				if data[name] then
 					giveCargos(name,3)
@@ -1554,7 +1606,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,2,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,text.menu_bar,name,2,58,350,20,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,text.menu_bar,name,2,58,100,84,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,2,25,70,24,0x000001,0x000001,0.75,true)
@@ -1592,6 +1644,9 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "power7" then
 		tfm.exec.chatMessage(text.sq2,name)
+	end
+	if callback == "ranking" then
+		eventRanking(name)
 	end
 	if callback == "power8" then
 		tfm.exec.chatMessage(text.gi2,name)
@@ -1637,7 +1692,7 @@ function eventTextAreaCallback(id,name,callback)
 			count_vermelho=count_vermelho+1
 			ui.removeTextArea(41,name)
 			ui.removeTextArea(42,name)
-			ui.addTextArea(51,"<p align='center'><a href='event:sair_vermelho'>"..text.exit.."",name,300,180,200,20,0x505050,0x323232,1.0,true)
+			ui.addTextArea(51,"<p align='center'><a href='event:sair_vermelho'>"..text.exit.."",name,280,180,240,20,0x505050,0x323232,1.0,true)
 		end
 	end
 	if callback == "enter_azul" then
@@ -1649,7 +1704,7 @@ function eventTextAreaCallback(id,name,callback)
 			count_azul=count_azul+1
 			ui.removeTextArea(41,name)
 			ui.removeTextArea(42,name)
-			ui.addTextArea(52,"<p align='center'><a href='event:sair_azul'>"..text.exit.."",name,300,180,200,20,0x505050,0x323232,1.0,true)
+			ui.addTextArea(52,"<p align='center'><a href='event:sair_azul'>"..text.exit.."",name,280,180,240,20,0x505050,0x323232,1.0,true)
 		end
 	end
 	if callback == "sair_azul" then
@@ -1658,8 +1713,8 @@ function eventTextAreaCallback(id,name,callback)
 		tfm.exec.killPlayer(name)
 		count_azul=count_azul-1
 		ui.removeTextArea(52,name)
-		ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>"..text.enter_vermelho.."</a></p>", name, 100, 165, 80, 20, 0x800000, 0x600000,1.0,true)
-		ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>"..text.enter_azul.."</a></p>", name, 600, 165, 80, 20, 0x80, 0x60,1.0,true)
+		ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>"..text.enter_vermelho.."</a></p>",name, 0, 165, 240, 20, 0x800000, 0x600000,1.0,true)
+		ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>"..text.enter_azul.."</a></p>",name, 560, 165, 240, 20, 0x80, 0x60,1.0,true)
 	end
 	if callback == "sair_vermelho" then
 		data[name].team=""
@@ -1667,8 +1722,8 @@ function eventTextAreaCallback(id,name,callback)
 		tfm.exec.killPlayer(name)
 		count_vermelho=count_vermelho-1
 		ui.removeTextArea(51,name)
-		ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>"..text.enter_vermelho.."</a></p>", name, 100, 165, 80, 20, 0x800000, 0x600000,1.0,true)
-		ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>"..text.enter_azul.."</a></p>", name, 600, 165, 80, 20, 0x80, 0x60,1.0,true)
+		ui.addTextArea(41, "<p align='center'><a href='event:enter_vermelho'>"..text.enter_vermelho.."</a></p>",name, 0, 378, 240, 20, 0x800000, 0x600000,1.0,true)
+		 ui.addTextArea(42, "<p align='center'><a href='event:enter_azul'>"..text.enter_azul.."</a></p>",name, 560, 378, 240, 20, 0x80, 0x60,1.0,true)
 	end
 end
 function winRed()
@@ -1750,8 +1805,8 @@ misc={6788178,6788693,6788695,6789272,6799996,6799998,6808957,6803018,6809464,68
 arts={6788861,6789249,6790484,6790903,6792509,6792518,6792523,6794050,6789358,6830799,6866549,6834529,6812488,6876563,6888512,6893463,7431981,6879100,7146925,6937148,7252655,6356881},
 mech={6789280,6789334,6790895,6793860,6799997,6789324,6803128,6900149,6943992,6888884,7279612,7252133},
 geek={6791871,6802377,6811934,7631682,6876638,6892608,6982387,7404106,7405103,7400694,7400678,7412412,7412422,7491944,7755685},
-testing={6788848,6789206,6789260,6790433,6790911,6790896,6792320,6790467,6798615,6810292,6809498,6822119,3110915,6983850,7711216,6958861,7250912,7253090,7254162,6863706,7469336,7659327,7563422},
-troll={6789263,6790300,4411212,6781398,7394517,7354947,3398791,1347551,7201360,1429677,6897042,3766247,7296284,1852537}
+testing={6788848,6789206,6789260,6790433,6790911,6790896,6792320,6790467,6798615,6810292,6809498,6822119,3110915,6983850,7711216,6958861,7250912,7253090,7254162,6863706,7469336,7659327,7563422,6481798,7350028},
+troll={6789263,6790300,4411212,6781398,7394517,7354947,3398791,1347551,7201360,1429677,6897042,3766247,7296284,1852537,7712670,7748874}
 }
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; map_cat=-2;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59}
@@ -1762,7 +1817,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 5031.027",
+	welcome = "<N>Bem-vindo ao novo Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 5132.028",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1833,7 +1888,7 @@ lang.br = {
 	ds = "Dance e sente!"
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 5031.027",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 5132.028",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1904,7 +1959,7 @@ lang.en = {
 	ds = "Dance and sit!"
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 5031.027",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 5132.028",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1975,7 +2030,7 @@ lang.fr = {
 	ds = "Danse et assis !"
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 5031.027",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 5132.028",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2607,7 +2662,7 @@ function eventChatMessage(name,message)
 	if active == 11 then
 		data[name].c=1
 	end
-	if active == 12 or active == 14 then
+	if active == 12 or active == 14 or active == 59 then
 		tfm.exec.killPlayer(name)
 	end
 	if active == 16 then
@@ -2909,12 +2964,12 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 5031.027 by Nasus<")
+		ui.setMapName("<N>"..text.mices.."  <BL>|  <N>Version RTM 5132.028 by Nasus<")
 	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 5031.027 by Nasus<")
+		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N>Version RTM 5132.028 by Nasus<")
 	end
 	if active >= 0 then
-		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 5031.027 by Nasus<")
+		ui.setMapName("<N>"..text.mestre.."  <BL>|  <N>"..text.time.." : <J>"..math.ceil(faltando/1000).."s  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <N>Version RTM 5132.028 by Nasus<")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -3112,8 +3167,8 @@ function eventNewGame()
 	changeBar()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
-		   	tfm.exec.killPlayer(name)
-		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
 		end
 	end
 	if tfm.get.room.community == "br" then
@@ -3339,7 +3394,7 @@ end
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2328.014 by Spectra_phantom#6089<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2429.015 by Spectra_phantom#6089<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -3453,7 +3508,6 @@ tfm.exec.disablePhysicalConsumables(true)
 limits={questions=10,time=7,mices_alive=0}
 questions={question="",answer="",round=0}
 admin=""
-kazarina={name="Barodius"}
 for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
 	system.disableChatCommandDisplay(f)
 end
@@ -3475,8 +3529,8 @@ function eventNewGame()
 			tfm.exec.setPlayerScore(name,-1,false)
 		end
 		if name:sub(1,1) == "*" then
-		   	tfm.exec.killPlayer(name)
-		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
 		end
 	end
 	questions.round=0
@@ -3568,13 +3622,6 @@ function eventPopupAnswer(id,name,answer)
 			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
 		end
 	end
-	if id == 30 then
-		if answer == "" then
-			kazarina.name="Barodius"
-		else
-			kazarina.name=answer
-		end
-	end
 end
 function eventChatCommand(name,message)
 	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Miss_fortune#9548" or name == "Aphelios#1910" or name == admin then
@@ -3614,9 +3661,6 @@ function eventChatCommand(name,message)
 				reset()
 				tfm.exec.chatMessage("<R>This shaman has been skipped.")
 			end
-		end
-		if message == "change" then
-			ui.addPopup(30,2,"Barodius?",name,350,175,200,true)
 		end
 	end
 	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
@@ -3714,28 +3758,30 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.90<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.92<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
-	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. The module will operate only in English.</b>")
-end
-if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
-	tfm.exec.chatMessage("<R>Not allowed")
-elseif string.find(tfm.get.room.name,"mestre") then
-	tfm.exec.chatMessage("<br><VP>Detected keyword 'mestre' on room name.<br>Initialising submodule #mestre...")
-	initMestre()
-elseif string.find(tfm.get.room.name,"truefalse") or string.find(tfm.get.room.name,"true_false") then
-	tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising submodule #truefalse...")
-	initTrueFalse()
-elseif string.find(tfm.get.room.name,"objects") then
-	tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising submodule #objects...")
-	initObjects()
-elseif string.find(tfm.get.room.name,"watercatch") then
-	tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising submodule #watercatch...")
-	initWatercatch()
-elseif string.find(tfm.get.room.name,"rooms") then
-	tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
-	Rooms()
-else
-	tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
+	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. The module will be translated according of module loader's community.</b>")
 	initAnvilwar()
+else
+	if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
+		tfm.exec.chatMessage("<R>Not allowed")
+	elseif string.find(tfm.get.room.name,"mestre") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'mestre' on room name.<br>Initialising submodule #mestre...")
+		initMestre()
+	elseif string.find(tfm.get.room.name,"truefalse") or string.find(tfm.get.room.name,"true_false") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising submodule #truefalse...")
+		initTrueFalse()
+	elseif string.find(tfm.get.room.name,"objects") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising submodule #objects...")
+		initObjects()
+	elseif string.find(tfm.get.room.name,"watercatch") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising submodule #watercatch...")
+		initWatercatch()
+	elseif string.find(tfm.get.room.name,"rooms") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
+		Rooms()
+	else
+		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
+		initAnvilwar()
+	end
 end
