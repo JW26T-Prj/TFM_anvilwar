@@ -1,12 +1,12 @@
--- Transformice #anvilwar module loader - Version 2.93
+-- Transformice #anvilwar module loader - Version 2.94
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 
 -- Included sub-modules: #mestre, #truefalse, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.93",
-	_MAINV = "23350.161",
+	_VERSION = "2.94",
+	_MAINV = "23461.162",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -24,7 +24,7 @@ banned_list={}
 mods_list={"Marichamex#0000","Ddniemo#0000","Gmctf#0000","Soneum#0095","Dan#1407","Potinho1234#0000","Liviliviah#0000"}
 managers_list={"Shun_kazami#7014","Nasus_assassin#1534"}
 admins_list={"Spectra_phantom#6089","Reksai_void2600#6638"}
-ninjas_list={}
+ninjas_list={"Forzaldenon#0000"}
 scoreloop=0
 sudden_death=false
 local temp_name=""; local temp_name2=""; local temp_name3="";
@@ -51,7 +51,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 23350.161",
+	bar = "<b>#anvilwar</b> RTM 23461.162",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -82,7 +82,7 @@ lang.br = {
 	level_error = "<R>Você não possível nível suficiente para usar isto.",
 	funct = "Função não permitida. (Você colocou a #tag no nome?)",
 	cmds = "Comandos do Jogo",
-	commands = "• !help = Exibe as instruções de como jogar.<br>• !p [jogador] = Exibe o perfil do jogador escolhido. Digite !p sem argumentos para ver o seu perfil.<br>• !tc [mensagem] = Fala apenas com os jogadores do seu time.<br><ROSE>* <N>!rv [jogador] = Revive um jogador morto de sua equipe.<br>* <N>!pt [jogador] = Passa sua vez para alguém de sua equipe.<br><ROSE>* <N>!tt [jogador] = Transfere seus pontos para outro jogador<br><br>Os comandos marcados com <ROSE>* <N>são de uso exclusivo do capitão da equipe. Para saber mais sobre isso, digite !cap.",
+	commands = "• !help = Exibe as instruções de como jogar.<br>• !p [jogador] = Exibe o perfil do jogador escolhido. Digite !p sem argumentos para ver o seu perfil.<br>• !tc [mensagem] = Fala apenas com os jogadores do seu time.<br><ROSE>* <N>!rv [jogador] = Revive um jogador morto de sua equipe.<br><ROSE>* <N>!pt [jogador] = Passa sua vez para alguém de sua equipe.<br><ROSE>* <N>!tt [jogador] = Transfere seus pontos para outro jogador<br><br>Os comandos marcados com <ROSE>* <N>são de uso exclusivo do capitão da equipe. Para saber mais sobre isso, digite !cap.",
 	playingmap = "Rodando mapa",
 	created = "criado por",
 	red_int_text = "<R>A equipe vermelha pediu tempo.",
@@ -117,7 +117,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 23350.161",
+	bar = "<b>#anvilwar</b> RTM 23461.162",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -187,7 +187,7 @@ lang.ar = {
 	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-	bar = "<b>#anvilwar</b> RTM 23350.161",
+	bar = "<b>#anvilwar</b> RTM 23461.162",
 	intensity = "قوة الضرب وسرعته",
 	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -253,7 +253,7 @@ lang.es = {
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 23350.161",
+	bar = "<b>#anvilwar</b> RTM 23461.162",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -319,7 +319,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 23350.161",
+	bar = "<b>#anvilwar</b> RTM 23461.162",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -385,7 +385,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 23350.161",
+	bar = "<b>#anvilwar</b> RTM 23461.162",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -441,22 +441,7 @@ lang.tr = {
 	ar2 = "<br>On this powerup, a lot of anvils will fall from top of the map on the enemy area. When you use of this powerup, you will lose your shooting turn.",
 }
 if string.find(tfm.get.room.name,"*") then
-	do local _, nickname = pcall(nil)
-	tfm.get.room.owner = string.match(nickname, "(.-)%.")
-	end
-	if tfm.get.room.playerList[tfm.get.room.owner].community == "br" then
-		text = lang.br
-	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "ar" then
-		text = lang.ar
-	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "es" then
-		text = lang.es
-	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "de" then
-		text = lang.de
-	elseif tfm.get.room.playerList[tfm.get.room.owner].community == "tr" then
-		text = lang.tr
-	else
-		text = lang.en
-	end
+	text = lang.en
 else
 	if tfm.get.room.community == "br" then
 		text = lang.br
@@ -537,7 +522,7 @@ end
 function eventRanking(name)
 	local sc = {}
 	for id, name in pairs(players_table) do
-		sc[#sc+1] = {n=name,s=data[name].score,f=data[name].wins,k=data[name].kills,r=(data[name].wins/data[name].matchs)*100}
+		sc[#sc+1] = {n=name,s=data[name].score,f=data[name].wins,k=data[name].kills,r=math.ceil((data[name].wins/data[name].matchs)*100)}
 	end
 	table.sort(sc,function(a,b) return a.s>b.s end)
 	str1 = ''
@@ -546,7 +531,7 @@ function eventRanking(name)
 	str4 = ''
 	str5 = ''
 	for k,v in pairs(sc) do
-		if k < 12 then
+		if k < 15 then
 			if str ~= '' then
 				str1=str1.."<br><N>"..k.."   <VP>"..v.n..""
 				str2=str2.."<br><b><N>"..v.s.."</b>"
@@ -564,7 +549,7 @@ function eventRanking(name)
 	end
 	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>Room Ranking",name,150,130,500,30,0x212121,0x363634,1.0,true)
 	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#    Name                         Score     Wins    Kills    WinRate%",name,150,165,500,200,0x151515,0x3F3F3D,1.0,true)
-	ui.addTextArea(9005,"<font size='12'><font face='Consolas'>"..str1,name,150,165,500,200,0,0,1.0,true)
+	ui.addTextArea(9005,"<font size='12'><font face='Consolas'>"..str1,name,148,165,500,200,0,0,1.0,true)
 	ui.addTextArea(9004,"<font size='12'><font face='Consolas'>"..str2,name,390,165,500,200,0,0,1.0,true)
 	ui.addTextArea(9003,"<font size='12'><font face='Consolas'>"..str3,name,458,165,500,200,0,0,1.0,true)
 	ui.addTextArea(9002,"<font size='12'><font face='Consolas'>"..str4,name,515,165,500,200,0,0,1.0,true)
@@ -1127,7 +1112,7 @@ function eventLoop(passado,faltando)
 	end
 	if valendo == true and reset == false and tempo >= 0 and anvil_launched == false then
 		showPowerMeter(actual_player)
-		ui.addTextArea(4600,"<font size='60'><p align='center'>"..math.floor(time_limit).."",name,5,310,95,85,0x101010,0x101010,0.85,true)
+		ui.addTextArea(4600,"<font size='60'><p align='center'>"..math.floor(time_limit).."",actual_player,5,310,95,85,0x101010,0x101010,0.85,true)
 	else
 		for i=3500,3509 do
 			ui.removeTextArea(i,nil)
@@ -3760,9 +3745,9 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.93<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.94<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
-	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. The module will be translated according of module loader's community.</b>")
+	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
 else
 	if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") then
