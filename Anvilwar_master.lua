@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.120
+-- Transformice #anvilwar module loader - Version 2.121
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 -- Included sub-modules: #mestre, #truefalse, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.120",
+	_VERSION = "2.121",
 	_MAINV = "24164.165",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -1796,7 +1796,7 @@ troll={6789263,6790300,4411212,6781398,7394517,7354947,3398791,1347551,7201360,1
 }
 active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; map_cat=-2; q=""; a=""; qtime=10;
 fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42,43,45,46,47,48,49,50,51,53,57,58,59,61,62}
-spiderweb={type = 15,width = 40,height = 40}
+spiderweb={type = 15,width = 80,height = 80}
 fc_mode=false
 unlocked=true
 xpos=0; xpos2=0;
@@ -1804,7 +1804,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 6440.036",
+	welcome = "<N>Bem-vindo ao Mestre Mandou! Nesta sala seu objetivo é fazer tudo o que o script mandar.<br><ROSE>Script criado por <b>Nasus_assassin#1534</b>. Traduzido por Fosfus7heads#0000. Versão RTM 6541.037",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1832,6 +1832,8 @@ lang.br = {
 	retangulo = "Fique dentro do retângulo branco!",
 	retangulov = "Fique dentro do retângulo vermelho!",
 	nretangulo = "Não fique dentro do retângulo branco!",
+	preesquerda15 = "Pressione 15 vezes a tecla para ESQUERDA!",
+	predireita15 = "Pressione 15 vezes a tecla para DIREITA!",
 	preesquerda30 = "Pressione 30 vezes a tecla para ESQUERDA!",
 	predireita30 = "Pressione 30 vezes a tecla para DIREITA!",
 	preesquerda60 = "Pressione 60 vezes a tecla para ESQUERDA!",
@@ -1878,7 +1880,7 @@ lang.br = {
 	key2 = "Pressione F4!",
 }
 lang.en = {
-	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 6440.036",
+	welcome = "<N>Welcome to script Master Says! On this module you have to do everything that the master says.<br><ROSE>Module created by <b>Nasus_assassin#1534</b>. Version RTM 6541.037",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1906,6 +1908,8 @@ lang.en = {
 	retangulo = "Stay on the white rectangle!",
 	retangulov = "Stay on the red rectangle!",
 	nretangulo = "Don't stay on the white rectangle!",
+	preesquerda15 = "Press 15 times the LEFT key!",
+	predireita15 = "Press 15 times the RIGHT key!",
 	preesquerda30 = "Press 30 times the LEFT key!",
 	predireita30 = "Press 30 times the RIGHT key!",
 	preesquerda60 = "Press 60 times the LEFT key!",
@@ -1952,7 +1956,7 @@ lang.en = {
 	key2 = "Press F4!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 6440.036",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Nasus_assassin#1534</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 6541.037",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1980,6 +1984,8 @@ lang.fr = {
 	retangulo = "Reste dans le rectangle blanc !",
 	retangulov = "Reste dans le rectangle rouge !",
 	nretangulo = "Ne reste pas sur le rectangle blanc !",
+	preesquerda15 = "Appuie 15 fois sur la flèche GAUCHE !",
+	predireita15 = "Appuie 15 fois sur la flèche DROITE !",
 	preesquerda30 = "Appuie 30 fois sur la flèche GAUCHE !",
 	predireita30 = "Appuie 30 fois sur la flèche DROITE !",
 	preesquerda60 = "Appuie 60 fois sur la flèche GAUCHE !",
@@ -2026,7 +2032,7 @@ lang.fr = {
 	key2 = "Appuie sur la touche F4!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 6440.036",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Nasus_assassin#1534</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 6541.037",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2054,6 +2060,8 @@ lang.tr = {
 	retangulo = "Stay on the white rectangle!",
 	retangulov = "Kýrmýzý dikdörtgenin üzerinde kalýn!",
 	nretangulo = "Beyaz dikdörtgenin üzerinde kalmayýn!",
+	preesquerda15 = "SOL tuþa 15 kez basýn!",
+	predireita15 = "SAÐ tuþa 15 kez basýn!",
 	preesquerda30 = "SOL tuþa 30 kez basýn!",
 	predireita30 = "SAÐ tuþa 30 kez basýn!",
 	preesquerda60 = "SOL tuþa 60 kez basýn!",
@@ -2230,7 +2238,7 @@ function eventPlayerLeft()
 end
 function sortearComandos()
 	if fc_mode == false then
-		active=math.random(1,64)
+		active=math.random(1,66)
 	else
 		active=tonumber(fc_cmds[math.random(#fc_cmds)])
 	end
@@ -2548,7 +2556,7 @@ function getCommand()
 	end
 	if active == 42 then
 		showCommand(active,text.stone)
-		tfm.exec.setGameTime(5)
+		tfm.exec.setGameTime(6)
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
@@ -2615,7 +2623,7 @@ function getCommand()
 			data[name].c=1
 			tfm.exec.freezePlayer(name,true)
 		end
-		tfm.exec.setGameTime(7)
+		tfm.exec.setGameTime(5)
 	end
 	if active == 54 then
 		showCommand(active,text.transform)
@@ -2645,7 +2653,7 @@ function getCommand()
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		tfm.exec.setGameTime(7)
+		tfm.exec.setGameTime(10)
 	end
 	if active == 59 then
 		showCommand(active,text.nchorem)
@@ -2684,8 +2692,16 @@ function getCommand()
 		for name,player in pairs(tfm.get.room.playerList) do
 			data[name].c=1
 		end
-		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.68,false)
-		ui.addTextArea(1,"",nil,xpos,320,80,65,0x0000ff,0x0000ff,0.62,false)
+		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.68,false)
+		ui.addTextArea(1,"",nil,xpos2,320,80,65,0x0000ff,0x0000ff,0.62,false)
+	end
+	if active == 65 then
+		showCommand(active,text.preesquerda15)
+		tfm.exec.setGameTime(6)
+	end
+	if active == 66 then
+		showCommand(active,text.predireita15)
+		tfm.exec.setGameTime(6)
 	end
 	if active == 99 then
 		showCommand(active,q)
@@ -3029,16 +3045,50 @@ function eventKeyboard(name,id,down,x,y)
 			data[name].c=1
 		end
 	end
+	if active == 65 then
+		if id == 37 or id == 65 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			data[name].s=data[name].s+1
+			if data[name].s >= 15 then
+				data[name].c=1
+			end
+		end
+		if data[name].key == 37 and id == 65 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 65 and id == 37 then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	if active == 66 then
+		if id == 39 or id == 68 then
+			if data[name].key == 0 then
+				data[name].key=id
+			end
+			data[name].s=data[name].s+1
+			if data[name].s >= 15 then
+				data[name].c=1
+			end
+		end
+		if data[name].key == 39 and id == 68 then
+			tfm.exec.killPlayer(name)
+		end
+		if data[name].key == 68 and id == 39 then
+			tfm.exec.killPlayer(name)
+		end
+	end
 end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <N><b>Version RTM 6440.036</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <N><b>Version RTM 6541.037</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N><b>Version RTM 6440.036</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <N><b>Version RTM 6541.037</b><")
 	end
 	if active >= 0 then
-		ui.setMapName("             "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mestre.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <ROSE><b>Version RTM 6440.036</b><")
+		ui.setMapName("             "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mestre.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <ROSE><b>Version RTM 6541.037</b><")
 		if passado > 1200 and passado < 1700 and unlocked == true then
 			tfm.exec.chatMessage(""..text.playingmap.." <J>"..tfm.get.room.currentMap.."<BL> "..text.created.." <J>"..tfm.get.room.xmlMapInfo.author)
 		end
@@ -3182,9 +3232,11 @@ function eventLoop(passado,faltando)
 	for name,player in pairs(tfm.get.room.playerList) do
 		if data[name] then
 			if data[name].c == 1 then
-				tfm.exec.setNameColor(name,0x00ff00)
-			else
-				tfm.exec.setNameColor(name,0xc2c2da)
+				if not active == 52 then
+					tfm.exec.setNameColor(name,0x00ff00)
+				else
+					tfm.exec.setNameColor(name,0xc2c2da)
+				end
 			end
 		end
 	end
@@ -3835,7 +3887,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.120<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.121<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
