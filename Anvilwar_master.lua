@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.123
+-- Transformice #anvilwar module loader - Version 2.124
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
--- Included sub-modules: #mestre, #truefalse, #fall2, #cd.
+-- Included sub-modules: #mestre, #fall2, #cd.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.123",
+	_VERSION = "2.124",
 	_MAINV = "24265.166",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -3258,259 +3258,6 @@ end
 tfm.exec.newGame("@7692039")
 end
 
-initTrueFalse = function()
-blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoScore(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(35)
-tfm.exec.disableAllShamanSkills(true)
-tfm.exec.disablePhysicalConsumables(true)
-limits={questions=10,time=7,mices_alive=0}
-questions={question="",answer="",round=0}
-admin=""
-for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
-	system.disableChatCommandDisplay(f)
-end
-current_mode=""
-answer_time=20
-remain_time=0
-game_map="@7605289"
-for name,player in pairs(tfm.get.room.playerList) do
-	tfm.exec.setPlayerScore(name,0,false)
-end
-function eventNewGame()
-	tfm.exec.setNameColor(admin,0xFF0000)
-	ui.removeTextArea(0,nil)
-	limits.mices_alive=0
-	for name,player in pairs(tfm.get.room.playerList) do
-		if not tfm.get.room.playerList[name].isShaman then
-			limits.mices_alive=limits.mices_alive+1
-		else
-			tfm.exec.setPlayerScore(name,-1,false)
-		end
-		if name:sub(1,1) == "*" then
-			tfm.exec.killPlayer(name)
-			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
-		end
-	end
-	questions.round=0
-	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
-	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
-	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
-	end
-end
-function eventNewPlayer(name)
-	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("True or False II revision 3 Remaked by Spectra_phantom#6089<")
-	if string.find(tfm.get.room.name,name) then
-		admin=name
-		tfm.exec.chatMessage("You are the administrator of this room. Your commands:<br>!cancel = Skip the current shaman<br>!return = Cancel the current question<br>!limits = Change the limit of questions",name)
-	end
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-function eventPlayerDied(name)
-	if not tfm.get.room.playerList[name].isShaman then
-		limits.mices_alive=limits.mices_alive-1
-	end
-end
-function reset()
-	tfm.exec.newGame(game_map)
-	tfm.exec.setGameTime(60)
-	current_mode="waiting"
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.setPlayerScore(name,-1,false)
-		end
-	end
-	ui.setMapName("True or False II revision 3 Remaked by Spectra_phantom#6089<")
-end
-function isTrue()
-	tfm.exec.chatMessage("<VP>The answer is TRUE!")
-	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
-end
-function isFalse()
-	tfm.exec.chatMessage("<R>The answer is FALSE!")
-	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
-end
-function eventPopupAnswer(id,name,answer)
-	if id == 0 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
-			limits.questions=tonumber(answer)
-			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 12)",name,350,175,200,true)
-		end
-	end
-	if id == 1 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 12 then
-			limits.time=tonumber(answer)
-			tfm.exec.chatMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
-		end
-	end
-	if id == 10 then
-		if string.len(answer) >= 10 and string.len(answer) <= 170 then
-			questions.question=answer
-			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
-		else
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-			tfm.exec.chatMessage("<R>Your question is too large or too short. Please type other question.",name)
-		end
-	end
-	if id == 11 then
-		if remain_time > 1 then
-			questions.answer=answer
-			questions.round=questions.round+1
-			current_mode="truefalse"
-			tfm.exec.setGameTime(answer_time)
-			for name,player in pairs(tfm.get.room.playerList) do
-				if not tfm.get.room.playerList[name].isShaman then
-					tfm.exec.movePlayer(name,400,330)
-				else
-					tfm.exec.movePlayer(name,400,1330)
-				end
-			end
-			tfm.exec.chatMessage("<N>"..questions.question.."")
-			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Bahnschrift SemiLight,Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
-			tfm.exec.chatMessage(questions.answer,"Spectra_phantom#6089")
-			tfm.exec.chatMessage(questions.answer,"Forzaldenon#0000")
-		end
-	end
-	if id == 20 then
-		if answer == "yes" then
-			reset()
-			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
-		end
-	end
-end
-function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Miss_fortune#9548" or name == "Aphelios#1910" or name == admin then
-		if message == "limits" then
-			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
-		end
-		if(message:sub(0,2) == "at") then
-			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
-				answer_time=tonumber(message:sub(4))
-				tfm.exec.chatMessage("Answer time: "..answer_time.."s.")
-			end
-		end
-		if(message:sub(0,7) == "admin78") then
-			if current_mode == "waiting" then
-				tfm.exec.setPlayerScore(message:sub(9),10001,false)
-				reset()
-			end
-		end
-		if message == "return" then
-			if current_mode == "truefalse" then
-				for name,player in pairs(tfm.get.room.playerList) do
-					if not tfm.get.room.playerList[name].isShaman then
-						tfm.exec.movePlayer(name,400,-100)
-					end
-				end
-				current_mode="waiting"
-				tfm.exec.setGameTime(60)
-				tfm.exec.chatMessage("<R>This question has been cancelled.")
-				ui.removeTextArea(0,nil)
-			end
-		end
-		if message == "cancel" then
-			if current_mode == "truefalse" or current_mode == "waiting" then
-				for name,player in pairs(tfm.get.room.playerList) do
-					tfm.exec.killPlayer(name)
-				end
-				reset()
-				tfm.exec.chatMessage("<R>This shaman has been skipped.")
-			end
-		end
-	end
-	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
-		if message == "per" and limits.mices_alive >= 2 then
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-		end
-		if message == "skip" then
-			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
-		end
-	end
-end
-function eventLoop(time,remaining)
-	remain_time=remaining/1000
-	if remaining < 1 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>Time is up! Other shaman will be choosed.")
-	end
-	if remaining < 1000 and current_mode == "truefalse" then
-		ui.removeTextArea(0,nil)
-		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
-		tfm.exec.setGameTime(5)
-		current_mode="wait"
-	end
-	if remaining < 300 and current_mode == "wait" then
-		if questions.answer == "yes" then
-			isTrue()
-		else
-			isFalse()
-		end
-		tfm.exec.setGameTime(7)
-		current_mode="answer"
-	end
-	if remaining <= 1 and current_mode == "answer" then
-		if questions.answer == "yes" then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x > 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		else
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x < 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		end
-		tfm.exec.removePhysicObject(2)
-		current_mode="waiting"
-		tfm.exec.setGameTime(60)
-	end
-	if remaining < 55000 and limits.mices_alive <= 0 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>No winners!")
-	end
-	if remaining < 55000 and limits.mices_alive == 1 and current_mode == "waiting" then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
-				tfm.exec.setPlayerScore(name,10000,false)
-				reset()
-			end
-		end
-	end
-	if remaining < 55000 and remaining >= 54400 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead then
-				tfm.exec.setPlayerScore(name,1,true)
-				tfm.exec.displayParticle(15,player.x,player.y)
-			end
-		end
-		if questions.round >= limits.questions and current_mode == "waiting" then
-			reset()
-			tfm.exec.chatMessage("<R>Questions limit reached!")
-		end
-	end
-	if time > limits.time*60000 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>Time limit reached!")
-	end
-end
-reset()
-end
-
 initFall2 = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
@@ -3520,14 +3267,14 @@ tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.disableMortCommand(true)
 tfm.exec.disableDebugCommand(true)
 tfm.exec.disableMinimalistMode(true)
-tfm.exec.setRoomMaxPlayers(22)
+tfm.exec.setRoomMaxPlayers(25)
 xml2=''
 creator=""
 position=0
 objective=60
 enabled=false
 map=""
-mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
+mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396","@7786244","@7786245","@7786246","@7786247","@7786249","@7786250"}
 system.disableChatCommandDisplay("obj")
 lobby="@7404106"
 changed=false
@@ -3552,16 +3299,16 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.4",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.4! Script made by <b>Azirdeathray#0000</b>.<")
-		tfm.exec.setGameTime(60)
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.5",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("Welcome to Fall Racing 2.5! Script made by <b>Azirdeathray#0000</b>.<")
+		tfm.exec.setGameTime(90)
 	end
 end
 function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall 2.4   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall 2.5   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
@@ -3598,13 +3345,18 @@ function eventPlayerWon(name)
 	position=position+1
 	if position == 1 then
 		tfm.exec.setGameTime(20)
+		tfm.exec.setPlayerScore(name,1,true)
 	end
 	if position <= 8 then
 		tfm.exec.setPlayerScore(name,10-position,true)
-		tfm.exec.chatMessage("+ "..tostring(10-position).." points",name)
+		if position == 1 then
+			tfm.exec.chatMessage("+ 10 points",name)
+		else
+			tfm.exec.chatMessage("+ "..tostring(10-position).." points",name)
+		end
 	else
 		tfm.exec.setPlayerScore(name,1,true)
-		tfm.exec.chatMessage("+ 1 points",name)
+		tfm.exec.chatMessage("+ 1 point",name)
 	end
 end
 function eventPlayerDied(name)
@@ -3616,8 +3368,8 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.4",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("Welcome to Fall Racing 2.4! Script made by <b>Azirdeathray#0000</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.5",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("Welcome to Fall Racing 2.5! Script made by <b>Azirdeathray#0000</b>.<")
 	end
 	tfm.exec.chatMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 3GB of RAM to work without problems.<J><br><br>Script made by Azirdeathray#0000",name)
 end
@@ -3638,7 +3390,7 @@ jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
 quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
 limites={assasinos=0,detetives=0,medicos=0}
 modo="inicial"
-mapa="@6947287"
+mapa="@7710965"
 contador=0
 tfm.exec.setRoomMaxPlayers(48)
 system.disableChatCommandDisplay("reiniciar")
@@ -3978,7 +3730,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.123<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.124<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
@@ -3988,9 +3740,6 @@ else
 	elseif string.find(tfm.get.room.name,"mestre") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'mestre' on room name.<br>Initialising submodule #mestre...")
 		initMestre()
-	elseif string.find(tfm.get.room.name,"truefalse") or string.find(tfm.get.room.name,"true_false") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising submodule #truefalse...")
-		initTrueFalse()
 	elseif string.find(tfm.get.room.name,"fall2") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'fall2' on room name.<br>Initialising submodule #fall2...")
 		initFall2()
