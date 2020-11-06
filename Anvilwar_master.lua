@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.132
+-- Transformice #anvilwar module loader - Version 2.133
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
--- Included sub-modules: #mestre, #fall2, #clickwar, #watercatch.
+-- Included sub-modules: #mestre, #fall2.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.131",
-	_MAINV = "25068.169",
+	_VERSION = "2.133",
+	_MAINV = "25169.170",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -21,7 +21,7 @@ caps={azul="",vermelho=""}
 play_vermelho={}
 banned_list={}
 mods_list={"Marichamex#0000","Ddniemo#0000","Gmctf#0000"}
-managers_list={"Shun_kazami#7014","Fosfus7heads#0000"}
+managers_list={"Shun_kazami#7014","Fosfus7heads#0000","Rakan_raster#0000"}
 admins_list={"Spectra_phantom#6089","Reksai_void2600#6638"}
 ninjas_list={"Forzaldenon#0000"}
 scoreloop=0
@@ -50,7 +50,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 25068.169",
+	bar = "<b>#anvilwar</b> RTM 25169.170",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -108,7 +108,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 25068.169",
+	bar = "<b>#anvilwar</b> RTM 25169.170",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -170,7 +170,7 @@ lang.ar = {
 	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-	bar = "<b>#anvilwar</b> RTM 25068.169",
+	bar = "<b>#anvilwar</b> RTM 25169.170",
 	intensity = "قوة الضرب وسرعته",
 	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -228,7 +228,7 @@ lang.es = {
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 25068.169",
+	bar = "<b>#anvilwar</b> RTM 25169.170",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -292,7 +292,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 25068.169",
+	bar = "<b>#anvilwar</b> RTM 25169.170",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -350,7 +350,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 25068.169",
+	bar = "<b>#anvilwar</b> RTM 25169.170",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -1643,7 +1643,7 @@ for _,f in next,{"command","mapa","pw","limit","run","fc","q","a","t","kill"} do
 	system.disableChatCommandDisplay(f)
 end
 lang.br = {
-	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 8148.044",
+	welcome = "<N><b>Bem-vindos ao novo Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 8350.046",
 	dancar = "Dance!",
 	sentar = "Sente!",
 	confetar = "Atire 5 confetes!",
@@ -1725,7 +1725,7 @@ lang.br = {
 	gravity = "A gravidade foi alterada!",
 }
 lang.en = {
-	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 8148.044",
+	welcome = "<N><b>Welcome to new Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 8350.046",
 	dancar = "Dance!",
 	sentar = "Sit!",
 	confetar = "Throw 5 confetti!",
@@ -1807,7 +1807,7 @@ lang.en = {
 	gravity = "The gravity was changed!",
 }
 lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 8148.044",
+	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 8350.046",
 	dancar = "Danse !",
 	sentar = "Assis !",
 	confetar = "Lance 5 fois des confettis !",
@@ -1889,7 +1889,7 @@ lang.fr = {
 	gravity = "La gravité a été changée!",
 }
 lang.tr = {
-	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 8148.044",
+	welcome = "<N> Master Says'ýn senaryosuna hoþ geldiniz! Bu modülde ustanýn söylediði her þeyi yapmalýsýnýz. <br> <ROSE><b>Rakan_raster#0000</b> tarafýndan oluþturulan model. Tercüme eden Star#6725. Versiyon RTM 8350.046",
 	dancar = "Dans!",
 	sentar = "Sit!",
 	confetar = "5 konfeti atýn!",
@@ -2021,7 +2021,7 @@ function eventPlayerDied(name)
 		end
 	end
 	if active == 56 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 		tfm.exec.respawnPlayer(name)
 	end
 	if active >= 57 then
@@ -2046,6 +2046,10 @@ function eventPlayerDied(name)
 end
 function selectMap()
 	tfm.exec.newGame(mapas[math.random(#mapas)])
+end
+function completeCommand(name)
+	data[name].c=1
+	tfm.exec.chatMessage(text.completed,name)
 end
 function eventNewGame()
 	ui.removeTextArea(0,nil)
@@ -2072,9 +2076,6 @@ function eventNewGame()
 		end
 	end
 	rodadas=math.floor(20+(rato/3.5))
-	if tfm.get.room.community == "br" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><ROSE>Atenção: Nos próximos dias, o comando do Mestre Mandou será passado para outro usuário. Não aguardem grandes mudanças no module até lá.")
-	end
 	tfm.exec.setNameColor(admin,0xff0000)
 end
 function eventPlayerLeft()
@@ -2563,7 +2564,7 @@ function getCommand()
 	end
 	if active == 69 then
 		showCommand(active,text.catch)
-		tfm.exec.setGameTime(math.random(12,18))
+		tfm.exec.setGameTime(math.random(16,25))
 		for i=1,4 do
 			tfm.exec.addBonus(0, math.random(120,680), math.random(90,290), i, 0)
 		end
@@ -2592,21 +2593,23 @@ function getCommand()
 	end
 end
 function eventPlayerBonusGrabbed(name, id)
-	data[name].s=data[name].s+1
-	if data[name].s >= 4 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+	if active == 69 then
+		data[name].s=data[name].s+1
+		if data[name].s >= 4 then
+			completeCommand(name)
+		end
 	end
 end		
 function eventTextAreaCallback(id,name,callback)
 	if callback == "command51" then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 		ui.removeTextArea(250,name)
 	end
 end
 function eventChatMessage(name,message)
 	if active == 11 then
 		if string.len(message) >= 2 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 12 or active == 14 or active == 59 then
@@ -2614,14 +2617,14 @@ function eventChatMessage(name,message)
 	end
 	if active == 16 then
 		if message == "2020" then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		else
 			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 29 then
 		if string.upper(message) == string.upper(name) then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 41 then
@@ -2631,7 +2634,7 @@ function eventChatMessage(name,message)
 	end
 	if active == 43 then
 		if string.upper(message) == "EU SOU NOOB" or string.upper(message) == "I AM NOOB" or string.upper(message) == "BEN NOOB" then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 		if string.find(message,"PRO") or string.find(message,"pro") or string.find(message,"Pro") then
 			tfm.exec.killPlayer(name)
@@ -2639,36 +2642,42 @@ function eventChatMessage(name,message)
 	end
 	if active == 47 then
 		if message == tostring(number) then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 60 then
 		if message == "2" then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
+		elseif message == "3" then
+			tfm.exec.killPlayer(name)
+		elseif message == "11" then
+			tfm.exec.killPlayer(name)
+		elseif message == "22" then
+			tfm.exec.killPlayer(name)
 		end
 	end
 	if active == 99 then
 		if string.upper(message) == string.upper(a) then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 end
 function eventEmotePlayed(name,id)
 	if active == 1 then
 		if id == 0 or id == 10 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 2 then
 		if id == 8 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 3 then
 		if id == 9 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
@@ -2676,23 +2685,23 @@ function eventEmotePlayed(name,id)
 		if id == 3 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 10 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
 	if active == 6 then
 		if id == 6 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 7 then
 		if id == 4 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 8 then
 		if id == 2 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 14 or active == 53 or active == 58 then
@@ -2700,7 +2709,7 @@ function eventEmotePlayed(name,id)
 	end
 	if active == 15 then
 		if id == 10 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 30 then
@@ -2709,14 +2718,14 @@ function eventEmotePlayed(name,id)
 		end
 	end
 	if active == 36 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 	end
 	if active == 37 then
 		if id == 0 and data[name].s == 0 then
 			data[name].s=1
 		end
 		if id == 8 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 39 then
@@ -2727,12 +2736,12 @@ function eventEmotePlayed(name,id)
 			data[name].s=2
 		end
 		if id == 6 and data[name].s == 2 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 40 then
 		if id == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 41 then
@@ -2745,7 +2754,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 1 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 50 then
@@ -2753,7 +2762,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 2 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 54 then
@@ -2761,7 +2770,7 @@ function eventEmotePlayed(name,id)
 			data[name].s=1
 		end
 		if id == 6 and data[name].s == 1 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 59 then
@@ -2780,14 +2789,14 @@ function eventEmotePlayed(name,id)
 			data[name].s=3
 		end
 		if id == 5 and data[name].s == 3 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 67 then
 		if id == 5 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
@@ -2796,7 +2805,7 @@ function eventMouse(name,x,y)
 	if active == 4 then
 		data[name].s=data[name].s+1
 		if data[name].s >= 10 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 end
@@ -2826,7 +2835,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 30 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -2843,7 +2852,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 30 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -2860,7 +2869,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 60 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -2877,7 +2886,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 60 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -2891,13 +2900,13 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 32 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
 	if active == 35 then
 		if id == 40 or id == 83 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 		if id == 38 or id == 87 then
 			tfm.exec.killPlayer(name)
@@ -2905,22 +2914,22 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 38 then
 		if id == 46 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 45 then
 		if id == 38 or id == 87 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 48 then
-		data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+		completeCommand(name)
 	end
 	if active == 49 then
 		if id == 38 or id == 87 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 5 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 				
 			end
 		end
@@ -2929,7 +2938,7 @@ function eventKeyboard(name,id,down,x,y)
 		if id == 40 or id == 83 then
 			data[name].s=data[name].s+1
 			if data[name].s >= 1 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 	end
@@ -2940,7 +2949,7 @@ function eventKeyboard(name,id,down,x,y)
 	end
 	if active == 63 then
 		if id == 115 then
-			data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+			completeCommand(name)
 		end
 	end
 	if active == 65 then
@@ -2950,7 +2959,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 37 and id == 65 then
@@ -2967,7 +2976,7 @@ function eventKeyboard(name,id,down,x,y)
 			end
 			data[name].s=data[name].s+1
 			if data[name].s >= 15 then
-				data[name].c=1; tfm.exec.chatMessage(text.completed,name)
+				completeCommand(name)
 			end
 		end
 		if data[name].key == 39 and id == 68 then
@@ -2981,11 +2990,11 @@ end
 function eventLoop(passado,faltando)
 	local tempo=math.floor(faltando/1000)
 	if active == -2 then
-		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <VP><b>Versão RTM 8148.044</b><")
+		ui.setMapName("                        <N>"..text.mices.."  <BL>|  <VP><b>Versão RTM 8350.046</b><")
 	elseif active == -1 then
-		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <VP><b>Versão RTM 8148.044</b><")
+		ui.setMapName("          <VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."  <BL>|  <VP><b>Versão RTM 8350.046</b><")
 	elseif active >= 0 then
-		ui.setMapName("                               "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <VP><b>Versão RTM 8148.044</b><")
+		ui.setMapName("                               "..tfm.get.room.currentMap.."  <BL>|  <N>"..text.mice.." : <J>"..vivo.." / "..rato.."  <BL>|  <N>"..text.round.." : <J>"..rodada.."  <BL>|  <VP><b>Versão RTM 8350.046</b><")
 	end
 	if rato < 4 then
 		if tfm.get.room.currentMap == "@2637755" and unlocked == true then
@@ -3261,352 +3270,193 @@ end
 tfm.exec.newGame(lobby)
 end
 
-initClickwar = function()
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","AutoScore","PhysicalConsumables","DebugCommand","MinimalistMode"} do
-	tfm.exec["disable"..f](true)
-end
-for _,g in next,{"p","rank","help"} do
-system.disableChatCommandDisplay(g,true)
-end
-sudden=false
-powerups=true
-winner=""
-data={}
-players_table={}
-increase=0
-intensity=40
-nightmode=false
-night=0
-mices=0
-remain=10
-last_win=""
-times=1;
-enabled=false
+initObjects = function()
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAutoTimeLeft(true)
 tfm.exec.setRoomMaxPlayers(25)
-function split(t,s)
-	local a={}
-	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
-		table.insert(a,i)
-	end
-	return a
+tfm.exec.disablePhysicalConsumables(true)
+tfm.exec.disableAutoScore(true)
+for _,f in next,{"help","kill","run","restart","shutdown"} do
+	system.disableChatCommandDisplay(f)
 end
-function eventRanking(name)
-	local sc = {}
-	for id, name in pairs(players_table) do
-		sc[#sc+1] = {n=name,s=data[name].score,f=data[name].wins}
-	end
-	table.sort(sc,function(a,b) return a.s>b.s end)
-	str1 = ''
-	str2 = ''
-	str3 = ''
-	for k,v in pairs(sc) do
-		if k < 11 then
-			if str ~= '' then
-				str1=str1.."<br><N>"..k.."° | <VP>"..v.n..""
-				str2=str2.."<br><b><N>"..v.s.."</b>"
-				str3=str3.."<br><N>"..v.f..""
-			else
-				str1="<J>"..k.."° | <VP>"..v.n..""
-				str2="<J><b>"..v.s.."</b>"
-				str3="<J>"..v.f..""
-			end
-		end
-	end
-	ui.addTextArea(8000,'<B><J><font size="13"><p align="center">Temporary Ranking',name,100,100,500,30,nil,0x5F5F5F,nil,true)
-	ui.addTextArea(8001,"<B><font size='13'><font face='Consolas'>#      Name                                 Score       Wins",name,110,110,480,20,0x030321,0x030321,nil,true)
-	ui.addTextArea(8002,"<B><font size='16'><font face='Consolas'>"..str1,name,110,130,480,220,0x030321,0x030321,nil,true)
-	ui.addTextArea(8003,"<p align='right'><font size='16'><font face='Consolas'>"..str2,name,400,130,60,220,0x030321,0x030321,nil,true)
-	ui.addTextArea(8004,"<p align='right'><font size='16'><font face='Consolas'>"..str3,name,485,130,60,220,0x030321,0x030321,nil,true)
-	ui.addTextArea(8006,"<p align='center'><font size='16'><R><a href='event:close'>Close</a>",name,300,350,210,20,0x2A1209,0x2A1209,nil,true)
-end
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915","@7114147","@7288402","@7756165","@7757983","@7754765","@7754518"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
+objects={1,2,3,6,10,17,23,35,39,40,45,46,54,60,61,68,85,89,90}
+actual_map=""
+actual_creator=""
+bar=""
+loop=0
+winner=false
+functs={running=false,level=0,count=8}
+times=0
 function eventChatCommand(name,message)
-	local arg = split(message, " ")
-	if arg[1] == "p" then
-		if arg[2] then
-			nome = arg[2]:lower():gsub('%a', string.upper, 1)
-		else
-			nome = name
-		end
-
-		if tfm.get.room.playerList[nome] then
-			ui.addTextArea(8003,'<B><J><font size="17"><p align="center">'..nome,name,245,95,315,30,nil,0x5F5F5F,nil,true)
-			ui.addTextArea(8004,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."",name,255,125,290,90,0x030321,0x030321,nil,true)
-			ui.addTextArea(8005,"<R><p align='center'><B><a href='event:fechar'>Close</a>",name,255,210,290,20,0x2A1209,0x2A1209,nil,true)
-		else
-			tfm.exec.chatMessage("Function not allowed",name)
-		end
-	end
-	if message == "rank" then
-		eventRanking(name)
-	end
-	if message == "pw" then
-		if name == "Hecarimjhenx#0000" then
-			if powerups == true then
-				powerups=false
-			else
-				powerups=true
-			end
-		end
-	end
 	if message == "help" then
-		ui.addTextArea(9000,"<B><J><font size='13'><p align='center'>Help",name,100,90,600,30,nil,0x5F5F5F,nil,true)
-		ui.addTextArea(9005,"<font size='13'><font face='Consolas'>The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 5 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br><br>Module made by Hecarimjhenx#0000.",name,150,125,500,175,0x030321,0x030321,nil,true)
-		ui.addTextArea(9006,"<font size='13'><R><a href='event:closep'>Close</a>",name,300,297,190,20,0x2A1209,0x2A1209,nil,true)
+		tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 	end
-end
-function eventNewPlayer(name)
-	system.bindMouse(name)
-	if not data[name] then
-		table.insert(players_table,name)
-		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0}
-	end
-	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
-	for i=112,123 do
-		tfm.exec.bindKeyboard(name,i,true,true)
-		system.bindMouse(name,true)
-	end
-	tfm.exec.chatMessage("<br>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-function eventMouse(name,x,y)
-	if not tfm.get.room.playerList[name].isDead and enabled == true then
-		if data[name].p1 == false then
-			if data[name].time >= 2 then
-				if data[name].p2 == true then
-					tfm.exec.explosion(x,y,intensity,intensity*2,false)
-				else
-					tfm.exec.explosion(x,y,intensity/2,intensity*1.5,false)
-				end
-				data[name].time=0;
-				tfm.exec.displayParticle(10,x,y,0,0,0,0,nil)
-			end
-		else
-			if data[name].p2 == true then
-				tfm.exec.explosion(x,y,intensity,intensity*2,false)
-			else
-				tfm.exec.explosion(x,y,intensity/2,intensity*1.5,false)
-			end
-			data[name].time=2;
-			tfm.exec.displayParticle(10,x,y,0,0,0,0,nil)
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+		if (message:sub(0,4) == "kill") then
+			tfm.exec.killPlayer(message:sub(6))
+		end
+		if (message:sub(0,3) == "run") then
+			tfm.exec.newGame(message:sub(5))
+		end
+		if message == "restart" then
+			tfm.exec.newGame(mapas[math.random(#mapas)])
+		end
+		if message == "shutdown" then
+			system.exit()
 		end
 	end
 end
 function eventNewGame()
-	ui.removeTextArea(1,nil)
-	sudden=false
-	tfm.exec.setGameTime(140)
-	winner=""
-	increase=0;
-	remain=10
-	enabled=false
-	intensity=40
-	prox=false;
+	functs.running=false
+	functs.level=0
+	functs.count=8
+	times=0
+	tfm.exec.setGameTime(100)
+	removeText()
+	winner=false
+	actual_map=tfm.get.room.currentMap
+	changeBar()
 	for name,player in pairs(tfm.get.room.playerList) do
-		data[name].matches=data[name].matches+1
-		data[name].p1=false
-		data[name].p2=false
-		data[name].pcount=0
+		if name:sub(1,1) == "*" then
+		   	tfm.exec.killPlayer(name)
+		   	tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+		end
 	end
-	tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><br><BL>Welcome to module #clickwar!<br>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.",name)
+	if tfm.get.room.community == "br" then
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b>")
+	end
 end
-function eventLoop(pass,falt)
-	if pass > 1200 and pass < 1700 then
-		tfm.exec.chatMessage("Playing map <J>"..tfm.get.room.currentMap.."<BL> made by <J>"..tfm.get.room.xmlMapInfo.author)
-	end
-	if nightmode == true then
-		night=night+1
-		if night >= 4 then
-			ui.removeTextArea(2571,nil)
-			night=0
-			nightmode=false
-		end
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		if data[name].pcount >= 0 then
-			data[name].pcount=data[name].pcount-1
-		else
-			data[name].p1=false
-			data[name].p2=false
-			break
-		end
-	end
-	if sudden == true then
-		intensity=intensity+2
-		if falt < 40000 then
-			intensity=intensity+1
-		end
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead then
-				data[name].score=math.floor(data[name].score+(intensity/40))
+function showBar()
+	for i=1,41 do
+		if mapas[i] == tfm.get.room.currentMap then
+			if map_names[i] == "" then
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7552.036<")
+			else
+				ui.setMapName("<J><b>"..map_names[i].."</b>  <BL>|   <N>Difficulty : "..bar.."  <BL>|  <N>#objects RTM 7552.036<")
 			end
 		end
 	end
-	if falt < 70000 and falt > 69375 then
-		tfm.exec.chatMessage("The ultra hard mode will be enabled in 10 seconds!",nil)
-	end
-	if falt < 60000 and sudden == false and falt > 50000 then
-		tfm.exec.chatMessage("<R>Ultra hard mode enabled!",nil)
-		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
-		sudden=true;
-	end
-	if falt < 40000 and sudden == true and falt > 19000 then
-		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.91,false)
-	end
-	if falt < 20000 and sudden == true and falt > 9000 then
-		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.96,false)
-	end
-	if falt < 100 then
-		tfm.exec.newGame("#10")
-	end
-	if prox == false then
-		ui.setMapName("<N>Click War RTM 3532.013  <BL>|  <N>Intensity: <b>"..intensity.."</b>")
+end
+function showText(text)
+	ui.addTextArea(1,"<font size='56'><p align='center'><font color='#222222'>"..text.."",nil,103,93,600,80,0,0,1.0,true)
+	ui.addTextArea(0,"<font size='56'><p align='center'><font color='#ffffff'>"..text.."",nil,100,90,600,80,0,0,1.0,true)
+end
+function showTextSmall(text)
+	ui.addTextArea(1,"<font size='32'><p align='center'><font color='#222222'>"..text.."",nil,103,103,600,80,0,0,1.0,true)
+	ui.addTextArea(0,"<font size='32'><p align='center'><font color='#ffffff'>"..text.."",nil,100,100,600,80,0,0,1.0,true)
+end
+function changeBar()
+	if functs.level == 1 then
+		bar="<font face='Segoe UI Symbol'><VP>▁   <J>  <font color='#ff0000'>  <font face='Verdana'>"
+	elseif functs.level == 2 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂  <J>  <font color='#ff0000'>  <font face='Verdana'>"
+	elseif functs.level == 3 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃ <J>  <font color='#ff0000'>  <font face='Verdana'>"
+	elseif functs.level == 4 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>  <font color='#ff0000'>  <font face='Verdana'>"
+	elseif functs.level == 5 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅ <font color='#ff0000'>  <font face='Verdana'>"
+	elseif functs.level == 6 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>  <font face='Verdana'>"
+	elseif functs.level == 7 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇ <font face='Verdana'>"
+	elseif functs.level >= 8 then
+		bar="<font face='Segoe UI Symbol'><VP>▁▂▃▄<J>▅▆<font color='#ff0000'>▇█<font face='Verdana'>"
 	else
-		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
+		bar="<font face='Segoe UI Symbol'><VP>    <J>  <font color='#ff0000'>  <font face='Verdana'>"
 	end
-	remain=remain-0.5
-	if remain <= 3 and remain >= 0.5 then
-		ui.addTextArea(0,"<font size='33'><p align='center'>"..math.ceil(remain).."",nil,370,350,60,45,0x000001,0x000001,0.8,true)
+end
+function removeText()
+	for i=0,1 do
+		ui.removeTextArea(i,nil)
 	end
-	if remain <= 0 then
-		ui.removeTextArea(0,nil)
-		enabled=true;
+end
+function throw()
+	position=math.random(0,800)
+	tfm.exec.addShamanObject(object,position,-300,0,0,1,false)
+	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
+end
+function eventNewPlayer(name)
+	tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
+end
+function eventLoop(p,f)
+	showBar()
+	if f <= 3000 and functs.running == true and winner == false then
+		for name,player in pairs(tfm.get.room.playerList) do
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+			functs.running=false
+			showText("Time is up!")
+		end
 	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		data[name].time=data[name].time+1
+	if f <= 1 and functs.running == false then
+		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
-	if enabled == true then
-		increase=increase+0.5
-		if increase >= 2 then
-			if sudden == false then
-				intensity=intensity+1
-				increase=0;
-				for name,player in pairs(tfm.get.room.playerList) do
-					if not tfm.get.room.playerList[name].isDead then
-						if pass > 30000 then
-							data[name].score=math.floor(data[name].score+(intensity/24))
-						end
-					end
+	if functs.running == false and winner == false and p < 20000 then
+		functs.count=functs.count-0.5
+		if functs.count <= 3 then
+			showText(""..math.ceil(functs.count).."")
+		end
+		if functs.count <= 0 and p < 20000 and winner == false then
+			functs.running=true
+			functs.level=1
+			showText("Go!")
+		end
+	end
+	if functs.running == true then
+		loop=loop+1
+		changeBar()
+		object=objects[math.random(#objects)]
+		if loop >= 10-functs.level and winner == false then
+			removeText()
+			times=times+1
+			if times >= 3 and functs.level <= 7 then
+				times=0
+				functs.level=functs.level+1
+			end
+			loop=0
+			if functs.level <= 6 then
+				for i=1,functs.level do
+					throw()
+				end
+			else
+				for i=1,6 do
+					throw()
 				end
 			end
 		end
 	end
 end
 function eventPlayerDied(name)
-	if name == last_win and times >= 2 then
-		tfm.exec.chatMessage("<J>The victory sequence of <R>"..last_win.."<J> has been ended!")
-		times=1
-	end
-	local i=0
-	local n
-	for pname,player in pairs(tfm.get.room.playerList) do
-		if not player.isDead then
-			i=i+1
-			n=pname
-		end
-	end
-	if i==0 then
-		tfm.exec.newGame("#10")
-	elseif i==1 then
-		winner=n;
-		tfm.exec.giveCheese(n)
-		tfm.exec.playerVictory(n)
-		data[n].wins=data[n].wins+1
-		data[n].score=data[n].score+200
-		tfm.exec.setGameTime(10)
-		tfm.exec.setPlayerScore(n,1,true)
-		prox=true;
-		if winner == last_win then
-			data[n].score=data[n].score+100
-			times=times+1
-			if times == 2 then
-				tfm.exec.chatMessage("<J>"..last_win.." wons <b>2</b> times in a row!")
-			elseif times >= 3 then
-				tfm.exec.chatMessage("<R><b>Legendary!</b><J> "..last_win.." wons <b>"..times.."</b> times in a row!")
+	if functs.running == true then
+		local i=0
+		local name
+		for pname,player in pairs(tfm.get.room.playerList) do
+			if not player.isDead then
+				i=i+1
+				name=pname
 			end
 		end
-		last_win=n
-	end
-end
-function eventTextAreaCallback(id,name,callback)
-	if callback == "show_menu" then
-		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a>  |  <a href='event:profile'>Profile</a>  |  <a href='event:ranking'>Ranking</a>",name,300,350,200,20,0x000001,0x000001,0.80,true)
-	end
-	if callback == "hide_menu" then
-		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,376,70,24,0x000001,0x000001,0.75,true)
-		ui.removeTextArea(298,name)
-	end
-	if callback == "ranking" then
-		eventChatCommand(name,"rank")
-	end
-	if callback == "profile" then
-		tfm.exec.chatMessage("Use the !p command to view your profile and !p [user] to view the profile of specified user.",name)
-	end
-	if callback == "fechar" then
-		for id=8000,8010 do
-			ui.removeTextArea(id,name)
-		end
-	end
-	if callback == "help" then
-		eventChatCommand(name,"help")
-	end
-	if callback == "close" then
-		for id=8000,8010 do
-			ui.removeTextArea(id,name)
-			ui.removeTextArea(6969+id,name)
-			ui.removeTextArea(7979+id,name)
-		end
-	end
-	if callback == "closep" then
-		for id=9000,9010 do
-			ui.removeTextArea(id,name)
+		if i==0 then
+			functs.running=false
+			winner=true
+			showText("No winners!")
+			tfm.exec.setGameTime(5)
+		elseif i==1 then
+			functs.running=false
+			showTextSmall(""..name.." wins the game!")
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+			tfm.exec.setPlayerScore(name,1,true)
+			tfm.exec.setGameTime(5)
+			winner=true
 		end
 	end
 end
-function eventKeyboard(name,key,down,x,y)
-	if enabled == true and powerups == true then
-		if not tfm.get.room.playerList[name].isDead and data[name].p1 == false and data[name].p2 == false then
-			if key == 112 and data[name].score >= 700 then
-				data[name].p1=true
-				data[name].score=data[name].score-700
-				data[name].pcount=16
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Fast Spirits!")
-			end
-			if key == 113 and data[name].score >= 250 then
-				data[name].p2=true
-				data[name].score=data[name].score-250
-				data[name].pcount=20
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Double Power!")
-			end
-			if key == 114 and data[name].score >= 550 then
-				data[name].score=data[name].score-550
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Box Meteor!")
-				for i=-6,19 do
-					tfm.exec.addShamanObject(2,i*60,-1,0,0,0,false)
-				end
-			end
-			if key == 115 and data[name].score >= 400 then
-				data[name].score=data[name].score-400
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Night Mode!")
-				ui.addTextArea(2571,"",nil,-800,-600,3000,3000,0x010101,0x010101,0.99,true)
-				nightmode=true
-			end
-			if key == 116 and data[name].score >= 1000 then
-				data[name].score=data[name].score-1000
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Mega Explosion!")
-				for i=-4,12 do
-					for j=-2,6 do
-						tfm.exec.explosion(i*100,j*100,intensity,intensity*1.5,false)
-						tfm.exec.displayParticle(10,i*100,j*100,0,0,0,0,nil)
-					end
-				end
-			end
-		end
-	end
-end
-tfm.exec.newGame("#10")
+tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
 Rooms = function()
@@ -3614,13 +3464,13 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7692039")
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00fall2<br>/room #anvilwar00clickwar<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00fall2<br>/room #anvilwar00objects<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00fall2<br>/room #anvilwar00clickwar<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00fall2<br>/room #anvilwar00objects<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.132<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.133<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
@@ -3633,9 +3483,9 @@ else
 	elseif string.find(tfm.get.room.name,"fall2") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'fall2' on room name.<br>Initialising submodule #fall2...")
 		initFall2()
-	elseif string.find(tfm.get.room.name,"clickwar") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'clickwar' on room name.<br>Initialising submodule #clickwar...")
-		initClickwar()
+	elseif string.find(tfm.get.room.name,"objects") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising submodule #objects...")
+		initObjects()
 	elseif string.find(tfm.get.room.name,"rooms") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
 		Rooms()
