@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.137.1
+-- Transformice #anvilwar module loader - Version 2.138
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
--- Included sub-modules: #mestre.
+-- Included sub-modules: #mestre, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.137.1",
-	_MAINV = "26004.175",
+	_VERSION = "2.138",
+	_MAINV = "27200.176",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -50,7 +50,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 26004.175",
+	bar = "<b>#anvilwar</b> RTM 27200.176",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -108,7 +108,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 26004.175",
+	bar = "<b>#anvilwar</b> RTM 27200.176",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -170,7 +170,7 @@ lang.ar = {
 	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-	bar = "<b>#anvilwar</b> RTM 26004.175",
+	bar = "<b>#anvilwar</b> RTM 27200.176",
 	intensity = "قوة الضرب وسرعته",
 	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -228,7 +228,7 @@ lang.es = {
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 26004.175",
+	bar = "<b>#anvilwar</b> RTM 27200.176",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -292,7 +292,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 26004.175",
+	bar = "<b>#anvilwar</b> RTM 27200.176",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -350,7 +350,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 26004.175",
+	bar = "<b>#anvilwar</b> RTM 27200.176",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -645,21 +645,8 @@ function eventChatCommand(name,message)
 	end
 end
 function eventPopupAnswer(id,name,message)
-	if id == 901 then
-		data[temp_name].score=tonumber(message)
-		return name
-	elseif id == 902 then
-		data[temp_name].kills=tonumber(message)
-		return name
-	elseif id == 903 then
-		data[temp_name].wins=tonumber(message)
-		return name
-	elseif id == 904 then
-		data[temp_name].matchs=tonumber(message)
-		return name
-	elseif id == 906 then
+	if id == 906 then
 		tfm.exec.setPlayerScore(temp_name,tonumber(message),true)
-		return name
 	elseif id == 1201 then
 		if data[temp_name2] then
 			if message == "1" then
@@ -750,7 +737,7 @@ function eventLoop(passado,faltando)
 	if valendo == true and tempo < 30 and tempo > 29 and sudden_death == false then
 		tfm.exec.chatMessage(text.seconds30,nil)
 	end
-	if valendo == true and tempo < 10 and tempo > 9 and sudden_death == false then
+	if valendo == true and tempo < 10 and tempo > 9 then
 		tfm.exec.chatMessage(text.seconds10,nil)
 	end
 	if valendo == true and reset == false and intervalo == false then
@@ -759,7 +746,7 @@ function eventLoop(passado,faltando)
 			tempo=0
 		end
 		scoreloop=scoreloop+1
-		if scoreloop >= 26 then
+		if scoreloop >= 22 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].killed == 0 then
 					tfm.exec.setPlayerScore(name,1,true)
@@ -802,7 +789,7 @@ function eventLoop(passado,faltando)
 		end
 	end
 	if valendo == false and reset == false and faltando < 1888 and count_azul > 0 and count_vermelho > 0 then
-		for i=11,297 do
+		for a,i in pairs({41,42,51,52}) do
 			ui.removeTextArea(i,nil)
 		end
 	end
@@ -851,7 +838,7 @@ function eventLoop(passado,faltando)
 				valendo=true
 				players=count_azul+count_vermelho
 				tempo=120+(players*6)
-				for i=11,297 do
+				for a,i in pairs({41,42,51,52}) do
 					ui.removeTextArea(i,nil)
 				end
 				if team == 2 then
@@ -1042,7 +1029,7 @@ function eventLoop(passado,faltando)
 				ui.addTextArea(2223,"<p align='center'><font color='#121212'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":0"..segundos.."</b>",nil,341,63,120,36,0,0,1.0,true)
 				ui.addTextArea(2222,"<p align='center'><font color='#dfd8ce'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":0"..segundos.."</b>",nil,340,62,120,36,0,0,1.0,true)
 			end
-		else
+		elseif faltando >= 8000 and faltando < 10000 then
 			for i=2220,2228 do
 				ui.removeTextArea(i,nil)
 			end
@@ -1300,7 +1287,7 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 115 then
-				if valendo == true and actual_player == name and powerups.explosion == false and tfm.get.room.playerList[name].score >= 20 then
+				if valendo == true and actual_player == name and powerups.objeto == false and powerups.explosion == false and tfm.get.room.playerList[name].score >= 20 then
 					if data[name].nivel >= 3 then
 						powerups.explosion=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.exp1.."")
@@ -1344,14 +1331,14 @@ end
 function eventNewGame()
 	advanceLevel()
 	ui.removeTextArea(501,nil)
-	for i=11,297 do
+	for a,i in pairs({41,42,51,52}) do
 		ui.removeTextArea(i,nil)
 	end
 	sudden_death=false
 	for i=6001,6004 do
 		ui.removeTextArea(i,nil)
 	end
-	time_limit=15; reset=false; count_azul=0; count_vermelho=0; tempo=0; power=5; count=0; img_loop=7
+	time_limit=15; reset=false; count_azul=0; count_vermelho=0; tempo=0; power=5; count=0;
 	powerups.int_azul=2; powerups.int_vermelho=2; powerups.double=false; powerups.triple=false; powerups.objeto=false; powerups.explosion=false;
 	kills=0
 	play_azul={}
@@ -3105,18 +3092,204 @@ end
 tfm.exec.newGame("@2637755")
 end
 
+initWatercatch = function()
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAutoTimeLeft(true)
+tfm.exec.disableAllShamanSkills(true)
+tfm.exec.disableDebugCommand(true)
+tfm.exec.disablePhysicalConsumables(true)
+tfm.exec.disableDebugCommand(true)
+tfm.exec.setRoomMaxPlayers(30)
+shaman=""
+alives=0
+cannons=4
+z=0
+data={}
+mode="hide"
+changed=false
+map="@7763582"
+xml=''
+tfm.exec.newGame(map)
+function eventPlayerDied(n)
+	if not tfm.get.room.playerList[n].isShaman then
+		alives=alives-1
+	end
+	if alives <= 0 then
+		mode="end"
+		tfm.exec.setGameTime(15)
+		tfm.exec.chatMessage("<R>O shaman matou todos os ratos e venceu o jogo!<br>Próxima rodada iniciando em 15 segundos.")
+	end
+	data[n].o=0
+	if mode == "hide" or mode == "game" then
+		if tfm.get.room.playerList[n].isShaman then
+			tfm.exec.chatMessage("<J>O shaman morreu, está AFK ou saiu da sala. Iniciando nova partida...")
+			tfm.exec.setPlayerScore(shaman,-1,false)
+			mode="end"
+			tfm.exec.setGameTime(10)
+		end
+	end
+end
+function eventNewPlayer(name)
+	tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000.",name)
+end
+function eventSummoningEnd(name,id,x,y)
+	cannons=cannons-1
+	if cannons >= 1 then
+		tfm.exec.chatMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
+	elseif cannons == 0 then
+		tfm.exec.chatMessage("<VP>O shaman não pode mais usar objetos!")
+	else
+		tfm.exec.killPlayer(shaman)
+	end
+end
+function eventNewGame()
+xml=tfm.get.room.xmlMapInfo.xml
+ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
+if changed == true then
+ui.removeTextArea(0,nil)
+z=-1
+cannons=4
+ui.removeTextArea(22,nil)
+alives=0
+mode="hide"
+for n,p in pairs(tfm.get.room.playerList) do
+	if n:sub(1,1) == "*" then
+		tfm.exec.killPlayer(n)
+	end
+	alives=alives+1
+	newData={
+	["x"]=0;
+	["yp"]=0;
+	["y"]=0;
+	["o"]=100;
+	};		
+	data[n] = newData;
+	tfm.exec.bindKeyboard(n,32,true,true)
+		if tfm.get.room.playerList[n].isShaman then
+		ui.addTextArea(22,"",n,-1000,-1000,3000,3000,0x000001,0x000001,1.0,true)
+		shaman=n
+		alives=alives-1
+	end
+end
+tfm.exec.setGameTime(60)
+tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module criado por Spectra_phantom#6089. Tradução para o português feita por Rakan_raster#0000.")
+end
+end
+function eventLoop(p,r)
+if changed == true then
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Version RTM 2429.015 by Spectra_phantom#6089<")
+local m=math.floor(r/60000)
+local s=math.floor((((m*60000)-r) * -1) / 1000)
+ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
+ui.addTextArea(-2,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>0"..m..":"..s.."</b>",n,690,24,110,44,0,0,1.0,true)
+ui.addTextArea(-3,"<font size='14'><font face='Verdana'>remaining time",n,690,60,128,44,0,0,1.0,true)
+if s < 10 then
+	ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":0"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
+	ui.addTextArea(-2,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>0"..m..":0"..s.."</b>",n,690,24,110,44,0,0,1.0,true)
+	ui.addTextArea(-3,"<font size='14'><font face='Verdana'>remaining time",n,690,60,128,44,0,0,1.0,true)
+end
+if mode == "game" or mode == "hide" then
+	ui.addTextArea(31,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>"..alives.."</b>",n,15,27,40,44,0,0,1.0,true)
+	ui.addTextArea(30,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>"..alives.."</b>",n,12,24,40,44,0,0,1.0,true)
+	ui.addTextArea(32,"<font size='14'><font face='Verdana'>mice(s) remaining",n,9,60,128,44,0,0,1.0,true)
+else
+	for i=30,32 do
+		ui.removeTextArea(i,nil)
+	end
+end
+for n,q in pairs(tfm.get.room.playerList) do
+	if data[n] then
+		data[n].x=tfm.get.room.playerList[n].x
+		data[n].yp=tfm.get.room.playerList[n].y
+		if mode == "game" then
+			if q.x >= data[shaman].x - 80 and q.x <= data[shaman].x + 80 then
+			if q.y >= data[shaman].yp - 80 and q.y <= data[shaman].yp + 80 then
+			if not tfm.get.room.playerList[n].isShaman then
+			tfm.exec.killPlayer(n)
+			end
+			end
+			end
+		end
+		if not tfm.get.room.playerList[n].isDead then
+			if tfm.get.room.playerList[n].y < 280 then
+				if data[n].o < 100 then
+					data[n].o=data[n].o+1
+				end
+				data[n].y=0
+			else
+				if tfm.get.room.playerList[n].y <= 1020 then
+					data[n].o=data[n].o-0.9
+				elseif tfm.get.room.playerList[n].y > 1020 then
+					if tfm.get.room.playerList[n].x >= 2750 and tfm.get.room.playerList[n].x <= 3030 then
+						data[n].o=data[n].o-0.3
+					elseif tfm.get.room.playerList[n].x >= 1010 and tfm.get.room.playerList[n].x <= 1290 then
+						data[n].o=data[n].o-0.3
+					else
+						data[n].o=data[n].o-1.2
+					end
+				end
+			end
+			if data[n].o <= 0 then
+				tfm.exec.killPlayer(n)
+				tfm.exec.chatMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
+				tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
+			end
+		end
+		ui.addTextArea(0,"<font size='10'><font face='DejaVu Sans Mono,Consolas'><R>O² Meter | 20 | | <N>| | 40 | | | | 60 | | | | 80 | | | | 100",n,220,20,360,14,0x181818,0x090909,0.7,true)
+		if data[n].o > 30 then
+			ui.addTextArea(10,"",n,220,40,data[n].o*3.6,3,0x0080ff,0x0060ff,1.0,true)
+		elseif data[n].o > 0 then
+			ui.addTextArea(10,"",n,220,40,data[n].o*3.6,3,0xff8000,0xff6000,1.0,true)
+		elseif data[n].o <= 0 then
+			ui.addTextArea(10,"",n,220,40,3,3,0xff8000,0xff6000,1.0,true)
+		end
+	end
+end
+if r <= 2000 and mode == "hide" then
+	mode="game"
+	tfm.exec.setGameTime(135+(alives*5))
+	ui.removeTextArea(22,nil)
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão ATIVADAS. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
+end
+if r <= 1000 and mode == "game" then
+	tfm.exec.setGameTime(15)
+	mode="end"
+	local lives=0
+for n,p in pairs(tfm.get.room.playerList) do
+	if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
+		lives=lives+1
+		tfm.exec.giveCheese(n)
+		tfm.exec.playerVictory(n)
+	end
+end
+tfm.exec.chatMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Iniciando nova partida...")
+end
+if r <= 1 and mode == "end" then
+	tfm.exec.newGame(xml)
+	end
+else
+	if p >= 4500 and changed == false then
+		tfm.exec.disableAutoShaman(false)
+		tfm.exec.newGame(xml)
+		changed=true
+	end
+end
+end
+end
+
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.newGame("@7692039")
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
+tfm.exec.newGame("@7803705")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00watercatch<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00mestre<br>/room #anvilwar00watercatch<br><br>Do you want to see your module here? Please contact Spectra_phantom#6089 or Rakan_raster#0000.")
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.137.1<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.138<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
@@ -3126,6 +3299,9 @@ else
 	elseif string.find(tfm.get.room.name,"mestre") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'mestre' on room name.<br>Initialising submodule #mestre...")
 		initMestre()
+	elseif string.find(tfm.get.room.name,"watercatch") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising submodule #watercatch...")
+		initWatercatch()
 	elseif string.find(tfm.get.room.name,"rooms") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
 		Rooms()
