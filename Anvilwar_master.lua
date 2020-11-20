@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.141
+-- Transformice #anvilwar module loader - Version 2.142
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 -- Included sub-modules: #mestre, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.141",
-	_MAINV = "27402.178",
+	_VERSION = "2.142",
+	_MAINV = "28103.179",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -50,7 +50,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 27402.178",
+	bar = "<b>#anvilwar</b> RTM 28103.179",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Reksai_void2600#6638<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -73,7 +73,7 @@ lang.br = {
 	caps = " foi escolhido para ser o capitão da equipe.",
 	cap = "Este tipo de jogador (escolhido aleatoriamente) receberá 50% a mais de pontuação que os outros e poderá transferir seus pontos para outro jogador de sua equipe usando o comando !tt [nome].<br>Ele também poderá utilizar o comando !rv [nome] para reviver UM membro morto de sua equipe.",
 	cap_text = "<br><VP>Você é o capitão da sua equipe.<br>Digite !cap para saber das funções dos capitães das equipes.",
-	score30 = "<R>Você precisa de 30 pontos para usar isto.",
+	score30 = "<R>Você precisa de 35 pontos para usar isto.",
 	advanced = " acaba de avançar para o nível ",
 	tag_text = "<J>Não se esqueça de colocar a #tag no final do nome desejado! Caso contrário, o comando não irá funcionar!",
 	revivetext = "<J>O seguinte jogador reviveu: ",
@@ -108,7 +108,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 27402.178",
+	bar = "<b>#anvilwar</b> RTM 28103.179",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Reksai_void2600#6638<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -131,7 +131,7 @@ lang.en = {
 	caps = " was choosed to be the team capitain.",
 	cap = "This type of player (that is choosed randomly) will receive 50% more points and will get the ability of transfer your points to other players alive on the match using the !tt [name] command. You can use the !rv [name] command to revive ONE team player dead.",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>You need 30 points to use this.",
+	score30 = "<R>You need 35 points to use this.",
 	advanced = " reached the level ",
 	tag_text = "<J>Don't forget to insert the #tag on the target nickname, else this command don't will work!",
 	revivetext = "<J>The following player has been revived: ",
@@ -170,7 +170,7 @@ lang.ar = {
 	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-	bar = "<b>#anvilwar</b> RTM 27402.178",
+	bar = "<b>#anvilwar</b> RTM 28103.179",
 	intensity = "قوة الضرب وسرعته",
 	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Reksai_void2600#6638<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -193,7 +193,7 @@ lang.ar = {
 	caps = " تم إختياره ليصبح قائد الفريق. لرؤية المزيد عن هذا أكتب !cap أو استخدم قسم القائد في القائمة, ",
 	cap = "الكابتن هو قائد الفريق، يتم إختياره عشوائيآ، سوف يحصل على نقاط بنسبة 50% أكثر من اللاعبين، اي جَني النقاط بسرعة!يمكنه تحويل النقاط للاعب أخر عن طريق الإيعاز ويمكنه إحياء لاعب مات من فريقه بإستخدام !rv [name] ولكن يتطلب 30 نقطة لذلك",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>تحتاج 30 نقطة للقيام بهذا",
+	score30 = "<R>تحتاج 35 نقطة للقيام بهذا",
 	advanced = " reached the level ",
 	tag_text = "<J>لا تنسى بوضع الهاشتاج على الإسم الذي تم إختياره, أو لن يعمل هذا الإيعاز",
 	revivetext = "<J>هذا اللاعب قام بإستقبال : ",
@@ -228,7 +228,7 @@ lang.es = {
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 27402.178",
+	bar = "<b>#anvilwar</b> RTM 28103.179",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -251,7 +251,7 @@ lang.es = {
 	caps = " fue elegido para ser el capitán del equipo. Para ver más información acerca de esto, escribe el comando !cap o usa la sección de Capitán en el menú.",
 	cap = "En esta compilación fue incluido la funcionalidad de jugador capitán. Este tipo de jugador (es elegido aleatoriamente) recibirá un 50% más de puntos y la posibilidad de transferir tus puntos a otros jugadores vivos en la ronda usando el comando !tt [apodo]. Puedes usar el comando !rv [apodo] para revivir UN jugador muerto del equipo.",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>Necesitas 30 puntos para usar esto.",
+	score30 = "<R>Necesitas 35 puntos para usar esto.",
 	advanced = " alcanzado el nivel ",
 	tag_text = "<J>No te olvides de colocar el #tag en el apodo del objetivo, o este comando no funcionará.",
 	revivetext = "<J>El siguiente jugador ha sido revivido: ",
@@ -292,7 +292,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 27402.178",
+	bar = "<b>#anvilwar</b> RTM 28103.179",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Reksai_void2600#6638<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -315,7 +315,7 @@ lang.de = {
 	caps = " wurde als Teamchef ausgewählt. Um mehr Informationen darüber zu erhalten, geben Sie Folgendes ein !cap Befehl oder verwenden Sie den Abschnitt Capitain im Menü des Moduls.",
 	cap = "Auf dieser Zusammenstellung wurde die Funktionalität eines Capitain-Players integriert. Diese Art von Spieler (die zufällig ausgewählt wird) erhält 50% mehr Punkte und die Möglichkeit, Ihre Punkte auf andere Spieler zu übertragen, die im Spiel leben. !tt [name] Befehl. Sie können die Funktion !rv [name] Befehl, EINE Teamspielerin wiederzubeleben, die tot is.",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>Du brauchst 30 Punkte, um das zu benutzen.",
+	score30 = "<R>Du brauchst 35 Punkte, um das zu benutzen.",
 	advanced = " hast das Level erreicht ",
 	tag_text = "<J>Vergiss nicht, das #Tag auf dem Ziel-Nicknamen einzufügen, sonst funktioniert dieser Befehl nicht!",
 	revivetext = "<J>Der folgende Spieler wurde wiederbelebt: ",
@@ -350,7 +350,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 27402.178",
+	bar = "<b>#anvilwar</b> RTM 28103.179",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Reksai_void2600#6638 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -373,7 +373,7 @@ lang.tr = {
 	caps = " ekip kişi olarak seçildi.",
 	cap = "(Rastgele seçilen) bu oyuncu türü %50 daha fazla puan alır ve puanlarınızı !tt [name] komutunu kullanarak maçta canlı olan diğer oyunculara aktarabilir. BİR takım oyuncusunu ölü olarak canlandırmak için !rv [name] komutunu kullanabilirsiniz. ",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>Bunu kullanmak için 30 puana ihtiyacınız var.",
+	score30 = "<R>Bunu kullanmak için 35 puana ihtiyacınız var.",
 	advanced = " seviyeye ulaştı ",
 	tag_text = "<J># Etiketini hedef takma ada eklemeyi unutmayın, aksi takdirde bu komut çalışmaz! ",
 	revivetext = "<J> Aşağıdaki oyuncu canlandı: ",
@@ -584,7 +584,7 @@ function eventChatCommand(name,message)
 		if name == caps.azul or name == caps.vermelho and valendo == true and reset == false then
 			temp_name2=message:sub(4)
 			if data[temp_name2] then
-				ui.addPopup(1201,2,"1 = 5pts<br>2 = 10pts<br>3 = 15pts<br>4 = 20pts",name,350,225,200,true)
+				ui.addPopup(1201,2,"1 = 5pts<br>2 = 10pts<br>3 = 20pts",name,350,225,200,true)
 				tfm.exec.chatMessage(text.tag_text,name)
 			else
 				tfm.exec.chatMessage(text.funct,name)
@@ -596,8 +596,8 @@ function eventChatCommand(name,message)
 	if(message:sub(0,2) == "rv") then
 		if name == caps.azul or name == caps.vermelho and valendo == true and reset == false then
 			temp_name3=message:sub(4)
-			if data[temp_name3] and tempo >= 30 and sudden_death == false then
-				if tfm.get.room.playerList[name].score >= 30 then
+			if data[temp_name3] and tempo >= 35 and sudden_death == false then
+				if tfm.get.room.playerList[name].score >= 35 then
 					tfm.exec.respawnPlayer(temp_name3)
 					if data[temp_name3].team == "azul" and powerups.r_azul == false then
 						powerups.r_azul=true
@@ -611,7 +611,7 @@ function eventChatCommand(name,message)
 					data[temp_name3].immortal=true
 					data[temp_name3].imatchs=3
 					tfm.exec.setNameColor(temp_name3,0xd7d7e6)
-					tfm.exec.setPlayerScore(name,-30,true)
+					tfm.exec.setPlayerScore(name,-35,true)
 					tfm.exec.chatMessage(""..text.revivetext..""..temp_name3.."")
 				else
 					tfm.exec.chatMessage(text.score30,name)
@@ -641,7 +641,7 @@ function eventChatCommand(name,message)
 		menuShow(name,text.cmds,text.cap,100)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 5pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 10pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 7pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 28pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 30pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 14pt - Required Level: 4 - Function: <a href='event:power6'>Show</a>",105)
+		menuShow(name,text.powerupslist,"F1 (Double Anvil) - Cost: 5pt - Required Level: 1 - Function: <a href='event:power1'>Show</a><br>F2 (Triple Anvil) - Cost: 15pt - Required Level: 2 - Function: <a href='event:power2'>Show</a><br>F3 (Random Shoot) - Cost: 7pt - Required Level: 2 - Function: <a href='event:power3'>Show</a><br>F4 (Explosion) - Cost: 30pt - Required Level: 3 - Function: <a href='event:power4'>Show</a><br>F5 (Immortal Mode) - Cost: 30pt - Required Level: 5 - Function: <a href='event:power5'>Show</a><br>F6 (Decrease Size) - Cost: 15pt - Required Level: 4 - Function: <a href='event:power6'>Show</a>",105)
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -666,14 +666,6 @@ function eventPopupAnswer(id,name,message)
 					return name
 				end
 			elseif message == "3" then
-				if tfm.get.room.playerList[name].score < 15 then
-					tfm.exec.chatMessage(text.funct,name)
-				else
-					tfm.exec.setPlayerScore(temp_name2,15,true)
-					tfm.exec.setPlayerScore(name,-15,true)
-					return name
-				end
-			elseif message == "4" then
 				if tfm.get.room.playerList[name].score < 20 then
 					tfm.exec.chatMessage(text.funct,name)
 				else
@@ -746,7 +738,7 @@ function eventLoop(passado,faltando)
 			tempo=0
 		end
 		scoreloop=scoreloop+1
-		if scoreloop >= 22 then
+		if scoreloop >= 26 then
 			for name,player in pairs(tfm.get.room.playerList) do
 				if data[name].killed == 0 then
 					tfm.exec.setPlayerScore(name,1,true)
@@ -1264,12 +1256,12 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 113 then
-				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 10 then
+				if valendo == true and actual_player == name and not powerups.double == true and not powerups.triple == true and not powerups.objeto == true and tfm.get.room.playerList[name].score >= 15 then
 					if data[name].nivel >= 2 then
 						powerups.double=true
 						powerups.triple=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.triple.."")
-						tfm.exec.setPlayerScore(name,-10,true)
+						tfm.exec.setPlayerScore(name,-15,true)
 					else
 						tfm.exec.chatMessage(text.level_error,name)
 					end
@@ -1287,11 +1279,11 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 115 then
-				if valendo == true and actual_player == name and powerups.objeto == false and powerups.explosion == false and tfm.get.room.playerList[name].score >= 28 then
+				if valendo == true and actual_player == name and powerups.objeto == false and powerups.explosion == false and tfm.get.room.playerList[name].score >= 30 then
 					if data[name].nivel >= 3 then
 						powerups.explosion=true
 						tfm.exec.chatMessage("<VP>"..name.." "..text.exp1.."")
-						tfm.exec.setPlayerScore(name,-28,true)
+						tfm.exec.setPlayerScore(name,-30,true)
 						anvil_launched=true
 						loop=12
 					else
@@ -1314,9 +1306,9 @@ function eventKeyboard(name,key,down,x,y)
 				end
 			end
 			if key == 117 then
-				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 14 then
+				if valendo == true and actual_player == name and tfm.get.room.playerList[name].score >= 15 then
 					if data[name].nivel >= 4 then
-						tfm.exec.setPlayerScore(name,-14,true)
+						tfm.exec.setPlayerScore(name,-15,true)
 						tfm.exec.chatMessage("<VP>"..actual_player.." "..text.rs1.."")
 						tfm.exec.chatMessage(text.rs2,name)
 						tfm.exec.changePlayerSize(actual_player,0.6)
@@ -1513,6 +1505,8 @@ function winRed()
 			for i=6001,6004 do
 				ui.removeTextArea(i,nil)
 			end
+		else
+			tfm.exec.playEmote(name,2)
 		end
 	end
 	advanceLevel()
@@ -1529,6 +1523,8 @@ function winAzul()
 			for i=6001,6004 do
 				ui.removeTextArea(i,nil)
 			end
+		else
+			tfm.exec.playEmote(name,2)
 		end
 	end
 	advanceLevel()
@@ -3300,7 +3296,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.141<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.142<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
