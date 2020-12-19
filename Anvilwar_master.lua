@@ -1370,9 +1370,6 @@ function eventKeyboard(name,key,down,x,y)
 end
 function eventNewGame()
 	local n=math.random(1,10)
-	if n == 7 and tfm.get.room.currentMap == "@7658998" then
-		tfm.exec.chatMessage("<R><b>FOLLOW ME FOR THE DESTRUCTION!</b>")
-	end
 	advanceLevel()
 	ui.removeTextArea(501,nil)
 	for a,i in pairs({41,42,51,52}) do
@@ -1428,10 +1425,13 @@ function eventNewGame()
 		end
 	end
 	tfm.exec.setGameTime(30)
-	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><N><ROSE>ATENÇÃO: O #anvilwar vai passar por um remake completo em breve, devido a troca de criadores em 2021. Alguns bugs nestas versões são esperados.<br><br><J>Confiram o novo submodule atualizado do #anvilwar!<br>/sala #anvilwar00arrows")
+	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then	
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.<br><J>Confiram o novo submodule atualizado do #anvilwar!<br>/sala #anvilwar00arrows")
 	else
-		tfm.exec.chatMessage("<VP><b>You can see all the available #anvilwar rooms on /room #anvilwar00rooms.</b><br><N><ROSE>The #anvilwar map submissions are now open!<br>https://atelier801.com/topic?f=880459&t=939384")
+		tfm.exec.chatMessage("<VP><b>You can see all the available #anvilwar rooms on /room #anvilwar00rooms.</b>")
+	end
+	if n == 7 and tfm.get.room.currentMap == "@7658998" then
+		tfm.exec.chatMessage("<R><b>FOLLOW ME FOR THE DESTRUCTION!</b>")
 	end
 end
 function eventTextAreaCallback(id,name,callback)
