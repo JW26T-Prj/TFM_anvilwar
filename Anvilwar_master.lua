@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.150.1
+-- Transformice #anvilwar module loader - Version 2.150.2
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 -- Included sub-modules: #arrows, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.150.1",
+	_VERSION = "2.150.2",
 	_MAINV = "28915.111",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -1426,7 +1426,7 @@ function eventNewGame()
 	end
 	tfm.exec.setGameTime(30)
 	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then	
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><J>Confiram o novo submodule atualizado do #anvilwar!<br>/sala #anvilwar00arrows")
+		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><J>Confiram os novos submodules atualizados do #anvilwar!<br>/sala #anvilwar00arrows e /sala #anvilwar00watercatch")
 	else
 		tfm.exec.chatMessage("<VP><b>You can see all the available #anvilwar rooms on /room #anvilwar00rooms.</b>")
 	end
@@ -1668,7 +1668,7 @@ function eventKeyboard(name,key,down)
 				powerups.y1=-1
 				ui.removeTextArea(100,nil)
 				if powerups.t1 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup PRISÃO!")
 					dropPlayer(name)
 				elseif powerups.t1 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
@@ -1686,7 +1686,7 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t1 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
 					tfm.exec.setWorldGravity(0,17.5)
-					timer=2
+					timer=2.5
 				end
 			end
 		end
@@ -1696,7 +1696,7 @@ function eventKeyboard(name,key,down)
 				powerups.y2=-1
 				ui.removeTextArea(101,nil)
 				if powerups.t2 == 1 then
-					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
+					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup PRISÃO!")
 					dropPlayer(name)
 				elseif powerups.t2 == 2 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup OXIGÊNIO!")
@@ -1714,7 +1714,7 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t2 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
 					tfm.exec.setWorldGravity(0,17.5)
-					timer=2
+					timer=2.5
 				end
 			end
 		end
@@ -1742,7 +1742,7 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t3 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
 					tfm.exec.setWorldGravity(0,17.5)
-					timer=2
+					timer=2.5
 				end
 			end
 		end
@@ -1770,7 +1770,7 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t4 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
 					tfm.exec.setWorldGravity(0,17.5)
-					timer=2
+					timer=2.5
 				end
 			end
 		end
@@ -1833,12 +1833,12 @@ function genPowerup(pos,type,x,y)
 	end
 end
 function dropPlayer(name)
-	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y,0,0,0,false)
+	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.3.2 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.3.3 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -2520,7 +2520,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.150.1<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.150.2<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
