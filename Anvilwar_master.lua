@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.150.2
+-- Transformice #anvilwar module loader - Version 2.150.3
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 -- Included sub-modules: #arrows, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.150.2",
+	_VERSION = "2.150.3",
 	_MAINV = "28915.111",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -1838,7 +1838,7 @@ function dropPlayer(name)
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.3.3 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.4.0 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -1879,7 +1879,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			if timer > 0 then
 				timer=timer-0.5
-			else
+			elseif timer == 0 then
 				tfm.exec.setWorldGravity(0,10.5)
 			end
 			if not tfm.get.room.playerList[n].isDead then
@@ -1921,17 +1921,12 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			if tfm.get.room.playerList[n].x >= 1300 and tfm.get.room.playerList[n].x <= 1500 then
 				if tfm.get.room.playerList[n].y >= 690 and tfm.get.room.playerList[n].y <= 840 then
-					data[n].o=data[n].o+0.3
+					data[n].o=data[n].o+0.1
 				end
 			end
 			if tfm.get.room.playerList[n].x >= 3380 and tfm.get.room.playerList[n].x <= 3580 then
 				if tfm.get.room.playerList[n].y >= 1205 and tfm.get.room.playerList[n].y <= 1355 then
-					data[n].o=data[n].o+0.7
-				end
-			end
-			if tfm.get.room.playerList[n].x >= 1530 and tfm.get.room.playerList[n].x <= 1730 then
-				if tfm.get.room.playerList[n].y >= 1730 and tfm.get.room.playerList[n].y <= 1880 then
-					data[n].o=data[n].o+1.4
+					data[n].o=data[n].o+0.2
 				end
 			end
 		end
@@ -2520,7 +2515,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.150.2<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.150.3<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
