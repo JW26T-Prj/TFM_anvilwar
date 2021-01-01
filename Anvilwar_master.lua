@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.151
+-- Transformice #anvilwar module loader - Version 2.152
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
 -- Included sub-modules: #arrows, #objects, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.151",
-	_MAINV = "29016.112",
+	_VERSION = "2.152",
+	_MAINV = "30017.113",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -27,7 +27,7 @@ ninjas_list={"Forzaldenon#0000","Yone#5530","Caitlyndma7#0000"}
 scoreloop=0
 sudden_death=false
 local temp_name=""; local temp_name2=""; local temp_name3="";
-actual_player=""; count_int=20; tempo=0; players=0; time_limit=10; team=1; kills=0;
+actual_player=""; count_int=20; tempo=0; players=0; time_limit=10; team=1; kills=0; game_time=0; map_id=nil;
 data={}
 ratos=0; loop=12; power=5; valendo=false; anvil_launched=false; set=false; object=10; set_name=""; reset=false; intervalo=false;
 count=0
@@ -37,7 +37,7 @@ for _,f in next,{"help","powerups","set","tc","p","score","kill","tt","rv","cap"
 	system.disableChatCommandDisplay(f)
 end
 mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7581524","@7494251","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453"}
-map_names={"The Dual-Sided Fight Area","","Inside the Castle","Hell and Water","A very simple waterfall","","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","","The first #anvilwar map","The Beach Test Map 2","","","The Six Attributes","Inside the Ocean","","","","","","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","","","On the Seabed","The Palace of Swords","The Castle of Fire","","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","","","","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","","","Do Not Hit The Anvil","","","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas"}
+map_names={"The Dual-Sided Fight Area","-","Inside the Castle","Hell and Water","A very simple waterfall","-","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","-","The first #anvilwar map","The Beach Test Map 2","-","-","The Six Attributes","Inside the Ocean","-","-","-","-","-","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","-","-","On the Seabed","The Palace of Swords","The Castle of Fire","-","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","-","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","-","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","-","-","-","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","-","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","-","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","-","-","Do Not Hit The Anvil","-","-","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas"}
 lang = {}
 lang.br = {
 	win_vermelho = "<R><b>GG Time Vermelho!</b><br>A próxima partida será iniciada em 15 segundos.",
@@ -50,7 +50,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 29016.112",
+	bar = "<b>#anvilwar</b> RTM 30017.113",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Morganadxana#0000<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -74,7 +74,7 @@ lang.br = {
 	caps = " foi escolhido para ser o capitão da equipe.",
 	cap = "Este tipo de jogador (escolhido aleatoriamente) receberá 50% a mais de pontuação que os outros e poderá transferir seus pontos para outro jogador de sua equipe usando o comando !tt [nome].<br>Ele também poderá utilizar o comando !rv [nome] para reviver UM membro morto de sua equipe.",
 	cap_text = "<br><VP>Você é o capitão da sua equipe.<br>Digite !cap para saber das funções dos capitães das equipes.",
-	score30 = "<R>Você precisa de 40 pontos para usar isto.",
+	score30 = "<R>Você precisa de 35 pontos para usar isto.",
 	advanced = " acaba de avançar para o nível ",
 	tag_text = "<J>Não se esqueça de colocar a #tag no final do nome desejado! Caso contrário, o comando não irá funcionar!",
 	revivetext = "<J>O seguinte jogador reviveu: ",
@@ -111,7 +111,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 29016.112",
+	bar = "<b>#anvilwar</b> RTM 30017.113",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Morganadxana#0000<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -135,7 +135,7 @@ lang.en = {
 	caps = " was choosed to be the team capitain.",
 	cap = "This type of player (that is choosed randomly) will receive 50% more points and will get the ability of transfer your points to other players alive on the match using the !tt [name] command. You can use the !rv [name] command to revive ONE team player dead.",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>You need 40 points to use this.",
+	score30 = "<R>You need 35 points to use this.",
 	advanced = " reached the level ",
 	tag_text = "<J>Don't forget to insert the #tag on the target nickname, else this command don't will work!",
 	revivetext = "<J>The following player has been revived: ",
@@ -176,7 +176,7 @@ lang.ar = {
 	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-	bar = "<b>#anvilwar</b> RTM 29016.112",
+	bar = "<b>#anvilwar</b> RTM 30017.113",
 	intensity = "قوة الضرب وسرعته",
 	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Morganadxana#0000<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -200,7 +200,7 @@ lang.ar = {
 	caps = " تم إختياره ليصبح قائد الفريق. لرؤية المزيد عن هذا أكتب !cap أو استخدم قسم القائد في القائمة, ",
 	cap = "الكابتن هو قائد الفريق، يتم إختياره عشوائيآ، سوف يحصل على نقاط بنسبة 50% أكثر من اللاعبين، اي جَني النقاط بسرعة!يمكنه تحويل النقاط للاعب أخر عن طريق الإيعاز ويمكنه إحياء لاعب مات من فريقه بإستخدام !rv [name] ولكن يتطلب 30 نقطة لذلك",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>تحتاج 40 نقطة للقيام بهذا",
+	score30 = "<R>تحتاج 35 نقطة للقيام بهذا",
 	advanced = " reached the level ",
 	tag_text = "<J>لا تنسى بوضع الهاشتاج على الإسم الذي تم إختياره, أو لن يعمل هذا الإيعاز",
 	revivetext = "<J>هذا اللاعب قام بإستقبال : ",
@@ -237,7 +237,7 @@ lang.es = {
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 29016.112",
+	bar = "<b>#anvilwar</b> RTM 30017.113",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Morganadxana#0000<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -261,7 +261,7 @@ lang.es = {
 	caps = " fue elegido para ser el capitán del equipo. Para ver más información acerca de esto, escribe el comando !cap o usa la sección de Capitán en el menú.",
 	cap = "En esta compilación fue incluido la funcionalidad de jugador capitán. Este tipo de jugador (es elegido aleatoriamente) recibirá un 50% más de puntos y la posibilidad de transferir tus puntos a otros jugadores vivos en la ronda usando el comando !tt [apodo]. Puedes usar el comando !rv [apodo] para revivir UN jugador muerto del equipo.",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>Necesitas 40 puntos para usar esto.",
+	score30 = "<R>Necesitas 35 puntos para usar esto.",
 	advanced = " alcanzado el nivel ",
 	tag_text = "<J>No te olvides de colocar el #tag en el apodo del objetivo, o este comando no funcionará.",
 	revivetext = "<J>El siguiente jugador ha sido revivido: ",
@@ -298,7 +298,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 29016.112",
+	bar = "<b>#anvilwar</b> RTM 30017.113",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Morganadxana#0000<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -322,7 +322,7 @@ lang.de = {
 	caps = " wurde als Teamchef ausgewählt. Um mehr Informationen darüber zu erhalten, geben Sie Folgendes ein !cap Befehl oder verwenden Sie den Abschnitt Capitain im Menü des Moduls.",
 	cap = "Auf dieser Zusammenstellung wurde die Funktionalität eines Capitain-Players integriert. Diese Art von Spieler (die zufällig ausgewählt wird) erhält 50% mehr Punkte und die Möglichkeit, Ihre Punkte auf andere Spieler zu übertragen, die im Spiel leben. !tt [name] Befehl. Sie können die Funktion !rv [name] Befehl, EINE Teamspielerin wiederzubeleben, die tot is.",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>Du brauchst 40 Punkte, um das zu benutzen.",
+	score30 = "<R>Du brauchst 35 Punkte, um das zu benutzen.",
 	advanced = " hast das Level erreicht ",
 	tag_text = "<J>Vergiss nicht, das #Tag auf dem Ziel-Nicknamen einzufügen, sonst funktioniert dieser Befehl nicht!",
 	revivetext = "<J>Der folgende Spieler wurde wiederbelebt: ",
@@ -359,7 +359,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 29016.112",
+	bar = "<b>#anvilwar</b> RTM 30017.113",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Morganadxana#0000 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -383,7 +383,7 @@ lang.tr = {
 	caps = " ekip kişi olarak seçildi.",
 	cap = "(Rastgele seçilen) bu oyuncu türü %50 daha fazla puan alır ve puanlarınızı !tt [name] komutunu kullanarak maçta canlı olan diğer oyunculara aktarabilir. BİR takım oyuncusunu ölü olarak canlandırmak için !rv [name] komutunu kullanabilirsiniz. ",
 	cap_text = "<br><VP>You are the team capitain.<br>Type !cap to see all the functions of the team capitains.",
-	score30 = "<R>Bunu kullanmak için 40 puana ihtiyacınız var.",
+	score30 = "<R>Bunu kullanmak için 35 puana ihtiyacınız var.",
 	advanced = " seviyeye ulaştı ",
 	tag_text = "<J># Etiketini hedef takma ada eklemeyi unutmayın, aksi takdirde bu komut çalışmaz! ",
 	revivetext = "<J> Aşağıdaki oyuncu canlandı: ",
@@ -427,15 +427,16 @@ else
 	end
 end
 function changeMap()
-	tfm.exec.newGame(mapas[math.random(#mapas)])
+	map_id=math.random(1,112)
+	tfm.exec.newGame(mapas[map_id])
 end
 function showText1(text)
-	ui.addTextArea(4001,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#400000'>"..text.."",nil,221,108,360,25,0x521202,0x000001,0.75,true)
-	ui.addTextArea(4002,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,108,360,25,0,0,0.99,true)
+	ui.addTextArea(4001,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#400000'>"..text.."",nil,221,68,360,25,0x521202,0x000001,0.75,true)
+	ui.addTextArea(4002,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,68,360,25,0,0,0.99,true)
 end
 function showText2(text)
-	ui.addTextArea(4001,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#400000'>"..text.."",nil,221,108,360,25,0x021252,0x000001,0.75,true)
-	ui.addTextArea(4002,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,108,360,25,0,0,0.99,true)
+	ui.addTextArea(4001,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#400000'>"..text.."",nil,221,68,360,25,0x021252,0x000001,0.75,true)
+	ui.addTextArea(4002,"<font size='15'><b><font face='Verdana'><p align='center'><font color='#d1d5e3'>"..text.."",nil,220,68,360,25,0,0,0.99,true)
 end
 function menuShow(name,title,content,height)
 	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,150,130,500,30,0x212121,0x363634,1.0,true)
@@ -621,8 +622,8 @@ function eventChatCommand(name,message)
 	if(message:sub(0,2) == "rv") then
 		if name == caps.azul or name == caps.vermelho and valendo == true and reset == false then
 			temp_name3=message:sub(4)
-			if data[temp_name3] and tempo >= 35 and sudden_death == false then
-				if tfm.get.room.playerList[name].score >= 40 then
+			if data[temp_name3] and tempo >= 45 and sudden_death == false then
+				if tfm.get.room.playerList[name].score >= 35 then
 					tfm.exec.respawnPlayer(temp_name3)
 					if data[temp_name3].team == "azul" and powerups.r_azul == false then
 						powerups.r_azul=true
@@ -636,7 +637,7 @@ function eventChatCommand(name,message)
 					data[temp_name3].immortal=true
 					data[temp_name3].imatchs=3
 					tfm.exec.setNameColor(temp_name3,0xd7d7e6)
-					tfm.exec.setPlayerScore(name,-40,true)
+					tfm.exec.setPlayerScore(name,-35,true)
 					tfm.exec.chatMessage(""..text.revivetext..""..temp_name3.."")
 				else
 					tfm.exec.chatMessage(text.score30,name)
@@ -858,6 +859,7 @@ function eventLoop(passado,faltando)
 				valendo=true
 				players=count_azul+count_vermelho
 				tempo=180+(players*4)
+				game_time=tempo
 				for a,i in pairs({41,42,51,52}) do
 					ui.removeTextArea(i,nil)
 				end
@@ -1045,32 +1047,30 @@ function eventLoop(passado,faltando)
 		local minutos=math.floor(tempo/60)
 		local segundos=math.floor(tempo-(minutos*60))
 		if faltando > 10000 then
-			if sudden_death == false then
-				ui.addTextArea(2228,"",nil,230,14,340,85,0x010101,0x010101,0.9,true)
+			ui.addTextArea(2223,"<font face='MingLiU-ExtB'><p align='left'><font size='16'><font color='#ff0000'>♙ <b>"..count_vermelho.."</b>",nil,272,25,60,22,0x320000,0x010101,alpha,true)
+			ui.addTextArea(2224,"<font face='MingLiU-ExtB'><p align='right'><font size='16'><font color='#50ff'><b>"..count_azul.."</b> <font color='#ff'>♙",nil,468,25,60,22,0x32,0x010101,alpha,true)
+			ui.addTextArea(2225,"<font face='MingLiU-ExtB'><p align='left'><font size='16'><font color='#ff2400'>⏳ x<b>"..powerups.int_vermelho.."</b>",nil,220,25,44,18,0x240000,0x010101,alpha,true)
+			ui.addTextArea(2226,"<font face='MingLiU-ExtB'><p align='right'><font size='16'><font color='#24ff'>x<b>"..powerups.int_azul.."</b> ⏳",nil,536,25,44,18,0x24,0x010101,alpha,true)
+			if tempo < 30 then
+		ui.addTextArea(2222,"",nil,340,62,(tempo/game_time)*120,1,0xff0000,0x010101,alpha,true)
+			elseif tempo >= 30 then
+		ui.addTextArea(2222,"",nil,340,62,(tempo/game_time)*120,1,0x00ff00,0x010101,alpha,true)
 			else
-				ui.addTextArea(2228,"",nil,230,14,340,85,0x500101,0x400101,0.9,true)
+		ui.removeTextArea(2222)
 			end
-			ui.addTextArea(2221,"<p align='center'><font color='#000000'><font size='36'><font face='Verdana'><font color='#320000'>"..count_vermelho.."  <font color='#323232'>-  <font color='#000032'>"..count_azul.."",nil,312,20,180,60,0,0,1.0,true)
-			ui.addTextArea(2220,"<p align='center'><font color='#ff0000'><font size='36'><font face='Verdana'>"..count_vermelho.."  <N>-  <font color='#0000ff'>"..count_azul.."",nil,310,18,180,60,0,0,1.0,true)
-			ui.addTextArea(2225,"<p align='center'><font color='#321200'><font size='14'>TO: <b>"..powerups.int_vermelho.."</b>",nil,239,41,70,24,0,0,1.0,true)
-			ui.addTextArea(2224,"<p align='center'><font color='#f13811'><font size='14'>TO: <b>"..powerups.int_vermelho.."</b>",nil,240,43,70,24,0,0,1.0,true)
-			ui.addTextArea(2227,"<p align='center'><font color='#001232'><font size='14'>TO: <b>"..powerups.int_azul.."</b>",nil,481,41,70,24,0,0,1.0,true)
-			ui.addTextArea(2226,"<p align='center'><font color='#1138f1'><font size='14'>TO: <b>"..powerups.int_azul.."</b>",nil,480,43,70,24,0,0,1.0,true)
 			if segundos >= 10 then
-				ui.addTextArea(2223,"<p align='center'><font color='#121212'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":"..segundos.."</b>",nil,341,63,120,36,0,0,1.0,true)
-				ui.addTextArea(2222,"<p align='center'><font color='#dfd8ce'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":"..segundos.."</b>",nil,340,62,120,36,0,0,1.0,true)
+				ui.addTextArea(2221,"<font face='MingLiU-ExtB'><p align='center'><font size='28'>⏱ <b>"..minutos..":"..segundos.."</b>",nil,340,25,120,30,0x010101,0x010101,alpha,true)
 			else
-				ui.addTextArea(2223,"<p align='center'><font color='#121212'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":0"..segundos.."</b>",nil,341,63,120,36,0,0,1.0,true)
-				ui.addTextArea(2222,"<p align='center'><font color='#dfd8ce'><font size='26'><font face='Segoe UI Symbol'>⏰ <font face='Consolas'><b>"..minutos..":0"..segundos.."</b>",nil,340,62,120,36,0,0,1.0,true)
+				ui.addTextArea(2221,"<font face='MingLiU-ExtB'><p align='center'><font size='28'>⏱ <b>"..minutos..":0"..segundos.."</b>",nil,340,25,120,30,0x010101,0x010101,alpha,true)
 			end
 		elseif faltando >= 8000 and faltando < 10000 then
-			for i=2220,2228 do
+			for i=2221,2226 do
 				ui.removeTextArea(i,nil)
 			end
 		end
 	else
 		ui.removeTextArea(14,nil)
-		for i=2220,2228 do
+		for i=2221,2226 do
 			ui.removeTextArea(i,nil)
 		end
 	end
@@ -1387,6 +1387,12 @@ function eventNewGame()
 	valendo=false
 	loop=12
 	resetPowers()
+	for i,j in pairs(mapas) do
+		if mapas[j] == tfm.get.room.currentMap then
+			map_id=mapas[i]
+			print(map_id)
+		end
+	end
 	for name,player in pairs(tfm.get.room.playerList) do
 		if data[name] then
 			tfm.exec.changePlayerSize(name,1)
@@ -1425,11 +1431,7 @@ function eventNewGame()
 		end
 	end
 	tfm.exec.setGameTime(30)
-	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-		tfm.exec.chatMessage("<VP><b>Você pode ver todas as salas que compõem o module #anvilwar na /sala #anvilwar00rooms.</b><br><J>Confiram os novos submodules atualizados do #anvilwar!<br>/sala #anvilwar00arrows e /sala #anvilwar00watercatch<br><br><ROSE>Estamos aceitando moderadores temporários para 2021! Interessados falar com Morganadxana#0000.")
-	else
-		tfm.exec.chatMessage("<VP><b>You can see all the available #anvilwar rooms on /room #anvilwar00rooms.</b>")
-	end
+	tfm.exec.chatMessage("<ROSE><i>#anvilwar map loader v2.152</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..map_id.."<br><N><b>Map Name :</b> <V>"..map_names[map_id].."")
 	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	if n == 6 and tfm.get.room.currentMap == "@7658998" then
 		tfm.exec.chatMessage("<br><R><b>FOLLOW ME FOR THE DESTRUCTION!</b>")
@@ -2010,6 +2012,7 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		newData={
 			["step"]=0;
+			["c"]=0;
 			}
 		data[name]=newData;
 		for i=30, 87 do
@@ -2046,6 +2049,7 @@ function eventKeyboard(name,id)
 					if round <= 10 then
 						tfm.exec.movePlayer(name,400,350,false,0,0,false)
 						data[name].step=0
+						data[name].c=1
 					else
 						data[name].step=5
 					end
@@ -2075,6 +2079,7 @@ function eventKeyboard(name,id)
 					if round > 10 and round <= 20 then
 						tfm.exec.movePlayer(name,400,350,false,0,0,false)
 						data[name].step=0
+						data[name].c=1
 					else
 						data[name].step=9
 					end
@@ -2103,6 +2108,7 @@ function eventKeyboard(name,id)
 				if id == setas.c12[1] or id == setas.c12[2] then
 					tfm.exec.movePlayer(name,400,350,false,0,0,false)
 					data[name].step=0
+					data[name].c=1
 				else
 					tfm.exec.killPlayer(name)
 				end
@@ -2146,7 +2152,7 @@ function eventNewPlayer(name)
 	end
 end
 function eventLoop(p,f)
-	ui.setMapName("Arrows! <N><b>v2.0.1</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
+	ui.setMapName("Arrows! <N><b>v2.0.2</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
 	faltando=f;
 	if f < 1 then
 		if valendo == false then
@@ -2168,6 +2174,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -2181,6 +2188,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -2194,6 +2202,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -2207,6 +2216,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -2220,6 +2230,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -2233,6 +2244,7 @@ function eventLoop(p,f)
 				tfm.exec.setGameTime(36000)
 				for name,player in pairs(tfm.get.room.playerList) do
 					data[name].step=1
+					data[name].c=0
 					tfm.exec.movePlayer(name,400,260,false,0,0,false)
 				end
 			end
@@ -2243,7 +2255,7 @@ function eventLoop(p,f)
 		else
 			for name,player in pairs(tfm.get.room.playerList) do
 				if faltando > 4000 then
-				if tfm.get.room.playerList[name].y < 320 then
+				if tfm.get.room.playerList[name].y < 320 and data[name].c == 0 then
 					tfm.exec.killPlayer(name)
 				else
 					tfm.exec.setPlayerScore(name,1,true)
@@ -2514,7 +2526,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.151<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.152<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
