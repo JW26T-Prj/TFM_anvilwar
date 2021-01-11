@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.153
+-- Transformice #anvilwar module loader - Version 2.154
 -- By Spectra_phantom#6089 / Nasus_assassin#1534
--- Included sub-modules: #arrows, #objects, #watercatch.
+-- Included sub-modules: #fall, #watercatch, #salto, #truefalse.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.153",
+	_VERSION = "2.154",
 	_MAINV = "30219.115",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -1419,7 +1419,7 @@ function eventNewGame()
 		end
 	end
 	tfm.exec.setGameTime(30)
-	tfm.exec.chatMessage("<ROSE><i>#anvilwar map loader v2.153</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..map_id.."<br><N><b>Map Name :</b> <V>"..map_names[map_id].."<br>----------------------------------------")
+	tfm.exec.chatMessage("<ROSE><i>#anvilwar map loader v2.154</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..map_id.."<br><N><b>Map Name :</b> <V>"..map_names[map_id].."<br>----------------------------------------")
 	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	if n == 6 and tfm.get.room.currentMap == "@7658998" then
 		tfm.exec.chatMessage("<br><R><b>FOLLOW ME FOR THE DESTRUCTION!</b>")
@@ -1619,12 +1619,13 @@ initWatercatch = function()
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
+for _,f in next,{"help","ajuda"} do
+	system.disableChatCommandDisplay(f)
+end
 tfm.exec.setRoomMaxPlayers(32)
-shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0; timer=0;
-mapa="@7802869"
-xml=''
+shaman=""; alives=0; cannons=4; z=0; data={}; mode="hide"; changed=false; loop=0; timer=0; xml='';
+tfm.exec.newGame("@7802869")
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
-tfm.exec.newGame(map)
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
 		alives=alives-1
@@ -1632,7 +1633,7 @@ function eventPlayerDied(n)
 	if alives <= 0 then
 		mode="end"
 		tfm.exec.setGameTime(15)
-		tfm.exec.chatMessage("<R>O shaman matou todos os ratos e venceu o jogo!<br>Próxima rodada iniciando em 15 segundos.")
+		tfm.exec.chatMessage("<N>O shaman matou todos os ratos e venceu o jogo!<br>Próxima rodada iniciando em 15 segundos.")
 	end
 	data[n].o=0
 	if mode == "hide" or mode == "game" then
@@ -1646,6 +1647,11 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
+end
+function eventChatCommand(name,message)
+	if message == "help" or message == "ajuda" then
+		tfm.exec.chatMessage("<J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
+	end
 end
 function eventSummoningEnd(name,id,x,y)
 	cannons=cannons-1
@@ -1677,9 +1683,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t1 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t1 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -1705,9 +1711,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t2 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t2 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -1733,9 +1739,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t3 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t3 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -1761,9 +1767,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t4 == 3 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup VELOCIDADE!")
 					if tfm.get.room.playerList[name].isFacingRight == true then
-						tfm.exec.movePlayer(name,0,0,true,60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,120,0,false)
 					else
-						tfm.exec.movePlayer(name,0,0,true,-60,0,false)
+						tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 					end
 				elseif powerups.t4 == 4 then
 					tfm.exec.chatMessage("<N>"..name.." <J>ativou o powerup AFUNDAR!")
@@ -1775,8 +1781,8 @@ function eventKeyboard(name,key,down)
 	end		
 end
 function eventNewGame()
-tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.")
 xml=tfm.get.room.xmlMapInfo.xml
+tfm.exec.chatMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>O objetivo é bem simples: Fugir do shaman, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br>Shamans, não esqueçam de se mexer, ou irão morrer AFK!<br><br>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.")
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
@@ -1836,7 +1842,7 @@ function dropPlayer(name)
 end
 function eventLoop(p,r)
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.4.1 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.5.0 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -1877,6 +1883,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			if timer > 0 then
 				timer=timer-0.5
+				tfm.exec.setWorldGravity(0,17.5)
 			elseif timer == 0 then
 				tfm.exec.setWorldGravity(0,10.5)
 			end
@@ -1910,12 +1917,12 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			if tfm.get.room.playerList[n].x >= 1300 and tfm.get.room.playerList[n].x <= 1500 then
 				if tfm.get.room.playerList[n].y >= 690 and tfm.get.room.playerList[n].y <= 840 then
-					data[n].o=data[n].o+0.1
+					data[n].o=data[n].o+0.2
 				end
 			end
 			if tfm.get.room.playerList[n].x >= 3380 and tfm.get.room.playerList[n].x <= 3580 then
 				if tfm.get.room.playerList[n].y >= 1205 and tfm.get.room.playerList[n].y <= 1355 then
-					data[n].o=data[n].o+0.2
+					data[n].o=data[n].o+0.5
 				end
 			end
 		end
@@ -1945,7 +1952,7 @@ if r <= 2000 and mode == "hide" then
 	mode="game"
 	tfm.exec.setGameTime(150+(alives*5))
 	ui.removeTextArea(22,nil)
-	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>ATIVADAS<J>. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.")
+	tfm.exec.chatMessage("<J>O shaman foi liberado! Salvem-se quem puder!<br><br>As <N>zonas brancas<J> estão <VP>ATIVADAS<J>. Ratos que permanecerem nelas terão seu consumo de oxigênio reduzido quando dentro delas.<br><br>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos.")
 end
 if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
@@ -1971,465 +1978,6 @@ else
 	end
 end
 end
-end
-
-initArrows = function()
--- Module Arrows originalmente criado por Linkventusx5 (atual Shun_kazami#7014) e atualizado por Patrick_mahomes#1795 e Yone#5530.
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAutoScore(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(35)
-id=0;
-round=10;
-tempo=800;
-faltando=0;
-data={}
-valendo=false
-chars={"←","↑","→","↓"}
-caracteres={c1="",c2="",c3="",c4="",c5="",c6="",c7="",c8="",c9="",c10="",c11="",c12=""}
-setas={c1={0,0},c2={0,0},c3={0,0},c4={0,0},c5={0,0},c6={0,0},c7={0,0},c8={0,0},c9={0,0},c10={0,0},c11={0,0},c12={0,0}}
-mapa='<C><P DS="m;200,340,600,340" F="0" /><Z><S><S L="40" X="780" H="80" Y="350" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="20" H="80" Y="354" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="800" H="20" Y="390" T="6" X="400" /><S L="800" X="400" H="20" Y="320" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="80" H="80" Y="250" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="40" X="720" H="80" Y="250" T="6" P="0,0,0.3,0.2,0,0,0,0" /><S L="680" X="400" H="20" Y="201" T="6" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="377" X="401" /></D><O /></Z></C>'
-function eventNewGame()
-	tfm.exec.chatMessage("<ROSE><b>Bem-vindo ao module #arrows!</b><br><J>O objetivo da sala é simples. Você deve fazer a sequência de setas conforme pede o jogo antes que a barra vermelha termine.<br><br>Module criado originalmente por <N><b>Shun_kazami#7014</b> e <J>atualizado por <N><b>Patrick_mahomes#1795 e Yone#5530</b><J>.<br><R>Versão 2.0.1",name)
-	for i=0, 15 do
-			ui.removeTextArea(i,nil)
-		end
-	round=0
-	for name,player in pairs(tfm.get.room.playerList) do
-		newData={
-			["step"]=0;
-			["c"]=0;
-			}
-		data[name]=newData;
-		for i=30, 87 do
-			tfm.exec.bindKeyboard(name,i,false,false)
-		end
-	end
-	valendo=false;
-	tfm.exec.setGameTime(15)
-end
-function eventKeyboard(name,id)
-	if valendo == true then
-		if faltando > 6000 then
-			if tfm.get.room.playerList[name].y < 320 then
-			if data[name].step == 1 then
-				if id == setas.c1[1] or id == setas.c1[2] then
-					data[name].step=2
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 2 then
-				if id == setas.c2[1] or id == setas.c2[2] then
-					data[name].step=3
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 3 then
-				if id == setas.c3[1] or id == setas.c3[2] then
-					data[name].step=4
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 4 then
-				if id == setas.c4[1] or id == setas.c4[2] then
-					if round <= 10 then
-						tfm.exec.movePlayer(name,400,350,false,0,0,false)
-						data[name].step=0
-						data[name].c=1
-					else
-						data[name].step=5
-					end
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 5 then
-				if id == setas.c5[1] or id == setas.c5[2] then
-					data[name].step=6
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 6 then
-				if id == setas.c6[1] or id == setas.c6[2] then
-					data[name].step=7
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 7 then
-				if id == setas.c7[1] or id == setas.c7[2] then
-					data[name].step=8
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 8 then
-				if id == setas.c8[1] or id == setas.c8[2] then
-					if round > 10 and round <= 20 then
-						tfm.exec.movePlayer(name,400,350,false,0,0,false)
-						data[name].step=0
-						data[name].c=1
-					else
-						data[name].step=9
-					end
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 9 then
-				if id == setas.c9[1] or id == setas.c9[2] then
-					data[name].step=10
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 10 then
-				if id == setas.c10[1] or id == setas.c10[2] then
-					data[name].step=11
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 11 then
-				if id == setas.c11[1] or id == setas.c11[2] then
-					data[name].step=12
-				else
-					tfm.exec.killPlayer(name)
-				end
-			elseif data[name].step == 12 then
-				if id == setas.c12[1] or id == setas.c12[2] then
-					tfm.exec.movePlayer(name,400,350,false,0,0,false)
-					data[name].step=0
-					data[name].c=1
-				else
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-	else
-		tfm.exec.newGame(mapa)
-	end
-end
-end
-function eventPlayerDied(name)
-	local i=0
-	local n
-	for pname,player in pairs(tfm.get.room.playerList) do
-		if not player.isDead then
-			i=i+1
-			n=pname end	end
-	if i==0 then
-		tfm.exec.chatMessage("<R>Não tivemos vencedores!")
-		tfm.exec.newGame(mapa)
-		valendo=false
-		tempo=999
-	elseif i==1 then
-		tfm.exec.chatMessage("<J>"..n.." foi o vencedor!")
-		tfm.exec.giveCheese(n)
-		tfm.exec.playerVictory(n)
-		tfm.exec.setPlayerScore(n,10,true)
-		tfm.exec.newGame(mapa)
-		valendo=false
-		tempo=999
- end end
-function eventNewPlayer(name)
-	for name,player in pairs(tfm.get.room.playerList) do
-		newData={
-			["step"]=1;
-			}
-		data[name]=newData;
-	for i={37,65}, 87 do
-		tfm.exec.bindKeyboard(name,i,false,false)
-	end
-	end
-end
-function eventLoop(p,f)
-	ui.setMapName("Arrows! <N><b>v2.0.2</b>  <G>|   <N>Round : <V>"..round.."  <G>|  <N>Desenvolvido por <VP><b>Patrick_mahomes#1795 e Yone#5530</b><")
-	faltando=f;
-	if f < 1 then
-		if valendo == false then
-			for name,player in pairs(tfm.get.room.playerList) do
-				data[name].step=0
-				for i=30, 87 do
-					tfm.exec.bindKeyboard(name,i,false,true)
-				end
-			end
-			valendo=true
-		end
-	end
-	if valendo == true then
-		if round <= 5 then
-			if f < 1 then
-				round=round+1
-				tempo=800
-				setChars1()
-				tfm.exec.setGameTime(36000)
-				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
-				end
-			end
-			tempo=tempo-80
-		end
-		if round > 5 and round <= 10 then
-			if f < 1 then
-				round=round+1
-				tempo=800
-				setChars1()
-				tfm.exec.setGameTime(36000)
-				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
-				end
-			end
-			tempo=tempo-100
-		end
-		if round > 10 and round <= 15 then
-			if f < 1 then
-				round=round+1
-				tempo=800
-				setChars2()
-				tfm.exec.setGameTime(36000)
-				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
-				end
-			end
-			tempo=tempo-80
-		end
-		if round > 15 and round <= 20 then
-			if f < 1 then
-				round=round+1
-				tempo=800
-				setChars2()
-				tfm.exec.setGameTime(36000)
-				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
-				end
-			end
-			tempo=tempo-100
-		end
-		if round > 20 and round <= 25 then
-			if f < 1 then
-				round=round+1
-				tempo=800
-				setChars3()
-				tfm.exec.setGameTime(36000)
-				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
-				end
-			end
-			tempo=tempo-100
-		end
-		if round > 25 then
-			if f < 1 then
-				round=round+1
-				tempo=800
-				setChars3()
-				tfm.exec.setGameTime(36000)
-				for name,player in pairs(tfm.get.room.playerList) do
-					data[name].step=1
-					data[name].c=0
-					tfm.exec.movePlayer(name,400,260,false,0,0,false)
-				end
-			end
-			tempo=tempo-160
-		end
-		if tempo > 0 then
-			ui.addTextArea(0,"",nil,0,150,tempo,20,0xff0000,0xff0000,0.9,true)
-		else
-			for name,player in pairs(tfm.get.room.playerList) do
-				if faltando > 4000 then
-				if tfm.get.room.playerList[name].y < 320 and data[name].c == 0 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.setPlayerScore(name,1,true)
-				end
-				end
-			end
-			ui.removeTextArea(0,nil)
-		end
-	end
-	if tempo == 0 then
-		tempo=999
-		for i=0, 14 do
-			ui.removeTextArea(i,nil)
-		end
-		tfm.exec.setGameTime(5)
-		valendo=false
-	end
-end
-function setKeys()
-	if caracteres.c1 == "←" then
-		setas.c1={37,65}
-	elseif caracteres.c1 == "↑" then
-		setas.c1={38,87}
-	elseif caracteres.c1 == "→" then
-		setas.c1={39,68}
-	elseif caracteres.c1 == "↓" then
-		setas.c1={40,83}
-	end
-	if caracteres.c2 == "←" then
-		setas.c2={37,65}
-	elseif caracteres.c2 == "↑" then
-		setas.c2={38,87}
-	elseif caracteres.c2 == "→" then
-		setas.c2={39,68}
-	elseif caracteres.c2 == "↓" then
-		setas.c2={40,83}
-	end
-	if caracteres.c3 == "←" then
-		setas.c3={37,65}
-	elseif caracteres.c3 == "↑" then
-		setas.c3={38,87}
-	elseif caracteres.c3 == "→" then
-		setas.c3={39,68}
-	elseif caracteres.c3 == "↓" then
-		setas.c3={40,83}
-	end
-	if caracteres.c4 == "←" then
-		setas.c4={37,65}
-	elseif caracteres.c4 == "↑" then
-		setas.c4={38,87}
-	elseif caracteres.c4 == "→" then
-		setas.c4={39,68}
-	elseif caracteres.c4 == "↓" then
-		setas.c4={40,83}
-	end
-	if caracteres.c5 == "←" then
-		setas.c5={37,65}
-	elseif caracteres.c5 == "↑" then
-		setas.c5={38,87}
-	elseif caracteres.c5 == "→" then
-		setas.c5={39,68}
-	elseif caracteres.c5 == "↓" then
-		setas.c5={40,83}
-	end
-	if caracteres.c6 == "←" then
-		setas.c6={37,65}
-	elseif caracteres.c6 == "↑" then
-		setas.c6={38,87}
-	elseif caracteres.c6 == "→" then
-		setas.c6={39,68}
-	elseif caracteres.c6 == "↓" then
-		setas.c6={40,83}
-	end
-	if caracteres.c7 == "←" then
-		setas.c7={37,65}
-	elseif caracteres.c7 == "↑" then
-		setas.c7={38,87}
-	elseif caracteres.c7 == "→" then
-		setas.c7={39,68}
-	elseif caracteres.c7 == "↓" then
-		setas.c7={40,83}
-	end
-	if caracteres.c8 == "←" then
-		setas.c8={37,65}
-	elseif caracteres.c8 == "↑" then
-		setas.c8={38,87}
-	elseif caracteres.c8 == "→" then
-		setas.c8={39,68}
-	elseif caracteres.c8 == "↓" then
-		setas.c8={40,83}
-	end
-	if caracteres.c9 == "←" then
-		setas.c9={37,65}
-	elseif caracteres.c9 == "↑" then
-		setas.c9={38,87}
-	elseif caracteres.c9 == "→" then
-		setas.c9={39,68}
-	elseif caracteres.c9 == "↓" then
-		setas.c9={40,83}
-	end
-	if caracteres.c10 == "←" then
-		setas.c10={37,65}
-	elseif caracteres.c10 == "↑" then
-		setas.c10={38,87}
-	elseif caracteres.c10 == "→" then
-		setas.c10={39,68}
-	elseif caracteres.c10 == "↓" then
-		setas.c10={40,83}
-	end
-	if caracteres.c11 == "←" then
-		setas.c11={37,65}
-	elseif caracteres.c11 == "↑" then
-		setas.c11={38,87}
-	elseif caracteres.c11 == "→" then
-		setas.c11={39,68}
-	elseif caracteres.c11 == "↓" then
-		setas.c11={40,83}
-	end
-	if caracteres.c12 == "←" then
-		setas.c12={37,65}
-	elseif caracteres.c12 == "↑" then
-		setas.c12={38,87}
-	elseif caracteres.c12 == "→" then
-		setas.c12={39,68}
-	elseif caracteres.c12 == "↓" then
-		setas.c12={40,83}
-	end
-end
-function setChars1()
-	caracteres.c1=chars[math.random(#chars)]
-	caracteres.c2=chars[math.random(#chars)]
-	caracteres.c3=chars[math.random(#chars)]
-	caracteres.c4=chars[math.random(#chars)]
-	ui.addTextArea(1,"<font size='60'>"..caracteres.c1.."",nil,150,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(2,"<font size='60'>"..caracteres.c2.."",nil,300,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(3,"<font size='60'>"..caracteres.c3.."",nil,450,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(4,"<font size='60'>"..caracteres.c4.."",nil,600,50,70,80,0x000001,0x000001,1.0,true)
-	setKeys()
-end
-function setChars2()
-	caracteres.c1=chars[math.random(#chars)]
-	caracteres.c2=chars[math.random(#chars)]
-	caracteres.c3=chars[math.random(#chars)]
-	caracteres.c4=chars[math.random(#chars)]
-	caracteres.c5=chars[math.random(#chars)]
-	caracteres.c6=chars[math.random(#chars)]
-	caracteres.c7=chars[math.random(#chars)]
-	caracteres.c8=chars[math.random(#chars)]
-	ui.addTextArea(1,"<font size='60'>"..caracteres.c1.."",nil,140,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(2,"<font size='60'>"..caracteres.c2.."",nil,210,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(3,"<font size='60'>"..caracteres.c3.."",nil,270,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(4,"<font size='60'>"..caracteres.c4.."",nil,340,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(5,"<font size='60'>"..caracteres.c5.."",nil,410,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(6,"<font size='60'>"..caracteres.c6.."",nil,480,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(7,"<font size='60'>"..caracteres.c7.."",nil,550,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(8,"<font size='60'>"..caracteres.c8.."",nil,620,50,70,80,0x000001,0x000001,1.0,true)
-	setKeys()
-end
-function setChars3()
-	caracteres.c1=chars[math.random(#chars)]
-	caracteres.c2=chars[math.random(#chars)]
-	caracteres.c3=chars[math.random(#chars)]
-	caracteres.c4=chars[math.random(#chars)]
-	caracteres.c5=chars[math.random(#chars)]
-	caracteres.c6=chars[math.random(#chars)]
-	caracteres.c7=chars[math.random(#chars)]
-	caracteres.c8=chars[math.random(#chars)]
-	caracteres.c9=chars[math.random(#chars)]
-	caracteres.c10=chars[math.random(#chars)]
-	caracteres.c11=chars[math.random(#chars)]
-	caracteres.c12=chars[math.random(#chars)]
-	ui.addTextArea(1,"<font size='60'>"..caracteres.c1.."",nil,20,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(2,"<font size='60'>"..caracteres.c2.."",nil,90,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(3,"<font size='60'>"..caracteres.c3.."",nil,160,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(4,"<font size='60'>"..caracteres.c4.."",nil,230,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(5,"<font size='60'>"..caracteres.c5.."",nil,300,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(6,"<font size='60'>"..caracteres.c6.."",nil,370,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(7,"<font size='60'>"..caracteres.c7.."",nil,440,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(8,"<font size='60'>"..caracteres.c8.."",nil,510,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(9,"<font size='60'>"..caracteres.c9.."",nil,580,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(10,"<font size='60'>"..caracteres.c10.."",nil,650,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(11,"<font size='60'>"..caracteres.c11.."",nil,720,50,70,80,0x000001,0x000001,1.0,true)
-	ui.addTextArea(12,"<font size='60'>"..caracteres.c12.."",nil,790,50,70,80,0x000001,0x000001,1.0,true)
-	setKeys()
-end
-tfm.exec.newGame(mapa)
 end
 
 initFall = function()
@@ -2503,18 +2051,344 @@ function eventLoop(p,f)
 end
 end
 
+initTrue = function()
+blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoScore(true)
+tfm.exec.disableDebugCommand(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.setRoomMaxPlayers(35)
+tfm.exec.disableAllShamanSkills(true)
+tfm.exec.disablePhysicalConsumables(true)
+limits={questions=10,time=7,mices_alive=0}
+questions={question="",answer="",round=0}
+for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
+	system.disableChatCommandDisplay(f)
+end
+current_mode=""
+answer_time=20
+remain_time=0
+game_map="@7605289"
+for name,player in pairs(tfm.get.room.playerList) do
+	tfm.exec.setPlayerScore(name,0,false)
+end
+function eventNewGame()
+	ui.removeTextArea(0,nil)
+	limits.mices_alive=0
+	for name,player in pairs(tfm.get.room.playerList) do
+		if not tfm.get.room.playerList[name].isShaman then
+			limits.mices_alive=limits.mices_alive+1
+		else
+			tfm.exec.setPlayerScore(name,-1,false)
+		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
+		end
+	end
+	questions.round=0
+	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
+	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
+end
+function eventNewPlayer(name)
+	tfm.exec.setPlayerScore(name,0,false)
+	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+function eventPlayerDied(name)
+	if not tfm.get.room.playerList[name].isShaman then
+		limits.mices_alive=limits.mices_alive-1
+	end
+end
+function reset()
+	tfm.exec.newGame(game_map)
+	tfm.exec.setGameTime(60)
+	current_mode="waiting"
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isShaman then
+			tfm.exec.setPlayerScore(name,-1,false)
+		end
+	end
+	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
+end
+function isTrue()
+	tfm.exec.chatMessage("<VP>The answer is TRUE!")
+	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
+end
+function isFalse()
+	tfm.exec.chatMessage("<R>The answer is FALSE!")
+	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
+end
+function eventPopupAnswer(id,name,answer)
+	if id == 0 then
+		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
+			limits.questions=tonumber(answer)
+			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 12)",name,350,175,200,true)
+		end
+	end
+	if id == 1 then
+		if tonumber(answer) >= 1 and tonumber(answer) <= 12 then
+			limits.time=tonumber(answer)
+			tfm.exec.chatMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
+		end
+	end
+	if id == 10 then
+		if string.len(answer) >= 10 and string.len(answer) <= 170 then
+			questions.question=answer
+			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
+		else
+			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
+			tfm.exec.chatMessage("<R>Your question is too large or too short. Please type other question.",name)
+		end
+	end
+	if id == 11 then
+		if remain_time > 1 then
+			questions.answer=answer
+			questions.round=questions.round+1
+			current_mode="truefalse"
+			tfm.exec.setGameTime(answer_time)
+			for name,player in pairs(tfm.get.room.playerList) do
+				if not tfm.get.room.playerList[name].isShaman then
+					tfm.exec.movePlayer(name,400,330)
+				else
+					tfm.exec.movePlayer(name,400,1330)
+				end
+			end
+			tfm.exec.chatMessage("<N>"..questions.question.."")
+			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Bahnschrift SemiLight,Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
+			tfm.exec.chatMessage(questions.answer,"Spectra_phantom#6089")
+			tfm.exec.chatMessage(questions.answer,"Forzaldenon#0000")
+		end
+	end
+	if id == 20 then
+		if answer == "yes" then
+			reset()
+			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
+		end
+	end
+end
+function eventChatCommand(name,message)
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" or name == "Aphelios#1910" then
+		if message == "limits" then
+			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
+		end
+		if(message:sub(0,2) == "at") then
+			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
+				answer_time=tonumber(message:sub(4))
+				tfm.exec.chatMessage("Answer time: "..answer_time.."s.")
+			end
+		end
+		if(message:sub(0,7) == "admin78") then
+			if current_mode == "waiting" then
+				tfm.exec.setPlayerScore(message:sub(9),10001,false)
+				reset()
+			end
+		end
+		if message == "return" then
+			if current_mode == "truefalse" then
+				for name,player in pairs(tfm.get.room.playerList) do
+					if not tfm.get.room.playerList[name].isShaman then
+						tfm.exec.movePlayer(name,400,-100)
+					end
+				end
+				current_mode="waiting"
+				tfm.exec.setGameTime(60)
+				tfm.exec.chatMessage("<R>This question has been cancelled.")
+				ui.removeTextArea(0,nil)
+			end
+		end
+		if message == "cancel" then
+			if current_mode == "truefalse" or current_mode == "waiting" then
+				for name,player in pairs(tfm.get.room.playerList) do
+					tfm.exec.killPlayer(name)
+				end
+				reset()
+				tfm.exec.chatMessage("<R>This shaman has been skipped.")
+			end
+		end
+	end
+	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
+		if message == "per" and limits.mices_alive >= 2 then
+			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
+		end
+		if message == "skip" then
+			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
+		end
+	end
+end
+function eventLoop(time,remaining)
+	remain_time=remaining/1000
+	if remaining < 1 and current_mode == "waiting" then
+		reset()
+		tfm.exec.chatMessage("<R>Time is up! Other shaman will be choosed.")
+	end
+	if remaining < 1000 and current_mode == "truefalse" then
+		ui.removeTextArea(0,nil)
+		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
+		tfm.exec.setGameTime(5)
+		current_mode="wait"
+	end
+	if remaining < 300 and current_mode == "wait" then
+		if questions.answer == "yes" then
+			isTrue()
+		else
+			isFalse()
+		end
+		tfm.exec.setGameTime(7)
+		current_mode="answer"
+	end
+	if remaining <= 1 and current_mode == "answer" then
+		if questions.answer == "yes" then
+			for name,player in pairs(tfm.get.room.playerList) do
+				if player.x > 400 then
+					tfm.exec.killPlayer(name)
+				else
+					tfm.exec.movePlayer(name,400,-50)
+				end
+			end
+		else
+			for name,player in pairs(tfm.get.room.playerList) do
+				if player.x < 400 then
+					tfm.exec.killPlayer(name)
+				else
+					tfm.exec.movePlayer(name,400,-50)
+				end
+			end
+		end
+		tfm.exec.removePhysicObject(2)
+		current_mode="waiting"
+		tfm.exec.setGameTime(60)
+	end
+	if remaining < 55000 and limits.mices_alive <= 0 and current_mode == "waiting" then
+		reset()
+		tfm.exec.chatMessage("<R>No winners!")
+	end
+	if remaining < 55000 and limits.mices_alive == 1 and current_mode == "waiting" then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
+				tfm.exec.setPlayerScore(name,10000,false)
+				reset()
+			end
+		end
+	end
+	if remaining < 55000 and remaining >= 54400 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead then
+				tfm.exec.setPlayerScore(name,1,true)
+				tfm.exec.displayParticle(15,player.x,player.y)
+			end
+		end
+		if questions.round >= limits.questions and current_mode == "waiting" then
+			reset()
+			tfm.exec.chatMessage("<R>Questions limit reached!")
+		end
+	end
+	if time > limits.time*60000 and current_mode == "waiting" then
+		reset()
+		tfm.exec.chatMessage("<R>Time limit reached!")
+	end
+end
+reset()
+end
+
+initSalto = function()
+-- Novo script de Salto em Distância, com novo mapa e marcadores para a distância percorrida.
+data={}
+recorde=0
+recorder="----"
+tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.newGame('<C><P D="x_bouboum/x_fond/x_f1.jpg,0,600;x_bouboum/x_fond/x_f1.jpg,800,600;x_bouboum/x_fond/x_f1.jpg,1600,600;x_bouboum/x_fond/x_f1.jpg,2400,600;x_bouboum/x_fond/x_f1.jpg,3200,600;x_bouboum/x_fond/x_f1.jpg,4000,600;x_bouboum/x_fond/x_f1.jpg,4800,600;x_bouboum/x_fond/x_f1.jpg,5600,600;x_bouboum/x_fond/x_f1.jpg,6400,600;x_bouboum/x_fond/x_f1.jpg,7200,600;x_bouboum/x_fond/x_f1.jpg,8000,600;x_bouboum/x_fond/x_f1.jpg,8800,600;x_bouboum/x_fond/x_f1.jpg,9600,600;x_bouboum/x_fond/x_f1.jpg,10400,600;x_bouboum/x_fond/x_f1.jpg,11200,600;x_bouboum/x_fond/x_f1.jpg,12000,600;x_bouboum/x_fond/x_f1.jpg,12800,600;x_bouboum/x_fond/x_f1.jpg,13600,600;x_bouboum/x_fond/x_f1.jpg,14400,600;x_bouboum/x_fond/x_f1.jpg,15200,600" L="15000" G="0.3,10" H="1000" /><Z><S><S L="400" H="800" X="87" Y="825" T="18" P="0,0,0.3,0.2,30,0,0,0" /><S L="400" X="310" H="92" Y="440" T="2" P="0,0,0,2.2,30,0,0,0" /><S L="160" X="80" H="800" Y="700" T="18" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="10" o="111122" H="414" Y="155" T="12" X="-5" /><S L="10" o="111122" H="3000" X="1500" Y="-500" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="10" o="111122" X="4500" Y="-400" T="12" H="3000" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="1660" Y="1005" T="12" H="3000" /><S L="10" o="111122" X="4660" H="3000" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" H="3000" Y="1005" T="12" X="7660" /><S L="10" o="111122" H="3000" X="10660" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="13660" Y="1005" T="12" H="3000" /><S L="288" o="111122" X="-144" H="1732" Y="1077" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="388" o="111122" H="732" Y="1467" T="12" X="193" /><S L="3000" H="400" X="1660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" X="4660" H="400" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" H="400" X="7660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" X="10660" H="400" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" H="400" X="13660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /></S><D><DS Y="285" X="80" /><F Y="297" X="60" /><F Y="296" X="95" /><F Y="279" X="80" /></D><O /><L><VL n="Layer1"l="-1"/><JD P1="0,974"P2="0,999"c="FFFFFF,2,1,1"/><JD P1="100,974"P2="100,999"c="FFFFFF,2,1,1"/><JD P1="200,974"P2="200,999"c="FFFFFF,2,1,1"/><JD P1="300,974"P2="300,999"c="FFFFFF,2,1,1"/><JD P1="400,974"P2="400,999"c="FFFFFF,2,1,1"/><JD P1="500,958"P2="500,998"c="FFFFFF,4,1,1"/><JD P1="600,974"P2="600,999"c="FFFFFF,2,1,1"/><JD P1="700,974"P2="700,999"c="FFFFFF,2,1,1"/><JD P1="800,974"P2="800,999"c="FFFFFF,2,1,1"/><JD P1="900,974"P2="900,999"c="FFFFFF,2,1,1"/><JD P1="1000,958"P2="1000,998"c="FFFFFF,4,1,1"/><JD P1="1100,974"P2="1100,999"c="FFFFFF,2,1,1"/><JD P1="1200,974"P2="1200,999"c="FFFFFF,2,1,1"/><JD P1="1300,974"P2="1300,999"c="FFFFFF,2,1,1"/><JD P1="1400,974"P2="1400,999"c="FFFFFF,2,1,1"/><JD P1="1500,958"P2="1500,998"c="FFFFFF,4,1,1"/><JD P1="500,1000"P2="17500,1000"c="FFFFFF,2,1,1"/><JD P1="1500,974"P2="1500,999"c="FFFFFF,2,1,1"/><JD P1="1600,974"P2="1600,999"c="FFFFFF,2,1,1"/><JD P1="1700,974"P2="1700,999"c="FFFFFF,2,1,1"/><JD P1="1800,974"P2="1800,999"c="FFFFFF,2,1,1"/><JD P1="1900,974"P2="1900,999"c="FFFFFF,2,1,1"/><JD P1="2000,958"P2="2000,998"c="FFFFFF,4,1,1"/><JD P1="2100,974"P2="2100,999"c="FFFFFF,2,1,1"/><JD P1="2200,974"P2="2200,999"c="FFFFFF,2,1,1"/><JD P1="2300,974"P2="2300,999"c="FFFFFF,2,1,1"/><JD P1="2400,974"P2="2400,999"c="FFFFFF,2,1,1"/><JD P1="2500,958"P2="2500,998"c="FFFFFF,4,1,1"/><JD P1="2600,974"P2="2600,999"c="FFFFFF,2,1,1"/><JD P1="2700,974"P2="2700,999"c="FFFFFF,2,1,1"/><JD P1="2800,974"P2="2800,999"c="FFFFFF,2,1,1"/><JD P1="2900,974"P2="2900,999"c="FFFFFF,2,1,1"/><JD P1="3000,958"P2="3000,998"c="FFFFFF,4,1,1"/><JD P1="2000,1000"P2="19000,1000"c="FFFFFF,2,1,1"/><JD P1="3000,974"P2="3000,999"c="FFFFFF,2,1,1"/><JD P1="3100,974"P2="3100,999"c="FFFFFF,2,1,1"/><JD P1="3200,974"P2="3200,999"c="FFFFFF,2,1,1"/><JD P1="3300,974"P2="3300,999"c="FFFFFF,2,1,1"/><JD P1="3400,974"P2="3400,999"c="FFFFFF,2,1,1"/><JD P1="3500,958"P2="3500,998"c="FFFFFF,4,1,1"/><JD P1="3600,974"P2="3600,999"c="FFFFFF,2,1,1"/><JD P1="3700,974"P2="3700,999"c="FFFFFF,2,1,1"/><JD P1="3800,974"P2="3800,999"c="FFFFFF,2,1,1"/><JD P1="3900,974"P2="3900,999"c="FFFFFF,2,1,1"/><JD P1="4000,958"P2="4000,998"c="FFFFFF,4,1,1"/><JD P1="4100,974"P2="4100,999"c="FFFFFF,2,1,1"/><JD P1="4200,974"P2="4200,999"c="FFFFFF,2,1,1"/><JD P1="4300,974"P2="4300,999"c="FFFFFF,2,1,1"/><JD P1="4400,974"P2="4400,999"c="FFFFFF,2,1,1"/><JD P1="4500,958"P2="4500,998"c="FFFFFF,4,1,1"/><JD P1="3500,1000"P2="20500,1000"c="FFFFFF,2,1,1"/><JD P1="4500,974"P2="4500,999"c="FFFFFF,2,1,1"/><JD P1="4600,974"P2="4600,999"c="FFFFFF,2,1,1"/><JD P1="4700,974"P2="4700,999"c="FFFFFF,2,1,1"/><JD P1="4800,974"P2="4800,999"c="FFFFFF,2,1,1"/><JD P1="4900,974"P2="4900,999"c="FFFFFF,2,1,1"/><JD P1="5000,958"P2="5000,998"c="FFFFFF,4,1,1"/><JD P1="5100,974"P2="5100,999"c="FFFFFF,2,1,1"/><JD P1="5200,974"P2="5200,999"c="FFFFFF,2,1,1"/><JD P1="5300,974"P2="5300,999"c="FFFFFF,2,1,1"/><JD P1="5400,974"P2="5400,999"c="FFFFFF,2,1,1"/><JD P1="5500,958"P2="5500,998"c="FFFFFF,4,1,1"/><JD P1="5600,974"P2="5600,999"c="FFFFFF,2,1,1"/><JD P1="5700,974"P2="5700,999"c="FFFFFF,2,1,1"/><JD P1="5800,974"P2="5800,999"c="FFFFFF,2,1,1"/><JD P1="5900,974"P2="5900,999"c="FFFFFF,2,1,1"/><JD P1="6000,958"P2="6000,998"c="FFFFFF,4,1,1"/><JD P1="5000,1000"P2="22000,1000"c="FFFFFF,2,1,1"/><JD P1="6000,974"P2="6000,999"c="FFFFFF,2,1,1"/><JD P1="6100,974"P2="6100,999"c="FFFFFF,2,1,1"/><JD P1="6200,974"P2="6200,999"c="FFFFFF,2,1,1"/><JD P1="6300,974"P2="6300,999"c="FFFFFF,2,1,1"/><JD P1="6400,974"P2="6400,999"c="FFFFFF,2,1,1"/><JD P1="6500,958"P2="6500,998"c="FFFFFF,4,1,1"/><JD P1="6600,974"P2="6600,999"c="FFFFFF,2,1,1"/><JD P1="6700,974"P2="6700,999"c="FFFFFF,2,1,1"/><JD P1="6800,974"P2="6800,999"c="FFFFFF,2,1,1"/><JD P1="6900,974"P2="6900,999"c="FFFFFF,2,1,1"/><JD P1="7000,958"P2="7000,998"c="FFFFFF,4,1,1"/><JD P1="7100,974"P2="7100,999"c="FFFFFF,2,1,1"/><JD P1="7200,974"P2="7200,999"c="FFFFFF,2,1,1"/><JD P1="7300,974"P2="7300,999"c="FFFFFF,2,1,1"/><JD P1="7400,974"P2="7400,999"c="FFFFFF,2,1,1"/><JD P1="7500,958"P2="7500,998"c="FFFFFF,4,1,1"/><VL n="Layer2"l="-1"/><JD P1="6500,1000"P2="23500,1000"c="FFFFFF,2,1,1"/><JD P1="7500,974"P2="7500,999"c="FFFFFF,2,1,1"/><JD P1="7600,974"P2="7600,999"c="FFFFFF,2,1,1"/><JD P1="7700,974"P2="7700,999"c="FFFFFF,2,1,1"/><JD P1="7800,974"P2="7800,999"c="FFFFFF,2,1,1"/><JD P1="7900,974"P2="7900,999"c="FFFFFF,2,1,1"/><JD P1="8000,958"P2="8000,998"c="FFFFFF,4,1,1"/><JD P1="8100,974"P2="8100,999"c="FFFFFF,2,1,1"/><JD P1="8200,974"P2="8200,999"c="FFFFFF,2,1,1"/><JD P1="8300,974"P2="8300,999"c="FFFFFF,2,1,1"/><JD P1="8400,974"P2="8400,999"c="FFFFFF,2,1,1"/><JD P1="8500,958"P2="8500,998"c="FFFFFF,4,1,1"/><JD P1="8600,974"P2="8600,999"c="FFFFFF,2,1,1"/><JD P1="8700,974"P2="8700,999"c="FFFFFF,2,1,1"/><JD P1="8800,974"P2="8800,999"c="FFFFFF,2,1,1"/><JD P1="8900,974"P2="8900,999"c="FFFFFF,2,1,1"/><JD P1="9000,958"P2="9000,998"c="FFFFFF,4,1,1"/><JD P1="8000,1000"P2="25000,1000"c="FFFFFF,2,1,1"/><JD P1="9000,974"P2="9000,999"c="FFFFFF,2,1,1"/><JD P1="9100,974"P2="9100,999"c="FFFFFF,2,1,1"/><JD P1="9200,974"P2="9200,999"c="FFFFFF,2,1,1"/><JD P1="9300,974"P2="9300,999"c="FFFFFF,2,1,1"/><JD P1="9400,974"P2="9400,999"c="FFFFFF,2,1,1"/><JD P1="9500,958"P2="9500,998"c="FFFFFF,4,1,1"/><JD P1="9600,974"P2="9600,999"c="FFFFFF,2,1,1"/><JD P1="9700,974"P2="9700,999"c="FFFFFF,2,1,1"/><JD P1="9800,974"P2="9800,999"c="FFFFFF,2,1,1"/><JD P1="9900,974"P2="9900,999"c="FFFFFF,2,1,1"/><JD P1="10000,958"P2="10000,998"c="FFFFFF,4,1,1"/><JD P1="10100,974"P2="10100,999"c="FFFFFF,2,1,1"/><JD P1="10200,974"P2="10200,999"c="FFFFFF,2,1,1"/><JD P1="10300,974"P2="10300,999"c="FFFFFF,2,1,1"/><JD P1="10400,974"P2="10400,999"c="FFFFFF,2,1,1"/><JD P1="10500,958"P2="10500,998"c="FFFFFF,4,1,1"/><JD P1="9500,1000"P2="26500,1000"c="FFFFFF,2,1,1"/><JD P1="10500,974"P2="10500,999"c="FFFFFF,2,1,1"/><JD P1="10600,974"P2="10600,999"c="FFFFFF,2,1,1"/><JD P1="10700,974"P2="10700,999"c="FFFFFF,2,1,1"/><JD P1="10800,974"P2="10800,999"c="FFFFFF,2,1,1"/><JD P1="10900,974"P2="10900,999"c="FFFFFF,2,1,1"/><JD P1="11000,958"P2="11000,998"c="FFFFFF,4,1,1"/><JD P1="11100,974"P2="11100,999"c="FFFFFF,2,1,1"/><JD P1="11200,974"P2="11200,999"c="FFFFFF,2,1,1"/><JD P1="11300,974"P2="11300,999"c="FFFFFF,2,1,1"/><JD P1="11400,974"P2="11400,999"c="FFFFFF,2,1,1"/><JD P1="11500,958"P2="11500,998"c="FFFFFF,4,1,1"/><JD P1="11600,974"P2="11600,999"c="FFFFFF,2,1,1"/><JD P1="11700,974"P2="11700,999"c="FFFFFF,2,1,1"/><JD P1="11800,974"P2="11800,999"c="FFFFFF,2,1,1"/><JD P1="11900,974"P2="11900,999"c="FFFFFF,2,1,1"/><JD P1="12000,958"P2="12000,998"c="FFFFFF,4,1,1"/><JD P1="11000,1000"P2="28000,1000"c="FFFFFF,2,1,1"/><JD P1="12000,974"P2="12000,999"c="FFFFFF,2,1,1"/><JD P1="12100,974"P2="12100,999"c="FFFFFF,2,1,1"/><JD P1="12200,974"P2="12200,999"c="FFFFFF,2,1,1"/><JD P1="12300,974"P2="12300,999"c="FFFFFF,2,1,1"/><JD P1="12400,974"P2="12400,999"c="FFFFFF,2,1,1"/><JD P1="12500,958"P2="12500,998"c="FFFFFF,4,1,1"/><JD P1="12600,974"P2="12600,999"c="FFFFFF,2,1,1"/><JD P1="12700,974"P2="12700,999"c="FFFFFF,2,1,1"/><JD P1="12800,974"P2="12800,999"c="FFFFFF,2,1,1"/><JD P1="12900,974"P2="12900,999"c="FFFFFF,2,1,1"/><JD P1="13000,958"P2="13000,998"c="FFFFFF,4,1,1"/><JD P1="13100,974"P2="13100,999"c="FFFFFF,2,1,1"/><JD P1="13200,974"P2="13200,999"c="FFFFFF,2,1,1"/><JD P1="13300,974"P2="13300,999"c="FFFFFF,2,1,1"/><JD P1="13400,974"P2="13400,999"c="FFFFFF,2,1,1"/><JD P1="13500,958"P2="13500,998"c="FFFFFF,4,1,1"/><JD P1="12500,1000"P2="29500,1000"c="FFFFFF,2,1,1"/><JD P1="13500,974"P2="13500,999"c="FFFFFF,2,1,1"/><JD P1="13600,974"P2="13600,999"c="FFFFFF,2,1,1"/><JD P1="13700,974"P2="13700,999"c="FFFFFF,2,1,1"/><JD P1="13800,974"P2="13800,999"c="FFFFFF,2,1,1"/><JD P1="13900,974"P2="13900,999"c="FFFFFF,2,1,1"/><JD P1="14000,958"P2="14000,998"c="FFFFFF,4,1,1"/><JD P1="14100,974"P2="14100,999"c="FFFFFF,2,1,1"/><JD P1="14200,974"P2="14200,999"c="FFFFFF,2,1,1"/><JD P1="14300,974"P2="14300,999"c="FFFFFF,2,1,1"/><JD P1="14400,974"P2="14400,999"c="FFFFFF,2,1,1"/><JD P1="14500,958"P2="14500,998"c="FFFFFF,4,1,1"/><JD P1="14600,974"P2="14600,999"c="FFFFFF,2,1,1"/><JD P1="14700,974"P2="14700,999"c="FFFFFF,2,1,1"/><JD P1="14800,974"P2="14800,999"c="FFFFFF,2,1,1"/><JD P1="14900,974"P2="14900,999"c="FFFFFF,2,1,1"/><JD P1="15000,958"P2="15000,998"c="FFFFFF,4,1,1"/><JD P1="-1000,475"P2="16000,475"c="111122,250,1,0"/><JD P1="-1000,225"P2="16000,225"c="111122,250,1,0"/><JD P1="-1000,-25"P2="16000,-25"c="111122,250,1,0"/><JD P1="-1000,-275"P2="16000,-275"c="111122,250,1,0"/><JD P1="-1000,1125"P2="16000,1125"c="111122,250,1,0"/><JD P1="-10000,1375"P2="16000,1375"c="111122,250,1,0"/><JD P1="-1000,1625"P2="16000,1625"c="111122,250,1,0"/><JD P1="-1000,1875"P2="16000,1875"c="111122,250,1,0"/><VL n="Layer3"l="-1"/><JD P1="-1000,700"P2="16000,700"c="1558b0,200,0.5,1"/><JD P1="-1000,900"P2="16000,900"c="1558b0,200,0.5,1"/><JD P1="-1000,600"P2="16000,600"c="0783db,8,1,1"/><L /></L></Z></C>')
+system.disableChatCommandDisplay("ddddda")
+function eventChatCommand(n,m)
+	if m == "ddddda" then
+		tfm.exec.chatMessage("Reboot",nil)
+		recorde=0
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].recorde=0
+		end
+		ui.removeTextArea(80,nil)
+		ui.removeTextArea(81,nil)
+	end
+end
+function eventPlayerDied(n)
+	tfm.exec.respawnPlayer(n)
+	tfm.exec.giveCheese(n)
+end
+function eventNewPlayer(n)
+	newData={
+		["x"]=0;
+		["position"]=0;
+		["x2"]=0;
+		["recorde"]=0;
+			}
+	data[n]=newData;
+	tfm.exec.respawnPlayer(n)
+	tfm.exec.giveCheese(n)
+	for i=1,30 do
+		local a=500*i
+		ui.addTextArea(100+i,"<p align='center'><b><font size='14'><font color='#ffffff'>"..a.."",n,a-30,930,60,20,0,0,1.0,false)
+	end
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+function eventLoop()
+	ui.setMapName("<D>Long Jump script v1.15 by <ROSE><b>Patrick_mahomes#1795</b>   <V>|   <N>Actual record : <VP><b>"..recorde.."</b> pts <N>- <VP><b>"..recorder.."</b><")
+	for name,player in pairs(tfm.get.room.playerList) do
+		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 4000 |||||||||| 8000 ||||||||| 12000 ||||||||| 16000 ||",nil,20,20,670,20,0x000001,0x000001,0.8,true)
+		ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
+		ui.addTextArea(6,"<p align='center'><font size='20'><b><font color='#008000'><font face='Courier New'>"..data[name].recorde.."",name,700,68,80,22,0x00ff00,0x00ff00,0.9,true)
+		ui.addTextArea(7,"<p align='center'><font size='20'><b><font color='#800080'><font face='Courier New'>"..recorde.."",name,700,98,80,22,0xff00ff,0x800080,0.9,true)
+		if tfm.get.room.playerList[name].x < 0 then
+			data[name].x=tfm.get.room.playerList[name].x+19660
+		elseif tfm.get.room.playerList[name].x > 0 and data[name].x2 > 9830 then
+			data[name].x=tfm.get.room.playerList[name].x+19660
+		else
+			data[name].x=tfm.get.room.playerList[name].x
+		end
+		if tfm.get.room.playerList[name].vx <= 3 and tfm.get.room.playerList[name].x >= 700 and tfm.get.room.playerList[name].y >= 600 then
+			tfm.exec.chatMessage("<J>Your distance: <b>"..data[name].x.."</b> pixels.",name)
+			if data[name].x > data[name].recorde then
+				data[name].recorde=data[name].x
+				tfm.exec.chatMessage("<VP>New pessoal high score: <b>"..data[name].x.." pixels</b>.",name)
+				ui.addTextArea(80,"",name,data[name].x-3,50,6,990,0x00ff00,0x008000,0.8,false)
+				tfm.exec.setPlayerScore(name,data[name].x,false)
+			end
+			if data[name].x > recorde then
+				recorde=data[name].x
+				recorder=name
+				tfm.exec.chatMessage("<ROSE>New high score on game: <b>"..data[name].x.." pixels</b>, made by "..name.."!")
+				ui.addTextArea(81,"",nil,data[name].x-3,50,6,990,0xff00ff,0x800080,0.8,false)
+				tfm.exec.setPlayerScore(name,data[name].x,false)
+			end
+			tfm.exec.movePlayer(name,80,250,false,0,0,false)
+		end
+		ui.addTextArea(3,"",name,30,48,tfm.get.room.playerList[name].x/23.6,5,0xff0000,0x800000,0.9,true)
+		ui.addTextArea(4,"",name,30+data[name].recorde/23.6,48,1,5,0x00ff00,0x008000,0.9,true)
+		ui.addTextArea(5,"",nil,30+recorde/23.6,48,1,5,0xff00ff,0x800080,0.9,true)
+	end
+end
+end
+
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7803705")
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00arrows<br>/room #anvilwar00watercatch<br>/room #anvilwar00fall")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00truefalse<br>/room #anvilwar00watercatch<br>/room #anvilwar00fall<br>/room #anvilwar00salto")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00arrows<br>/room #anvilwar00watercatch<br>/room #anvilwar00fall")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00truefalse<br>/room #anvilwar00watercatch<br>/room #anvilwar00fall<br>/room #anvilwar00salto")
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.153<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.154<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
@@ -2524,12 +2398,15 @@ else
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising submodule #watercatch...")
 		initWatercatch()
-	elseif string.find(tfm.get.room.name,"arrows") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'arrows' on room name.<br>Initialising submodule #arrows...")
-		initArrows()
 	elseif string.find(tfm.get.room.name,"fall") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'fall' on room name.<br>Initialising submodule #fall...")
 		initFall()
+	elseif string.find(tfm.get.room.name,"truefalse") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising submodule #truefalse...")
+		initTrue()
+	elseif string.find(tfm.get.room.name,"salto") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'salto' on room name.<br>Initialising submodule #salto...")
+		initSalto()
 	elseif string.find(tfm.get.room.name,"rooms") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
 		Rooms()
