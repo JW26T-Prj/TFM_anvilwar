@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.157.1
--- By Spectra_phantom#6089 / Nasus_assassin#1534
+-- Transformice #anvilwar module loader - Version 2.158
+-- By Spectra_phantom#6089
 -- Included sub-modules: #fall, #clickwar.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.157.1",
-	_MAINV = "31123.119",
+	_VERSION = "2.158",
+	_MAINV = "31224.120",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -37,7 +37,7 @@ for _,f in next,{"help","powerups","set","tc","p","score","kill","tt","rv","cap"
 	system.disableChatCommandDisplay(f)
 end
 mapas={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7499355","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7494359","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7581524","@7494251","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892"}
-map_names={"The Dual-Sided Fight Area","-","Inside the Castle","Hell and Water","A very simple waterfall","-","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","-","The first #anvilwar map","The Beach Test Map 2","-","-","The Six Attributes","Inside the Ocean","-","-","-","-","-","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","-","-","On the Seabed","The Palace of Swords","The Castle of Fire","-","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","-","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","-","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","-","-","-","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","-","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","-","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","-","-","Do Not Hit The Anvil","-","-","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Destructed City"}
+map_names={"The Dual-Sided Fight Area","-","Inside the Castle","Hell and Water","A very simple waterfall","-","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","-","The first #anvilwar map","The Beach Test Map 2","-","-","The Six Attributes","Inside the Ocean","-","-","-","-","-","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","-","-","On the Seabed","The Palace of Swords","The Castle of Fire","-","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","-","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","-","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","-","-","-","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","-","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","-","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","-","-","Do Not Hit The Anvil","-","-","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things"}
 lang = {}
 lang.br = {
 	win_vermelho = "<R><b>GG Time Vermelho!</b><br>A próxima partida será iniciada em 15 segundos.",
@@ -50,7 +50,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 31123.119",
+	bar = "<b>#anvilwar</b> RTM 31224.120",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Morganadxana#0000<br>Tradução: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) e Star#6725 (TR)",
@@ -111,7 +111,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 31123.119",
+	bar = "<b>#anvilwar</b> RTM 31224.120",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Morganadxana#0000<br>Translations: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -176,7 +176,7 @@ lang.ar = {
 	objeto1 = "إستخدم الضربة العشوائية! قد يقوم بضرب أي شيئ الأن!",
 	objeto2 = "<br>في هذه القوة، يمكنك ضرب أداة شامان بدلآ من السندان، إذا قمت بإختيار السندان المزدوج، سيتم ضرب اداتان شامان بدلآ من سندان",
 	inv3 = "قوة عدم موتك قد إنتهت، أصبحت قابلآ للموت الأن!.",
-	bar = "<b>#anvilwar</b> RTM 31123.119",
+	bar = "<b>#anvilwar</b> RTM 31224.120",
 	intensity = "قوة الضرب وسرعته",
 	your_turn = "<J>إنه دورك للضرب! إضغط زر المسافة لإطلاق سندان مع استخدام الزر من 1 الى 5 للتحكم في سرعة السندان لتغيير قوة ضرب السندان، . إستخدم المفتاح إف 1 حتى إف 9 لإطلاق ضربات مختلفة! إكتشف!",
 	help = "إضغط زر المسافة لإطلاق سندان وللتحكم بسرعته يمكنك الضغط على زر الوجوه من 1 الى 5 ، إستخدم المفتاح من إف1 حتى إف9 لإطلاق ضربات القوة (أكتب !powerups) الفريق الذي يحطم العدو يفوز بالجولة <br><br>Type لترى جميع إيعازات اللعبة !cmds أكتب<br><br><b>Credits:</b><br>البرمجة والتطوير Spectra_phantom#6089 and Morganadxana#0000<br>الترجمة: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) and Star#6725 (TR)",
@@ -237,7 +237,7 @@ lang.es = {
 	enter_azul = "Unirse",
 	exit = "Abandonar este equipo",
 	inv3 = "Tu inmortalidad ha terminado.",
-	bar = "<b>#anvilwar</b> RTM 31123.119",
+	bar = "<b>#anvilwar</b> RTM 31224.120",
 	intensity = "Intensidad",
 	your_turn = "<J>Es tu turno de lanzar. Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este.",
 	help = "Presiona ESPACIO para lanzar un yunque y usa las teclas 1 al 9 para cambiar la intensidad de este. El equipo que elimine al enemigo ganará la ronda.<br><br>Escribe !cmd para mostrar todos los comandos del juego.<br><br><b>Créditos:</b><br>Desarrollo: Spectra_phantom#6089 y Morganadxana#0000<br>Powerups: Jhinsword350#0000 y Vidaloka9999#0000<br>Traducciones: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) y Star#6725 (TR)",
@@ -298,7 +298,7 @@ lang.de = {
 	enter_azul = "Betreten",
 	exit = "Dieses Team verlassen",
 	inv3 = "Deine Unsterblichkeit ist vorbei.",
-	bar = "<b>#anvilwar</b> RTM 31123.119",
+	bar = "<b>#anvilwar</b> RTM 31224.120",
 	intensity = "Intensität",
 	your_turn = "<J>Du bist dran mit dem Schießen. Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern.",
 	help = "Drücken Sie die LEERTASTE, um einen Amboss zu werfen, und verwenden Sie die Tasten 1 bis 9, um die Intensität des Ambosses zu ändern. Das Team, das das gegnerische Team eliminiert, gewinnt das Spiel.<br><br>Geben Sie !cmd ein, um alle Spielbefehle anzuzeigen.<br><br><b>Credits:</b><br>Entwicklung: Spectra_phantom#6089 und Morganadxana#0000<br>Powerups: Jhinsword350#0000 und Vidaloka9999#0000<br>Übersetzungen: Nasus_assassin#1534 (EN) Alexsaky#7307 + Vigo#4765 (AR) Dejavu#2242 (ES) Puiguirata#0000 (DE) und Star#6725 (TR)",
@@ -359,7 +359,7 @@ lang.tr = {
 	enter_azul = "Giriş",
 	exit = "Bu takımdan ayrıl",
 	inv3 = "Ölümsüzlüğünüz sona erdi.",
-	bar = "<b>#anvilwar</b> RTM 31123.119",
+	bar = "<b>#anvilwar</b> RTM 31224.120",
 	intensity = "Yoğunluk",
 	your_turn = "<J> Çekim sırası sizde. Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın.",
 	help = "Örs atmak için ara çubuğuna basın ve örs yoğunluğunu değiştirmek için 1 ila 9 tuşlarını kullanın. Düşman takımını ortadan kaldıran takım oyunu wons yapıyor. <br> <br> Tüm oyun komutlarını göstermek için !cmd yazın. <br> <br> <b> Krediler: </b> <br> Geliştirme: Spectra_phantom#6089 ve Morganadxana#0000 <br> Çeviriler: Nasus_assassin#1534 (EN), Alexsaky#7307 + Vigo#4765 (AR), Dejavu#2242 (ES), Puiguirata#0000 (DE) ve Star#6725 (TR) ",
@@ -669,7 +669,26 @@ function eventChatCommand(name,message)
 		menuShow(name,text.cmds,text.cap,100)
 	end
 	if message == "powerups" then
-		menuShow(name,text.powerupslist,"<font size='10'><b>F1 (Double Anvil) - Cost: 8pt - Required Level: 1</b><br>"..text.double2.."<br><b>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2</b>"..text.triple2.."<br><b>F3 (Random Shoot) - Cost: 8pt - Required Level: 2</b><br>"..text.objeto2.."<br><b>F4 (Explosion) - Cost: 22pt - Required Level: 3</b><br>"..text.exp2.."<br><b>F5 (Immortal Mode) - Cost: 32pt - Required Level: 5</b><br>"..text.inv2.."<br><b>F6 (Decrease Size) - Cost: 15pt - Required Level: 4</b><br>"..text.rs2.."<br><b>F7 (Anvil Sequence) - Cost: 22pt - Required Level: 4</b><br>"..text.sq2.."",222)
+		menuShow(name,text.powerupslist,"<font size='10'><b>F1 (Double Anvil) - Cost: 8pt - Required Level: 1</b><br>"..text.double2.."<br><b>F2 (Triple Anvil) - Cost: 12pt - Required Level: 2</b><br>"..text.triple2.."<br><b>F3 (Random Shoot) - Cost: 8pt - Required Level: 2</b><br>"..text.objeto2.."<br><b>F4 (Explosion) - Cost: 22pt - Required Level: 3</b><br>"..text.exp2.."<br><b>F5 (Immortal Mode) - Cost: 32pt - Required Level: 5</b><br>"..text.inv2.."<br><b>F6 (Decrease Size) - Cost: 15pt - Required Level: 4</b><br>"..text.rs2.."<br><b>F7 (Anvil Sequence) - Cost: 22pt - Required Level: 4</b><br>"..text.sq2.."",222)
+	end
+end
+function giveCargos(name,type)
+	if type == 2 and data[name] then
+		data[name].level=2
+		tfm.exec.setNameColor(name,0x0076FF)
+	elseif type == 3 and data[name] then
+		data[name].level=3
+		tfm.exec.setNameColor(name,0xFFFB00)
+	elseif type == 4 and data[name] then
+		data[name].level=4
+		tfm.exec.setNameColor(name,0xFF7100)
+	elseif type == 5 and data[name] then
+		data[name].level=5
+	elseif type == 6 and data[name] then
+		data[name].level=6
+		tfm.exec.setNameColor(name,0xFF0000)
+	elseif type == -2 and data[name] then
+		data[name].level=-2
 	end
 end
 function eventPopupAnswer(id,name,message)
@@ -1063,8 +1082,8 @@ function eventLoop(passado,faltando)
 		local minutos=math.floor(tempo/60)
 		local segundos=math.floor(tempo-(minutos*60))
 		if faltando > 10000 then
-			ui.addTextArea(2223,"<font face='MingLiU-ExtB'><p align='left'><font size='16'><font color='#ff0000'>♙ <b>"..count_vermelho.."</b>",nil,272,25,60,22,0x320000,0x010101,alpha,true)
-			ui.addTextArea(2224,"<font face='MingLiU-ExtB'><p align='right'><font size='16'><font color='#50ff'><b>"..count_azul.."</b> <font color='#ff'>♙",nil,468,25,60,22,0x32,0x010101,alpha,true)
+			ui.addTextArea(2223,"<font face='MingLiU-ExtB'><p align='left'><font size='18'><p align='center'><font color='#ff0000'> <b>"..count_vermelho.."</b>",nil,272,25,60,22,0x320000,0x010101,alpha,true)
+			ui.addTextArea(2224,"<font face='MingLiU-ExtB'><p align='right'><font size='18'><p align='center'><font color='#50ff'><b>"..count_azul.."</b> <font color='#ff'>",nil,468,25,60,22,0x32,0x010101,alpha,true)
 			ui.addTextArea(2225,"<font face='MingLiU-ExtB'><p align='left'><font size='16'><font color='#ff2400'>⏳ x<b>"..powerups.int_vermelho.."</b>",nil,220,25,44,18,0x240000,0x010101,alpha,true)
 			ui.addTextArea(2226,"<font face='MingLiU-ExtB'><p align='right'><font size='16'><font color='#24ff'>x<b>"..powerups.int_azul.."</b> ⏳",nil,536,25,44,18,0x24,0x010101,alpha,true)
 			if tempo < 30 then
@@ -1201,6 +1220,37 @@ function showBar()
 		end
 	end
 end
+function loadLevels()
+	for name,player in pairs(tfm.get.room.playerList) do
+		if data[name] then
+			for id,name in pairs(mods_list) do
+				if data[name] then
+					giveCargos(name,3)
+				end
+			end
+			for id,name in pairs(managers_list) do
+				if data[name] then
+					giveCargos(name,4)
+				end
+			end
+			for id,name in pairs(ninjas_list) do
+				if data[name] then
+					giveCargos(name,5)
+				end
+			end
+			for id,name in pairs(admins_list) do
+				if data[name] then
+					giveCargos(name,6)
+				end
+			end
+			for id,name in pairs(banned_list) do
+				if data[name] then
+					giveCargos(name,-2)
+				end
+			end
+		end
+	end
+end
 function eventNewPlayer(name)
 	ratos=ratos+1
 	if not data[name] then
@@ -1225,6 +1275,7 @@ function eventNewPlayer(name)
 	image_id=tfm.exec.addImage("172b365e290.png","&1",200,100,name)
 	data[name].imageid=image_id
 	data[name].imaget=10
+	loadLevels()
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -1415,38 +1466,10 @@ function eventNewGame()
 				tfm.exec.bindKeyboard(name,i,true,true)
 			end
 			showTeams(name)
-			for id,name in pairs(mods_list) do
-				if data[name] then
-					giveCargos(name,3)
-				end
-			end
-			for id,name in pairs(managers_list) do
-				if data[name] then
-					giveCargos(name,4)
-				end
-			end
-			for id,name in pairs(ninjas_list) do
-				if data[name] then
-					giveCargos(name,5)
-				end
-			end
-			for id,name in pairs(admins_list) do
-				if data[name] then
-					giveCargos(name,6)
-				end
-			end
-			for id,name in pairs(banned_list) do
-				if data[name] then
-					giveCargos(name,-2)
-				end
-			end
+			loadLevels()
 		end
 	end
 	tfm.exec.setGameTime(30)
-	if not map_id == 0 then
-	tfm.exec.chatMessage("<ROSE><i>#anvilwar map loader v2.156</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><b>Map ID :</b> <VP>"..map_id.."<br><N><b>Map Name :</b> <V>"..map_names[map_id].."<br><N>----------------------------------------")
-	end
-	tfm.exec.chatMessage("<VP>The #anvilwar map submissions are now open!<br><b>https://atelier801.com/topic?f=880459&t=939384&p=1</b>")
 end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
@@ -1599,25 +1622,6 @@ function advanceLevel()
 		end
 	end
 end
-function giveCargos(name,type)
-	if type == 2 and data[name] then
-		data[name].level=2
-		tfm.exec.setNameColor(name,0x0076FF)
-	elseif type == 3 and data[name] then
-		data[name].level=3
-		tfm.exec.setNameColor(name,0xFFFB00)
-	elseif type == 4 and data[name] then
-		data[name].level=4
-		tfm.exec.setNameColor(name,0xFF7100)
-	elseif type == 5 and data[name] then
-		data[name].level=5
-	elseif type == 6 and data[name] then
-		data[name].level=6
-		tfm.exec.setNameColor(name,0xFF0000)
-	elseif type == -2 and data[name] then
-		data[name].level=-2
-	end
-end
 end
 
 initClickwar = function()
@@ -1660,7 +1664,7 @@ function eventRanking(name)
 		end
 	end
 	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>Temporary Ranking",name,150,130,500,30,0x212121,0x363634,1.0,true)
-	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#N   Name                                         Score     Wins",name,150,165,500,150,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#N   Name                                     Score      Wins",name,150,165,500,150,0x151515,0x3F3F3D,1.0,true)
 	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
 	ui.addTextArea(9005,"<B><font size='12'><font face='Consolas'>"..str1,name,150,165,480,220,0,0,nil,true)
 	ui.addTextArea(9004,"<p align='right'><font size='12'><font face='Consolas'>"..str2,name,454,165,60,220,0,0,nil,true)
@@ -1705,10 +1709,10 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (250 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (1000 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 4037.018",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 4239.020",180)
 	end
 	if message == "powerups" then
-		menuShow(name,"Powerups List","<b>F1 - Fast Spirits</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor</b><br>Spawns a lot of stones falling from the top of map.",180)
+		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 350 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
 	end
 end
 function eventNewPlayer(name)
@@ -1766,8 +1770,12 @@ function eventNewGame()
 		data[name].p1=false
 		data[name].p2=false
 		data[name].pcount=0
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
+		end
 	end
-	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.156</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N><br>----------------------------------------")
+	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.157</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
 end
 function eventLoop(pass,falt)
 	if nightmode == true then
@@ -1799,10 +1807,10 @@ function eventLoop(pass,falt)
 		end
 	end
 	if falt < 70000 and falt > 69375 then
-		tfm.exec.chatMessage("The ultra hard mode will be enabled in 10 seconds!",nil)
+		tfm.exec.chatMessage("<ROSE>The ultra hard mode will be enabled in 10 seconds!",nil)
 	end
 	if falt < 60000 and sudden == false and falt > 50000 then
-		tfm.exec.chatMessage("<R>Ultra hard mode enabled!",nil)
+		tfm.exec.chatMessage("<R><b>Ultra hard mode enabled!</b>",nil)
 		imageId = tfm.exec.addImage("1772bdf9f9e.png","&1",240,80,nul)
 		remain=-0.5
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
@@ -1818,7 +1826,7 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>4037.018</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>4239.020</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
@@ -1847,19 +1855,26 @@ function eventLoop(pass,falt)
 		data[name].time=data[name].time+1
 	end
 	if enabled == true then
-		increase=increase+0.5
-		if increase >= 2 then
-			if sudden == false then
-				intensity=intensity+1
-				increase=0;
-				for name,player in pairs(tfm.get.room.playerList) do
-					if not tfm.get.room.playerList[name].isDead then
-						if pass > 30000 then
-							data[name].score=math.floor(data[name].score+(intensity/24))
+		if intensity < 217 then
+			increase=increase+0.5
+			if increase >= 2 then
+				if sudden == false then
+					intensity=intensity+1
+					increase=0;
+					for name,player in pairs(tfm.get.room.playerList) do
+						if not tfm.get.room.playerList[name].isDead then
+							if pass > 30000 then
+								data[name].score=math.floor(data[name].score+(intensity/24))
+							end
+							if pass > 60000 then
+								data[name].score=math.floor(data[name].score+(intensity/24))
+							end
 						end
 					end
 				end
 			end
+		else
+			intensity=217
 		end
 	end
 end
@@ -1948,9 +1963,9 @@ function eventKeyboard(name,key,down,x,y)
 				data[name].pcount=16
 				tfm.exec.chatMessage("<J>"..name.." used the powerup Fast Spirits!")
 			end
-			if key == 113 and data[name].score >= 250 then
+			if key == 113 and data[name].score >= 350 then
 				data[name].p2=true
-				data[name].score=data[name].score-250
+				data[name].score=data[name].score-350
 				data[name].pcount=20
 				tfm.exec.chatMessage("<J>"..name.." used the powerup Double Power!")
 			end
@@ -1967,8 +1982,8 @@ function eventKeyboard(name,key,down,x,y)
 				ui.addTextArea(2571,"",nil,-800,-600,3000,3000,0x010101,0x010101,0.99,true)
 				nightmode=true
 			end
-			if key == 116 and data[name].score >= 1000 then
-				data[name].score=data[name].score-1000
+			if key == 116 and data[name].score >= 800 then
+				data[name].score=data[name].score-800
 				tfm.exec.chatMessage("<J>"..name.." used the powerup Mega Explosion!")
 				for i=-4,12 do
 					for j=-2,6 do
@@ -1996,17 +2011,21 @@ winner=""
 tfm.exec.disableAllShamanSkills(true)
 tfm.exec.disablePhysicalConsumables(true)
 tfm.exec.setRoomMaxPlayers(24)
-map='<C><P F="0" DS="m;200,220,400,220,600,220,800,220,1000,220,1200,220,1400,220" L="1600" /><Z><S><S L="40" X="20" H="400" N="" Y="200" T="7" P="0,0,0,0.2,0,0,0,0" /><S L="40" H="400" X="1580" N="" Y="200" T="7" P="0,0,0,0.2,0,0,0,0" /><S L="40" H="1600" X="800" Y="20" T="7" P="0,0,0,0.2,90,0,0,0" /><S L="40" X="800" H="1600" Y="115" T="7" P="0,0,0,0.2,90,0,0,0" /><S P="0,0,,,,0,0,0" L="1600" H="134" v="1" Y="333" T="9" X="800" /><S H="1000" L="1000" o="6a7495" X="-500" c="4" N="" Y="375" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="1000" o="6a7495" X="2100" c="4" N="" Y="375" T="12" H="1000" /><S P="0,0,0.3,0.2,0,0,0,0" L="2000" o="6a7495" X="772" c="4" N="" Y="900" T="12" H="1000" /></S><D><DC Y="79" X="800" /><P X="389" Y="367" T="45" P="0,0" /><P X="1185" Y="367" T="45" P="0,0" /><P C="bb5631" Y="402" T="86" X="148" P="0,0" /><P C="bb5631" Y="402" T="86" X="765" P="0,0" /><P X="520" Y="407" T="84" P="0,0" /><P P="0,0" Y="399" T="87" X="309" /><P P="0,0" Y="400" T="87" X="933" /><P P="0,0" Y="401" T="88" X="1054" /><P P="0,0" Y="401" T="83" X="1402" /><P P="0,0" Y="404" T="80" X="1287" /><P P="0,0" Y="153" T="36" X="799" /><P P="0,0" Y="147" T="36" X="1100" /><P P="0,0" Y="147" T="36" X="1404" /><P P="0,0" Y="154" T="36" X="491" /><P P="0,0" Y="157" T="36" X="201" /></D><O><O C="2" Y="300" X="70" P="0" /><O C="2" Y="300" P="0" X="130" /><O C="2" Y="300" X="190" P="0" /><O C="2" Y="300" P="0" X="250" /><O C="2" Y="300" X="310" P="0" /><O C="2" Y="300" P="0" X="370" /><O C="2" Y="300" X="430" P="0" /><O C="2" Y="300" P="0" X="490" /><O C="2" Y="300" X="550" P="0" /><O C="2" Y="300" P="0" X="610" /><O C="2" Y="300" X="670" P="0" /><O C="2" Y="300" P="0" X="730" /><O C="2" Y="300" X="790" P="0" /><O C="2" Y="300" P="0" X="850" /><O C="2" Y="300" X="910" P="0" /><O C="2" Y="300" P="0" X="970" /><O C="2" Y="300" X="1030" P="0" /><O C="2" Y="300" P="0" X="1090" /><O C="2" Y="300" X="1150" P="0" /><O C="2" Y="300" P="0" X="1210" /><O C="2" Y="300" X="1270" P="0" /><O C="2" Y="300" P="0" X="1330" /><O C="2" Y="300" X="1390" P="0" /><O C="2" Y="300" P="0" X="1450" /><O C="2" Y="300" X="1510" P="0" /></O><L><VL n="Layer1" l="-1" /><JD c="001fcf,134,0.75,1" P1="0,334" P2="1600,334" /><JD c="001fcf,10,0.35,1" P1="0,262" P2="1600,262" /><L /></L></Z></C>'
+map='<C><P DS="m;200,220,400,220,600,220,800,220,1000,220,1200,220,1400,220" F="4" L="1590" /><Z><S><S X="800" L="1600" H="130" c="4" Y="335" T="3" P="0,0,0,20,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="50" H="400" N="" Y="200" T="10" X="25" /><S P="0,0,0,0.2,0,0,0,0" L="50" X="1565" N="" Y="200" T="10" H="400" /><S L="40" X="800" H="1600" Y="20" T="10" P="0,0,0,0.2,90,0,0,0" /><S L="40" H="1600" X="800" Y="115" T="10" P="0,0,0,0.2,90,0,0,0" /><S L="1600" H="134" X="800" v="1" Y="335" T="9" P="0,0,,,,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="1000" o="6a7495" X="-500" c="4" N="" Y="375" T="12" H="1000" /><S H="1000" L="1000" o="6a7495" X="2100" c="4" N="" Y="375" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S H="1000" L="2000" o="6a7495" X="772" c="4" N="" Y="900" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S c="4" L="424" o="6a7495" H="722" X="1803" N="" Y="302" T="12" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DC Y="79" X="800" /><P P="0,0" Y="367" T="45" X="389" /><P P="0,0" Y="367" T="45" X="1185" /><P C="bb5631" Y="402" T="86" P="0,0" X="148" /><P C="bb5631" Y="402" T="86" P="0,0" X="765" /><P P="0,0" Y="407" T="84" X="520" /><P X="309" Y="399" T="87" P="0,0" /><P X="933" Y="400" T="87" P="0,0" /><P X="1054" Y="401" T="88" P="0,0" /><P X="1402" Y="401" T="83" P="0,0" /><P X="1287" Y="404" T="80" P="0,0" /><P X="799" Y="153" T="36" P="0,0" /><P X="1100" Y="147" T="36" P="0,0" /><P X="1404" Y="147" T="36" P="0,0" /><P X="491" Y="154" T="36" P="0,0" /><P X="201" Y="157" T="36" P="0,0" /></D><O><O C="2" Y="300" P="0" X="70" /><O C="2" Y="300" X="130" P="0" /><O C="2" Y="300" P="0" X="190" /><O C="2" Y="300" X="250" P="0" /><O C="2" Y="300" P="0" X="310" /><O C="2" Y="300" X="370" P="0" /><O C="2" Y="300" P="0" X="430" /><O C="2" Y="300" X="490" P="0" /><O C="2" Y="300" P="0" X="550" /><O C="2" Y="300" X="610" P="0" /><O C="2" Y="300" P="0" X="670" /><O C="2" Y="300" X="730" P="0" /><O C="2" Y="300" P="0" X="790" /><O C="2" Y="300" X="850" P="0" /><O C="2" Y="300" P="0" X="910" /><O C="2" Y="300" X="970" P="0" /><O C="2" Y="300" P="0" X="1030" /><O C="2" Y="300" X="1090" P="0" /><O C="2" Y="300" P="0" X="1150" /><O C="2" Y="300" X="1210" P="0" /><O C="2" Y="300" P="0" X="1270" /><O C="2" Y="300" X="1330" P="0" /><O C="2" Y="300" P="0" X="1390" /><O C="2" Y="300" X="1450" P="0" /><O C="2" Y="300" P="0" X="1510" /></O><L><VL n="Layer1" l="-1" /><JD c="cf1f00,134,0.75,1" P2="1600,334" P1="0,334" /><JD c="cf1f00,10,0.35,1" P2="1600,262" P1="0,262" /><L /></L></Z></C>'
 unlocked=false
 tfm.exec.newGame(map)
 function eventNewGame()
 	unlocked=false
-	tfm.exec.setUIMapName("<J>Tente não cair <b>v1.0.6</b> - Module criado por <VP>Rivenbagassa#0000<")
+	tfm.exec.setUIMapName("<J>Tente não cair <b>v1.0.7</b> - Module criado por <VP>Rivenbagassa#0000<")
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isShaman then
 			tfm.exec.lowerSyncDelay(name)
 		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+		end
 	end
+ tfm.exec.chatMessage("<ROSE>Os shamans precisam alternar para o modo <b>normal</b> de shaman para jogar.")
 end
 function eventPlayerDied(name)
 	local i=0
@@ -2015,6 +2034,9 @@ function eventPlayerDied(name)
 		if not player.isDead and not player.isShaman then
 			i=i+1
 			n=pname
+		end
+		if player.isShaman then
+			tfm.exec.setGameTime(5)
 		end
 	end
 	if i==0 then
@@ -2025,10 +2047,11 @@ function eventPlayerDied(name)
 		tfm.exec.setPlayerScore(name,1,true)
 		tfm.exec.setGameTime(5)
 		winner=n
+		tfm.exec.chatMessage("<VP><b>"..n.."</b> foi o sobrevivente!")
 	end
 end
 function eventLoop(p,f)
-	if f < 5000 then
+	if f < 2000 and f > 1350 then
 		for name,player in pairs(tfm.get.room.playerList) do
 			if not tfm.get.room.playerList[name].isShaman then
 				tfm.exec.giveCheese(name)
@@ -2040,11 +2063,13 @@ function eventLoop(p,f)
 		tfm.exec.newGame(map)
 		tfm.exec.setShaman(winner)
 	end
-	if p > 500 and p < 1000 then
+	if p > 500 and p < 1500 then
 		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].shamanMode == 0 then
-				tfm.exec.killPlayer(name)
-				tfm.exec.chatMessage("<ROSE>Você deve usar o modo <b>normal</b> de shaman para jogar.",name)
+			if tfm.get.room.playerList[name].isShaman then
+				if tfm.get.room.playerList[name].shamanMode > 0 then
+					tfm.exec.killPlayer(name)
+					tfm.exec.chatMessage("<ROSE>Você deve usar o modo <b>normal</b> de shaman para jogar.",name)
+				end
 			end
 		end
 	end
@@ -2072,7 +2097,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.157.1<br>By Spectra_phantom#6089 and Nasus_assassin#1534")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.158<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
