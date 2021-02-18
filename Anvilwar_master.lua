@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.160
+-- Transformice #anvilwar module loader - Version 2.160.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #cd, #falling, #deadfender.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.160",
+	_VERSION = "2.160.1",
 	_MAINV = "31225.121",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -2713,7 +2713,7 @@ function sortearAssasinos()
 	sortearMedicos()
 end
 function eventLoop()
-	contador=contador+0.5
+	contador=contador+0.5	
 	if modo == "aguardando" then
 		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <N>Versão RTM 1311.005<")
 	end
@@ -2897,13 +2897,13 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 	tfm.exec["disable"..f](true)
 end
 tfm.exec.newGame("@7803705")
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00falling<br>/room #anvilwar00deadfender<br>/room #anvilwar00cd")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00falling<br>/room #anvilwar00deadfender<br>/room #anvilwar00cd<br><br><BL>Do you want to see your module included into #anvilwar rooms? Contact <b>Spectra_phantom#6089</b> on Transformice or <b>BarodiusEleven#2941</b> on Discord.")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00falling<br>/room #anvilwar00deadfender<br>/room #anvilwar00cd")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00falling<br>/room #anvilwar00deadfender<br>/room #anvilwar00cd<br><br><BL>Do you want to see your module included into #anvilwar rooms? Contact <b>Spectra_phantom#6089</b> on Transformice or <b>BarodiusEleven#2941</b> on Discord.")
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.160<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.160.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
