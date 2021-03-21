@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.166.1
+-- Transformice #anvilwar module loader - Version 2.166.2
 -- By Spectra_phantom#6089
 -- Included sub-modules: #cd, #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.166.1",
-	_MAINV = "31935.131 Final",
+	_VERSION = "2.166.2 Final",
+	_MAINV = "31936.132 Final",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -51,7 +51,7 @@ lang.br = {
 	enter_azul = "Entrar",
 	exit = "Sair do time",
 	inv3 = "Sua habilidade Modo Imortal expirou.",
-	bar = "<b>#anvilwar</b> RTM 31935.131 Final",
+	bar = "<b>#anvilwar</b> RTM 31936.132 Final",
 	intensity = "Intensidade",
 	your_turn = "<J>É a sua vez de jogar. Pressione ESPAÇO para atirar e use as teclas de 1 a 9 para alterar a potência da bigorna.",
 	help = "Pressione ESPAÇO para atirar <b>quando for a sua vez</b> e use as teclas de 1 a 9 para alterar a potência da bigorna. A equipe que conseguir eliminar todos do time adversário vencerá a partida.<br>Os turnos dos atiradores serão definidos aleatoriamente.<br><br>Digite !cmd para ver todos os comandos do jogo.<br><br><b>Créditos:</b><br>Desenvolvimento: Spectra_phantom#6089 e Morganadxana#0000<br>Tradução: Nasus_assassin#1534 (EN)",
@@ -110,7 +110,7 @@ lang.en = {
 	enter_azul = "Enter",
 	exit = "Leave this team",
 	inv3 = "Your immortality has ended.",
-	bar = "<b>#anvilwar</b> RTM 31935.131 Final",
+	bar = "<b>#anvilwar</b> RTM 31936.132 Final",
 	intensity = "Intensity",
 	your_turn = "<J>It's your turn to shoot. Press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil.",
 	help = "When is your turn, press SPACEBAR to throw a anvil and use the 1 to 9 keys to change the intensity of anvil. The team that eliminates the enemy team wons the game.<br>The turns will be sorted randomly.<br><br>Type !cmd to show all the game commands.<br><br><b>Credits:</b><br>Development: Spectra_phantom#6089 and Morganadxana#0000<br>Translations: Nasus_assassin#1534 (EN)",
@@ -568,10 +568,8 @@ function eventLoop(passado,faltando)
 		end
 	end
 	if valendo == false and reset == false and faltando < 1888 and count_azul > 0 and count_vermelho > 0 then
-		if count_azul-count_vermelho >= -3 and count_azul-count_vermelho <= 3 then
-			for a,i in pairs({41,42,51,52}) do
-				ui.removeTextArea(i,nil)
-			end
+		for a,i in pairs({41,42,51,52}) do
+			ui.removeTextArea(i,nil)
 		end
 	end
 	if valendo == false and reset == false and faltando <= 1 then
@@ -2701,7 +2699,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.166.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.166.2 Final<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
