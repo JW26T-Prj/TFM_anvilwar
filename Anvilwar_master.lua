@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.168
+-- Transformice #anvilwar module loader - Version 2.168.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #cd, #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.168",
+	_VERSION = "2.168.1",
 	_MAINV = "40430.121 Beta 2",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -13,7 +13,7 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 40430.121 Beta 2
+Version : RTM 40431.122 Beta 2
 Compilation date : 03/30/2021 15:05 UTC
 Sending player : Forzaldenon#0000
 
@@ -28,7 +28,7 @@ map_names={"The Dual-Sided Fight Area","-","Inside the Castle","Hell and Water",
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map="@7277839"; current_map=""; actual_player="";
-enabled=false; powerups=false; permafrost=false; night_mode=false;
+enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false;
 mices=0; loop=0; skips=0; skipsq=0; skip_time=0; needs=0; turn=0; choose_time=40; time_passed=0; time_remain=0; current_red=0; current_blue=0;
 points_loop=0; pf_time=0;
 mode="lobby"
@@ -57,7 +57,7 @@ data={}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","skip","sync","pw","commands","powerups","p","kill","ban","ranking"} do
+for _,g in next,{"reset","help","skip","sync","pw","commands","powerups","p","kill","ban"} do
 	system.disableChatCommandDisplay(g)
 end
 
@@ -88,10 +88,10 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<font color='#000000'><font size='24'><i>#anvilwar Reborn - Version RTM 40430.121 Beta II</i>",name,82,27,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<font size='24'><i>#anvilwar Reborn - Version RTM 40430.121 <R>Beta II</i>",name,80,25,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<font color='#000000'><font size='15'><i>Compilation date : 03/30/2021 15:05 UTC - Made by Spectra_phantom#6089</i>",name,92,57,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<font size='15'><i>Compilation date : 03/30/2021 15:05 UTC - Made by Spectra_phantom#6089</i>",name,90,55,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<font color='#000000'><font size='24'><i>#anvilwar Reborn - Version RTM 40431.122 Beta II</i>",name,82,27,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<font size='24'><i>#anvilwar Reborn - Version RTM 40431.122 <R>Beta II</i>",name,80,25,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<font color='#000000'><font size='15'><i>Compilation date : 03/30/2021 20:13 UTC - Made by Spectra_phantom#6089</i>",name,92,57,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<font size='15'><i>Compilation date : 03/30/2021 20:13 UTC - Made by Spectra_phantom#6089</i>",name,90,55,600,60,0,0,1.0,true)
 end
 
 function giveRankings(name)
@@ -143,7 +143,7 @@ function eventNewPlayer(name)
 		data[name].souris=true
 		data[name].ranking=-1
 	end
-	for _,k in next,{32,49,50,51,52,53,54,67,72,80,82,85,86,88,90} do
+	for _,k in next,{32,49,50,51,52,53,54,55,67,72,80,85,86,88,90} do
 		tfm.exec.bindKeyboard(name,k,true,true)
 	end
 	system.bindMouse(name,true)
@@ -287,6 +287,16 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 54 then
 					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>3</b> and <b>20</b> points of score.",name)
 				end
+				if code == 55 and data[name].score >= 25 and data[name].level >= 5 then
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Gravity Anomaly!")
+					setScores(name,-25,true)
+					data[name].powerup=7
+					tfm.exec.setWorldGravity(0,25)
+					pf_time=-2
+					gravity=false
+				elseif code == 55 then
+					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>5</b> and <b>25</b> points of score.",name)
+				end
 			end
 		end
 		if code == 90 then
@@ -316,9 +326,6 @@ function eventKeyboard(name,code,down,x,y)
 	end
 	if code == 72 then
 		eventChatCommand(name,"help")
-	end
-	if code == 82 then
-		eventChatCommand(name,"ranking")
 	end
 	if code == 85 then
 		eventChatCommand(name,"powerups")
@@ -477,15 +484,16 @@ function eventChatCommand(name,command)
 		tfm.exec.chatMessage("Coming soon!",name)
 	end
 	if command == "ban" then
+		tfm.exec.chatMessage("Coming soon!",name)
 	end
 	if command == "powerups" then
-		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><a href='event:pw2'><p align='right'>Go to Page 2</a>")
+		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>")
 	end
 	if command == "commands" then
 		showMenu(name,0x125490,120,90,560,260,"#anvilwar Commands","<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br><br>!commands - Display this message box.<br>!help (or <b>H</b> key) - Display the game help.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!skip - Vote to skip the current map. Are needed a minimum of votes equivalent of half of mices on the room to skip the current map. This command also only can be used every 15 minutes.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !kill [username] - Kills the specified player.")
 	end
 	if command == "help" then
-		showMenu(name,0x457426,100,90,600,260,"Help","<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 and Rakan_raster#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Nobody so far :( But you can help translating this module!<br><br>#anvilwar topic at Forums: <BL><b>----")
+		showMenu(name,0x457426,100,90,600,260,"Help","<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 and Rakan_raster#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Nobody so far :( But you can help translating this module!<br><br>#anvilwar topic at Forums: <BL><b>Coming soon!")
 	end
 	if command == "skip" then
 		if mode == "wait2" and data[name].skip == false and mices >= 8 then
@@ -516,7 +524,7 @@ function eventChatCommand(name,command)
 			nome = name
 		end
 
-		if tfm.get.room.playerList[nome] then
+		if tfm.get.room.playerList[nome] and data[nome].opened == false then
 			showMenu(name,0x518394,250,120,300,225,name,"<b>Level: "..data[nome].level.."</b><br><br>Experience: "..data[nome].exp.."/"..data[nome].maxp.."<br><br><br>Kills: "..data[nome].kills.."<br>Matches: "..data[nome].matches.."<br>Wins: "..data[nome].wins.."<br><br>Victory Rate: "..data[nome].winrate.."%<br>Kill Rate: "..data[nome].eff.."%")
 			ui.addTextArea(1006,"",nome,265,215,270,10,0x101010,0x161903,1.0,true)
 			ui.addTextArea(1005,"",nome,265,215,((data[nome].exp/data[nome].maxp)*260)+10,10,0x95a810,0x658704,1.0,true)
@@ -611,10 +619,12 @@ function eventTextAreaCallback(id,name,callback)
 		end
 	end
 	if callback == "pw1" then
+		data[name].opened=false
 		eventChatCommand(name,"powerups")
 	end
 	if callback == "pw2" then
-		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>")
+		data[name].opened=false
+		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% during 3 seconds.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>")
 	end
 end
 
@@ -851,11 +861,12 @@ function eventLoop(passed,remain)
 	if mode == "end" and time_remain == 0 then
 		lobby()
 	end
-	if permafrost == true or night_mode == true then
+	if permafrost == true or night_mode == true or gravity == true then
 		pf_time=pf_time+1
 		if pf_time == 4 then
 			permafrost=false
 			night_mode=false
+			tfm.exec.setWorldGravity(0,10)
 			for name,player in next,tfm.get.room.playerList do
 				tfm.exec.freezePlayer(name,false)
 			end
@@ -2256,9 +2267,8 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.168<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.168.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
-	tfm.exec.chatMessage("<ROSE><b>Tribehouse detected. Only #anvilwar will be available in English.</b>")
 	initAnvilwar()
 else
 	if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") or string.find(tfm.get.room.name,"survivor") then
