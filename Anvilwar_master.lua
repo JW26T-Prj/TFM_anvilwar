@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.168.1
+-- Transformice #anvilwar module loader - Version 2.168.2
 -- By Spectra_phantom#6089
 -- Included sub-modules: #cd, #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.168.1",
+	_VERSION = "2.168.2",
 	_MAINV = "40430.121 Beta 2",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -203,7 +203,6 @@ function setScores(name,points)
 	else
 		data[name].score=data[name].score+points
 	end
-	print(""..name.." "..data[name].score.."")
 end
 
 function eventKeyboard(name,code,down,x,y)
@@ -337,6 +336,7 @@ end
 
 function eventPlayerLeft(name)
 	removeTeam(name)
+	mices=mices-1
 end
 
 function eventPlayerDied(name)
@@ -380,7 +380,7 @@ function eventPlayerDied(name)
 			end
 		else
 			data[name].current_coins=math.floor(data[name].current_coins/2)
-			setScores(name,math.floor(data[name].score/2),false)
+			setScores(name,math.floor(data[name].score/2),true)
 		end
 		data[name].killeds=data[name].killeds+1
 		tfm.exec.setPlayerScore(name,0,false)
@@ -777,7 +777,7 @@ function eventLoop(passed,remain)
 		if choose_time == 0 then
 			if rawlen(players_red) > 0 and rawlen(players_blue) > 0 then
 				if rawlen(players_red) - rawlen(players_blue) <= 3 and rawlen(players_red) - rawlen(players_blue) >= -3 then
-					for i=480,484 do ui.removeTextArea(i,nil) end
+					for i=478,484 do ui.removeTextArea(i,nil) end
 					mode="map_sort"
 				else
 					choose_time=15
@@ -830,7 +830,7 @@ function eventLoop(passed,remain)
 				end
 			end
 		end
-		if time_passed % 15 == 0 then
+		if time_passed % 10 == 0 then
 			for name,player in next,tfm.get.room.playerList do
 				if data[name] and data[name].team > 0 then
 					if data[name].killed == false then
@@ -2267,7 +2267,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.168.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.168.2<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
