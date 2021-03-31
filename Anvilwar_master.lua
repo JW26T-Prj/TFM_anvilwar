@@ -525,9 +525,9 @@ function eventChatCommand(name,command)
 		end
 
 		if tfm.get.room.playerList[nome] and data[nome].opened == false then
-			showMenu(name,0x518394,250,120,300,225,nome,"<b>Level: "..data[name].level.."</b><br><br>Experience: "..data[name].exp.."/"..data[name].maxp.."<br><br><br>Kills: "..data[name].kills.."<br>Matches: "..data[name].matches.."<br>Wins: "..data[name].wins.."<br><br>Victory Rate: "..data[nome].winrate.."%<br>Kill Rate: "..data[nome].eff.."%")
+			showMenu(name,0x518394,250,120,300,225,nome,"<b>Level: "..data[nome].level.."</b><br><br>Experience: "..data[nome].exp.."/"..data[nome].maxp.."<br><br><br>Kills: "..data[nome].kills.."<br>Matches: "..data[nome].matches.."<br>Wins: "..data[nome].wins.."<br><br>Victory Rate: "..data[nome].winrate.."%<br>Kill Rate: "..data[nome].eff.."%")
 			ui.addTextArea(1006,"",name,265,215,270,10,0x101010,0x161903,1.0,true)
-			ui.addTextArea(1005,"",name,265,215,((data[name].exp/data[name].maxp)*260)+10,10,0x95a810,0x658704,1.0,true)
+			ui.addTextArea(1005,"",name,265,215,((data[nome].exp/data[nome].maxp)*260)+10,10,0x95a810,0x658704,1.0,true)
 		else
 			tfm.exec.chatMessage("<R>User not found",nome)
 		end
