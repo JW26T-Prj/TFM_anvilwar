@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.172
+-- Transformice #anvilwar module loader - Version 2.172.1
 -- By Spectra_phantom#6089
--- Included sub-modules: #cd, #deadfender, #pool.
+-- Included sub-modules: #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.172",
-	_MAINV = "40735.126 Beta 5",
+	_VERSION = "2.172.1",
+	_MAINV = "40736.127",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,9 +13,9 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 40735.126 Beta 5
-Compilation date : 04/02/2021 16:32 UTC
-Sending player : Spectra_phantom#6089
+Version : RTM 40736.127
+Compilation date : 04/02/2021 18:14 UTC
+Sending player : Morganadxana#0000
 
 Number of maps : 132
 Number of module special members : 20 ]]--
@@ -39,7 +39,6 @@ playersList={}; helpers={}; mods={
 "Flaysama#5935",
 "Chavestomil#0000",
 "Shun_kazami#7014",
-"Marichamex#0000",
 "Ddniemo#0000",
 "Gmctf#0000",
 "Liviliviah#0000",
@@ -57,6 +56,141 @@ ninjas={"Rivenbagassa#0000",
 "Velkozdapic#0000"};
 banneds={};
 data={}
+
+lang = {}
+lang.br = {
+	version = "Versão",
+	mices_room = "Ratos na sala : ",
+	comp_date = "Data de compilação : ",
+	uploaded = "Carregado por ",
+	ending = "Fim de jogo! Retornando à tela principal em alguns segundos...",
+	won = "Você ganhou ",
+	manager = "Você é o gerenciador desta sala. Digite !commands para ver os comandos disponíveis.",
+	p1 = "usou o powerup Disparo Duplo!",
+	p2 = "usou o powerup Disparo Triplo!",
+	p3 = "usou o powerup Olha a Explosão!",
+	p4 = "usou o powerup Congelamento!",
+	p5 = "usou o powerup Modo Noturno!",
+	p6 = "usou o powerup Chuva de Bigornas!",
+	p7 = "usou o powerup Anomalia Gravitacional!",
+	p0 = "Você não possui pontos e/ou níveis suficientes para usar este powerup.",
+	ap = "Potência: ",
+	ag = "Ângulo: ",
+	suicide = "O seguinte jogador cometeu suicídio: ",
+	tk1 = "Oh não! ",
+	tk2 = " matou um companheiro de equipe: ",
+	banned = "Esta conta foi banida desta sala.",
+	skip1 = "Caso você queira pular este mapa, digite !skip. São necessários ao menos ",
+	skip2 = " votos.",
+	submission = "As avaliações de mapas do #anvilwar estão abertas!",
+	pw = "Senha trocada para: ",
+	pw0 = "Senha removida.",
+	limit = "Limite de ratos na sala: ",
+	load1 = "O seguinte mapa será carregado: ",
+	load2 = "Certifique-se que há pelo menos 1 jogador em cada equipe.",
+	load0 = "Você precisa estar na tela principal para testar um mapa. Digite !reset para fazer isso e tente novamente.",
+	ban = " foi banido desta sala.",
+	ban0 = " foi desbanido desta sala.",
+	ac = "Você atualmente possui ",
+	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 14pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 25pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores, FunCorps e o dono da sala (/room #anvilwar00seunome).<br>!commands - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!skip - Vote para pular o mapa atual. São necessários um mínimo de votos equivalente a metade dos ratos na sala. Este comando também só pode ser usado a cada 15 minutos.<br>!p [usuário] (ou <b>P</b>) - Mostra o seu perfil. Tenha em mente que o perfil e o ranking não são permanentes e serão zerados quando a sala esvazia.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !ban [usuário] - Bane o usuário da sala. Digite novamente este comando para remover o banimento.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.",
+	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas, powerups e diversos outros itens.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 e Rakan_raster#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
+	skip0 = "Este comando pode ser usado somente daqui a ",
+	seconds = " segundos.",
+	skip = "Você votou para pular o mapa atual.",
+	skip1 = "votou para pular o mapa atual.",
+	skip9 = "Vocês votaram para pular o mapa atual. Sorteando um novo mapa...",
+	skip2 = "Este comando requer um mínimo de <b>8</b> ratos na sala, e requer situações específicas.",
+	leave = "Sair",
+	join = "Entrar",
+	getr = "Preparem-se! A partida vai começar em instantes!",
+	powerups2 = "<font size='11.5'><b>Tecla '5' - Night Mode</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 16pts</b><br><br><b>Tecla '6' - Anvil Rain</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 20pts</b><br><br><b>Tecla '7' - Gravity Anomaly</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	using = "Bigorna sendo utilizada: ",
+	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
+	level = "avançou para o nível ",
+	draw = "<b>Empate!</b><br>A tela principal será carregada em alguns instantes.",
+	winblue = "<b>Vitória do time AZUL!</b><br>A tela principal será carregada em alguns instantes.",
+	winred = "<b>Vitória do time VERMELHO!</b><br>A tela principal será carregada em alguns instantes.",
+	as = "É a vez de: ",
+	as1 = "<b>É a sua vez de atirar!</b><br><J>Use as teclas Z e X para mudar a potência do tiro, C e V para mudar o ângulo e BARRA DE ESPAÇO para atirar. Digite !help para mais informações.<br><br><N>Pontos para gastar com powerups: ",
+	rm = "Sorteando mapa...",
+	rm1 = "Mapa selecionado: ",
+	t60s = "Faltam 60 segundos!",
+	t30s = "Faltam 30 segundos!",
+	powerups_a = "Os powerups estão liberados!",
+	time = "<b>Tempo esgotado!</b> O time adversário irá atirar agora."
+}
+lang.en = {
+	version = "Version",
+	mices_room = "Mices on Room : ",
+	comp_date = "Compilation date : ",
+	uploaded = "Uploaded by ",
+	ending = "End of game! The lobby screen will be loaded in a few seconds.",
+	won = "You won ",
+	manager = "You are the manager of this room. Type !commands to see all available commands.",
+	p1 = "used the powerup Double Shoot!",
+	p2 = "used the powerup Triple Shoot!",
+	p3 = "used the powerup Explosion!",
+	p4 = "used the powerup Permafrost!",
+	p5 = "used the powerup Night Mode!",
+	p6 = "used the powerup Anvil Rain!",
+	p7 = "used the powerup Gravity Anomaly!",
+	p0 = "You don't have level and score to use this powerup.",
+	ap = "Power: ",
+	ag = "Angle: ",
+	suicide = "The following player commited suicide: ",
+	tk1 = "Oh no! ",
+	tk2 = " has killed a player of her team: ",
+	banned = "This account was banned of this room.",
+	skip1 = "If you want to skip this map, please type !skip. Is needed a minimum of ",
+	skip2 = " votes.",
+	submission = "#anvilwar Map Submissions are now open!",
+	pw = "Password changed to: ",
+	pw0 = "Password cleared.",
+	limit = "New room mice limit ",
+	load1 = "The next map will be loaded: ",
+	load2 = "The room needs to have a least 1 player into each team.",
+	load0 = "You needs to stay into LOBBY mode to use this command. Use !reset command and try again.",
+	ban = " was banned of room.",
+	ban0 = " was unbanned of room.",
+	ac = "You currently have ",
+	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
+	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!skip - Vote to skip the current map. Are needed a minimum of votes equivalent of half of mices on the room to skip the current map. This command also only can be used every 15 minutes.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.",
+	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 and Rakan_raster#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
+	skip0 = "This command can be only used in ",
+	seconds = " seconds.",
+	skip = "You voted to skip the current map.",
+	skip1 = " voted to skip the current map. ",
+	skip9 = "They voted to skip the current map. This command can be used only every 15 minutes.",
+	skip2 = "This command can be only used with <b>8</b> or more mices, and only at specific situations.",
+	leave = "Leave",
+	join = "Join",
+	getr = "Get Ready! The match will start in a few seconds!",
+	powerups2 = "<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% during 3 seconds.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	using = "You are now using the ",
+	ac0 = "You don't have AnvilCoins to buy this anvil.",
+	level = "reached the level",
+	draw = "<b>Draw!</b><br>The lobby screen will load shortly.",
+	winblue = "<b>Victory of the BLUE team!</b><br>The lobby screen will load shortly.",
+	winred = "<b>Victory of the RED team!</b><br>The lobby screen will load shortly.",
+	as = "Actual shooter: ",
+	as1 = "<b><b>It's your time to shoot.</b><br><J>Use Z and X keys to change the anvil power, C and V to change the anvil angle and SPACEBAR to shoot. Type !help for more information.<br><br><N>Points available: ",
+	rm = "Randomizing map...",
+	rm1 = "Selected Map : ",
+	t60s = "60 seconds remaining!",
+	t30s = "30 seconds remaining!",
+	powerups_a = "The powerups are now available!",
+	time = "<b>Time is up!</b> The next team will play now."
+}
+if string.find(tfm.get.room.name,"*") then
+	text = lang.en
+else
+	if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
+		text = lang.br
+	else
+		text = lang.en
+	end
+end
 
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
@@ -95,10 +229,10 @@ function showAvailableAnvils(name)
 end
 
 function showTeams(name)
-	ui.addTextArea(478,"<font size='18'><font color='#000000'><p align='center'><b><a href='event:enter_red'>Join",name,322,102,150,25,0,0,0.9,true)
-	ui.addTextArea(480,"<font size='18'><font color='#ff4500'><p align='center'><b><a href='event:enter_red'>Join",name,320,100,150,25,0,0,0.9,true)
-	ui.addTextArea(479,"<font size='18'><font color='#000000'><p align='center'><b><a href='event:enter_blue'>Join",name,322,192,150,25,0,0,0.9,true)
-	ui.addTextArea(481,"<font size='18'><font color='#0045ff'><p align='center'><b><a href='event:enter_blue'>Join",name,320,190,150,25,0,0,0.9,true)
+	ui.addTextArea(478,"<font size='18'><font color='#000000'><p align='center'><b><a href='event:enter_red'>"..text.join.."",name,322,102,150,25,0,0,0.9,true)
+	ui.addTextArea(480,"<font size='18'><font color='#ff4500'><p align='center'><b><a href='event:enter_red'>"..text.join.."",name,320,100,150,25,0,0,0.9,true)
+	ui.addTextArea(479,"<font size='18'><font color='#000000'><p align='center'><b><a href='event:enter_blue'>"..text.join.."",name,322,192,150,25,0,0,0.9,true)
+	ui.addTextArea(481,"<font size='18'><font color='#0045ff'><p align='center'><b><a href='event:enter_blue'>"..text.join.."",name,320,190,150,25,0,0,0.9,true)
 end
 
 function showMenu(name,color,x,y,width,height,title,content)
@@ -113,10 +247,10 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - Version RTM 40735.126 Beta 5</i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - Version RTM 40735.126 <R>Beta 5</i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>Compilation date : 04/02/2021 16:32 UTC - Uploaded by Spectra_phantom#6089</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>Compilation date : 04/02/2021 16:32 UTC - Uploaded by Spectra_phantom#6089</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40736.127 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40736.127 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."04/02/2021 18:14 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."04/02/2021 18:14 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
 end
 
 function eventRanking(name)
@@ -178,17 +312,17 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>Version <b>RTM 40735.126</b> <R>Beta 5   <G>|   <N>Mices on Room : <V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 40736.127</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
 		if s >= 10 then
-			ui.setMapName("<N><b>Actual Shooter :</b> <V>"..actual_player.."   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..m..":"..s.."</b> <J>("..time_remain..")<")
+			ui.setMapName("<N><b>"..text.as.."</b> <V>"..actual_player.."   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..m..":"..s.."</b> <J>("..time_remain..")<")
 		else
-			ui.setMapName("<N><b>Actual Shooter :</b> <V>"..actual_player.."   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..m..":0"..s.."</b> <J>("..time_remain..")<")
+			ui.setMapName("<N><b>"..text.as.."</b> <V>"..actual_player.."   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..m..":0"..s.."</b> <J>("..time_remain..")<")
 		end
 	elseif mode == "end" then
-		ui.setMapName("<VP><b>End of game! The lobby screen will be loaded in a few seconds.</b>   <G>|   <N>Mices on Room : <V><b>"..mices.."</b><")
+		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -297,7 +431,7 @@ function eventNewPlayer(name)
 	end
 	if string.find(tfm.get.room.name,name) then
 		table.insert(mods,name)
-		tfm.exec.chatMessage("You are the manager of this room. Type !commands to see all available commands.",name)
+		tfm.exec.chatMessage(text.manager,name)
 		print(name)
 	end
 	for _,k in next,{32,49,50,51,52,53,54,55,67,72,80,82,85,86,88,90} do
@@ -317,7 +451,6 @@ function eventNewPlayer(name)
 	end
 	giveRankings(name)
 	tfm.exec.setPlayerScore(name,0,false)
-	tfm.exec.chatMessage("<p align='center'><R><b>Welcome to #anvilwar Reborn!</b><br><br><N><p align='left'>The objective of this module is kill all players of other team using anvils! For more information about the module, type !help or press H.<br><br><VP>Module developed by Morganadxana#0000 and Spectra_phantom#6089.",name)
 end
 
 for name,player in next,tfm.get.room.playerList do
@@ -393,49 +526,49 @@ function eventKeyboard(name,code,down,x,y)
 		if powerups == true then
 			if data[name].powerup == 0 then
 				if code == 49 and data[name].score >= 8 and data[name].level >= 1 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Double Shoot!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p1.."")
 					data[name].powerup=1
 					setScores(name,-8,true)
 				elseif code == 49 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>1</b> and <b>8</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 				if code == 50 and data[name].score >= 14 and data[name].level >= 2 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Triple Shoot!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p2.."")
 					data[name].powerup=2
 					setScores(name,-14,true)
 				elseif code == 50 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>2</b> and <b>14</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 				if code == 51 and data[name].score >= 25 and data[name].level >= 3 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Explosion!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p3.."")
 					setScores(name,-25,true)
 					data[name].powerup=3
 					enabled=false
 					mode="wait3"
 					tfm.exec.setGameTime(10)
 				elseif code == 51 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>3</b> and <b>25</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 				if code == 52 and data[name].score >= 20 and data[name].level >= 3 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Permafrost!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p4.."")
 					setScores(name,-20,true)
 					data[name].powerup=4
 					permafrost=true
 					permaFrost()
 				elseif code == 52 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>3</b> and <b>20</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 				if code == 53 and data[name].score >= 16 and data[name].level >= 4 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Night Mode!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p5.."")
 					setScores(name,-16,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
 				elseif code == 53 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>4</b> and <b>16</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 				if code == 54 and data[name].score >= 20 and data[name].level >= 3 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Anvil Rain!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p6.."")
 					setScores(name,-20,true)
 					data[name].powerup=6
 					enabled=false
@@ -443,17 +576,17 @@ function eventKeyboard(name,code,down,x,y)
 					tfm.exec.setGameTime(10)
 					anvilRain()
 				elseif code == 54 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>3</b> and <b>20</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 				if code == 55 and data[name].score >= 25 and data[name].level >= 5 then
-					tfm.exec.chatMessage("<VP><b>"..name.."</b> used the powerup Gravity Anomaly!")
+					tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.p7.."")
 					setScores(name,-25,true)
 					data[name].powerup=7
 					tfm.exec.setWorldGravity(0,25)
 					pf_time=-2
 					gravity=false
 				elseif code == 55 then
-					tfm.exec.chatMessage("<R>You don't have level and score to use this powerup.<br>This powerup requires level <b>5</b> and <b>25</b> points of score.",name)
+					tfm.exec.chatMessage("<R>"..text.p0.."",name)
 				end
 			end
 		end
@@ -461,25 +594,25 @@ function eventKeyboard(name,code,down,x,y)
 			if data[name].power > 0 then
 				data[name].power=data[name].power-1
 			end
-			tfm.exec.chatMessage("<J>Anvil Power: <b>"..data[name].power.."</b>",name)
+			tfm.exec.chatMessage("<J>"..text.ap.."<b>"..data[name].power.."</b>",name)
 		end
 		if code == 88 then
 			if data[name].power < 10 then
 				data[name].power=data[name].power+1
 			end
-			tfm.exec.chatMessage("<J>Anvil Power: <b>"..data[name].power.."</b>",name)
+			tfm.exec.chatMessage("<J>"..text.ap.."<b>"..data[name].power.."</b>",name)
 		end
 		if code == 67 then
 			if data[name].angle > 0 then
 				data[name].angle=data[name].angle-5
 			end
-			tfm.exec.chatMessage("<J>Anvil Angle: <b>"..data[name].angle.."°</b>",name)
+			tfm.exec.chatMessage("<J>"..text.ag.."<b>"..data[name].angle.."°</b>",name)
 		end
 		if code == 86 then
 			if data[name].angle < 90 then
 				data[name].angle=data[name].angle+5
 			end
-			tfm.exec.chatMessage("<J>Anvil Angle: <b>"..data[name].angle.."°</b>",name)
+			tfm.exec.chatMessage("<J>"..text.ag.."<b>"..data[name].angle.."°</b>",name)
 		end
 	end
 	if code == 72 then
@@ -521,7 +654,7 @@ function eventPlayerDied(name)
 		end
 		if name == actual_player then
 			data[name].current_coins=math.floor(data[name].current_coins/2)
-			tfm.exec.chatMessage("The following player commited suicide: "..actual_player)
+			tfm.exec.chatMessage(""..text.suicide..""..actual_player)
 			setScores(name,0,false)
 			mode="wait3"
 			tfm.exec.setGameTime(6)
@@ -534,11 +667,11 @@ function eventPlayerDied(name)
 			if actual_player == name then
 				data[actual_player].current_coins=0
 				setScores(actual_player,0,false)
-				tfm.exec.chatMessage("The following player commited suicide: "..actual_player)
+				tfm.exec.chatMessage(""..text.suicide..""..actual_player)
 			else
 				data[actual_player].current_coins=data[actual_player].current_coins-5
 				setScores(actual_player,-5,true)
-				tfm.exec.chatMessage("<VP>Oh no! "..actual_player.." has killed a player of her team: "..name)
+				tfm.exec.chatMessage("<VP>"..text.tk1.."<b>"..actual_player.."</b>"..text.tk2..""..name..".")
 			end
 		else
 			data[name].current_coins=math.floor(data[name].current_coins/2)
@@ -588,7 +721,7 @@ function lobby()
 				setScores(name,0,false)
 			else
 				tfm.exec.killPlayer(name)
-				tfm.exec.chatMessage("<R>This account was banned of this room.",name)
+				tfm.exec.chatMessage("<R>"..text.banned.."",name)
 			end
 		end
 	end
@@ -602,7 +735,7 @@ function eventNewGame()
 		tfm.exec.setGameTime(20)
 		skipsq=math.ceil(mices/2)
 		if mices >= 8 then
-			tfm.exec.chatMessage("<ROSE>If you want to skip this map, please type !skip. Is needed a minimum of <b>"..skipsq.."</b> votes.")
+			tfm.exec.chatMessage(""..text.skip1.."<b>"..skipsq.."</b>"..text.tk2.."")
 		end
 		moveTeams()
 		for name,player in next,tfm.get.room.playerList do
@@ -614,7 +747,7 @@ function eventNewGame()
 	end
 	actual_shooter="-"
 	if mode == "lobby" then
-		tfm.exec.chatMessage("<VP>#anvilwar Map Submissions are now open!<br><BL>https://atelier801.com/topic?t=894824&f=6")
+		tfm.exec.chatMessage("<VP>"..text.submission.."<br><BL>https://atelier801.com/topic?t=894824&f=6")
 	end
 end
 
@@ -638,14 +771,14 @@ function eventChatCommand(name,command)
 	if (command:sub(0,2) == "pw") and data[name].ranking >= 2 then
 		tfm.exec.setRoomPassword(tostring(command:sub(4)))
 		if string.len(command:sub(4)) > 0 then
-			tfm.exec.chatMessage("Password changed to: "..command:sub(4).."",name)
+			tfm.exec.chatMessage(""..text.pw..""..command:sub(4).."",name)
 		else
-			tfm.exec.chatMessage("Password cleared.",name)
+			tfm.exec.chatMessage(text.pw0,name)
 		end
 	end
 	if (command:sub(0,5) == "limit") and data[name].ranking >= 2 then
 		tfm.exec.setRoomMaxPlayers(tonumber(command:sub(7)))
-		tfm.exec.chatMessage("New room mice limit: "..command:sub(7).."",name)
+		tfm.exec.chatMessage(""..text.limit..""..command:sub(7).."",name)
 	end
 	if (command:sub(0,3) == "set") and data[name].ranking >= 3 then
 		if data[command:sub(5)] then
@@ -658,9 +791,9 @@ function eventChatCommand(name,command)
 	if (command:sub(0,7) == "testmap") and data[name].ranking >= 2 then
 		if mode == "lobby" then
 			set_map=command:sub(9)
-			tfm.exec.chatMessage("The next map will be loaded: "..command:sub(9).." The room needs to have a least 1 player into each team.",name)
+			tfm.exec.chatMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
 		else
-			tfm.exec.chatMessage("You needs to stay into LOBBY mode to use this command. Use !reset command and try again.",name)
+			tfm.exec.chatMessage(text.load0,name)
 		end
 	end
 	if (command:sub(0,3) == "ban") and data[name].ranking >= 2 then
@@ -670,7 +803,7 @@ function eventChatCommand(name,command)
 				data[command:sub(5)].ranking=-2
 				tfm.exec.killPlayer(command:sub(5))
 				table.insert(banneds,command:sub(5))
-				tfm.exec.chatMessage("<R><b>"..command:sub(5).."</b> was banned of room.")
+				tfm.exec.chatMessage("<R><b>"..command:sub(5).."</b>"..text.ban.."")
 				if mode == "lobby" or mode == "map_sort" or mode == "wait1" or mode == "wait2" then
 					lobby()
 				end
@@ -680,7 +813,7 @@ function eventChatCommand(name,command)
 						if banneds[i] == command:sub(5) then
 							table.remove(banneds,i)
 							data[command:sub(5)].ranking=0
-							tfm.exec.chatMessage("<J><b>"..command:sub(5).."</b> was unbanned of room.")
+							tfm.exec.chatMessage("<J><b>"..command:sub(5).."</b>"..text.ban0.."")
 						end
 					end
 				end
@@ -691,11 +824,11 @@ function eventChatCommand(name,command)
 		if data[name] then
 			if data[name].team == 1 then
 				for _,p in next,players_red do
-					tfm.exec.chatMessage("<font color='#f13503'><font face='Microsoft Sans Serif'>‣<font face='Verdana'> <b>["..name.."]</b> "..command:sub(4).."",p)
+					tfm.exec.chatMessage("<font color='#f13503'><font face='Microsoft Sans Serif'>•<font face='Verdana'> <b>["..name.."]</b> "..command:sub(4).."",p)
 				end
 			elseif data[name].team == 2 then
 				for _,p in next,players_blue do
-					tfm.exec.chatMessage("<font color='#0335f1'><font face='Microsoft Sans Serif'>‣<font face='Verdana'> <b>["..name.."]</b> "..command:sub(4).."",p)
+					tfm.exec.chatMessage("<font color='#0335f1'><font face='Microsoft Sans Serif'>•<font face='Verdana'> <b>["..name.."]</b> "..command:sub(4).."",p)
 				end
 			end
 		end
@@ -705,41 +838,41 @@ function eventChatCommand(name,command)
 	end
 	if command == "anvils" then
 		if data[name].opened == false then
-			tfm.exec.chatMessage("<J>You currently have <b>"..data[name].coins.."</b> AnvilCoins.",name)
+			tfm.exec.chatMessage("<J>"..text.ac.."<b>"..data[name].coins.."</b> AnvilCoins.",name)
 			showMenu(name,0x999999,220,120,360,235,"#anvilwar Anvils","<font size='11.5'>                <b>Default Anvil</b><br>                Cost: 0 ACs<br>                <a href='event:a0'>Equip!</a><br><br>                <b>Red Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a1'>Equip!</a><br><br>                <b>Blue Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a2'>Equip!</a><br><br>                <b>White Anvil</b><br>                Cost: 400 ACs<br>                <a href='event:a3'>Equip!</a>")
 		ui.addTextArea(1005,"<i><font size='11.5'>                <b>Rainbow Anvil</b><br>                Cost: 500 ACs<br>                <a href='event:a4'>Equip!</a><br><br>                <b>Sharingan Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a5'>Equip!</a><br><br>                <b>Black Hole Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a6'>Equip!</a>",name,393,151,175,175,0,0,1.0,true)
 			showAvailableAnvils(name)
 		end
 	end
 	if command == "powerups" then
-		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>")
+		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups",text.powerups)
 	end
 	if command == "commands" then
-		showMenu(name,0x125490,120,90,560,285,"#anvilwar Commands","<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!skip - Vote to skip the current map. Are needed a minimum of votes equivalent of half of mices on the room to skip the current map. This command also only can be used every 15 minutes.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.")
+		showMenu(name,0x125490,120,90,560,285,"#anvilwar Commands",text.commands)
 	end
 	if command == "help" then
-		showMenu(name,0x457426,100,90,600,260,"Help","<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 and Rakan_raster#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Nobody so far :( But you can help translating this module!")
+		showMenu(name,0x457426,100,90,600,260,"Help",text.help)
 	end
 	if command == "skip" then
 		if mode == "wait2" and data[name].skip == false and mices >= 8 then
 			if skip_time > 0 then
-				tfm.exec.chatMessage("<R>This command can be only used in <b>"..skip_time.."</b> seconds.",name)
+				tfm.exec.chatMessage("<R>"..text.skip0.."<b>"..skip_time.."</b>"..text.seconds.."",name)
 			else
 				skips=skips+1
-				tfm.exec.chatMessage("You voted to skip the current map.",name)
+				tfm.exec.chatMessage(text.skip,name)
 				data[name].skip=true
 				if skips > math.ceil(skipsq/2) then
-					tfm.exec.chatMessage("<J><b>"..name.."</b> voted to skip the current map. ("..skips.."/"..skipsq.."")
+					tfm.exec.chatMessage("<J><b>"..name.."</b>"..text.skip1.." ("..skips.."/"..skipsq.."")
 				end
 				if skips >= skipsq then
 					skip_time=900
-					tfm.exec.chatMessage("<ROSE>They voted to skip the current map. This command can be used only every 15 minutes.")
+					tfm.exec.chatMessage("<ROSE>"..text.skip9.."")
 					loop=0
 					mode="map_sort"
 				end
 			end
 		else
-			tfm.exec.chatMessage("<R>This command can be only used with <b>8</b> or more mices, and only at specific situations.",name)
+			tfm.exec.chatMessage("<R>"..text.skip2.."",name)
 		end
 	end
 	if arg[1] == "p" then
@@ -768,7 +901,7 @@ function enterRedTeam(name)
 		data[name].team=1
 		for i=478,481 do
 			ui.removeTextArea(i,name)
-			ui.addTextArea(482,"<font size='16'><font color='#000000'><p align='center'><b><a href='event:quit'>Leave",name,320,210,150,25,0,0,0.9,true)
+			ui.addTextArea(482,"<font size='16'><font color='#000000'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,210,150,25,0,0,0.9,true)
 		end
 	end
 end
@@ -782,13 +915,13 @@ function enterBlueTeam(name)
 		tfm.exec.movePlayer(name,600,280,false,0,0,false)
 		for i=478,481 do
 			ui.removeTextArea(i,name)
-			ui.addTextArea(482,"<font size='16'><font color='#000000'><p align='center'><b><a href='event:quit'>Leave",name,320,210,150,25,0,0,0.9,true)
+			ui.addTextArea(482,"<font size='16'><font color='#000000'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,210,150,25,0,0,0.9,true)
 		end
 	end
 end
 
 function moveTeams()
-	tfm.exec.chatMessage("<VP>Get Ready! The match will start in a few seconds!")
+	tfm.exec.chatMessage("<VP>"..text.getr.."")
 	for _,id in next,images_id do
 		tfm.exec.removeImage(id)
 		images_id={}
@@ -860,99 +993,99 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "pw2" then
 		data[name].opened=false
-		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% during 3 seconds.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>")
+		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups",text.powerups2)
 	end
 	if callback == "a0" then
 		data[name].current_anvil=0
-		tfm.exec.chatMessage("You are now using the <N><b>Default Anvil!</b>",name)
+		tfm.exec.chatMessage(""..text.using.."<N><b>Default Anvil!</b>",name)
 	end
 	if callback == "a1" then
 		if data[name].anvils[1] == 1 then
 			data[name].current_anvil=1
-			tfm.exec.chatMessage("You are now using the <N><b>Red Anvil!</b>",name)
+			tfm.exec.chatMessage(""..text.using.."<N><b>Red Anvil!</b>",name)
 		else
 			if data[name].coins >= 200 then
 				data[name].coins=data[name].coins-200
 				data[name].anvils[1]=1
 				data[name].current_anvil=1
-				tfm.exec.chatMessage("You are now using the <N><b>Red Anvil!</b>",name)
+				tfm.exec.chatMessage(""..text.using.."<N><b>Red Anvil!</b>",name)
 			else
-				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+				tfm.exec.chatMessage("<R>"..text.ac0.."",name)
 			end
 		end
 	end
 	if callback == "a2" then
 		if data[name].anvils[2] == 1 then
 			data[name].current_anvil=2
-			tfm.exec.chatMessage("You are now using the <N><b>Blue Anvil!</b>",name)
+			tfm.exec.chatMessage(""..text.using.."<N><b>Blue Anvil!</b>",name)
 		else
 			if data[name].coins >= 200 then
 				data[name].coins=data[name].coins-200
 				data[name].anvils[2]=1
 				data[name].current_anvil=2
-				tfm.exec.chatMessage("You are now using the <N><b>Blue Anvil!</b>",name)
+				tfm.exec.chatMessage(""..text.using.."<N><b>Blue Anvil!</b>",name)
 			else
-				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+				tfm.exec.chatMessage("<R>"..text.ac0.."",name)
 			end
 		end
 	end
 	if callback == "a3" then
 		if data[name].anvils[3] == 1 then
 			data[name].current_anvil=3
-			tfm.exec.chatMessage("You are now using the <N><b>White Anvil!</b>",name)
+			tfm.exec.chatMessage(""..text.using.."<N><b>White Anvil!</b>",name)
 		else
 			if data[name].coins >= 400 then
 				data[name].coins=data[name].coins-400
 				data[name].anvils[3]=1
 				data[name].current_anvil=3
-				tfm.exec.chatMessage("You are now using the <N><b>White Anvil!</b>",name)
+				tfm.exec.chatMessage(""..text.using.."<N><b>White Anvil!</b>",name)
 			else
-				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+				tfm.exec.chatMessage("<R>"..text.ac0.."",name)
 			end
 		end
 	end
 	if callback == "a4" then
 		if data[name].anvils[4] == 1 then
 			data[name].current_anvil=4
-			tfm.exec.chatMessage("You are now using the <N><b>Rainbow Anvil!</b>",name)
+			tfm.exec.chatMessage(""..text.using.."<N><b>Rainbow Anvil!</b>",name)
 		else
 			if data[name].coins >= 500 then
 				data[name].coins=data[name].coins-500
 				data[name].anvils[4]=1
 				data[name].current_anvil=4
-				tfm.exec.chatMessage("You are now using the <N><b>Rainbow Anvil!</b>",name)
+				tfm.exec.chatMessage(""..text.using.."<N><b>Rainbow Anvil!</b>",name)
 			else
-				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+				tfm.exec.chatMessage("<R>"..text.ac0.."",name)
 			end
 		end
 	end
 	if callback == "a5" then
 		if data[name].anvils[5] == 1 then
 			data[name].current_anvil=5
-			tfm.exec.chatMessage("You are now using the <N><b>Sharingan Anvil!</b>",name)
+			tfm.exec.chatMessage(""..text.using.."<N><b>Sharingan Anvil!</b>",name)
 		else
 			if data[name].coins >= 1000 then
 				data[name].coins=data[name].coins-1000
 				data[name].anvils[5]=1
 				data[name].current_anvil=5
-				tfm.exec.chatMessage("You are now using the <N><b>Sharingan Anvil!</b>",name)
+				tfm.exec.chatMessage(""..text.using.."<N><b>Sharingan Anvil!</b>",name)
 			else
-				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+				tfm.exec.chatMessage("<R>"..text.ac0.."",name)
 			end
 		end
 	end
 	if callback == "a6" then
 		if data[name].anvils[6] == 1 then
 			data[name].current_anvil=6
-			tfm.exec.chatMessage("You are now using the <N><b>Black Hole Anvil!</b>",name)
+			tfm.exec.chatMessage(""..text.using.."<N><b>Black Hole Anvil!</b>",name)
 		else
 			if data[name].coins >= 1000 then
 				data[name].coins=data[name].coins-1000
 				data[name].anvils[6]=1
 				data[name].current_anvil=6
-				tfm.exec.chatMessage("You are now using the <N><b>Black Hole Anvil!</b>",name)
+				tfm.exec.chatMessage(""..text.using.."<N><b>Black Hole Anvil!</b>",name)
 			else
-				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+				tfm.exec.chatMessage("<R>"..text.ac0.."",name)
 			end
 		end
 	end
@@ -962,13 +1095,13 @@ function advanceLevel(name)
 	data[name].level=data[name].level+1
 	data[name].exp=data[name].exp-data[name].maxp
 	data[name].maxp=data[name].maxp*1.4
-	tfm.exec.chatMessage("<N><b>"..name.."</b> reached the level <b>"..data[name].level.."</b>!")
+	tfm.exec.chatMessage("<N><b>"..name.."</b> "..text.level.." <b>"..data[name].level.."</b>!")
 end
 
 function drawMatch()
 	mode="end"
 	tfm.exec.setGameTime(20)
-	tfm.exec.chatMessage("<J><b>Draw!</b><br>The lobby screen will load shortly.")
+	tfm.exec.chatMessage("<J>"..text.draw.."")
 	for _,name in next,players_red do
 		calculatePoints(name)
 	end
@@ -987,7 +1120,7 @@ function victoryBlue()
 		data[name].wins=data[name].wins+1
 	end
 	tfm.exec.setGameTime(20)
-	tfm.exec.chatMessage("<BL><b>Victory of the BLUE team!</b><br>The lobby screen will load shortly.")
+	tfm.exec.chatMessage("<BL>"..text.winblue.."")
 	for _,name in next,players_red do
 		calculatePoints(name)
 	end
@@ -1006,7 +1139,7 @@ function victoryRed()
 		data[name].wins=data[name].wins+1
 	end
 	tfm.exec.setGameTime(20)
-	tfm.exec.chatMessage("<R><b>Victory of the RED team!</b><br>The lobby screen will load shortly.")
+	tfm.exec.chatMessage("<R>"..text.winred.."")
 	for _,name in next,players_red do
 		calculatePoints(name)
 	end
@@ -1037,8 +1170,8 @@ function setShooter()
 	end
 	set_player=""
 	tfm.exec.addShamanObject(0, tfm.get.room.playerList[actual_player].x, tfm.get.room.playerList[actual_player].y-55, 0, 0, 0, false)
-	tfm.exec.chatMessage("<N>Actual shooter: <b>"..actual_player.."</b>")
-	tfm.exec.chatMessage("<VP><b>It's your time to shoot.</b><br><J>Use Z and X keys to change the anvil power, C and V to change the anvil angle and SPACEBAR to shoot. Type !help for more information.<br><br><N>You have <b>"..data[actual_player].score.."</b> points to use with powerups.",actual_player)
+	tfm.exec.chatMessage("<N>"..text.as.." <b>"..actual_player.."</b>")
+	tfm.exec.chatMessage("<VP>"..text.as1..""..data[actual_player].score.."",actual_player)
 	enabled=true
 	mode="shoot"
 end
@@ -1134,15 +1267,15 @@ function eventLoop(passed,remain)
 		if set_map == "" then
 			if loop < 8 then
 				loop=loop+1
-				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>Randomizing map...",nil,102,317,600,45,0,0,1.0,true)
-				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>Randomizing map...",nil,100,315,600,45,0,0,1.0,true)
+				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm.."",nil,102,317,600,45,0,0,1.0,true)
+				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm.."",nil,100,315,600,45,0,0,1.0,true)
 			map_id=math.random(1,rawlen(maps))
 				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
 				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,355,600,45,0,0,1.0,true)
 			elseif loop == 8 then
 				current_map=maps[map_id]
-				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>Selected Map : ",nil,102,317,600,45,0,0,1.0,true)
-				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>Selected Map : ",nil,100,315,600,45,0,0,1.0,true)
+				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm1.."",nil,102,317,600,45,0,0,1.0,true)
+				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm1.."",nil,100,315,600,45,0,0,1.0,true)
 				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
 				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><VP><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,355,600,45,0,0,1.0,true)
 				mode="wait1"
@@ -1150,8 +1283,8 @@ function eventLoop(passed,remain)
 			end
 		else
 			current_map=set_map
-			ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>Selected Map : ",nil,102,317,600,45,0,0,1.0,true)
-			ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>Selected Map : ",nil,100,315,600,45,0,0,1.0,true)
+			ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm1.."",nil,102,317,600,45,0,0,1.0,true)
+			ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm1.."",nil,100,315,600,45,0,0,1.0,true)
 			ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..current_map.."",nil,102,357,600,45,0,0,1.0,true)
 			ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><VP><i>"..current_map.."",nil,100,355,600,45,0,0,1.0,true)
 			mode="wait1"
@@ -1169,10 +1302,16 @@ function eventLoop(passed,remain)
 	if mode == "wait2" or mode == "wait3" or mode == "shoot" then
 		if general_time > 0 then
 			general_time=general_time-0.5
+			if general_time == 60 then
+				tfm.exec.chatMessage("<ROSE>"..text.t60s.."")
+			end
+			if general_time == 30 then
+				tfm.exec.chatMessage("<ROSE>"..text.t30s.."")
+			end
 		end
 		if time_passed == 60 and powerups == false then
 			powerups=true
-			tfm.exec.chatMessage("The powerups are now available!")
+			tfm.exec.chatMessage(text.powerups_a)
 		end
 		if time_passed % 30 == 0 then
 			for name,player in next,tfm.get.room.playerList do
@@ -1201,7 +1340,7 @@ function eventLoop(passed,remain)
 		time_remain=6
 		tfm.exec.setGameTime(6)
 		enabled=false
-		tfm.exec.chatMessage("<R><b>Time is up!</b> The next team will play now.")
+		tfm.exec.chatMessage("<R>"..text.time.."")
 	end
 	if mode == "wait2" and time_remain <= -1 then
 		mode="shoot"
@@ -2222,352 +2361,6 @@ end
 iniciar()
 end
 
-initCd = function()
--- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 3 ANTES DE INICIAR!!
--- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
-admin="" -- colocar seu nome aqui, funcorp!
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
-do
-	tfm.exec["disable"..f](true)
-end
-tfm.exec.disableAfkDeath(false)
-data={}
-jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
-quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
-limites={assasinos=0,detetives=0,medicos=0}
-modo="inicial"
-mapa="@2684847"
-contador=0
-rodada=0
-tfm.exec.setRoomMaxPlayers(48)
-system.disableChatCommandDisplay("reiniciar")
-system.disableChatCommandDisplay("help")
-function eventChatCommand(name,comando)
-	if comando == "reiniciar" and name == admin then
-		tfm.exec.newGame(mapa)
-	end
-	if comando == "help" then
-		tfm.exec.chatMessage("Bem-vindo ao module Cidade Dorme. Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas. O jogo irá explicar tudo enquanto a partida ocorre.",name)
-	end
-end
-function eventNewGame()
-	ui.setMapName("           <b>Cidade Dorme v3</b>  <BL>|  <N>Versão RTM 1412.006 gerenciada por Rakan_raster#0000.<")
-	contador=0
-	tfm.exec.setGameTime(40)
-	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
-	quant={assasinos=0,detetives=0,medicos=0}
-	modo="inicial"
-	for name,player in pairs(tfm.get.room.playerList) do
-		jogadores.vivos=jogadores.vivos+1
-		data[string.lower(name)]={type=0,morre=false}
-		table.insert(jogadores.lista,string.lower(name))
-		if string.find(tfm.get.room.name,name) then
-			admin=name
-			tfm.exec.chatMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar a partida.")
-		end
-	end
-	rodada=0
-end
-function escolherAssasinos(name)
-	if data[string.lower(name)] and data[string.lower(name)].type == 0 then
-		data[string.lower(name)].type=1
-		quant.assasinos=quant.assasinos+1
-		tfm.exec.chatMessage("Você foi escolhido(a) como assasino(a). Sua função será matar os outros jogadores. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
-	end
-end
-function escolherMedicos(name)
-	if data[string.lower(name)] and data[string.lower(name)].type == 0 then
-		data[string.lower(name)].type=2
-		quant.medicos=quant.medicos+1
-		tfm.exec.chatMessage("Você foi escolhido(a) como médico(a). Sua função será salvar os jogadores dos assasinos. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
-	end
-end
-function escolherDetetives(name)
-	if data[string.lower(name)] and data[string.lower(name)].type == 0 then
-		data[string.lower(name)].type=3
-		quant.detetives=quant.detetives+1
-		tfm.exec.chatMessage("Você foi escolhido(a) como detetive. Sua função será descobrir e matar os assasinos vivos. O jogo irá te explicar o processo passo a passo quando a partida iniciar.",name)
-	end
-end
-function eventNewPlayer(name)
-	data[string.lower(name)]={type=-1,morre=false}
-	tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1412.006<br><p align='left'>",name)
-end
-function eventPlayerDied(name)
-	if data[string.lower(name)].type == 0 then
-		data[string.lower(name)].type=-1
-	end
-	if data[string.lower(name)].type == 1 then
-		quant.assasinos=quant.assasinos-1
-	elseif data[string.lower(name)].type == 2 then
-		quant.medicos=quant.medicos-1
-	elseif data[string.lower(name)].type == 3 then
-		quant.detetives=quant.detetives-1
-	end
-	jogadores.lista={}
-	for name,player in pairs(tfm.get.room.playerList) do
-	if not tfm.get.room.playerList[name].isDead then
-		table.insert(jogadores.lista,string.lower(name))
-	end
-	end
-	jogadores.vivos=jogadores.vivos-1
-end
-function eventPlayerLeft(name)
-	jogadores.lista={}
-	for name,player in pairs(tfm.get.room.playerList) do
-	if not tfm.get.room.playerList[name].isDead then
-		table.insert(jogadores.lista,string.lower(name))
-	end
-	end
-	if data[string.lower(name)].type == 1 and not tfm.get.room.playerList[name].isDead then
-		quant.assasinos=quant.assasinos-1
-	elseif data[string.lower(name)].type == 2 and not tfm.get.room.playerList[name].isDead then
-		quant.medicos=quant.medicos-1
-	elseif data[string.lower(name)].type == 3 and not tfm.get.room.playerList[name].isDead then
-		quant.detetives=quant.detetives-1
-	end
-	data[string.lower(name)].type=-1
-end
-function definirLimites()
-	if jogadores.vivos < 10 then
-		limites.assasinos=1; limites.medicos=1; limites.detetives=1;
-	elseif jogadores.vivos >= 10 and jogadores.vivos < 16 then
-		limites.assasinos=2; limites.medicos=1; limites.detetives=2;
-	elseif jogadores.vivos >= 16 and jogadores.vivos < 22 then
-		limites.assasinos=3; limites.medicos=2; limites.detetives=3;
-	elseif jogadores.vivos >= 22 and jogadores.vivos < 28 then
-		limites.assasinos=4; limites.medicos=3; limites.detetives=4;
-	elseif jogadores.vivos >= 28 and jogadores.vivos < 38 then
-		limites.assasinos=5; limites.medicos=3; limites.detetives=5;
-	elseif jogadores.vivos >= 38 then
-		limites.assasinos=6; limites.medicos=4; limites.detetives=5;
-	end
-end
-function sortearDetetives()
-	for i=1,limites.detetives do
-		local jogador=jogadores.lista[math.random(#jogadores.lista)]
-		if data[jogador] and data[jogador].type == 0 then
-			escolherDetetives(jogador)
-			jogadores.lista={}
-			for name,player in pairs(tfm.get.room.playerList) do
-				if data[string.lower(name)].type == 0 and not tfm.get.room.playerList[name].isDead then
-					table.insert(jogadores.lista,string.lower(name))
-				end
-			end
-		end
-	end
-end
-function sortearMedicos()
-	for i=1,limites.detetives do
-		local jogador=jogadores.lista[math.random(#jogadores.lista)]
-		if data[jogador] and data[jogador].type == 0 then
-			escolherMedicos(jogador)
-			jogadores.lista={}
-			for name,player in pairs(tfm.get.room.playerList) do
-				if data[string.lower(name)].type == 0 and not tfm.get.room.playerList[name].isDead then
-					table.insert(jogadores.lista,string.lower(name))
-				end
-			end
-		end
-	end
-	sortearDetetives()
-end
-function sortearAssasinos()
-	for i=1,limites.assasinos do
-		local jogador=jogadores.lista[math.random(#jogadores.lista)]
-		if data[jogador] and data[jogador].type == 0 then
-			escolherAssasinos(jogador)
-			jogadores.lista={}
-			for name,player in pairs(tfm.get.room.playerList) do
-				if data[string.lower(name)].type == 0 and not tfm.get.room.playerList[name].isDead then
-					table.insert(jogadores.lista,string.lower(name))
-				end
-			end
-		end
-	end
-	sortearMedicos()
-end
-function eventLoop()
-	contador=contador+0.5
-	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 1412.006<")
-	end
-	if contador == 1 then
-		if admin == "" then
-			tfm.exec.chatMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
-		else
-			if jogadores.vivos >= 5 then
-				tfm.exec.chatMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 1412.006<br><p align='left'>")
-			else
-				tfm.exec.chatMessage("<R>Número insuficiente de jogadores na sala. O script requer pelo menos 5 jogadores.")
-				contador=-30
-			end
-		end
-	end
-	if contador == 35 then
-		if jogadores.vivos >= 5 then
-			tfm.exec.chatMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><R>POR FAVOR, NINGUÉM DIGA QUEM É QUEM PORQUE ESTRAGA O JOGO!!")
-			definirLimites()
-		else
-			tfm.exec.chatMessage("<R>Ratos ativos insuficientes na sala. Reiniciando o código...")
-			contador=990
-		end
-	end
-	if contador == 40 then
-		sortearAssasinos()
-		modo="aguardando"
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)].type == 0 then
-				tfm.exec.chatMessage("<J>Você foi escolhido como vítima.",name)
-			end
-		end
-	end
-	if contador == 48 then
-		tfm.exec.chatMessage("<J>A rodada será iniciada em 10 segundos! SE PREPAREM!")
-		jogadores.vitimas=0
-	end
-	if contador == 58 then
-		tfm.exec.chatMessage("<VP>O JOGO COMEÇOU!")
-		rodada=rodada+1
-	end
-	if contador == 62 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 1 and tfm.get.room.playerList[name].isDead == false then
-				ui.addPopup(101,2,"Quem deseja matar? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!:",name,10,320,780,true)
-			end
-		end
-	end
-	if contador == 92 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 1 then
-				ui.addPopup(101,0,"",name,-1710,325,20,true)
-			end
-			if data[string.lower(name)] and data[string.lower(name)].type == 2 and tfm.get.room.playerList[name].isDead == false then
-				ui.addPopup(102,2,"Quem deseja salvar dos assasinos? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,320,780,true)
-			end
-		end
-	end
-	if contador == 122 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 2 then
-				ui.addPopup(102,0,"",name,-1710,325,20,true)
-			end
-		end
-		tfm.exec.chatMessage("<VP>Tempo esgotado! Hora da verdade... VAMOS VER QUEM MORREU")
-	end
-	if contador == 127 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].morre == true and not tfm.get.room.playerList[name].isDead then
-				tfm.exec.killPlayer(name)
-				if data[string.lower(name)].type == 0 then
-					tfm.exec.chatMessage("<R>Os assasinos mataram a vítima <b>"..name.."!</b>")
-				elseif data[string.lower(name)].type == 1 then
-					tfm.exec.chatMessage("<R>FOGO AMIGO! Os assasinos mataram o assasino <b>"..name.."!</b>")
-				elseif data[string.lower(name)].type == 2 then
-					tfm.exec.chatMessage("<R>Os assasinos mataram o médico <b>"..name.."!</b>")
-				elseif data[string.lower(name)].type == 3 then
-					tfm.exec.chatMessage("<R>Os assasinos mataram o detetive <b>"..name.."!</b>")
-				end
-			end
-		end
-		if jogadores.vitimas == 0 then
-			tfm.exec.chatMessage("<VP>Ufa! Ninguém foi morto!")
-		end
-	end
-	if contador == 135 then
-		if quant.assasinos == 0 then
-			tfm.exec.chatMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=970
-		elseif quant.detetives == 0 then
-			tfm.exec.chatMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=970
-		else
-			tfm.exec.chatMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
-		end
-	end
-	if contador == 140 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 3 and tfm.get.room.playerList[name].isDead == false then
-				ui.addPopup(103,2,"Quem você acha que é o assasino? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,320,780,true)
-			end
-		end
-	end
-	if contador == 170 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].type == 3 then
-				ui.addPopup(103,0,"",name,-1910,325,20,true)
-			end
-		end
-		tfm.exec.chatMessage("<VP>Tempo esgotado! Vamos ver no que deu?")
-	end
-	if contador == 175 then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if data[string.lower(name)] and data[string.lower(name)].morre == true and not tfm.get.room.playerList[name].isDead then
-				tfm.exec.killPlayer(name)
-				if data[string.lower(name)].type == 0 then
-					tfm.exec.chatMessage("<R>OH NÃO! Os detetives mataram a vítima <b>"..name.."!</b>")
-				elseif data[string.lower(name)].type == 1 then
-					tfm.exec.chatMessage("<VP>Os detetives mataram o assasino <b>"..name.."!</b>")
-				elseif data[string.lower(name)].type == 2 then
-					tfm.exec.chatMessage("<R>OH NÃO! Os detetives mataram o médico <b>"..name.."!</b>")
-				elseif data[string.lower(name)].type == 3 then
-					tfm.exec.chatMessage("<R>FOGO AMIGO! Os detetives mataram o detetive <b>"..name.."!</b>")
-				end
-			end
-		end
-	end
-	if contador == 180 then
-		if quant.assasinos == 0 then
-			tfm.exec.chatMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=970
-		elseif quant.detetives == 0 then
-			tfm.exec.chatMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=970
-		else
-			tfm.exec.chatMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
-			contador=42
-		end
-	end
-	if contador >= 1000 then
-		tfm.exec.newGame(mapa)
-	end
-end
-function eventPopupAnswer(id,name,message)
-	if id == 101 and contador >= 60 and contador <= 93 then
-		if data[string.lower(message)] and data[string.lower(message)].morre == false then
-			data[string.lower(message)].morre=true
-			jogadores.vitimas=jogadores.vitimas-1
-			tfm.exec.chatMessage("Você decidiu matar o jogador "..message..".",name)
-		else
-			tfm.exec.chatMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
-			ui.addPopup(101,2,"Quem deseja matar? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!:",name,10,320,780,true)
-		end
-	end
-	if id == 102 and contador >= 90 and contador <= 123 then
-		if data[string.lower(message)] then
-			if data[string.lower(message)].morre == true then
-				data[string.lower(message)].morre=false
-				jogadores.vitimas=jogadores.vitimas+1
-			end
-			tfm.exec.chatMessage("Você decidiu salvar o jogador "..message..".",name)
-		else
-			tfm.exec.chatMessage("<R>Escolha inválida. Você tentou salvar um jogador que não existe ou que já está morto.",name)
-			ui.addPopup(102,2,"Quem deseja salvar dos assasinos? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,320,780,true)
-		end
-	end
-	if id == 103 and contador >= 138 and contador <= 171 then
-		if data[string.lower(message)] and data[string.lower(message)].morre == false then
-			data[string.lower(message)].morre=true
-			tfm.exec.chatMessage("Você acha que "..message.." é o assasino.",name)
-		else
-			tfm.exec.chatMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
-			ui.addPopup(103,2,"Quem você acha que é o assasino? POR FAVOR, NÃO SE ESQUEÇA DE POR A #TAG NO NOME!!!",name,10,320,780,true)
-		end
-	end
-end
-tfm.exec.newGame(mapa)
-end
-
 initPool = function()
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
@@ -2615,14 +2408,14 @@ for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","Physical
 end
 tfm.exec.newGame("@7803705")
 function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00deadfender<br>/room #anvilwar00pool<br>/room #anvilwar00cd#"..name.."<br><br><BL>Do you want to see your module included into #anvilwar rooms? Contact <b>Spectra_phantom#6089</b> on Transformice or <b>BarodiusEleven#2941</b> on Discord.")
+	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00deadfender<br>/room #anvilwar00pool<br><br><BL>Do you want to see your module included into #anvilwar rooms? Contact <b>Spectra_phantom#6089</b> on Transformice or <b>BarodiusEleven#2941</b> on Discord.")
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.172<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.172.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
@@ -2631,9 +2424,6 @@ else
 	elseif string.find(tfm.get.room.name,"deadfender") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'deadfender' on room name.<br>Initialising #deadfender module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initDeadfender()
-	elseif string.find(tfm.get.room.name,"cd") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'cd' on room name.<br>Initialising #cd module...")
-		initCd()
 	elseif string.find(tfm.get.room.name,"pool") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'pool' on room name.<br>Initialising #pool module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initPool()
