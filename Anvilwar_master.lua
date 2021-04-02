@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.170
+-- Transformice #anvilwar module loader - Version 2.171
 -- By Spectra_phantom#6089
 -- Included sub-modules: #cd, #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.170",
-	_MAINV = "40633.124 Beta 4",
+	_VERSION = "2.171",
+	_MAINV = "40634.125 Beta 4.1",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,9 +13,9 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 40633.124 Beta 4
-Compilation date : 04/01/2021 13:58 UTC
-Sending player : Jhinsword350#0000
+Version : RTM 40634.125 Beta 4.1
+Compilation date : 04/01/2021 22:27 UTC
+Sending player : Morganadxana#0000
 
 Number of maps : 132
 Number of module special members : 20 ]]--
@@ -61,7 +61,7 @@ data={}
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","skip","sync","pw","commands","powerups","p","kill","ban","limit","ranking","tc"} do
+for _,g in next,{"reset","help","skip","sync","pw","commands","powerups","p","kill","ban","limit","ranking","tc","anvils"} do
 	system.disableChatCommandDisplay(g)
 end
 tfm.exec.setRoomMaxPlayers(30)
@@ -77,6 +77,21 @@ end
 function showImage(name,link,x,y,scalex,scaley)
 	image_id=tfm.exec.addImage(link,":1",x,y,name,scalex,scaley,0,0.95)
 	table.insert(images_id,image_id)
+end
+
+function showAvailableAnvils(name)
+	i=0
+	for _,link in next,{"1788f85d7e2.png","1788f85ef53.png","1788f8606c4.png","1788f861e33.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",230,120+(i*50),name,1.0,1.0,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	i=0
+	for _,link in next,{"1788f8635a6.png","1788f864d16.png","1788f866489.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",400,120+(i*50),name,1.0,1.0,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
 end
 
 function showTeams(name)
@@ -98,10 +113,10 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - Version RTM 40633.124 Beta IV</i>",name,52,19,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - Version RTM 40633.124 <R>Beta IV</i>",name,50,17,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>Compilation date : 04/01/2021 13:58 UTC - Uploaded by Jhinsword350#0000</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>Compilation date : 04/01/2021 13:58 UTC - Uploaded by Jhinsword350#0000</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - Version RTM 40634.125 Beta 4.1</i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - Version RTM 40634.125 <R>Beta 4.1</i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>Compilation date : 04/01/2021 22:27 UTC - Uploaded by Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>Compilation date : 04/01/2021 22:27 UTC - Uploaded by Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
 end
 
 function eventRanking(name)
@@ -163,7 +178,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>Version <b>RTM 40633.124</b> <R>Beta IV   <G>|   <N>Mices on Room : <V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>Version <b>RTM 40634.125</b> <R>Beta 4.1   <G>|   <N>Mices on Room : <V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local minutos=math.floor(general_time/60)
 		local segundos=math.floor(general_time-(minutos*60))
@@ -173,7 +188,24 @@ function updateTextBar()
 			ui.setMapName("<N><b>Actual Shooter :</b> <V>"..actual_player.."   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..minutos..":0"..segundos.."</b> <J>("..time_remain..")<")
 		end
 	elseif mode == "end" then
-			ui.setMapName("<VP><b>End of game! The lobby screen will be loaded in a few seconds.</b>   <G>|   <N>Mices on Room : <V><b>"..mices.."</b><")
+		ui.setMapName("<VP><b>End of game! The lobby screen will be loaded in a few seconds.</b>   <G>|   <N>Mices on Room : <V><b>"..mices.."</b><")
+	end
+end
+
+function spawnAnvil(object,x,y,xp,yp,ghost)
+	id=tfm.exec.addShamanObject(object,x,y,xp,yp,ghost)
+	if data[actual_player].current_anvil == 1 then
+		tfm.exec.addImage("1788f85ef53.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 2 then
+		tfm.exec.addImage("1788f8606c4.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 3 then
+		tfm.exec.addImage("1788f861e33.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 4 then
+		tfm.exec.addImage("1788f8635a6.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 5 then
+		tfm.exec.addImage("1788f864d16.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 6 then
+		tfm.exec.addImage("1788f866489.png","#"..id.."",-20,-12)
 	end
 end
 
@@ -203,16 +235,24 @@ function updatePlayerList()
 	end
 end
 
+function removeImagePlayers(name)
+	if rawlen(data[name].active_imgs) > 0 then
+		for _,id in next,data[name].active_imgs do
+			tfm.exec.removeImage(id)
+		end
+		data[name].active_imgs={}
+	end
+end
+
 function eventNewPlayer(name)
 	mices=mices+1
 	if not data[name] then
 		data[name]={level=1,exp=0,maxp=100,score=0,kills=0,wins=0,matches=0,killeds=0,eff=0.0,winrate=0.0,coins=50,multikills=0,
-		killed=false,souris=false,team=0,ranking=0,skip=false,angle=45,power=5,powerup=0,
-		current_coins=0,opened=false}
+		killed=false,team=0,ranking=0,skip=false,angle=45,power=5,powerup=0,
+		current_coins=0,opened=false,active_imgs={},anvils={0,0,0,0,0,0},current_anvil=0}
 		table.insert(playersList,name)
 	end
 	if name:sub(1,1) == "*" then
-		data[name].souris=true
 		data[name].ranking=-1
 	end
 	if string.find(tfm.get.room.name,name) then
@@ -225,7 +265,7 @@ function eventNewPlayer(name)
 	system.bindMouse(name,true)
 	if mode == "lobby" then
 		if data[name] then
-			if data[name].souris == false then
+			if data[name].ranking >= 0 then
 				showImage(name,"1788ddc0a4c.png",0,0,1.0,1.0)
 				showTeams(name)
 				showLobbyText(name)
@@ -258,11 +298,11 @@ end
 function anvilRain()
 	if data[actual_player].team == 1 then
 		for i=1,5 do
-			tfm.exec.addShamanObject(10,math.random(850,1500),100,0,1,false)
+			spawnAnvil(10,math.random(850,1500),100,0,1,false)
 		end
 	elseif data[actual_player].team == 2 then
 		for i=1,5 do
-			tfm.exec.addShamanObject(10,math.random(100,750),100,0,1,false)
+			spawnAnvil(10,math.random(100,750),100,0,1,false)
 		end
 	end
 end
@@ -287,21 +327,21 @@ function eventKeyboard(name,code,down,x,y)
 	if mode == "shoot" and actual_player == name and enabled == true then
 		if code == 32 then
 			if data[name].team == 1 then
-				tfm.exec.addShamanObject(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*2),-5-(data[name].power*0.5),false)
+				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*2),-5-(data[name].power*0.5),false)
 				if data[name].powerup == 1 then
-					tfm.exec.addShamanObject(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*2),-5-(data[name].power*0.5),false)
+					id=spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*2),-5-(data[name].power*0.5),false)
 				elseif data[name].powerup == 2 then
 					for i=1,2 do
-						tfm.exec.addShamanObject(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*2),-5-(data[name].power*0.5),false)
+						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*2),-5-(data[name].power*0.5),false)
 					end
 				end
 			elseif data[name].team == 2 then
-				tfm.exec.addShamanObject(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*2)*-1,-5-(data[name].power*0.5),false)
+				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*2)*-1,-5-(data[name].power*0.5),false)
 				if data[name].powerup == 1 then
-					tfm.exec.addShamanObject(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*2)*-1,-5-(data[name].power*0.5),false)
+					spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*2)*-1,-5-(data[name].power*0.5),false)
 				elseif data[name].powerup == 2 then
 					for i=1,2 do
-						tfm.exec.addShamanObject(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*2)*-1,-5-(data[name].power*0.5),false)
+						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*2)*-1,-5-(data[name].power*0.5),false)
 					end
 				end
 			end
@@ -421,7 +461,7 @@ function eventPlayerLeft(name)
 end
 
 function eventPlayerDied(name)
-	if mode == "lobby" then
+	if mode == "lobby" and data[name].ranking >= 0 then
 		tfm.exec.respawnPlayer(name)
 	end
 	if mode == "wait2" and time_passed < 20 or mode == "end" then
@@ -492,18 +532,22 @@ function lobby()
 		ui.removeTextArea(i,nil)
 	end
 	for name,player in next,tfm.get.room.playerList do
+		removeImagePlayers(name)
 		showLobbyText(name)
 		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
 			ui.removeTextArea(i,name)
 		end
 		if data[name] then
 			data[name].opened=false
-			if data[name].souris == false and data[name].ranking >= 0 then
+			if data[name].ranking >= 0 then
 				showTeams(name)
 				showImage(name,"1788ddc0a4c.png",0,0,1.0,1.0)
 				data[name].team=0
 				data[name].current_coins=0
 				setScores(name,0,false)
+			else
+				tfm.exec.killPlayer(name)
+				tfm.exec.chatMessage("<R>This account was banned of this room.",name)
 			end
 		end
 	end
@@ -565,12 +609,12 @@ function eventChatCommand(name,command)
 			if data[command:sub(5)].ranking == 0 then
 				removeTeam(command:sub(5))
 				data[command:sub(5)].ranking=-2
-				if mode == "lobby" or mode == "map_sort" or mode == "wait1" or mode == "wait2" then
-					lobby()
-				end
 				tfm.exec.killPlayer(command:sub(5))
 				table.insert(banneds,command:sub(5))
 				tfm.exec.chatMessage("<R><b>"..command:sub(5).."</b> was banned of room.")
+				if mode == "lobby" or mode == "map_sort" or mode == "wait1" or mode == "wait2" then
+					lobby()
+				end
 			elseif data[command:sub(5)].ranking == -2 then
 				if rawlen(banneds) > 0 then
 					for i=1,rawlen(banneds) do
@@ -600,11 +644,19 @@ function eventChatCommand(name,command)
 	if command == "ranking" then
 		eventRanking(name)
 	end
+	if command == "anvils" then
+		if data[name].opened == false then
+			tfm.exec.chatMessage("<J>You currently have <b>"..data[name].coins.."</b> AnvilCoins.",name)
+			showMenu(name,0x999999,220,120,360,235,"#anvilwar Anvils","<font size='11.5'>                <b>Default Anvil</b><br>                Cost: 0 ACs<br>                <a href='event:a0'>Equip!</a><br><br>                <b>Red Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a1'>Equip!</a><br><br>                <b>Blue Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a2'>Equip!</a><br><br>                <b>White Anvil</b><br>                Cost: 400 ACs<br>                <a href='event:a3'>Equip!</a>")
+		ui.addTextArea(1005,"<i><font size='11.5'>                <b>Rainbow Anvil</b><br>                Cost: 500 ACs<br>                <a href='event:a4'>Equip!</a><br><br>                <b>Sharingan Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a5'>Equip!</a><br><br>                <b>Black Hole Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a6'>Equip!</a>",name,393,151,175,175,0,0,1.0,true)
+			showAvailableAnvils(name)
+		end
+	end
 	if command == "powerups" then
 		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>")
 	end
 	if command == "commands" then
-		showMenu(name,0x125490,120,90,560,260,"#anvilwar Commands","<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands - Display this message box.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!help (or <b>H</b> key) - Display the game help.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!skip - Vote to skip the current map. Are needed a minimum of votes equivalent of half of mices on the room to skip the current map. This command also only can be used every 15 minutes.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.")
+		showMenu(name,0x125490,120,90,560,280,"#anvilwar Commands","<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!help (or <b>H</b> key) - Display the game help.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!skip - Vote to skip the current map. Are needed a minimum of votes equivalent of half of mices on the room to skip the current map. This command also only can be used every 15 minutes.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.")
 	end
 	if command == "help" then
 		showMenu(name,0x457426,100,90,600,260,"Help","<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 and Rakan_raster#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Nobody so far :( But you can help translating this module!<br><br>#anvilwar topic at Forums: <BL><b>Coming soon!")
@@ -677,6 +729,7 @@ function enterBlueTeam(name)
 end
 
 function moveTeams()
+	tfm.exec.chatMessage("<VP>Get Ready! The match will start in a few seconds!")
 	for _,id in next,images_id do
 		tfm.exec.removeImage(id)
 		images_id={}
@@ -737,6 +790,7 @@ function eventTextAreaCallback(id,name,callback)
 			ui.removeTextArea(i,name)
 		end
 		data[name].opened=false
+		removeImagePlayers(name)
 		if mode == "lobby" or mode == "map_sort" then
 			updatePlayerList()
 		end
@@ -748,6 +802,100 @@ function eventTextAreaCallback(id,name,callback)
 	if callback == "pw2" then
 		data[name].opened=false
 		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups","<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% during 3 seconds.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>")
+	end
+	if callback == "a0" then
+		data[name].current_anvil=0
+		tfm.exec.chatMessage("You are now using the <N><b>Default Anvil!</b>",name)
+	end
+	if callback == "a1" then
+		if data[name].anvils[1] == 1 then
+			data[name].current_anvil=1
+			tfm.exec.chatMessage("You are now using the <N><b>Red Anvil!</b>",name)
+		else
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
+				data[name].anvils[1]=1
+				data[name].current_anvil=1
+				tfm.exec.chatMessage("You are now using the <N><b>Red Anvil!</b>",name)
+			else
+				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+			end
+		end
+	end
+	if callback == "a2" then
+		if data[name].anvils[2] == 1 then
+			data[name].current_anvil=2
+			tfm.exec.chatMessage("You are now using the <N><b>Blue Anvil!</b>",name)
+		else
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
+				data[name].anvils[2]=1
+				data[name].current_anvil=2
+				tfm.exec.chatMessage("You are now using the <N><b>Blue Anvil!</b>",name)
+			else
+				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+			end
+		end
+	end
+	if callback == "a3" then
+		if data[name].anvils[3] == 1 then
+			data[name].current_anvil=3
+			tfm.exec.chatMessage("You are now using the <N><b>White Anvil!</b>",name)
+		else
+			if data[name].coins >= 400 then
+				data[name].coins=data[name].coins-400
+				data[name].anvils[3]=1
+				data[name].current_anvil=3
+				tfm.exec.chatMessage("You are now using the <N><b>White Anvil!</b>",name)
+			else
+				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+			end
+		end
+	end
+	if callback == "a4" then
+		if data[name].anvils[4] == 1 then
+			data[name].current_anvil=4
+			tfm.exec.chatMessage("You are now using the <N><b>Rainbow Anvil!</b>",name)
+		else
+			if data[name].coins >= 500 then
+				data[name].coins=data[name].coins-500
+				data[name].anvils[4]=1
+				data[name].current_anvil=4
+				tfm.exec.chatMessage("You are now using the <N><b>Rainbow Anvil!</b>",name)
+			else
+				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+			end
+		end
+	end
+	if callback == "a5" then
+		if data[name].anvils[5] == 1 then
+			data[name].current_anvil=5
+			tfm.exec.chatMessage("You are now using the <N><b>Sharingan Anvil!</b>",name)
+		else
+			if data[name].coins >= 1000 then
+				data[name].coins=data[name].coins-1000
+				data[name].anvils[5]=1
+				data[name].current_anvil=5
+				tfm.exec.chatMessage("You are now using the <N><b>Sharingan Anvil!</b>",name)
+			else
+				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+			end
+		end
+	end
+	if callback == "a6" then
+		if data[name].anvils[6] == 1 then
+			data[name].current_anvil=6
+			tfm.exec.chatMessage("You are now using the <N><b>Black Hole Anvil!</b>",name)
+		else
+			if data[name].coins >= 1000 then
+				data[name].coins=data[name].coins-1000
+				data[name].anvils[6]=1
+				data[name].current_anvil=6
+				tfm.exec.chatMessage("You are now using the <N><b>Black Hole Anvil!</b>",name)
+			else
+				tfm.exec.chatMessage("<R>You don't have AnvilCoins to buy this anvil.",name)
+			end
+		end
 	end
 end
 
@@ -764,11 +912,11 @@ function calculatePoints(name)
 			data[name].winrate=math.floor((data[name].wins/data[name].matches)*100)
 			if data[name].current_coins > 0 then
 				data[name].coins=data[name].coins+data[name].current_coins+data[name].score
-				tfm.exec.chatMessage("<VP>You won <b>"..data[name].current_coins.."</b> AnvilCoins!",name)
 				data[name].exp=data[name].exp+(data[name].current_coins*2)
 				if data[name].exp >= data[name].maxp then
 					advanceLevel(name)
 				end
+				tfm.exec.chatMessage("<VP>You won <b>"..data[name].current_coins.."</b> AnvilCoins!",name)
 			end
 			data[name].current_coins=0
 			data[name].eff=math.floor((data[name].kills/data[name].killeds)*100)
@@ -779,6 +927,7 @@ end
 function drawMatch()
 	mode="end"
 	tfm.exec.setGameTime(20)
+	tfm.exec.chatMessage("<J><b>Draw!</b>")
 end
 
 function victoryBlue()
@@ -792,6 +941,7 @@ function victoryBlue()
 		calculatePoints(name)
 	end
 	tfm.exec.setGameTime(20)
+	tfm.exec.chatMessage("<BL><b>Victory of the BLUE team!</b>")
 end
 
 function victoryRed()
@@ -805,6 +955,7 @@ function victoryRed()
 		calculatePoints(name)
 	end
 	tfm.exec.setGameTime(20)
+	tfm.exec.chatMessage("<R><b>Victory of the RED team!</b>")
 end
 
 function setShooter()
@@ -819,7 +970,7 @@ function setShooter()
 	end
 	tfm.exec.addShamanObject(0, tfm.get.room.playerList[actual_player].x, tfm.get.room.playerList[actual_player].y-55, 0, 0, 0, false)
 	tfm.exec.chatMessage("<N>Actual shooter: <b>"..actual_player.."</b>")
-	tfm.exec.chatMessage("<VP><b>It's your time to shoot.</b><br><J>Use Z and X keys to change the anvil power, C and V to change the anvil angle and SPACEBAR to shoot. Type !help for more information.<br><br><N>You have <b>"..data[actual_player].score.."</b> points to use with powerups.",actual_player)
+	tfm.exec.chatMessage("<VP><b>It's your time to shoot.</b><br><J>Use Z and X keys to change the anvil power, C and V to change the anvil angle and SPACEBAR to shoot. Type !help for more information.",actual_player)
 	enabled=true
 	mode="shoot"
 end
@@ -2413,7 +2564,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.170<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.171<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
