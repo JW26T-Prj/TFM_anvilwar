@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.173.1
+-- Transformice #anvilwar module loader - Version 2.173.2
 -- By Spectra_phantom#6089
--- Included sub-modules: #deadfender, #pool.
+-- Included sub-modules: #deadfender.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.173.1",
+	_VERSION = "2.173.2",
 	_MAINV = "40839.130",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -808,9 +808,9 @@ function eventChatCommand(name,command)
 			set_player=command:sub(5)
 		end
 	end
-	if (command:sub(0,6) == "defmap") and data[name].ranking >= 3 then
+ 	if (command:sub(0,6) == "defmap") and data[name].ranking >= 3 then
 		if mode == "lobby" then
-			def_map=tonumber(message:sub(8))
+			def_map=tonumber(command:sub(8))
 			tfm.exec.chatMessage("Defined map: "..def_map.."",name)
 		end
 	end
@@ -1377,14 +1377,13 @@ function eventLoop(passed,remain)
 				loop=loop+1
 				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm.."",nil,102,317,600,45,0,0,1.0,true)
 				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm.."",nil,100,315,600,45,0,0,1.0,true)
-			map_id=math.random(1,rawlen(maps))
+				map_id=math.random(1,rawlen(maps))
 				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
 				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,355,600,45,0,0,1.0,true)
 			elseif loop == 8 then
-				if def_map == -1 then
-					current_map=maps[map_id]
-				else
-					current_map=def_map
+				current_map=maps[map_id]
+				if def_map > 0 then
+					map_id=def_map
 				end
 				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm1.."",nil,102,317,600,45,0,0,1.0,true)
 				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm1.."",nil,100,315,600,45,0,0,1.0,true)
@@ -1443,14 +1442,16 @@ function eventLoop(passed,remain)
 				end
 			end
 		end
-		for _,name in next,alives_red do
-			if tfm.get.room.playerList[name].x > 800 then
-				tfm.exec.killPlayer(name)
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].team == 1 then
+				if tfm.get.room.playerList[name].x > 800 then
+					tfm.exec.killPlayer(name)
+				end
 			end
-		end
-		for _,name in next,alives_blue do
-			if tfm.get.room.playerList[name].x < 800 then
-				tfm.exec.killPlayer(name)
+			if data[name] and data[name].team == 2 then
+				if tfm.get.room.playerList[name].x < 800 then
+					tfm.exec.killPlayer(name)
+				end
 			end
 		end
 	end
@@ -2537,7 +2538,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.173.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.173.2<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
