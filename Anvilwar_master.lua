@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.173.2
+-- Transformice #anvilwar module loader - Version 2.174
 -- By Spectra_phantom#6089
--- Included sub-modules: #deadfender.
+-- Included sub-modules: #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.173.2",
-	_MAINV = "40839.130",
+	_VERSION = "2.174",
+	_MAINV = "40940.131",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 40839.130
-Compilation date : 04/05/2021 14:12 UTC
+Version : RTM 40940.131
+Compilation date : 04/11/2021 13:48 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 136
@@ -31,7 +31,7 @@ lobby_map='<C><P Ca="" /><Z><S><S L="800" o="ffffffff" X="400" H="10" Y="325" T=
 current_map=""; actual_player="";
 enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false;
 mices=0; loop=0; skips=0; skipsq=0; skip_time=0; needs=0; turn=0; choose_time=40; time_passed=0; time_remain=0; current_red=0; current_blue=0;
-points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map=""; def_map=-1;
+points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map=""; def_map=-1; red_cap=""; blue_cap=""; temp_name="";
 mode="lobby"
 images_id={};
 playersList={}; helpers={}; mods={
@@ -118,7 +118,10 @@ lang.br = {
 	t60s = "Faltam 60 segundos!",
 	t30s = "Faltam 30 segundos!",
 	powerups_a = "Os powerups estão liberados!",
-	time = "<b>Tempo esgotado!</b> O time adversário irá atirar agora."
+	time = "<b>Tempo esgotado!</b> O time adversário irá atirar agora.",
+	cap_text = "foi escolhido para ser o líder do time.",
+	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
+	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe o dobro da quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores."
 }
 lang.en = {
 	version = "Version",
@@ -180,7 +183,10 @@ lang.en = {
 	t60s = "60 seconds remaining!",
 	t30s = "30 seconds remaining!",
 	powerups_a = "The powerups are now available!",
-	time = "<b>Time is up!</b> The next team will play now."
+	time = "<b>Time is up!</b> The next team will play now.",
+	cap_text = "was selected to be the team leader.",
+	cap = "<J><b>You are now the team leader.</b><N><br>Type !leader to know all the functions and benefits of team leaders.",
+	leader = "The team leaders <b>is randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 2x more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 50% more shooting time."
 }
 if string.find(tfm.get.room.name,"*") then
 	text = lang.en
@@ -195,7 +201,7 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","skip","sync","pw","commands","powerups","p","kill","ban","limit","ranking","tc","anvils","set","testmap","defmap"} do
+for _,g in next,{"reset","help","skip","sync","pw","commands","powerups","p","kill","ban","limit","ranking","tc","anvils","set","testmap","defmap","leader","rv","tp","changelog"} do
 	system.disableChatCommandDisplay(g)
 end
 tfm.exec.setRoomMaxPlayers(30)
@@ -253,10 +259,19 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40839.130 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40839.130 <R></i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."04/05/2021 14:12 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."04/05/2021 14:12 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40940.131 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40940.131 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."04/11/2021 13:48 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."04/11/2021 13:48 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
+end
+
+function setLeaders()
+	red_cap=math.random(#alives_red)
+	blue_cap=math.random(#alives_blue)
+	tfm.exec.chatMessage(""..red_cap.." "..cap_text.."")
+	tfm.exec.chatMessage(""..blue_cap.." "..cap_text.."")
+	tfm.exec.chatMessage(text.cap,red_cap)
+	tfm.exec.chatMessage(text.cap,blue_cap)
 end
 
 function eventRanking(name)
@@ -318,7 +333,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 40839.130</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 40940.131</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -487,11 +502,11 @@ end
 
 function anvilRain()
 	if data[actual_player].team == 1 then
-		for i=1,5 do
+		for i=1,6 do
 			spawnAnvil(10,math.random(850,1500),100,0,1,false)
 		end
 	elseif data[actual_player].team == 2 then
-		for i=1,5 do
+		for i=1,6 do
 			spawnAnvil(10,math.random(100,750),100,0,1,false)
 		end
 	end
@@ -727,10 +742,10 @@ function lobby()
 	for name,player in next,tfm.get.room.playerList do
 		removeImagePlayers(name)
 		showLobbyText(name)
-		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
-			ui.removeTextArea(i,name)
-		end
 		if data[name] then
+			for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
+				ui.removeTextArea(i,name)
+			end
 			data[name].opened=false
 			if data[name].ranking >= 0 then
 				showTeams(name)
@@ -797,6 +812,42 @@ function eventChatCommand(name,command)
 			tfm.exec.chatMessage(""..text.pw..""..command:sub(4).."",name)
 		else
 			tfm.exec.chatMessage(text.pw0,name)
+		end
+	end
+	if command == "changelog" then
+		showMenu(name,0xa8f233,140,90,520,250,"#anvilwar Changelog - RTM 40940.131","• Added team leader funcions. Type !leader to see all team leader capabilities.<br><br>• Fixed map rotation.")
+	end
+	if (command:sub(0,2) == "rv") then
+		if name == actual_player then
+			if name == red_cap or name == blue_cap then
+				if data[name].score >= 30 then
+					if tfm.get.room.playerList[command:sub(4)].isDead == false and data[command:sub(4)].team > 0 then
+						tfm.exec.respawnPlayer(command:sub(4))
+						if data[command:sub(4)].team == 2 then
+							tfm.exec.movePlayer(command:sub(4),1000,200,false,0,0,false)
+							data[command:sub(4)].killed=false
+						end
+						if data[command:sub(4)].team == 1 then
+							tfm.exec.movePlayer(command:sub(4),600,200,false,0,0,false)
+							data[command:sub(4)].killed=false
+						end
+						tfm.exec.chatMessage("<J>The following player revived: "..command:sub(4).."")
+						setScores(name,-30,true)
+					end
+				else
+					tfm.exec.chatMessage(text.p0,name)
+				end
+			end
+		end
+	end
+	if (command:sub(0,2) == "pt") then
+		if name == actual_player then
+			if name == red_cap or name == blue_cap then
+				if data[command:sub(4)] then
+					temp_name=command:sub(4)
+					ui.addPopup(100,"Points",name,350,175,200,true)
+				end
+			end
 		end
 	end
 	if (command:sub(0,5) == "limit") and data[name].ranking >= 2 then
@@ -877,6 +928,9 @@ function eventChatCommand(name,command)
 	if command == "powerups" then
 		showMenu(name,0xc23517,140,90,520,250,"#anvilwar Powerups",text.powerups)
 	end
+	if command == "leader" then
+		showMenu(name,0x873469,140,90,520,200,"#anvilwar Team Leader Funcions",text.leader)
+	end
 	if command == "commands" then
 		showMenu(name,0x125490,120,90,560,285,"#anvilwar Commands",text.commands)
 	end
@@ -921,7 +975,16 @@ function eventChatCommand(name,command)
 		end
 	end
 end
-
+function eventPopupAnswer(id,name,message)
+	if id == 100 then
+		if data[temp_name] and actual_player == name then
+			if tonumber(message) <= data[name].score then
+				setScores(name,tonumber(message)*-1,true)
+				setScores(temp_name,tonumber(message),true)
+			end
+		end
+	end
+end
 function enterRedTeam(name)
 	if choose_time > 1 and data[name].team == 0 and rawlen(players_red) <= 12 then
 		tfm.exec.respawnPlayer(name)
@@ -1315,6 +1378,9 @@ function getAlivePlayers()
 			data[actual_player].kills=data[actual_player].kills+killsc
 			data[actual_player].current_coins=data[actual_player].current_coins+2*killsc
 			setScores(actual_player,killsc*3,true)
+			if actual_player == red_cap or actual_player == blue_cap then
+				setScores(actual_player,killsc*3,true)
+			end
 			if data[actual_player].multikills < killsc then
 				data[actual_player].multikills=killsc
 			end
@@ -1328,6 +1394,9 @@ function getAlivePlayers()
 			data[actual_player].kills=data[actual_player].kills+killsc
 			data[actual_player].current_coins=data[actual_player].current_coins+2*killsc
 			setScores(actual_player,killsc*3,true)
+			if actual_player == red_cap or actual_player == blue_cap then
+				setScores(actual_player,killsc*3,true)
+			end
 			if data[actual_player].multikills < killsc then
 				data[actual_player].multikills=killsc
 			end
@@ -1339,6 +1408,9 @@ function getAlivePlayers()
 		end
 	end
 	detectVictory()
+	if time_passed >= 19 and time_passed <= 25 then
+		setLeaders()
+	end
 end
 
 function eventLoop(passed,remain)
@@ -1381,10 +1453,10 @@ function eventLoop(passed,remain)
 				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
 				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,355,600,45,0,0,1.0,true)
 			elseif loop == 8 then
-				current_map=maps[map_id]
 				if def_map > 0 then
 					map_id=def_map
 				end
+				current_map=maps[map_id]
 				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm1.."",nil,102,317,600,45,0,0,1.0,true)
 				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm1.."",nil,100,315,600,45,0,0,1.0,true)
 				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
@@ -1438,6 +1510,9 @@ function eventLoop(passed,remain)
 				if data[name] and data[name].team > 0 then
 					if data[name].killed == false then
 						setScores(name,1,true)
+						if name == red_cap or name == blue_cap then
+							setScores(name,1,true)
+						end
 					end
 				end
 			end
@@ -1491,7 +1566,6 @@ function eventLoop(passed,remain)
 		end
 	end
 end
-
 lobby()
 end
 
@@ -2538,7 +2612,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.173.2<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.174<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
