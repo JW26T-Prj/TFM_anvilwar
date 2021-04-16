@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.174
+-- Transformice #anvilwar module loader - Version 2.174.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #deadfender, #pool.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.174",
-	_MAINV = "40940.131",
+	_VERSION = "2.174.1",
+	_MAINV = "41050.132",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,7 +13,7 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 40940.131
+Version : RTM 41050.132
 Compilation date : 04/11/2021 13:48 UTC
 Sending player : Morganadxana#0000
 
@@ -259,8 +259,8 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40940.131 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 40940.131 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41050.132 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41050.132 <R></i>",name,50,16,700,60,0,0,1.0,true)
 	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."04/11/2021 13:48 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
 	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."04/11/2021 13:48 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
 end
@@ -272,6 +272,8 @@ function setLeaders()
 	tfm.exec.chatMessage(""..blue_cap.." "..cap_text.."")
 	tfm.exec.chatMessage(text.cap,red_cap)
 	tfm.exec.chatMessage(text.cap,blue_cap)
+	tfm.exec.setNameColor(red_cap,0x80f000)
+	tfm.exec.setNameColor(blue_cap,0x80f000)
 end
 
 function eventRanking(name)
@@ -333,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 40940.131</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41050.132</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -815,23 +817,24 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,250,"#anvilwar Changelog - RTM 40940.131","• Added team leader funcions. Type !leader to see all team leader capabilities.<br><br>• Fixed map rotation.")
+		showMenu(name,0xa8f233,140,90,520,250,"#anvilwar Changelog - RTM 41050.132","• Added team leader funcions. Type !leader to see all team leader capabilities.<br><br>• Fixed map rotation.")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player then
-			if name == red_cap or name == blue_cap then
+			if data[command:sub(4)] then
+				temp_name=command:sub(4)
 				if data[name].score >= 30 then
-					if tfm.get.room.playerList[command:sub(4)].isDead == false and data[command:sub(4)].team > 0 then
-						tfm.exec.respawnPlayer(command:sub(4))
-						if data[command:sub(4)].team == 2 then
-							tfm.exec.movePlayer(command:sub(4),1000,200,false,0,0,false)
-							data[command:sub(4)].killed=false
+					if tfm.get.room.playerList[temp_name].isDead == false and data[temp_name].team > 0 then
+						tfm.exec.respawnPlayer(temp_name)
+						if data[temp_name].team == 2 then
+							tfm.exec.movePlayer(temp_name,1000,200,false,0,0,false)
+							data[temp_name].killed=false
 						end
 						if data[command:sub(4)].team == 1 then
 							tfm.exec.movePlayer(command:sub(4),600,200,false,0,0,false)
-							data[command:sub(4)].killed=false
+							data[temp_name].killed=false
 						end
-						tfm.exec.chatMessage("<J>The following player revived: "..command:sub(4).."")
+						tfm.exec.chatMessage("<J>The following player revived: "..temp_name.."")
 						setScores(name,-30,true)
 					end
 				else
@@ -2612,7 +2615,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.174<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.174.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
