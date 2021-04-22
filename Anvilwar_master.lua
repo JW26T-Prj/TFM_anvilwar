@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.174.1
+-- Transformice #anvilwar module loader - Version 2.175
 -- By Spectra_phantom#6089
--- Included sub-modules: #deadfender, #pool.
+-- Included sub-modules: #deadfender.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.174.1",
-	_MAINV = "41050.132",
+	_VERSION = "2.175",
+	_MAINV = "41151.133",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,18 +13,18 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 41050.132
-Compilation date : 04/11/2021 13:48 UTC
+Version : RTM 41151.133
+Compilation date : 04/22/2021 18:32 UTC
 Sending player : Morganadxana#0000
 
-Number of maps : 136
+Number of maps : 134
 Number of module special members : 20 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
 
 maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7581524","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497464","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","No Name","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things","No Name","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things","No Name","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole"}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map='<C><P Ca="" /><Z><S><S L="800" o="ffffffff" X="400" H="10" Y="325" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="800" o="ffffffff" X="300" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="500" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="400" H="10" Y="-5" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="10" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="790" /></S><D><DS Y="-25" X="400" /></D><O /></Z></C>'
@@ -104,7 +104,7 @@ lang.br = {
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' - Night Mode</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 16pts</b><br><br><b>Tecla '6' - Anvil Rain</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 20pts</b><br><br><b>Tecla '7' - Gravity Anomaly</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 16pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 20pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -259,15 +259,15 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41050.132 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41050.132 <R></i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."04/11/2021 13:48 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."04/11/2021 13:48 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41151.133 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41151.133 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."04/22/2021 18:32 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."04/22/2021 18:32 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
-	red_cap=math.random(#alives_red)
-	blue_cap=math.random(#alives_blue)
+	red_cap=alives_red[math.random(#alives_red)]
+	blue_cap=alives_blue[math.random(#alives_blue)]
 	tfm.exec.chatMessage(""..red_cap.." "..cap_text.."")
 	tfm.exec.chatMessage(""..blue_cap.." "..cap_text.."")
 	tfm.exec.chatMessage(text.cap,red_cap)
@@ -335,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41050.132</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41151.133</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -554,7 +554,7 @@ function eventKeyboard(name,code,down,x,y)
 			end
 			mode="wait3"
 			enabled=false
-			tfm.exec.setGameTime(6)
+			tfm.exec.setGameTime(7)
 			ui.removeTextArea(750,nil)
 		end
 		if powerups == true then
@@ -676,11 +676,11 @@ function eventPlayerDied(name)
 	if mode == "wait2" and time_passed < 20 or mode == "end" then
 		if data[name] and data[name].team == 1 then
 			tfm.exec.respawnPlayer(name)
-			tfm.exec.movePlayer(name,600,180,false,0,0,false)
+			tfm.exec.movePlayer(name,600,190,false,0,0,false)
 		end
 		if data[name] and data[name].team == 2 then
 			tfm.exec.respawnPlayer(name)
-			tfm.exec.movePlayer(name,1000,180,false,0,0,false)
+			tfm.exec.movePlayer(name,1000,190,false,0,0,false)
 		end
 	end
 	if mode == "shoot" then
@@ -817,7 +817,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,250,"#anvilwar Changelog - RTM 41050.132","• Added team leader funcions. Type !leader to see all team leader capabilities.<br><br>• Fixed map rotation.")
+		showMenu(name,0xa8f233,140,90,520,250,"#anvilwar Changelog - RTM 41151.133","• Removed 1 broken map<br>• Fixed the team capitain choosing.<br>• Added new experience system.<br>• Fixed !skip texts<br>• The powerups 3 and 4 now have 3 seconds of duration instead of 2<br>• Fixed some translations")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player then
@@ -949,7 +949,7 @@ function eventChatCommand(name,command)
 				tfm.exec.chatMessage(text.skip,name)
 				data[name].skip=true
 				if skips > math.ceil(skipsq/2) then
-					tfm.exec.chatMessage("<J><b>"..name.."</b>"..text.skip1.." ("..skips.."/"..skipsq.."")
+					tfm.exec.chatMessage("<J><b>"..name.."</b> "..text.skip1.." ("..skips.."/"..skipsq..")")
 				end
 				if skips >= skipsq then
 					skip_time=900
@@ -1265,8 +1265,8 @@ end
 function advanceLevel(name)
 	data[name].level=data[name].level+1
 	data[name].exp=data[name].exp-data[name].maxp
-	data[name].maxp=math.ceil(data[name].maxp*1.4)
-	tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.level.." <b>"..data[name].level.."</b>!")
+	data[name].maxp=data[name].maxp+50
+	tfm.exec.chatMessage("<VP><b>"..name.."</b> "..text.level.."<b>"..data[name].level.."</b>!")
 end
 
 function drawMatch()
@@ -1559,7 +1559,7 @@ function eventLoop(passed,remain)
 	end
 	if permafrost == true or night_mode == true or gravity == true then
 		pf_time=pf_time+1
-		if pf_time == 4 then
+		if pf_time == 6 then
 			permafrost=false
 			night_mode=false
 			for name,player in next,tfm.get.room.playerList do
@@ -2561,47 +2561,6 @@ end
 iniciar()
 end
 
-initPool = function()
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.newGame("@7601768")
-xml2=''
-run_time=0
-function eventNewPlayer(name)
-	tfm.exec.respawnPlayer(name)
-	ui.setMapName("<font color='#14ACEE'><font size='12'>The Master Pool 5.2 - Advanced LUA Map made by <b>Aurelianlua#0000</b><")
-end
-function eventPlayerDied(name)
-	eventNewPlayer(name)
-end
-function eventNewGame()
-	xml2=tfm.get.room.xmlMapInfo.xml
-end
-function eventLoop()
-	if run_time <= 3.5 then
-		run_time=run_time+0.5
-		if run_time >= 4 then
-			tfm.exec.newGame(xml2)
-			ui.setMapName("<font color='#14ACEE'><font size='12'>The Master Pool 5.2 - Advanced LUA Map made by <b>Aurelianlua#0000</b><")
-		end
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].y > 800 then
-				tfm.exec.displayParticle(14,tfm.get.room.playerList[name].x+16,tfm.get.room.playerList[name].y-15,0,-0.6,0,-0.05,nil)
-		end
-		if tfm.get.room.playerList[name].y > 850 then
-				tfm.exec.displayParticle(14,tfm.get.room.playerList[name].x+16,tfm.get.room.playerList[name].y-28,0,-0.6,0,-0.05,nil)
-		end
-		if tfm.get.room.playerList[name].y > 900 then
-				tfm.exec.displayParticle(14,tfm.get.room.playerList[name].x+16,tfm.get.room.playerList[name].y-41,0,-0.6,0,-0.05,nil)
-		end
-	end
-end
-end
-
 Rooms = function()
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
 	tfm.exec["disable"..f](true)
@@ -2615,7 +2574,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.174.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.175<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	initAnvilwar()
 else
@@ -2624,9 +2583,6 @@ else
 	elseif string.find(tfm.get.room.name,"deadfender") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'deadfender' on room name.<br>Initialising #deadfender module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initDeadfender()
-	elseif string.find(tfm.get.room.name,"pool") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'pool' on room name.<br>Initialising #pool module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initPool()
 	elseif string.find(tfm.get.room.name,"rooms") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
 		Rooms()
