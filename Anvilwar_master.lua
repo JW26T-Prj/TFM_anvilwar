@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.177
+-- Transformice #anvilwar module loader - Version 2.178
 -- By Spectra_phantom#6089
 -- Included sub-modules: #deadfender, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.177",
-	_MAINV = "41354.136",
+	_VERSION = "2.178",
+	_MAINV = "41455.137",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,9 +13,9 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 41354.136
-Compilation date : 05/09/2021 14:57 UTC
-Sending player : Morganadxana#0000
+Version : RTM 41455.137
+Compilation date : 05/15/2021 15:16 UTC
+Sending player : Spectra_phantom#6089
 
 Number of maps : 134
 Number of module special members : 20 ]]--
@@ -44,13 +44,11 @@ playersList={}; helpers={}; mods={
 "Liviliviah#0000",
 "Ork#0015",
 "Sorreltail#7677",
-"Diadem#9470",
 "Pamots#0095"};
 admins={"Spectra_phantom#6089",
 "Morganadxana#0000",
 "Rakan_raster#0000"}
-ninjas={"Rivenbagassa#0000",
-"Aurelianlua#0000",
+ninjas={"Aurelianlua#0000",
 "Viego#0345",
 "Forzaldenon#0000",
 "Velkozdapic#0000"};
@@ -119,7 +117,7 @@ lang.br = {
 	t30s = "Faltam 30 segundos!",
 	powerups_a = "Os powerups estão liberados!",
 	time = "<b>Tempo esgotado!</b> O time adversário irá atirar agora.",
-	cap_text = "foi escolhido para ser o líder do time.",
+	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe o dobro da quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
 	legacy = "<N>Caso você queira trocar para o modo antigo de alterar a força e os powerups, digite <b>!change</b>.",
@@ -185,9 +183,9 @@ lang.en = {
 	t30s = "30 seconds remaining!",
 	powerups_a = "The powerups are now available!",
 	time = "<b>Time is up!</b> The next team will play now.",
-	cap_text = "was selected to be the team leader.",
+	cap_text = "was selected to be the leader of your team.",
 	cap = "<J><b>You are now the team leader.</b><N><br>Type !leader to know all the functions and benefits of team leaders.",
-	leader = "The team leaders <b>is randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 2x more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 50% more shooting time.",
+	leader = "The team leaders <b>are randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 2x more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 50% more shooting time.",
 	legacy = "<N>If you want to switch to the legacy method of changing the anvil power and using powerups, please type <b>!change</b>.",
 }
 if string.find(tfm.get.room.name,"*") then
@@ -275,10 +273,10 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41354.136 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41354.136 <R></i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."05/09/2021 14:57 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."05/09/2021 14:57 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41455.137 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41455.137 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."05/15/2021 15:16 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."05/15/2021 15:16 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,90,32,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -351,7 +349,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41354.136</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41455.137</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -890,7 +888,7 @@ function lobby()
 end
 
 function eventNewGame()
-	set_map=""; def_map=-1; turns=0;
+	set_map=""; def_map=-1; turns=0; skips=0;
 	if mode == "wait1" then
 		for i=400,403 do ui.removeTextArea(i,nil) end
 		mode="wait2"
@@ -945,7 +943,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 41354.136","• Added test mode for tribehouse testing<br>• Added new power and angle meters<br>• Various changes on AnvilCoins system<br>• Some bugfixes on map rotation<br>• Fixed !rv and !tp commands")
+		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 41455.137","• Some fixes on !skip command<br>• Changes on admins<br>• Some fixes on translations")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -3098,7 +3096,7 @@ for name,player in pairs(tfm.get.room.playerList) do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.177<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.178<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 	initAnvilwar()
