@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.179
+-- Transformice #anvilwar module loader - Version 2.179.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #deadfender, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.179",
+	_VERSION = "2.179.1",
 	_MAINV = "41455.137",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -2713,7 +2713,7 @@ for _,f in next,{"help","ajuda"} do
 	system.disableChatCommandDisplay(f)
 end
 tfm.exec.newGame("@7854060")
-tfm.exec.setRoomMaxPlayers(32)
+tfm.exec.setRoomMaxPlayers(35)
 shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
 function eventPlayerDied(n)
@@ -3014,7 +3014,6 @@ function genPowerup(pos,type,x,y)
 		powerups.x5=x
 		powerups.y5=y
 		powerups.t5=type
-
 	end
 end
 function dropPlayer(name)
@@ -3029,7 +3028,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7854060" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.9.0 - criado por Morganadxana#0000<")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><J> Versão v1.9.1 - criado por Morganadxana#0000<")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><font color='#222222'><b>0"..m..":"..s.."</b>",n,693,27,110,44,0,0,1.0,true)
@@ -3045,9 +3044,9 @@ if mode == "game" or mode == "hide" then
 	ui.addTextArea(30,"<font size='28'><font face='DejaVu Sans Mono,Consolas'><b>"..alives.."</b>",n,12,24,40,44,0,0,1.0,true)
 	ui.addTextArea(32,"<font size='14'><font face='Verdana'>rato(s) vivo(s)",n,9,60,128,44,0,0,1.0,true)
 	loop=loop+0.5
-	if loop == 30 then
+	if loop == 24 then
 		for i=1,5 do
-			genPowerup(i,math.random(1,6),math.random(800,2800),math.random(250,800))
+			genPowerup(i,math.random(1,6),math.random(800,3000),math.random(200,800))
 		end
 		loop=0
 	end
@@ -3074,13 +3073,13 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 			end
 			end
-			if not tfm.get.room.playerList[n].isDead then
 			if data[n].t > 0 then
 				data[n].t=data[n].t-0.5
 				if data[n].t <= 0 then
 					tfm.exec.removeObject(data[n].i)
 				end
 			end
+			if not tfm.get.room.playerList[n].isDead then
 			if mode == "game" or mode == "hide" then
 			if tfm.get.room.playerList[n].y < 298 then
 				if data[n].o < 99 then
@@ -3104,7 +3103,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		end
 		end
-		if data[n].o > 22 and mode == "game" then
+		if data[n].o > 24 and mode == "game" then
 			ui.addTextArea(10,"",n,56,385,(data[n].o*7.3),10,0x8000ff,0x6000ff,1.0,true)
 			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 ---<J>-------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
 			ui.addTextArea(-5,"<font size='30'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,4,355,42,40,0x090909,0x000000,0.7,true)
@@ -3117,7 +3116,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 			if data[n].d == 1 and data[n].o > 0 then
 				tfm.exec.chatMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
 			end
-			if data[n].d > 5 then
+			if data[n].d > 7 then
 				data[n].d=0
 			end
 		end
@@ -3161,20 +3160,7 @@ end
 end
 end
 
-Rooms = function()
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath","MortCommand"} do
-	tfm.exec["disable"..f](true)
-end
-tfm.exec.newGame("@7803705")
-function eventNewPlayer(name)
-	tfm.exec.chatMessage("<J>/room #anvilwar<br>/room #anvilwar00deadfender<br>/room #anvilwar00watercatch<br><br><BL>Do you want to see your module included into #anvilwar rooms? Contact <b>Spectra_phantom#6089</b> on Transformice or <b>BarodiusEleven#2941</b> on Discord.")
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-end
-
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.179<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.179.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
