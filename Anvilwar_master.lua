@@ -1,21 +1,21 @@
--- Transformice #anvilwar module loader - Version 2.179.1
+-- Transformice #anvilwar module loader - Version 2.180
 -- By Spectra_phantom#6089
 -- Included sub-modules: #deadfender, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.179.1",
-	_MAINV = "41455.137",
+	_VERSION = "2.180",
+	_MAINV = "41556.138",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
 --[[ #anvilwar Reborn
-Module authors : Spectra_phantom#6089, Morganadxana#0000, Rakan_raster#0000
+Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 41455.137
-Compilation date : 05/15/2021 15:16 UTC
-Sending player : Spectra_phantom#6089
+Version : RTM 41556.138
+Compilation date : 05/28/2021 20:50 UTC
+Sending player : Morganadxana#0000
 
 Number of maps : 134
 Number of module special members : 20 ]]--
@@ -90,9 +90,9 @@ lang.br = {
 	ban = " foi banido desta sala.",
 	ban0 = " foi desbanido desta sala.",
 	ac = "Você atualmente possui ",
-	powerups = "<font size='11.5'><b>Tecla '1' ou F1 - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' ou F2 - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 14pts</b><br><br><b>Tecla '3' ou F3 - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 25pts</b><br><br><b>Tecla '4' ou F4 - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	powerups = "<font size='11.5'><b>Tecla '1' ou F1 - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' ou F2 - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 14pts</b><br><br><b>Tecla '3' ou F3 - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 22pts</b><br><br><b>Tecla '4' ou F4 - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
 	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores, FunCorps e o dono da sala (/room #anvilwar00seunome).<br>!commands - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!skip - Vote para pular o mapa atual. São necessários um mínimo de votos equivalente a metade dos ratos na sala. Este comando também só pode ser usado a cada 15 minutos.<br>!p [usuário] (ou <b>P</b>) - Mostra o seu perfil. Tenha em mente que o perfil e o ranking não são permanentes e serão zerados quando a sala esvazia.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !ban [usuário] - Bane o usuário da sala. Digite novamente este comando para remover o banimento.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.",
-	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> (ou as teclas de 1 a 9 no modo antigo) para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas, powerups e diversos outros itens.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 e Rakan_raster#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
+	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> (ou as teclas de 1 a 9 no modo antigo) para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas, powerups e diversos outros itens.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Spectra_phantom#6089 (GM) e Morganadxana#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	skip0 = "Este comando pode ser usado somente daqui a ",
 	seconds = " segundos.",
 	skip = "Você votou para pular o mapa atual.",
@@ -120,7 +120,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe o dobro da quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<N>Caso você queira trocar para o modo antigo de alterar a força e os powerups, digite <b>!change</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00deadfender<br><br><N>Caso você queira trocar para o modo antigo de alterar a força e os powerups, digite <b>!change</b>.",
 }
 lang.en = {
 	version = "Version",
@@ -156,9 +156,9 @@ lang.en = {
 	ban = " was banned of room.",
 	ban0 = " was unbanned of room.",
 	ac = "You currently have ",
-	powerups = "<font size='11.5'><b>Key '1' or F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' or F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' or F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '4' or F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
+	powerups = "<font size='11.5'><b>Key '1' or F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' or F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' or F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 22pts</b><br><br><b>Key '4' or F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
 	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!skip - Vote to skip the current map. Are needed a minimum of votes equivalent of half of mices on the room to skip the current map. This command also only can be used every 15 minutes.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.",
-	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys (or 1-9 keys in legacy mode) to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM), Morganadxana#0000 and Rakan_raster#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
+	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys (or 1-9 keys in legacy mode) to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM) and Morganadxana#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
 	skip0 = "This command can be only used in ",
 	seconds = " seconds.",
 	skip = "You voted to skip the current map.",
@@ -273,10 +273,10 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41455.137 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41455.137 <R></i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."05/15/2021 15:16 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."05/15/2021 15:16 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41556.138 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41556.138 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."05/28/2021 20:50 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."05/28/2021 20:50 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -349,7 +349,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41455.137</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41556.138</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -623,9 +623,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 50 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 51 and data[name].score >= 25 and data[name].level >= 3 then
+				if code == 51 and data[name].score >= 22 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p3.."")
-					setScores(name,-25,true)
+					setScores(name,-22,true)
 					data[name].powerup=3
 					enabled=false
 					mode="wait3"
@@ -689,9 +689,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 113 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 114 and data[name].score >= 25 and data[name].level >= 3 then
+				if code == 114 and data[name].score >= 22 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p3.."")
-					setScores(name,-25,true)
+					setScores(name,-22,true)
 					data[name].powerup=3
 					enabled=false
 					mode="wait3"
@@ -836,7 +836,7 @@ function eventPlayerDied(name)
 end
 
 function eventMouse(name,x,y)
-	if actual_player == name and data[name].powerup == 3 then
+	if actual_player == name and data[name].powerup == 3 and mode == "shoot" then
 		if time_remain >= 6 then
 			if data[name].team == 1 and x > 805 then
 				tfm.exec.explosion(x,y,25,150,true)
@@ -846,6 +846,7 @@ function eventMouse(name,x,y)
 				tfm.exec.explosion(x,y,25,150,true)
 				tfm.exec.displayParticle(12,x,y,0,0,0,0,nil)
 			end
+			mode="wait3"
 		end
 	end
 end
@@ -943,7 +944,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 41455.137","• Some fixes on !skip command<br>• Changes on admins<br>• Some fixes on translations")
+		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 41556.138","• Fixes on Explosion powerup<br>• Some minor fixes<br>• Changed 'Explosion' powerup price from 25 to 22 points")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -3160,7 +3161,7 @@ end
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.179.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.180<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
