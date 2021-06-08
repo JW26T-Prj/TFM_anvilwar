@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.183
+-- Transformice #anvilwar module loader - Version 2.184
 -- By Spectra_phantom#6089
--- Included sub-modules: #deadfender, #watercatch.
+-- Included sub-modules: #watercatch, #truefalse, #longjump, #clickwar.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.183",
-	_MAINV = "41859.141",
+	_VERSION = "2.184",
+	_MAINV = "42060.142",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 41859.141
-Compilation date : 06/05/2021 17:38 UTC
+Version : RTM 42060.142
+Compilation date : 06/08/2021 13:36 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 138
@@ -29,7 +29,7 @@ players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map='<C><P Ca="" /><Z><S><S L="800" o="ffffffff" X="400" H="10" Y="325" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="800" o="ffffffff" X="300" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="500" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="400" H="10" Y="-5" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="10" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="790" /></S><D><DS Y="-25" X="400" /></D><O /></Z></C>'
 current_map=""; actual_player="";
-enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; testmode=false;
+enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; testmode=false; change=false;
 mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=40; time_passed=0; time_remain=0; current_red=0; current_blue=0;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map=""; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
 mode="lobby"
@@ -58,7 +58,7 @@ data={}
 lang = {}
 lang.br = {
 	version = "Versão",
-	mices_room = "Ratos na sala : ",
+	mices_room = "Ratos : ",
 	comp_date = "Data de compilação : ",
 	uploaded = "Carregado por ",
 	ending = "Fim de jogo! Retornando à tela principal em alguns segundos...",
@@ -95,7 +95,7 @@ lang.br = {
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 16pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 20pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 16pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 28pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -113,11 +113,13 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe o dobro da quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00deadfender<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00truefalse<br>/sala #anvilwar00longjump<br><br>/sala #anvilwar00clickwar<br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	disabled = "Este comando foi desabilitado por um administrador.",
+	gametime = "Tempo",
 }
 lang.en = {
 	version = "Version",
-	mices_room = "Mices on Room : ",
+	mices_room = "Mice : ",
 	comp_date = "Compilation date : ",
 	uploaded = "Uploaded by ",
 	ending = "End of game! The lobby screen will be loaded in a few seconds.",
@@ -154,7 +156,7 @@ lang.en = {
 	leave = "Leave",
 	join = "Join",
 	getr = "Get Ready! The match will start in a few seconds!",
-	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 28pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
 	using = "You are now using the ",
 	ac0 = "You don't have AnvilCoins to buy this anvil.",
 	level = "reached the level",
@@ -172,7 +174,9 @@ lang.en = {
 	cap_text = "was selected to be the leader of your team.",
 	cap = "<J><b>You are now the team leader.</b><N><br>Type !leader to know all the functions and benefits of team leaders.",
 	leader = "The team leaders <b>are randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 2x more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 50% more shooting time.",
-	legacy = "<N>If you want to see all updates and fixes of this version, type <b>!changelog</b>.",
+	legacy = "<N>If you want to see all updates and fixes of this version, type <b>!changelog</b>.",	
+	disabled = "This command was disabled by an administrator.",
+	gametime = "Game Time",
 }
 if string.find(tfm.get.room.name,"*") then
 	text = lang.en
@@ -187,7 +191,7 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","ban","limit","ranking","tc","anvils","set","testmap","defmap","leader","rv","tp","changelog","tm","change"} do
+for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","ban","limit","ranking","tc","anvils","set","testmap","defmap","leader","rv","tp","changelog","tm","change","compmode","change_switch"} do
 	system.disableChatCommandDisplay(g)
 end
 tfm.exec.setRoomMaxPlayers(30)
@@ -223,19 +227,25 @@ function showAvailableAnvils(name)
 	i=0
 	for _,link in next,{"1788f85d7e2.png","1788f85ef53.png","1788f8606c4.png","1788f861e33.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",145,120+(i*50),name,1.0,1.0,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",63,120+(i*50),name,1.0,1.0,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
 	i=0
 	for _,link in next,{"1788f8635a6.png","1788f864d16.png","1788f866489.png","1789826a888.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",318,120+(i*50),name,1.0,1.0,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",217,120+(i*50),name,1.0,1.0,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
 	i=0
 	for _,link in next,{"1789826bffa.png","1789826d76c.png","178982679a6.png","17898269116.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",491,120+(i*50),name,1.0,1.0,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",389,120+(i*50),name,1.0,1.0,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	i=0
+	for _,link in next,{"179ec21b84d.png","179ec2171f9.png","179ec21896c.png","179ec21a0dd.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",561,120+(i*50),name,1.0,1.0,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
 end
@@ -259,10 +269,10 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41859.141 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 41859.141 <R></i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."06/05/2021 17:38 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."06/05/2021 17:38 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 42060.142 </i>",name,52,18,700,60,0,0,1.0,true)
+	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 42060.142 <R></i>",name,50,16,700,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."06/08/2021 13:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."06/08/2021 13:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -335,14 +345,14 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 41859.141</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 42060.142</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
 		if s >= 10 then
-			ui.setMapName("<R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..m..":"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+			ui.setMapName("<R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>"..text.gametime.." : <V><b>"..m..":"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 		else
-			ui.setMapName("<R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>Game Time : <V><b>"..m..":0"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+			ui.setMapName("<R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>"..text.gametime.." : <V><b>"..m..":0"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 		end
 	elseif mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
@@ -373,6 +383,14 @@ function spawnAnvil(object,x,y,xp,yp,ghost)
 		tfm.exec.addImage("178982679a6.png","#"..id.."",-20,-12)
 	elseif data[actual_player].current_anvil == 11 then
 		tfm.exec.addImage("17898269116.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 12 then
+		tfm.exec.addImage("179ec21b84d.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 13 then
+		tfm.exec.addImage("179ec2171f9.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 14 then
+		tfm.exec.addImage("179ec21896c.png","#"..id.."",-20,-12)
+	elseif data[actual_player].current_anvil == 15 then
+		tfm.exec.addImage("179ec21a0dd.png","#"..id.."",-20,-12)
 	end
 end
 
@@ -514,12 +532,12 @@ end
 
 function anvilRain()
 	if data[actual_player].team == 1 then
-		for i=1,6 do
-			spawnAnvil(10,math.random(850,1500),100,0,1,false)
+		for i=1,7 do
+			spawnAnvil(10,math.random(850,1599),100,0,1,false)
 		end
 	elseif data[actual_player].team == 2 then
-		for i=1,6 do
-			spawnAnvil(10,math.random(100,750),100,0,1,false)
+		for i=1,7 do
+			spawnAnvil(10,math.random(1,750),100,0,1,false)
 		end
 	end
 end
@@ -636,9 +654,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 53 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 54 and data[name].score >= 20 and data[name].level >= 3 then
+				if code == 54 and data[name].score >= 28 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-20,true)
+					setScores(name,-28,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -702,9 +720,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 116 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 117 and data[name].score >= 20 and data[name].level >= 3 then
+				if code == 117 and data[name].score >= 28 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-20,true)
+					setScores(name,-28,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -906,10 +924,18 @@ function eventChatCommand(name,command)
 	local arg = split(command, " ")
 	if (command:sub(0,4) == "sync") and data[name].ranking >= 4 then
 		tfm.exec.lowerSyncDelay(command:sub(6))
+		tfm.exec.setPlayerSync(command:sub(6))
 		showMessage("Sync: "..command:sub(6).."",name)
 	end
 	if command == "reset" and data[name].ranking >= 2 then
 		lobby()
+	end
+	if command == "change_switch" and data[name].ranking >= 2 then
+		if change == false then
+			change=true
+		else
+			change=false
+		end
 	end
 	if (command:sub(0,2) == "pw") and data[name].ranking >= 2 then
 		tfm.exec.setRoomPassword(tostring(command:sub(4)))
@@ -928,7 +954,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 41859.141","• Revive score increased from 30 to 40 points<br>• Reduction of team capitains score gain<br>• Reduction of game time<br>• The !skip command was removed")
+		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 42060.142","• Added 4 new anvils! Check !anvils command<br>• Added a switch to enable !change command<br>• Fixes on lobby<br>• Added new command for room managers<br>• Increased score of powerup 'Anvil Rain' from 20 to 28 points")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1034,20 +1060,25 @@ function eventChatCommand(name,command)
 		eventRanking(name)
 	end
 	if command == "change" then
-		if data[name].legacy == false then
-			data[name].legacy=true
-			showMessage("<VP>Legacy mode <b>enabled</b>. Use 1-9 keys to change anvil power and F1-F7 keys to use powerups.",name)
-		elseif data[name].legacy == true then
-			data[name].legacy=false
-			showMessage("<VP>Legacy mode <b>disabled</b>. Use Z and X keys to change anvil power and 1-7 keys to use powerups.",name)
+		if change == true then
+			if data[name].legacy == false then
+				data[name].legacy=true
+				showMessage("<VP>Legacy mode <b>enabled</b>. Use 1-9 keys to change anvil power and F1-F7 keys to use powerups.",name)
+			elseif data[name].legacy == true then
+				data[name].legacy=false
+				showMessage("<VP>Legacy mode <b>disabled</b>. Use Z and X keys to change anvil power and 1-7 keys to use powerups.",name)
+			end
+		else
+			showMessage(text.disabled,name)
 		end
 	end
 	if command == "anvils" then
 		if data[name].opened == false then
 			showMessage("<J>"..text.ac.."<b>"..data[name].coins.."</b> AnvilCoins.",name)
-			showMenu(name,0x999999,136,120,540,235,"#anvilwar Anvils","<font size='11.5'>                <b>Default Anvil</b><br>                Cost: 0 ACs<br>                <a href='event:a0'>Equip!</a><br><br>                <b>Red Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a1'>Equip!</a><br><br>                <b>Blue Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a2'>Equip!</a><br><br>                <b>White Anvil</b><br>                Cost: 400 ACs<br>                <a href='event:a3'>Equip!</a>")
-			ui.addTextArea(1005,"<i><font size='11.5'>                <b>Rainbow Anvil</b><br>                Cost: 500 ACs<br>                <a href='event:a4'>Equip!</a><br><br>                <b>Sharingan Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a5'>Equip!</a><br><br>                <b>Black Hole Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a6'>Equip!</a><br><br>                <b>4K 1080p Anvil</b><br>                Cost: 400 ACs<br>                <a href='event:a7'>Equip!</a>",name,310,151,175,215,0,0,1.0,true)
-			ui.addTextArea(1006,"<i><font size='11.5'>                <b>Thug Life Anvil</b><br>                Cost: 600 ACs<br>                <a href='event:a8'>Equip!</a><br><br>                <b>Water Anvil</b><br>                Cost: 600 ACs<br>                <a href='event:a9'>Equip!</a><br><br>                <b>Grass Anvil</b><br>                Cost: 600 ACs<br>                <a href='event:a10'>Equip!</a><br><br>                <b>RadWhite Anvil</b><br>                Cost: 700 ACs<br>                <a href='event:a11'>Equip!</a>",name,482,151,175,215,0,0,1.0,true)
+			showMenu(name,0x999999,56,120,690,235,"#anvilwar Anvils","<font size='11.5'>                <b>Default Anvil</b><br>                Cost: 0 ACs<br>                <a href='event:a0'>Equip!</a><br><br>                <b>Red Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a1'>Equip!</a><br><br>                <b>Blue Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a2'>Equip!</a><br><br>                <b>White Anvil</b><br>                Cost: 400 ACs<br>                <a href='event:a3'>Equip!</a>")
+			ui.addTextArea(1005,"<i><font size='11.5'>                <b>Rainbow Anvil</b><br>                Cost: 500 ACs<br>                <a href='event:a4'>Equip!</a><br><br>                <b>Sharingan Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a5'>Equip!</a><br><br>                <b>Black Hole Anvil</b><br>                Cost: 1000 ACs<br>                <a href='event:a6'>Equip!</a><br><br>                <b>4K 1080p Anvil</b><br>                Cost: 400 ACs<br>                <a href='event:a7'>Equip!</a>",name,208,151,175,215,0,0,1.0,true)
+			ui.addTextArea(1006,"<i><font size='11.5'>                <b>Thug Life Anvil</b><br>                Cost: 600 ACs<br>                <a href='event:a8'>Equip!</a><br><br>                <b>Water Anvil</b><br>                Cost: 600 ACs<br>                <a href='event:a9'>Equip!</a><br><br>                <b>Grass Anvil</b><br>                Cost: 600 ACs<br>                <a href='event:a10'>Equip!</a><br><br>                <b>RadWhite Anvil</b><br>                Cost: 700 ACs<br>                <a href='event:a11'>Equip!</a>",name,380,151,175,215,0,0,1.0,true)
+			ui.addTextArea(1007,"<i><font size='11.5'>                <b>Stars Anvil</b><br>                Cost: 800 ACs<br>                <a href='event:a12'>Equip!</a><br><br>                <b>Asteroid Anvil</b><br>                Cost: 700 ACs<br>                <a href='event:a13'>Equip!</a><br><br>                <b>Expanded Anvil</b><br>                Cost: 250 ACs<br>                <a href='event:a14'>Equip!</a><br><br>                <b>Yellow Anvil</b><br>                Cost: 200 ACs<br>                <a href='event:a15'>Equip!</a>",name,552,151,175,215,0,0,1.0,true)
 			showAvailableAnvils(name)
 		end
 	end
@@ -1362,6 +1393,66 @@ function eventTextAreaCallback(id,name,callback)
 			end
 		end
 	end
+	if callback == "a12" then
+		if data[name].anvils[12] == 1 then
+			data[name].current_anvil=12
+			showMessage(""..text.using.."<N><b>Stars Anvil!</b>",name)
+		else
+			if data[name].coins >= 800 then
+				data[name].coins=data[name].coins-800
+				data[name].anvils[12]=1
+				data[name].current_anvil=12
+				showMessage(""..text.using.."<N><b>Stars Anvil!</b>",name)
+			else
+				showMessage("<R>"..text.ac0.."",name)
+			end
+		end
+	end
+	if callback == "a13" then
+		if data[name].anvils[13] == 1 then
+			data[name].current_anvil=13
+			showMessage(""..text.using.."<N><b>Asteroid Anvil!</b>",name)
+		else
+			if data[name].coins >= 700 then
+				data[name].coins=data[name].coins-700
+				data[name].anvils[13]=1
+				data[name].current_anvil=13
+				showMessage(""..text.using.."<N><b>Asteroid Anvil!</b>",name)
+			else
+				showMessage("<R>"..text.ac0.."",name)
+			end
+		end
+	end
+	if callback == "a14" then
+		if data[name].anvils[14] == 1 then
+			data[name].current_anvil=14
+			showMessage(""..text.using.."<N><b>Expanded Anvil!</b>",name)
+		else
+			if data[name].coins >= 250 then
+				data[name].coins=data[name].coins-250
+				data[name].anvils[14]=1
+				data[name].current_anvil=14
+				showMessage(""..text.using.."<N><b>Expanded Anvil!</b>",name)
+			else
+				showMessage("<R>"..text.ac0.."",name)
+			end
+		end
+	end
+	if callback == "a15" then
+		if data[name].anvils[15] == 1 then
+			data[name].current_anvil=15
+			showMessage(""..text.using.."<N><b>Yellow Anvil!</b>",name)
+		else
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
+				data[name].anvils[15]=1
+				data[name].current_anvil=15
+				showMessage(""..text.using.."<N><b>Yellow Anvil!</b>",name)
+			else
+				showMessage("<R>"..text.ac0.."",name)
+			end
+		end
+	end
 end
 
 function advanceLevel(name)
@@ -1538,7 +1629,7 @@ function eventLoop(passed,remain)
 		end
 		if choose_time == 0 then
 			if rawlen(players_red) > 0 and rawlen(players_blue) > 0 then
-				if rawlen(players_red) - rawlen(players_blue) <= 3 and rawlen(players_red) - rawlen(players_blue) >= -3 then
+				if rawlen(players_red) - rawlen(players_blue) <= 2 and rawlen(players_red) - rawlen(players_blue) >= -2 then
 					for i=478,484 do ui.removeTextArea(i,nil) end
 					mode="map_sort"
 				else
@@ -1675,993 +1766,248 @@ end
 lobby()
 end
 
-initDeadfender = function()
-admins = {
-	["Refletz#6472"] = true,
-	["Soristl1#0000"] = true,
-}
-system.disableChatCommandDisplay (nil, true)
-tfm.exec.setRoomMaxPlayers(15)
-tt = 0
-mice = {}
-lang = {}
-portaisid = {}
-lang.br = {
-	text1 = "<p align='center'><font size='14px'><font color='#000000'><b>O jogo começa em",
-	text2 = "<p align='center'><font size='15px'><a href='event:p'>Clique aqui para participar",
-	text3 = "<p align='center'><font size='12px'>Jogadores participando:",
-	text4 = "<p align='center'><font size='15px'>Participando",
-	text5 = "<j>Capacidade Máxima de jogadores atingida.<n>",
-	text6 = "<p align='center'><font size='20px'><font face='soopafresh'><bv>Deadfender<n>",
-	text7 = "<p align='left'><font size='15px'><bv>Como jogar<n>:<font size='12px'><br><br><br>1- Impeça que o cannon chegue ao 'gol' com pisos que você mesmo ira colocar no mapa através do click do mouse na area verde;<br><br>2- o cannon irá spawnar em cima da área verde. Use a área verde para colocar os pisos (Com o click), que irão impedir o cannon de chegar ao chão e impedir que vá ao 'gol';<br><br>3- Você pode colocar 2 ou 3 objetos. Vai depender da rodada em que você está.",
-	text8 = "<p align='center'><font size='20px'><font face='soopafresh'><bv>Deadfender<n>",
-	text9 = "<font size='15px'><bv>Comandos<n>: -- <rose>*<n> -> Comandos para o admin da sala (Em breve) --<font size='12px'><br><br><br><j>!resettimer<n> <rose>*<n> - Reseta o tempo de iniciar a partida.<br><j>!lang [BR/EN]<n> - Muda o idioma do jogo.",
-	text10 = "<p align='center'><font size='12px'><a href='event:vida'>Vida dos jogadores",
-	text11 = "<p align='center'><font size='15px'><font color='#D30A0A'>Leia a ajuda para:<br>Instruções | Comandos",
-	text12 = "<p align='center'><font size='12px'>Nessa rodada poderá spawnar",
-	text13 = "<font size='15px'><font color='#000000'><b>Coloque pisos através do click do mouse, clicando na área <font color='#178E31'>verde<n>.",
-	text14 = "<font size='15px'><font color='#000000'><b>Evite que o Cannon caia no gol para não perder <r>uma vida<n>.",
-	text15 = "pisos",
-	text18 = "<j>É necessário dois jogadores ou mais para iniciar a partida<n>",
-	text19 = "O jogador",
-	text20 = "morreu!",
-	text21 = "venceu!",
-	text22 = "Empate!",
-	text23 = "<a href='event:ajuda'>Como jogar</a><br><a href='event:cmd'>Comandos</a><br><n2>Opções<n><br><a href='event:credits'>Creditos</a>",
-	text24 = "Fechar",
-	text25 = "<p align='center'><font size='20px'><j>Creditos<n><br></p><p align='left'><font size='12px'>Este jogo foi desenvolvido por Refletz#6472 (Soristl). espero que gostem ^^.<br><br>Agradecimentos especiais:<br><br><j>Esh#0095<n> (<v>Design Popup e Texts<n>) | <j>Chisaky#0000<n> (<v>Tradução para En<n>) | <j>Darkwolf07#9890<n> (<v>Criador das imagens no jogo<n>)",
-}
-lang.en = {
-	text1 = "<p align='center'><font size='14px'><font color='#000000'><b>The game will start in",
-	text2 = "<p align='center'><font size='15px'><a href='event:p'>Press to participate",
-	text3 = "<p align='center'><font size='12px'>Players in game:",
-	text4 = "<p align='center'><font size='15px'>Participating",
-	text5 = "<j>Maximum player capacity reached.<n>",
-	text6 = "<p align='center'><font size='20px'><font face='soopafresh'><bv>Deadfender<n>",
-	text7 = "<p align='left'><font size='15px'><bv>How to play<n>:<font size='12px'><br><br><br>1- Prevent the cannon from reaching the goal by placing the grounds (you can spawn them by clicking on the green area);<br><br>2- The cannon will spawn on the green area. Use the green area to place the grounds by clicking on the screen and prevent the cannon from reaching the goal.;<br><br>3- You'll be able to place 2 or 3 grounds. It depends on the current round.",		
-	text8 = "<p align='center'><font size='20px'><font face='soopafresh'><bv>Deadfender<n>",
-	text9 = "<font size='15px'><bv>Commands<n>: -- <rose>*<n> -> Room admin commands (Cooming soon) --<font size='12px'><br><br><br><j>!resettimer<n> <rose>*<n> - The time to start is reset<br><j>!lang [BR/EN]<n> - Change the game language.",
-	text10 = "<p align='center'><font size='12px'><a href='event:vida'>Players lives ",
-	text11 = "<p align='center'><font size='15px'><font color='#D30A0A'>Read the help to:<br>Instructions | Commands",
-	text12 = "<p align='center'><font size='12px'>In this round you’ll be able to spawn",
-	text13 = "<font size='15px'><font color='#000000'><b>Spawn the grounds by clicking in the <font color='#178E31'>green area.",
-	text14 = "<font size='15px'><font color='#000000'><b>Prevent the cannon from reaching the goal to avoid losing <r>one life<n>.",
-	text15 = "grounds",
-	text18 = "<j>Two or more players are required to start the game<n>",
-	text19 = "The player",
-	text20 = "died!",
-	text21 = "won!",
-	text22 = "Draw!",
-	text23 = "<a href='event:ajuda'>How to play</a><br><a href='event:cmd'>Commands</a><br><n2>Options<n><br><a href='event:credits'>Credits</a>",
-	text24 = "Close",
-	text25 = "<p align='center'><font size='20px'><j>Credits<n><br></p><p align='left'><font size='12px'>This game was developed by Refletz#6472(Soristl). I hope you guys enjoy it! ^^.<br><br> Acknowledgments:<br><br><j>Esh#0095<n> (<v>Pop-up design and texts<n>) | <j>Chisaky#0000<n> (<v>English translation<n>) | <j>Darkwolf07#9890<n> (<v>Game Images<n>)",
-}
-
-if tfm.get.room.community == "br" then
-    trad = lang.br
-else
-	trad = lang.en
+initTrue = function()
+blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoScore(true)
+tfm.exec.disableDebugCommand(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.setRoomMaxPlayers(35)
+tfm.exec.disableAllShamanSkills(true)
+tfm.exec.disablePhysicalConsumables(true)
+limits={questions=10,time=7,mices_alive=0}
+questions={question="",answer="",round=0}
+for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
+	system.disableChatCommandDisplay(f)
 end
-
-imageId = {}
-
-for name, data in pairs(tfm.get.room.playerList) do
-	mice[name] = {v = name, tr = trad}
-	table.insert(mice, mice[name])
-	imageId[name] = {}
+current_mode=""
+answer_time=20
+remain_time=0
+game_map="@7605289"
+for name,player in pairs(tfm.get.room.playerList) do
+	tfm.exec.setPlayerScore(name,0,false)
 end
-
-function ui.addWindow(id, text, player, x, y, width, height, alpha, corners, closeButton, buttonText)
-    id = tostring(id)
-    ui.addTextArea(id.."000000000", "", player, x, y, width, height, 0x573926, 0x573926, alpha, true)
-    ui.addTextArea(id.."0", "", player, x+1, y+1, width-2, height-2, 0x8a583c, 0x8a583c, alpha, true)
-    ui.addTextArea(id.."00", "", player, x+3, y+3, width-6, height-6, 0x2b1f19, 0x2b1f19, alpha, true)
-    ui.addTextArea(id.."000", "", player, x+4, y+4, width-8, height-8, 0xc191c, 0xc191c, alpha, true)
-    ui.addTextArea(id.."0000", "", player, x+5, y+5, width-10, height-10, 0x2d5a61, 0x2d5a61, alpha, true)
-    ui.addTextArea(id.."00000", text, player, x+5, y+6, width-10, height-12, 0x142b2e, 0x142b2e, alpha, true)
-    if corners then
-        table.insert(imageId[player], tfm.exec.addImage("155cbe97a3f.png", "&1", x-7, (y+height)-22, player))
-        table.insert(imageId[player], tfm.exec.addImage("155cbe99c72.png", "&1", x-7, y-7, player))
-        table.insert(imageId[player], tfm.exec.addImage("155cbe9bc9b.png", "&1", (x+width)-20, (y+height)-22, player))
-        table.insert(imageId[player], tfm.exec.addImage("155cbea943a.png", "&1", (x+width)-20, y-7, player))
-    end
-    if closeButton then
-        ui.addTextArea(id.."000000", "", player, x+8, y+height-22, width-16, 13, 0x7a8d93, 0x7a8d93, alpha, true)
-        ui.addTextArea(id.."0000000", "", player, x+9, y+height-21, width-16, 13, 0xe1619, 0xe1619, alpha, true)
-        ui.addTextArea(id.."00000000", "", player, x+9, y+height-21, width-17, 12, 0x314e57, 0x314e57, alpha, true)
-        ui.addTextArea(id.."", buttonText, player, x+9, y+height-24, width-17, nil, 0x314e57, 0x314e57, 0, true)
-    end
-end
-
-function closeWindow(id, player)
-    var = tostring(id)
-    for text = 1, 10 do
-        ui.removeTextArea(var, player)
-        var = var.."0"
-	end
-	for i = 1, #imageId[player] do
-		tfm.exec.removeImage(imageId[player][i])
-	end
-end
-
-ui.addTextArea(4000, "<p align='center'><font size='12px'><a href='event:menuOpen'>Menu", nil, 5, 25, 40, 20, 0x0e232b, 0x171717, 1, true)
-
-function iniciar()
-	tfm.exec.disableAutoShaman() tfm.exec.newGame('<C><P F="8" L="2131" H="600" /><Z><S><S L="2131" X="1065" H="40" Y="580" T="10" P="0,0,0.3,0,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="6a7495" X="-5" Y="300" T="12" H="610" /><S L="10" o="6a7495" X="2135" H="610" Y="300" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,90,0,0,0" L="10" o="6a7495" H="2131" Y="-1" T="12" X="1065" /><S P="0,0,0.3,0.2,0,0,0,0" Y="0" L="10" X="0" c="4" i="322,450,../godspaw/img/renard/anim-1-3.png" T="14" H="10" /><S P="0,0,0.3,0.2,0,0,0,0" Y="0" L="10" X="0" c="4" i="100,200,17429228e27.png" T="14" H="10" /></S><D><DS Y="479" X="213" /></D><O /></Z></C>')
-	tfm.exec.disableAutoNewGame()
-	tfm.exec.disableAutoScore (true)
-	tfm.exec.disableAutoTimeLeft (true)
-	tfm.exec.disableAfkDeath (true)
-	tfm.exec.disableMortCommand (true)
-	tfm.exec.disablePhysicalConsumables (true)
-	removeText()
-	ui.removeTextArea(3001)
-	ui.removeTextArea(3002)
-	tabela = {}
-	for tv = 1, #mice do
-		ui.addTextArea(1, mice[tv].tr.text2, mice[tv].v, 250, 370, 300, 25, 0x0e232b, 0x171717, 1, true)
-		ui.addTextArea(2, mice[tv].tr.text3.." "..#tabela.."/8", mice[tv].v, 30, 370, 200, 25, 0x0e232b, 0x171717, 1, true)
-		ui.addTextArea(18, mice[tv].tr.text13, mice[tv].v, 989, 350, 190, 90, 0x242424, 0xFFFFFF, 0, false)
-		ui.addTextArea(19, mice[tv].tr.text14, mice[tv].v, 1745, 348, 190, 92, 0x242424, 0xFFFFFF, 0, false)
-		if tt == 0 then
-			ui.addTextArea(5001, "", mice[tv].v, 0, 0, 800, 400, 0x161616, 0x161616, 0.8, true)
-			ui.addPopup(0, 1, mice[tv].tr.text11, mice[tv].v, 300, 150, 250, true)
+function eventNewGame()
+	ui.removeTextArea(0,nil)
+	limits.mices_alive=0
+	for name,player in pairs(tfm.get.room.playerList) do
+		if not tfm.get.room.playerList[name].isShaman then
+			limits.mices_alive=limits.mices_alive+1
+		else
+			tfm.exec.setPlayerScore(name,-1,false)
+		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
 		end
 	end
-	tabela1 = {}
-	objectList = {}
-	fim = false
-	inGame = false
-	spec = {}
-	players = {}
-	playersOnGame = {}
-	twin = {}
-	colors = {"<font color='#D00D0D'>", "<font color='#1C59D9'>", "<font color='#FFE300'>", "<font color='#19C52E'>", "<font color='#FF8300'>", "<font color='#FF00F6'>", "<font color='#9100FF'>", "<font color='#00F3F3'>"}
-	cm = 0
-	tt = 1
-	time = os.time() + 25000
-	modo = "espera"
-	--system.bindMouse (admin, true)
+	questions.round=0
+	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
+	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
 end
-
-function eventTextAreaCallback(tI, name, c)
-	if c == "p" and #tabela < 8 then
-		t = false
-		for i = 1, #tabela, 1 do
-			if tabela[i] == name then
-				t = true
-			end
-		end
-		if t == false then
-			table.insert(tabela, name)
-			ui.addTextArea(1, mice[name].tr.text4, mice[name].v, 250, 370, 300, 25, 0x0e232b, 0x171717, 1, true)
-			for pf = 1, #mice do
-				ui.addTextArea(2, mice[pf].tr.text3.." "..#tabela.."/8", mice[pf].v, 30, 370, 200, 25, 0x0e232b, 0x171717, 1, true)
-			end
-		end
-		if #tabela == 8 then
-			for vt = 1, #mice do
-				tfm.exec.chatMessage (trad.text5, nil)
-			end
-			for tb = 1, #tabela do
-				ui.removeTextArea(4, tabela[tb])
-			end
-		end
-	elseif c == "menuOpen" then
-		ui.addTextArea(4000, "<p align='center'><font size='12px'><a href='event:menuClose'>Menu", name, 5, 25, 40, 20, 0x0e232b, 0x171717, 1, true)
-		ui.addTextArea(4001, "<font size='11px'><textformat leading='5'>"..mice[name].tr.text23.."", name, 5, 55, 90, 80, 0x0e232b, 0x171717, 0.5, true)
-	elseif c == "menuClose" then
-		ui.addTextArea(4000, "<p align='center'><font size='12px'><a href='event:menuOpen'>Menu", name, 5, 25, 40, 20, 0x0e232b, 0x171717, 1, true)
-		ui.removeTextArea(4001, name)
-	elseif c == "ajuda" then
-		repita(name)
-	elseif c == "cmd" then
-		ui.addWindow(-1, ""..mice[name].tr.text8.."</font><font face='verdana'><p align='left'><br><br>"..mice[name].tr.text9.."", name, 74, 50, 704, 300, 1, true, true, "<a href='event:closeWindow'><p align='center'>"..mice[name].tr.text24)
-	elseif c == "credits" then
-		ui.addWindow(-1, ""..mice[name].tr.text25.."", name, 74, 50, 704, 300, 1, true, true, "<a href='event:closeWindow'><p align='center'>"..mice[name].tr.text24)
-	elseif c == "vida" then
-		lang.br.text16 = "<p align='center'><font size='15px'><font face='soopafresh'>Vida dos jogadores</font><p align='left'><font size='14px'><font face='arial'><br><br>Jogador: <r>"..tabela1[1].."<n> | Vida: "..playersOnGame[1].life.."<br>Jogador: <bv>"..tabela1[2].."<n> | Vida: "..playersOnGame[2].life.."<br>Jogador: <j>"..tabela1[3].."<n> | Vida: "..playersOnGame[3].life.."<br>Jogador: <vp>"..tabela1[4].."<n> | Vida: "..playersOnGame[4].life.."<br>Jogador: <ce>"..tabela1[5].."<n> | Vida: "..playersOnGame[5].life.."<br>Jogador: <rose>"..tabela1[6].."<n> | Vida: "..playersOnGame[6].life.."<br>Jogador: <vi>"..tabela1[7].."<n> | Vida: "..playersOnGame[7].life.."<br>Jogador: <ch>"..tabela1[8].."<n> | Vida: "..playersOnGame[8].life..""
-		lang.en.text16 = "<p align='center'><font size='15px'><font face='soopafresh'>Players' lives</font><p align='left'><font size='14px'><font face='arial'><br><br>Player: <r>"..tabela1[1].."<n> | Life: "..playersOnGame[1].life.."<br>Player: <bv>"..tabela1[2].."<n> | Life: "..playersOnGame[2].life.."<br>Player: <j>"..tabela1[3].."<n> | Life: "..playersOnGame[3].life.."<br>Player: <vp>"..tabela1[4].."<n> | Life: "..playersOnGame[4].life.."<br>Player: <ce>"..tabela1[5].."<n> | Life: "..playersOnGame[5].life.."<br>Player: <rose>"..tabela1[6].."<n> | Life: "..playersOnGame[6].life.."<br>Player: <vi>"..tabela1[7].."<n> | Life: "..playersOnGame[7].life.."<br>Player: <ch>"..tabela1[8].."<n> | Life: "..playersOnGame[8].life..""
-		ui.addTextArea(3001, mice[name].tr.text16, name, 264, 114, 400, 200, 0x0e232b, 0x171717, 1, true)
-		ui.addTextArea(3002, "<p align='center'><font size='15px'><a href='event:fecha1'><r>X<n>", name, 620, 124, 30, 20, 0x0e232b, 0x171717, 1, true)	
-	elseif c == "fecha1" then
-		ui.removeTextArea(3001, name)
-		ui.removeTextArea(3002, name)
-	elseif c == "closeWindow" then
-		closeWindow(-1, name)
+function eventNewPlayer(name)
+	tfm.exec.setPlayerScore(name,0,false)
+	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+function eventPlayerDied(name)
+	if not tfm.get.room.playerList[name].isShaman then
+		limits.mices_alive=limits.mices_alive-1
 	end
 end
-
-function eventLoop(current, remaining)
-	if modo == "espera" then
-		local x = math.ceil((time - os.time())/1000)
-		c =  string.format("%d", x)
-		ui.addTextArea(0, trad.text1.." "..c.."s", nil, 110, 390, 220, 25, 0x0e232b, 0x171717, 0, false)
-		if x == 0 then
-			if #tabela >= 2 then
-				removeText()
-				maps()
-				if cm == 0 then
-					cm = cm + 1
-					checkPlayers()
-				end
-			else
-				time = os.time() + 15000
-				tfm.exec.chatMessage (trad.text18, nil)
-			end
+function reset()
+	tfm.exec.newGame(game_map)
+	tfm.exec.setGameTime(60)
+	current_mode="waiting"
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isShaman then
+			tfm.exec.setPlayerScore(name,-1,false)
 		end
-	elseif modo == "espera2" then
-		for player1, data in pairs(tfm.get.room.playerList) do
-			table.insert(spec, player1)
+	end
+	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
+end
+function isTrue()
+	tfm.exec.chatMessage("<VP>The answer is TRUE!")
+	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
+end
+function isFalse()
+	tfm.exec.chatMessage("<R>The answer is FALSE!")
+	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
+end
+function eventPopupAnswer(id,name,answer)
+	if id == 0 then
+		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
+			limits.questions=tonumber(answer)
+			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 12)",name,350,175,200,true)
 		end
-		for element1 = 1, #players do
-			for element2 = 1, #spec do
-				if players[element1] == spec[element2] then
-					table.remove(spec, element2)
+	end
+	if id == 1 then
+		if tonumber(answer) >= 1 and tonumber(answer) <= 12 then
+			limits.time=tonumber(answer)
+			tfm.exec.chatMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
+		end
+	end
+	if id == 10 then
+		if string.len(answer) >= 10 and string.len(answer) <= 170 then
+			questions.question=answer
+			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
+		else
+			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
+			tfm.exec.chatMessage("<R>Your question is too large or too short. Please type other question.",name)
+		end
+	end
+	if id == 11 then
+		if remain_time > 1 then
+			questions.answer=answer
+			questions.round=questions.round+1
+			current_mode="truefalse"
+			tfm.exec.setGameTime(answer_time)
+			for name,player in pairs(tfm.get.room.playerList) do
+				if not tfm.get.room.playerList[name].isShaman then
+					tfm.exec.movePlayer(name,400,330)
+				else
+					tfm.exec.movePlayer(name,400,1330)
 				end
 			end
-		end
-		for element3 = 1, #spec do 
-			tfm.exec.killPlayer(spec[element3])
-		end
-		teleportPlayers()
-		modo = "espera1"
-		popup()
-	elseif modo == "espera1" then
-		removeText()
-		conts()
-		maxspawn = math.random(2,3)
-		for fr = 1, #mice do
-			ui.addTextArea(7, mice[fr].tr.text12.." "..maxspawn.." "..mice[fr].tr.text15.."", mice[fr].v, 240, 56, 340, 25, 0x0e232b, 0x171717, 1, true)
-		end
-		attLife(nil)
-		time = os.time() + 15000
-		portais()
-		checkl()
-		modo = "iniciar"
-	elseif modo == "iniciar" then
-		local x1 = math.ceil((time - os.time())/1000)
-		c = string.format("%d", x1)
-		ui.setMapName ("<rose>Cannon Spawn in "..c.."s")
-		if x1 == 0 then
-			for ok = 1, #playersOnGame do
-				system.bindMouse (playersOnGame[ok].name, false)
-			end
-			for hh = 1, #idImgToBorders do
-				 tfm.exec.removeImage(idImgToBorders[hh])
-			end
-			spawnCannon()
-		    time = os.time() + 10000
-			modo = "definicao"
-		end	
-	elseif modo == "definicao" then
-		local x2 = math.ceil((time - os.time())/1000)
-		c1 = string.format("%d", x2)
-		if x2 == 0 then
-			spawnT()
-			modo = "espera3"
-			time = os.time() + 5000
-			ui.setMapName ("<rose>Processing...")
-		end
-	elseif modo == "espera3" then
-		local x10 = math.ceil((time - os.time())/1000)
-		if x10 == 0 then
-			collect()
-			condi = 0
-			condi2 = 0
-			objcoords()
-			condi = condi + 1
-			if condi2 == 1 then
-				ui.removeTextArea(2)
-				ui.removeTextArea(5)
-				ui.removeTextArea(6)
-				checkwin()
-			end
-		end
-	elseif modo == "limpar" then
-		limpar()
-		modo = "espera1"
-	elseif modo == "vitoria" then
-		local x3 = math.ceil((time - os.time())/1000)
-		c = string.format("%d", x3)
-		for lg = 1, 8 do
-			if twin[1] == playersOnGame[lg].name then
-				ui.addTextArea(5000, "<p align='center'><font size='30px'><textformat leading='150'><br>"..colors[lg]..""..twin[1].."</font> "..trad.text21.."", nil, 0, 0, 800, 400, 0x161616, 0x161616, 0.8, true)
-			end
-		end
-		if x3 == 0 then
-			iniciar()
-		end
-	elseif modo == "empate" then
-		local x4 = math.ceil((time - os.time())/1000)
-		c = string.format("%d", x4)
-		ui.addTextArea(5000, "<p align='center'><font size='30px'><textformat leading='150'><br>"..trad.text22.."", nil, 0, 0, 800, 400, 0x161616, 0x161616, 0.8, true)
-		if x4 == 0 then
-			iniciar()
+			tfm.exec.chatMessage("<N>"..questions.question.."")
+			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Bahnschrift SemiLight,Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
+			tfm.exec.chatMessage(questions.answer,"Spectra_phantom#6089")
+			tfm.exec.chatMessage(questions.answer,"Forzaldenon#0000")
 		end
 	end
-end
-
-function eventMouse(jogador, x5, y5)
-	if jogador == playersOnGame[1].name then
-		checkCoordsOfClick(x5, y5, 1, 118, 244)
-	elseif jogador == playersOnGame[2].name then
-		checkCoordsOfClick(x5, y5, 2, 560, 686)
-	elseif jogador == playersOnGame[3].name then
-		checkCoordsOfClick(x5, y5, 3, 1002, 1128)
-	elseif jogador == playersOnGame[4].name then
-		checkCoordsOfClick(x5, y5, 4, 1444, 1570)
-	elseif jogador == playersOnGame[5].name then
-		checkCoordsOfClick(x5, y5, 5, 1886, 2012)
-	elseif jogador == playersOnGame[6].name then
-		checkCoordsOfClick(x5, y5, 6, 2328, 2454)
-	elseif jogador == playersOnGame[7].name then
-		checkCoordsOfClick(x5, y5, 7, 2770, 2896)
-	elseif jogador == playersOnGame[8].name then
-		checkCoordsOfClick(x5, y5, 8, 3212, 3338)
-	end
-end
-
-function checkCoordsOfClick(x, y, index, initBorderSpawn, EndBorderSpawn)
-	if statsOfPlayers[index].counter >= 0 and statsOfPlayers[index].counter < maxspawn then
-		if x >= initBorderSpawn and x <= EndBorderSpawn then
-			if y >= 299 and y <= 362 then
-				statsOfPlayers[index].counter = statsOfPlayers[index].counter + 1
-				statsOfPlayers[index].id = statsOfPlayers[index].id + 1
-				CheckCoordAndIdofGround(x, y, statsOfPlayers[index].id)
-			end
-		end
-	end
-end
-
-tc = {8, 9, 10, 3, 1}
-td = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
-te = {3, 11, 2, 4, 8}
-
-function CheckCoordAndIdofGround(x, y, id)
-	if y <= 316 then
-		grounds(id, x, y, tc)	
-	elseif y >= 317 and y < 347 then
-		grounds(id, x, y, td)
-	elseif y >= 347 then
-		grounds(id, x, y, te)
-	end
-end
-
-function grounds(id, x, y, arg2)
-	t = {10, 20}
-	ang = {0, 30, 45, 60, -30, -45}
-	arg1 = arg2[math.random(#arg2)]
-	if arg1 == 0 then
-		tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = .2, restitution = .0, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 1 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = .0, restitution = .10, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 2 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 0, restitution = 1.2, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 3 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 0, restitution = 5.0, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 4 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 30, restitution = 0.2, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 5 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 20, restitution = .1, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 6 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 20, restitution = .1, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 7 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 10, restitution = .0, miceCollision = true, angle = ang[math.random(#ang)], groundCollision = true})
-    elseif arg1 == 8 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 20, restitution = .1, miceCollision = false, angle = ang[math.random(#ang)], groundCollision = false})
-    elseif arg1 == 9 then
-        tfm.exec.addPhysicObject(id, x, y, {type = arg1, color = math.random(0xFFFFFF), width = t[math.random(#t)], height = 2, friction = 20, restitution = .1, miceCollision = false, angle = ang[math.random(#ang)], groundCollision = false})
-    elseif arg1 == 10 then
-        tfm.exec.addPhysicObject(id, x, y, {type = 9, color = math.random(0xFFFFFF), width = 40, height = 40, friction = 20, restitution = .1, miceCollision = false, angle = ang[math.random(#ang)], groundCollision = false})
-    elseif arg1 == 11 then
-        tfm.exec.addPhysicObject(id, x, y, {type = 13, color = 0xAA65C7, width = 10, height = 10, friction = .0, restitution = 1.2, miceCollision = false, angle = ang[math.random(#ang)], groundCollision = true})
-		elseif arg1 == 12 then
-        tfm.exec.addPhysicObject(id, x, y, {type = 13, color = 0xE88F4F, width = 10, height = 10, friction = 0, restitution = 5.0, miceCollision = false, angle = ang[math.random(#ang)], groundCollision = true})
-    end
-end
-
-function checkwin()
-	limpar()
-	for i = 1, 8 do
-		if playersOnGame[i].life <= 0 then
-			for j = 1, #twin do
-				if twin[j] == playersOnGame[i].name then
-					tfm.exec.chatMessage (""..trad.text19.." "..colors[i].." "..playersOnGame[i].name.."</font> "..trad.text20.."", nil)
-					table.remove(twin, j)
-					playersOnGame[i].name = "Ninguém"
-				end
-			end
-		end
-	end
-	if #twin == 1 then
-		inGame = false
-		modo = "vitoria"
-		time = os.time() + 5000
-		limpar()
-	end
-	if #twin == 0 then
-		inGame = false
-		modo = "empate"
-		time = os.time() + 5000
-		limpar()
-	end
-	if #twin > 1 then
-		modo = "limpar"
-	end
-end
-
-function eventPlayerLeft(jogador)
-	for k = 1, #playersOnGame do
-		if jogador == playersOnGame[k].name then
-			playersOnGame[k].life = 0
-			tw()
-		end
-	end
-	if modo == "espera" then
-		for sair = 1, #tabela, 1 do
-			if tabela[sair] == jogador then
-				table.remove(tabela, sair)
-				for tt = 1, #mice do
-					ui.addTextArea(2, mice[tt].tr.text3.." "..#tabela.."/8", mice[tt].name, 30, 370, 200, 25, 0x0e232b, 0x171717, 1, true)
-				end
-				if #tabela < 8 then
-					for tts = 1, #mice do
-						ui.addTextArea(4, mice[tts].tr.text2, mice[tts].name, 250, 370, 300, 25, 0x0e232b, 0x171717, 1, true)
-					end
-					for vvv = 1, #tabela do
-						ui.removeTextArea(4, tabela[vvv])
-					end
-				end
-			end
-		end
-	end
-end
-
-function tw()
-	if #twin <= 2 then
-		checkwin()
-	end
-end
-
-function eventNewPlayer(jogador)
-	xg = false
-		for vv = 1, #mice do
-			if mice[vv].v == jogador then
-			xg = true
-		end
-	end
-	if xg == false then
-		mice[jogador] = {v = jogador, tr = trad}	
-		table.insert(mice, mice[jogador])
-	end
-	ui.addTextArea(4000, "<p align='center'><font size='12px'><a href='event:menuOpen'>Menu", jogador, 5, 25, 40, 20, 0x0e232b, 0x171717, 1, true)
-	imageId[jogador] = {}
-	if modo == "espera" then
-		tfm.exec.respawnPlayer(jogador)
-		for vk = 1, #mice do
-			if mice[vk].v == jogador then
-				ui.addTextArea(2, mice[vk].tr.text3.." "..#tabela.."/8", jogador, 30, 370, 200, 25, 0x0e232b, 0x171717, 1, true)
-			end
-		end
-		ui.addTextArea(18, mice[jogador].tr.text13, mice[jogador].v, 989, 350, 190, 90, 0x242424, 0xFFFFFF, 0, false)
-		ui.addTextArea(19, mice[jogador].tr.text14, mice[jogador].v, 1745, 348, 190, 92, 0x242424, 0xFFFFFF, 0, false)
-		lt = false
-		if lt == false and #tabela < 8 then
-			for vs = 1, #mice do
-				if mice[vs].v == jogador then
-					ui.addTextArea(1, mice[vs].tr.text2, jogador, 250, 370, 300, 25, 0x0e232b, 0x171717, 1, true)
-				end
-			end
-		end
-	elseif modo ~= "espera" then
-		for lg = 1, #mice do
-			if mice[lg].v == jogador then
-				ui.addTextArea(7, mice[lg].tr.text12.." "..maxspawn.." "..mice[lg].tr.text15.."", jogador, 240, 56, 340, 25, 0x0e232b, 0x171717, 1, true)
-			end
-		end
-		attLife(jogador)
-		spawn()
-	end
-	if inGame == true then
-		ui.addTextArea(3000, mice[jogador].tr.text10, mice[jogador].v, 650, 34, 145, 20, 0x0e232b, 0x171717, 1, true)
-	end	
-	ui.addTextArea(5001, "", jogador, 0, 0, 800, 400, 0x161616, 0x161616, 0.8, true)
-	ui.addPopup(0, 1, mice[jogador].tr.text11, jogador, 300, 150, 250, true)
-end
-
-function popup()
-	times = {"<font color='#D00D0D'>Red</font>", "<font color='#1C59D9'>Blue</font>", "<font color='#FFE300'>Yellow</font>", "<font color='#19C52E'>Green</font>", "<font color='#FF8300'>Orange</font>", "<font color='#FF00F6'>Rose</font>", "<font color='#9100FF'>Purple</font>", "<font color='#00F3F3'>Cyan</font>"}
-	for tt = 1, #players do
-		player = players[tt]
-		text = times[tt]
-		lang.br.text17 = "<font size='12px'>Você é do time "..text..", <b>você deve proteger seu gol spawnando pisos na area <font color='#19C52E'>Verde</font> através do <font color='#19C52E'>click do mouse</font>.</b><br>o último a sobreviver vence, boa sorte!!!</font>"
-		lang.en.text17 = "<font size='12px'>You are the "..text.." team, <b>you must protect your goal placing grounds in the <font color='#19C52E'>green</font> area  by <font color='#19C52E'> pressing the left mouse button</font>.</b><br>the last survivor wins the game, good luck!!!</font>"
-		checkSomePlayers(player)
-		ui.addPopup(2, 0, mice[elementIndex].tr.text17, player, 200, 200, 300, true)
-	end
-end
-
-function checkSomePlayers(player)
-	for vi = 1, #mice do
-		if player == mice[vi].v then
-			elementIndex = vi
-		end
-	end
-end
-
-function eventChatCommand(name, message)
-	if (message:sub(0,10) == "resettimer") then
-		if admins[name] then
-			if modo == "espera" then
-				time = os.time() + 15000
-			end
-		end
-	elseif message:sub(1,4)=="lang" then
-		v = string.lower(message:sub(6,7))
-		if lang[v] then
-			if v == "en" then
-				mice[name].tr = lang.en
-				att(name)
-			elseif v == "br" then
-				mice[name].tr = lang.br
-				att(name)
-			end
-		end
-	end
-end
-
-function att(jogador)
-	if modo == "espera" then
-		for vp = 1, #mice do
-			if mice[vp].v == jogador then
-				ui.addTextArea(2, mice[vp].tr.text3.." "..#tabela.."/8", jogador, 30, 370, 200, 25, 0x0e232b, 0x171717, 1, true)
-			end
-		end
-		ui.addTextArea(18, mice[jogador].tr.text13, jogador, 989, 350, 190, 90, 0x242424, 0xFFFFFF, 0, false)
-		ui.addTextArea(19, mice[jogador].tr.text14, jogador, 1745, 348, 190, 92, 0x242424, 0xFFFFFF, 0, false)
-		t = false
-		for i = 1, #tabela, 1 do
-			if tabela[i] == jogador then
-				t = true
-				if t == true then
-					ui.addTextArea(1, mice[jogador].tr.text4, jogador, 250, 370, 300, 25, 0x0e232b, 0x171717, 1, true)
-				end			
-			end
-		end
-		if t == false then
-			if #tabela < 8 then
-				for pv = 1, #mice do
-					if mice[pv].v == jogador then
-						ui.addTextArea(1, mice[pv].tr.text2, mice[pv].v, 250, 370, 300, 25, 0x0e232b, 0x171717, 1, true)
-					end
-				end
-			else
-				for tb = 1, #tabela do
-					ui.removeTextArea(4, tabela[tb])
-				end
-			end
-		end		
-	elseif modo ~= "espera" then
-		ui.addTextArea(7, mice[jogador].tr.text12.." "..maxspawn.." "..mice[jogador].tr.text15.."", jogador, 240, 56, 340, 25, 0x0e232b, 0x171717, 1, true)
-		if inGame == true then
-			ui.addTextArea(3000, mice[jogador].tr.text10, jogador, 650, 34, 145, 20, 0x0e232b, 0x171717, 1, true)
-		end
-	end
-end
-
-function eventPopupAnswer(popupID, name, answer)
-	if popupID == 0 then
+	if id == 20 then
 		if answer == "yes" then
-			ui.removeTextArea(5001, name)
-			repita(name)
-		elseif answer == "no" then
-			ui.removeTextArea(5001, name)
+			reset()
+			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
 		end
 	end
 end
-
-function checkPlayers()
-	for i = 1, 8 do
-		if #tabela > 0 then
-			l = math.random(#tabela)
-			playersOnGame[#playersOnGame + 1] = {name = tabela[l], life = 3}
-			twin[i] = tabela[l]
-			tabela1[#tabela1 + 1] = tabela[l]
-			table.insert(players, tabela[l])
-			table.remove(tabela, l)
-		else
-			playersOnGame[#playersOnGame + 1] = {name = "Ninguém", life = 0}
-			tabela1[#tabela1 + 1] = "Ninguém"
-			local name = "Ninguém"
-			table.insert(players, name)
+function eventChatCommand(name,message)
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" or name == "Aphelios#1910" then
+		if message == "limits" then
+			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
 		end
-	end
-	lang.br.text16 = "<p align='center'><font size='15px'><font face='soopafresh'>Vida dos jogadores</font><p align='left'><font size='14px'><font face='arial'><br><br>Jogador: <r>"..tabela1[1].."<n> | Vida: "..playersOnGame[1].life.."<br>Jogador: <bv>"..tabela1[2].."<n> | Vida: "..playersOnGame[2].life.."<br>Jogador: <j>"..tabela1[3].."<n> | Vida: "..playersOnGame[3].life.."<br>Jogador: <vp>"..tabela1[4].."<n> | Vida: "..playersOnGame[4].life.."<br>Jogador: <ce>"..tabela1[5].."<n> | Vida: "..playersOnGame[5].life.."<br>Jogador: <rose>"..tabela1[6].."<n> | Vida: "..playersOnGame[6].life.."<br>Jogador: <vi>"..tabela1[7].."<n> | Vida: "..playersOnGame[7].life.."<br>Jogador: <ch>"..tabela1[8].."<n> | Vida: "..playersOnGame[8].life..""
-	lang.en.text16 = "<p align='center'><font size='15px'><font face='soopafresh'>Players' lives</font><p align='left'><font size='14px'><font face='arial'><br><br>Player: <r>"..tabela1[1].."<n> | Life: "..playersOnGame[1].life.."<br>Player: <bv>"..tabela1[2].."<n> | Life: "..playersOnGame[2].life.."<br>Player: <j>"..tabela1[3].."<n> | Life: "..playersOnGame[3].life.."<br>Player: <vp>"..tabela1[4].."<n> | Life: "..playersOnGame[4].life.."<br>Player: <ce>"..tabela1[5].."<n> | Life: "..playersOnGame[5].life.."<br>Player: <rose>"..tabela1[6].."<n> | Life: "..playersOnGame[6].life.."<br>Player: <vi>"..tabela1[7].."<n> | Life: "..playersOnGame[7].life.."<br>Player: <ch>"..tabela1[8].."<n> | Life: "..playersOnGame[8].life..""
-	modo = "espera2"
-	inGame = true
-	if inGame == true then
-		for pp = 1, #mice do
-			ui.addTextArea(3000, mice[pp].tr.text10, mice[pp].v, 650, 34, 145, 20, 0x0e232b, 0x171717, 1, true)
+		if(message:sub(0,2) == "at") then
+			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
+				answer_time=tonumber(message:sub(4))
+				tfm.exec.chatMessage("Answer time: "..answer_time.."s.")
+			end
 		end
-	end
-end
-
-statsOfPlayers = {}
-
-function conts()
-	local ids = 0
-	for i = 1, #playersOnGame do
-		if playersOnGame[i].life > 0 then
-			statsOfPlayers[i] = {counter = 0, id = ids}
-			ids = ids + 3
-			system.bindMouse (playersOnGame[i].name, true)
+		if(message:sub(0,7) == "admin78") then
+			if current_mode == "waiting" then
+				tfm.exec.setPlayerScore(message:sub(9),10001,false)
+				reset()
+			end
 		end
-	end
-end
-
-map = 1
-
-
-function maps()
-	mapas = {'<C><P D="connexion/x_forteresse/7.jpg, 600, 0, 2;connexion/x_forteresse/7.jpg, 1200, 0, 1;connexion/x_forteresse/7.jpg, 1800, 0, 1;connexion/x_forteresse/7.jpg, 2400, 0, 1;connexion/x_forteresse/7.jpg, 3000, 0, 1" L="3463" /><Z><S><S L="3000" X="1244" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" H="10" X="2321" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="316" X="-190" /></D><O /></Z></C>', 
-			 '<C><P D="connexion/x_forteresse/10.jpg, 600, 0, 2;connexion/x_forteresse/10.jpg, 1200, 0, 1;connexion/x_forteresse/10.jpg, 1800, 0, 1;connexion/x_forteresse/10.jpg, 2400, 0, 1;connexion/x_forteresse/10.jpg, 3000, 0, 1" L="3463" /><Z><S><S L="10" o="d00d0d" X="-1" H="130" Y="205" T="12" P="0,0,0.3,0.2,-50,0,0,0" /><S P="0,0,0.3,0.2,90,0,0,0" L="10" o="d00d0d" H="800" Y="81" T="12" X="-241" /><S L="10" o="d00d0d" H="130" X="154" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="1c59d9" X="598" Y="141" T="12" H="130" /><S L="10" o="d00d0d" X="354" H="130" Y="206" T="12" P="0,0,0.3,0.2,50,0,0,0" /><S P="0,0,0.3,0.2,-50,0,0,0" L="10" o="1c59d9" H="130" Y="206" T="12" X="446" /><S L="10" o="1c59d9" H="406" X="400" Y="81" T="12" P="0,0,0.3,0.2,90,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="d00d0d" X="201" Y="141" T="12" H="130" /><S L="10" o="ffe300" X="1042" H="130" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,50,0,0,0" L="10" o="1c59d9" H="130" Y="206" T="12" X="799" /><S L="10" o="ffe300" H="130" X="892" Y="206" T="12" P="0,0,0.3,0.2,-50,0,0,0" /><S P="0,0,0.3,0.2,90,0,0,0" L="10" o="ffe300" X="844" Y="81" T="12" H="406" /><S L="10" o="1c59d9" X="645" H="130" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="ffe300" H="130" N="" Y="141" T="12" X="1089" /><S L="10" o="ffe300" H="130" X="1239" Y="206" T="12" P="0,0,0.3,0.2,50,0,0,0" /><S P="0,0,0.3,0.2,-50,0,0,0" L="10" o="19c52e" X="1332" Y="206" T="12" H="130" /><S L="10" o="19c52e" X="1287" H="406" Y="81" T="12" P="0,0,0.3,0.2,90,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="19c52e" H="130" Y="141" T="12" X="1489" /><S L="10" o="19c52e" H="130" X="1533" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,50,0,0,0" L="10" o="19c52e" X="1685" Y="206" T="12" H="130" /><S L="10" o="ff8300" X="1779" H="130" Y="206" T="12" P="0,0,0.3,0.2,-50,0,0,0" /><S P="0,0,0.3,0.2,90,0,0,0" L="10" o="ff8300" H="406" Y="81" T="12" X="1731" /><S L="10" o="ff8300" H="130" X="1931" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="ff8300" X="1977" Y="141" T="12" H="130" /><S L="10" o="ff8300" X="2128" H="130" Y="206" T="12" P="0,0,0.3,0.2,50,0,0,0" /><S P="0,0,0.3,0.2,-50,0,0,0" L="10" o="ff00f6" H="130" Y="206" T="12" X="2223" /><S L="10" o="ff00f6" H="406" X="2175" Y="81" T="12" P="0,0,0.3,0.2,90,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="ff00f6" X="2375" Y="141" T="12" H="130" /><S L="10" o="ff00f6" X="2421" H="130" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,50,0,0,0" L="10" o="ff00f6" H="130" Y="206" T="12" X="2576" /><S L="10" o="9100ff" H="130" X="2668" Y="206" T="12" P="0,0,0.3,0.2,-50,0,0,0" /><S P="0,0,0.3,0.2,90,0,0,0" L="10" o="9100ff" X="2619" Y="81" T="12" H="406" /><S L="10" o="9100ff" X="2819" H="130" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="9100ff" H="130" Y="141" T="12" X="2865" /><S L="10" o="9100ff" H="130" X="3012" Y="206" T="12" P="0,0,0.3,0.2,50,0,0,0" /><S P="0,0,0.3,0.2,-50,0,0,0" L="10" o="f3f3" X="3104" Y="206" T="12" H="130" /><S L="10" o="f3f3" X="3063" H="406" Y="81" T="12" P="0,0,0.3,0.2,90,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="f3f3" H="130" Y="141" T="12" X="3263" /><S L="10" o="f3f3" H="130" X="3309" Y="141" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,50,0,0,0" L="10" o="f3f3" X="3443" Y="205" T="12" H="130" /><S L="3000" H="10" X="1244" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" o="f3f3" H="800" X="3704" Y="80" T="12" P="0,0,0.3,0.2,90,0,0,0" /><S L="3000" X="2321" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="43" X="400" H="10" Y="401" T="2" P="0,0,0,1.0,0,0,0,0" /><S L="43" H="10" X="845" Y="401" T="2" P="0,0,0,1.0,0,0,0,0" /><S L="43" X="1290" H="10" Y="401" T="2" P="0,0,0,1.0,0,0,0,0" /><S L="43" H="10" X="2180" Y="401" T="2" P="0,0,0,1.0,0,0,0,0" /><S L="43" X="1730" H="10" Y="401" T="2" P="0,0,0,1.0,0,0,0,0" /><S L="43" X="2621" H="10" Y="401" T="2" P="0,0,0,1.0,0,0,0,0" /><S L="43" H="10" X="3061" Y="402" T="2" P="0,0,0,1.0,0,0,0,0" /></S><D><DS Y="307" X="-149" /></D><O /></Z></C>',
-			 '<C><P L="3463" D="connexion/x_forteresse/3.jpg, 600, 0, 2;connexion/x_forteresse/3.jpg, 1200, 0, 1;connexion/x_forteresse/3.jpg, 1800, 0, 1;connexion/x_forteresse/3.jpg, 2400, 0, 1;connexion/x_forteresse/3.jpg, 3000, 0, 1" /><Z><S><S L="3000" H="10" X="1244" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" X="2321" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" H="10" X="528" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S P="1,0,0,100,0,0,0,0" L="10" X="90" N="" Y="191" T="3" H="10" /><S P="1,0,0,100,0,0,0,0" L="10" X="717" N="" Y="190" T="3" H="10" /><S L="10" H="10" X="272" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S X="178" L="193" H="10" c="4" Y="191" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S P="1,0,0.3,0.2,0,0,0,0" L="193" X="622" c="4" Y="190" T="8" H="10" /><S L="10" H="10" X="1161" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S L="10" X="975" H="10" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S P="1,0,0.3,0.2,0,0,0,0" L="193" X="1066" c="4" Y="190" T="8" H="10" /><S L="10" H="10" X="1417" Y="191" T="3" P="1,0,0,100,0,0,0,0" /><S L="10" X="1605" H="10" Y="191" T="3" P="1,0,0,100,0,0,0,0" /><S H="10" L="193" X="1510" c="4" Y="190" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="10" H="10" X="2049" Y="191" T="3" P="1,0,0,100,0,0,0,0" /><S L="10" X="1860" H="10" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S P="1,0,0.3,0.2,0,0,0,0" L="193" H="10" c="4" Y="190" T="8" X="1955" /><S L="10" H="10" X="2307" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S L="10" X="2493" H="10" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S X="2398" L="193" H="10" c="4" Y="190" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="10" X="2748" H="10" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S L="10" H="10" X="2937" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S P="1,0,0.3,0.2,0,0,0,0" L="193" X="2842" c="4" Y="190" T="8" H="10" /><S L="10" H="10" X="3192" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S L="10" X="3381" H="10" Y="190" T="3" P="1,0,0,100,0,0,0,0" /><S H="10" L="193" X="3286" c="4" Y="190" T="8" P="1,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="294" X="-159" /></D><O><O C="12" Y="190" X="178" P="0" /><O C="22" Y="190" X="90" P="0" /><O C="22" Y="190" X="272" P="0" /><O C="12" Y="190" P="0" X="624" /><O C="22" Y="190" P="0" X="718" /><O C="12" Y="190" X="1066" P="0" /><O C="12" Y="190" P="0" X="1509" /><O C="22" Y="190" X="1161" P="0" /><O C="22" Y="192" P="0" X="1605" /><O C="12" Y="191" X="1955" P="0" /><O C="22" Y="192" X="2049" P="0" /><O C="22" Y="190" P="0" X="975" /><O C="22" Y="190" P="0" X="1861" /><O C="22" Y="190" P="0" X="529" /><O C="22" Y="191" X="1418" P="0" /><O C="12" Y="190" P="0" X="2398" /><O C="22" Y="191" X="2307" P="0" /><O C="22" Y="190" P="0" X="2493" /><O C="12" Y="190" X="2842" P="0" /><O C="22" Y="190" P="0" X="2748" /><O C="22" Y="190" X="2938" P="0" /><O C="12" Y="190" P="0" X="3286" /><O C="22" Y="190" X="3192" P="0" /><O C="22" Y="190" P="0" X="3381" /></O></Z></C>',
-			 '<C><P D="x_deadmeat/cinematique/106.jpg, 600, 0, 2;x_deadmeat/cinematique/106.jpg, 1200, 0, 1;x_deadmeat/cinematique/106.jpg, 1800, 0, 1;x_deadmeat/cinematique/106.jpg, 2400, 0, 1;x_deadmeat/cinematique/106.jpg, 3000, 0, 1" L="3463" /><Z><S><S L="3000" X="1244" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" H="10" X="2321" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" o="d00d0d" X="78" H="150" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="d00d0d" H="150" Y="170" T="12" X="278" /><S L="20" H="10" X="83" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="20" X="272" H="10" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="1c59d9" H="150" Y="170" T="12" X="522" /><S L="10" o="1c59d9" H="150" X="722" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="20" X="527" H="10" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="20" H="10" X="716" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S L="10" o="ffe300" H="150" X="966" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="ffe300" X="1166" Y="170" T="12" H="150" /><S L="20" H="10" X="971" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="20" X="1160" H="10" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="19c52e" X="1410" Y="170" T="12" H="150" /><S L="10" o="19c52e" X="1610" H="150" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="20" X="1415" H="10" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="20" H="10" X="1604" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S L="10" o="ff8300" X="1854" H="150" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="ff8300" H="150" Y="170" T="12" X="2054" /><S L="20" H="10" X="1859" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="20" X="2048" H="10" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="ff00f6" H="150" Y="170" T="12" X="2298" /><S L="20" X="2303" H="10" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="10" o="ff00f6" H="150" X="2498" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="20" H="10" X="2492" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S L="10" o="9100ff" H="150" X="2742" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="20" H="10" X="2747" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="9100ff" X="2942" Y="170" T="12" H="150" /><S L="20" X="2936" H="10" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="10" o="f3f3" X="3186" Y="170" T="12" H="150" /><S L="10" o="f3f3" X="3386" H="150" Y="170" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="20" X="3191" H="10" Y="246" T="2" P="0,0,0,0.5,45,0,0,0" /><S L="20" H="10" X="3380" Y="246" T="2" P="0,0,0,0.5,-45,0,0,0" /></S><D><DS Y="298" X="-145" /></D><O><O C="3" Y="180" P="0" X="178" /><O C="12" Y="180" P="0" X="180" /><O C="3" Y="180" X="622" P="0" /><O C="12" Y="180" X="622" P="0" /><O C="3" Y="180" P="0" X="1066" /><O C="12" Y="180" P="0" X="1066" /><O C="3" Y="180" X="1510" P="0" /><O C="12" Y="180" X="1510" P="0" /><O C="3" Y="180" P="0" X="1954" /><O C="12" Y="180" P="0" X="1954" /><O C="3" Y="180" X="2398" P="0" /><O C="12" Y="180" X="2398" P="0" /><O C="3" Y="180" P="0" X="2842" /><O C="12" Y="180" P="0" X="2842" /><O C="3" Y="180" X="3286" P="0" /><O C="12" Y="180" X="3286" P="0" /></O></Z></C>',
-			 '<C><P L="3463" D="x_deadmeat/cinematique/105.jpg, 0, 0;x_deadmeat/cinematique/105.jpg, 800, 0;x_deadmeat/cinematique/105.jpg, 2400" /><Z><S><S L="3000" H="10" X="1244" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" X="2321" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="316" X="-190" /></D><O><O C="4" Y="350" P="0" X="400" /><O C="12" Y="351" P="0" X="402" /><O C="4" Y="350" X="844" P="0" /><O C="12" Y="351" X="846" P="0" /><O C="4" Y="350" P="0" X="1288" /><O C="12" Y="351" P="0" X="1290" /><O C="4" Y="350" X="1732" P="0" /><O C="12" Y="351" X="1734" P="0" /><O C="4" Y="350" P="0" X="2176" /><O C="12" Y="351" P="0" X="2178" /><O C="4" Y="350" X="2620" P="0" /><O C="12" Y="351" X="2622" P="0" /><O C="4" Y="350" P="0" X="3064" /><O C="12" Y="351" P="0" X="3066" /></O></Z></C>',
-			 '<C><P D="x_deadmeat/cinematique/1.jpg, 0, 0;x_deadmeat/cinematique/1.jpg, 1600, 0;x_deadmeat/cinematique/1.jpg, 3200, 0" L="3463" /><Z><S><S L="3000" X="1244" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" H="10" X="2321" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="17" H="17" X="120" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="160" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="240" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="200" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="160" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="200" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="240" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="120" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="564" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="604" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="644" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="684" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="564" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="604" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="644" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="684" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1008" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1048" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1088" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1128" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1008" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1048" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1088" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1128" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1452" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1492" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1532" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1572" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1452" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1492" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1532" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1572" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1896" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1936" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1976" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="2016" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1896" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="1936" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="1976" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="2016" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="2340" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2380" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="2420" H="17" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2460" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" X="2340" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2380" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" X="2420" H="17" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2460" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2784" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2824" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2864" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2904" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2784" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2824" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2864" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="2904" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3228" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3268" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3308" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3348" Y="244" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3228" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3268" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3308" Y="282" T="9" P="0,0,,,,0,0,0" /><S L="17" H="17" X="3348" Y="282" T="9" P="0,0,,,,0,0,0" /></S><D><DS Y="316" X="-190" /></D><O /></Z></C>',
-			 '<C><P D="x_deadmeat/cinematique/42.jpg, 0, 0;x_deadmeat/cinematique/42.jpg, 1600, 0;x_deadmeat/cinematique/42.jpg, 3200, 0;" L="3463" /><Z><S><S c="4" L="106" H="10" X="188" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S H="10" L="33" X="130" c="1" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="249" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="632" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="575" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="687" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="1076" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="1131" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="1019" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="1520" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="1462" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="1582" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="1964" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="1908" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="2022" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="2408" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="2470" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="2358" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="2852" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="2800" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="2907" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S c="4" L="106" H="10" X="3296" Y="212" T="8" P="1,0,0.3,0.2,0,0,0,0" /><S L="33" H="10" X="3245" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="33" H="10" X="3348" Y="212" T="1" P="1,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="413" Y="93" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="857" Y="93" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="1301" Y="93" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="1746" Y="92" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="2189" Y="93" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="2633" Y="93" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" H="10" X="3077" Y="93" T="1" P="0,0,0,0.2,0,0,0,0" /><S L="101" X="413" H="10" Y="357" T="2" P="0,0,0,1.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="413" c="4" N="" Y="359" T="1" H="14" /><S L="101" X="857" H="10" Y="357" T="2" P="0,0,0,1.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="858" c="4" N="" Y="359" T="1" H="14" /><S L="101" X="1746" H="10" Y="357" T="2" P="0,0,0,1.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="1746" c="4" N="" Y="359" T="1" H="14" /><S L="101" X="2189" H="10" Y="357" T="2" P="0,0,0,1.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="2189" c="4" N="" Y="359" T="1" H="14" /><S P="0,0,0,1.2,0,0,0,0" L="101" X="1301" c="1" Y="357" T="2" H="10" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="1301" c="4" N="" Y="359" T="1" H="14" /><S L="101" X="2633" H="10" Y="356" T="2" P="0,0,0,1.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="2633" c="4" N="" Y="359" T="1" H="14" /><S L="101" X="3077" H="10" Y="357" T="2" P="0,0,0,1.2,0,0,0,0" /><S P="0,0,0,0.2,0,0,0,0" L="105" X="3077" c="4" N="" Y="359" T="1" H="14" /></S><D><DS Y="426" X="-207" /></D><O><O C="12" Y="210" P="0" X="189" /><O C="22" Y="212" P="0" X="234" /><O C="22" Y="213" P="0" X="145" /><O C="12" Y="213" P="0" X="633" /><O C="22" Y="212" P="0" X="588" /><O C="22" Y="212" P="0" X="677" /><O C="12" Y="212" P="0" X="1076" /><O C="22" Y="212" P="0" X="1031" /><O C="22" Y="213" P="0" X="1121" /><O C="12" Y="211" P="0" X="1522" /><O C="22" Y="212" P="0" X="1567" /><O C="22" Y="212" P="0" X="1477" /><O C="12" Y="212" P="0" X="1963" /><O C="22" Y="212" P="0" X="2010" /><O C="22" Y="212" P="0" X="1920" /><O C="12" Y="212" P="0" X="2409" /><O C="22" Y="212" P="0" X="2368" /><O C="22" Y="212" P="0" X="2459" /><O C="12" Y="212" P="0" X="2853" /><O C="22" Y="212" P="0" X="2814" /><O C="22" Y="212" P="0" X="2894" /><O C="12" Y="213" P="0" X="3296" /><O C="22" Y="211" P="0" X="3257" /><O C="22" Y="212" P="0" X="3336" /></O></Z></C>',
-			 '<C><P L="3463" D="x_deadmeat/x_campement/fond3.png, 0, 0;x_deadmeat/x_campement/fond3.png, 1215, 0;x_deadmeat/x_campement/fond3.png, 2426, 0" /><Z><S><S H="10" L="108" X="187" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="631" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="1519" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="1075" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="1963" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="2851" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="3295" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S X="2407" L="108" H="10" c="4" Y="222" T="17" P="1,0,0.3,0.2,0,0,0,0" /><S H="10" L="10" X="242" c="1" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S H="10" L="10" X="132" c="1" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S H="10" L="10" X="577" c="1" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="1025" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="1130" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="1470" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="1575" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="1912" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="2020" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="2907" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="2799" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="2464" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="2357" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="3245" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="3348" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S L="10" H="10" X="687" Y="222" T="19" P="1,0,0.3,0,0,0,0,0" /><S c="4" L="10" H="240" X="416" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S L="10" H="240" X="416" Y="279" T="9" P="0,0,,,,0,0,0" /><S c="4" L="10" H="240" X="860" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S c="4" L="10" H="240" X="1304" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S c="4" L="10" H="240" X="1748" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S c="4" L="10" H="240" X="2192" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S c="4" L="10" H="240" X="2636" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S c="4" L="10" H="240" X="3080" Y="279" T="19" P="0,0,0.3,0,0,0,0,0" /><S L="10" H="240" X="3080" Y="279" T="9" P="0,0,,,,0,0,0" /><S L="10" H="240" X="2636" Y="279" T="9" P="0,0,,,,0,0,0" /><S L="10" H="240" X="2192" Y="279" T="9" P="0,0,,,,0,0,0" /><S L="10" H="240" X="1748" Y="279" T="9" P="0,0,,,,0,0,0" /><S L="10" H="240" X="1304" Y="279" T="9" P="0,0,,,,0,0,0" /><S L="10" H="240" X="860" Y="279" T="9" P="0,0,,,,0,0,0" /></S><D><DS Y="-41" X="882" /></D><O><O C="12" Y="222" P="0" X="187" /><O C="12" Y="222" P="0" X="630" /><O C="12" Y="222" P="0" X="1076" /><O C="12" Y="221" P="0" X="1520" /><O C="12" Y="220" P="0" X="1964" /><O C="12" Y="221" P="0" X="2407" /><O C="12" Y="222" P="0" X="2851" /><O C="12" Y="222" P="0" X="3295" /><O C="22" Y="223" P="0" X="240" /><O C="22" Y="222" P="0" X="135" /><O C="22" Y="222" P="0" X="580" /><O C="22" Y="222" P="0" X="1027" /><O C="22" Y="222" P="0" X="1128" /><O C="22" Y="221" P="0" X="3248" /><O C="22" Y="222" P="0" X="3346" /><O C="22" Y="223" P="0" X="2905" /><O C="22" Y="222" P="0" X="2802" /><O C="22" Y="223" P="0" X="2462" /><O C="22" Y="223" P="0" X="2360" /><O C="22" Y="223" P="0" X="2017" /><O C="22" Y="223" P="0" X="1915" /><O C="22" Y="222" P="0" X="1573" /><O C="22" Y="222" P="0" X="1473" /><O C="22" Y="223" P="0" X="685" /></O></Z></C>',
-			 '<C><P L="3463" D="x_deadmeat/cinematique/107.jpg, 0, 0;x_deadmeat/cinematique/107.jpg, 1599, 0;x_deadmeat/cinematique/107.jpg, 3198, 0" /><Z><S><S L="3000" H="10" X="1244" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" X="2321" H="10" Y="0" T="0" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="d00d0d" H="10" Y="51" T="12" X="132" /><S L="10" o="d00d0d" H="260" X="181" Y="135" T="12" P="1,999999,500,0.2,0,1,9999,9990" /><S P="0,0,0,0,50,0,0,0" L="70" o="d00d0d" X="25" Y="118" T="12" H="10" /><S P="0,0,0,0.2,0,0,0,0" L="200" o="d00d0d" H="10" Y="9" T="12" X="180" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="d00d0d" X="42" Y="51" T="12" H="10" /><S L="122" o="d00d0d" H="10" X="230" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="122" o="d00d0d" X="317" H="10" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S L="72" o="d00d0d" X="342" H="10" Y="112" T="12" P="0,0,0,0,-50,0,0,0" /><S L="200" o="1c59d9" H="10" X="624" Y="9" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="1,999999,500,0.2,0,1,9999,9990" L="10" o="1c59d9" X="625" Y="135" T="12" H="260" /><S L="122" o="1c59d9" H="10" X="576" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="1c59d9" X="674" Y="51" T="12" H="10" /><S L="122" o="1c59d9" X="486" H="10" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="70" o="1c59d9" X="469" H="10" Y="118" T="12" P="0,0,0,0,50,0,0,0" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="1c59d9" H="10" Y="51" T="12" X="761" /><S P="0,0,0,0,-50,0,0,0" L="72" o="1c59d9" H="10" Y="112" T="12" X="786" /><S L="10" o="ffe300" X="1069" H="260" Y="135" T="12" P="1,999999,500,0.2,0,1,9999,9990" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="ffe300" X="1020" Y="51" T="12" H="10" /><S P="0,0,0,0.2,0,0,0,0" L="200" o="ffe300" X="1068" Y="9" T="12" H="10" /><S L="122" o="ffe300" X="1118" H="10" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="122" o="ffe300" H="10" X="1205" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="ffe300" H="10" Y="51" T="12" X="930" /><S P="0,0,0,0,50,0,0,0" L="70" o="ffe300" H="10" Y="118" T="12" X="913" /><S L="72" o="ffe300" H="10" X="1230" Y="112" T="12" P="0,0,0,0,-50,0,0,0" /><S P="1,999999,500,0.2,0,1,9999,9990" L="10" o="19c52e" H="260" Y="135" T="12" X="1513" /><S L="200" o="19c52e" X="1512" H="10" Y="9" T="12" P="0,0,0,0.2,0,0,0,0" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="19c52e" H="10" Y="51" T="12" X="1562" /><S L="122" o="19c52e" X="1464" H="10" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S L="122" o="19c52e" H="10" X="1374" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="70" o="19c52e" H="10" X="1357" Y="118" T="12" P="0,0,0,0,50,0,0,0" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="19c52e" X="1649" Y="51" T="12" H="10" /><S P="0,0,0,0,-50,0,0,0" L="72" o="19c52e" X="1674" Y="112" T="12" H="10" /><S L="10" o="ff8300" H="260" X="1957" Y="135" T="12" P="1,999999,500,0.2,0,1,9999,9990" /><S P="0,0,0,0.2,0,0,0,0" L="200" o="ff8300" H="10" Y="9" T="12" X="1956" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="ff8300" H="10" Y="51" T="12" X="1908" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="ff8300" X="1818" Y="51" T="12" H="10" /><S P="0,0,0,0,50,0,0,0" L="70" o="ff8300" X="1801" Y="118" T="12" H="10" /><S L="122" o="ff8300" H="10" X="2006" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="122" o="ff8300" X="2093" H="10" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S L="72" o="ff8300" X="2118" H="10" Y="112" T="12" P="0,0,0,0,-50,0,0,0" /><S P="1,999999,500,0.2,0,1,9999,9990" L="10" o="ff00f6" X="2401" Y="135" T="12" H="260" /><S L="200" o="ff00f6" H="10" X="2400" Y="9" T="12" P="0,0,0,0.2,0,0,0,0" /><S L="122" o="ff00f6" H="10" X="2352" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S L="122" o="ff00f6" X="2262" H="10" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="70" o="ff00f6" X="2245" H="10" Y="118" T="12" P="0,0,0,0,50,0,0,0" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="ff00f6" X="2450" Y="51" T="12" H="10" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="ff00f6" H="10" Y="51" T="12" X="2537" /><S P="0,0,0,0,-50,0,0,0" L="72" o="ff00f6" H="10" Y="112" T="12" X="2562" /><S P="1,999999,500,0.2,0,1,9999,9990" L="10" o="9100FF" X="2845" Y="135" T="12" H="260" /><S L="200" o="9100FF" H="10" X="2844" Y="9" T="12" P="0,0,0,0.2,0,0,0,0" /><S L="122" o="9100FF" H="10" X="2796" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S L="122" o="9100FF" X="2706" H="10" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="70" o="9100FF" X="2689" H="10" Y="118" T="12" P="0,0,0,0,50,0,0,0" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="9100FF" X="2894" Y="51" T="12" H="10" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="9100FF" H="10" Y="51" T="12" X="2981" /><S P="0,0,0,0,-50,0,0,0" L="72" o="9100FF" H="10" Y="112" T="12" X="3006" /><S P="1,999999,500,0.2,0,1,9999,9990" L="10" o="00F3F3" X="3289" Y="135" T="12" H="260" /><S L="200" o="00F3F3" H="10" X="3288" Y="9" T="12" P="0,0,0,0.2,0,0,0,0"  /><S L="122" o="00F3F3" H="10" X="3240" Y="51" T="12" P="0,0,0,0.2,40,0,0,0" /><S L="122" o="00F3F3" X="3150" H="10" Y="51" T="12" P="0,0,0,0.2,-40,0,0,0" /><S L="70" o="00F3F3" X="3133" H="10" Y="118" T="12" P="0,0,0,0,50,0,0,0" /><S P="0,0,0,0.2,-40,0,0,0" L="122" o="00F3F3" X="3338" Y="51" T="12" H="10" /><S P="0,0,0,0.2,40,0,0,0" L="122" o="00F3F3" H="10" Y="51" T="12" X="3425" /><S P="0,0,0,0,-50,0,0,0" L="72" o="00F3F3" H="10" Y="112" T="12" X="3450" /><S L="3000" H="11" X="1441" Y="459" T="2" P="0,0,0,1.2,0,0,0,0" /><S L="3000" X="2101" H="11" Y="459" T="2" P="0,0,0,1.2,0,0,0,0" /></S><D><DS Y="-25" X="51" /></D><O /><L><JP MV="Infinity,70" M1="3" AXIS="0,1" /><JR M2="5" M1="3" /><JP MV="Infinity,70" M1="11" AXIS="0,1" /><JR M2="10" M1="11" /><JP MV="Infinity,70" M1="18" AXIS="0,1" /><JR M2="20" M1="18" /><JP MV="Infinity,70" M1="26" AXIS="0,1" /><JR M2="27" M1="26" /><JP MV="Infinity,70" M1="34" AXIS="0,1" /><JR M2="35" M1="34" /><JP MV="Infinity,70" M1="42" AXIS="0,1" /><JR M2="43" M1="42" /><JP MV="Infinity,70" M1="50" AXIS="0,1" /><JR M2="51" M1="50" /><JP MV="Infinity,70" M1="58" AXIS="0,1" /><JR M2="59" M1="58" /></L></Z></C>'
-	}
-	cn1 = {}
-	cn2 = {}
-	cn3 = {}
-	cn4 = {}
-	cn5 = {}
-	cn6 = {}
-	cn7 = {}
-	cn8 = {}
-	cnsy = {}
-	if map == 1 then
-		pad()
-	elseif map == 2 then
-		cnsy = {179}
-		cn1 = {4, 178, 345}
-		cn2 = {448, 622, 789}
-		cn3 = {892, 1066, 1233}
-		cn4 = {1336, 1510, 1677}
-		cn5 = {1780, 1954, 2121}
-		cn6 = {2224, 2398, 2565}
-		cn7 = {2668, 2842, 3009}
-		cn8 = {3112, 3286, 3453}
-	elseif map == 3 then
-		pad()
-	elseif map == 4 then
-		cnsy = {80}
-		for nc1 = 98, 258, 1 do
-			table.insert(cn1, nc1)
+		if message == "return" then
+			if current_mode == "truefalse" then
+				for name,player in pairs(tfm.get.room.playerList) do
+					if not tfm.get.room.playerList[name].isShaman then
+						tfm.exec.movePlayer(name,400,-100)
+					end
+				end
+				current_mode="waiting"
+				tfm.exec.setGameTime(60)
+				tfm.exec.chatMessage("<R>This question has been cancelled.")
+				ui.removeTextArea(0,nil)
+			end
 		end
-		for nc2 = 542, 702, 1 do
-			table.insert(cn2, nc2)
-		end
-		for nc3 = 986, 1146, 1 do
-			table.insert(cn3, nc3)
-		end
-		for nc4 = 1430, 1590, 1 do
-			table.insert(cn4, nc4)
-		end
-		for nc5 = 1874, 2034, 1 do
-			table.insert(cn5, nc5)
-		end
-		for nc6 = 2318, 2478, 1 do
-			table.insert(cn6, nc6)
-		end
-		for nc7 = 2762, 2922, 1 do
-			table.insert(cn7, nc7)
-		end
-		for nc8 = 3206, 3366, 1 do
-			table.insert(cn8, nc8)
-		end
-	elseif map >= 5 and map <= 8 then
-		pad()
-	elseif map == 9 then
-		cnsy = {167, 154, 134}
-		cn1 = {131, 155, 203, 211, 242}
-		cn2 = {575, 599, 647, 655, 686}
-		cn3 = {1019, 1043, 1091, 1099, 1130}
-		cn4 = {1463, 1487, 1535, 1543, 1574}
-		cn5 = {1907, 1931, 1979, 1987, 2018}
-		cn6 = {2351, 2375, 2423, 2431, 2462}
-		cn7 = {2795, 2819, 2867, 2875, 2906}
-		cn8 = {3239, 3263, 3311, 3319, 3350}
-	end
-	tfm.exec.newGame(mapas[map])
-	map = map + 1
-	   if map == (#mapas + 1) then
-		map = 1
-	end
-	spawn()
-end
-
-function spawnCannon()
-	cnsX = {cn1, cn2, cn3, cn4, cn5, cn6, cn7, cn8}
-	for i = 1, 8 do
-		if playersOnGame[i].life > 0 then
-			t1 = tfm.exec.addShamanObject(17, cnsX[i][math.random(#(cnsX[i]))], cnsy[math.random(#cnsy)], 0, 0, 0, false)
-			objectList[playersOnGame[i].name] = {id = t1}
-			table.insert(objectList, i, objectList[playersOnGame[i].name])
-		else
-			objectList[playersOnGame[i].name] = {id = nil}
-			table.insert(objectList, i, objectList[playersOnGame[i].name])
-		end
-	end
-end
-
-function collect()
-	coordX = {}
-	coordY = {}
-	for i = 1, 8 do
-		if playersOnGame[i].life > 0 then
-			objX1 = tfm.get.room.objectList[objectList[i].id].x
-			objY1 = tfm.get.room.objectList[objectList[i].id].y
-			coordX[#coordX + 1] = objX1
-			coordY[#coordY + 1] = objY1
-		end
-	end
-end
-
-function attLife(name)
-	local textId = {0, 1, 16, 17, 18, 19, 21, 22}
-	local textCoordinatesX = {154, 598, 1042, 1486, 1929, 2374, 2818, 3262}
-	for g = 1, 8 do
-		ui.addTextArea(textId[g], "<p align='center'><font size='15px'><b>"..playersOnGame[g].life.."", name, textCoordinatesX[g], 56, 50, 30, 0x161616, 0x161616, 0, false)
-	end
-end
-
-function repita(jogador)
-	ui.addWindow(-1, mice[jogador].tr.text6.."<br><br><font face='verdana'>"..mice[jogador].tr.text7.."", jogador, 74, 50, 704, 300, 1, true, true, "<a href='event:closeWindow'><p align='center'>"..mice[jogador].tr.text24)
-end
-
-function removeText()
-	for text = 0, 22, 1 do
-		ui.removeTextArea(text)
-	end
-	if inGame == false then
-		ui.removeTextArea(3000)
-	end
-	ui.removeTextArea(5000)
-end
-
-function limpar()
-	if #objectList > 0 then
-		for obj = 1, #playersOnGame, 1 do
-			if objectList[playersOnGame[obj].name].id ~= nil then
-				tfm.exec.removeObject(objectList[playersOnGame[obj].name].id)
+		if message == "cancel" then
+			if current_mode == "truefalse" or current_mode == "waiting" then
+				for name,player in pairs(tfm.get.room.playerList) do
+					tfm.exec.killPlayer(name)
+				end
+				reset()
+				tfm.exec.chatMessage("<R>This shaman has been skipped.")
 			end
 		end
 	end
-	objectList = {}
-	if #portaisid > 0 then
-		for idobj = 1, #portaisid, 1 do
-			tfm.exec.removeObject(portaisid[idobj])
+	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
+		if message == "per" and limits.mices_alive >= 2 then
+			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
 		end
-	end
-	portaisid = {}
-	for piso = 0, 24, 1 do
-		tfm.exec.removePhysicObject(piso)
-	end
-	for piso3 = 98, 105, 1 do
-		tfm.exec.removePhysicObject(piso3)
-	end
-	if #idImgToBorders > 0 then
-		for jjj = 1, #idImgToBorders do
-			tfm.exec.removeImage(idImgToBorders[jjj])
-		end
-	end
-	if fim == true then
-		for piso2 = 50, 97, 1 do
-			tfm.exec.removePhysicObject(piso2)
+		if message == "skip" then
+			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
 		end
 	end
 end
-
-function spawn()
-	valor = 178
-	valor7 = 1
-	cor = {0xD00D0D, 0x1C59D9, 0xFFE300, 0x19C52E, 0xFF8300, 0xFF00F6, 0x9100FF, 0x00F3F3}
-	for h = 50, 57, 1 do
-		tfm.exec.addPhysicObject(h, valor, 401, {
-			type = 12,
-			color = cor[valor7],
-			width = 200,
-			height = 10,
-			friction = 5000,
-			restitution = .2,
-			miceCollision = false,
-			groundCollision = true})
-			valor = valor + 444
-			valor7 = valor7 + 1
+function eventLoop(time,remaining)
+	remain_time=remaining/1000
+	if remaining < 1 and current_mode == "waiting" then
+		reset()
+		tfm.exec.chatMessage("<R>Time is up! Other shaman will be choosed.")
+	end
+	if remaining < 1000 and current_mode == "truefalse" then
+		ui.removeTextArea(0,nil)
+		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
+		tfm.exec.setGameTime(5)
+		current_mode="wait"
+	end
+	if remaining < 300 and current_mode == "wait" then
+		if questions.answer == "yes" then
+			isTrue()
+		else
+			isFalse()
 		end
-	valor1 = 83
-	for j = 58, 65, 1 do
-		tfm.exec.addPhysicObject(j, valor1, 390, {
-			type = 2,
-			color = 0xFFFFFF,
-			width = 10,
-			height = 20,
-			friction = 0,
-			restitution = 1.3,
-			miceCollision = false,
-			groundCollision = true})
-			valor1 = valor1 + 444
+		tfm.exec.setGameTime(7)
+		current_mode="answer"
 	end
-	valor6 = 83
-	valor8 = 1
-	for jj = 90, 97, 1 do
-		tfm.exec.addPhysicObject(jj, valor6 + 1, 391, {
-			type = 12,
-			color = cor[valor8],
-			width = 10,
-			height = 20,
-			friction = 5000,
-			restitution = 0,
-			miceCollision = false,
-			groundCollision = true})
-			valor6 = valor6 + 444
-			valor8 = valor8 + 1
-	end
-	valor2 = 273
-	for q = 66, 73, 1 do
-		tfm.exec.addPhysicObject(q, valor2, 390, {
-			type = 2,
-			color = math.random(0xFFFFFF),
-			width = 10,
-			height = 20,
-			friction = 5000,
-			restitution = 1.3,
-			miceCollision = false,
-			groundCollision = true})
-			valor2 = valor2 + 444
-	end
-	valor5 = 273
-	valor9 = 1
-	for gg = 82, 89, 1 do
-		tfm.exec.addPhysicObject(gg, valor5 - 1, 391, {
-			type = 12,
-			color = cor[valor9],
-			width = 10,
-			height = 20,
-			friction = 5000,
-			restitution = 0,
-			miceCollision = false,
-			groundCollision = true})
-			valor5 = valor5 + 444
-			valor9 = valor9 + 1
-	end
-	valor3 = 178
-	valor4 = 1
-	for p = 74, 81, 1 do
-		tfm.exec.addPhysicObject(p, valor3, 66, {
-			type = 13,
-			color =  cor[valor4],
-			width = 20,
-			height = 0,
-			friction = 0,
-			restitution = .2,
-			miceCollision = false,
-			groundCollision = false})
-			valor3 = valor3 + 444
-			valor4 = valor4 + 1
-	end
-end
-
-function checkl()
-	local textCoordinatesX = {118, 563, 1008, 1453, 1898, 2343, 2783, 3223}
-	local textId = {3, 4, 5, 6, 8, 9, 10, 11}
-	idImgToBorders = {}
-	for i = 1, 8 do
-		if playersOnGame[i].life > 0 then
-			idImg = tfm.exec.addImage ("177ad5c0c60.png", "_0", textCoordinatesX[i], 302, playersOnGame[i].name)
-			idImgToBorders[#idImgToBorders + 1] = idImg
-		end
-	end		
-end
-
-function objcoords()
-	initGoalExtension = {90, 534, 978, 1422, 1866, 2310, 2754, 3198}
-	endGoalExtension = {265, 709, 1153, 1597, 2041, 2485, 2929, 3373}
-	for i = 1, #initGoalExtension  do
-		index = i 
-		cannonCheckCoordinates(initGoalExtension[i], endGoalExtension[i], index)
-	end
-	condi2 = condi2 + 1
-end
-
-function cannonCheckCoordinates(InitExtensionGoal, EndExtensionGoal)
-	for cn = 1, #coordX do
-		if coordX[cn] >= InitExtensionGoal and coordX[cn] <= EndExtensionGoal then
-			if coordY[cn] == 381 then
-				lostLife(InitExtensionGoal, index)
-			end
-		end
-	end
-end
-
-function lostLife(InitExtensionGoal, index)
-	local valuesOfInitExtensionGoalToCompare = {90, 534, 978, 1422, 1866, 2310, 2754, 3198}
-	for i = 1, #valuesOfInitExtensionGoalToCompare do
-		if playersOnGame[index].life > 0 then
-			if InitExtensionGoal == valuesOfInitExtensionGoalToCompare[i] then
-				playersOnGame[index].life = playersOnGame[index].life - 1
+	if remaining <= 1 and current_mode == "answer" then
+		if questions.answer == "yes" then
+			for name,player in pairs(tfm.get.room.playerList) do
+				if player.x > 400 then
+					tfm.exec.killPlayer(name)
+				else
+					tfm.exec.movePlayer(name,400,-50)
+				end
 			end
 		else
-			break
+			for name,player in pairs(tfm.get.room.playerList) do
+				if player.x < 400 then
+					tfm.exec.killPlayer(name)
+				else
+					tfm.exec.movePlayer(name,400,-50)
+				end
+			end
+		end
+		tfm.exec.removePhysicObject(2)
+		current_mode="waiting"
+		tfm.exec.setGameTime(60)
+	end
+	if remaining < 55000 and limits.mices_alive <= 0 and current_mode == "waiting" then
+		reset()
+		tfm.exec.chatMessage("<R>No winners!")
+	end
+	if remaining < 55000 and limits.mices_alive == 1 and current_mode == "waiting" then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
+				tfm.exec.setPlayerScore(name,10000,false)
+				reset()
+			end
 		end
 	end
-	attLife(nil)
-end
-
-function portais()
-	port1 = tfm.exec.addShamanObject(26, math.random(118, 3338), math.random(307, 345), 0, 0, 0, false)
-	port2 = tfm.exec.addShamanObject(27, math.random(118, 3338), math.random(307, 345), 0, 0, 0, false)
-	table.insert(portaisid, port1)
-	table.insert(portaisid, port2)
-end
-
-function spawnT()
-	valor10 = 178
-	for vnb = 98, 105, 1 do
-		tfm.exec.addPhysicObject(vnb, valor10, 362, {
-		type = 8,
-		width = 200,
-		height = 10,
-		miceColission = true,
-		groundCollision = true})
-		valor10 = valor10 + 444
+	if remaining < 55000 and remaining >= 54400 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead then
+				tfm.exec.setPlayerScore(name,1,true)
+				tfm.exec.displayParticle(15,player.x,player.y)
+			end
+		end
+		if questions.round >= limits.questions and current_mode == "waiting" then
+			reset()
+			tfm.exec.chatMessage("<R>Questions limit reached!")
+		end
+	end
+	if time > limits.time*60000 and current_mode == "waiting" then
+		reset()
+		tfm.exec.chatMessage("<R>Time limit reached!")
 	end
 end
-
-function teleportPlayers()
-	value = 178
-	for hgj = 1, #players do
-		tfm.exec.movePlayer (players[hgj], value, 10000, false, 0, 0, false)
-		value = value + 444
-	end
-end
-
-function pad()
-	for nc1 = 136, 212, 1 do
-		table.insert(cn1, nc1)
-	end
-	for nc2 = 582, 658, 1 do
-		table.insert(cn2, nc2)
-	end
-	for nc3 = 1028, 1104, 1 do
-		table.insert(cn3, nc3)
-	end
-	for nc4 = 1474, 1550, 1 do
-		table.insert(cn4, nc4)
-	end
-	for nc5 = 1920, 1996, 1 do
-		table.insert(cn5, nc5)
-	end
-	for nc6 = 2366, 2442, 1 do
-		table.insert(cn6, nc6)
-	end
-	for nc7 = 2812, 2888, 1 do
-		table.insert(cn7, nc7)
-	end
-	for nc8 = 3258, 3334, 1 do
-		table.insert(cn8, nc8)
-	end
-	for ncsy = 93, 254, 1 do
-		table.insert(cnsy, ncsy)
-	end
-end
-
-iniciar()
+reset()
 end
 
 initWatercatch = function()
@@ -3169,19 +2515,488 @@ end
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.183<br>By Spectra_phantom#6089")
+initClickwar = function()
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","AutoScore","PhysicalConsumables","DebugCommand","MinimalistMode"} do
+	tfm.exec["disable"..f](true)
+end
+for _,g in next,{"p","rank","help"} do
+system.disableChatCommandDisplay(g,true)
+end
+sudden=false; powerups=true; winner=""; data={}; players_table={}; increase=0; intensity=40; nightmode=false; night=0; mices=0; remain=10; last_win=""; times=1; imageId=-1;
+enabled=false
+tfm.exec.setRoomMaxPlayers(25)
+function split(t,s)
+	local a={}
+	for i,v in string.gmatch(t,string.format("[^%s]+",s or "%s")) do
+		table.insert(a,i)
+	end
+	return a
+end
+function eventRanking(name)
+	local sc = {}
+	for id, name in pairs(players_table) do
+		sc[#sc+1] = {n=name,s=data[name].score,f=data[name].wins}
+	end
+	table.sort(sc,function(a,b) return a.s>b.s end)
+	str1 = ''
+	str2 = ''
+	str3 = ''
+	for k,v in pairs(sc) do
+		if k < 9 then
+			if str ~= '' then
+				str1=str1.."<br><N>"..k.."    <VP>"..v.n..""
+				str2=str2.."<br><b><N>"..v.s.."</b>"
+				str3=str3.."<br><N>"..v.f..""
+			else
+				str1="<J>"..k.."    <VP>"..v.n..""
+				str2="<J><b>"..v.s.."</b>"
+				str3="<J>"..v.f..""
+			end
+		end
+	end
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>Temporary Ranking",name,150,130,500,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Consolas'>#N   Name                                     Score      Wins",name,150,165,500,150,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
+	ui.addTextArea(9005,"<B><font size='12'><font face='Consolas'>"..str1,name,150,165,480,220,0,0,nil,true)
+	ui.addTextArea(9004,"<p align='right'><font size='12'><font face='Consolas'>"..str2,name,454,165,60,220,0,0,nil,true)
+	ui.addTextArea(9003,"<p align='right'><font size='12'><font face='Consolas'>"..str3,name,522,165,60,220,0,0,nil,true)
+end
+function menuShow(name,title,content,height)
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,150,130,500,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,150,165,500,height,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,620,130,30,27,0,0,1.0,true)
+end
+function menuShow2(name,title,content,height)
+	ui.addTextArea(9000,"<B><J><font size='15'><font face='Verdana'><p align='center'>"..title.."",name,250,130,300,30,0x212121,0x363634,1.0,true)
+	ui.addTextArea(9007,"<font size='12'><font face='Verdana'>"..content.."",name,250,165,300,height,0x151515,0x3F3F3D,1.0,true)
+	ui.addTextArea(9006,"<font size='16'><font face='Verdana'><p align='center'><R><a href='event:closep'>X</a>",name,520,130,30,27,0,0,1.0,true)
+end
+function eventChatCommand(name,message)
+	local arg = split(message, " ")
+	if arg[1] == "p" then
+		if arg[2] then
+			nome = arg[2]:lower():gsub('%a', string.upper, 1)
+		else
+			nome = name
+		end
+
+		if tfm.get.room.playerList[nome] then
+			menuShow2(nome,nome,"<font size='12'><b>Score: "..data[nome].score.."</b><br><br>Wins: "..data[nome].wins.."<br>Matches: "..data[nome].matches.."",75)
+		else
+			tfm.exec.chatMessage("Function not allowed",name)
+		end
+	end
+	if message == "rank" then
+		eventRanking(name)
+		tfm.exec.chatMessage("The data on the ranking is temporary and will be erased when the room is finished or rebooted.",name)
+	end
+	if message == "pw" then
+		if name == "Hecarimjhenx#0000" then
+			if powerups == true then
+				powerups=false
+			else
+				powerups=true
+			end
+		end
+	end
+	if message == "help" then
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 4240.021",180)
+	end
+	if message == "powerups" then
+		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 350 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
+	end
+end
+function eventNewPlayer(name)
+	system.bindMouse(name)
+	if not data[name] then
+		table.insert(players_table,name)
+		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0}
+	end
+	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
+	for i=112,123 do
+		tfm.exec.bindKeyboard(name,i,true,true)
+	end
+	system.bindMouse(name,true)
+	tfm.exec.chatMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.<br><br><R>Warning: Is prohibited the copy or illegal utilization of this code (including older versions) for making parallel versions. If you discover players making these things, please report to Hecarimjhenx#0000.",name)
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+function eventMouse(name,x,y)
+	if not tfm.get.room.playerList[name].isDead and enabled == true then
+		if data[name].p1 == false then
+			if data[name].time >= 2 then
+				if data[name].p2 == true then
+					tfm.exec.explosion(x,y,intensity,intensity*2,false)
+				else
+					tfm.exec.explosion(x,y,intensity/2,intensity*1.5,false)
+				end
+				data[name].time=0;
+				tfm.exec.displayParticle(10,x,y,0,0,0,0,nil)
+			end
+		else
+			if data[name].p2 == true then
+				tfm.exec.explosion(x,y,intensity,intensity*2,false)
+			else
+				tfm.exec.explosion(x,y,intensity/2,intensity*1.5,false)
+			end
+			data[name].time=2;
+			tfm.exec.displayParticle(10,x,y,0,0,0,0,nil)
+		end
+	end
+end
+function eventNewGame()
+	tfm.exec.removeImage(imageId)
+	ui.removeTextArea(1,nil)
+	sudden=false
+	tfm.exec.setGameTime(140)
+	winner=""
+	increase=0;
+	remain=10
+	enabled=false
+	intensity=40
+	prox=false;
+	for name,player in pairs(tfm.get.room.playerList) do
+		data[name].matches=data[name].matches+1
+		data[name].p1=false
+		data[name].p2=false
+		data[name].pcount=0
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
+		end
+	end
+	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.164</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
+end
+function eventLoop(pass,falt)
+	if nightmode == true then
+		night=night+1
+		if night >= 4 then
+			ui.removeTextArea(2571,nil)
+			night=0
+			nightmode=false
+		end
+	end
+	for name,player in pairs(tfm.get.room.playerList) do
+		if data[name].pcount >= 0 then
+			data[name].pcount=data[name].pcount-1
+		else
+			data[name].p1=false
+			data[name].p2=false
+			break
+		end
+	end
+	if sudden == true then
+		intensity=intensity+2
+		if falt < 40000 then
+			intensity=intensity+1
+		end
+		for name,player in pairs(tfm.get.room.playerList) do
+			if not tfm.get.room.playerList[name].isDead then
+				data[name].score=math.floor(data[name].score+(intensity/40))
+			end
+		end
+	end
+	if falt < 70000 and falt > 69375 then
+		tfm.exec.chatMessage("<ROSE>The ultra hard mode will be enabled in 10 seconds!",nil)
+	end
+	if falt < 60000 and sudden == false and falt > 50000 then
+		tfm.exec.chatMessage("<R><b>Ultra hard mode enabled!</b>",nil)
+		imageId = tfm.exec.addImage("1772bdf9f9e.png","&1",240,80,nul)
+		remain=-0.5
+		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
+		sudden=true;
+	end
+	if falt < 40000 and sudden == true and falt > 19000 then
+		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.91,false)
+	end
+	if falt < 20000 and sudden == true and falt > 9000 then
+		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.96,false)
+	end
+	if falt < 100 then
+		tfm.exec.newGame("#10")
+	end
+	if prox == false then
+		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>4240.021</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
+	else
+		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
+	end
+	remain=remain-0.5
+	if remain == 3 then
+		imageId = tfm.exec.addImage("1772a91c819.png","&1",338,80,nul)
+	end
+	if remain == 2 then
+		tfm.exec.removeImage(imageId)
+		imageId = tfm.exec.addImage("1772a91b0a8.png","&1",338,80,nul)
+	end
+	if remain == 1 then
+		tfm.exec.removeImage(imageId)
+		imageId = tfm.exec.addImage("1772a919937.png","&1",338,80,nul)
+	end
+	if remain == 0 then
+		tfm.exec.removeImage(imageId)
+		imageId = tfm.exec.addImage("1772a91df8b.png","&1",300,80,nul)
+		remain=-2.5
+		enabled=true;
+	end
+	if remain == -3.5 then
+		tfm.exec.removeImage(imageId)
+	end
+	for name,player in pairs(tfm.get.room.playerList) do
+		data[name].time=data[name].time+1
+	end
+	if enabled == true then
+		if intensity < 217 then
+			increase=increase+0.5
+			if increase >= 2 then
+				if sudden == false then
+					intensity=intensity+1
+					increase=0;
+					for name,player in pairs(tfm.get.room.playerList) do
+						if not tfm.get.room.playerList[name].isDead then
+							if pass > 30000 then
+								data[name].score=math.floor(data[name].score+(intensity/24))
+							end
+							if pass > 60000 then
+								data[name].score=math.floor(data[name].score+(intensity/24))
+							end
+						end
+					end
+				end
+			end
+		else
+			intensity=217
+		end
+	end
+end
+function eventPlayerDied(name)
+	if name == last_win and times >= 2 then
+		tfm.exec.chatMessage("<J>The victory sequence of <R>"..last_win.."<J> has been ended!")
+		times=1
+	end
+	local i=0
+	local n
+	for pname,player in pairs(tfm.get.room.playerList) do
+		if not player.isDead then
+			i=i+1
+			n=pname
+		end
+	end
+	if i==0 then
+		tfm.exec.newGame("#10")
+	elseif i==1 then
+		winner=n;
+		tfm.exec.giveCheese(n)
+		tfm.exec.playerVictory(n)
+		data[n].wins=data[n].wins+1
+		data[n].score=data[n].score+200
+		tfm.exec.setGameTime(10)
+		tfm.exec.setPlayerScore(n,1,true)
+		prox=true;
+		if winner == last_win then
+			data[n].score=data[n].score+100
+			times=times+1
+			if times == 2 or times == 3 then
+				tfm.exec.chatMessage("<J>"..last_win.." wons <b>"..times.."</b> times in a row!")
+			end
+			if times >= 4 then
+				tfm.exec.chatMessage("<R><b>Legendary!</b><J> "..last_win.." wons <b>"..times.."</b> times in a row!")
+			end
+		end
+		last_win=n
+	end
+end
+function eventTextAreaCallback(id,name,callback)
+	if callback == "show_menu" then
+		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Help</a><br><a href='event:profile'>Profile</a><br><a href='event:ranking'>Ranking</a><br><a href='event:powerups'>Powerups</a>",name,5,55,90,60,0x000001,0x000001,0.80,true)
+	end
+	if callback == "hide_menu" then
+		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
+		ui.removeTextArea(298,name)
+	end
+	if callback == "ranking" then
+		eventChatCommand(name,"rank")
+	end
+	if callback == "profile" then
+		tfm.exec.chatMessage("Use the !p command to view your profile and !p [user] to view the profile of specified user.",name)
+	end
+	if callback == "fechar" then
+		for id=8000,8010 do
+			ui.removeTextArea(id,name)
+		end
+	end
+	if callback == "help" then
+		eventChatCommand(name,"help")
+	end
+	if callback == "powerups" then
+		eventChatCommand(name,"powerups")
+	end
+	if callback == "close" then
+		for id=8000,8010 do
+			ui.removeTextArea(id,name)
+			ui.removeTextArea(6969+id,name)
+			ui.removeTextArea(7979+id,name)
+		end
+	end
+	if callback == "closep" then
+		for id=9000,9010 do
+			ui.removeTextArea(id,name)
+		end
+	end
+end
+function eventKeyboard(name,key,down,x,y)
+	if enabled == true and powerups == true then
+		if not tfm.get.room.playerList[name].isDead and data[name].p1 == false and data[name].p2 == false then
+			if key == 112 and data[name].score >= 700 then
+				data[name].p1=true
+				data[name].score=data[name].score-700
+				data[name].pcount=16
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Fast Spirits!")
+			end
+			if key == 113 and data[name].score >= 350 then
+				data[name].p2=true
+				data[name].score=data[name].score-350
+				data[name].pcount=20
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Double Power!")
+			end
+			if key == 114 and data[name].score >= 550 then
+				data[name].score=data[name].score-550
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Box Meteor!")
+				for i=-6,19 do
+					tfm.exec.addShamanObject(2,i*60,-1,0,0,0,false)
+				end
+			end
+			if key == 115 and data[name].score >= 400 then
+				data[name].score=data[name].score-400
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Night Mode!")
+				ui.addTextArea(2571,"",nil,-800,-600,3000,3000,0x010101,0x010101,0.99,true)
+				nightmode=true
+			end
+			if key == 116 and data[name].score >= 800 then
+				data[name].score=data[name].score-800
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Mega Explosion!")
+				for i=-4,12 do
+					for j=-2,6 do
+						tfm.exec.explosion(i*100,j*100,intensity,intensity*1.5,false)
+						tfm.exec.displayParticle(10,i*100,j*100,0,0,0,0,nil)
+					end
+				end
+			end
+			if key == 117 and data[name].score >= 750 then
+				data[name].score=data[name].score-750
+				tfm.exec.chatMessage("<J>"..name.." used the powerup Stone Meteor!")
+				for i=-12,38 do
+					tfm.exec.addShamanObject(85,i*30,-1,0,0,0,false)
+				end
+			end
+		end
+	end
+end
+tfm.exec.newGame("#10")
+end
+
+initSalto = function()
+-- Novo script de Salto em Distância, com novo mapa e marcadores para a distância percorrida.
+data={}
+recorde=0
+recorder="----"
+tfm.exec.setRoomMaxPlayers(25)
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.newGame('<C><P D="x_bouboum/x_fond/x_f1.jpg,0,600;x_bouboum/x_fond/x_f1.jpg,800,600;x_bouboum/x_fond/x_f1.jpg,1600,600;x_bouboum/x_fond/x_f1.jpg,2400,600;x_bouboum/x_fond/x_f1.jpg,3200,600;x_bouboum/x_fond/x_f1.jpg,4000,600;x_bouboum/x_fond/x_f1.jpg,4800,600;x_bouboum/x_fond/x_f1.jpg,5600,600;x_bouboum/x_fond/x_f1.jpg,6400,600;x_bouboum/x_fond/x_f1.jpg,7200,600;x_bouboum/x_fond/x_f1.jpg,8000,600;x_bouboum/x_fond/x_f1.jpg,8800,600;x_bouboum/x_fond/x_f1.jpg,9600,600;x_bouboum/x_fond/x_f1.jpg,10400,600;x_bouboum/x_fond/x_f1.jpg,11200,600;x_bouboum/x_fond/x_f1.jpg,12000,600;x_bouboum/x_fond/x_f1.jpg,12800,600;x_bouboum/x_fond/x_f1.jpg,13600,600;x_bouboum/x_fond/x_f1.jpg,14400,600;x_bouboum/x_fond/x_f1.jpg,15200,600" L="15000" G="0.3,10" H="1000" /><Z><S><S L="400" H="800" X="87" Y="825" T="18" P="0,0,0.3,0.2,30,0,0,0" /><S L="400" X="310" H="92" Y="440" T="2" P="0,0,0,2.2,30,0,0,0" /><S L="160" X="80" H="800" Y="700" T="18" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="10" o="111122" H="414" Y="155" T="12" X="-5" /><S L="10" o="111122" H="3000" X="1500" Y="-500" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="10" o="111122" X="4500" Y="-400" T="12" H="3000" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="1660" Y="1005" T="12" H="3000" /><S L="10" o="111122" X="4660" H="3000" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" H="3000" Y="1005" T="12" X="7660" /><S L="10" o="111122" H="3000" X="10660" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="13660" Y="1005" T="12" H="3000" /><S L="288" o="111122" X="-144" H="1732" Y="1077" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="388" o="111122" H="732" Y="1467" T="12" X="193" /><S L="3000" H="400" X="1660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" X="4660" H="400" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" H="400" X="7660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" X="10660" H="400" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" H="400" X="13660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /></S><D><DS Y="285" X="80" /><F Y="297" X="60" /><F Y="296" X="95" /><F Y="279" X="80" /></D><O /><L><VL n="Layer1"l="-1"/><JD P1="0,974"P2="0,999"c="FFFFFF,2,1,1"/><JD P1="100,974"P2="100,999"c="FFFFFF,2,1,1"/><JD P1="200,974"P2="200,999"c="FFFFFF,2,1,1"/><JD P1="300,974"P2="300,999"c="FFFFFF,2,1,1"/><JD P1="400,974"P2="400,999"c="FFFFFF,2,1,1"/><JD P1="500,958"P2="500,998"c="FFFFFF,4,1,1"/><JD P1="600,974"P2="600,999"c="FFFFFF,2,1,1"/><JD P1="700,974"P2="700,999"c="FFFFFF,2,1,1"/><JD P1="800,974"P2="800,999"c="FFFFFF,2,1,1"/><JD P1="900,974"P2="900,999"c="FFFFFF,2,1,1"/><JD P1="1000,958"P2="1000,998"c="FFFFFF,4,1,1"/><JD P1="1100,974"P2="1100,999"c="FFFFFF,2,1,1"/><JD P1="1200,974"P2="1200,999"c="FFFFFF,2,1,1"/><JD P1="1300,974"P2="1300,999"c="FFFFFF,2,1,1"/><JD P1="1400,974"P2="1400,999"c="FFFFFF,2,1,1"/><JD P1="1500,958"P2="1500,998"c="FFFFFF,4,1,1"/><JD P1="500,1000"P2="17500,1000"c="FFFFFF,2,1,1"/><JD P1="1500,974"P2="1500,999"c="FFFFFF,2,1,1"/><JD P1="1600,974"P2="1600,999"c="FFFFFF,2,1,1"/><JD P1="1700,974"P2="1700,999"c="FFFFFF,2,1,1"/><JD P1="1800,974"P2="1800,999"c="FFFFFF,2,1,1"/><JD P1="1900,974"P2="1900,999"c="FFFFFF,2,1,1"/><JD P1="2000,958"P2="2000,998"c="FFFFFF,4,1,1"/><JD P1="2100,974"P2="2100,999"c="FFFFFF,2,1,1"/><JD P1="2200,974"P2="2200,999"c="FFFFFF,2,1,1"/><JD P1="2300,974"P2="2300,999"c="FFFFFF,2,1,1"/><JD P1="2400,974"P2="2400,999"c="FFFFFF,2,1,1"/><JD P1="2500,958"P2="2500,998"c="FFFFFF,4,1,1"/><JD P1="2600,974"P2="2600,999"c="FFFFFF,2,1,1"/><JD P1="2700,974"P2="2700,999"c="FFFFFF,2,1,1"/><JD P1="2800,974"P2="2800,999"c="FFFFFF,2,1,1"/><JD P1="2900,974"P2="2900,999"c="FFFFFF,2,1,1"/><JD P1="3000,958"P2="3000,998"c="FFFFFF,4,1,1"/><JD P1="2000,1000"P2="19000,1000"c="FFFFFF,2,1,1"/><JD P1="3000,974"P2="3000,999"c="FFFFFF,2,1,1"/><JD P1="3100,974"P2="3100,999"c="FFFFFF,2,1,1"/><JD P1="3200,974"P2="3200,999"c="FFFFFF,2,1,1"/><JD P1="3300,974"P2="3300,999"c="FFFFFF,2,1,1"/><JD P1="3400,974"P2="3400,999"c="FFFFFF,2,1,1"/><JD P1="3500,958"P2="3500,998"c="FFFFFF,4,1,1"/><JD P1="3600,974"P2="3600,999"c="FFFFFF,2,1,1"/><JD P1="3700,974"P2="3700,999"c="FFFFFF,2,1,1"/><JD P1="3800,974"P2="3800,999"c="FFFFFF,2,1,1"/><JD P1="3900,974"P2="3900,999"c="FFFFFF,2,1,1"/><JD P1="4000,958"P2="4000,998"c="FFFFFF,4,1,1"/><JD P1="4100,974"P2="4100,999"c="FFFFFF,2,1,1"/><JD P1="4200,974"P2="4200,999"c="FFFFFF,2,1,1"/><JD P1="4300,974"P2="4300,999"c="FFFFFF,2,1,1"/><JD P1="4400,974"P2="4400,999"c="FFFFFF,2,1,1"/><JD P1="4500,958"P2="4500,998"c="FFFFFF,4,1,1"/><JD P1="3500,1000"P2="20500,1000"c="FFFFFF,2,1,1"/><JD P1="4500,974"P2="4500,999"c="FFFFFF,2,1,1"/><JD P1="4600,974"P2="4600,999"c="FFFFFF,2,1,1"/><JD P1="4700,974"P2="4700,999"c="FFFFFF,2,1,1"/><JD P1="4800,974"P2="4800,999"c="FFFFFF,2,1,1"/><JD P1="4900,974"P2="4900,999"c="FFFFFF,2,1,1"/><JD P1="5000,958"P2="5000,998"c="FFFFFF,4,1,1"/><JD P1="5100,974"P2="5100,999"c="FFFFFF,2,1,1"/><JD P1="5200,974"P2="5200,999"c="FFFFFF,2,1,1"/><JD P1="5300,974"P2="5300,999"c="FFFFFF,2,1,1"/><JD P1="5400,974"P2="5400,999"c="FFFFFF,2,1,1"/><JD P1="5500,958"P2="5500,998"c="FFFFFF,4,1,1"/><JD P1="5600,974"P2="5600,999"c="FFFFFF,2,1,1"/><JD P1="5700,974"P2="5700,999"c="FFFFFF,2,1,1"/><JD P1="5800,974"P2="5800,999"c="FFFFFF,2,1,1"/><JD P1="5900,974"P2="5900,999"c="FFFFFF,2,1,1"/><JD P1="6000,958"P2="6000,998"c="FFFFFF,4,1,1"/><JD P1="5000,1000"P2="22000,1000"c="FFFFFF,2,1,1"/><JD P1="6000,974"P2="6000,999"c="FFFFFF,2,1,1"/><JD P1="6100,974"P2="6100,999"c="FFFFFF,2,1,1"/><JD P1="6200,974"P2="6200,999"c="FFFFFF,2,1,1"/><JD P1="6300,974"P2="6300,999"c="FFFFFF,2,1,1"/><JD P1="6400,974"P2="6400,999"c="FFFFFF,2,1,1"/><JD P1="6500,958"P2="6500,998"c="FFFFFF,4,1,1"/><JD P1="6600,974"P2="6600,999"c="FFFFFF,2,1,1"/><JD P1="6700,974"P2="6700,999"c="FFFFFF,2,1,1"/><JD P1="6800,974"P2="6800,999"c="FFFFFF,2,1,1"/><JD P1="6900,974"P2="6900,999"c="FFFFFF,2,1,1"/><JD P1="7000,958"P2="7000,998"c="FFFFFF,4,1,1"/><JD P1="7100,974"P2="7100,999"c="FFFFFF,2,1,1"/><JD P1="7200,974"P2="7200,999"c="FFFFFF,2,1,1"/><JD P1="7300,974"P2="7300,999"c="FFFFFF,2,1,1"/><JD P1="7400,974"P2="7400,999"c="FFFFFF,2,1,1"/><JD P1="7500,958"P2="7500,998"c="FFFFFF,4,1,1"/><VL n="Layer2"l="-1"/><JD P1="6500,1000"P2="23500,1000"c="FFFFFF,2,1,1"/><JD P1="7500,974"P2="7500,999"c="FFFFFF,2,1,1"/><JD P1="7600,974"P2="7600,999"c="FFFFFF,2,1,1"/><JD P1="7700,974"P2="7700,999"c="FFFFFF,2,1,1"/><JD P1="7800,974"P2="7800,999"c="FFFFFF,2,1,1"/><JD P1="7900,974"P2="7900,999"c="FFFFFF,2,1,1"/><JD P1="8000,958"P2="8000,998"c="FFFFFF,4,1,1"/><JD P1="8100,974"P2="8100,999"c="FFFFFF,2,1,1"/><JD P1="8200,974"P2="8200,999"c="FFFFFF,2,1,1"/><JD P1="8300,974"P2="8300,999"c="FFFFFF,2,1,1"/><JD P1="8400,974"P2="8400,999"c="FFFFFF,2,1,1"/><JD P1="8500,958"P2="8500,998"c="FFFFFF,4,1,1"/><JD P1="8600,974"P2="8600,999"c="FFFFFF,2,1,1"/><JD P1="8700,974"P2="8700,999"c="FFFFFF,2,1,1"/><JD P1="8800,974"P2="8800,999"c="FFFFFF,2,1,1"/><JD P1="8900,974"P2="8900,999"c="FFFFFF,2,1,1"/><JD P1="9000,958"P2="9000,998"c="FFFFFF,4,1,1"/><JD P1="8000,1000"P2="25000,1000"c="FFFFFF,2,1,1"/><JD P1="9000,974"P2="9000,999"c="FFFFFF,2,1,1"/><JD P1="9100,974"P2="9100,999"c="FFFFFF,2,1,1"/><JD P1="9200,974"P2="9200,999"c="FFFFFF,2,1,1"/><JD P1="9300,974"P2="9300,999"c="FFFFFF,2,1,1"/><JD P1="9400,974"P2="9400,999"c="FFFFFF,2,1,1"/><JD P1="9500,958"P2="9500,998"c="FFFFFF,4,1,1"/><JD P1="9600,974"P2="9600,999"c="FFFFFF,2,1,1"/><JD P1="9700,974"P2="9700,999"c="FFFFFF,2,1,1"/><JD P1="9800,974"P2="9800,999"c="FFFFFF,2,1,1"/><JD P1="9900,974"P2="9900,999"c="FFFFFF,2,1,1"/><JD P1="10000,958"P2="10000,998"c="FFFFFF,4,1,1"/><JD P1="10100,974"P2="10100,999"c="FFFFFF,2,1,1"/><JD P1="10200,974"P2="10200,999"c="FFFFFF,2,1,1"/><JD P1="10300,974"P2="10300,999"c="FFFFFF,2,1,1"/><JD P1="10400,974"P2="10400,999"c="FFFFFF,2,1,1"/><JD P1="10500,958"P2="10500,998"c="FFFFFF,4,1,1"/><JD P1="9500,1000"P2="26500,1000"c="FFFFFF,2,1,1"/><JD P1="10500,974"P2="10500,999"c="FFFFFF,2,1,1"/><JD P1="10600,974"P2="10600,999"c="FFFFFF,2,1,1"/><JD P1="10700,974"P2="10700,999"c="FFFFFF,2,1,1"/><JD P1="10800,974"P2="10800,999"c="FFFFFF,2,1,1"/><JD P1="10900,974"P2="10900,999"c="FFFFFF,2,1,1"/><JD P1="11000,958"P2="11000,998"c="FFFFFF,4,1,1"/><JD P1="11100,974"P2="11100,999"c="FFFFFF,2,1,1"/><JD P1="11200,974"P2="11200,999"c="FFFFFF,2,1,1"/><JD P1="11300,974"P2="11300,999"c="FFFFFF,2,1,1"/><JD P1="11400,974"P2="11400,999"c="FFFFFF,2,1,1"/><JD P1="11500,958"P2="11500,998"c="FFFFFF,4,1,1"/><JD P1="11600,974"P2="11600,999"c="FFFFFF,2,1,1"/><JD P1="11700,974"P2="11700,999"c="FFFFFF,2,1,1"/><JD P1="11800,974"P2="11800,999"c="FFFFFF,2,1,1"/><JD P1="11900,974"P2="11900,999"c="FFFFFF,2,1,1"/><JD P1="12000,958"P2="12000,998"c="FFFFFF,4,1,1"/><JD P1="11000,1000"P2="28000,1000"c="FFFFFF,2,1,1"/><JD P1="12000,974"P2="12000,999"c="FFFFFF,2,1,1"/><JD P1="12100,974"P2="12100,999"c="FFFFFF,2,1,1"/><JD P1="12200,974"P2="12200,999"c="FFFFFF,2,1,1"/><JD P1="12300,974"P2="12300,999"c="FFFFFF,2,1,1"/><JD P1="12400,974"P2="12400,999"c="FFFFFF,2,1,1"/><JD P1="12500,958"P2="12500,998"c="FFFFFF,4,1,1"/><JD P1="12600,974"P2="12600,999"c="FFFFFF,2,1,1"/><JD P1="12700,974"P2="12700,999"c="FFFFFF,2,1,1"/><JD P1="12800,974"P2="12800,999"c="FFFFFF,2,1,1"/><JD P1="12900,974"P2="12900,999"c="FFFFFF,2,1,1"/><JD P1="13000,958"P2="13000,998"c="FFFFFF,4,1,1"/><JD P1="13100,974"P2="13100,999"c="FFFFFF,2,1,1"/><JD P1="13200,974"P2="13200,999"c="FFFFFF,2,1,1"/><JD P1="13300,974"P2="13300,999"c="FFFFFF,2,1,1"/><JD P1="13400,974"P2="13400,999"c="FFFFFF,2,1,1"/><JD P1="13500,958"P2="13500,998"c="FFFFFF,4,1,1"/><JD P1="12500,1000"P2="29500,1000"c="FFFFFF,2,1,1"/><JD P1="13500,974"P2="13500,999"c="FFFFFF,2,1,1"/><JD P1="13600,974"P2="13600,999"c="FFFFFF,2,1,1"/><JD P1="13700,974"P2="13700,999"c="FFFFFF,2,1,1"/><JD P1="13800,974"P2="13800,999"c="FFFFFF,2,1,1"/><JD P1="13900,974"P2="13900,999"c="FFFFFF,2,1,1"/><JD P1="14000,958"P2="14000,998"c="FFFFFF,4,1,1"/><JD P1="14100,974"P2="14100,999"c="FFFFFF,2,1,1"/><JD P1="14200,974"P2="14200,999"c="FFFFFF,2,1,1"/><JD P1="14300,974"P2="14300,999"c="FFFFFF,2,1,1"/><JD P1="14400,974"P2="14400,999"c="FFFFFF,2,1,1"/><JD P1="14500,958"P2="14500,998"c="FFFFFF,4,1,1"/><JD P1="14600,974"P2="14600,999"c="FFFFFF,2,1,1"/><JD P1="14700,974"P2="14700,999"c="FFFFFF,2,1,1"/><JD P1="14800,974"P2="14800,999"c="FFFFFF,2,1,1"/><JD P1="14900,974"P2="14900,999"c="FFFFFF,2,1,1"/><JD P1="15000,958"P2="15000,998"c="FFFFFF,4,1,1"/><JD P1="-1000,475"P2="16000,475"c="111122,250,1,0"/><JD P1="-1000,225"P2="16000,225"c="111122,250,1,0"/><JD P1="-1000,-25"P2="16000,-25"c="111122,250,1,0"/><JD P1="-1000,-275"P2="16000,-275"c="111122,250,1,0"/><JD P1="-1000,1125"P2="16000,1125"c="111122,250,1,0"/><JD P1="-10000,1375"P2="16000,1375"c="111122,250,1,0"/><JD P1="-1000,1625"P2="16000,1625"c="111122,250,1,0"/><JD P1="-1000,1875"P2="16000,1875"c="111122,250,1,0"/><VL n="Layer3"l="-1"/><JD P1="-1000,700"P2="16000,700"c="1558b0,200,0.5,1"/><JD P1="-1000,900"P2="16000,900"c="1558b0,200,0.5,1"/><JD P1="-1000,600"P2="16000,600"c="0783db,8,1,1"/><L /></L></Z></C>')
+system.disableChatCommandDisplay("ddddda")
+function eventChatCommand(n,m)
+	if m == "ddddda" then
+		tfm.exec.chatMessage("Reboot",nil)
+		recorde=0
+		for name,player in pairs(tfm.get.room.playerList) do
+			data[name].recorde=0
+		end
+		ui.removeTextArea(80,nil)
+		ui.removeTextArea(81,nil)
+	end
+end
+function eventPlayerDied(n)
+	tfm.exec.respawnPlayer(n)
+	tfm.exec.giveCheese(n)
+end
+function eventNewPlayer(n)
+	newData={
+		["x"]=0;
+		["position"]=0;
+		["x2"]=0;
+		["recorde"]=0;
+			}
+	data[n]=newData;
+	tfm.exec.respawnPlayer(n)
+	tfm.exec.giveCheese(n)
+	for i=1,30 do
+		local a=500*i
+		ui.addTextArea(100+i,"<p align='center'><b><font size='14'><font color='#ffffff'>"..a.."",n,a-30,930,60,20,0,0,1.0,false)
+	end
+end
+for name,player in pairs(tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+function eventLoop()
+	ui.setMapName("<D>Long Jump script v1.15 by <ROSE><b>Patrick_mahomes#1795</b>   <V>|   <N>Actual record : <VP><b>"..recorde.."</b> pts <N>- <VP><b>"..recorder.."</b><")
+	for name,player in pairs(tfm.get.room.playerList) do
+		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 4000 |||||||||| 8000 ||||||||| 12000 ||||||||| 16000 ||",nil,20,20,670,20,0x000001,0x000001,0.8,true)
+		ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
+		ui.addTextArea(6,"<p align='center'><font size='20'><b><font color='#008000'><font face='Courier New'>"..data[name].recorde.."",name,700,68,80,22,0x00ff00,0x00ff00,0.9,true)
+		ui.addTextArea(7,"<p align='center'><font size='20'><b><font color='#800080'><font face='Courier New'>"..recorde.."",name,700,98,80,22,0xff00ff,0x800080,0.9,true)
+		if tfm.get.room.playerList[name].x < 0 then
+			data[name].x=tfm.get.room.playerList[name].x+19660
+		elseif tfm.get.room.playerList[name].x > 0 and data[name].x2 > 9830 then
+			data[name].x=tfm.get.room.playerList[name].x+19660
+		else
+			data[name].x=tfm.get.room.playerList[name].x
+		end
+		if tfm.get.room.playerList[name].vx <= 3 and tfm.get.room.playerList[name].x >= 700 and tfm.get.room.playerList[name].y >= 600 then
+			tfm.exec.chatMessage("<J>Your distance: <b>"..data[name].x.."</b> pixels.",name)
+			if data[name].x > data[name].recorde then
+				data[name].recorde=data[name].x
+				tfm.exec.chatMessage("<VP>New pessoal high score: <b>"..data[name].x.." pixels</b>.",name)
+				ui.addTextArea(80,"",name,data[name].x-3,50,6,990,0x00ff00,0x008000,0.8,false)
+				tfm.exec.setPlayerScore(name,data[name].x,false)
+			end
+			if data[name].x > recorde then
+				recorde=data[name].x
+				recorder=name
+				tfm.exec.chatMessage("<ROSE>New high score on game: <b>"..data[name].x.." pixels</b>, made by "..name.."!")
+				ui.addTextArea(81,"",nil,data[name].x-3,50,6,990,0xff00ff,0x800080,0.8,false)
+				tfm.exec.setPlayerScore(name,data[name].x,false)
+			end
+			tfm.exec.movePlayer(name,80,250,false,0,0,false)
+		end
+		ui.addTextArea(3,"",name,30,48,tfm.get.room.playerList[name].x/23.6,5,0xff0000,0x800000,0.9,true)
+		ui.addTextArea(4,"",name,30+data[name].recorde/23.6,48,1,5,0x00ff00,0x008000,0.9,true)
+		ui.addTextArea(5,"",nil,30+recorde/23.6,48,1,5,0xff00ff,0x800080,0.9,true)
+	end
+end
+end
+
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.184<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
 else
 	if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") or string.find(tfm.get.room.name,"survivor") then
 		tfm.exec.chatMessage("<R>Room name not allowed. Shutting down...")
-	elseif string.find(tfm.get.room.name,"deadfender") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'deadfender' on room name.<br>Initialising #deadfender module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initDeadfender()
+	elseif string.find(tfm.get.room.name,"truefalse") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising #truefalse module...")
+		initTrue()
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
+	elseif string.find(tfm.get.room.name,"clickwar") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'clickwar' on room name.<br>Initialising #clickwar module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
+		initClickwar()
+	elseif string.find(tfm.get.room.name,"longjump") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'longjump' on room name.<br>Initialising #longjump module...")
+		initSalto()
 	elseif string.find(tfm.get.room.name,"rooms") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
 		Rooms()
