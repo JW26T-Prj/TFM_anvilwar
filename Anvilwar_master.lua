@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.184
+-- Transformice #anvilwar module loader - Version 2.185
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #truefalse, #longjump, #clickwar.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.184",
-	_MAINV = "42060.142",
+	_VERSION = "2.185",
+	_MAINV = "42161.143",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,18 +13,18 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 42060.142
-Compilation date : 06/08/2021 13:36 UTC
+Version : RTM 42161.143
+Compilation date : 06/09/2021 17:26 UTC
 Sending player : Morganadxana#0000
 
-Number of maps : 138
+Number of maps : 139
 Number of module special members : 20 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
 
-maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497464","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things","No Name","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Reversed Ninja Degrees","No Name","No Name","The Beach Test Map 6"}
+maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497464","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things","No Name","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Reversed Ninja Degrees","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7"}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map='<C><P Ca="" /><Z><S><S L="800" o="ffffffff" X="400" H="10" Y="325" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="800" o="ffffffff" X="300" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="500" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="400" H="10" Y="-5" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="10" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="790" /></S><D><DS Y="-25" X="400" /></D><O /></Z></C>'
@@ -88,14 +88,14 @@ lang.br = {
 	ban = " foi banido desta sala.",
 	ban0 = " foi desbanido desta sala.",
 	ac = "Você atualmente possui ",
-	powerups = "<font size='11.5'><b>Tecla '1' ou F1 - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' ou F2 - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 14pts</b><br><br><b>Tecla '3' ou F3 - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 22pts</b><br><br><b>Tecla '4' ou F4 - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
-	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores, FunCorps e o dono da sala (/room #anvilwar00seunome).<br>!commands - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!change - Altera para o modo antigo de trocar a força e o ângulo dos tiros. Digite novamente este comando para reverter.<br>!p [usuário] (ou <b>P</b>) - Mostra o seu perfil. Tenha em mente que o perfil e o ranking não são permanentes e serão zerados quando a sala esvazia.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !ban [usuário] - Bane o usuário da sala. Digite novamente este comando para remover o banimento.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.",
+	powerups = "<font size='11.5'><b>Tecla '1' ou F1 - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' ou F2 - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 14pts</b><br><br><b>Tecla '3' ou F3 - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 25pts</b><br><br><b>Tecla '4' ou F4 - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores, FunCorps e o dono da sala (/room #anvilwar00seunome).<br>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!change - Altera para o modo antigo de trocar a força e o ângulo dos tiros. Digite novamente este comando para reverter.<br>!p [usuário] (ou <b>P</b>) - Mostra o seu perfil. Tenha em mente que o perfil e o ranking não são permanentes e serão zerados quando a sala esvazia.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !ban [usuário] - Bane o usuário da sala. Digite novamente este comando para remover o banimento.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> (ou as teclas de 1 a 9 no modo antigo) para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas, powerups e diversos outros itens.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Spectra_phantom#6089 (GM) e Morganadxana#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " segundos.",
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 16pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 28pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 14pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 34pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 25pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -112,10 +112,11 @@ lang.br = {
 	time = "<b>Tempo esgotado!</b> O time adversário irá atirar agora.",
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
-	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe o dobro da quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00truefalse<br>/sala #anvilwar00longjump<br><br>/sala #anvilwar00clickwar<br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00truefalse<br>/sala #anvilwar00longjump<br>/sala #anvilwar00clickwar<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
+	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
 }
 lang.en = {
 	version = "Version",
@@ -149,14 +150,14 @@ lang.en = {
 	ban = " was banned of room.",
 	ban0 = " was unbanned of room.",
 	ac = "You currently have ",
-	powerups = "<font size='11.5'><b>Key '1' or F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' or F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' or F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 22pts</b><br><br><b>Key '4' or F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
-	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!change - Change to the legacy method of changing the anvil power and angle. Type this again to revert to the default.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.",
+	powerups = "<font size='11.5'><b>Key '1' or F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' or F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 14pts</b><br><br><b>Key '3' or F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '4' or F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
+	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!change - Change to the legacy method of changing the anvil power and angle. Type this again to revert to the default.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !ban [username] - Bans the specified player from the room. Use again this command to unban the player.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.",
 	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys (or 1-9 keys in legacy mode) to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM) and Morganadxana#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " seconds.",
 	leave = "Leave",
 	join = "Join",
 	getr = "Get Ready! The match will start in a few seconds!",
-	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 16pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 28pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 14pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 34pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 25pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
 	using = "You are now using the ",
 	ac0 = "You don't have AnvilCoins to buy this anvil.",
 	level = "reached the level",
@@ -173,10 +174,11 @@ lang.en = {
 	time = "<b>Time is up!</b> The next team will play now.",
 	cap_text = "was selected to be the leader of your team.",
 	cap = "<J><b>You are now the team leader.</b><N><br>Type !leader to know all the functions and benefits of team leaders.",
-	leader = "The team leaders <b>are randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 2x more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 50% more shooting time.",
+	leader = "The team leaders <b>are randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 50% more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 50% more shooting time.",
 	legacy = "<N>If you want to see all updates and fixes of this version, type <b>!changelog</b>.",	
 	disabled = "This command was disabled by an administrator.",
 	gametime = "Game Time",
+	timeup = "<ROSE>Time is up! This will be the last shoot!",
 }
 if string.find(tfm.get.room.name,"*") then
 	text = lang.en
@@ -269,10 +271,8 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(401,"<p align='center'><font color='#000000'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 42060.142 </i>",name,52,18,700,60,0,0,1.0,true)
-	ui.addTextArea(400,"<p align='center'><font size='18'><i>#anvilwar Reborn - "..text.version.." RTM 42060.142 <R></i>",name,50,16,700,60,0,0,1.0,true)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."06/08/2021 13:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,34,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."06/08/2021 13:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,32,600,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."06/09/2021 17:26 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."06/09/2021 17:26 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -345,14 +345,14 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 42060.142</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 42161.143</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
 		if s >= 10 then
-			ui.setMapName("<R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>"..text.gametime.." : <V><b>"..m..":"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+			ui.setMapName("<J><b>"..current_map.."</b>   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>"..text.gametime.." : <V><b>"..m..":"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 		else
-			ui.setMapName("<R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>"..text.gametime.." : <V><b>"..m..":0"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+			ui.setMapName("<J><b>"..current_map.."</b>   <G>|   <R>Red Team <b>"..rawlen(alives_red).."</b> <V>- <BL><b>"..rawlen(alives_blue).."</b> Blue Team   <G>|   <N>"..text.gametime.." : <V><b>"..m..":0"..s.."</b> <J>("..time_remain..")   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 		end
 	elseif mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
@@ -461,10 +461,10 @@ function updatePlayerList()
 	if mode == "lobby" or mode == "map_sort" then
 		for name,player in next,tfm.get.room.playerList do
 			if data[name] and data[name].opened == false then
-				ui.addTextArea(-4,"<font color='#000001'><font size='11'>"..text2.."",name,501,80,260,270,0,0,1.0,true)
-				ui.addTextArea(-3,"<BL>"..text2,name,500,79,260,270,0,0,1.0,true)
-				ui.addTextArea(-1,"<font color='#000001'><font size='11'>"..text1.."",name,21,80,260,270,0,0,1.0,true)
-				ui.addTextArea(-2,"<R>"..text1,name,20,79,260,270,0,0,1.0,true)
+				ui.addTextArea(-4,"<font color='#000001'><font size='10'>"..text2.."",name,501,90,260,270,0,0,1.0,true)
+				ui.addTextArea(-3,"<BL>"..text2,name,500,89,260,270,0,0,1.0,true)
+				ui.addTextArea(-1,"<font color='#000001'><font size='10'>"..text1.."",name,21,90,260,270,0,0,1.0,true)
+				ui.addTextArea(-2,"<R>"..text1,name,20,89,260,270,0,0,1.0,true)
 			end
 		end
 	end
@@ -495,14 +495,14 @@ function eventNewPlayer(name)
 		showMessage(text.manager,name)
 		print(name)
 	end
-	for _,k in next,{32,48,49,50,51,52,53,54,55,56,57,67,72,80,82,85,86,88,90,112,113,114,115,116,117,118} do
+	for _,k in next,{32,48,49,50,51,52,53,54,55,56,57,66,67,72,80,82,85,86,88,90,112,113,114,115,116,117,118} do
 		tfm.exec.bindKeyboard(name,k,true,true)
 	end
 	system.bindMouse(name,true)
 	if mode == "lobby" then
 		if data[name] then
 			if data[name].ranking >= 0 then
-				showImage(name,"1788ddc0a4c.png",0,0,1.0,1.0)
+				showImage(name,"179f1fa498c.png",0,16,1.0,0.96)
 				showTeams(name)
 				showLobbyText(name)
 				tfm.exec.respawnPlayer(name)
@@ -627,9 +627,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 50 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 51 and data[name].score >= 22 and data[name].level >= 3 then
+				if code == 51 and data[name].score >= 25 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p3.."")
-					setScores(name,-22,true)
+					setScores(name,-25,true)
 					data[name].powerup=3
 					mode="wait3"
 					tfm.exec.setGameTime(10)
@@ -645,18 +645,18 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 52 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 53 and data[name].score >= 16 and data[name].level >= 4 then
+				if code == 53 and data[name].score >= 14 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-16,true)
+					setScores(name,-14,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
 				elseif code == 53 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 54 and data[name].score >= 28 and data[name].level >= 3 then
+				if code == 54 and data[name].score >= 34 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-28,true)
+					setScores(name,-34,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -692,9 +692,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 113 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 114 and data[name].score >= 22 and data[name].level >= 3 then
+				if code == 114 and data[name].score >= 25 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p3.."")
-					setScores(name,-22,true)
+					setScores(name,-25,true)
 					data[name].powerup=3
 					enabled=false
 					mode="wait3"
@@ -711,18 +711,18 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 115 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 116 and data[name].score >= 16 and data[name].level >= 4 then
+				if code == 116 and data[name].score >= 14 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-16,true)
+					setScores(name,-14,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
 				elseif code == 116 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 117 and data[name].score >= 28 and data[name].level >= 3 then
+				if code == 117 and data[name].score >= 34 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-28,true)
+					setScores(name,-34,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -770,6 +770,9 @@ function eventKeyboard(name,code,down,x,y)
 			end
 			showAngleMeter(name)
 		end
+	end
+	if code == 66 then
+		eventChatCommand(name,"commands")
 	end
 	if code == 72 then
 		eventChatCommand(name,"help")
@@ -839,8 +842,8 @@ function eventPlayerDied(name)
 end
 
 function eventMouse(name,x,y)
-	if actual_player == name and data[name].powerup == 3 and mode == "shoot" then
-		if time_remain >= 6 then
+	if actual_player == name and data[name].powerup == 3 and mode == "wait3" then
+		if time_remain >= 2 then
 			if data[name].team == 1 and x > 805 then
 				tfm.exec.explosion(x,y,25,150,true)
 				tfm.exec.displayParticle(12,x,y,0,0,0,0,nil)
@@ -849,7 +852,8 @@ function eventMouse(name,x,y)
 				tfm.exec.explosion(x,y,25,150,true)
 				tfm.exec.displayParticle(12,x,y,0,0,0,0,nil)
 			end
-			mode="wait3"
+			mode="wait2"
+			time_remain=6
 		end
 	end
 end
@@ -873,7 +877,7 @@ function lobby()
 			data[name].opened=false
 			if data[name].ranking >= 0 then
 				showTeams(name)
-				showImage(name,"1788ddc0a4c.png",0,0,1.0,1.0)
+				showImage(name,"179f1fa498c.png",0,16,1.0,0.96)
 				data[name].team=0
 				data[name].current_coins=0
 				setScores(name,0,false)
@@ -954,7 +958,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 42060.142","• Added 4 new anvils! Check !anvils command<br>• Added a switch to enable !change command<br>• Fixes on lobby<br>• Added new command for room managers<br>• Increased score of powerup 'Anvil Rain' from 20 to 28 points")
+		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 42161.143","• Increased score of powerup 'Anvil Rain' from 28 to 34 points<br>• Decreased score of powerup 'Night Mode' from 16 to 14 points<br>• Fixed the 'Explosion' powerup<br>• Added 1 new map<br>• Decreased the score to revive players from 40 to 35 points<br>• New lobby screen!")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -962,7 +966,7 @@ function eventChatCommand(name,command)
 				temp_name=command:sub(4)
 				print(temp_name)
 				if data[temp_name] then
-					if data[name].score >= 40 then
+					if data[name].score >= 35 then
 						if tfm.get.room.playerList[temp_name].isDead == true then
 							tfm.exec.respawnPlayer(temp_name)
 							if data[temp_name].team == 2 then
@@ -974,7 +978,7 @@ function eventChatCommand(name,command)
 								data[temp_name].killed=false
 							end
 							showMessage("<J>The following player revived: "..temp_name.."")
-							setScores(name,-40,true)
+							setScores(name,-35,true)
 						end
 					else
 						showMessage(text.p0,name)
@@ -1100,7 +1104,6 @@ function eventChatCommand(name,command)
 		else
 			nome = name
 		end
-
 		if tfm.get.room.playerList[nome] and data[nome].opened == false then
 			showMenu(name,0x518394,250,120,300,225,nome,"<b>Level: "..data[nome].level.."</b><br><br>Experience: "..data[nome].exp.."/"..data[nome].maxp.."<br><br><br>Kills: "..data[nome].kills.."<br>Matches: "..data[nome].matches.."<br>Wins: "..data[nome].wins.."<br><br>Victory Rate: "..data[nome].winrate.."%<br>Kill Rate: "..data[nome].eff.."%")
 			ui.addTextArea(1006,"",name,265,215,270,10,0x101010,0x161903,1.0,true)
@@ -1130,7 +1133,7 @@ function enterRedTeam(name)
 		data[name].team=1
 		for i=478,481 do
 			ui.removeTextArea(i,name)
-			ui.addTextArea(482,"<font size='16'><font color='#000000'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,210,150,25,0,0,0.9,true)
+			ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,210,150,25,0,0,0.9,true)
 		end
 	end
 end
@@ -1144,7 +1147,7 @@ function enterBlueTeam(name)
 		tfm.exec.movePlayer(name,600,280,false,0,0,false)
 		for i=478,481 do
 			ui.removeTextArea(i,name)
-			ui.addTextArea(482,"<font size='16'><font color='#000000'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,210,150,25,0,0,0.9,true)
+			ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,210,150,25,0,0,0.9,true)
 		end
 	end
 end
@@ -1644,29 +1647,29 @@ function eventLoop(passed,remain)
 		if set_map == "" then
 			if loop < 8 then
 				loop=loop+1
-				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm.."",nil,102,317,600,45,0,0,1.0,true)
-				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm.."",nil,100,315,600,45,0,0,1.0,true)
+				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm.."",nil,102,297,600,45,0,0,1.0,true)
+				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm.."",nil,100,295,600,45,0,0,1.0,true)
 				map_id=math.random(1,rawlen(maps))
-				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
-				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,355,600,45,0,0,1.0,true)
+				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,327,600,45,0,0,1.0,true)
+				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='24'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,325,600,45,0,0,1.0,true)
 			elseif loop == 8 then
 				if def_map > 0 then
 					map_id=def_map
 				end
 				current_map=maps[map_id]
-				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm1.."",nil,102,317,600,45,0,0,1.0,true)
-				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm1.."",nil,100,315,600,45,0,0,1.0,true)
-				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,357,600,45,0,0,1.0,true)
-				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><VP><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,355,600,45,0,0,1.0,true)
+				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1.."",nil,102,297,600,45,0,0,1.0,true)
+				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm1.."",nil,100,295,600,45,0,0,1.0,true)
+				ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..map_names[map_id].." - "..maps[map_id].."",nil,102,327,600,45,0,0,1.0,true)
+				ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..map_names[map_id].." - "..maps[map_id].."",nil,100,325,600,45,0,0,1.0,true)
 				mode="wait1"
 				tfm.exec.setGameTime(10)
 			end
 		else
 			current_map=set_map
-			ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..text.rm1.."",nil,102,317,600,45,0,0,1.0,true)
-			ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='28'><i>"..text.rm1.."",nil,100,315,600,45,0,0,1.0,true)
-			ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='28'><i>"..current_map.."",nil,102,357,600,45,0,0,1.0,true)
-			ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='28'><VP><i>"..current_map.."",nil,100,355,600,45,0,0,1.0,true)
+			ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1.."",nil,102,297,600,45,0,0,1.0,true)
+			ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm1.."",nil,100,295,600,45,0,0,1.0,true)
+			ui.addTextArea(-8,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..current_map.."",nil,102,327,600,45,0,0,1.0,true)
+			ui.addTextArea(-7,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..current_map.."",nil,100,325,600,45,0,0,1.0,true)
 			mode="wait1"
 			tfm.exec.setGameTime(10)
 		end
@@ -1687,6 +1690,9 @@ function eventLoop(passed,remain)
 			end
 			if general_time == 30 then
 				showMessage("<ROSE>"..text.t30s.."")
+			end
+			if mode == "shoot" and general_time == 0.5 then
+				showMessage("<ROSE>"..text.timeup.."")
 			end
 		end
 		if time_passed == 60 and powerups == false then
@@ -2978,7 +2984,7 @@ function eventLoop()
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.184<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.185<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
@@ -2995,7 +3001,7 @@ else
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'clickwar' on room name.<br>Initialising #clickwar module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initClickwar()
 	elseif string.find(tfm.get.room.name,"longjump") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'longjump' on room name.<br>Initialising #longjump module...")
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'longjump' on room name.<br>Initialising #longjump module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initSalto()
 	elseif string.find(tfm.get.room.name,"rooms") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
