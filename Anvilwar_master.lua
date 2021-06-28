@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.185.3
+-- Transformice #anvilwar module loader - Version 2.186
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #truefalse, #longjump, #clickwar, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.185.3",
+	_VERSION = "2.186",
 	_MAINV = "42162.144",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -2061,22 +2061,39 @@ function eventPlayerDied(n)
 				lives=lives+1
 				tfm.exec.giveCheese(n)
 				tfm.exec.playerVictory(n)
+				tfm.exec.removeImage(data[n].imageid2)
 			end
 		end
 	end
 end
 function eventNewPlayer(name)
+	newData={
+	["o"]=99;
+	["i"]=0;
+	["t"]=0;
+	["c"]=0;
+	["opened"]=false;
+	["imageid"]=-1;
+	["imageid2"]=-1;
+	["imaget"]=5;
+	};
+	data[name] = newData;
 	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module e mapa criados por Morganadxana#0000. Tradução para o português feita por Rakan_raster#0000.",name)
+	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
+	data[name].imaget=5
+end
+for name,player in next,tfm.get.room.playerList do
+	eventNewPlayer(name)
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><VP><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br>Os quadrados marcados por <ROSE>'!'<N> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>5</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>5</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,90,520,290,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
+		showMenu(name,0xf0f0f0,140,60,520,320,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• BALÃO</b><N><br>Te coloca em um balão. Pode ser útil para sair da água...")
 	end
 	if message == "creditos" then
-		showMenu(name,0xf0f0f0,140,90,520,290,"Créditos","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morgandxan#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes de entrada e do oxigênio")
 	end
 	if (message:sub(0,2)== "tc") then
 		for n,_ in next,tfm.get.room.playerList do
@@ -2151,6 +2168,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t1 == 8 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
+				elseif powerups.t1 == 9 then
+					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
+					balao(name)
 				end
 			end
 		end
@@ -2193,6 +2213,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t2 == 8 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
+				elseif powerups.t2 == 9 then
+					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
+					balao(name)
 				end
 			end
 		end
@@ -2235,6 +2258,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t3 == 8 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
+				elseif powerups.t3 == 9 then
+					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
+					balao(name)
 				end
 			end
 		end
@@ -2277,6 +2303,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t4 == 8 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
+				elseif powerups.t4 == 9 then
+					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
+					balao(name)
 				end
 			end
 		end
@@ -2319,6 +2348,9 @@ function eventKeyboard(name,key,down)
 				elseif powerups.t5 == 8 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
+				elseif powerups.t5 == 9 then
+					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
+					balao(name)
 				end
 			end
 		end
@@ -2334,21 +2366,19 @@ cannons=5
 ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
-for n,p in pairs(tfm.get.room.playerList) do
+for n,p in next,tfm.get.room.playerList do
 	tfm.exec.giveMeep(n,false)
 	if n:sub(1,1) == "*" then
 		tfm.exec.killPlayer(n)
 	end
 	alives=alives+1
-	newData={
-	["o"]=99;
-	["i"]=0;
-	["t"]=0;
-	["c"]=0;
-	["opened"]=false;
-	};
-	data[n] = newData;	
+	data[n].o=99;
+	data[n].i=0;
+	data[n].t=0;
+	data[n].c=0;
+	data[n].opened=false;
 	tfm.exec.bindKeyboard(n,32,true,true)
+	tfm.exec.removeImage(data[n].imageid2)
 	if tfm.get.room.playerList[n].isShaman then
 		tfm.exec.setPlayerSync(n)
 		tfm.exec.movePlayer(n,-250,148,false,0,0,false)
@@ -2356,6 +2386,7 @@ for n,p in pairs(tfm.get.room.playerList) do
 		shaman=n
 		alives=alives-1
 	end
+	data[n].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,n)
 	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
 	ui.removeTextArea(298,n)
 end
@@ -2412,6 +2443,10 @@ function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
 end
+function queijo(name)
+	tfm.exec.attachBalloon(name, true, 0, true)
+	data[name].t=6
+end
 function eventLoop(p,r)
 time_passed=math.ceil(p/1000)
 time_remain=math.ceil(r/1000)
@@ -2420,7 +2455,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7854060" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v1.10.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v1.11.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='36'><font face='Times New Roman'><font color='#222222'><b><i>"..m..":"..s.."</b>",n,608,27,110,44,0,0,1.0,true)
@@ -2438,7 +2473,7 @@ if mode == "game" or mode == "hide" then
 	loop=loop+0.5
 	if loop == 24 then
 		for i=1,5 do
-			genPowerup(i,math.random(1,9),math.random(800,3000),math.random(200,800))
+			genPowerup(i,math.random(1,10),math.random(800,3000),math.random(200,800))
 		end
 		loop=0
 	end
@@ -2453,8 +2488,14 @@ else
 		ui.removeTextArea(i,nil)
 	end
 end
-for n,q in pairs(tfm.get.room.playerList) do
+for n,q in next,tfm.get.room.playerList do
 	if data[n] then
+		if data[n].imaget >= 0 then
+			data[n].imaget=data[n].imaget-0.5
+		end
+		if data[n].imaget == 0 then
+			tfm.exec.removeImage(data[n].imageid)
+		end
 		data[n].x=tfm.get.room.playerList[n].x
 		data[n].yp=tfm.get.room.playerList[n].y
 		if mode == "game" then
@@ -2471,6 +2512,7 @@ for n,q in pairs(tfm.get.room.playerList) do
 					tfm.exec.removeObject(data[n].i)
 					tfm.exec.freezePlayer(n,false)
 					tfm.exec.removeCheese(n)
+					tfm.exec.attachBalloon(n,false)
 				end
 			end
 			if not tfm.get.room.playerList[n].isDead then
@@ -2497,17 +2539,13 @@ for n,q in pairs(tfm.get.room.playerList) do
 			end
 		end
 		end
-		if data[n].o > 25 then
+		if data[n].o > 30 then
 			if mode == "game" or mode == "hide" then
-			ui.addTextArea(10,"",n,56,385,(data[n].o*7.3),10,0x8000ff,0x6000ff,1.0,true)
-			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 ---<J>-------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
-			ui.addTextArea(-5,"<font size='30'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,4,355,42,40,0x090909,0x000000,0.7,true)
+			ui.addTextArea(10,"",n,1,385,(data[n].o*8),13,0x8000ff,0x6000ff,1.0,true)
 			data[n].d=0 end
 		elseif data[n].o > 0 then
 			if mode == "game" or mode == "hide" then
-			ui.addTextArea(10,"",n,56,385,(data[n].o*7.3),10,0xff3000,0xff2000,1.0,true)
-			ui.addTextArea(-4,"<font size='12'><font face='Consolas'><R><b>0 -------------</b>---- 20 ---<J>-------------- 40 ---------<VP>-------- 60 ---------------- 80 ---------------- 100",n,55,364,740,17,0x101010,0x010101,0.9,true)
-			ui.addTextArea(-5,"<font size='30'><p align='center'><font face='DejaVu Sans Mono,Consolas'><font color='#00ff00'>"..math.floor(data[n].o).."",n,4,355,42,40,0x090909,0x000000,0.7,true)
+			ui.addTextArea(10,"",n,1,385,(data[n].o*8),13,0xff3000,0xff2000,1.0,true)
 			data[n].d=data[n].d+1
 			if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 298 then
 				showMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
@@ -2523,7 +2561,7 @@ if r <= 2000 and mode == "hide" then
 	tfm.exec.setGameTime(170+math.ceil(alives*3.5))
 	ui.removeTextArea(22,nil)
 	showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><br><N>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
-	for n,p in pairs(tfm.get.room.playerList) do
+	for n,p in next,tfm.get.room.playerList do
 		if tfm.get.room.playerList[n].isShaman then
 			tfm.exec.movePlayer(n,1770,210,false,0,0,false)
 		end
@@ -2533,12 +2571,13 @@ if r <= 1000 and mode == "game" then
 	tfm.exec.setGameTime(15)
 	mode="end"
 	local lives=0
-	for n,p in pairs(tfm.get.room.playerList) do
+	for n,p in next,tfm.get.room.playerList do
 	if not tfm.get.room.playerList[n].isShaman and not tfm.get.room.playerList[n].isDead then
 		lives=lives+1
 		tfm.exec.giveCheese(n)
 		tfm.exec.playerVictory(n)
 	end
+	tfm.exec.removeImage(data[n].imageid2)
 end
 showMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Iniciando nova partida...")
 end
@@ -2574,6 +2613,9 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "powerups" then
 		eventChatCommand(name,"powerups")
+	end
+	if callback == "cred" then
+		eventChatCommand(name,"creditos")
 	end
 end
 end
@@ -2663,7 +2705,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "help" then
-		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 4240.021",180)
+		menuShow(name,"Help","The objetive of this module is kill the other players using the mouse to generate spirits.<br><br>At moment, 6 powerups are available:<br>F1 = Fast Spirits (700 points)<br>F2 = Double Power (350 points)<br>F3 = Box Meteor (550 points)<br>F4 = Night Mode (400 points)<br>F5 = Ultra Explosion (800 points)<br>F6 = Stone Meteor (750 points)<br><br>Module made by Hecarimjhenx#0000. Version RTM 5041.022",180)
 	end
 	if message == "powerups" then
 		menuShow(name,"Powerups List","<b>F1 - Fast Spirits - 700 points</b><br>Allows you to use spirits without the default timeout.<br><b>F2 - Double Power - 350 points</b><br>Double the power of your anvils, independently of actual intensity.<br><b>F3 - Box Meteor - 550 points</b><br>Spawns a meteor of large box on the map.<br><b>F4 - Night Mode - 400 points</b><br>Blacks out the map for 2 seconds.<br><b>F5 - Ultra Explosion - 800 points</b><br>Spawns a huge amount of spirits around the map.<br><b>F6 - Stone Meteor - 750 points</b><br>Spawns a lot of stones falling from the top of map.",180)
@@ -2673,14 +2715,16 @@ function eventNewPlayer(name)
 	system.bindMouse(name)
 	if not data[name] then
 		table.insert(players_table,name)
-		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0}
+		data[name]={time=0,matches=0,wins=0,score=0,p1=false,p2=false,pcount=0,imageid=0,imaget=3}
 	end
 	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,5,25,70,24,0x000001,0x000001,0.75,true)
-	for i=112,123 do
+	for _,i in next,{72,82,85,112,113,114,115,116,117,123} do
 		tfm.exec.bindKeyboard(name,i,true,true)
 	end
 	system.bindMouse(name,true)
-	tfm.exec.chatMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000.<br><br><R>Warning: Is prohibited the copy or illegal utilization of this code (including older versions) for making parallel versions. If you discover players making these things, please report to Hecarimjhenx#0000.",name)
+	data[name].imageid = tfm.exec.addImage("17a4e9a9cad.png","&1",238,80,name)
+	data[name].imaget=4
+	tfm.exec.chatMessage("<VP><b>Welcome to module #clickwar!</b><br><N>Use the mouse to generate explosions and kill other mices!<br><br>Module developed by Hecarimjhenx#0000. Images maked by Spectra_phantom#6089.<br><br><R>Warning: Is prohibited the copy or illegal utilization of this code (including older versions) for making parallel versions. If you discover players making these things, please report to Hecarimjhenx#0000.",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -2729,7 +2773,7 @@ function eventNewGame()
 			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Clickwar.",name)
 		end
 	end
-	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.164</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
+	tfm.exec.chatMessage("<ROSE><i>Spectra's map loader v2.185</i><br><N>Loading current map information...<br>----------------------------------------<br><b>Current Map :</b> <V>"..tfm.get.room.currentMap.."<br><N><b>Author :</b><V> "..tfm.get.room.xmlMapInfo.author.."<br><N>----------------------------------------")
 end
 function eventLoop(pass,falt)
 	if nightmode == true then
@@ -2738,15 +2782,6 @@ function eventLoop(pass,falt)
 			ui.removeTextArea(2571,nil)
 			night=0
 			nightmode=false
-		end
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		if data[name].pcount >= 0 then
-			data[name].pcount=data[name].pcount-1
-		else
-			data[name].p1=false
-			data[name].p2=false
-			break
 		end
 	end
 	if sudden == true then
@@ -2765,7 +2800,7 @@ function eventLoop(pass,falt)
 	end
 	if falt < 60000 and sudden == false and falt > 50000 then
 		tfm.exec.chatMessage("<R><b>Ultra hard mode enabled!</b>",nil)
-		imageId = tfm.exec.addImage("1772bdf9f9e.png","&1",240,80,nul)
+		imageId = tfm.exec.addImage("17a4e9a853d.png","&1",240,80,nul)
 		remain=-0.5
 		ui.addTextArea(1,"",nil,-1000,-1000,3000,3000,0x000001,0x000001,0.8,false)
 		sudden=true;
@@ -2780,33 +2815,46 @@ function eventLoop(pass,falt)
 		tfm.exec.newGame("#10")
 	end
 	if prox == false then
-		ui.setMapName("<font face='Rockwell,Verdana'><N>Click War RTM <b>4240.021</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
+		ui.setMapName("<N>Click War RTM <b>5041.022</b>  <G>|  <N>Intensity: <b>"..intensity.."</b>  <G>|  <VP>Module made by <b>Hecarimjhenx#0000</b><")
 	else
 		ui.setMapName("<b>"..winner.."</b> <N>wons the match! Next match on "..math.floor(falt/1000).." seconds.<")
 	end
 	remain=remain-0.5
 	if remain == 3 then
-		imageId = tfm.exec.addImage("1772a91c819.png","&1",338,80,nul)
+		imageId = tfm.exec.addImage("17a4e9afa86.png","&1",338,80,nul)
 	end
 	if remain == 2 then
 		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("1772a91b0a8.png","&1",338,80,nul)
+		imageId = tfm.exec.addImage("17a4e9ae302.png","&1",338,80,nul)
 	end
 	if remain == 1 then
 		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("1772a919937.png","&1",338,80,nul)
+		imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",338,80,nul)
 	end
 	if remain == 0 then
 		tfm.exec.removeImage(imageId)
-		imageId = tfm.exec.addImage("1772a91df8b.png","&1",300,80,nul)
-		remain=-2.5
+		imageId = tfm.exec.addImage("17a4e9ab41f.png","&1",283,80,nul)
+		remain=-1.5
 		enabled=true;
 	end
-	if remain == -3.5 then
+	if remain == -4 then
 		tfm.exec.removeImage(imageId)
 	end
 	for name,player in pairs(tfm.get.room.playerList) do
 		data[name].time=data[name].time+1
+		if data[name].pcount >= 0 then
+			data[name].pcount=data[name].pcount-1
+		else
+			data[name].p1=false
+			data[name].p2=false
+		end
+		if data[name].imaget >= 0 then
+			data[name].imaget=data[name].imaget-0.5
+		end
+		if data[name].imaget == 0 then
+			tfm.exec.removeImage(data[name].imageid)
+			data[name].imageid=-1
+		end
 	end
 	if enabled == true then
 		if intensity < 217 then
@@ -2909,36 +2957,45 @@ function eventTextAreaCallback(id,name,callback)
 	end
 end
 function eventKeyboard(name,key,down,x,y)
+	if key == 72 then
+		eventChatCommand(name,"help")
+	end
+	if key == 82 then
+		eventChatCommand(name,"rank")
+	end
+	if key == 85 then
+		eventChatCommand(name,"powerups")
+	end
 	if enabled == true and powerups == true then
 		if not tfm.get.room.playerList[name].isDead and data[name].p1 == false and data[name].p2 == false then
 			if key == 112 and data[name].score >= 700 then
 				data[name].p1=true
 				data[name].score=data[name].score-700
 				data[name].pcount=16
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Fast Spirits!")
+				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Fast Spirits!</b>")
 			end
 			if key == 113 and data[name].score >= 350 then
 				data[name].p2=true
 				data[name].score=data[name].score-350
 				data[name].pcount=20
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Double Power!")
+				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Double Power!</b>")
 			end
 			if key == 114 and data[name].score >= 550 then
 				data[name].score=data[name].score-550
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Box Meteor!")
+				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Box Meteor!</b>")
 				for i=-6,19 do
 					tfm.exec.addShamanObject(2,i*60,-1,0,0,0,false)
 				end
 			end
 			if key == 115 and data[name].score >= 400 then
 				data[name].score=data[name].score-400
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Night Mode!")
+				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Night Mode!</b>")
 				ui.addTextArea(2571,"",nil,-800,-600,3000,3000,0x010101,0x010101,0.99,true)
 				nightmode=true
 			end
 			if key == 116 and data[name].score >= 800 then
 				data[name].score=data[name].score-800
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Mega Explosion!")
+				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Mega Explosion!</b>")
 				for i=-4,12 do
 					for j=-2,6 do
 						tfm.exec.explosion(i*100,j*100,intensity,intensity*1.5,false)
@@ -2948,7 +3005,7 @@ function eventKeyboard(name,key,down,x,y)
 			end
 			if key == 117 and data[name].score >= 750 then
 				data[name].score=data[name].score-750
-				tfm.exec.chatMessage("<J>"..name.." used the powerup Stone Meteor!")
+				tfm.exec.chatMessage("<J>"..name.." used the powerup <ROSE><b>Stone Meteor!</b>")
 				for i=-12,38 do
 					tfm.exec.addShamanObject(85,i*30,-1,0,0,0,false)
 				end
@@ -3206,7 +3263,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.185.3<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.186<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
