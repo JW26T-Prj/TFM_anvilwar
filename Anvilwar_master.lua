@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.186
+-- Transformice #anvilwar module loader - Version 2.186.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #truefalse, #longjump, #clickwar, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.186",
+	_VERSION = "2.186.1",
 	_MAINV = "42162.144",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -2062,6 +2062,7 @@ function eventPlayerDied(n)
 				tfm.exec.giveCheese(n)
 				tfm.exec.playerVictory(n)
 				tfm.exec.removeImage(data[n].imageid2)
+				ui.removeTextArea(300,n)
 			end
 		end
 	end
@@ -2093,7 +2094,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,60,520,320,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• BALÃO</b><N><br>Te coloca em um balão. Pode ser útil para sair da água...")
 	end
 	if message == "creditos" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morgandxan#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes de entrada e do oxigênio")
+		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes de entrada e do oxigênio")
 	end
 	if (message:sub(0,2)== "tc") then
 		for n,_ in next,tfm.get.room.playerList do
@@ -2387,6 +2388,7 @@ for n,p in next,tfm.get.room.playerList do
 		alives=alives-1
 	end
 	data[n].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,n)
+	ui.addTextArea(300,"",n,8,386,782,8,0x202020,0x121212,1.0,true)
 	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
 	ui.removeTextArea(298,n)
 end
@@ -2443,7 +2445,7 @@ function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
 end
-function queijo(name)
+function balao(name)
 	tfm.exec.attachBalloon(name, true, 0, true)
 	data[name].t=6
 end
@@ -2455,7 +2457,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7854060" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v1.11.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v1.11.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='36'><font face='Times New Roman'><font color='#222222'><b><i>"..m..":"..s.."</b>",n,608,27,110,44,0,0,1.0,true)
@@ -2541,11 +2543,11 @@ for n,q in next,tfm.get.room.playerList do
 		end
 		if data[n].o > 30 then
 			if mode == "game" or mode == "hide" then
-			ui.addTextArea(10,"",n,1,385,(data[n].o*8),13,0x8000ff,0x6000ff,1.0,true)
+			ui.addTextArea(10,"",n,8,386,(data[n].o*7.9),8,0x006080,0x004060,1.0,true)
 			data[n].d=0 end
 		elseif data[n].o > 0 then
 			if mode == "game" or mode == "hide" then
-			ui.addTextArea(10,"",n,1,385,(data[n].o*8),13,0xff3000,0xff2000,1.0,true)
+			ui.addTextArea(10,"",n,8,386,(data[n].o*7.9),8,0x801500,0xa01000,1.0,true)
 			data[n].d=data[n].d+1
 			if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 298 then
 				showMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
@@ -2578,6 +2580,7 @@ if r <= 1000 and mode == "game" then
 		tfm.exec.playerVictory(n)
 	end
 	tfm.exec.removeImage(data[n].imageid2)
+	ui.removeTextArea(300,n)
 end
 showMessage("<VP>Tempo esgotado! <b>"..lives.."</b> ratos sobreviveram! Iniciando nova partida...")
 end
@@ -3263,7 +3266,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.186<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.186.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
