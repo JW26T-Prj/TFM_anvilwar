@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.187
+-- Transformice #anvilwar module loader - Version 2.188
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #truefalse, #longjump, #clickwar, #objects.
+-- Included sub-modules: #watercatch, #longjump, #clickwar, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.187",
-	_MAINV = "42263.145",
+	_VERSION = "2.188",
+	_MAINV = "42364.146",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,18 +13,18 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 42263.145
-Compilation date : 07/03/2021 17:34 UTC
-Sending player : Titan117#0000
+Version : RTM 42364.146
+Compilation date : 07/16/2021 19:01 UTC
+Sending player : Shun_kazami#7014
 
-Number of maps : 143
+Number of maps : 146
 Number of module special members : 20 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
 
-maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497464","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things","No Name","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Reversed Ninja Degrees","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More"}
+maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497464","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Let's fly!","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Artistical Ninjas #1","May the force Be with You","Don't Jump!","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Acid Revenge","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury","Released Things","No Name","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Reversed Ninja Degrees","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name"}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map='<C><P Ca="" /><Z><S><S L="800" o="ffffffff" X="400" H="10" Y="325" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="800" o="ffffffff" X="300" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="500" H="10" Y="250" T="12" P="0,0,0,0,90,0,0,0" /><S L="800" o="ffffffff" X="400" H="10" Y="-5" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="10" /><S P="0,0,0,0,90,0,0,0" L="800" o="ffffffff" H="10" Y="250" T="12" X="790" /></S><D><DS Y="-25" X="400" /></D><O /></Z></C>'
@@ -113,7 +113,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00truefalse<br>/sala #anvilwar00longjump<br>/sala #anvilwar00clickwar<br>/sala #anvilwar00objects<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00longjump<br>/sala #anvilwar00clickwar<br>/sala #anvilwar00objects<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -271,8 +271,8 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."07/03/2021 17:34 UTC - "..text.uploaded.."Titan117#0000</i>",name,92,44,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."07/03/2021 17:34 UTC - "..text.uploaded.."Titan117#0000</i>",name,90,42,600,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."07/16/2021 19:01 UTC - "..text.uploaded.."Shun_kazami#7014</i>",name,92,44,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."07/16/2021 19:01 UTC - "..text.uploaded.."Shun_kazami#7014</i>",name,90,42,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -345,7 +345,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 42263.145</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 42364.146</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -800,11 +800,11 @@ function eventPlayerDied(name)
 	if mode == "wait2" and time_passed < 20 or mode == "end" then
 		if data[name] and data[name].team == 1 then
 			tfm.exec.respawnPlayer(name)
-			tfm.exec.movePlayer(name,600,190,false,0,0,false)
+			tfm.exec.movePlayer(name,600,210,false,0,0,false)
 		end
 		if data[name] and data[name].team == 2 then
 			tfm.exec.respawnPlayer(name)
-			tfm.exec.movePlayer(name,1000,190,false,0,0,false)
+			tfm.exec.movePlayer(name,1000,210,false,0,0,false)
 		end
 	end
 	if mode == "shoot" then
@@ -958,7 +958,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 42263.145","• Decreased score of powerup 'Anvil Rain' from 34 to 30 points<br>• Decreased score of powerup 'Permafrost' from 20 to 16 points<br>• Added 2 new maps<br>The !change command is now available by default")
+		showMenu(name,0xa8f233,140,90,520,160,"#anvilwar Changelog - RTM 42364.146","• Added 3 new maps<br>• Fixes on spawn points")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1770,250 +1770,6 @@ function eventLoop(passed,remain)
 	end
 end
 lobby()
-end
-
-initTrue = function()
-blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoScore(true)
-tfm.exec.disableDebugCommand(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.setRoomMaxPlayers(35)
-tfm.exec.disableAllShamanSkills(true)
-tfm.exec.disablePhysicalConsumables(true)
-limits={questions=10,time=7,mices_alive=0}
-questions={question="",answer="",round=0}
-for _,f in next,{"per","skip","limits","return","cancel","at","change","admin78"} do
-	system.disableChatCommandDisplay(f)
-end
-current_mode=""
-answer_time=20
-remain_time=0
-game_map="@7605289"
-for name,player in pairs(tfm.get.room.playerList) do
-	tfm.exec.setPlayerScore(name,0,false)
-end
-function eventNewGame()
-	ui.removeTextArea(0,nil)
-	limits.mices_alive=0
-	for name,player in pairs(tfm.get.room.playerList) do
-		if not tfm.get.room.playerList[name].isShaman then
-			limits.mices_alive=limits.mices_alive+1
-		else
-			tfm.exec.setPlayerScore(name,-1,false)
-		end
-		if name:sub(1,1) == "*" then
-			tfm.exec.killPlayer(name)
-			tfm.exec.chatMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play True or False.",name)
-		end
-	end
-	questions.round=0
-	ui.addPopup(10,0,"",nil,-1000,-1000,128,false)
-	ui.addPopup(11,0,"",nil,-1100,-1000,128,false)
-end
-function eventNewPlayer(name)
-	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
-end
-for name,player in pairs(tfm.get.room.playerList) do
-	eventNewPlayer(name)
-end
-function eventPlayerDied(name)
-	if not tfm.get.room.playerList[name].isShaman then
-		limits.mices_alive=limits.mices_alive-1
-	end
-end
-function reset()
-	tfm.exec.newGame(game_map)
-	tfm.exec.setGameTime(60)
-	current_mode="waiting"
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.setPlayerScore(name,-1,false)
-		end
-	end
-	ui.setMapName("True or False II revision 4 Remaked by Spectra_phantom#6089<")
-end
-function isTrue()
-	tfm.exec.chatMessage("<VP>The answer is TRUE!")
-	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
-end
-function isFalse()
-	tfm.exec.chatMessage("<R>The answer is FALSE!")
-	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
-end
-function eventPopupAnswer(id,name,answer)
-	if id == 0 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
-			limits.questions=tonumber(answer)
-			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 12)",name,350,175,200,true)
-		end
-	end
-	if id == 1 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 12 then
-			limits.time=tonumber(answer)
-			tfm.exec.chatMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
-		end
-	end
-	if id == 10 then
-		if string.len(answer) >= 10 and string.len(answer) <= 170 then
-			questions.question=answer
-			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
-		else
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-			tfm.exec.chatMessage("<R>Your question is too large or too short. Please type other question.",name)
-		end
-	end
-	if id == 11 then
-		if remain_time > 1 then
-			questions.answer=answer
-			questions.round=questions.round+1
-			current_mode="truefalse"
-			tfm.exec.setGameTime(answer_time)
-			for name,player in pairs(tfm.get.room.playerList) do
-				if not tfm.get.room.playerList[name].isShaman then
-					tfm.exec.movePlayer(name,400,330)
-				else
-					tfm.exec.movePlayer(name,400,1330)
-				end
-			end
-			tfm.exec.chatMessage("<N>"..questions.question.."")
-			ui.addTextArea(0,"<font size='16'><p align='center'><font face='Bahnschrift SemiLight,Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
-			tfm.exec.chatMessage(questions.answer,"Spectra_phantom#6089")
-			tfm.exec.chatMessage(questions.answer,"Forzaldenon#0000")
-		end
-	end
-	if id == 20 then
-		if answer == "yes" then
-			reset()
-			tfm.exec.chatMessage("<R>"..name.." skipped your turn.")
-		end
-	end
-end
-function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Hecarimjhenx#0000" or name == "Aphelios#1910" then
-		if message == "limits" then
-			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
-		end
-		if(message:sub(0,2) == "at") then
-			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
-				answer_time=tonumber(message:sub(4))
-				tfm.exec.chatMessage("Answer time: "..answer_time.."s.")
-			end
-		end
-		if(message:sub(0,7) == "admin78") then
-			if current_mode == "waiting" then
-				tfm.exec.setPlayerScore(message:sub(9),10001,false)
-				reset()
-			end
-		end
-		if message == "return" then
-			if current_mode == "truefalse" then
-				for name,player in pairs(tfm.get.room.playerList) do
-					if not tfm.get.room.playerList[name].isShaman then
-						tfm.exec.movePlayer(name,400,-100)
-					end
-				end
-				current_mode="waiting"
-				tfm.exec.setGameTime(60)
-				tfm.exec.chatMessage("<R>This question has been cancelled.")
-				ui.removeTextArea(0,nil)
-			end
-		end
-		if message == "cancel" then
-			if current_mode == "truefalse" or current_mode == "waiting" then
-				for name,player in pairs(tfm.get.room.playerList) do
-					tfm.exec.killPlayer(name)
-				end
-				reset()
-				tfm.exec.chatMessage("<R>This shaman has been skipped.")
-			end
-		end
-	end
-	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
-		if message == "per" and limits.mices_alive >= 2 then
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-		end
-		if message == "skip" then
-			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
-		end
-	end
-end
-function eventLoop(time,remaining)
-	remain_time=remaining/1000
-	if remaining < 1 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>Time is up! Other shaman will be choosed.")
-	end
-	if remaining < 1000 and current_mode == "truefalse" then
-		ui.removeTextArea(0,nil)
-		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
-		tfm.exec.setGameTime(5)
-		current_mode="wait"
-	end
-	if remaining < 300 and current_mode == "wait" then
-		if questions.answer == "yes" then
-			isTrue()
-		else
-			isFalse()
-		end
-		tfm.exec.setGameTime(7)
-		current_mode="answer"
-	end
-	if remaining <= 1 and current_mode == "answer" then
-		if questions.answer == "yes" then
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x > 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		else
-			for name,player in pairs(tfm.get.room.playerList) do
-				if player.x < 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		end
-		tfm.exec.removePhysicObject(2)
-		current_mode="waiting"
-		tfm.exec.setGameTime(60)
-	end
-	if remaining < 55000 and limits.mices_alive <= 0 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>No winners!")
-	end
-	if remaining < 55000 and limits.mices_alive == 1 and current_mode == "waiting" then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
-				tfm.exec.setPlayerScore(name,10000,false)
-				reset()
-			end
-		end
-	end
-	if remaining < 55000 and remaining >= 54400 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
-		for name,player in pairs(tfm.get.room.playerList) do
-			if not tfm.get.room.playerList[name].isDead then
-				tfm.exec.setPlayerScore(name,1,true)
-				tfm.exec.displayParticle(15,player.x,player.y)
-			end
-		end
-		if questions.round >= limits.questions and current_mode == "waiting" then
-			reset()
-			tfm.exec.chatMessage("<R>Questions limit reached!")
-		end
-	end
-	if time > limits.time*60000 and current_mode == "waiting" then
-		reset()
-		tfm.exec.chatMessage("<R>Time limit reached!")
-	end
-end
-reset()
 end
 
 initWatercatch = function()
@@ -3028,7 +2784,7 @@ tfm.exec.setRoomMaxPlayers(25)
 tfm.exec.disableAutoNewGame(true)
 tfm.exec.disableAutoShaman(true)
 tfm.exec.disableAfkDeath(true)
-tfm.exec.newGame('<C><P D="x_bouboum/x_fond/x_f1.jpg,0,600;x_bouboum/x_fond/x_f1.jpg,800,600;x_bouboum/x_fond/x_f1.jpg,1600,600;x_bouboum/x_fond/x_f1.jpg,2400,600;x_bouboum/x_fond/x_f1.jpg,3200,600;x_bouboum/x_fond/x_f1.jpg,4000,600;x_bouboum/x_fond/x_f1.jpg,4800,600;x_bouboum/x_fond/x_f1.jpg,5600,600;x_bouboum/x_fond/x_f1.jpg,6400,600;x_bouboum/x_fond/x_f1.jpg,7200,600;x_bouboum/x_fond/x_f1.jpg,8000,600;x_bouboum/x_fond/x_f1.jpg,8800,600;x_bouboum/x_fond/x_f1.jpg,9600,600;x_bouboum/x_fond/x_f1.jpg,10400,600;x_bouboum/x_fond/x_f1.jpg,11200,600;x_bouboum/x_fond/x_f1.jpg,12000,600;x_bouboum/x_fond/x_f1.jpg,12800,600;x_bouboum/x_fond/x_f1.jpg,13600,600;x_bouboum/x_fond/x_f1.jpg,14400,600;x_bouboum/x_fond/x_f1.jpg,15200,600" L="15000" G="0.3,10" H="1000" /><Z><S><S L="400" H="800" X="87" Y="825" T="18" P="0,0,0.3,0.2,30,0,0,0" /><S L="400" X="310" H="92" Y="440" T="2" P="0,0,0,2.2,30,0,0,0" /><S L="160" X="80" H="800" Y="700" T="18" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0,0,0,0,0,0" L="10" o="111122" H="414" Y="155" T="12" X="-5" /><S L="10" o="111122" H="3000" X="1500" Y="-500" T="12" P="0,0,0,0,90,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="10" o="111122" X="4500" Y="-400" T="12" H="3000" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="1660" Y="1005" T="12" H="3000" /><S L="10" o="111122" X="4660" H="3000" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" H="3000" Y="1005" T="12" X="7660" /><S L="10" o="111122" H="3000" X="10660" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="13660" Y="1005" T="12" H="3000" /><S L="288" o="111122" X="-144" H="1732" Y="1077" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="388" o="111122" H="732" Y="1467" T="12" X="193" /><S L="3000" H="400" X="1660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" X="4660" H="400" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" H="400" X="7660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" X="10660" H="400" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /><S L="3000" H="400" X="13660" Y="800" T="9" P="0,0,,,,0,0,0" v="1" /></S><D><DS Y="285" X="80" /><F Y="297" X="60" /><F Y="296" X="95" /><F Y="279" X="80" /></D><O /><L><VL n="Layer1"l="-1"/><JD P1="0,974"P2="0,999"c="FFFFFF,2,1,1"/><JD P1="100,974"P2="100,999"c="FFFFFF,2,1,1"/><JD P1="200,974"P2="200,999"c="FFFFFF,2,1,1"/><JD P1="300,974"P2="300,999"c="FFFFFF,2,1,1"/><JD P1="400,974"P2="400,999"c="FFFFFF,2,1,1"/><JD P1="500,958"P2="500,998"c="FFFFFF,4,1,1"/><JD P1="600,974"P2="600,999"c="FFFFFF,2,1,1"/><JD P1="700,974"P2="700,999"c="FFFFFF,2,1,1"/><JD P1="800,974"P2="800,999"c="FFFFFF,2,1,1"/><JD P1="900,974"P2="900,999"c="FFFFFF,2,1,1"/><JD P1="1000,958"P2="1000,998"c="FFFFFF,4,1,1"/><JD P1="1100,974"P2="1100,999"c="FFFFFF,2,1,1"/><JD P1="1200,974"P2="1200,999"c="FFFFFF,2,1,1"/><JD P1="1300,974"P2="1300,999"c="FFFFFF,2,1,1"/><JD P1="1400,974"P2="1400,999"c="FFFFFF,2,1,1"/><JD P1="1500,958"P2="1500,998"c="FFFFFF,4,1,1"/><JD P1="500,1000"P2="17500,1000"c="FFFFFF,2,1,1"/><JD P1="1500,974"P2="1500,999"c="FFFFFF,2,1,1"/><JD P1="1600,974"P2="1600,999"c="FFFFFF,2,1,1"/><JD P1="1700,974"P2="1700,999"c="FFFFFF,2,1,1"/><JD P1="1800,974"P2="1800,999"c="FFFFFF,2,1,1"/><JD P1="1900,974"P2="1900,999"c="FFFFFF,2,1,1"/><JD P1="2000,958"P2="2000,998"c="FFFFFF,4,1,1"/><JD P1="2100,974"P2="2100,999"c="FFFFFF,2,1,1"/><JD P1="2200,974"P2="2200,999"c="FFFFFF,2,1,1"/><JD P1="2300,974"P2="2300,999"c="FFFFFF,2,1,1"/><JD P1="2400,974"P2="2400,999"c="FFFFFF,2,1,1"/><JD P1="2500,958"P2="2500,998"c="FFFFFF,4,1,1"/><JD P1="2600,974"P2="2600,999"c="FFFFFF,2,1,1"/><JD P1="2700,974"P2="2700,999"c="FFFFFF,2,1,1"/><JD P1="2800,974"P2="2800,999"c="FFFFFF,2,1,1"/><JD P1="2900,974"P2="2900,999"c="FFFFFF,2,1,1"/><JD P1="3000,958"P2="3000,998"c="FFFFFF,4,1,1"/><JD P1="2000,1000"P2="19000,1000"c="FFFFFF,2,1,1"/><JD P1="3000,974"P2="3000,999"c="FFFFFF,2,1,1"/><JD P1="3100,974"P2="3100,999"c="FFFFFF,2,1,1"/><JD P1="3200,974"P2="3200,999"c="FFFFFF,2,1,1"/><JD P1="3300,974"P2="3300,999"c="FFFFFF,2,1,1"/><JD P1="3400,974"P2="3400,999"c="FFFFFF,2,1,1"/><JD P1="3500,958"P2="3500,998"c="FFFFFF,4,1,1"/><JD P1="3600,974"P2="3600,999"c="FFFFFF,2,1,1"/><JD P1="3700,974"P2="3700,999"c="FFFFFF,2,1,1"/><JD P1="3800,974"P2="3800,999"c="FFFFFF,2,1,1"/><JD P1="3900,974"P2="3900,999"c="FFFFFF,2,1,1"/><JD P1="4000,958"P2="4000,998"c="FFFFFF,4,1,1"/><JD P1="4100,974"P2="4100,999"c="FFFFFF,2,1,1"/><JD P1="4200,974"P2="4200,999"c="FFFFFF,2,1,1"/><JD P1="4300,974"P2="4300,999"c="FFFFFF,2,1,1"/><JD P1="4400,974"P2="4400,999"c="FFFFFF,2,1,1"/><JD P1="4500,958"P2="4500,998"c="FFFFFF,4,1,1"/><JD P1="3500,1000"P2="20500,1000"c="FFFFFF,2,1,1"/><JD P1="4500,974"P2="4500,999"c="FFFFFF,2,1,1"/><JD P1="4600,974"P2="4600,999"c="FFFFFF,2,1,1"/><JD P1="4700,974"P2="4700,999"c="FFFFFF,2,1,1"/><JD P1="4800,974"P2="4800,999"c="FFFFFF,2,1,1"/><JD P1="4900,974"P2="4900,999"c="FFFFFF,2,1,1"/><JD P1="5000,958"P2="5000,998"c="FFFFFF,4,1,1"/><JD P1="5100,974"P2="5100,999"c="FFFFFF,2,1,1"/><JD P1="5200,974"P2="5200,999"c="FFFFFF,2,1,1"/><JD P1="5300,974"P2="5300,999"c="FFFFFF,2,1,1"/><JD P1="5400,974"P2="5400,999"c="FFFFFF,2,1,1"/><JD P1="5500,958"P2="5500,998"c="FFFFFF,4,1,1"/><JD P1="5600,974"P2="5600,999"c="FFFFFF,2,1,1"/><JD P1="5700,974"P2="5700,999"c="FFFFFF,2,1,1"/><JD P1="5800,974"P2="5800,999"c="FFFFFF,2,1,1"/><JD P1="5900,974"P2="5900,999"c="FFFFFF,2,1,1"/><JD P1="6000,958"P2="6000,998"c="FFFFFF,4,1,1"/><JD P1="5000,1000"P2="22000,1000"c="FFFFFF,2,1,1"/><JD P1="6000,974"P2="6000,999"c="FFFFFF,2,1,1"/><JD P1="6100,974"P2="6100,999"c="FFFFFF,2,1,1"/><JD P1="6200,974"P2="6200,999"c="FFFFFF,2,1,1"/><JD P1="6300,974"P2="6300,999"c="FFFFFF,2,1,1"/><JD P1="6400,974"P2="6400,999"c="FFFFFF,2,1,1"/><JD P1="6500,958"P2="6500,998"c="FFFFFF,4,1,1"/><JD P1="6600,974"P2="6600,999"c="FFFFFF,2,1,1"/><JD P1="6700,974"P2="6700,999"c="FFFFFF,2,1,1"/><JD P1="6800,974"P2="6800,999"c="FFFFFF,2,1,1"/><JD P1="6900,974"P2="6900,999"c="FFFFFF,2,1,1"/><JD P1="7000,958"P2="7000,998"c="FFFFFF,4,1,1"/><JD P1="7100,974"P2="7100,999"c="FFFFFF,2,1,1"/><JD P1="7200,974"P2="7200,999"c="FFFFFF,2,1,1"/><JD P1="7300,974"P2="7300,999"c="FFFFFF,2,1,1"/><JD P1="7400,974"P2="7400,999"c="FFFFFF,2,1,1"/><JD P1="7500,958"P2="7500,998"c="FFFFFF,4,1,1"/><VL n="Layer2"l="-1"/><JD P1="6500,1000"P2="23500,1000"c="FFFFFF,2,1,1"/><JD P1="7500,974"P2="7500,999"c="FFFFFF,2,1,1"/><JD P1="7600,974"P2="7600,999"c="FFFFFF,2,1,1"/><JD P1="7700,974"P2="7700,999"c="FFFFFF,2,1,1"/><JD P1="7800,974"P2="7800,999"c="FFFFFF,2,1,1"/><JD P1="7900,974"P2="7900,999"c="FFFFFF,2,1,1"/><JD P1="8000,958"P2="8000,998"c="FFFFFF,4,1,1"/><JD P1="8100,974"P2="8100,999"c="FFFFFF,2,1,1"/><JD P1="8200,974"P2="8200,999"c="FFFFFF,2,1,1"/><JD P1="8300,974"P2="8300,999"c="FFFFFF,2,1,1"/><JD P1="8400,974"P2="8400,999"c="FFFFFF,2,1,1"/><JD P1="8500,958"P2="8500,998"c="FFFFFF,4,1,1"/><JD P1="8600,974"P2="8600,999"c="FFFFFF,2,1,1"/><JD P1="8700,974"P2="8700,999"c="FFFFFF,2,1,1"/><JD P1="8800,974"P2="8800,999"c="FFFFFF,2,1,1"/><JD P1="8900,974"P2="8900,999"c="FFFFFF,2,1,1"/><JD P1="9000,958"P2="9000,998"c="FFFFFF,4,1,1"/><JD P1="8000,1000"P2="25000,1000"c="FFFFFF,2,1,1"/><JD P1="9000,974"P2="9000,999"c="FFFFFF,2,1,1"/><JD P1="9100,974"P2="9100,999"c="FFFFFF,2,1,1"/><JD P1="9200,974"P2="9200,999"c="FFFFFF,2,1,1"/><JD P1="9300,974"P2="9300,999"c="FFFFFF,2,1,1"/><JD P1="9400,974"P2="9400,999"c="FFFFFF,2,1,1"/><JD P1="9500,958"P2="9500,998"c="FFFFFF,4,1,1"/><JD P1="9600,974"P2="9600,999"c="FFFFFF,2,1,1"/><JD P1="9700,974"P2="9700,999"c="FFFFFF,2,1,1"/><JD P1="9800,974"P2="9800,999"c="FFFFFF,2,1,1"/><JD P1="9900,974"P2="9900,999"c="FFFFFF,2,1,1"/><JD P1="10000,958"P2="10000,998"c="FFFFFF,4,1,1"/><JD P1="10100,974"P2="10100,999"c="FFFFFF,2,1,1"/><JD P1="10200,974"P2="10200,999"c="FFFFFF,2,1,1"/><JD P1="10300,974"P2="10300,999"c="FFFFFF,2,1,1"/><JD P1="10400,974"P2="10400,999"c="FFFFFF,2,1,1"/><JD P1="10500,958"P2="10500,998"c="FFFFFF,4,1,1"/><JD P1="9500,1000"P2="26500,1000"c="FFFFFF,2,1,1"/><JD P1="10500,974"P2="10500,999"c="FFFFFF,2,1,1"/><JD P1="10600,974"P2="10600,999"c="FFFFFF,2,1,1"/><JD P1="10700,974"P2="10700,999"c="FFFFFF,2,1,1"/><JD P1="10800,974"P2="10800,999"c="FFFFFF,2,1,1"/><JD P1="10900,974"P2="10900,999"c="FFFFFF,2,1,1"/><JD P1="11000,958"P2="11000,998"c="FFFFFF,4,1,1"/><JD P1="11100,974"P2="11100,999"c="FFFFFF,2,1,1"/><JD P1="11200,974"P2="11200,999"c="FFFFFF,2,1,1"/><JD P1="11300,974"P2="11300,999"c="FFFFFF,2,1,1"/><JD P1="11400,974"P2="11400,999"c="FFFFFF,2,1,1"/><JD P1="11500,958"P2="11500,998"c="FFFFFF,4,1,1"/><JD P1="11600,974"P2="11600,999"c="FFFFFF,2,1,1"/><JD P1="11700,974"P2="11700,999"c="FFFFFF,2,1,1"/><JD P1="11800,974"P2="11800,999"c="FFFFFF,2,1,1"/><JD P1="11900,974"P2="11900,999"c="FFFFFF,2,1,1"/><JD P1="12000,958"P2="12000,998"c="FFFFFF,4,1,1"/><JD P1="11000,1000"P2="28000,1000"c="FFFFFF,2,1,1"/><JD P1="12000,974"P2="12000,999"c="FFFFFF,2,1,1"/><JD P1="12100,974"P2="12100,999"c="FFFFFF,2,1,1"/><JD P1="12200,974"P2="12200,999"c="FFFFFF,2,1,1"/><JD P1="12300,974"P2="12300,999"c="FFFFFF,2,1,1"/><JD P1="12400,974"P2="12400,999"c="FFFFFF,2,1,1"/><JD P1="12500,958"P2="12500,998"c="FFFFFF,4,1,1"/><JD P1="12600,974"P2="12600,999"c="FFFFFF,2,1,1"/><JD P1="12700,974"P2="12700,999"c="FFFFFF,2,1,1"/><JD P1="12800,974"P2="12800,999"c="FFFFFF,2,1,1"/><JD P1="12900,974"P2="12900,999"c="FFFFFF,2,1,1"/><JD P1="13000,958"P2="13000,998"c="FFFFFF,4,1,1"/><JD P1="13100,974"P2="13100,999"c="FFFFFF,2,1,1"/><JD P1="13200,974"P2="13200,999"c="FFFFFF,2,1,1"/><JD P1="13300,974"P2="13300,999"c="FFFFFF,2,1,1"/><JD P1="13400,974"P2="13400,999"c="FFFFFF,2,1,1"/><JD P1="13500,958"P2="13500,998"c="FFFFFF,4,1,1"/><JD P1="12500,1000"P2="29500,1000"c="FFFFFF,2,1,1"/><JD P1="13500,974"P2="13500,999"c="FFFFFF,2,1,1"/><JD P1="13600,974"P2="13600,999"c="FFFFFF,2,1,1"/><JD P1="13700,974"P2="13700,999"c="FFFFFF,2,1,1"/><JD P1="13800,974"P2="13800,999"c="FFFFFF,2,1,1"/><JD P1="13900,974"P2="13900,999"c="FFFFFF,2,1,1"/><JD P1="14000,958"P2="14000,998"c="FFFFFF,4,1,1"/><JD P1="14100,974"P2="14100,999"c="FFFFFF,2,1,1"/><JD P1="14200,974"P2="14200,999"c="FFFFFF,2,1,1"/><JD P1="14300,974"P2="14300,999"c="FFFFFF,2,1,1"/><JD P1="14400,974"P2="14400,999"c="FFFFFF,2,1,1"/><JD P1="14500,958"P2="14500,998"c="FFFFFF,4,1,1"/><JD P1="14600,974"P2="14600,999"c="FFFFFF,2,1,1"/><JD P1="14700,974"P2="14700,999"c="FFFFFF,2,1,1"/><JD P1="14800,974"P2="14800,999"c="FFFFFF,2,1,1"/><JD P1="14900,974"P2="14900,999"c="FFFFFF,2,1,1"/><JD P1="15000,958"P2="15000,998"c="FFFFFF,4,1,1"/><JD P1="-1000,475"P2="16000,475"c="111122,250,1,0"/><JD P1="-1000,225"P2="16000,225"c="111122,250,1,0"/><JD P1="-1000,-25"P2="16000,-25"c="111122,250,1,0"/><JD P1="-1000,-275"P2="16000,-275"c="111122,250,1,0"/><JD P1="-1000,1125"P2="16000,1125"c="111122,250,1,0"/><JD P1="-10000,1375"P2="16000,1375"c="111122,250,1,0"/><JD P1="-1000,1625"P2="16000,1625"c="111122,250,1,0"/><JD P1="-1000,1875"P2="16000,1875"c="111122,250,1,0"/><VL n="Layer3"l="-1"/><JD P1="-1000,700"P2="16000,700"c="1558b0,200,0.5,1"/><JD P1="-1000,900"P2="16000,900"c="1558b0,200,0.5,1"/><JD P1="-1000,600"P2="16000,600"c="0783db,8,1,1"/><L /></L></Z></C>')
+tfm.exec.newGame('<C><P L="15000" G="0,10" D="x_bouboum/x_fond/x_f1.jpg,0,600;x_bouboum/x_fond/x_f1.jpg,800,600;x_bouboum/x_fond/x_f1.jpg,1600,600;x_bouboum/x_fond/x_f1.jpg,2400,600;x_bouboum/x_fond/x_f1.jpg,3200,600;x_bouboum/x_fond/x_f1.jpg,4000,600;x_bouboum/x_fond/x_f1.jpg,4800,600;x_bouboum/x_fond/x_f1.jpg,5600,600;x_bouboum/x_fond/x_f1.jpg,6400,600;x_bouboum/x_fond/x_f1.jpg,7200,600;x_bouboum/x_fond/x_f1.jpg,8000,600;x_bouboum/x_fond/x_f1.jpg,8800,600;x_bouboum/x_fond/x_f1.jpg,9600,600;x_bouboum/x_fond/x_f1.jpg,10400,600;x_bouboum/x_fond/x_f1.jpg,11200,600;x_bouboum/x_fond/x_f1.jpg,12000,600;x_bouboum/x_fond/x_f1.jpg,12800,600;x_bouboum/x_fond/x_f1.jpg,13600,600;x_bouboum/x_fond/x_f1.jpg,14400,600;x_bouboum/x_fond/x_f1.jpg,15200,600" H="1000" /><Z><S><S L="400" X="87" H="800" Y="825" T="18" P="0,0,0.3,0.2,30,0,0,0" /><S L="400" H="92" X="310" Y="440" T="2" P="0,0,0,2.2,30,0,0,0" /><S L="160" H="800" X="80" Y="700" T="18" P="0,0,0.3,0.2,0,0,0,0" /><S L="10" o="111122" H="414" X="-5" Y="155" T="12" P="0,0,0,0,0,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="10" o="111122" X="1500" Y="-500" T="12" H="3000" /><S L="10" o="111122" X="4500" H="3000" Y="-500" T="12" P="0,0,0,0,90,0,0,0" /><S L="10" o="111122" X="1660" H="3000" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" H="3000" Y="1005" T="12" X="4660" /><S L="10" o="111122" H="3000" X="7660" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,9999,0,90,0,0,0" L="10" o="111122" X="10660" Y="1005" T="12" H="3000" /><S L="10" o="111122" X="13660" H="3000" Y="1005" T="12" P="0,0,9999,0,90,0,0,0" /><S P="0,0,0.3,0.2,0,0,0,0" L="288" o="111122" H="1732" Y="1077" T="12" X="-144" /><S L="388" o="111122" H="732" X="193" Y="1467" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="3000" X="1660" H="400" v="1" Y="800" T="9" P="0,0,,,,0,0,0" /><S L="3000" H="400" X="4660" v="1" Y="800" T="9" P="0,0,,,,0,0,0" /><S L="3000" X="7660" H="400" v="1" Y="800" T="9" P="0,0,,,,0,0,0" /><S L="3000" H="400" X="10660" v="1" Y="800" T="9" P="0,0,,,,0,0,0" /><S L="3000" X="13660" H="400" v="1" Y="800" T="9" P="0,0,,,,0,0,0" /><S P="0,0,0,0,90,0,0,0" L="10" o="111122" H="3000" Y="-500" T="12" X="7500" /></S><D><DS Y="285" X="80" /><F Y="297" X="60" /><F Y="296" X="95" /><F Y="279" X="80" /></D><O /><L><VL n="Layer1" l="-1" /><JD c="FFFFFF,2,1,1" P1="0,974" P2="0,999" /><JD c="FFFFFF,2,1,1" P1="100,974" P2="100,999" /><JD c="FFFFFF,2,1,1" P1="200,974" P2="200,999" /><JD c="FFFFFF,2,1,1" P1="300,974" P2="300,999" /><JD c="FFFFFF,2,1,1" P1="400,974" P2="400,999" /><JD c="FFFFFF,4,1,1" P1="500,958" P2="500,998" /><JD c="FFFFFF,2,1,1" P1="600,974" P2="600,999" /><JD c="FFFFFF,2,1,1" P1="700,974" P2="700,999" /><JD c="FFFFFF,2,1,1" P1="800,974" P2="800,999" /><JD c="FFFFFF,2,1,1" P1="900,974" P2="900,999" /><JD c="FFFFFF,4,1,1" P1="1000,958" P2="1000,998" /><JD c="FFFFFF,2,1,1" P1="1100,974" P2="1100,999" /><JD c="FFFFFF,2,1,1" P1="1200,974" P2="1200,999" /><JD c="FFFFFF,2,1,1" P1="1300,974" P2="1300,999" /><JD c="FFFFFF,2,1,1" P1="1400,974" P2="1400,999" /><JD c="FFFFFF,4,1,1" P1="1500,958" P2="1500,998" /><JD c="FFFFFF,2,1,1" P1="500,1000" P2="17500,1000" /><JD c="FFFFFF,2,1,1" P1="1500,974" P2="1500,999" /><JD c="FFFFFF,2,1,1" P1="1600,974" P2="1600,999" /><JD c="FFFFFF,2,1,1" P1="1700,974" P2="1700,999" /><JD c="FFFFFF,2,1,1" P1="1800,974" P2="1800,999" /><JD c="FFFFFF,2,1,1" P1="1900,974" P2="1900,999" /><JD c="FFFFFF,4,1,1" P1="2000,958" P2="2000,998" /><JD c="FFFFFF,2,1,1" P1="2100,974" P2="2100,999" /><JD c="FFFFFF,2,1,1" P1="2200,974" P2="2200,999" /><JD c="FFFFFF,2,1,1" P1="2300,974" P2="2300,999" /><JD c="FFFFFF,2,1,1" P1="2400,974" P2="2400,999" /><JD c="FFFFFF,4,1,1" P1="2500,958" P2="2500,998" /><JD c="FFFFFF,2,1,1" P1="2600,974" P2="2600,999" /><JD c="FFFFFF,2,1,1" P1="2700,974" P2="2700,999" /><JD c="FFFFFF,2,1,1" P1="2800,974" P2="2800,999" /><JD c="FFFFFF,2,1,1" P1="2900,974" P2="2900,999" /><JD c="FFFFFF,4,1,1" P1="3000,958" P2="3000,998" /><JD c="FFFFFF,2,1,1" P1="2000,1000" P2="19000,1000" /><JD c="FFFFFF,2,1,1" P1="3000,974" P2="3000,999" /><JD c="FFFFFF,2,1,1" P1="3100,974" P2="3100,999" /><JD c="FFFFFF,2,1,1" P1="3200,974" P2="3200,999" /><JD c="FFFFFF,2,1,1" P1="3300,974" P2="3300,999" /><JD c="FFFFFF,2,1,1" P1="3400,974" P2="3400,999" /><JD c="FFFFFF,4,1,1" P1="3500,958" P2="3500,998" /><JD c="FFFFFF,2,1,1" P1="3600,974" P2="3600,999" /><JD c="FFFFFF,2,1,1" P1="3700,974" P2="3700,999" /><JD c="FFFFFF,2,1,1" P1="3800,974" P2="3800,999" /><JD c="FFFFFF,2,1,1" P1="3900,974" P2="3900,999" /><JD c="FFFFFF,4,1,1" P1="4000,958" P2="4000,998" /><JD c="FFFFFF,2,1,1" P1="4100,974" P2="4100,999" /><JD c="FFFFFF,2,1,1" P1="4200,974" P2="4200,999" /><JD c="FFFFFF,2,1,1" P1="4300,974" P2="4300,999" /><JD c="FFFFFF,2,1,1" P1="4400,974" P2="4400,999" /><JD c="FFFFFF,4,1,1" P1="4500,958" P2="4500,998" /><JD c="FFFFFF,2,1,1" P1="3500,1000" P2="20500,1000" /><JD c="FFFFFF,2,1,1" P1="4500,974" P2="4500,999" /><JD c="FFFFFF,2,1,1" P1="4600,974" P2="4600,999" /><JD c="FFFFFF,2,1,1" P1="4700,974" P2="4700,999" /><JD c="FFFFFF,2,1,1" P1="4800,974" P2="4800,999" /><JD c="FFFFFF,2,1,1" P1="4900,974" P2="4900,999" /><JD c="FFFFFF,4,1,1" P1="5000,958" P2="5000,998" /><JD c="FFFFFF,2,1,1" P1="5100,974" P2="5100,999" /><JD c="FFFFFF,2,1,1" P1="5200,974" P2="5200,999" /><JD c="FFFFFF,2,1,1" P1="5300,974" P2="5300,999" /><JD c="FFFFFF,2,1,1" P1="5400,974" P2="5400,999" /><JD c="FFFFFF,4,1,1" P1="5500,958" P2="5500,998" /><JD c="FFFFFF,2,1,1" P1="5600,974" P2="5600,999" /><JD c="FFFFFF,2,1,1" P1="5700,974" P2="5700,999" /><JD c="FFFFFF,2,1,1" P1="5800,974" P2="5800,999" /><JD c="FFFFFF,2,1,1" P1="5900,974" P2="5900,999" /><JD c="FFFFFF,4,1,1" P1="6000,958" P2="6000,998" /><JD c="FFFFFF,2,1,1" P1="5000,1000" P2="22000,1000" /><JD c="FFFFFF,2,1,1" P1="6000,974" P2="6000,999" /><JD c="FFFFFF,2,1,1" P1="6100,974" P2="6100,999" /><JD c="FFFFFF,2,1,1" P1="6200,974" P2="6200,999" /><JD c="FFFFFF,2,1,1" P1="6300,974" P2="6300,999" /><JD c="FFFFFF,2,1,1" P1="6400,974" P2="6400,999" /><JD c="FFFFFF,4,1,1" P1="6500,958" P2="6500,998" /><JD c="FFFFFF,2,1,1" P1="6600,974" P2="6600,999" /><JD c="FFFFFF,2,1,1" P1="6700,974" P2="6700,999" /><JD c="FFFFFF,2,1,1" P1="6800,974" P2="6800,999" /><JD c="FFFFFF,2,1,1" P1="6900,974" P2="6900,999" /><JD c="FFFFFF,4,1,1" P1="7000,958" P2="7000,998" /><JD c="FFFFFF,2,1,1" P1="7100,974" P2="7100,999" /><JD c="FFFFFF,2,1,1" P1="7200,974" P2="7200,999" /><JD c="FFFFFF,2,1,1" P1="7300,974" P2="7300,999" /><JD c="FFFFFF,2,1,1" P1="7400,974" P2="7400,999" /><JD c="FFFFFF,4,1,1" P1="7500,958" P2="7500,998" /><VL n="Layer2" l="-1" /><JD c="FFFFFF,2,1,1" P1="6500,1000" P2="23500,1000" /><JD c="FFFFFF,2,1,1" P1="7500,974" P2="7500,999" /><JD c="FFFFFF,2,1,1" P1="7600,974" P2="7600,999" /><JD c="FFFFFF,2,1,1" P1="7700,974" P2="7700,999" /><JD c="FFFFFF,2,1,1" P1="7800,974" P2="7800,999" /><JD c="FFFFFF,2,1,1" P1="7900,974" P2="7900,999" /><JD c="FFFFFF,4,1,1" P1="8000,958" P2="8000,998" /><JD c="FFFFFF,2,1,1" P1="8100,974" P2="8100,999" /><JD c="FFFFFF,2,1,1" P1="8200,974" P2="8200,999" /><JD c="FFFFFF,2,1,1" P1="8300,974" P2="8300,999" /><JD c="FFFFFF,2,1,1" P1="8400,974" P2="8400,999" /><JD c="FFFFFF,4,1,1" P1="8500,958" P2="8500,998" /><JD c="FFFFFF,2,1,1" P1="8600,974" P2="8600,999" /><JD c="FFFFFF,2,1,1" P1="8700,974" P2="8700,999" /><JD c="FFFFFF,2,1,1" P1="8800,974" P2="8800,999" /><JD c="FFFFFF,2,1,1" P1="8900,974" P2="8900,999" /><JD c="FFFFFF,4,1,1" P1="9000,958" P2="9000,998" /><JD c="FFFFFF,2,1,1" P1="8000,1000" P2="25000,1000" /><JD c="FFFFFF,2,1,1" P1="9000,974" P2="9000,999" /><JD c="FFFFFF,2,1,1" P1="9100,974" P2="9100,999" /><JD c="FFFFFF,2,1,1" P1="9200,974" P2="9200,999" /><JD c="FFFFFF,2,1,1" P1="9300,974" P2="9300,999" /><JD c="FFFFFF,2,1,1" P1="9400,974" P2="9400,999" /><JD c="FFFFFF,4,1,1" P1="9500,958" P2="9500,998" /><JD c="FFFFFF,2,1,1" P1="9600,974" P2="9600,999" /><JD c="FFFFFF,2,1,1" P1="9700,974" P2="9700,999" /><JD c="FFFFFF,2,1,1" P1="9800,974" P2="9800,999" /><JD c="FFFFFF,2,1,1" P1="9900,974" P2="9900,999" /><JD c="FFFFFF,4,1,1" P1="10000,958" P2="10000,998" /><JD c="FFFFFF,2,1,1" P1="10100,974" P2="10100,999" /><JD c="FFFFFF,2,1,1" P1="10200,974" P2="10200,999" /><JD c="FFFFFF,2,1,1" P1="10300,974" P2="10300,999" /><JD c="FFFFFF,2,1,1" P1="10400,974" P2="10400,999" /><JD c="FFFFFF,4,1,1" P1="10500,958" P2="10500,998" /><JD c="FFFFFF,2,1,1" P1="9500,1000" P2="26500,1000" /><JD c="FFFFFF,2,1,1" P1="10500,974" P2="10500,999" /><JD c="FFFFFF,2,1,1" P1="10600,974" P2="10600,999" /><JD c="FFFFFF,2,1,1" P1="10700,974" P2="10700,999" /><JD c="FFFFFF,2,1,1" P1="10800,974" P2="10800,999" /><JD c="FFFFFF,2,1,1" P1="10900,974" P2="10900,999" /><JD c="FFFFFF,4,1,1" P1="11000,958" P2="11000,998" /><JD c="FFFFFF,2,1,1" P1="11100,974" P2="11100,999" /><JD c="FFFFFF,2,1,1" P1="11200,974" P2="11200,999" /><JD c="FFFFFF,2,1,1" P1="11300,974" P2="11300,999" /><JD c="FFFFFF,2,1,1" P1="11400,974" P2="11400,999" /><JD c="FFFFFF,4,1,1" P1="11500,958" P2="11500,998" /><JD c="FFFFFF,2,1,1" P1="11600,974" P2="11600,999" /><JD c="FFFFFF,2,1,1" P1="11700,974" P2="11700,999" /><JD c="FFFFFF,2,1,1" P1="11800,974" P2="11800,999" /><JD c="FFFFFF,2,1,1" P1="11900,974" P2="11900,999" /><JD c="FFFFFF,4,1,1" P1="12000,958" P2="12000,998" /><JD c="FFFFFF,2,1,1" P1="11000,1000" P2="28000,1000" /><JD c="FFFFFF,2,1,1" P1="12000,974" P2="12000,999" /><JD c="FFFFFF,2,1,1" P1="12100,974" P2="12100,999" /><JD c="FFFFFF,2,1,1" P1="12200,974" P2="12200,999" /><JD c="FFFFFF,2,1,1" P1="12300,974" P2="12300,999" /><JD c="FFFFFF,2,1,1" P1="12400,974" P2="12400,999" /><JD c="FFFFFF,4,1,1" P1="12500,958" P2="12500,998" /><JD c="FFFFFF,2,1,1" P1="12600,974" P2="12600,999" /><JD c="FFFFFF,2,1,1" P1="12700,974" P2="12700,999" /><JD c="FFFFFF,2,1,1" P1="12800,974" P2="12800,999" /><JD c="FFFFFF,2,1,1" P1="12900,974" P2="12900,999" /><JD c="FFFFFF,4,1,1" P1="13000,958" P2="13000,998" /><JD c="FFFFFF,2,1,1" P1="13100,974" P2="13100,999" /><JD c="FFFFFF,2,1,1" P1="13200,974" P2="13200,999" /><JD c="FFFFFF,2,1,1" P1="13300,974" P2="13300,999" /><JD c="FFFFFF,2,1,1" P1="13400,974" P2="13400,999" /><JD c="FFFFFF,4,1,1" P1="13500,958" P2="13500,998" /><JD c="FFFFFF,2,1,1" P1="12500,1000" P2="29500,1000" /><JD c="FFFFFF,2,1,1" P1="13500,974" P2="13500,999" /><JD c="FFFFFF,2,1,1" P1="13600,974" P2="13600,999" /><JD c="FFFFFF,2,1,1" P1="13700,974" P2="13700,999" /><JD c="FFFFFF,2,1,1" P1="13800,974" P2="13800,999" /><JD c="FFFFFF,2,1,1" P1="13900,974" P2="13900,999" /><JD c="FFFFFF,4,1,1" P1="14000,958" P2="14000,998" /><JD c="FFFFFF,2,1,1" P1="14100,974" P2="14100,999" /><JD c="FFFFFF,2,1,1" P1="14200,974" P2="14200,999" /><JD c="FFFFFF,2,1,1" P1="14300,974" P2="14300,999" /><JD c="FFFFFF,2,1,1" P1="14400,974" P2="14400,999" /><JD c="FFFFFF,4,1,1" P1="14500,958" P2="14500,998" /><JD c="FFFFFF,2,1,1" P1="14600,974" P2="14600,999" /><JD c="FFFFFF,2,1,1" P1="14700,974" P2="14700,999" /><JD c="FFFFFF,2,1,1" P1="14800,974" P2="14800,999" /><JD c="FFFFFF,2,1,1" P1="14900,974" P2="14900,999" /><JD c="FFFFFF,4,1,1" P1="15000,958" P2="15000,998" /><JD c="111122,250,1,0" P1="-1000,475" P2="16000,475" /><JD c="111122,250,1,0" P1="-1000,225" P2="16000,225" /><JD c="111122,250,1,0" P1="-1000,-25" P2="16000,-25" /><JD c="111122,250,1,0" P1="-1000,-275" P2="16000,-275" /><JD c="111122,250,1,0" P1="-1000,1125" P2="16000,1125" /><JD c="111122,250,1,0" P1="-10000,1375" P2="16000,1375" /><JD c="111122,250,1,0" P1="-1000,1625" P2="16000,1625" /><JD c="111122,250,1,0" P1="-1000,1875" P2="16000,1875" /><VL n="Layer3" l="-1" /><JD c="1558b0,200,0.5,1" P1="-1000,700" P2="16000,700" /><JD c="1558b0,200,0.5,1" P1="-1000,900" P2="16000,900" /><JD c="0783db,8,1,1" P1="-1000,600" P2="16000,600" /><L /></L></Z></C>')
 system.disableChatCommandDisplay("ddddda")
 function eventChatCommand(n,m)
 	if m == "ddddda" then
@@ -3064,9 +2820,9 @@ for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
 function eventLoop()
-	ui.setMapName("<D>Long Jump script v1.15 by <ROSE><b>Patrick_mahomes#1795</b>   <V>|   <N>Actual record : <VP><b>"..recorde.."</b> pts <N>- <VP><b>"..recorder.."</b><")
+	ui.setMapName("<D>Long Jump script v1.16 by <ROSE><b>Patrick_mahomes#1795</b>   <V>|   <N>Actual record : <VP><b>"..recorde.."</b> pts <N>- <VP><b>"..recorder.."</b><")
 	for name,player in pairs(tfm.get.room.playerList) do
-		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 4000 |||||||||| 8000 ||||||||| 12000 ||||||||| 16000 ||",nil,20,20,670,20,0x000001,0x000001,0.8,true)
+		ui.addTextArea(1,"<font size='18'><b><font face='Courier New'>0 |||||||||| 3000 |||||||||| 6000 |||||||||| 9000 |||||||||>",nil,20,20,670,20,0x000001,0x000001,0.8,true)
 		ui.addTextArea(2,"<p align='center'><font size='20'><b><font color='#800000'><font face='Courier New'>"..data[name].x.."",name,700,18,80,22,0xff0000,0x800000,0.9,true)
 		ui.addTextArea(6,"<p align='center'><font size='20'><b><font color='#008000'><font face='Courier New'>"..data[name].recorde.."",name,700,68,80,22,0x00ff00,0x00ff00,0.9,true)
 		ui.addTextArea(7,"<p align='center'><font size='20'><b><font color='#800080'><font face='Courier New'>"..recorde.."",name,700,98,80,22,0xff00ff,0x800080,0.9,true)
@@ -3077,7 +2833,10 @@ function eventLoop()
 		else
 			data[name].x=tfm.get.room.playerList[name].x
 		end
-		if tfm.get.room.playerList[name].vx <= 3 and tfm.get.room.playerList[name].x >= 700 and tfm.get.room.playerList[name].y >= 600 then
+		if data[name].x > 15000 then
+			data[name].x=15000
+		end
+		if tfm.get.room.playerList[name].vx <= 3 and tfm.get.room.playerList[name].x >= 500 and tfm.get.room.playerList[name].y >= 600 then
 			tfm.exec.chatMessage("<J>Your distance: <b>"..data[name].x.."</b> pixels.",name)
 			if data[name].x > data[name].recorde then
 				data[name].recorde=data[name].x
@@ -3094,9 +2853,9 @@ function eventLoop()
 			end
 			tfm.exec.movePlayer(name,80,250,false,0,0,false)
 		end
-		ui.addTextArea(3,"",name,30,48,tfm.get.room.playerList[name].x/23.6,5,0xff0000,0x800000,0.9,true)
-		ui.addTextArea(4,"",name,30+data[name].recorde/23.6,48,1,5,0x00ff00,0x008000,0.9,true)
-		ui.addTextArea(5,"",nil,30+recorde/23.6,48,1,5,0xff00ff,0x800080,0.9,true)
+		ui.addTextArea(3,"",name,30,48,tfm.get.room.playerList[name].x/18.1,5,0xff0000,0x800000,0.9,true)
+		ui.addTextArea(4,"",name,30+data[name].recorde/18.1,48,1,5,0x00ff00,0x008000,0.9,true)
+		ui.addTextArea(5,"",nil,30+recorde/18.1,48,1,5,0xff00ff,0x800080,0.9,true)
 	end
 end
 end
@@ -3266,16 +3025,13 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.187<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.188<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
 else
 	if string.find(tfm.get.room.name,"bootcamp") or string.find(tfm.get.room.name,"racing") or string.find(tfm.get.room.name,"defilante") or string.find(tfm.get.room.name,"village") or string.find(tfm.get.room.name,"vanilla") or string.find(tfm.get.room.name,"survivor") then
 		tfm.exec.chatMessage("<R>Room name not allowed. Shutting down...")
-	elseif string.find(tfm.get.room.name,"truefalse") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising #truefalse module...")
-		initTrue()
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
@@ -3288,9 +3044,6 @@ else
 	elseif string.find(tfm.get.room.name,"longjump") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'longjump' on room name.<br>Initialising #longjump module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initSalto()
-	elseif string.find(tfm.get.room.name,"rooms") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'rooms' on room name.<br>Showing available #anvilwar rooms.")
-		Rooms()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
