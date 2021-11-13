@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.198
+-- Transformice #anvilwar module loader - Version 2.198.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #pistas, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.198",
-	_MAINV = "43385.158",
+	_VERSION = "2.198.1",
+	_MAINV = "43386.159",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,7 +13,7 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 43385.158
+Version : RTM 43386.159
 Compilation date : 11/13/2021 12:47 UTC
 Sending player : Morganadxana#0000
 
@@ -335,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43385.158</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43386.159</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -948,7 +948,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43385.158","• Minor bugfixes<br>• Some changes on special players<br>• Reviving score reduced to 30 points<br>• Small changes on lobby map<br>• The duration of Permafrost powerup increased to 4 seconds")
+		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43386.159","• Minor bugfixes<br>• Some changes on special players<br>• Reviving score reduced to 30 points<br>• Small changes on lobby map<br>• The duration of Permafrost powerup increased to 4 seconds")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1006,9 +1006,11 @@ function eventChatCommand(name,command)
 		tfm.exec.killPlayer(command:sub(6))
 	end
 	if (command:sub(0,7) == "testmap") and data[name].ranking >= 2 then
-		if mode == "lobby" and change == true then
-			set_map=command:sub(9)
-			showMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
+		if mode == "lobby" and change == true and choose_time >= 7 then
+			if string.len(command:sub(9)) == 8 then
+				set_map=command:sub(9)
+				showMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
+			end
 		else
 			showMessage(text.load0,name)
 		end
@@ -2806,7 +2808,7 @@ function eventPlayerDied(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.198<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.198.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
