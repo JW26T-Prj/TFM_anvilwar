@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.199
+-- Transformice #anvilwar module loader - Version 2.200
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #quiz, #objects.
+-- Included sub-modules: #watercatch, #cd3, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.199",
+	_VERSION = "2.200",
 	_MAINV = "43388.161",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -104,7 +104,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00quiz<br>/sala #anvilwar00objects<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00objects<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -2573,460 +2573,427 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-initQuiz = function()
--- Mudanças na Versão 2.13.0:
-
--- Correções no sistema inteligente de escolha de perguntas
--- Mais otimizações no código
--- Remoção do comando !random (causa problemas com o novo sistema de escolha de perguntas)
--- Adição de um novo tema de perguntas
--- Mudanças no sistema de admin. Mais de um usuário pode usar os comandos adicionais.
-
--- Script de Quiz de perguntas feito por Reksai_void2600#6638, versão 2.13.0
-
-admin={"Reksai_void2600#6638"} -- FunCorps, insiram seus nomes aqui!
-
-tema=0 -- Edite conforme mostrado acima!
-tribehouse=false -- Altere para 'true' caso esteja rodando este código em um cafofo de tribo.
-debug=false -- Não alterar. Uso exclusivo para depuração e diagnóstico.
-
-piso={type = 6,width = 350,height = 40,foregound = 1,friction = 1.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-barreira={type = 12,width = 20,height = 100,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","AfkDeath"} do
+initCd3 = function()
+-- Script do module Cidade Dorme, versão RTM 2422.016 LTS, desenvolvido por Rakan_raster#0000.
+-- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
+admin=""
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
+do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"setq","limite","tema"} do
-	system.disableChatCommandDisplay(g)
+tfm.exec.disableAfkDeath(false)
+jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
+quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
+limites={assasinos=0,detetives=0,medicos=0}
+map_det={creator="",code=""}
+testmode=false
+modo="inicial"; contador=0; rodada=0; data={}; templist={};
+mapas={"@2684847","@3110915","@3148619","@3398791","@3793051","@4411212","@4477478","@5832272","@4677521","@6390711","@6907177","@3203198","@5113656","@6380942","@1389773","@2048617","@2637755"}
+tfm.exec.setRoomMaxPlayers(40)
+system.disableChatCommandDisplay("reiniciar")
+system.disableChatCommandDisplay("help")
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if testmode == false then
+		tfm.exec.chatMessage(message,name)
+	elseif testmode == true then
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
+		end
+	end
 end
-ratos=0; vivos=0; set_q=0; questions_list={}; modo="inicial"; pergunta=0; rodada=0; limite=25; count=0;
-perguntas={
-"Vai na sorte :)","ok","ok",1,
-"Vai na sorte :)","ok","ok",2,
-"Em que ano o Transformice foi criado?","2009","2010",2,
-"Qual dessas categorias de mapa representa um mapa excluído?","P43","P44",2,
-"Qual destas tags é atribuída aos administradores do Transformice?","#0000","#0001",2,
-"Quantos morangos são necessários para trocar de nickname no Transformice","1500","2500",1,
-"Quantos queijos no perfil são necessários para rodar scripts LUA no cafofo?","100","1000",1,
-"Se você digitar /cafe, o que acontece?","Abre o café","Faz aparecer cafés voadores",2,
-"Quantos morangos custa o item mais caro da loja?","550","600",1,
-"Funcorps fazem parte da Staff BR.","Verdadeiro","Falso",2,
-"Qual a categoria atribuída a mapas de Survivor?","P10","P12",1,
-"Qual a função do comando /langue?","Muda a linguagem do jogo","Muda você de sala",1,
-"Qual destes jogos não foi feito pela Atelier 801?","Bombom","Fortoresse",1,
-"Qual o limite máximo de amigos do Transformice?","500","1000",1,
-"Há quantos emoticons no Transformice?","10","14",1,
-"Há quantas ações de rato no Transformice?","10","14",2,
-"Qual o nome do antigo modo do module #deathmatch?","Baffbotffa","Baffbot",1,
-"A partir de qual nível todas as habilidades de shaman são desbloqueadas?","20","30",1,
-"O que acontece se você digitar /version?","Mostra informações do jogo","Abre a versão do jogo",2,
-"Qual título é desbloqueado quando você consegue 40.000 firsts?","RELÂMPAGO","Mestre do Vento",1,
-"Existem quantas habilidades de Shaman no Transformice?","75","65",1,
-"O jogo Transformice foi desenvolvido em qual país?","EUA","França",2,
-"Qual destas tags é atribuída aos Modsents do Transformice?","#0010","#0015",2,
-"Qual o nome da Deusa Shaman do Transformice?","Elise","Elisah",2,
-"Qual destes modules foi desenvolvido por Sharpiepoops, pioneiro nos modules do Transformice?","#keyhunt","#campal",1,
-"Originalmente no Transformice era possível criar mapas com quantos tipos de pisos?","5","8",1,
-"Quem é o criador atual do module True or False?","Spectra_phantom#6089","Haxhhhhhhhhh#0000",1,
-"Qual o nome da empresa que é responsável pelo Transformice?","Atelier 801","Riot Games",1,
-"Qual destes pregos não pode ser utilizado no modo difícil?","Vermelho","Amarelo",1,
-"Há quantas categorias de itens na loja?","16","17",2,
-"Em que ano o Transformice atingiu seu número máximo de jogadores ativos?","2012","2013",1,
-"Quantos queijos custa a exportação de um mapa como cafofo da tribo?","5","40",1,
-"Quantos jogos a Atelier 801 tem atualmente?","5","6",2,
-"Qual é a fricção e a restituição, respectivamente, de um piso de chocolate?","20 e 0","0 e 20",1,
-"Qual destes usuários é responsável pelo module #anvilwar?","Jessiewind26#2546","Spectra_phantom#6089",2,
-"Qual destes usuários é responsável pelo module #batata?","Laagaadoo#0000","Ikke#0095",1,
-"Qual destes comandos é utilizado para a inserção de um código especial da Japan Expo?","/lua","/code",2,
-"A habilidade 'Meep!' faz parte de qual árvore de Habilidades?","Selvagem","Físico",1,
-"Qual a categoria atribuída a mapas de Cafofo da Tribo?","P22","P20",1,
-"FunCorps são capazes de rodar scripts LUA em salas que não são de modules.","Verdadeiro","Falso",1,
-"O cargo de Modsent é atribuído a jogadores que são...","Moderadores e Funcorps","Moderadores e Sentinelas",2,
-"Quem é o gerenciador atual do module #pictionary?","Shamousey#0015","Ork#0015",1,
-"Quantas árvores de habilidades de shaman existem no Transformice?","3","5",2,
-"Qual o nome do cargo pré-definido do criador de uma tribo?","Shaman da Tribo","Líder Espiritual",2,
-"Qual o nome do título que a Melibellule usa?","La Belette","Fromadmin",2,
-"Qual a sigla dada ao 'banimento' permanente de uma conta do servidor?","BoS","Permaban",1,
-"Em qual module você precisa se esconder atrás das decorações do mapa?","#prophunt","#hidenseek",2,
-"Qual o nome da equipe que é responsável pela categorização de mapas do Transformice?","Module Team","MapCrew",2,
-"Quantas vezes você precisa completar um mapa bootcamp para ele ser contabilizado no perfil, quando você acaba de entrar na sala?","1","2",2,
-"Usuários do servidor BR eram proibidos de falar no antigo servidor EN1.","Verdadeiro","Falso",2,
-"Usuários do servidor BR eram proibidos de falar no antigo servidor EN2.","Verdadeiro","Falso",1,
-"O Transformice já fez, em 2019, um evento baseado em anime.","Verdadeiro","Falso",2,
-"No Transformice, os ratos que tocarem em um piso ácido...","Ficam presos nele","Morrem instantaneamente",2,
-"Qual o nome do criador do module que estamos jogando agora?","Reksai_void2600#6638","Patrick_mahomes#1795",1,
-"A habilidade 'Reparadora' faz parte de qual árvore de Habilidades?","Mecânico","Físico",2,
-"A mensagem de reinício do servidor do Transformice aparece em qual cor?","Rosa","Roxo",1,
-"Quantos queijos custa o pelo mais caro da loja?","10000","8000",1,
-"Quantos ratos salvos são necessários para desbloquear o modo difícil?","1000","2000",1,
-"O Transformice possui uma série animada de desenhos no YouTube.","Verdadeiro","Falso",1,
-"A técnica chamada 'time deviation' ou 'clock drift' pode deixar seu rato mais rápido ou lento sem uso de hack.","Verdadeiro","Falso",1,
-"A habilidade 'Anjo' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",2,
-"Vanilla, Survivor e Defilante são modules do Transformice.","Verdadeiro","Falso",2,
-"Quantos ratos salvos são necessários para desbloquear o modo divino?","5000","10000",1,
-"Os membros da Staff podem entrar nos cafofos das tribos, mesmo não sendo membro delas.","Verdadeiro","Falso",1,
-"Japan Expo é o nome de um evento do Transformice que acontece em qual país?","Japão","França",2,
-"Qual dessas tags é atribuída aos Funcorps do Transformice?","#0015","Não tem tag definida",2,
-"Qual dessas tags é atribuída aos MapCrews do Transformice?","#0020","Não tem tag definida",1,
-"Qual destes comandos é utilizado para a inserção de um script LUA?","/lua","/code",1,
-"Qual destes eventos não é mais utilizado no Transformice?","Carnaval","Natal",1,
-"A habilidade 'Superstar' faz parte de qual árvore de Habilidades?","Selvagem","Guia Espiritual",2,
-"Qual destes usuários nunca se tornou Funcorp?","Shamousey#0015","Bolodefchoco#0015",1,
-"Se você ficar muito tempo dentro da água no Transformice, você morre automaticamente.","Verdadeiro","Falso",2,
-"É possível ganhar queijos na loja apenas jogando modules.","Verdadeiro","Falso",1,
-"Qual categoria de mapas é atribuída aos mapas de Defilante?","P18","P19",1,
-"Qual o nome da equipe que é responsável pelos modules do Transformice?","Module Team","MapCrew",1,
-"Qual categoria de mapas é atribuída aos mapas Racing?","P7","P17",2,
-"Qual destes modules foi feito por um brasileiro?","#football","#parkour",2,
-"Qual o nome do título que o Tigrounette usa?","La Belette","Les Populaires",1,
-"A habilidade 'Espírito Ancestral' faz parte de qual árvore de Habilidades?","Guia Espiritual","Mestre do Vento",1,
-"Quantos queijos custa a compra de um 2ª visual de roupas no Transformice?","100","1000",2,
-"Quem é o criador do module #circuit?","Bolodefchoco#0015","Ninguem#0095",2,
-"Quantos queijos custa a customização de uma roupa no Transformice?","2000","4000",1,
-"Em qual ano estreou o sistema de missões no Transformice?","2019","2020",1,
-"Em qual ano estreou o evento de Pesca do Transformice?","2011","2012",2,
-"Quem foi o primeiro gerenciador do module Mestre Mandou?","Haxhhhhhhhhh#0000","Jessiewind26#2546",2,
-"Quantos queijos custa a customização de um item de shaman no Transformice?","2000","4000",2,
-"Qual o nome da plataforma de execução que o Transformice utiliza?","Adobe Air","Adobe Flash Player",2,
-"Qual é o limite de taxa de quadros que o Transformice pode operar?","60 fps","Depende do cliente",1,
-"É possível ganhar queijos no perfil apenas jogando modules.","Verdadeiro","Falso",2,
-"É possível coletar estatísticas no perfil jogando quais modos oficiais?","Survivor, Racing e Vanilla","Survivor, Racing e Defilante",2,
-"É possível comprar morangos pelo celular no Brasil.","Verdadeiro","Falso",2,
-"Usuários do servidor BR podem falar apenas no servidor brasileiro.","Verdadeiro","Falso",2,
-"A habilidade 'Olho de Águia' faz parte de qual árvore de Habilidades?","Mecânico","Mestre do Vento",1,
-"Em qual ano estreou o module #batata?","2013","2014",2,
-"Em qual ano estreou o modo Defilante?","2014","2015",1,
-"Qual modo do Transformice foi desativado devido a limitação dos vídeos no Transformice?","Music","Nekodancer",1,
-"Em qual ano estreou o fórum em HTML5 do Atelier 801?","2015","2016",1,
-"Usuários comuns não podem criar mapas nos quais os shamans possam usar portais.","Verdadeiro","Falso",2,
-"Qual é a fricção e a restituição, respectivamente, de um piso de lava?","20 e 0","0 e 20",2,
-"Apenas membros da Staff do Transformice podem criar mapas no modo Noite.","Verdadeiro","Falso",2,
-"Qual a tribo do Tigrounette?","Lute como uma garota","Les Populaires",2,
-"É necessário vincular uma conta de e-mail quando você cria novas contas no Transformice.","Verdadeiro","Falso",1,
-"Qual título é desbloqueado quando você consegue 20.000 firsts?","RELÂMPAGO","Mestre do Vento",2,
-"Qual título é desbloqueado quando você cria uma conta no Transformice?","Alpha & Ômega","Ratinho",2,
-"É possível ganhar uma medalha exclusiva quando você entra no Transformice pela Steam.","Verdadeiro","Falso",1,
-"Há quantos tipos de piso no Transformice?","16","18",2,
-"Quantos pregos para o Shaman existem no Transformice?","3","5",2,
-"Qual desses objetos de shaman é maior em altura?","Tábua gigante","Caixa grande",2,
-"Quantos tamanhos de tábua existem no Transformice?","4","3",1,
-"Em qual ano estreou o evento de Halloween do Transformice?","2011","2010",2,
-"Para se usar o comando /lua no cafofo da tribo, você precisa ter a permissão de...","Usar o /np no cafofo","Mudar o cafofo da tribo",1,
-"É possível deixar os pisos invisíveis no Transformice","Verdadeiro","Falso",1,
-"Qual a idade mínima para virar MapCrew no Transformice?","18","Não tem idade mínima",2,
-"Qual título é desbloqueado quando você consegue 1 bootcamp?","Principiante","Recruta",2,
-"Qual foi a maior quantidade de pessoas logadas no Transformice, aproximadamente?","100000","85000",2,
-"Qual o nick dos criadores do Transformice?","Melibellule e Tigrounette","Mellibellule e Trigrounette",1,
-"Quem é o gerenciador atual do module Mestre Mandou?","Rakan_raster#0000","Xayah_raster#0000",1,
-"Quem é o criador do module O Chão é Lava?","Sett#6442","Osicat#0000",2,
-"Qual o limite de consumíveis que podem ser armazenados no inventário?","80","200",1,
-"Qual o nome do antigo fun-site no qual você poderia acessar um Ranking dos ratos?","Cheese For Mice","Viprin Drawing Editor",1,
-"Qual o limite de jogadores em uma tribo no Transformice?","2000","5000",2,
-"Qual o comando que serve para ver as combinações de roupa do jogo?","/dressing","/shop",1,
-"O dono de uma tribo pode exibir mensagens no chat utilizando o comando /lua no cafofo da tribo.","Verdadeiro","Falso",2,
-"Em qual ano estreou o evento de Natal do Transformice?","2011","2010",2,
-"Qual é o primeiro nome do Tigrounette?","Jean","Dean",1,
-"Qual destes eventos estreou primeiro no Transformice?","Halloween","Natal",1,
-"Qual destes títulos é atribuído a quantidade de ratos salvos no modo difícil?","Virtuoso","Redentor",1,
-"A partir de qual ano foi possível criar mapas com largura maior que a normal?","2012","2011",2,
-"Em qual cidade fica situada a sede da Atelier 801?","Lille","Paris",1,
-"Qual desses foi o primeiro desenvolvedor do module #perguntas?","Brenower#0000","Dhanny_mheyran#6701",2,
-"Quantos firsts são necessários para desbloquear o título 'O Mito'?","1100","1000",1,
-"Qual a largura máxima que um mapa pode ter sem ter o modo defilante ativado?","1600","9830",1,
-"Qual destes objetos não pode ser utilizado no modo difícil?","Sp","Seta",1,
-"A seta é sempre o primeiro item do shaman.","Falso","Verdadeiro",1,
-"O module Mestre Mandou já foi administrado por quantas pessoas?","4","5",1,
-"Qual a idade mínima para virar moderador no Transformice?","18","16",1,
-"Qual foi a última versão do Flash Player que o Transformice deu suporte?","32.0","33.0",1,
-"Qual a idade mínima para virar FunCorp no Transformice?","16","Não tem idade mínima",2,
-"Quantos tamanhos de tela de cinema existem no Transformice?","2","3",1,
-"É possível mudar a cor da água do Transformice utilizando somente o Editor de Mapas.","Verdadeiro","Falso",2,
-"É possível carregar imagens nos mapas utilizando apenas no Editor de Mapas.","Verdadeiro","Falso",1,
-"Em teoria, qual a largura máxima que um mapa no Transformice pode ter?","4800","9830",2,
-"Em teoria, qual a altura máxima que um mapa no Transformice pode ter?","800","9830",2,
-"Quem é o criador atual do module #unotfm?","Ninguem#0095","Spectra_phantom#6089",1,
-"Em qual ano foi introduzido o esquema de #tags nos nomes do Transformice?","2018","2019",1,
-"Quantos bootcamps são necessários para desbloquear o título Recruta?","1","3",1,
-"Quantos firsts são necessários para desbloquear o título 'Rato Pirata'?","100","200",1,
-"Usuários podem adicionar imagens no cafofo da tribo utilizando o comando /lua.","Verdadeiro","Falso",1,
-"Quando um rato morre no Transformice, começa a sair...","Bolhas","Sangue",1,
-"Qual é o nome do primeiro module do Transformice?","sharpie debuglua","batata",1,
-"O dia de lançamento do Transformice é também um feriado nacional no Brasil. Qual é esse feriado?","Dia das Mães","Dia do Trabalho",2,
-"Qual destes comandos servem para ver informações do mapa atual?","/map","/info",2,
-"Para usar o café, você precisa estar com quantos dias jogados de conta?","30","10",1,
-"Em qual dia do ano o Transformice foi criado?","1","2",1,
-"Qual o limite de queijos que podem ser armazenados no inventário?","80","200",2,
-"Quantos anos tem o Tigrounette?","33","35",2,
-"Qual o nome da única mulher que criou um module semi-oficial no Transformice?","Morganadxana#0000","Lanadelrey#4862",1,
-"Qual o limite antigo de membros em uma tribo do Transformice?","5000","2000",2,
-"Qual o nome de um module de testes extinto em que todos viravam Pikachu e tinham que descer a ladeira?","#surble","#surbler",1,
-"No começo da vida do Defilante, quem ganhava as partidas recebia 2 firsts e quantos queijos?","0","2",1,
-"Qual destas categorias de mapas é atribuída a mapas de Survivor Vampiro?","P11","P13",1,
-"O module #freezertag antes era um submódulo de qual module?","#parkour","#circuit",1,
-"Qual o nome do código que é usado para carregar mapas do Transformice?","Lua","XML",2,
-"Qual destes usuários nunca se tornou Funcorp?","Patrick_mahomes#1795","Pamots#0095",1,
-"Qual destes modules não foi feito por um brasileiro?","#anvilwar","#freezertag",1,
-"Qual destas ratas morreu na vida real, dando origem a uma decoração do Transformice?","Elise","Papaille",1,
-"Em qual mês do ano geralmente termina o evento de Natal?","Dezembro","Janeiro",2,
-"Em qual ano foram introduzidos os modules no Transformice?","2014","2013",2,
-"Qual destes comandos servem para ver os seus mapas criados?","/maps","/lsmap",2,
-"Quem é o criador e gerenciador atual do module #shamousey?","Shamousey#0015","Ninguem#0095",1,
-"Quantos queijos custa para exportar um mapa como cafofo da tribo?","5","40",1,
-"Quantos objetos de shaman podem ser utilizados no modo padrão?","13","14",2,
-"Em qual ano houve o desban de todas as contas banidas permanentes no Transformice?","2012","2013",2,
-"Em qual país está situado o host de baixo ping disponível no Brasil?","Canadá","México",1,
-"Qual categoria de mapas é atribuída aos mapas permanentes de modules?","P41","P43",1,
-"Em qual ano surgiu o sistema de missões diárias no Transformice?","2018","2019",2,
-"Qual a idade mínima para virar membro da Module Team no Transformice?","16","Não tem idade mínima",2,
-"Qual destes comandos servem para ver informações ténicas do cliente e do sistema?","/info","/^^",2,
-"Qual o último título desbloqueável de queijos do Transformice?","MEU QUEIJO!","Alpha & Omega",1,
-"Para falar no café, você precisa de quantos queijos no perfil?","100","1000",2,
-"Qual destes modules não existe mais?","#madchess","#minigolf",1,
-"Qual comando é utilizado para ver a árvore de funções e eventos LUA do Transformice?","/luahelp","/luatree",1,
-"Qual era o nome da sala que, após uma sequência de comandos, dava morangos de graça?","286637850","286657250",1,
-"Em qual ano foi lançado o primeiro servidor brasileiro do Transformice?","2010","2011",2,
-"Em qual ano foi lançada a Plataforma Comunitária do Transformice?","2013","2014",1,
-"O que acontece quando você digita /zimmer 5?","Te dá 5 queijos de graça","Leva você para a sala 5",2,
-"Em qual mês do ano o Transformice foi criado?","Maio","Junho",1,
-"Qual comando serve para ver a versão do Transformice?","/version","/transformice",1,
-"Qual a tag atribuída a ex-membros da equipe do Transformice?","#0020","#0095",2,
-"Tigrounette é homem ou mulher?","Homem","Mulher",1,
-"É possível presentear outros ratos com itens da loja utilizando somente queijos.","Verdadeiro","Falso",2,
-"Qual a função da habilidade de shaman 'Superstar'?","Os ratos ao redor dançam","Os ratos ao redor beijam",1,
-"Qual o último título de ratos salvos pelo Shaman?","Virtuoso","Alpha & Ômega",2,
-"Qual o nome do jogo de Zumbis lançado pela Atelier 801?","League of Legends","Dead Maze",2,
-"Quantas medalhas comemorativas de aniversário existem no Transformice?","2","10",1,
-"Em qual árvore de habilidades está presente a habilidade 'Desintegração controlada'?","Físico","Mecânico",1,
-"Em qual ano foi lançado o Poisson, antigo jogo que depois tornou o Transformice?","2010","2008",2,
-"Por quantas horas você é banido por Hack no Transformice, por padrão?","360","168",1,
-"Qual o nome do antigo jogo do Transformice para celular?","Dead Maze","Run For Cheese",2,
-"Os donos da Atelier 801 e da Ubisoft já se encontraram pessoalmente.","Não","Sim",1,
-"Em qual árvore de habilidades está presente a habilidade 'Volta da natureza'?","Físico","Selvagem",2,
-"Qual o nome atual da ex-modsent Racola?","Alriy#0095","Keith#0095",1,
-"Quantos ratos salvos são necessários para desbloquear o modo normal?","0","1000",1,
-"Quando você cria uma conta no Transformice, seu inventário vem vazio.","Verdadeiro","Falso",2,
-"Qual o comando que desbloqueia um item de cabeça de bolo?","/atelier801","/transformice",1,
-"O capacete de 20 queijos é a única roupa que pode ser customizado sem gastar queijos/morangos.","Verdadeiro","Falso",1,
-"A partir de 2021, só será possível jogar Transformice através da Steam.","Verdadeiro","Falso",2,
-"Qual o último título de ratos salvos em modo difícil pelo Shaman?","Virtuoso","Alpha & Ômega",1,
-"É possível mudar a gravidade do mapa no Transformice utilizando código LUA.","Verdadeiro","Falso",1,
-"Apenas membros da Module Team podem carregar modules nas salas do Transformice.","Verdadeiro","Falso",2,
-"Quantos servidores host da Atelier801 existem no Brasil?","0","1",1,
-"Qual é a margem máxima offscreen de largura e altura no qual os ratos podem permanecer vivos?","400px por lado","800px por lado",1,
-}
-mapa="@7786632"
-actual_question={quest="",a1="",a2="",answer=nil}
-function verifyAdmin(name)
-	for i=1,rawlen(admin) do
-		if admin[i] == name then
+function showDebugText(text)
+	for _,name in next,{"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000"} do
+		showMessage(text,name)
+	end
+end
+function getTypesPlayers()
+	quant={assasinos=0,detetives=0,medicos=0}
+	for name,player in next,tfm.get.room.playerList do
+		if data[name] and data[name].type == 1 and not tfm.get.room.playerList[name].isDead then
+			quant.assasinos=quant.assasinos+1
+		end
+		if data[name] and data[name].type == 2 and not tfm.get.room.playerList[name].isDead then
+			quant.medicos=quant.medicos+1
+		end
+		if data[name] and data[name].type == 3 and not tfm.get.room.playerList[name].isDead then
+			quant.detetives=quant.detetives+1
+		end
+	end
+end
+function checkNickname(name)
+	for i=1,rawlen(jogadores.lista) do
+		if jogadores.lista[i] == name then
 			return true
 		end
 	end
 end
-function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
-	if tribehouse == false then
-		tfm.exec.chatMessage(message,name)
-	elseif tribehouse == true then
-		ui.addTextArea(0,"<p align='center'><font size='16'>"..message.."",name,10,22,780,48,0x000001,0x000001,1.0,true)
+function eventChatCommand(name,comando)
+	if comando == "reiniciar" then
+		if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or name == admin then
+			tfm.exec.newGame(mapa)
+		end
 	end
-end
-function questionChanger(id,remove)
-	if remove == true then
-		table.remove(questions_list,id)
+	if comando == "help" then
+		showMessage("<p align='center'><VP><b>Bem-vindo ao module Cidade Dorme.</b><br><br><p align='left'><N>Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>O jogo consiste basicamente em 4 classes de jogadores:<br><R>• Assasinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.<br><BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assasinos.<br><VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assasinos.<br><J>• Vítimas: <N>Ficam só rezando pra não serem mortos.<br><br>O jogo acaba sempre quando todos os assasinos, detetives ou vítimas são mortos.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Rakan_raster#0000.",name)
 	end
 end
 function eventNewGame()
-	vivos=0
-	tfm.exec.setGameTime(15)
-	for name,player in next,tfm.get.room.playerList do
-		vivos=vivos+1
-	end
-	count=rawlen(perguntas)/4
-	if rawlen(questions_list) <= limite then
-		showMessage("<J>Contando perguntas. Por favor, aguarde...<br>")
-		for i=1,count do
-			table.insert(questions_list,i)
-		end
-	end
-	if tema <= 2 then
-		showMessage("Esta é a versão oficial do Quiz de Perguntas.<br>Os temas das perguntas foram todos feitos por Reksai_void2600#6638.<br><br><N><b>Quantidade de perguntas presentes: "..rawlen(questions_list).."</b><br><VP>O sistema inteligente de escolha de perguntas está ativo.")
-	end
-end
-function reset()
-	rodada=0
-	for i=0,3 do
-		ui.removeTextArea(i)
-	end
+	contador=0
+	tfm.exec.setGameTime(40)
+	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
+	quant={assasinos=0,detetives=0,medicos=0}
 	modo="inicial"
-	tfm.exec.newGame(mapa)
+	for name,player in next,tfm.get.room.playerList do
+		tfm.exec.setPlayerScore(name,0,false)
+		data[name].type=0
+		if string.find(tfm.get.room.name,name) then
+			admin=name
+			showMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar ou reiniciar a partida.")
+		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	map_det.code=tfm.get.room.currentMap
+	map_det.creator=tfm.get.room.xmlMapInfo.author
+	rodada=0
+	ui.setMapName("<J>"..map_det.creator.." <BL>- "..map_det.code.."   <V>|   <N><b>Cidade Dorme v3</b> <VP>RTM 2422.016 <b>LTS</b><")
 end
-function eventChatCommand(name,message)
-	if name == "Forzaldenon#0000" or name == "Reksai_void2600#6638" or name == "Aurelianlua#0000" or name == "Viego#0345" or verifyAdmin(name) == true then
-		if (message:sub(0,6) == "limite") then
-			limite=tonumber(message:sub(8))
-			showMessage("Limite de rodadas alterado para: "..message:sub(8).."")
-			questions_list={}; count=0;
-			reset()
-		end
-		if (message:sub(0,4) == "setq") then
-			set_q=tonumber(message:sub(6))
-		end
+function escolherAssasinos(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=1
+		quant.assasinos=quant.assasinos+1
+		showMessage("<J>Você foi escolhido(a) como assasino(a).<br><br>Sua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
+		showDebugText("<R>Assasino: "..name.."")
+	end
+end
+function escolherMedicos(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=2
+		quant.medicos=quant.medicos+1
+		showMessage("<J>Você foi escolhido(a) como médico(a).<br><br>Sua função será salvar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
+		showDebugText("<BL>Médico: "..name.."")
+	end
+end
+function escolherDetetives(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=3
+		quant.detetives=quant.detetives+1
+		showMessage("<J>Você foi escolhido(a) como detetive.<br><br>Sua função será de tentar descobrir quem são os assasinos e matar eles. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
+		showDebugText("<VP>Detetive: "..name.."")
 	end
 end
 function eventNewPlayer(name)
-	ratos=ratos+1
+	data[name]={type=-1,morre=false}
+	showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2422.016 LTS<br><p align='left'>",name)
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
-function eventPlayerLeft(name)
-	ratos=ratos-1
+function eventPlayerDied(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=-1
+	end
+	getTypesPlayers()
+	for i=1,rawlen(jogadores.lista) do
+		if jogadores.lista[i] == name then
+			table.remove(jogadores.lista,i)
+			jogadores.vivos=jogadores.vivos-1
+		end
+	end
 end
-function eventLoop(p,f)
-	ui.setMapName("<N>Quiz de Perguntas <VP><b>v2.13.0</b> <N>por <ROSE>Reksai_void2600#6638   <BL>|   <N>Ratos vivos : <V>"..vivos.."/<J>"..ratos.."   <BL>|   <N>Round : <V>"..rodada.."/<R>"..limite.."<")
-	if f < 2000 and modo == "inicial" then
-		modo="perguntar"
-		randomQuests()
-	end
-	if f < 1250 and modo == "perguntar" then
-		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].x >= 390 and tfm.get.room.playerList[name].x <= 410 then
-				tfm.exec.killPlayer(name)
-			end
-		end
-		tfm.exec.setGameTime(6)
-		if actual_question.answer == false then
-			tfm.exec.removePhysicObject(1)
-			ui.addTextArea(2,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,0.1,true)
-			ui.addTextArea(1,"<p align='center'><VP><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
-			modo="intervalo"
-		elseif actual_question.answer == true then
-			tfm.exec.removePhysicObject(0)
-			ui.addTextArea(1,"<p align='center'><font color='#181818'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,0.1,true)
-			ui.addTextArea(2,"<p align='center'><VP><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-			modo="intervalo"
+function eventPlayerLeft(name)
+	jogadores.lista={}
+	for name,player in next,tfm.get.room.playerList do
+		if not tfm.get.room.playerList[name].isDead then
+			table.insert(jogadores.lista,name)
 		end
 	end
-	if modo == "intervalo" then
-		if f > 2000 and f <= 3000 then
-			if actual_question.answer == false then
-				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x >= 410 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			elseif actual_question.answer == true then
-				for name,player in next,tfm.get.room.playerList do
-					if tfm.get.room.playerList[name].x <= 390 then
-						tfm.exec.killPlayer(name)
-					end
+	getTypesPlayers()
+	data[name].type=-1
+end
+function definirLimites()
+	if jogadores.vivos < 8 then
+		limites.assasinos=1; limites.medicos=1; limites.detetives=1;
+	elseif jogadores.vivos >= 8 and jogadores.vivos < 14 then
+		limites.assasinos=2; limites.medicos=1; limites.detetives=2;
+	elseif jogadores.vivos >= 14 and jogadores.vivos < 20 then
+		limites.assasinos=3; limites.medicos=2; limites.detetives=3;
+	elseif jogadores.vivos >= 20 and jogadores.vivos < 26 then
+		limites.assasinos=4; limites.medicos=3; limites.detetives=4;
+	elseif jogadores.vivos >= 26 and jogadores.vivos < 32 then
+		limites.assasinos=5; limites.medicos=3; limites.detetives=5;
+	elseif jogadores.vivos >= 32 then
+		limites.assasinos=6; limites.medicos=4; limites.detetives=5;
+	end
+end
+function sortearDetetives()
+	for i=1,limites.detetives do
+		local jogador=templist[math.random(#templist)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherDetetives(jogador)
+			templist={}
+			for name,player in next,tfm.get.room.playerList do
+				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
+					table.insert(templist,name)
 				end
 			end
 		end
 	end
-	if f < 1 and modo == "intervalo" then
-		if rodada < limite then
-			randomQuests()
+end
+function sortearMedicos()
+	for i=1,limites.detetives do
+		local jogador=templist[math.random(#templist)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherMedicos(jogador)
+			templist={}
+			for name,player in next,tfm.get.room.playerList do
+				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
+					table.insert(templist,name)
+				end
+			end
+		end
+	end
+	sortearDetetives()
+end
+function sortearAssasinos()
+	for i=1,limites.assasinos do
+		local jogador=templist[math.random(#templist)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherAssasinos(jogador)
+			templist={}
+			for name,player in next,tfm.get.room.playerList do
+				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
+					table.insert(templist,name)
+				end
+			end
+		end
+	end
+	sortearMedicos()
+end
+function eventLoop()
+	contador=contador+0.5
+	if modo == "aguardando" then
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 2422.016 LTS<")
+	end
+	if contador == 1 then
+		if admin == "" then
+			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
+			contador=-65536
 		else
-			tfm.exec.setGameTime(5)
-			showMessage("<R>Sem vencedores!")
-			modo="fim"
+			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2422.016 LTS<br><p align='left'>")
 		end
 	end
-	if modo == "perguntar" and f >= 1 then
-		ui.addTextArea(3,"<p align='center'><font size='45'>"..math.ceil((f/1000)-1).."",nil,360,235,80,60,0x000001,0x494949,1.0,true)
-	else
-		ui.removeTextArea(3,nil)
+	if contador == 8 then
+		showMessage("<VP>Digite !help caso não saiba como funciona este jogo.")
 	end
-	if f <= 3000 and vivos == 1 and modo == "fim" then
+	if contador == 35 then
+		jogadores.lista={}
+		templist={}
 		for name,player in next,tfm.get.room.playerList do
 			if not tfm.get.room.playerList[name].isDead then
-				showMessage("<VP><b>"..name.."</b> venceu a partida!")
-				modo="fim2"
+				jogadores.vivos=jogadores.vivos+1
+				data[name]={type=0,morre=false}
+				table.insert(jogadores.lista,name)
+				table.insert(templist,name)
+			end
+		end
+		definirLimites()
+		if jogadores.vivos >= 5 then
+			showMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><br><ROSE><b>POR FAVOR, NINGUÉM REVELE SUAS FUNÇÕES PORQUE ESTRAGA O JOGO!!</b>")
+		else
+			showMessage("<R>Ratos ativos insuficientes na sala. Reiniciando o código...")
+			contador=990
+		end
+	end
+	if contador == 40 then
+		sortearAssasinos()
+		modo="aguardando"
+		for name,player in next,tfm.get.room.playerList do
+			if data[name].type == 0 then
+				showMessage("<J>Você foi escolhido como vítima.",name)
 			end
 		end
 	end
-	if f < 250 then
-		if modo == "fim" or modo == "fim2" then
-			modo="inicial"
-			reset()
+	if contador == 48 then
+		showMessage("<J>A rodada será iniciada em 5 segundos! SE PREPAREM!")
+		jogadores.vitimas=0
+	end
+	if contador == 53 then
+		showMessage("<VP>O JOGO COMEÇOU!")
+		rodada=rodada+1
+	end
+	if contador == 58 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 1 and tfm.get.room.playerList[name].isDead == false then
+				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
+				showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
+			end
 		end
 	end
-	if f > 13000 and f < 14000 then
-		for i=2,3 do
-			tfm.exec.removePhysicObject(i)
-		end
-	end
-	if f > 10500 and f < 11500 then
-		for i=2,3 do
-			tfm.exec.removePhysicObject(i)
-		end
-	end
-end
-function randomQuests()
-	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.movePlayer(name,400,145,false)
-	end
-	tfm.exec.setGameTime(17)
-	if rodada >= 15 then
-		tfm.exec.setGameTime(12)
-	end
-	tfm.exec.addPhysicObject(2, 385, 150, barreira)
-	tfm.exec.addPhysicObject(3, 415, 150, barreira)
-	tfm.exec.addPhysicObject(0, 220, 380, piso)
-	tfm.exec.addPhysicObject(1, 580, 380, piso)
-	modo="perguntar"
-	rodada=rodada+1
-	if tema == 0 then
-		if set_q == 0 then
-			local q=math.random(#questions_list)
-			pergunta=q
-			questionChanger(q,true)
-			if debug == true then
-				print(rawlen(questions_list))
+	if contador == 83 then
+		if quant.medicos > 0 then
+			for name,player in next,tfm.get.room.playerList do
+				if data[name] and data[name].type == 1 then
+					ui.addPopup(101,0,"",name,-8910,325,20,true)
+				end
+				if data[name] and data[name].type == 2 and tfm.get.room.playerList[name].isDead == false then
+					ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
+					showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
+				end
 			end
 		else
-			pergunta=set_q
-		end
-		actual_question.quest=perguntas[-3+(4*pergunta)]
-		if perguntas[pergunta*4] == 2 then
-			actual_question.answer=true
-		elseif perguntas[pergunta*4] == 1 then
-			actual_question.answer=false
-		end
-		actual_question.a1=perguntas[-2+(4*pergunta)]
-		actual_question.a2=perguntas[-1+(4*pergunta)]
-	end
-	set_q=0
-	ui.addTextArea(1,"<p align='center'><font size='18'>"..actual_question.a1.."",nil,100,145,260,81,0,0,1.0,true)
-	ui.addTextArea(2,"<p align='center'><font size='18'>"..actual_question.a2.."",nil,440,145,260,81,0,0,1.0,true)
-	ui.addTextArea(0,"<p align='center'><font size='16'>"..actual_question.quest.."",nil,10,22,780,48,0x000001,0x000001,1.0,true)
-end
-function eventPlayerDied(name)
-	local i=0
-	local n
-	vivos=vivos-1
-	for pname,player in pairs(tfm.get.room.playerList) do
-		if not player.isDead then
-			i=i+1
-			n=pname
+			contador=107
 		end
 	end
-	if i==0 then
-		modo="fim"
-		showMessage("<R>Sem vencedores!")
-	elseif i==1 then
-		modo="fim"
+	if contador == 108 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 2 then
+				ui.addPopup(102,0,"",name,-8910,325,20,true)
+			end
+		end
+		showMessage("<VP>Tempo esgotado! Hora da verdade! Vamos ver quem morreu...")
+	end
+	if contador == 115 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
+				tfm.exec.killPlayer(name)
+				if data[name].type == 0 then
+					showMessage("<R>Os assasinos mataram a vítima <b>"..name.."!</b>")
+				elseif data[name].type == 1 then
+					showMessage("<J>FOGO AMIGO! Os assasinos mataram o assasino <b>"..name.."!</b>")
+				elseif data[name].type == 2 then
+					showMessage("<R>Os assasinos mataram o médico <b>"..name.."!</b>")
+				elseif data[name].type == 3 then
+					showMessage("<R>Os assasinos mataram o detetive <b>"..name.."!</b>")
+				end
+			end
+		end
+		if jogadores.vitimas == 0 then
+			showMessage("<VP>Ufa! Ninguém foi morto!")
+		end
+	end
+	if contador == 120 then
+		if quant.assasinos == 0 then
+			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.detetives == 0 then
+			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.assasinos == 0 and quant.detetives == 0 then
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		else
+			showMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
+		end
+	end
+	if contador == 125 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 3 and tfm.get.room.playerList[name].isDead == false then
+				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
+				showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
+			end
+		end
+	end
+	if contador == 150 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 3 then
+				ui.addPopup(103,0,"",name,-8910,325,20,true)
+			end
+		end
+		showMessage("<VP>Tempo esgotado! Vamos ver no que deu?")
+	end
+	if contador == 155 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
+				tfm.exec.killPlayer(name)
+				if data[name].type == 0 then
+					showMessage("<R>OH NÃO! Os detetives mataram a vítima <b>"..name.."!</b>")
+				elseif data[name].type == 1 then
+					showMessage("<VP>Os detetives mataram o assasino <b>"..name.."!</b>")
+				elseif data[name].type == 2 then
+					showMessage("<R>OH NÃO! Os detetives mataram o médico <b>"..name.."!</b>")
+				elseif data[name].type == 3 then
+					showMessage("<J>FOGO AMIGO! Os detetives mataram o detetive <b>"..name.."!</b>")
+				end
+			end
+		end
+	end
+	if contador == 160 then
+		if quant.assasinos == 0 then
+			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.detetives == 0 then
+			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.assasinos == 0 and quant.detetives == 0 then
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		else
+			showMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
+			contador=42
+		end
+	end
+	if contador >= 1015 then
+		tfm.exec.newGame(mapas[math.random(#mapas)])
 	end
 end
-for name,player in next,tfm.get.room.playerList do
-	tfm.exec.setPlayerScore(name,0,false)
+function eventPopupAnswer(id,name,message)
+	if id == 101 and contador >= 58 and contador <= 83 then
+		if not checkNickname(message) == true or message == name then
+			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
+			if contador <= 81 then
+				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
+			end
+		else
+			if data[message] and data[message].morre == false and tfm.get.room.playerList[message].isDead == false then
+				data[message].morre=true
+				jogadores.vitimas=jogadores.vitimas+1
+				showMessage("Você decidiu matar o jogador "..message..".",name)
+				showDebugText(""..name.." decidiu matar o jogador "..message..".")
+			end			
+		end
+	end
+	if id == 102 and contador >= 83 and contador <= 108 then
+		if not checkNickname(message) == true or message == name then
+			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
+			if contador <= 106 then
+				ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
+			end
+		else
+			if data[message] and tfm.get.room.playerList[message].isDead == false then
+				if data[message].morre == true then
+					jogadores.vitimas=jogadores.vitimas-1
+				end
+				data[message].morre=false
+				showMessage("Você decidiu salvar o jogador "..message..".",name)
+				showDebugText(""..name.." decidiu salvar o jogador "..message..".")
+			end
+		end
+	end
+	if id == 103 and contador >= 125 and contador <= 150 then
+		if not checkNickname(message) == true or message == name then
+			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
+			if contador <= 148 then
+				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
+			end
+		else
+			if data[message] and data[message].morre == false and tfm.get.room.playerList[message].isDead == false then
+				data[message].morre=true
+				showMessage("Você acha que "..message.." é o assasino.",name)
+				showDebugText(""..name.." acha que o assasino é "..message..".")
+			end
+		end
+	end
 end
-reset()
+tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.199<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.200<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
@@ -3036,9 +3003,9 @@ else
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
-	elseif string.find(tfm.get.room.name,"quiz") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'quiz' on room name.<br>Initialising #quiz module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initQuiz()
+	elseif string.find(tfm.get.room.name,"cd3") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'cd3' on room name.<br>Initialising #cd3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
+		initCd3()
 	elseif string.find(tfm.get.room.name,"objects") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising #objects module...")
 		initObjects()
