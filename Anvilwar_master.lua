@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.200
+-- Transformice #anvilwar module loader - Version 2.201
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #cd3, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.200",
-	_MAINV = "43388.161",
+	_VERSION = "2.201",
+	_MAINV = "43489.162",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 43388.161
-Compilation date : 11/13/2021 12:47 UTC
+Version : RTM 43489.162
+Compilation date : 12/08/2021 21:20 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 165
@@ -38,14 +38,14 @@ playersList={}; helpers={}; mods={
 "Dinamarquers#0000",
 "Flaysama#5935",
 "Chavestomil#0000",
-"Shun_kazami#7014"};
+"Kralizmox#0000"};
 admins={"Spectra_phantom#6089",
 "Morganadxana#0000"}
 ninjas={"Aurelianlua#0000",
 "Viego#0345",
 "Forzaldenon#0000",
-"Velkozdapic#0000",
-"D571#0000"};
+"Ashearcher#0000",
+"Hecarimjhenx#0000"};
 banneds={};
 data={}
 
@@ -263,8 +263,8 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."11/13/2021 12:47 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."11/13/2021 12:47 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."12/08/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."12/08/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -335,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43388.161</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43489.162</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -945,7 +945,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43388.161","• !testmap command disabled")
+		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43489.162","• Changes on temporary players")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1003,14 +1003,6 @@ function eventChatCommand(name,command)
 		tfm.exec.killPlayer(command:sub(6))
 	end
 	if (command:sub(0,7) == "testmap") and data[name].ranking >= 2 then
-		-- if mode == "lobby" and change == true and choose_time >= 7 then
-			-- if string.len(command:sub(9)) == 8 then
-			--	set_map=command:sub(9)
-			--	showMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
-			-- end
-		-- else
-			-- showMessage(text.load0,name)
-		-- end
 		showMessage(text.disabled,name)
 	end
 	if (command:sub(0,3) == "get") and data[name].ranking >= 2 then
@@ -1750,7 +1742,7 @@ end
 for _,f in next,{"help","ajuda","tc","kill","powerups","creditos"} do
 	system.disableChatCommandDisplay(f)
 end
-tfm.exec.newGame("@7763582")
+tfm.exec.newGame("@7887657")
 tfm.exec.setRoomMaxPlayers(30)
 shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
@@ -1770,6 +1762,8 @@ function showMessage(message,name)
 end
 function showWater(name)
 	tfm.exec.addImage("17be1035ba0.png","!1",-720,580,name,1.2,0.5,0,0.5)
+	tfm.exec.addImage("17be536e980.png","!1",-200,2120,name,0.5,0.5,0,0.5)
+	tfm.exec.addImage("17be536e980.png","!1",2400,2120,name,0.5,0.5,0,0.5)
 	tfm.exec.addImage("17be10346e1.jpg","?1",-200,600,name)
 	tfm.exec.addImage("17be536ff6c.png","!1",-720,580,name,12,1,0,1)
 end
@@ -1800,7 +1794,7 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
 	["o"]=99;
 	["i"]=0;
@@ -1814,7 +1808,7 @@ function eventNewPlayer(name)
 	["imaget"]=5;
 	};
 	data[name] = newData;
-	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch 2.0!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.",name)
+	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.",name)
 	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
 	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,name)
 	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
@@ -2112,6 +2106,7 @@ function eventKeyboard(name,key,down)
 	end		
 end
 function eventNewGame()
+ui.setBackgroundColor("#020F14")
 xml=tfm.get.room.xmlMapInfo.xml
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
@@ -2213,7 +2208,7 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.0.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -2382,33 +2377,24 @@ end
 end
 
 initObjects = function()
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.setRoomMaxPlayers(25)
-tfm.exec.disablePhysicalConsumables(true)
-tfm.exec.disableAutoScore(true)
 for _,f in next,{"help","kill","run","restart","shutdown"} do
 	system.disableChatCommandDisplay(f)
 end
+for _,g in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables",} do
+	tfm.exec["disable"..g](true)
+end
+tfm.exec.setRoomMaxPlayers(28)
 mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915","@7114147","@7288402","@7756165","@7757983","@7754765","@7754518"}
 map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
 objects={1,2,3,6,10,17,23,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90,95}
-actual_map=""
 text_difficulty="<font face='Segoe UI Symbol'>　　　　<J>　　<R><b>　　</b><font face='Verdana'>"
-remaining=0
-imageId=-1
-actual_creator=""
-bar=""
-loop=0
-winner=false
+actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0;
 functs={running=false,level=0,count=8}
-times=0
 function eventChatCommand(name,message)
 	if message == "help" then
 		tfm.exec.chatMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that is falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089.",name)
 	end
-	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Varusofeyzan#0000" then
+	if name == "Spectra_phantom#6089" or name == "Forzaldenon#0000" or name == "Viego#0345" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -2440,9 +2426,9 @@ function showBar()
 	for i=1,41 do
 		if mapas[i] == tfm.get.room.currentMap then
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE><b>RTM 8056.040</b><")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8157.041<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b>   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE><b>RTM 8056.040</b><")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : "..text_difficulty.."   <V>|   <N>#objects <ROSE>RTM 8157.041<")
 			end
 		end
 	end
@@ -2504,15 +2490,15 @@ function eventLoop(p,f)
 	if functs.running == false and winner == false and p < 20000 then
 		functs.count=functs.count-0.5
 		if functs.count == 3 then
-			imageId = tfm.exec.addImage("17a4e9afa86.png","&1",338,80,nul)
+			imageId = tfm.exec.addImage("17a4e9afa86.png","&1",358,80,nul)
 		end
 		if functs.count == 2 then
 			tfm.exec.removeImage(imageId)
-			imageId = tfm.exec.addImage("17a4e9ae302.png","&1",338,80,nul)
+			imageId = tfm.exec.addImage("17a4e9ae302.png","&1",358,80,nul)
 		end
 		if functs.count == 1 then
 			tfm.exec.removeImage(imageId)
-			imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",338,80,nul)
+			imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",358,80,nul)
 		end
 		if functs.count <= 0 and p < 20000 and winner == false then
 			tfm.exec.removeImage(imageId)
@@ -2993,7 +2979,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.200<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.201<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
