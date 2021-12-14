@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.202
+-- Transformice #anvilwar module loader - Version 2.203
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #mestre.
+-- Included sub-modules: #watercatch, #cd3, #map1, #salto3.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.202",
-	_MAINV = "43489.162",
+	_VERSION = "2.203",
+	_MAINV = "43590.163",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 43489.162
-Compilation date : 12/08/2021 21:20 UTC
+Version : RTM 43590.163
+Compilation date : 12/14/2021 21:20 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 165
@@ -263,8 +263,8 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."12/08/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."12/08/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."12/14/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."12/14/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -335,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43489.162</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43590.163</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -945,7 +945,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43489.162","• Changes on temporary players")
+		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43590.163","• Little bugfixes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2376,246 +2376,33 @@ function eventTextAreaCallback(id,name,callback)
 end
 end
 
-initMestre = function()
--- Script REDUZIDO do module Mestre Mandou, baseado na versão RTM 14290.086, desenvolvido por Rakan_raster#0000.
+initCd3 = function()
+-- Script do module Cidade Dorme, versão RTM 2523.017, desenvolvido por Rakan_raster#0000.
 
-for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand"} do
+-- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 5 ANTES DE INICIAR!!
+-- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
+admin="" -- colocar seu nome aqui, funcorp!
+for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
+do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.setAutoMapFlipMode(nil)
-debug.disableEventLog(true)
-tfm.exec.setRoomMaxPlayers(35)
-mapas={"@6788085","@6788174","@6788154","@6788715","@6788728","@6789271","@6790527","@6791838","@6789356","@6822331","@7290275","@6754319","@7686598","@7750148","@7688066","@6790295","@6788183","@6784965","@6789235","@6789853","@6790385","@6791944","@6801706","@6792470","@6806109","@6821950","@6866406","@6866437","@6885971","@5328362","@5957905","@7055459","@7525277","@2684847","@7214363","@6792516","@6825340","@6838871","@6788693","@6789272","@6799996","@6799998","@6808957","@6803018","@6809464","@6859175","@6907177","@7404327","@7382263","@6885799","@6790912","@6833993","@7721192","@7309605","@6532621","@6788861","@6789249","@6790484","@6792518","@6794050","@6830799","@6866549","@6834529","@6876563","@6888512","@6893463","@7431981","@7146925","@6937148","@6356881","@6789280","@6790895","@6799997","@6789324","@6803128","@6900149","@3832586","@6791871","@6811934","@7631682","@6876638","@6892608","@6982387","@7404106","@7405103","@7400694","@7400678","@7412412","@7412422","@7491944","@7755685","@6843950","@6810292","@3110915","@6789263","@4411212","@7354947","@3398791","@7201360","@6897042","@7748874","@5549586","@6809461"}
-active=0; vivo=0; rato=0; dificuldade=1; rodadas=0; rodada=0; number=0; xpos=0; ypos=0; data={}; lang={}; tempo=10; counter=0; q=""; a=""; qtime=10; creator="";
-fc_cmds={1,2,4,5,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,28,30,31,32,33,34,35,36,40,41,42}
-spiderweb={type = 15,width = 60,height = 60}
+tfm.exec.disableAfkDeath(false)
+jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
+quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
+limites={assasinos=0,detetives=0,medicos=0}
 map_det={creator="",code=""}
-xpos=0; xpos2=0; unlocked=true;
-for _,f in next,{"command","pw","limit","run","fc","tc","q","a","t","kill"} do
-	system.disableChatCommandDisplay(f)
-end
-lang.br = {
-	welcome = "<N><b>Bem-vindos ao module Mestre Mandou!</b><br>O objetivo deste module é muito simples: Siga tudo o que o jogo mandar e teste seus limites até o fim!<br><VP>Tenha sempre cuidado com os comandos trolls!<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Jessiewind26#2546<br><br><ROSE>Versão RTM 14290.086 - EDIÇÃO REDUZIDA",
-	dancar = "Dance!",
-	sentar = "Sente!",
-	confetar = "Atire 5 confetes!",
-	mouse = "Clique na tela 10 vezes!",
-	beijos = "Dê 10 beijos!",
-	dormir = "Vocês estão com sono. Durmam para descansar.",
-	raiva = "Tigrounette é do mal! Fiquem com raiva dele!",
-	chorem = "Vocês não ganharam queijo :( Chorem!",
-	esquerda = "Não vá para a esquerda!",
-	direita = "Não vá para a direita!",
-	numero = "Digite o seguinte número: ",
-	digitar = "Digite qualquer coisa e mande para mim.",
-	falar = "Não falem nada!",
-	pular = "Não pulem!",
-	mexer = "Não se mexam!",
-	bandeira = "Balance a bandeira de qualquer país!",
-	ano = "Em que ano estamos?",
-	vesquerda = "Fique virado para a esquerda!",
-	vdireita = "Fique virado para a direita!",
-	quadradoa = "Fique no quadrado azul!",
-	quadradov = "Fique no quadrado vermelho!",
-	quadrado = "Fique no quadrado branco!",
-	nquadrado = "Não fique no quadrado branco!",
-	retangulo = "Fique dentro do retângulo branco!",
-	retangulov = "Fique dentro do retângulo vermelho!",
-	nretangulo = "Não fique dentro do retângulo branco!",
-	nretangulov = "Não fique dentro do retângulo vermelho!",
-	preesquerda15 = "Pressione 15 vezes a tecla para ESQUERDA!",
-	predireita15 = "Pressione 15 vezes a tecla para DIREITA!",
-	preesquerda30 = "Pressione 30 vezes a tecla para ESQUERDA!",
-	predireita30 = "Pressione 30 vezes a tecla para DIREITA!",
-	preesquerda60 = "Pressione 60 vezes a tecla para ESQUERDA!",
-	predireita60 = "Pressione 60 vezes a tecla para DIREITA!",
-	espaco = "Pressione a barra de espaço 20 vezes!",
-	nome = "Digite o seu nome no jogo (com #número).",
-	ndance = "Não dance!",
-	key1 = "Pressione a tecla Delete!",
-	action1 = "Dance, sente e durma!",
-	laugh = "Agora RIAM!",
-	laugh2 = "Quem rir agora vai morrer.",
-	stone = "Olha a pedra!",
-	mestre = "Mestre Mandou",
-	map = "Mapa",
-	time = "Tempo",
-	mice = "Ratos",
-	round = "Rodada",
-	mices = "Esta sala requer pelo menos 4 ratos.",
-	difficulty = "Dificuldade",
-	segundos = "segundos.",
-	fim = "Partida encerrada! Próxima partida iniciando em ",
-	playingmap = "Rodando mapa",
-	created = "criado por",
-	abaixar = "Abaixem e se levantem!",
-	action = "Façam qualquer ação!",
-	ds = "Dance e sente!",
-	key2 = "Pressione F4!",
-	clap = "Bata palmas 5 vezes!",
-	completed = "Você completou o comando com sucesso!",
-	version = "Versão",
-	creator = "Quem é o criador deste module?",
-	facepalm = "Coloque a mão no rosto 5 vezes!",
-	enterprise = "Qual é a empresa que criou o Transformice?",
-	collect = "Colete todos os '+1' do mapa!",
-}
-lang.en = {
-	welcome = "<N><b>Welcome to the Simon Says module!</b><br>The objective is very simple: Follow all the commands that the game says and test all your limits!<br><VP>Please pay attention to the troll commands!<br><br><J><b>Script developed by Rakan_raster#0000</b><br>EN translation by Kazarina#4878, Concept by Jessiewind26#2546<br><br><ROSE>Version RTM 14290.086 - REDUCED EDITION",
-	dancar = "Dance!",
-	sentar = "Sit!",
-	confetar = "Throw 5 confetti!",
-	mouse = "Click on screen 10 times!",
-	beijos = "Give 10 kisses!",
-	dormir = "They are sleepy. Sleep to rest.",
-	raiva = "Tigrounette is evil! Get angry with him!",
-	chorem = "No cheese for you. Cry!",
-	esquerda = "Don't go to the LEFT!",
-	direita = "Don't go to the RIGHT!",
-	numero = "Type this number: ",
-	digitar = "Type anything and send to me.",
-	falar = "Don't speak nothing!",
-	pular = "Don't jump!",
-	mexer = "Don't move!",
-	bandeira = "Balance the flag of any country!",
-	ano = "What year are we?",
-	vesquerda = "Stay facing LEFT!",
-	vdireita = "Stay facing RIGHT!",
-	quadradoa = "Stay on the blue square!",
-	quadradov = "Stay on the red square!",
-	quadrado = "Stay on the white square!",
-	nquadrado = "Don't stay on the white square!",
-	retangulo = "Stay on the white rectangle!",
-	retangulov = "Stay on the red rectangle!",
-	nretangulo = "Don't stay on the white rectangle!",
-	nretangulov = "Don't stay on the red rectangle!",
-	preesquerda15 = "Press 15 times the LEFT key!",
-	predireita15 = "Press 15 times the RIGHT key!",
-	preesquerda30 = "Press 30 times the LEFT key!",
-	predireita30 = "Press 30 times the RIGHT key!",
-	preesquerda60 = "Press 60 times the LEFT key!",
-	predireita60 = "Press 60 times the RIGHT key!",
-	espaco = "Press 20 times the SPACEBAR!",
-	nome = "Type your nickname (with #number)!",
-	ndance = "Don't dance!",
-	key1 = "Press the DELETE key!",
-	action1 = "Dance, sit and sleep!",
-	laugh = "Laugh!",
-	laugh2 = "Don't laugh!",
-	stone = "Caution with the stones!",
-	mestre = "Master Says",
-	map = "Map",
-	time = "Time",
-	mice = "Mice",
-	round = "Round",
-	mices = "This room requires at least 4 players.",
-	difficulty = "Difficulty",
-	segundos = "seconds.",
-	fim = "End of match! The next match will start on ",
-	playingmap = "Playing map",
-	created = "created by",
-	abaixar = "Turn down and get up!",
-	action = "Do any action!",
-	ds = "Dance and sit!",
-	key2 = "Press F4!",
-	clap = "Clap 5 times!",
-	completed = "You completed the command!",
-	version = "Version",
-	creator = "Who is the creator of this module?",
-	facepalm = "Facepalm 5 times!",
-	enterprise = "Which is the company that created Transformice?",
-	collect = "Collect all '+1' badges!",
-}
-lang.fr = {
-	welcome = "<N>Bienvenue sur le module 'Maître a dit' ! Dans ce module tu dois faire tout ce que dit le maître.<br><ROSE>Module créé par <b>Rakan_raster#0000</b>. Traduit par Chatonlina#0000, Eyeground#0000 et Tortuegreen#0000. Version RTM 14290.086",
-	dancar = "Danse !",
-	sentar = "Assis !",
-	confetar = "Lance 5 fois des confettis !",
-	mouse = "Clique sur l'écran 10 fois !",
-	beijos = "Fais 10 bisous !",
-	dormir = "Tu es fatigué. Dors pour te reposer.",
-	raiva = "Tigrounette est méchant ! Mets-toi en colère contre lui !",
-	chorem = "Pas de fromage pour toi. Pleure !",
-	esquerda = "Ne va pas vers la GAUCHE !",
-	direita = "Ne va pas vers la DROITE !",
-	numero = "Écris ce nombre : ",
-	digitar = "Écris n'importe quoi et envoie-le.",
-	falar = "Ne parle pas !",
-	pular = "Ne saute pas !",
-	mexer = "Ne bouge pas!",
-	bandeira = "Agite le drapeau de n'importe quel pays !",
-	ano = "En quelle année sommes-nous ?",
-	vesquerda = "Positionne-toi vers la GAUCHE !",
-	vdireita = "Positionne-toi vers la DROITE !",
-	quadradoa = "Reste dans le carré bleu !",
-	quadradov = "Reste dans le carré rouge !",
-	quadrado = "Reste dans le carré blanc !",
-	nquadrado = "Ne reste dans le carré blanc !",
-	retangulo = "Reste dans le rectangle blanc !",
-	retangulov = "Reste dans le rectangle rouge !",
-	nretangulo = "Ne reste pas sur le rectangle blanc !",
-	nretangulov = "Ne reste pas sur le rectangle rouge !",
-	preesquerda15 = "Appuie 15 fois sur la flèche GAUCHE !",
-	predireita15 = "Appuie 15 fois sur la flèche DROITE !",
-	preesquerda30 = "Appuie 30 fois sur la flèche GAUCHE !",
-	predireita30 = "Appuie 30 fois sur la flèche DROITE !",
-	preesquerda60 = "Appuie 60 fois sur la flèche GAUCHE !",
-	predireita60 = "Appuie 60 fois sur la flèche DROITE !",
-	espaco = "Appuie 20 fois sur la BARRE D'ESPACE !",
-	nome = "Écrit ton pseudo (avec le #tag) !",
-	ndance = "Ne dance pas !",
-	key1 = "Appuie sur la touche SUPPR !",
-	action1 = "Dance, assis-toi et dors !",
-	laugh = "Rigole !",
-	laugh2 = "Ne rigole pas !",
-	stone = "Attention aux pierres !",
-	mestre = "Jacques à dit",
-	map = "Carte",
-	time = "Temps",
-	mice = "Souris",
-	round = "Tour",
-	mices = "Ce salon a besoin d'au moins 4 joueurs.",
-	difficulty = "Difficulté",
-	segundos = "secondes.",
-	fim = "Fin du match ! Le prochain match va commencer dans ",
-	playingmap = "Map chargé ",
-	created = "créée par",
-	abaixar = "Retourne-toi et lève-toi !",
-	action = "Faites n'importe quelle action !",
-	ds = "Danse et assis !",
-	key2 = "Appuie sur la touche F4!",
-	clap = "Tape dans tes mains 5 fois!",
-	completed = "Vous avez terminé la commande !",
-	version = "Version",
-	creator = "Qui est le créateur de cette module?",
-	facepalm = "Mets ta main sur ton visage 5 fois !",
-	enterprise = "Quelle est la société qui a créé Transformice?",
-	collect = "Récupérer tous les '+1' badges !",
-}
-
-for name,player in next,tfm.get.room.playerList do
-	if tfm.get.room.playerList[name].language == "br" or tfm.get.room.playerList[name].language == "pt" then
-		text = lang.br
-	elseif tfm.get.room.playerList[name].language == "fr" then
-		text = lang.fr
-	else
-		text = lang.en
-	end
-end
-
-function verifyAdmin(name)
-	for i=1,rawlen(admin) do
-		if admin[i] == name then
-			return true
-		end
-	end
-end
+testmode=false
+modo="inicial"; contador=0; rodada=0; data={}; templist={};
+mapas={"@2684847","@3110915","@3148619","@3398791","@3793051","@4411212","@4477478","@5832272","@4677521","@6390711","@6907177","@3203198","@5113656","@6380942","@1389773","@2048617","@2637755","@7833508","@7730312","@7712670","@7631682","@7607195","@6958855","@6958861"}
+tfm.exec.setRoomMaxPlayers(40)
+system.disableChatCommandDisplay("reiniciar")
+system.disableChatCommandDisplay("help")
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
-	if tfm.get.room.isTribeHouse == false then
+	if testmode == false then
 		tfm.exec.chatMessage(message,name)
-	elseif tfm.get.room.isTribeHouse == true then
+	elseif testmode == true then
 		if name == nil then
 			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
 		else
@@ -2623,789 +2410,440 @@ function showMessage(message,name)
 		end
 	end
 end
-function setAllAlive()
+function showDebugText(text)
+	for _,name in next,{"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"} do
+		showMessage(text,name)
+	end
+end
+function getTypesPlayers()
+	quant={assasinos=0,detetives=0,medicos=0}
 	for name,player in next,tfm.get.room.playerList do
-		data[name].c=1;
+		if data[name] and data[name].type == 1 and not tfm.get.room.playerList[name].isDead then
+			quant.assasinos=quant.assasinos+1
+		end
+		if data[name] and data[name].type == 2 and not tfm.get.room.playerList[name].isDead then
+			quant.medicos=quant.medicos+1
+		end
+		if data[name] and data[name].type == 3 and not tfm.get.room.playerList[name].isDead then
+			quant.detetives=quant.detetives+1
+		end
+	end
+end
+function checkNickname(name)
+	for i=1,rawlen(jogadores.lista) do
+		if jogadores.lista[i] == name then
+			return true
+		end
+	end
+end
+function eventChatCommand(name,comando)
+	if comando == "reiniciar" then
+		if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or name == "Skyymellu#0000" or name == admin then
+			tfm.exec.newGame(mapas[math.random(#mapas)])
+		end
+	end
+	if comando == "help" then
+		showMessage("<p align='center'><VP><b>Bem-vindo ao module Cidade Dorme.</b><br><br><p align='left'><N>Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>O jogo consiste basicamente em 4 classes de jogadores:<br><R>• Assasinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.<br><BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assasinos.<br><VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assasinos.<br><J>• Vítimas: <N>Ficam só rezando pra não serem mortos.<br><br>O jogo acaba sempre quando todos os assasinos, detetives ou vítimas são mortos.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Rakan_raster#0000.",name)
+	end
+end
+function eventNewGame()
+	contador=0
+	tfm.exec.setGameTime(40)
+	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
+	quant={assasinos=0,detetives=0,medicos=0}
+	modo="inicial"
+	for name,player in next,tfm.get.room.playerList do
+		tfm.exec.setPlayerScore(name,0,false)
+		data[name].type=0
+		if string.find(tfm.get.room.name,name) then
+			admin=name
+			showMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar ou reiniciar a partida.")
+		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+		end
+	end
+	map_det.code=tfm.get.room.currentMap
+	map_det.creator=tfm.get.room.xmlMapInfo.author
+	showMessage("<VP><i>Spectra's map loader v2.202</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><b><N>Author :</b> <V>"..map_det.creator.."")
+	rodada=0
+	ui.setMapName("<J>"..map_det.creator.." <BL>- "..map_det.code.."   <V>|   <N><b>Cidade Dorme v3</b> <VP>RTM 2523.017<")
+end
+function escolherAssasinos(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=1
+		quant.assasinos=quant.assasinos+1
+		showMessage("<J>Você foi escolhido(a) como assasino(a).<br><br>Sua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
+		showDebugText("<R>Assasino: "..name.."")
+	end
+end
+function escolherMedicos(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=2
+		quant.medicos=quant.medicos+1
+		showMessage("<J>Você foi escolhido(a) como médico(a).<br><br>Sua função será salvar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
+		showDebugText("<BL>Médico: "..name.."")
+	end
+end
+function escolherDetetives(name)
+	if data[name] and data[name].type == 0 then
+		data[name].type=3
+		quant.detetives=quant.detetives+1
+		showMessage("<J>Você foi escolhido(a) como detetive.<br><br>Sua função será de tentar descobrir quem são os assasinos e matar eles. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
+		showDebugText("<VP>Detetive: "..name.."")
 	end
 end
 function eventNewPlayer(name)
-	rato=rato+1
-	for k=32, 87 do
-		tfm.exec.bindKeyboard(name,k,false,true)
+	if not data[name] then
+		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2523.017<br><p align='left'>",name)
 	end
-	tfm.exec.bindKeyboard(name,115,false,true)
-	system.bindMouse(name,true)
-	newData={
-			["c"]=0;
-			["s"]=0;
-			};
-	data[name] = newData;
-	showMessage("<br><br><br><p align='center'>"..text.welcome.."<br><p align='left'>",name)
+	data[name]={type=-1,morre=false}
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
 end
 function eventPlayerDied(name)
-	vivo=vivo-1
-	local i=0
-	local name
-	for pname,player in pairs(tfm.get.room.playerList) do
-		if not player.isDead then
-			i=i+1
-			name=pname
+	if data[name] and data[name].type == 0 then
+		data[name].type=-1
+	end
+	getTypesPlayers()
+	for i=1,rawlen(jogadores.lista) do
+		if jogadores.lista[i] == name then
+			table.remove(jogadores.lista,i)
+			jogadores.vivos=jogadores.vivos-1
 		end
 	end
-	if i==0 then
-		vivo=0
-		active=-1
-	elseif i==1 then
-		active=-1
-		tfm.exec.giveCheese(name)
-		tfm.exec.playerVictory(name)
-		tfm.exec.setGameTime(10)
-	end
 end
-function selectMap()
-	tfm.exec.newGame(mapas[math.random(#mapas)])
-end
-function completeCommand(name)
-	if tfm.get.room.playerList[name].isDead == false and data[name].c == 0 then
-		if data[name].c == 0 then
-			showMessage(text.completed,name)
-		end
-	data[name].c=1
-	end
-end
-function eventNewGame()
-	map_det.code=tfm.get.room.currentMap
-	map_det.creator=tfm.get.room.xmlMapInfo.author
-	for i=0,2 do
-		ui.removeTextArea(i,nil)
-	end
-	ui.removeTextArea(250,nil)
-	rodada=0; active=0; vivo=0; rato=0;
-	dificuldade=1
-	tfm.exec.setWorldGravity(0, 10)
-	if unlocked == true then
-		tfm.exec.setGameTime(15)
-		showMessage("<R><i>Spectra's map loader v2.201</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><b><N>Author :</b> <V>"..map_det.creator.."")
-	else
-		tfm.exec.setGameTime(36000)
-	end
+function eventPlayerLeft(name)
+	jogadores.lista={}
 	for name,player in next,tfm.get.room.playerList do
-		vivo=vivo+1
-		rato=rato+1
-		if data[name] then
-			data[name].c=0
-			data[name].key=0
+		if not tfm.get.room.playerList[name].isDead then
+			table.insert(jogadores.lista,name)
 		end
 	end
-	rodadas=math.floor(16+(rato/6))
+	getTypesPlayers()
+	data[name].type=-1
 end
-function eventPlayerLeft()
-	rato=rato-1
+function definirLimites()
+	if jogadores.vivos < 8 then
+		limites.assasinos=1; limites.medicos=1; limites.detetives=1;
+	elseif jogadores.vivos >= 8 and jogadores.vivos < 14 then
+		limites.assasinos=2; limites.medicos=1; limites.detetives=2;
+	elseif jogadores.vivos >= 14 and jogadores.vivos < 20 then
+		limites.assasinos=3; limites.medicos=2; limites.detetives=3;
+	elseif jogadores.vivos >= 20 and jogadores.vivos < 26 then
+		limites.assasinos=4; limites.medicos=3; limites.detetives=4;
+	elseif jogadores.vivos >= 26 and jogadores.vivos < 32 then
+		limites.assasinos=5; limites.medicos=3; limites.detetives=5;
+	elseif jogadores.vivos >= 32 then
+		limites.assasinos=6; limites.medicos=4; limites.detetives=5;
+	end
 end
-function sortearComandos()
-	active=math.random(1,42)
-	getCommand()
-end
-function addCommandCount(name)
-	data[name].s=data[name].s+1
-	if data[name].c == 0 then
-		if tfm.get.room.playerList[name].isDead == false then
-			if data[name].s <= 99 then
-				ui.addTextArea(24,"<font size='33'><p align='center'>"..data[name].s.."",name,370,350,60,45,0x000001,0x000001,0.8,true)
+function sortearDetetives()
+	for i=1,limites.detetives do
+		local jogador=templist[math.random(#templist)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherDetetives(jogador)
+			templist={}
+			for name,player in next,tfm.get.room.playerList do
+				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
+					table.insert(templist,name)
+				end
 			end
 		end
 	end
 end
-function eventChatCommand(name,message)
-	if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or verifyAdmin(name) == true then
-		if(message:sub(0,7) == "command") then
-				active=tonumber(message:sub(9))
-				getCommand()
-		end
-		if(message:sub(0,1) == "q") then
-			q=message:sub(3)
-		end
-		if(message:sub(0,1) == "a") then
-			a=message:sub(3)
-		end
-		if(message:sub(0,4) == "kill") then
-			tfm.exec.killPlayer(message:sub(6))
-		end
-		if(message:sub(0,1) == "t") then
-			qtime=tonumber(message:sub(3))
-		end
-		if(message:sub(0,3) == "run") then
-			tfm.exec.newGame(message:sub(5))
-			active=0
-		end
-	end
-end
-function showCommand(id,text)
-	ui.addTextArea(0,"<font face='Rockwell,Arial'><font color='#ffffff'><font size='17'><p align='center'><b>"..text.."",nil,25,26,750,24,0x111111,0x222222,0.9,true)
-end
-function whiteSquare(x)
-	ui.addTextArea(1,"",nil,x,320,80,65,0xffffff,0xffffff,0.68,false)
-end
-function verticalRectangle(x)
-	ui.addTextArea(1,"",nil,x,0,80,400,0xffffff,0xffffff,0.68,false)
-end
-function horizontalRectangle(y)
-	ui.addTextArea(1,"",nil,0,y,1600,60,0xffffff,0xffffff,0.68,false)
-end
-function getCommand()
-	rodada=rodada+1
-	for name,player in next,tfm.get.room.playerList do
-		data[name].c=0
-		data[name].s=0
-	end
-	if active == 1 then
-		showCommand(active,text.dancar)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 2 then
-		showCommand(active,text.sentar)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 3 then
-		showCommand(active,text.confetar)
-		tfm.exec.setGameTime(6)
-	end
-	if active == 4 then
-		showCommand(active,text.mouse)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 5 then
-		showCommand(active,text.beijos)
-		tfm.exec.setGameTime(15)
-	end
-	if active == 6 then
-		showCommand(active,text.dormir)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 7 then
-		showCommand(active,text.raiva)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 8 then
-		showCommand(active,text.chorem)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 9 then
-		showCommand(active,text.esquerda)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-	end
-	if active == 10 then
-		showCommand(active,text.direita)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-	end
-	if active == 11 then
-		showCommand(active,text.digitar)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 12 then
-		showCommand(active,text.falar)
-		tfm.exec.setGameTime(7)
-		setAllAlive()
-	end
-	if active == 13 then
-		showCommand(active,text.pular)
-		tfm.exec.setGameTime(5)
-		setAllAlive()
-	end
-	if active == 14 then
-		showCommand(active,text.mexer)
-		tfm.exec.setGameTime(5)
-		setAllAlive()
-	end
-	if active == 15 then
-		showCommand(active,text.bandeira)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 16 then
-		showCommand(active,text.ano)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 17 then
-		showCommand(active,text.vesquerda)
-		tfm.exec.setGameTime(5)
-		setAllAlive()
-	end
-	if active == 18 then
-		showCommand(active,text.vdireita)
-		tfm.exec.setGameTime(5)
-		setAllAlive()
-	end
-	if active == 19 then
-		xpos=math.random(60,700)
-		showCommand(active,text.quadrado)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		whiteSquare(xpos)
-	end
-	if active == 20 then
-		xpos=math.random(60,700)
-		showCommand(active,text.retangulo)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		verticalRectangle(xpos)
-	end
-	if active == 21 then
-		xpos=math.random(60,700)
-		showCommand(active,text.nretangulo)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		verticalRectangle(xpos)
-	end
-	if active == 22 then
-		ypos=math.random(40,300)
-		showCommand(active,text.retangulo)
-		tfm.exec.setGameTime(7)
-		setAllAlive()
-		horizontalRectangle(ypos)
-	end
-	if active == 23 then
-		ypos=math.random(40,300)
-		showCommand(active,text.nretangulo)
-		tfm.exec.setGameTime(5)
-		setAllAlive()
-		horizontalRectangle(ypos)
-	end
-	if active == 24 then
-		showCommand(active,text.preesquerda30)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 25 then
-		showCommand(active,text.predireita30)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 26 then
-		showCommand(active,text.preesquerda60)
-		tfm.exec.setGameTime(13)
-	end
-	if active == 27 then
-		showCommand(active,text.predireita60)
-		tfm.exec.setGameTime(13)
-	end
-	if active == 28 then
-		showCommand(active,text.espaco)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 29 then
-		showCommand(active,text.nome)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 30 then
-		showCommand(active,text.ndance)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-	end
-	if active == 31 then
-		xpos=math.random(60,700)
-		local xpos2=math.random(60,700)
-		showCommand(active,text.quadrado)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		whiteSquare(xpos)
-		ui.addTextArea(2,"",nil,xpos2,320,80,65,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 32 then
-		xpos=math.random(60,700)
-		local xpos2=math.random(60,700)
-		showCommand(active,text.quadradov)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		ui.addTextArea(1,"",nil,xpos2,320,80,65,0xffffff,0xffffff,0.68,false)
-		ui.addTextArea(2,"",nil,xpos,320,80,65,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 33 then
-		xpos=math.random(60,700)
-		local xpos2=math.random(60,700)
-		showCommand(active,text.retangulo)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		verticalRectangle(xpos)
-		ui.addTextArea(2,"",nil,xpos2,0,80,400,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 34 then
-		xpos=math.random(60,700)
-		local xpos2=math.random(60,700)
-		showCommand(active,text.retangulov)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		ui.addTextArea(1,"",nil,xpos2,0,80,400,0xffffff,0xffffff,0.68,false)
-		ui.addTextArea(2,"",nil,xpos,0,80,400,0xff0000,0xff0000,0.62,false)
-	end
-	if active == 35 then
-		showCommand(active,text.abaixar)
-		tfm.exec.setGameTime(7)
-	end
-	if active == 36 then
-		showCommand(active,text.action)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 37 then
-		showCommand(active,text.ds)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 38 then
-		showCommand(active,text.key1)
-		tfm.exec.setGameTime(8)
-	end
-	if active == 39 then
-		showCommand(active,text.action1)
-		tfm.exec.setGameTime(10)
-	end
-	if active == 40 then
-		showCommand(active,text.laugh)
-		tfm.exec.setGameTime(5)
-	end
-	if active == 41 then
-		showCommand(active,text.laugh2)
-		tfm.exec.setGameTime(5)
-		setAllAlive()
-	end
-	if active == 42 then
-		showCommand(active,text.stone)
-		tfm.exec.setGameTime(6)
-		setAllAlive()
-		for i=1,24 do
-			tfm.exec.addShamanObject(85,(i*80)-20,64,0,0,0,false)
-		end
-	end
-	if active == 96 then
-		showCommand(active,text.creator)
-		tfm.exec.setGameTime(13)
-	end
-	if active == 97 then
-		showCommand(active,text.collect)
-		tfm.exec.setGameTime(14)
-		for i=10,13 do
-			tfm.exec.addBonus(0, math.random(100,700), math.random(80,300), i, 0)
-		end
-	end
-	if active == 98 then
-		showCommand(active,q)
-		tfm.exec.setGameTime(qtime)
-		setAllAlive()
-	end
-	if active == 99 then
-		showCommand(active,q)
-		tfm.exec.setGameTime(qtime)
-	end
-end
-function eventPlayerBonusGrabbed(name, id)
-	if active == 97 then
-		addCommandCount(name)
-		if data[name].s >= 4 then
-			completeCommand(name)
-		end
-	end
-end		
-function eventTextAreaCallback(id,name,callback)
-	if callback == "command51" then
-		completeCommand(name)
-		ui.removeTextArea(250,name)
-	end
-end
-function eventChatMessage(name,message)
-	if active == 11 then
-		if string.len(message) >= 2 then
-			completeCommand(name)
-		end
-	end
-	if active == 12 then
-		tfm.exec.killPlayer(name)
-	end
-	if active == 16 then
-		if message == "2021" then
-			completeCommand(name)
-		end
-	end
-	if active == 29 then
-		if string.upper(message) == string.upper(name) then
-			completeCommand(name)
-		end
-	end
-	if active == 41 then
-		if string.find(message,"k") or string.find(message,"K") or string.find(message,"ha") or string.find(message,"HA") or string.find(message,"lmao") or string.find(message,"LMAO") then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 96 then
-		if message == "Rakan_raster#0000" then
-			completeCommand(name)
-		end
-	end
-	if active == 99 then
-		if string.upper(message) == string.upper(a) then
-			completeCommand(name)
-		end
-	end
-end
-function eventEmotePlayed(name,id)
-	if active == 1 then
-		if id == 0 or id == 10 then
-			completeCommand(name)
-		end
-	end
-	if active == 2 then
-		if id == 8 then
-			completeCommand(name)
-		end
-	end
-	if active == 3 then
-		if id == 9 then
-			addCommandCount(name)
-			if data[name].s >= 5 then
-				completeCommand(name)
+function sortearMedicos()
+	for i=1,limites.detetives do
+		local jogador=templist[math.random(#templist)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherMedicos(jogador)
+			templist={}
+			for name,player in next,tfm.get.room.playerList do
+				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
+					table.insert(templist,name)
+				end
 			end
 		end
 	end
-	if active == 5 then
-		if id == 3 then
-			addCommandCount(name)
-			if data[name].s >= 10 then
-				completeCommand(name)
-			end
-		end
-	end
-	if active == 6 then
-		if id == 6 then
-			completeCommand(name)
-		end
-	end
-	if active == 7 then
-		if id == 4 then
-			completeCommand(name)
-		end
-	end
-	if active == 8 then
-		if id == 2 then
-			completeCommand(name)
-		end
-	end
-	if active == 14 or active == 53 or active == 58 then
-		tfm.exec.killPlayer(name)
-	end
-	if active == 15 then
-		if id == 10 then
-			completeCommand(name)
-		end
-	end
-	if active == 30 then
-		if id == 0 or id == 10 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 36 then
-		completeCommand(name)
-	end
-	if active == 37 then
-		if id == 0 and data[name].s == 0 then
-			data[name].s=1
-		end
-		if id == 8 and data[name].s == 1 then
-			completeCommand(name)
-		end
-	end
-	if active == 39 then
-		if id == 0 and data[name].s == 0 then
-			data[name].s=1
-		end
-		if id == 8 and data[name].s == 1 then
-			data[name].s=2
-		end
-		if id == 6 and data[name].s == 2 then
-			completeCommand(name)
-		end
-	end
-	if active == 40 then
-		if id == 1 then
-			completeCommand(name)
-		end
-	end
-	if active == 41 then
-		if id == 1 then
-			tfm.exec.killPlayer(name)
-		end
-	end
+	sortearDetetives()
 end
-function eventMouse(name,x,y)
-	if active == 4 then
-		addCommandCount(name)
-		if data[name].s >= 10 then
-			completeCommand(name)
+function sortearAssasinos()
+	for i=1,limites.assasinos do
+		local jogador=templist[math.random(#templist)]
+		if data[jogador] and data[jogador].type == 0 then
+			escolherAssasinos(jogador)
+			templist={}
+			for name,player in next,tfm.get.room.playerList do
+				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
+					table.insert(templist,name)
+				end
+			end
 		end
 	end
+	sortearMedicos()
 end
-function eventKeyboard(name,id,down,x,y)
-	if active == 9 then
-		if id == 37 or id == 65 then
-			tfm.exec.killPlayer(name)
-		end
+function eventLoop()
+	contador=contador+0.5
+	if modo == "aguardando" then
+		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 2523.017<")
 	end
-	if active == 10 then
-		if id == 39 or id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 13 then
-		if id == 38 or id == 87 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 14 then
-		tfm.exec.killPlayer(name)
-	end
-	if active == 24 then
-		if id == 37 or id == 65 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			addCommandCount(name)
-			if data[name].s >= 30 then
-				completeCommand(name)
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 25 then
-		if id == 39 or id == 68 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			addCommandCount(name)
-			if data[name].s >= 30 then
-				completeCommand(name)
-			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 26 then
-		if id == 37 or id == 65 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			addCommandCount(name)
-			if data[name].s >= 60 then
-				completeCommand(name)
-			end
-		end
-		if data[name].key == 37 and id == 65 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 65 and id == 37 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 27 then
-		if id == 39 or id == 68 then
-			if data[name].key == 0 then
-				data[name].key=id
-			end
-			addCommandCount(name)
-			if data[name].s >= 60 then
-				completeCommand(name)
-			end
-		end
-		if data[name].key == 39 and id == 68 then
-			tfm.exec.killPlayer(name)
-		end
-		if data[name].key == 68 and id == 39 then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	if active == 28 then
-		if id == 32 then
-			addCommandCount(name)
-			if data[name].s >= 20 then
-				completeCommand(name)
-			end
-		end
-	end
-	if active == 35 then
-		if id == 40 or id == 83 then
-			completeCommand(name)
-		end
-	end
-	if active == 38 then
-		if id == 46 then
-			completeCommand(name)
-		end
-	end
-end
-function eventLoop(passado,faltando)
-	local tempo=math.floor(faltando/1000)
-	if active == -2 then
-		ui.setMapName("<N>"..text.mices.."   <G>|   <VP><b>"..text.version.." RTM 14290.086</b><")
-	elseif active == -1 then
-		ui.setMapName("<VP>"..text.fim.."<b>"..tempo.."</b> "..text.segundos.."   <G>|   <VP><b>"..text.version.." RTM 14290.086</b><")
-	elseif active >= 0 then
-		ui.setMapName(""..text.mestre.."   <G>|   <N>"..text.map.." : <V>"..tfm.get.room.currentMap.."   <G>|   <N>"..text.mice.." : <V>"..vivo.." / "..rato.."   <G>|   <N>"..text.round.." : <V>"..rodada.."   <G>|   <VP><b>"..text.version.." RTM 14290.086</b><")
-	end
-	if rato < 4 then
-		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
-			active=-2
-			tfm.exec.setGameTime(8000)
+	if contador == 3 then
+		if admin == "" then
+			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
+			contador=-65536
 		else
-			if passado > 4000 and unlocked == true then
-				tfm.exec.newGame("@2684847")
-				tfm.exec.setGameTime(8000)
-				showMessage("<R>"..text.mices.."",nil)
-			end
+			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2523.017<br><p align='left'>")
 		end
 	end
-	if rato >= 4 and passado >= 4000 then
-		if tfm.get.room.currentMap == "@2684847" and unlocked == true then
-			selectMap()
-		end
+	if contador == 10 then
+		showMessage("<VP>Digite !help caso não saiba como funciona este jogo.")
 	end
-	if active < 0 and faltando < 1 and unlocked == true then
-		selectMap()
-	end
-	if active == 0 and faltando < 1000 then
-		if rodada < rodadas then
-			sortearComandos()
-		else
-			active=-1
-			tfm.exec.setGameTime(10)
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.giveCheese(true)
-				tfm.exec.playerVictory(true)
-			end
-		end
-	end
-	if active > 0 and faltando < 1 and rato >= 2 then
-		if active == 17 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].isFacingRight == true then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 18 then
-			for name,player in next,tfm.get.room.playerList do
-				if tfm.get.room.playerList[name].isFacingRight == false then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 19 or active == 31 or active == 32 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y < 300 then
-					tfm.exec.killPlayer(name)
-				else
-					if player.x < xpos-10 or player.x > xpos+90 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 32 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y < 300 then
-					tfm.exec.killPlayer(name)
-				else
-					if player.x < xpos-10 or player.x > xpos+90 then
-						tfm.exec.killPlayer(name)
-					end
-				end
-			end
-		end
-		if active == 20 or active == 33 or active == 34 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.x < xpos or player.x > xpos+80 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 21 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.x > xpos and player.x < xpos+80 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 22 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y < ypos-10 or player.y > ypos+70 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		if active == 23 then
-			for name,player in next,tfm.get.room.playerList do
-				if player.y > ypos-10 and player.y < ypos+70 then
-					tfm.exec.killPlayer(name)
-				end
-			end
-		end
-		for i=0,2 do
-			ui.removeTextArea(i,nil)
-		end
-		ui.removeTextArea(250,nil)
-		tfm.exec.setWorldGravity(0, 10)
-		for i=1,8 do
-			tfm.exec.removePhysicObject(i)
-		end
-		for i=1,4 do
-			tfm.exec.removeBonus(i)
-		end
-		for i=5,9 do
-			tfm.exec.removeBonus(i)
-		end
-		for i=10,13 do
-			tfm.exec.removeBonus(i)
-		end
-		active=0
-		if rodada == 3 or rodada == 6 or rodada == 9 or rodada == 13 or rodada == 17 or rodada == 21 then
-			dificuldade=dificuldade+1
-		end
+	if contador == 35 then
+		jogadores.lista={}
+		templist={}
 		for name,player in next,tfm.get.room.playerList do
-			data[name].key=0
-			ui.removeTextArea(24,nil)
-			if data[name].c == 0 then
-				tfm.exec.killPlayer(name)
+			if not tfm.get.room.playerList[name].isDead then
+				jogadores.vivos=jogadores.vivos+1
+				data[name]={type=0,morre=false}
+				table.insert(jogadores.lista,name)
+				table.insert(templist,name)
 			end
 		end
-		if vivo > 4 then
-			tfm.exec.setGameTime(6-dificuldade)
+		definirLimites()
+		if jogadores.vivos >= 5 then
+			showMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><br><ROSE><b>POR FAVOR, NINGUÉM REVELE SUAS FUNÇÕES PORQUE ESTRAGA O JOGO!!</b>")
 		else
-			tfm.exec.setGameTime(9-dificuldade)
+			showMessage("<R>Ratos ativos insuficientes na sala. Reiniciando o código...")
+			contador=990
 		end
 	end
-	for name,player in next,tfm.get.room.playerList do
-		if data[name] then
-			if data[name].c == 1 then
-				tfm.exec.setNameColor(name,0x00ff00)
-				if completed == false then
-					completed=true
+	if contador == 40 then
+		sortearAssasinos()
+		modo="aguardando"
+		for name,player in next,tfm.get.room.playerList do
+			if data[name].type == 0 then
+				showMessage("<J>Você foi escolhido como vítima.",name)
+			end
+		end
+	end
+	if contador == 48 then
+		showMessage("<J>A rodada será iniciada em 5 segundos! SE PREPAREM!")
+		jogadores.vitimas=0
+	end
+	if contador == 53 then
+		showMessage("<VP>O JOGO COMEÇOU!")
+		rodada=rodada+1
+	end
+	if contador == 58 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 1 and tfm.get.room.playerList[name].isDead == false then
+				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
+				showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
+			end
+		end
+	end
+	if contador == 83 then
+		if quant.medicos > 0 then
+			for name,player in next,tfm.get.room.playerList do
+				if data[name] and data[name].type == 1 then
+					ui.addPopup(101,0,"",name,-8910,325,20,true)
 				end
-			else
-				tfm.exec.setNameColor(name,0xc2c2da)
+				if data[name] and data[name].type == 2 and tfm.get.room.playerList[name].isDead == false then
+					ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
+					showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
+				end
+			end
+		else
+			contador=107
+		end
+	end
+	if contador == 108 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 2 then
+				ui.addPopup(102,0,"",name,-8910,325,20,true)
+			end
+		end
+		showMessage("<VP>Tempo esgotado! Hora da verdade! Vamos ver quem morreu...")
+	end
+	if contador == 115 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
+				tfm.exec.killPlayer(name)
+				if data[name].type == 0 then
+					showMessage("<R>Os assasinos mataram a vítima <b>"..name.."!</b>")
+				elseif data[name].type == 1 then
+					showMessage("<J>FOGO AMIGO! Os assasinos mataram o assasino <b>"..name.."!</b>")
+				elseif data[name].type == 2 then
+					showMessage("<R>Os assasinos mataram o médico <b>"..name.."!</b>")
+				elseif data[name].type == 3 then
+					showMessage("<R>Os assasinos mataram o detetive <b>"..name.."!</b>")
+				end
+			end
+		end
+		if jogadores.vitimas == 0 then
+			showMessage("<VP>Ufa! Ninguém foi morto!")
+		end
+	end
+	if contador == 120 then
+		if quant.assasinos == 0 then
+			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.detetives == 0 then
+			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.assasinos == 0 and quant.detetives == 0 then
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		else
+			showMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
+		end
+	end
+	if contador == 125 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 3 and tfm.get.room.playerList[name].isDead == false then
+				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
+				showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
+			end
+		end
+	end
+	if contador == 150 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].type == 3 then
+				ui.addPopup(103,0,"",name,-8910,325,20,true)
+			end
+		end
+		showMessage("<VP>Tempo esgotado! Vamos ver no que deu?")
+	end
+	if contador == 155 then
+		for name,player in next,tfm.get.room.playerList do
+			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
+				tfm.exec.killPlayer(name)
+				if data[name].type == 0 then
+					showMessage("<R>OH NÃO! Os detetives mataram a vítima <b>"..name.."!</b>")
+				elseif data[name].type == 1 then
+					showMessage("<VP>Os detetives mataram o assasino <b>"..name.."!</b>")
+				elseif data[name].type == 2 then
+					showMessage("<R>OH NÃO! Os detetives mataram o médico <b>"..name.."!</b>")
+				elseif data[name].type == 3 then
+					showMessage("<J>FOGO AMIGO! Os detetives mataram o detetive <b>"..name.."!</b>")
+				end
+			end
+		end
+	end
+	if contador == 160 then
+		if quant.assasinos == 0 then
+			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.detetives == 0 then
+			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.assasinos == 0 and quant.detetives == 0 then
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		else
+			showMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
+			contador=42
+		end
+	end
+	if contador >= 1015 then
+		tfm.exec.newGame(mapas[math.random(#mapas)])
+	end
+end
+function eventPopupAnswer(id,name,message)
+	if id == 101 and contador >= 58 and contador <= 83 then
+		if not checkNickname(message) == true or message == name then
+			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
+			if contador <= 81 then
+				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
+			end
+		else
+			if data[message] and data[message].morre == false and tfm.get.room.playerList[message].isDead == false then
+				data[message].morre=true
+				jogadores.vitimas=jogadores.vitimas+1
+				showMessage("Você decidiu matar o jogador "..message..".",name)
+				showDebugText(""..name.." decidiu matar o jogador "..message..".")
+			end			
+		end
+	end
+	if id == 102 and contador >= 83 and contador <= 108 then
+		if not checkNickname(message) == true or message == name then
+			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
+			if contador <= 106 then
+				ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
+			end
+		else
+			if data[message] and tfm.get.room.playerList[message].isDead == false then
+				if data[message].morre == true then
+					jogadores.vitimas=jogadores.vitimas-1
+				end
+				data[message].morre=false
+				showMessage("Você decidiu salvar o jogador "..message..".",name)
+				showDebugText(""..name.." decidiu salvar o jogador "..message..".")
+			end
+		end
+	end
+	if id == 103 and contador >= 125 and contador <= 150 then
+		if not checkNickname(message) == true or message == name then
+			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
+			if contador <= 148 then
+				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
+			end
+		else
+			if data[message] and data[message].morre == false and tfm.get.room.playerList[message].isDead == false then
+				data[message].morre=true
+				showMessage("Você acha que "..message.." é o assasino.",name)
+				showDebugText(""..name.." acha que o assasino é "..message..".")
 			end
 		end
 	end
 end
-tfm.exec.newGame("@2684847")
+tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.202<br>By Spectra_phantom#6089")
+initMap1 = function()
+for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables","AfkDeath"} do
+	tfm.exec["disable"..f](true)
+end
+tfm.exec.newGame('<C><P L="3800" G="0,9.5" H="1700" MEDATA=";;;;171,1:172,1:173,1:174,1:175,1:176,1:177,1-0;0:::1-" d="x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,117,45;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,477,-131;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,739,-67;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1220,-91;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1569,-92;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2094,-37;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2738,-91;x_bouboum/x_skin/x_skin_23/x_illu_300.png,3879,-199;x_deadmeat/x_pictos/d_2338.png,3915,91;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,23,-82;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,364,17;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,669,72;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,934,27;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1194,63;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,3622,-26;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,3110,-55;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1848,-14;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2185,131;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2417,-29;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2640,82;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2888,49;x_deadmeat/x_pictos/d_1716-fs8.png,-250,27;x_deadmeat/x_pictos/d_38-fs8.png,3590,220;x_deadmeat/x_pictos/d_38-fs8.png,3556,220;x_deadmeat/x_pictos/d_38-fs8.png,3113,220;x_deadmeat/x_pictos/d_38-fs8.png,3379,220;x_deadmeat/x_pictos/d_1584-fs8.png,1875,22;x_deadmeat/x_pictos/d_38-fs8.png,1908,247;x_deadmeat/x_pictos/d_38-fs8.png,1563,255;x_deadmeat/x_pictos/d_38-fs8.png,1480,261;x_deadmeat/x_pictos/d_3292.png,1982,38;x_deadmeat/x_pictos/d_3291.png,1410,-138;x_deadmeat/x_pictos/d_2849.png,1953,217;x_deadmeat/x_pictos/d_2849.png,1418,226;x_bouboum/x_skin/x_skin_6/x_5.png,2106,254;x_bouboum/x_skin/x_skin_6/x_5.png,1582,213;x_bouboum/x_skin/x_skin_6/x_9.png,2082,251;x_bouboum/x_skin/x_skin_6/x_9.png,1556,218;x_bouboum/x_skin/x_skin_25/x_illu_300.png,1651,-56;x_bouboum/x_skin/x_skin_5/x_illu_300.png,-297,-261;x_deadmeat/x_pictos/d_3291.png,3349,-180;x_deadmeat/x_pictos/d_3292.png,3256,-6;x_deadmeat/x_pictos/d_2849.png,3471,177;x_deadmeat/x_pictos/d_2849.png,3238,180;x_deadmeat/x_pictos/d_2338.png,3868,64;x_deadmeat/x_pictos/d_2225.png,3137,169;x_deadmeat/x_pictos/d_2014-fs8.png,3540,-1;x_deadmeat/x_pictos/d_2014-fs8.png,3620,-1;x_deadmeat/x_pictos/d_2014-fs8.png,3700,-1;x_deadmeat/x_pictos/d_1997-fs8.png,3686,115;x_deadmeat/x_pictos/d_1716-fs8.png,-335,-30;x_deadmeat/x_pictos/d_1583-fs8.png,200,-5;x_deadmeat/x_pictos/d_1086-fs8.png,306,189;x_deadmeat/x_pictos/d_1086-fs8.png,49,189;x_deadmeat/x_pictos/d_1086-fs8.png,-58,189;x_deadmeat/x_pictos/d_1118-fs8.png,350,-14;x_deadmeat/x_pictos/d_1118-fs8.png,15,-14;x_deadmeat/x_pictos/d_1098-fs8.png,103,218;x_deadmeat/x_pictos/d_1098-fs8.png,331,201;x_deadmeat/x_pictos/d_1098-fs8.png,476,201;x_deadmeat/x_pictos/d_1098-fs8.png,613,201;x_bouboum/x_skin/x_skin_14/x_11.png,259,219;x_bouboum/x_skin/x_skin_14/x_11.png,216,219;x_bouboum/x_skin/x_skin_14/x_11.png,174,218;x_deadmeat/x_pictos/d_3293.png,1546,112" D="x_deadmeat/x_pictos/d_3293.png,3275,1124;x_deadmeat/x_pictos/d_3293.png,1168,1607;x_deadmeat/x_pictos/d_3293.png,182,1559;x_deadmeat/x_pictos/d_1219-fs8.png,3490,1191;x_deadmeat/x_pictos/d_1219-fs8.png,3324,1130;x_deadmeat/x_pictos/d_1219-fs8.png,2941,960;x_deadmeat/x_pictos/d_2849.png,3254,1063;x_deadmeat/x_pictos/d_2849.png,2989,947;x_deadmeat/x_pictos/d_2338.png,3348,1092;x_deadmeat/x_pictos/d_2338.png,2782,804;x_deadmeat/x_pictos/d_1219-fs8.png,2811,620;x_deadmeat/x_pictos/d_1219-fs8.png,2877,491;x_deadmeat/x_pictos/d_1219-fs8.png,2935,379;x_deadmeat/x_pictos/d_1219-fs8.png,958,935;x_deadmeat/x_pictos/d_1219-fs8.png,864,948;x_deadmeat/x_pictos/d_1219-fs8.png,335,1129;x_deadmeat/x_pictos/d_1219-fs8.png,172,1292;x_bouboum/x_skin/x_skin_25/x_3.png,54,1676;x_bouboum/x_skin/x_skin_25/x_11.png,16,1673;x_deadmeat/x_pictos/d_1812-fs8.png,427,1617;x_deadmeat/x_pictos/d_1812-fs8.png,289,1611;x_deadmeat/x_pictos/d_2338.png,516,1522;x_deadmeat/x_pictos/d_2338.png,112,1538;x_deadmeat/x_pictos/d_2225.png,727,988;x_deadmeat/x_pictos/d_2849.png,1044,895;x_deadmeat/x_pictos/d_1219-fs8.png,422,1057;x_deadmeat/x_pictos/d_1219-fs8.png,398,821;x_deadmeat/x_pictos/d_1219-fs8.png,291,922;x_deadmeat/x_pictos/d_1219-fs8.png,187,1033;x_deadmeat/x_pictos/d_1219-fs8.png,86,1130;x_bouboum/x_skin/x_skin_6/x_9.png,437,828;x_bouboum/x_skin/x_skin_25/x_illu_300.png,441,608;x_deadmeat/x_pictos/d_1733-fs8.png,1055,1621;x_deadmeat/x_pictos/d_2849.png,957,1626;x_deadmeat/x_pictos/d_2849.png,1175,1626;x_deadmeat/x_pictos/d_1733-fs8.png,1550,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1480,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1410,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1340,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1270,1630;x_transformice/x_evt/x_evt_10/YIKDFERT/BOSS_AnvilGod.png,3678,1338;x_transformice/x_evt/x_evt_26/elisah4_jklze.png,1891,1342;x_deadmeat/x_pictos/d_1733-fs8.png,1877,1647;x_deadmeat/x_pictos/d_1733-fs8.png,1937,1647;x_deadmeat/x_pictos/d_1733-fs8.png,1997,1647;x_deadmeat/x_pictos/d_1733-fs8.png,2057,1647;x_deadmeat/x_pictos/d_1733-fs8.png,2117,1647;x_deadmeat/x_pictos/d_1219-fs8.png,2486,1643;x_deadmeat/x_pictos/d_1219-fs8.png,2418,1646;x_deadmeat/x_pictos/d_2849.png,2217,1645;x_deadmeat/x_pictos/d_2849.png,2693,1634;x_deadmeat/x_pictos/d_1812-fs8.png,3010,1590;x_deadmeat/x_pictos/d_2338.png,2771,1522;x_deadmeat/x_pictos/d_2338.png,3066,1534;x_bouboum/x_skin/x_skin_25/x_3.png,3295,1655;x_bouboum/x_skin/x_skin_25/x_11.png,3262,1654;x_deadmeat/x_pictos/d_1812-fs8.png,3321,1617;x_deadmeat/x_pictos/d_1812-fs8.png,3489,1607;x_deadmeat/x_pictos/d_1219-fs8.png,2494,790;x_deadmeat/x_pictos/d_1219-fs8.png,2738,809;x_deadmeat/x_pictos/d_1219-fs8.png,2186,765;x_deadmeat/x_pictos/d_2338.png,3628,1533;x_deadmeat/x_pictos/d_2849.png,2397,809;x_deadmeat/x_pictos/d_2849.png,3297,302;x_deadmeat/x_pictos/d_2849.png,3130,301;x_deadmeat/x_pictos/d_1219-fs8.png,1245,565;x_deadmeat/x_pictos/d_2849.png,1312,574;x_deadmeat/x_pictos/d_2849.png,1174,613;x_deadmeat/x_pictos/d_2849.png,594,307;x_deadmeat/x_pictos/d_2849.png,233,304;x_deadmeat/x_pictos/d_2225.png,1484,818;x_bouboum/x_skin/x_skin_6/x_5.png,1592,837;x_bouboum/x_skin/x_skin_6/x_9.png,1467,848;x_bouboum/x_skin/x_skin_6/x_9.png,1563,840;x_bouboum/x_skin/x_skin_25/x_illu_300.png,1585,618;x_bouboum/x_skin/x_skin_25/x_3.png,159,337;x_bouboum/x_skin/x_skin_25/x_3.png,532,337;x_bouboum/x_skin/x_skin_25/x_3.png,1142,656;x_bouboum/x_skin/x_skin_25/x_11.png,1096,664;x_bouboum/x_skin/x_skin_25/x_11.png,443,335;x_bouboum/x_skin/x_skin_25/x_11.png,126,337;x_deadmeat/x_pictos/d_1812-fs8.png,3752,260;x_deadmeat/x_pictos/d_1812-fs8.png,3540,273;x_deadmeat/x_pictos/d_2225.png,2996,287;x_transformice/x_evt/x_evt_25/abwnpzec/pont-bois-abime.png,-268,242;x_transformice/x_evt/x_evt_25/abwnpzec/pont-bois-abime.png,200,238;x_transformice/x_evt/x_evt_25/abwnpzec/pont-pierre.png,3100,230;x_transformice/x_evt/x_evt_25/abwnpzec/pont-pierre.png,3569,230;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,-100,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,700,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,1500,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,2300,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,3100,1300;x_bouboum/x_fond/x_f1.jpg,-100,300;x_bouboum/x_fond/x_f1.jpg,700,300;x_bouboum/x_fond/x_f1.jpg,1500,300;x_bouboum/x_fond/x_f1.jpg,2300,300;x_bouboum/x_fond/x_f1.jpg,3100,300;x_bouboum/x_fond/x_f1.jpg,-100,700;x_bouboum/x_fond/x_f1.jpg,700,700;x_bouboum/x_fond/x_f1.jpg,1500,700;x_bouboum/x_fond/x_f1.jpg,2300,700;x_bouboum/x_fond/x_f1.jpg,3100,700;x_bouboum/x_fond/x_f1.jpg,-100,1100;x_bouboum/x_fond/x_f1.jpg,700,1100;x_bouboum/x_fond/x_f1.jpg,1500,1100;x_bouboum/x_fond/x_f1.jpg,2300,1100;x_bouboum/x_fond/x_f1.jpg,3100,1100;x_bouboum/x_fond/x_f1.jpg,-100,1500;x_bouboum/x_fond/x_f1.jpg,700,1500;x_bouboum/x_fond/x_f1.jpg,1500,1500;x_bouboum/x_fond/x_f1.jpg,2300,1500;x_bouboum/x_fond/x_f1.jpg,3100,1500" /><Z><S><S L="2500" H="1500" X="350" v="1" Y="1050" T="9" P="0,0,0,0,0,0,0,0" /><S L="2500" H="1500" X="2850" v="1" Y="1050" T="9" P="0,0,0,0,0,0,0,0" /><S L="1500" H="1500" X="438" Y="2440" T="5" P="0,0,0.3,0.2,-1,0,0,0" /><S L="934" o="ffffffff" H="22" X="205" Y="257" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="938" o="ffffffff" H="46" X="3571" Y="260" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="77" o="ffffffff" H="10" X="698" Y="271" T="12" P="0,0,0.3,0.2,35,0,0,0" /><S L="1500" H="1500" X="1898" Y="2453" T="5" P="0,0,0.3,0.2,2,0,0,0" /><S L="1500" H="1500" X="2605" Y="2438" T="5" P="0,0,0.3,0.2,-1,0,0,0" /><S L="1000" H="1500" X="3802" Y="2450" T="5" P="0,0,0.3,0.2,3,0,0,0" /><S L="1200" H="200" X="135" Y="460" T="5" P="0,0,0.3,0.2,0,0,0,0" /><S N="" L="1360" o="6a7495" H="3000" X="-943" v="1" Y="1745" T="12" P="0,0,0,0,0,0,0,0" /><S L="1200" H="400" X="3600" Y="552" T="5" P="0,0,0.3,0.2,0,0,0,0" /><S L="1200" H="200" X="3608" Y="758" T="5" P="0,0,0.3,0.2,10,0,0,0" /><S L="600" H="200" X="4031" Y="1238" T="5" P="0,0,0.3,0.2,100,0,0,0" /><S L="500" H="400" X="4044" Y="1647" T="5" P="0,0,0.3,0.2,110,0,0,0" /><S L="1200" H="200" X="137" Y="672" T="5" P="0,0,0.3,0.2,-20,0,0,0" /><S L="1200" H="200" X="-345" Y="666" T="5" P="0,0,0.3,0.2,-10,0,0,0" /><S L="900" H="300" X="1387" Y="1431" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="1200" H="600" X="-166" Y="932" T="5" P="0,0,0.3,0.2,-50,0,0,0" /><S L="1200" H="600" X="-322" Y="1862" T="5" P="0,0,0.3,0.2,-92,0,0,0" /><S L="10" o="ffffffff" H="232" X="3899" Y="117" T="12" P="0,0,0,1,0,0,0,0" /><S L="10" o="ffffffff" H="232" X="-46" Y="142" T="12" P="0,0,0,1,0,0,0,0" /><S L="10" o="ffffffff" H="232" X="3566" Y="388" T="12" P="0,0,0,3,0,0,0,0" /><S L="1000" H="280" X="3180" Y="1214" T="5" P="0,0,0.3,0.2,23,0,0,0" /><S L="1320" H="400" X="3471" Y="856" T="5" P="0,0,0.3,0.2,30,0,0,0" /><S L="600" H="400" X="2459" Y="1062" T="5" P="0,0,0.3,0.2,5,0,0,0" /><S L="600" H="400" X="1600" Y="1062" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="600" H="400" X="1046" Y="1160" T="5" P="0,0,0.3,0.2,-15,0,0,0" /><S L="600" H="120" X="723" Y="890" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="600" H="120" X="254" Y="1353" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="600" H="120" X="249" Y="1111" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="500" H="320" X="799" Y="650" T="5" P="0,0,0.3,0.2,45,0,0,0" /><S L="300" H="120" X="1232" Y="716" T="5" P="0,0,0.3,0.2,-15,0,0,0" /><S L="600" H="100" X="838" Y="886" T="5" P="0,0,0.3,0.2,-25,0,0,0" /><S L="300" H="320" X="1276" Y="919" T="5" P="0,0,0.3,0.2,-105,0,0,0" /><S L="360" H="90" X="1607" Y="406" T="5" P="0,0,0.3,0.2,25,0,0,0" /><S L="360" H="90" X="1600" Y="310" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="360" H="90" X="1950" Y="310" T="5" P="0,0,0.3,0.2,5,0,0,0" /><S L="360" H="90" X="1943" Y="406" T="5" P="0,0,0.3,0.2,-25,0,0,0" /><S L="360" H="90" X="1810" Y="507" T="5" P="0,0,0.3,0.2,-75,0,0,0" /><S L="360" H="90" X="1740" Y="507" T="5" P="0,0,0.3,0.2,75,0,0,0" /><S L="364" H="102" X="1775" Y="390" T="5" P="0,0,0.3,0.2,0,0,0,0" /><S L="600" H="400" X="2459" Y="1407" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="1000" H="330" X="3096" Y="1348" T="5" P="0,0,0.3,0.2,3,0,0,0" /><S P="0,0,0,1,0,0,0,0" L="10" o="ffffffff" X="-46" Y="142" T="12" H="232" /><S L="300" H="20" X="970" Y="298" T="14" P="1,0,3,0.2,0,1,0,0" /><S L="300" X="2320" H="20" Y="298" T="14" P="1,0,3,0.2,0,1,0,0" /></S><D><P P="0,0" Y="857" T="84" X="2299" /><P C="BB5631" Y="876" T="86" P="0,0" X="2623" /><P P="0,0" Y="1074" T="87" X="3187" /><P P="0,0" Y="1695" T="88" X="2349" /><P P="0,0" Y="1692" T="83" X="2641" /><P P="0,0" Y="1691" T="79" X="2559" /><P P="0,0" Y="1678" T="79" X="1128" /><P C="BB5631" Y="1695" T="86" P="0,0" X="1615" /><P P="0,0" Y="1695" T="87" X="1729" /><P P="0,0" Y="1698" T="87" X="1832" /><P P="0,0" Y="1693" T="81" X="1784" /><P C="4B8E72" Y="1687" T="85" P="0,0" X="881" /><P P="0,0" Y="1690" T="88" X="355" /><P P="0,0" Y="1689" T="88" X="749" /><P P="0,0" Y="940" T="79" X="337" /><P P="0,0" Y="1050" T="79" X="228" /><P P="0,0" Y="1160" T="79" X="121" /><P P="0,0" Y="1266" T="79" X="27" /><P P="0,0" Y="849" T="82" X="474" /><P P="0,0" Y="1464" T="79" X="60" /><P P="0,0" Y="1150" T="79" X="390" /><P P="0,0" Y="1285" T="79" X="263" /><P P="0,0" Y="575" T="79" X="2876" /><P P="0,0" Y="435" T="79" X="2954" /><P P="0,0" Y="1048" T="80" X="3097" /><DS Y="229" X="453" /></D><O /><L><VL n="Layer4"l="-1"/><JD P1="-500,198"P2="4300,198"c="0ba9de,70,1,0"/><JD P1="-500,123"P2="4300,123"c="0b9bde,80,1,0"/><JD P1="-500,38"P2="4300,38"c="0b8dde,90,1,0"/><JD P1="-500,-57"P2="4300,-57"c="0b7fde,100,1,0"/><JD P1="-500,-162"P2="4300,-162"c="0b63de,110,1,0"/><JD P1="-500,-342"P2="4300,-342"c="0b55de,250,1,0"/><JD P1="-500,-592"P2="4300,-592"c="0b55de,250,1,0"/><JD P1="755,263"P2="3065,263"c="0bb7de,60,1,0"/><VL n="Copy of Layer7"l="46"/><JD P1="2187,294"P2="2453,294"c="ad552f,25,1,1"M1="46"M2="46"/><JD P1="2172,277"P2="2183,302"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2178,278"P2="2317,285"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2179,283"P2="2405,283"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2405,283"P2="2468,280"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2168,268"P2="2324,278"c="36180e,6,1,0"M1="46"M2="46"/><JD P1="2322,276"P2="2472,272"c="36180e,6,1,0"M1="46"M2="46"/><JD P1="2468,280"P2="2457,307"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2462,281"P2="2453,298"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2322,281"P2="2471,276"c="87330f,6,1,1"M1="46"M2="46"/><JD P1="2168,274"P2="2324,281"c="87330f,6,1,1"M1="46"M2="46"/><JD P1="2462,308"P2="2476,267"c="87330f,4,1,1"M1="46"M2="46"/><JD P1="2179,308"P2="2462,309"c="87330f,4,1,1"M1="46"M2="46"/><JD P1="2164,266"P2="2179,308"c="87330f,4,1,1"M1="46"M2="46"/><JD P1="2164,265"P2="2321,273"c="823c21,4,1,0"M1="46"M2="46"/><JD P1="2319,273"P2="2475,267"c="823c21,4,1,0"M1="46"M2="46"/><JD P1="2194,279"P2="2179,300"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2226,279"P2="2206,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2257,280"P2="2236,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2286,281"P2="2267,305"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2316,284"P2="2298,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2351,283"P2="2330,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2385,282"P2="2362,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2414,281"P2="2393,305"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2450,279"P2="2423,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2181,278"P2="2206,305"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2240,281"P2="2260,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2303,284"P2="2320,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2366,283"P2="2386,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2429,281"P2="2447,307"c="401709,2,1,1"M1="46"M2="46"/><VL n="Layer7"l="45"/><JD P1="837,294"P2="1103,294"c="ad552f,25,1,1"M1="45"M2="45"/><JD P1="822,277"P2="833,302"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="828,278"P2="967,285"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="829,283"P2="1055,283"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="1055,283"P2="1118,280"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="818,268"P2="974,278"c="36180e,6,1,0"M1="45"M2="45"/><JD P1="972,276"P2="1122,272"c="36180e,6,1,0"M1="45"M2="45"/><JD P1="1118,280"P2="1107,307"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="1112,281"P2="1103,298"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="972,281"P2="1121,276"c="87330f,6,1,1"M1="45"M2="45"/><JD P1="818,274"P2="974,281"c="87330f,6,1,1"M1="45"M2="45"/><JD P1="1112,308"P2="1126,267"c="87330f,4,1,1"M1="45"M2="45"/><JD P1="829,308"P2="1112,309"c="87330f,4,1,1"M1="45"M2="45"/><JD P1="814,266"P2="829,308"c="87330f,4,1,1"M1="45"M2="45"/><JD P1="814,265"P2="971,273"c="823c21,4,1,0"M1="45"M2="45"/><JD P1="969,273"P2="1125,267"c="823c21,4,1,0"M1="45"M2="45"/><JD P1="844,279"P2="829,300"c="401709,2,1,1"M1="45"M2="45"/><JD P1="876,279"P2="856,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="907,280"P2="886,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="936,281"P2="917,305"c="401709,2,1,1"M1="45"M2="45"/><JD P1="966,284"P2="948,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1001,283"P2="980,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1035,282"P2="1012,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1064,281"P2="1043,305"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1100,279"P2="1073,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="831,278"P2="856,305"c="401709,2,1,1"M1="45"M2="45"/><JD P1="890,281"P2="910,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="953,284"P2="970,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1016,283"P2="1036,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1079,281"P2="1097,307"c="401709,2,1,1"M1="45"M2="45"/><VL n="Layer6"l="-1"/><JD P1="730,224"P2="730,284"c="0bb7de,10,1,0"/><JD P1="733,236"P2="791,232"c="0bb7de,10,1,0"/><JD P1="3090,229"P2="3090,289"c="0bb7de,10,1,0"/><JD P1="3061,235"P2="3087,237"c="0bb7de,10,1,0"/><VL n="Layer3"l="-1"/><JD P1="-500,425"P2="4300,425"c="097d77,250,0.81,1"/><JD P1="-500,675"P2="4300,675"c="097d77,250,0.81,1"/><JD P1="-500,925"P2="4300,925"c="097d77,250,0.81,1"/><JD P1="-500,1175"P2="4300,1175"c="097d77,250,0.81,1"/><JD P1="-500,1425"P2="4300,1425"c="097d77,250,0.81,1"/><JD P1="-500,1675"P2="4300,1675"c="097d77,250,0.81,1"/><JD P1="-500,1925"P2="4300,1925"c="097d77,250,0.81,1"/><JD P1="-500,2175"P2="4300,2175"c="097d77,250,0.81,1"/><JD P1="-500,2425"P2="4300,2425"c="097d77,250,0.81,1"/><JD P1="-500,940"P2="4300,940"c="03111c,100,0.08,1"/><JD P1="-500,1040"P2="4300,1040"c="03111c,100,0.16,1"/><JD P1="-500,1140"P2="4300,1140"c="03111c,100,0.24,1"/><JD P1="-500,1240"P2="4300,1240"c="03111c,100,0.32,1"/><JD P1="-500,1340"P2="4300,1340"c="03111c,100,0.4,1"/><JD P1="-500,1440"P2="4300,1440"c="03111c,100,0.48,1"/><JD P1="-500,1615"P2="4300,1615"c="03111c,250,0.56,1"/><JD P1="-500,1865"P2="4300,1865"c="03111c,250,0.56,1"/><JD P1="-500,2115"P2="4300,2115"c="03111c,250,0.56,1"/><JD P1="-500,2365"P2="4300,2365"c="03111c,250,0.56,1"/><JD P1="-500,2520"P2="4300,2520"c="03111c,60,0.56,1"/><VL n="Layer2"l="-1"/><JPL P1="-500,300"P3="-400,296"P4="-300,297"P2="-200,300"c="046b6b,9,1,1"/><JPL P1="-200,300"P3="-100,303"P4="0,304"P2="100,300"c="046b6b,9,1,1"/><VC P1="-500,300"P2="100,300"C1="-300,285"C2="-100,315"C="046b6b,9,1,1"f="6"/><JPL P1="100,300"P3="200,296"P4="300,297"P2="400,300"c="046969,9,1,1"/><JPL P1="400,300"P3="500,303"P4="600,304"P2="700,300"c="046969,9,1,1"/><VC P1="100,300"P2="700,300"C1="300,285"C2="500,315"C="046969,9,1,1"f="6"/><JPL P1="700,300"P3="800,296"P4="900,297"P2="1000,300"c="046b6b,9,1,1"/><JPL P1="1000,300"P3="1100,303"P4="1200,304"P2="1300,300"c="046b6b,9,1,1"/><VC P1="700,300"P2="1300,300"C1="900,285"C2="1100,315"C="046b6b,9,1,1"f="6"/><JPL P1="1300,300"P3="1400,296"P4="1500,297"P2="1600,300"c="046b6b,9,1,1"/><JPL P1="1600,300"P3="1700,303"P4="1800,304"P2="1900,300"c="046b6b,9,1,1"/><VC P1="1300,300"P2="1900,300"C1="1500,285"C2="1700,315"C="046b6b,9,1,1"f="6"/><JPL P1="1900,300"P3="2000,296"P4="2100,297"P2="2200,300"c="046b6b,9,1,1"/><JPL P1="2200,300"P3="2300,303"P4="2400,304"P2="2500,300"c="046b6b,9,1,1"/><VC P1="1900,300"P2="2500,300"C1="2100,285"C2="2300,315"C="046b6b,9,1,1"f="6"/><JPL P1="2500,300"P3="2600,296"P4="2700,297"P2="2800,300"c="046b6b,9,1,1"/><JPL P1="2800,300"P3="2900,303"P4="3000,304"P2="3100,300"c="046b6b,9,1,1"/><VC P1="2500,300"P2="3100,300"C1="2700,285"C2="2900,315"C="046b6b,9,1,1"f="6"/><JPL P1="3100,300"P3="3200,296"P4="3300,297"P2="3400,300"c="046b6b,9,1,1"/><JPL P1="3400,300"P3="3500,303"P4="3600,304"P2="3700,300"c="046b6b,9,1,1"/><VC P1="3100,300"P2="3700,300"C1="3300,285"C2="3500,315"C="046b6b,9,1,1"f="6"/><JPL P1="3700,300"P3="3800,296"P4="3900,297"P2="4000,300"c="046b6b,9,1,1"/><JPL P1="4000,300"P3="4100,303"P4="4200,304"P2="4300,300"c="046b6b,9,1,1"/><VC P1="3700,300"P2="4300,300"C1="3900,285"C2="4100,315"C="046b6b,9,1,1"f="6"/><JD P1="-500,295"P2="4300,295"c="00435c,13,1,0"/><VL n="Layer5"l="-1"/><JPL P1="-500,305"P3="-400,301"P4="-300,302"P2="-200,305"c="014747,5,1,1"/><JPL P1="-200,305"P3="-100,308"P4="0,309"P2="100,305"c="014747,5,1,1"/><VC P1="-500,305"P2="100,305"C1="-300,290"C2="-100,320"C="014747,5,1,1"f="6"/><JPL P1="100,305"P3="200,301"P4="300,302"P2="400,305"c="014747,5,1,1"/><JPL P1="400,305"P3="500,308"P4="600,309"P2="700,305"c="014747,5,1,1"/><VC P1="100,305"P2="700,305"C1="300,290"C2="500,320"C="014747,5,1,1"f="6"/><JPL P1="700,305"P3="800,301"P4="900,302"P2="1000,305"c="014747,5,1,1"/><JPL P1="1000,305"P3="1100,308"P4="1200,309"P2="1300,305"c="014747,5,1,1"/><VC P1="700,305"P2="1300,305"C1="900,290"C2="1100,320"C="014747,5,1,1"f="6"/><JPL P1="1300,305"P3="1400,301"P4="1500,302"P2="1600,305"c="014747,5,1,1"/><JPL P1="1600,305"P3="1700,308"P4="1800,309"P2="1900,305"c="014747,5,1,1"/><VC P1="1300,305"P2="1900,305"C1="1500,290"C2="1700,320"C="014747,5,1,1"f="6"/><JPL P1="1900,305"P3="2000,301"P4="2100,302"P2="2200,305"c="014747,5,1,1"/><JPL P1="2200,305"P3="2300,308"P4="2400,309"P2="2500,305"c="014747,5,1,1"/><VC P1="1900,305"P2="2500,305"C1="2100,290"C2="2300,320"C="014747,5,1,1"f="6"/><JPL P1="2500,305"P3="2600,301"P4="2700,302"P2="2800,305"c="014747,5,1,1"/><JPL P1="2800,305"P3="2900,308"P4="3000,309"P2="3100,305"c="014747,5,1,1"/><VC P1="2500,305"P2="3100,305"C1="2700,290"C2="2900,320"C="014747,5,1,1"f="6"/><JPL P1="3100,305"P3="3200,301"P4="3300,302"P2="3400,305"c="014747,5,1,1"/><JPL P1="3400,305"P3="3500,308"P4="3600,309"P2="3700,305"c="014747,5,1,1"/><VC P1="3100,305"P2="3700,305"C1="3300,290"C2="3500,320"C="014747,5,1,1"f="6"/><JPL P1="3700,305"P3="3800,301"P4="3900,302"P2="4000,305"c="014747,5,1,1"/><JPL P1="4000,305"P3="4100,308"P4="4200,309"P2="4300,305"c="014747,5,1,1"/><VC P1="3700,305"P2="4300,305"C1="3900,290"C2="4100,320"C="014747,5,1,1"f="6"/><VL n="Copy of Layer2"l="-1"/><JPL P1="-500,289"P3="-400,285"P4="-300,286"P2="-200,289"c="1b6385,8,1,0"/><JPL P1="-200,289"P3="-100,292"P4="0,293"P2="100,289"c="1b6385,8,1,0"/><VC P1="-500,289"P2="100,289"C1="-300,274"C2="-100,304"C="1b6385,8,1,0"f="6"/><JPL P1="100,289"P3="200,285"P4="300,286"P2="400,289"c="1b6385,8,1,0"/><JPL P1="400,289"P3="500,292"P4="600,293"P2="700,289"c="1b6385,8,1,0"/><VC P1="100,289"P2="700,289"C1="300,274"C2="500,304"C="1b6385,8,1,0"f="6"/><JPL P1="700,289"P3="800,285"P4="900,286"P2="1000,289"c="1b6385,8,1,0"/><JPL P1="1000,289"P3="1100,292"P4="1200,293"P2="1300,289"c="1b6385,8,1,0"/><VC P1="700,289"P2="1300,289"C1="900,274"C2="1100,304"C="1b6385,8,1,0"f="6"/><JPL P1="1300,289"P3="1400,285"P4="1500,286"P2="1600,289"c="1b6385,8,1,0"/><JPL P1="1600,289"P3="1700,292"P4="1800,293"P2="1900,289"c="1b6385,8,1,0"/><VC P1="1300,289"P2="1900,289"C1="1500,274"C2="1700,304"C="1b6385,8,1,0"f="6"/><JPL P1="1900,289"P3="2000,285"P4="2100,286"P2="2200,289"c="1b6385,8,1,0"/><JPL P1="2200,289"P3="2300,292"P4="2400,293"P2="2500,289"c="1b6385,8,1,0"/><VC P1="1900,289"P2="2500,289"C1="2100,274"C2="2300,304"C="1b6385,8,1,0"f="6"/><JPL P1="2500,289"P3="2600,285"P4="2700,286"P2="2800,289"c="1b6385,8,1,0"/><JPL P1="2800,289"P3="2900,292"P4="3000,293"P2="3100,289"c="1b6385,8,1,0"/><VC P1="2500,289"P2="3100,289"C1="2700,274"C2="2900,304"C="1b6385,8,1,0"f="6"/><JPL P1="3100,289"P3="3200,285"P4="3300,286"P2="3400,289"c="1b6385,8,1,0"/><JPL P1="3400,289"P3="3500,292"P4="3600,293"P2="3700,289"c="1b6385,8,1,0"/><VC P1="3100,289"P2="3700,289"C1="3300,274"C2="3500,304"C="1b6385,8,1,0"f="6"/><JPL P1="3700,289"P3="3800,285"P4="3900,286"P2="4000,289"c="1b6385,8,1,0"/><JPL P1="4000,289"P3="4100,292"P4="4200,293"P2="4300,289"c="1b6385,8,1,0"/><VC P1="3700,289"P2="4300,289"C1="3900,274"C2="4100,304"C="1b6385,8,1,0"f="6"/><JD P1="4300,-699"P2="4300,3001"c="6a7495,250,1,1"/><JD P1="-500,-699"P2="-500,3001"c="6a7495,250,1,1"/><JD P1="735,236"P2="-500,236"c="0bb7de,6,1,0"/><L /></L></Z></C>')
+ui.setMapName("<ROSE>mapinha de piscina da morgana ♥")
+function eventNewPlayer(name)
+	tfm.exec.respawnPlayer(name)
+end
+function eventPlayerDied(name)
+	tfm.exec.respawnPlayer(name)
+end
+end
+
+initSalto3 = function()
+dados={type = 1,width = 10,height = 60,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
+tfm.exec.disableAutoNewGame(true)
+tfm.exec.disableAutoShaman(true)
+tfm.exec.disableAutoTimeLeft(true)
+tfm.exec.disableAfkDeath(true)
+tfm.exec.newGame('<C><P L="30090" H="4402" F="8" G="0,9.5" /><Z><S><S L="240" H="125" X="220" Y="4401" T="2" P="0,0,0,2,36,0,0,0" /><S L="3000" o="287a07" X="1810" H="10" Y="4405" T="12" P="0,0,8000,0.2,0,0,0,0" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="4810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="7810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="10810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="13810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="16810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="19810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="22810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="25810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="28810" /><S L="160" H="120" X="80" Y="4340" T="6" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="4265" X="80" /></D><O /><L><VL n="track" l="-1" /><JD c="287a07,7,1,0" P1="311,4387" P2="295,4408" /><JD c="287a07,7,1,0" P1="307,4404" P2="300,4407" /><JD c="287a07,21,1,0" P1="29477,4399" P2="310,4399" /><JD c="287a07,14,1,0" P1="29479,4404" P2="29430,4401" /><JD c="287a07,8,1,0" P1="29496,4383" P2="29484,4403" /><JD c="287a07,14,1,0" P1="313,4386" P2="29489,4386" /><JD c="ffffff,2,1,0" P1="310,4380" P2="290,4410" /><JD c="ffffff,2,1,0" P1="310,4380" P2="29500,4380" /><JD c="ffffff,2,1,0" P1="290,4410" P2="29480,4410" /><JD c="ffffff,2,1,0" P1="29502,4380" P2="29482,4410" /><L /></L></Z></C>')
+tfm.exec.setUIMapName("Salto em distância <ROSE>Remaked III <J>- Versão desenvolvida por <font color='#00a0ff'><b>Fosfus7heads#0000</b><")
+
+for j=1,150 do
+	local a=200*j
+	local b=a-200
+	ui.addTextArea(j,"<b><p align='center'><font size='14'><font color='#000000'>"..b.."",n,110+(a-30),4355,60,20,0,0,1.0,false)
+	ui.addTextArea(j+151,"<p align='center'><font size='14'><font color='#000000'>|||||||||||||||||||||",n,150+(a-30),4355,180,20,0,0,1.0,false)
+end
+for i=1,100 do
+	local c=50*i
+	ui.addTextArea(i+302,"<b><p align='center'><font size='14'><font color='#000000'>"..c.."",n,-4,4400-c,60,20,0,0,1.0,false)
+	ui.addTextArea(i+403,"<b><p align='center'><font size='14'><font color='#000000'>-<br>-<br>-",n,-4,4417-c,60,50,0,0,1.0,false)
+end
+function eventPlayerDied(name)
+	tfm.exec.respawnPlayer(name)
+end
+function eventNewPlayer(name)
+	eventPlayerDied(name)
+end
+end
+
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.203<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
@@ -3415,9 +2853,15 @@ else
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
-	elseif string.find(tfm.get.room.name,"mestre") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'mestre' on room name.<br>Initialising #mestre module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initMestre()
+	elseif string.find(tfm.get.room.name,"cd3") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'cd3' on room name.<br>Initialising #cd3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
+		initCd3()
+	elseif string.find(tfm.get.room.name,"map1") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'map1' on room name.<br>Initialising #map1 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
+		initMap1()
+	elseif string.find(tfm.get.room.name,"salto3") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'salto3' on room name.<br>Initialising #salto3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
+		initSalto3()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
