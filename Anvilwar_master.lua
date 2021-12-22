@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.203
+-- Transformice #anvilwar module loader - Version 2.203.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #cd3, #map1, #salto3.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.203",
+	_VERSION = "2.203.1",
 	_MAINV = "43590.163",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -104,7 +104,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00mestre<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00map1<br>/sala #anvilwar00salto3<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -2377,10 +2377,10 @@ end
 end
 
 initCd3 = function()
--- Script do module Cidade Dorme, versão RTM 2523.017, desenvolvido por Rakan_raster#0000.
-
+-- Script do module Cidade Dorme, versão RTM 2624.018, desenvolvido por Rakan_raster#0000.
 -- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 5 ANTES DE INICIAR!!
 -- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
+
 admin="" -- colocar seu nome aqui, funcorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
 do
@@ -2465,9 +2465,9 @@ function eventNewGame()
 	end
 	map_det.code=tfm.get.room.currentMap
 	map_det.creator=tfm.get.room.xmlMapInfo.author
-	showMessage("<VP><i>Spectra's map loader v2.202</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><b><N>Author :</b> <V>"..map_det.creator.."")
+	showMessage("<VP><i>Spectra's map loader v2.203</i><br><N>Loading current map information...<br><b>Current Map :</b> <V>"..map_det.code.."<br><N><b>Author :</b> <V>"..map_det.creator.."")
 	rodada=0
-	ui.setMapName("<J>"..map_det.creator.." <BL>- "..map_det.code.."   <V>|   <N><b>Cidade Dorme v3</b> <VP>RTM 2523.017<")
+	ui.setMapName("<J>"..map_det.creator.." <BL>- "..map_det.code.."   <V>|   <N><b>Cidade Dorme v3</b> <VP>RTM 2624.018<")
 end
 function escolherAssasinos(name)
 	if data[name] and data[name].type == 0 then
@@ -2495,7 +2495,7 @@ function escolherDetetives(name)
 end
 function eventNewPlayer(name)
 	if not data[name] then
-		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2523.017<br><p align='left'>",name)
+		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2624.018<br><p align='left'>",name)
 	end
 	data[name]={type=-1,morre=false}
 end
@@ -2586,14 +2586,14 @@ end
 function eventLoop()
 	contador=contador+0.5
 	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos vivos: <R><b>"..quant.assasinos.."</b>  <BL>|  <J>Detetives vivos: <VP><b>"..quant.detetives.."</b>  <BL>|  <J>Rodada atual: <N><b>"..rodada.."</b>  <BL>|  <N>Versão RTM 2523.017<")
+		ui.setMapName("<J>Assasinos: <R><b>"..quant.assasinos.."</b>  <V>|  <J>Detetives: <VP><b>"..quant.detetives.."</b>  <V>|  <J>Médicos: <N><b>"..quant.medicos.."</b>  <V>|  <N>Rodada: <J><b>"..rodada.."</b>  <BL>|  <N><b>Cidade Dorme v3</b> <VP>RTM 2624.018<")
 	end
 	if contador == 3 then
 		if admin == "" then
 			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
 			contador=-65536
 		else
-			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2523.017<br><p align='left'>")
+			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2624.018<br><p align='left'>")
 		end
 	end
 	if contador == 10 then
@@ -2686,14 +2686,14 @@ function eventLoop()
 		end
 	end
 	if contador == 120 then
-		if quant.assasinos == 0 then
+		if quant.assasinos == 0 and quant.detetives == 0 then
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.assasinos == 0 then
 			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
 			contador=985
 		elseif quant.detetives == 0 then
 			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		elseif quant.assasinos == 0 and quant.detetives == 0 then
-			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
 			contador=985
 		else
 			showMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
@@ -2732,14 +2732,14 @@ function eventLoop()
 		end
 	end
 	if contador == 160 then
-		if quant.assasinos == 0 then
+		if quant.assasinos == 0 and quant.detetives == 0 then
+			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
+			contador=985
+		elseif quant.assasinos == 0 then
 			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
 			contador=985
 		elseif quant.detetives == 0 then
 			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		elseif quant.assasinos == 0 and quant.detetives == 0 then
-			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
 			contador=985
 		else
 			showMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
@@ -2843,7 +2843,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.203<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.203.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
