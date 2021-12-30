@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.203.1
+-- Transformice #anvilwar module loader - Version 2.204
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #cd3, #map1, #salto3.
+-- Included sub-modules: #watercatch, #cd3, #salto3.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.203.1",
-	_MAINV = "43590.163",
+	_VERSION = "2.204",
+	_MAINV = "43691.164 LTS",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2021 Spectra Advanced Module Group
 
-Version : RTM 43590.163
-Compilation date : 12/14/2021 21:20 UTC
+Version : RTM 43691.164 LTS
+Compilation date : 12/30/2021 23:33 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 165
@@ -79,14 +79,14 @@ lang.br = {
 	load2 = "Certifique-se que há pelo menos 1 jogador em cada equipe.",
 	load0 = "Você precisa estar na tela principal para testar um mapa. Digite !reset para fazer isso e tente novamente.",
 	ac = "Você atualmente possui ",
-	powerups = "<font size='11.5'><b>Tecla '1' ou F1 - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' ou F2 - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' ou F3 - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 22pts</b><br><br><b>Tecla '4' ou F4 - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 14pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	powerups = "<font size='11.5'><b>Tecla '1' ou F1 - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' ou F2 - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' ou F3 - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 22pts</b><br><br><b>Tecla '4' ou F4 - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 12pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
 	commands = "<font size='11.5'>Os comandos que começam com <b>*</b> podem ser utilizados apenas por administradores, FunCorps e o dono da sala (/room #anvilwar00seunome).<br>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!change - Altera para o modo antigo de trocar a força e o ângulo dos tiros. Digite novamente este comando para reverter.<br>!p [usuário] (ou <b>P</b>) - Mostra o seu perfil. Tenha em mente que o perfil e o ranking não são permanentes e serão zerados quando a sala esvazia.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.<br><R><b>*</b><N> !pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br><R><b>*</b><N> !reset - Cancela a partida atual e retorna à tela inicial.<br><R><b>*</b><N> !limit [número] - Altera o limite de jogadores da sala.<br><R><b>*</b><N> !testmap [@código] - Testa um mapa. Isso pode ser útil para enviar o mapa para o #anvilwar.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> (ou as teclas de 1 a 9 no modo antigo) para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas, powerups e diversos outros itens.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Spectra_phantom#6089 (GM) e Morganadxana#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " segundos.",
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 12pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 30pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 18pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 10pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 30pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 18pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -104,7 +104,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00map1<br>/sala #anvilwar00salto3<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00salto3<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -140,14 +140,14 @@ lang.en = {
 	load2 = "The room needs to have a least 1 player into each team.",
 	load0 = "You needs to stay into LOBBY mode to use this command. Use !reset command and try again.",
 	ac = "You currently have ",
-	powerups = "<font size='11.5'><b>Key '1' or F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' or F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' or F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 22pts</b><br><br><b>Key '4' or F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 14pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
+	powerups = "<font size='11.5'><b>Key '1' or F1 - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' or F2 - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' or F3 - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 22pts</b><br><br><b>Key '4' or F4 - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 12pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
 	commands = "<font size='11.5'>The commands marked with <b>*</b> can be used only by Administrators, FunCorp members and the room owner (/room #anvilwar00yourname).<br>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!change - Change to the legacy method of changing the anvil power and angle. Type this again to revert to the default.<br>!p [username] (or <b>P</b> key) - Show your profile on game. Note that the profile and ranking aren't permanent and will be erased when the room empties.<br>!ranking (or <b>R</b> key) - Show the room ranking.<br><R><b>*</b><N> !pw [password] - Locks the room with a password. Use only !pw to clear the password.<br><R><b>*</b><N> !reset - Cancel the current match and returns to the lobby screen.<br><R><b>*</b><N> !limit [number] - Change the limit of mices on the room.<br><R><b>*</b><N> !testmap [@code] - Test a map. This can use useful when you want to send your map to #anvilwar.",
 	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys (or 1-9 keys in legacy mode) to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils, powerups and other things.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 (GM) and Morganadxana#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " seconds.",
 	leave = "Leave",
 	join = "Join",
 	getr = "Get Ready! The match will start in a few seconds!",
-	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 12pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 30pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 18pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 102pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 30pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 18pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
 	using = "You are now using the ",
 	ac0 = "You don't have AnvilCoins to buy this anvil.",
 	level = "reached the level",
@@ -263,8 +263,8 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."12/14/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."12/14/2021 21:20 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
+	ui.addTextArea(403,"<p align='center'><font color='#000000'><font size='13'><i>"..text.comp_date.."12/30/2021 23:33 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,92,44,600,60,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.comp_date.."12/30/2021 23:33 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,90,42,600,60,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -335,7 +335,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43590.163</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 43691.164 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -626,18 +626,18 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 51 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 52 and data[name].score >= 14 and data[name].level >= 3 then
+				if code == 52 and data[name].score >= 12 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p4.."")
-					setScores(name,-14,true)
+					setScores(name,-12,true)
 					data[name].powerup=4
 					permafrost=true
 					permaFrost()
 				elseif code == 52 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 53 and data[name].score >= 12 and data[name].level >= 4 then
+				if code == 53 and data[name].score >= 10 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-12,true)
+					setScores(name,-10,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
@@ -692,18 +692,18 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 114 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 115 and data[name].score >= 14 and data[name].level >= 3 then
+				if code == 115 and data[name].score >= 12 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p4.."")
-					setScores(name,-14,true)
+					setScores(name,-12,true)
 					data[name].powerup=4
 					permafrost=true
 					permaFrost()
 				elseif code == 115 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 116 and data[name].score >= 12 and data[name].level >= 4 then
+				if code == 116 and data[name].score >= 10 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-12,true)
+					setScores(name,-10,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
@@ -945,7 +945,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43590.163","• Little bugfixes")
+		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 43691.164 LTS","• More little bugfixes<br>• Changed the price of 'Permafrost' powerup to 12 points<br>• Changed the  price of 'Night Mode' powerup to 10 points")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1739,12 +1739,12 @@ initWatercatch = function()
 for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
-for _,f in next,{"help","ajuda","tc","kill","powerups","creditos"} do
+for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog"} do
 	system.disableChatCommandDisplay(f)
 end
-tfm.exec.newGame("@7887657")
-tfm.exec.setRoomMaxPlayers(30)
-shaman=""; alives=0; cannons=5; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
+tfm.exec.newGame("@7890357")
+tfm.exec.setRoomMaxPlayers(35)
+shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,x5=-1,y1=-1,y2=-1,y3=-1,y4=-1,y5=-1,t1=0,t2=0,t3=0,t4=0,t5=0}
 testmode=false;
 function showMessage(message,name)
@@ -1761,11 +1761,10 @@ function showMessage(message,name)
 	end
 end
 function showWater(name)
-	tfm.exec.addImage("17be1035ba0.png","!1",-720,580,name,1.2,0.5,0,0.5)
-	tfm.exec.addImage("17be536e980.png","!1",-200,2120,name,0.5,0.5,0,0.5)
-	tfm.exec.addImage("17be536e980.png","!1",2400,2120,name,0.5,0.5,0,0.5)
-	tfm.exec.addImage("17be10346e1.jpg","?1",-200,600,name)
-	tfm.exec.addImage("17be536ff6c.png","!1",-720,580,name,12,1,0,1)
+	tfm.exec.addImage("17df24985c5.png","?1",40,330,name)
+	tfm.exec.addImage("17def3df6c5.jpg","?1",-300,340,name,1,1.3)
+	tfm.exec.addImage("17def3e4466.png","!1",-300,320,name,12,1.3,0,0.9)
+	tfm.exec.addImage("17def3da8f8.png","!1",-300,337,name,1,1,0,0.675)
 end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
@@ -1794,21 +1793,12 @@ function eventPlayerDied(n)
 end
 function eventNewPlayer(name)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 	newData={
-	["o"]=99;
-	["i"]=0;
-	["t"]=0;
-	["c"]=0;
-	["opened"]=false;
-	["imageid"]=-1;
-	["imageid2"]=-1;
-	["imageid3"]=-1;
-	["imageid4"]=-1;
-	["imaget"]=5;
+	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
 	};
 	data[name] = newData;
-	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.",name)
+	showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000. Mapa feito por Spectra_phantom#6089.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
 	data[name].imageid = tfm.exec.addImage("17a53e210bf.png","&1",180,90,name)
 	data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,345,name)
 	data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
@@ -1821,18 +1811,23 @@ for name,player in next,tfm.get.room.playerList do
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>5</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,220,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos. Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,59,520,340,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• BALÃO</b><N><br>Te coloca em um balão. Pode ser útil para sair da água...<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 18%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do lago, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original e criação do mapa e das artes")
 	end
+	if message == "changelog" then
+		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 2.2.1","• Pequenas alterações no mapa")
+	end
 	if (message:sub(0,2)== "tc") then
-		for n,_ in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[n].isShaman == false then
-				showMessage("<R>• ["..name.."]</b> <N>"..message:sub(4).."",n)
+		if tfm.get.room.playerList[name].isShaman == false then
+			for n,_ in next,tfm.get.room.playerList do
+				if tfm.get.room.playerList[n].isShaman == false then
+					showMessage("<R>• ["..name.."]</b> <N>"..message:sub(4).."",n)
+				end
 			end
 		end
 	end
@@ -1841,14 +1836,21 @@ function eventChatCommand(name,message)
 	end
 end
 function eventSummoningEnd(name,id,x,y)
-	cannons=cannons-1
-	if cannons >= 1 then
-		showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
-	elseif cannons == 0 then
-		showMessage("<VP>O shaman não pode mais usar objetos!")
-	else
-		showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
-		tfm.exec.killPlayer(shaman)
+	if id > 0 then
+		cannons=cannons-1
+		if cannons >= 1 then
+			showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
+		elseif cannons == 0 then
+			showMessage("<VP>O shaman não pode mais usar objetos!")
+		else
+			showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
+			tfm.exec.killPlayer(shaman)
+		end
+	end
+end
+function eventSummoningStart(name,id,x,y)
+	if cannons == 0 then
+		showMessage("<R>Você não pode mais usar objetos! Invocar um objeto fará com que você morra e a partida termine!",name)
 	end
 end
 function resetMap()
@@ -1903,9 +1905,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t1 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t1 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -1951,9 +1950,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t2 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t2 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -1999,9 +1995,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t3 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t3 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -2047,9 +2040,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t4 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t4 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -2095,9 +2085,6 @@ function eventKeyboard(name,key,down)
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 					queijo(name)
 				elseif powerups.t5 == 9 then
-					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>BALÃO!</b>")
-					balao(name)
-				elseif powerups.t5 == 10 then
 					showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
 					reduzir(name)
 				end
@@ -2106,13 +2093,13 @@ function eventKeyboard(name,key,down)
 	end		
 end
 function eventNewGame()
-ui.setBackgroundColor("#020F14")
+ui.setBackgroundColor("#375B38")
 xml=tfm.get.room.xmlMapInfo.xml
 ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
 if changed == true then
 ui.removeTextArea(0,nil)
 z=-1
-cannons=5
+cannons=10
 ui.removeTextArea(22,nil)
 alives=0
 mode="hide"
@@ -2122,13 +2109,10 @@ for n,p in next,tfm.get.room.playerList do
 		tfm.exec.killPlayer(n)
 	end
 	alives=alives+1
-	data[n].o=99;
-	data[n].i=0;
-	data[n].t=0;
-	data[n].c=0;
-	data[n].opened=false;
+	data[n].o=99; data[n].i=0; data[n].t=0; data[n].c=0; data[n].opened=false;
 	tfm.exec.bindKeyboard(n,32,true,true)
 	if tfm.get.room.playerList[n].isShaman then
+		tfm.exec.setShamanMode(n,1)
 		tfm.exec.setPlayerSync(n)
 		ui.addTextArea(22,"",n,-800,-800,2400,2400,0x000001,0x000001,1.0,true)
 		shaman=n
@@ -2154,27 +2138,27 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 function genPowerup(pos,type,x,y)
 	if pos == 1 then
-		ui.addTextArea(100,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(100,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x1=x
 		powerups.y1=y
 		powerups.t1=type
 	elseif pos == 2 then
-		ui.addTextArea(101,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(101,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x2=x
 		powerups.y2=y
 		powerups.t2=type
 	elseif pos == 3 then
-		ui.addTextArea(102,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(102,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x3=x
 		powerups.y3=y
 		powerups.t3=type
 	elseif pos == 4 then
-		ui.addTextArea(103,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(103,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x4=x
 		powerups.y4=y
 		powerups.t4=type
 	elseif pos == 5 then
-		ui.addTextArea(104,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x161636,0x121224,1.0,false)
+		ui.addTextArea(104,"<font size='18'><p align='center'>!",nil,x,y,24,24,0x163616,0x122412,1.0,false)
 		powerups.x5=x
 		powerups.y5=y
 		powerups.t5=type
@@ -2192,10 +2176,6 @@ function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
 end
-function balao(name)
-	tfm.exec.attachBalloon(name, true, 0, true)
-	data[name].t=6
-end
 function reduzir(name)
 	tfm.exec.changePlayerSize(name,0.5)
 	data[name].t=6
@@ -2208,18 +2188,18 @@ if time_passed >= 6 and tfm.get.room.currentMap == "@7763582" then
 	resetMap()
 end
 if changed == true then
-ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
+ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v2.2.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <R><b>Spectra_phantom#6089</b><")
 local m=math.floor(r/60000)
 local s=math.floor((((m*60000)-r) * -1) / 1000)
 ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
-ui.addTextArea(-2,"<font size='45'><font color='#939393'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
 if s < 10 then
 	ui.addTextArea(-1,"<font size='45'><font face='Trebuchet MS'><font color='#222222'><b><i>"..m..":0"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
-	ui.addTextArea(-2,"<font size='45'><font color='#939393'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
+	ui.addTextArea(-2,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..m..":0"..s.."</b>",n,566,19,110,54,0,0,1.0,true)
 end
 if mode == "game" or mode == "hide" then
 	ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,135,22,70,54,0,0,1.0,true)
-	ui.addTextArea(30,"<font size='45'><font color='#939393'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
+	ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..alives.."</b>",n,132,19,70,54,0,0,1.0,true)
 	loop=loop+0.5
 	if loop == 24 then
 		for i=1,5 do
@@ -2262,22 +2242,21 @@ for n,q in next,tfm.get.room.playerList do
 					tfm.exec.removeObject(data[n].i)
 					tfm.exec.freezePlayer(n,false)
 					tfm.exec.removeCheese(n)
-					tfm.exec.attachBalloon(n,false)
 					tfm.exec.changePlayerSize(n,1)
 				end
 			end
 			if not tfm.get.room.playerList[n].isDead then
 			if mode == "game" then
-			if tfm.get.room.playerList[n].y < 598 then
+			if tfm.get.room.playerList[n].y < 348 then
 				if data[n].o < 99 then
 					data[n].o=data[n].o+1
 				end
 				data[n].y=0
 			else
-				if tfm.get.room.playerList[n].y <= 1400 then
+				if tfm.get.room.playerList[n].y <= 1150 then
 					data[n].o=data[n].o-0.4
 					data[n].c=0
-				elseif tfm.get.room.playerList[n].y > 1400 then
+				elseif tfm.get.room.playerList[n].y > 1150 then
 					data[n].o=data[n].o-0.6
 					data[n].c=0
 				end
@@ -2313,13 +2292,13 @@ for n,q in next,tfm.get.room.playerList do
 end
 if r <= 2000 and mode == "hide" then
 	mode="game"
-	tfm.exec.setGameTime(205+math.ceil(alives*2))
+	tfm.exec.setGameTime(165+math.ceil(alives*3))
 	ui.removeTextArea(22,nil)
 	showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>!<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 	for n,p in next,tfm.get.room.playerList do
 		ui.addTextArea(300,"",n,8,386,782,8,0x202020,0x121212,1.0,true)
 		if tfm.get.room.playerList[n].isShaman then
-			tfm.exec.movePlayer(n,2450,410,false,0,0,false)
+			tfm.exec.movePlayer(n,2450,160,false,0,0,false)
 		end
 	end
 end
@@ -2352,7 +2331,7 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a>",name,355,55,90,48,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a>",name,355,55,90,60,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
@@ -2373,14 +2352,13 @@ function eventTextAreaCallback(id,name,callback)
 	if callback == "cred" then
 		eventChatCommand(name,"creditos")
 	end
+	if callback == "change" then
+		eventChatCommand(name,"changelog")
+	end
 end
 end
 
 initCd3 = function()
--- Script do module Cidade Dorme, versão RTM 2624.018, desenvolvido por Rakan_raster#0000.
--- NÃO SE ESQUEÇA DE COLOCAR O SEU NOME NA LINHA 5 ANTES DE INICIAR!!
--- Para reiniciar o script em caso de falta de ratos ou de qualquer bug, digite !reiniciar.
-
 admin="" -- colocar seu nome aqui, funcorp!
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
 do
@@ -2801,20 +2779,6 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-initMap1 = function()
-for _,f in next,{"AutoShaman","AutoNewGame","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables","AfkDeath"} do
-	tfm.exec["disable"..f](true)
-end
-tfm.exec.newGame('<C><P L="3800" G="0,9.5" H="1700" MEDATA=";;;;171,1:172,1:173,1:174,1:175,1:176,1:177,1-0;0:::1-" d="x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,117,45;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,477,-131;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,739,-67;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1220,-91;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1569,-92;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2094,-37;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2738,-91;x_bouboum/x_skin/x_skin_23/x_illu_300.png,3879,-199;x_deadmeat/x_pictos/d_2338.png,3915,91;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,23,-82;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,364,17;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,669,72;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,934,27;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1194,63;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,3622,-26;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,3110,-55;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,1848,-14;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2185,131;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2417,-29;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2640,82;x_transformice/x_evt/x_evt_04/cwlb1bml/nuage_plateforme.png,2888,49;x_deadmeat/x_pictos/d_1716-fs8.png,-250,27;x_deadmeat/x_pictos/d_38-fs8.png,3590,220;x_deadmeat/x_pictos/d_38-fs8.png,3556,220;x_deadmeat/x_pictos/d_38-fs8.png,3113,220;x_deadmeat/x_pictos/d_38-fs8.png,3379,220;x_deadmeat/x_pictos/d_1584-fs8.png,1875,22;x_deadmeat/x_pictos/d_38-fs8.png,1908,247;x_deadmeat/x_pictos/d_38-fs8.png,1563,255;x_deadmeat/x_pictos/d_38-fs8.png,1480,261;x_deadmeat/x_pictos/d_3292.png,1982,38;x_deadmeat/x_pictos/d_3291.png,1410,-138;x_deadmeat/x_pictos/d_2849.png,1953,217;x_deadmeat/x_pictos/d_2849.png,1418,226;x_bouboum/x_skin/x_skin_6/x_5.png,2106,254;x_bouboum/x_skin/x_skin_6/x_5.png,1582,213;x_bouboum/x_skin/x_skin_6/x_9.png,2082,251;x_bouboum/x_skin/x_skin_6/x_9.png,1556,218;x_bouboum/x_skin/x_skin_25/x_illu_300.png,1651,-56;x_bouboum/x_skin/x_skin_5/x_illu_300.png,-297,-261;x_deadmeat/x_pictos/d_3291.png,3349,-180;x_deadmeat/x_pictos/d_3292.png,3256,-6;x_deadmeat/x_pictos/d_2849.png,3471,177;x_deadmeat/x_pictos/d_2849.png,3238,180;x_deadmeat/x_pictos/d_2338.png,3868,64;x_deadmeat/x_pictos/d_2225.png,3137,169;x_deadmeat/x_pictos/d_2014-fs8.png,3540,-1;x_deadmeat/x_pictos/d_2014-fs8.png,3620,-1;x_deadmeat/x_pictos/d_2014-fs8.png,3700,-1;x_deadmeat/x_pictos/d_1997-fs8.png,3686,115;x_deadmeat/x_pictos/d_1716-fs8.png,-335,-30;x_deadmeat/x_pictos/d_1583-fs8.png,200,-5;x_deadmeat/x_pictos/d_1086-fs8.png,306,189;x_deadmeat/x_pictos/d_1086-fs8.png,49,189;x_deadmeat/x_pictos/d_1086-fs8.png,-58,189;x_deadmeat/x_pictos/d_1118-fs8.png,350,-14;x_deadmeat/x_pictos/d_1118-fs8.png,15,-14;x_deadmeat/x_pictos/d_1098-fs8.png,103,218;x_deadmeat/x_pictos/d_1098-fs8.png,331,201;x_deadmeat/x_pictos/d_1098-fs8.png,476,201;x_deadmeat/x_pictos/d_1098-fs8.png,613,201;x_bouboum/x_skin/x_skin_14/x_11.png,259,219;x_bouboum/x_skin/x_skin_14/x_11.png,216,219;x_bouboum/x_skin/x_skin_14/x_11.png,174,218;x_deadmeat/x_pictos/d_3293.png,1546,112" D="x_deadmeat/x_pictos/d_3293.png,3275,1124;x_deadmeat/x_pictos/d_3293.png,1168,1607;x_deadmeat/x_pictos/d_3293.png,182,1559;x_deadmeat/x_pictos/d_1219-fs8.png,3490,1191;x_deadmeat/x_pictos/d_1219-fs8.png,3324,1130;x_deadmeat/x_pictos/d_1219-fs8.png,2941,960;x_deadmeat/x_pictos/d_2849.png,3254,1063;x_deadmeat/x_pictos/d_2849.png,2989,947;x_deadmeat/x_pictos/d_2338.png,3348,1092;x_deadmeat/x_pictos/d_2338.png,2782,804;x_deadmeat/x_pictos/d_1219-fs8.png,2811,620;x_deadmeat/x_pictos/d_1219-fs8.png,2877,491;x_deadmeat/x_pictos/d_1219-fs8.png,2935,379;x_deadmeat/x_pictos/d_1219-fs8.png,958,935;x_deadmeat/x_pictos/d_1219-fs8.png,864,948;x_deadmeat/x_pictos/d_1219-fs8.png,335,1129;x_deadmeat/x_pictos/d_1219-fs8.png,172,1292;x_bouboum/x_skin/x_skin_25/x_3.png,54,1676;x_bouboum/x_skin/x_skin_25/x_11.png,16,1673;x_deadmeat/x_pictos/d_1812-fs8.png,427,1617;x_deadmeat/x_pictos/d_1812-fs8.png,289,1611;x_deadmeat/x_pictos/d_2338.png,516,1522;x_deadmeat/x_pictos/d_2338.png,112,1538;x_deadmeat/x_pictos/d_2225.png,727,988;x_deadmeat/x_pictos/d_2849.png,1044,895;x_deadmeat/x_pictos/d_1219-fs8.png,422,1057;x_deadmeat/x_pictos/d_1219-fs8.png,398,821;x_deadmeat/x_pictos/d_1219-fs8.png,291,922;x_deadmeat/x_pictos/d_1219-fs8.png,187,1033;x_deadmeat/x_pictos/d_1219-fs8.png,86,1130;x_bouboum/x_skin/x_skin_6/x_9.png,437,828;x_bouboum/x_skin/x_skin_25/x_illu_300.png,441,608;x_deadmeat/x_pictos/d_1733-fs8.png,1055,1621;x_deadmeat/x_pictos/d_2849.png,957,1626;x_deadmeat/x_pictos/d_2849.png,1175,1626;x_deadmeat/x_pictos/d_1733-fs8.png,1550,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1480,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1410,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1340,1630;x_deadmeat/x_pictos/d_1733-fs8.png,1270,1630;x_transformice/x_evt/x_evt_10/YIKDFERT/BOSS_AnvilGod.png,3678,1338;x_transformice/x_evt/x_evt_26/elisah4_jklze.png,1891,1342;x_deadmeat/x_pictos/d_1733-fs8.png,1877,1647;x_deadmeat/x_pictos/d_1733-fs8.png,1937,1647;x_deadmeat/x_pictos/d_1733-fs8.png,1997,1647;x_deadmeat/x_pictos/d_1733-fs8.png,2057,1647;x_deadmeat/x_pictos/d_1733-fs8.png,2117,1647;x_deadmeat/x_pictos/d_1219-fs8.png,2486,1643;x_deadmeat/x_pictos/d_1219-fs8.png,2418,1646;x_deadmeat/x_pictos/d_2849.png,2217,1645;x_deadmeat/x_pictos/d_2849.png,2693,1634;x_deadmeat/x_pictos/d_1812-fs8.png,3010,1590;x_deadmeat/x_pictos/d_2338.png,2771,1522;x_deadmeat/x_pictos/d_2338.png,3066,1534;x_bouboum/x_skin/x_skin_25/x_3.png,3295,1655;x_bouboum/x_skin/x_skin_25/x_11.png,3262,1654;x_deadmeat/x_pictos/d_1812-fs8.png,3321,1617;x_deadmeat/x_pictos/d_1812-fs8.png,3489,1607;x_deadmeat/x_pictos/d_1219-fs8.png,2494,790;x_deadmeat/x_pictos/d_1219-fs8.png,2738,809;x_deadmeat/x_pictos/d_1219-fs8.png,2186,765;x_deadmeat/x_pictos/d_2338.png,3628,1533;x_deadmeat/x_pictos/d_2849.png,2397,809;x_deadmeat/x_pictos/d_2849.png,3297,302;x_deadmeat/x_pictos/d_2849.png,3130,301;x_deadmeat/x_pictos/d_1219-fs8.png,1245,565;x_deadmeat/x_pictos/d_2849.png,1312,574;x_deadmeat/x_pictos/d_2849.png,1174,613;x_deadmeat/x_pictos/d_2849.png,594,307;x_deadmeat/x_pictos/d_2849.png,233,304;x_deadmeat/x_pictos/d_2225.png,1484,818;x_bouboum/x_skin/x_skin_6/x_5.png,1592,837;x_bouboum/x_skin/x_skin_6/x_9.png,1467,848;x_bouboum/x_skin/x_skin_6/x_9.png,1563,840;x_bouboum/x_skin/x_skin_25/x_illu_300.png,1585,618;x_bouboum/x_skin/x_skin_25/x_3.png,159,337;x_bouboum/x_skin/x_skin_25/x_3.png,532,337;x_bouboum/x_skin/x_skin_25/x_3.png,1142,656;x_bouboum/x_skin/x_skin_25/x_11.png,1096,664;x_bouboum/x_skin/x_skin_25/x_11.png,443,335;x_bouboum/x_skin/x_skin_25/x_11.png,126,337;x_deadmeat/x_pictos/d_1812-fs8.png,3752,260;x_deadmeat/x_pictos/d_1812-fs8.png,3540,273;x_deadmeat/x_pictos/d_2225.png,2996,287;x_transformice/x_evt/x_evt_25/abwnpzec/pont-bois-abime.png,-268,242;x_transformice/x_evt/x_evt_25/abwnpzec/pont-bois-abime.png,200,238;x_transformice/x_evt/x_evt_25/abwnpzec/pont-pierre.png,3100,230;x_transformice/x_evt/x_evt_25/abwnpzec/pont-pierre.png,3569,230;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,-100,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,700,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,1500,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,2300,1300;x_transformice/x_evt/x_evt_01/kjneb75/herbe.png,3100,1300;x_bouboum/x_fond/x_f1.jpg,-100,300;x_bouboum/x_fond/x_f1.jpg,700,300;x_bouboum/x_fond/x_f1.jpg,1500,300;x_bouboum/x_fond/x_f1.jpg,2300,300;x_bouboum/x_fond/x_f1.jpg,3100,300;x_bouboum/x_fond/x_f1.jpg,-100,700;x_bouboum/x_fond/x_f1.jpg,700,700;x_bouboum/x_fond/x_f1.jpg,1500,700;x_bouboum/x_fond/x_f1.jpg,2300,700;x_bouboum/x_fond/x_f1.jpg,3100,700;x_bouboum/x_fond/x_f1.jpg,-100,1100;x_bouboum/x_fond/x_f1.jpg,700,1100;x_bouboum/x_fond/x_f1.jpg,1500,1100;x_bouboum/x_fond/x_f1.jpg,2300,1100;x_bouboum/x_fond/x_f1.jpg,3100,1100;x_bouboum/x_fond/x_f1.jpg,-100,1500;x_bouboum/x_fond/x_f1.jpg,700,1500;x_bouboum/x_fond/x_f1.jpg,1500,1500;x_bouboum/x_fond/x_f1.jpg,2300,1500;x_bouboum/x_fond/x_f1.jpg,3100,1500" /><Z><S><S L="2500" H="1500" X="350" v="1" Y="1050" T="9" P="0,0,0,0,0,0,0,0" /><S L="2500" H="1500" X="2850" v="1" Y="1050" T="9" P="0,0,0,0,0,0,0,0" /><S L="1500" H="1500" X="438" Y="2440" T="5" P="0,0,0.3,0.2,-1,0,0,0" /><S L="934" o="ffffffff" H="22" X="205" Y="257" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="938" o="ffffffff" H="46" X="3571" Y="260" T="12" P="0,0,0.3,0.2,0,0,0,0" /><S L="77" o="ffffffff" H="10" X="698" Y="271" T="12" P="0,0,0.3,0.2,35,0,0,0" /><S L="1500" H="1500" X="1898" Y="2453" T="5" P="0,0,0.3,0.2,2,0,0,0" /><S L="1500" H="1500" X="2605" Y="2438" T="5" P="0,0,0.3,0.2,-1,0,0,0" /><S L="1000" H="1500" X="3802" Y="2450" T="5" P="0,0,0.3,0.2,3,0,0,0" /><S L="1200" H="200" X="135" Y="460" T="5" P="0,0,0.3,0.2,0,0,0,0" /><S N="" L="1360" o="6a7495" H="3000" X="-943" v="1" Y="1745" T="12" P="0,0,0,0,0,0,0,0" /><S L="1200" H="400" X="3600" Y="552" T="5" P="0,0,0.3,0.2,0,0,0,0" /><S L="1200" H="200" X="3608" Y="758" T="5" P="0,0,0.3,0.2,10,0,0,0" /><S L="600" H="200" X="4031" Y="1238" T="5" P="0,0,0.3,0.2,100,0,0,0" /><S L="500" H="400" X="4044" Y="1647" T="5" P="0,0,0.3,0.2,110,0,0,0" /><S L="1200" H="200" X="137" Y="672" T="5" P="0,0,0.3,0.2,-20,0,0,0" /><S L="1200" H="200" X="-345" Y="666" T="5" P="0,0,0.3,0.2,-10,0,0,0" /><S L="900" H="300" X="1387" Y="1431" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="1200" H="600" X="-166" Y="932" T="5" P="0,0,0.3,0.2,-50,0,0,0" /><S L="1200" H="600" X="-322" Y="1862" T="5" P="0,0,0.3,0.2,-92,0,0,0" /><S L="10" o="ffffffff" H="232" X="3899" Y="117" T="12" P="0,0,0,1,0,0,0,0" /><S L="10" o="ffffffff" H="232" X="-46" Y="142" T="12" P="0,0,0,1,0,0,0,0" /><S L="10" o="ffffffff" H="232" X="3566" Y="388" T="12" P="0,0,0,3,0,0,0,0" /><S L="1000" H="280" X="3180" Y="1214" T="5" P="0,0,0.3,0.2,23,0,0,0" /><S L="1320" H="400" X="3471" Y="856" T="5" P="0,0,0.3,0.2,30,0,0,0" /><S L="600" H="400" X="2459" Y="1062" T="5" P="0,0,0.3,0.2,5,0,0,0" /><S L="600" H="400" X="1600" Y="1062" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="600" H="400" X="1046" Y="1160" T="5" P="0,0,0.3,0.2,-15,0,0,0" /><S L="600" H="120" X="723" Y="890" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="600" H="120" X="254" Y="1353" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="600" H="120" X="249" Y="1111" T="5" P="0,0,0.3,0.2,-45,0,0,0" /><S L="500" H="320" X="799" Y="650" T="5" P="0,0,0.3,0.2,45,0,0,0" /><S L="300" H="120" X="1232" Y="716" T="5" P="0,0,0.3,0.2,-15,0,0,0" /><S L="600" H="100" X="838" Y="886" T="5" P="0,0,0.3,0.2,-25,0,0,0" /><S L="300" H="320" X="1276" Y="919" T="5" P="0,0,0.3,0.2,-105,0,0,0" /><S L="360" H="90" X="1607" Y="406" T="5" P="0,0,0.3,0.2,25,0,0,0" /><S L="360" H="90" X="1600" Y="310" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="360" H="90" X="1950" Y="310" T="5" P="0,0,0.3,0.2,5,0,0,0" /><S L="360" H="90" X="1943" Y="406" T="5" P="0,0,0.3,0.2,-25,0,0,0" /><S L="360" H="90" X="1810" Y="507" T="5" P="0,0,0.3,0.2,-75,0,0,0" /><S L="360" H="90" X="1740" Y="507" T="5" P="0,0,0.3,0.2,75,0,0,0" /><S L="364" H="102" X="1775" Y="390" T="5" P="0,0,0.3,0.2,0,0,0,0" /><S L="600" H="400" X="2459" Y="1407" T="5" P="0,0,0.3,0.2,-5,0,0,0" /><S L="1000" H="330" X="3096" Y="1348" T="5" P="0,0,0.3,0.2,3,0,0,0" /><S P="0,0,0,1,0,0,0,0" L="10" o="ffffffff" X="-46" Y="142" T="12" H="232" /><S L="300" H="20" X="970" Y="298" T="14" P="1,0,3,0.2,0,1,0,0" /><S L="300" X="2320" H="20" Y="298" T="14" P="1,0,3,0.2,0,1,0,0" /></S><D><P P="0,0" Y="857" T="84" X="2299" /><P C="BB5631" Y="876" T="86" P="0,0" X="2623" /><P P="0,0" Y="1074" T="87" X="3187" /><P P="0,0" Y="1695" T="88" X="2349" /><P P="0,0" Y="1692" T="83" X="2641" /><P P="0,0" Y="1691" T="79" X="2559" /><P P="0,0" Y="1678" T="79" X="1128" /><P C="BB5631" Y="1695" T="86" P="0,0" X="1615" /><P P="0,0" Y="1695" T="87" X="1729" /><P P="0,0" Y="1698" T="87" X="1832" /><P P="0,0" Y="1693" T="81" X="1784" /><P C="4B8E72" Y="1687" T="85" P="0,0" X="881" /><P P="0,0" Y="1690" T="88" X="355" /><P P="0,0" Y="1689" T="88" X="749" /><P P="0,0" Y="940" T="79" X="337" /><P P="0,0" Y="1050" T="79" X="228" /><P P="0,0" Y="1160" T="79" X="121" /><P P="0,0" Y="1266" T="79" X="27" /><P P="0,0" Y="849" T="82" X="474" /><P P="0,0" Y="1464" T="79" X="60" /><P P="0,0" Y="1150" T="79" X="390" /><P P="0,0" Y="1285" T="79" X="263" /><P P="0,0" Y="575" T="79" X="2876" /><P P="0,0" Y="435" T="79" X="2954" /><P P="0,0" Y="1048" T="80" X="3097" /><DS Y="229" X="453" /></D><O /><L><VL n="Layer4"l="-1"/><JD P1="-500,198"P2="4300,198"c="0ba9de,70,1,0"/><JD P1="-500,123"P2="4300,123"c="0b9bde,80,1,0"/><JD P1="-500,38"P2="4300,38"c="0b8dde,90,1,0"/><JD P1="-500,-57"P2="4300,-57"c="0b7fde,100,1,0"/><JD P1="-500,-162"P2="4300,-162"c="0b63de,110,1,0"/><JD P1="-500,-342"P2="4300,-342"c="0b55de,250,1,0"/><JD P1="-500,-592"P2="4300,-592"c="0b55de,250,1,0"/><JD P1="755,263"P2="3065,263"c="0bb7de,60,1,0"/><VL n="Copy of Layer7"l="46"/><JD P1="2187,294"P2="2453,294"c="ad552f,25,1,1"M1="46"M2="46"/><JD P1="2172,277"P2="2183,302"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2178,278"P2="2317,285"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2179,283"P2="2405,283"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2405,283"P2="2468,280"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2168,268"P2="2324,278"c="36180e,6,1,0"M1="46"M2="46"/><JD P1="2322,276"P2="2472,272"c="36180e,6,1,0"M1="46"M2="46"/><JD P1="2468,280"P2="2457,307"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2462,281"P2="2453,298"c="ad532d,7,1,1"M1="46"M2="46"/><JD P1="2322,281"P2="2471,276"c="87330f,6,1,1"M1="46"M2="46"/><JD P1="2168,274"P2="2324,281"c="87330f,6,1,1"M1="46"M2="46"/><JD P1="2462,308"P2="2476,267"c="87330f,4,1,1"M1="46"M2="46"/><JD P1="2179,308"P2="2462,309"c="87330f,4,1,1"M1="46"M2="46"/><JD P1="2164,266"P2="2179,308"c="87330f,4,1,1"M1="46"M2="46"/><JD P1="2164,265"P2="2321,273"c="823c21,4,1,0"M1="46"M2="46"/><JD P1="2319,273"P2="2475,267"c="823c21,4,1,0"M1="46"M2="46"/><JD P1="2194,279"P2="2179,300"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2226,279"P2="2206,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2257,280"P2="2236,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2286,281"P2="2267,305"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2316,284"P2="2298,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2351,283"P2="2330,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2385,282"P2="2362,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2414,281"P2="2393,305"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2450,279"P2="2423,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2181,278"P2="2206,305"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2240,281"P2="2260,306"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2303,284"P2="2320,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2366,283"P2="2386,307"c="401709,2,1,1"M1="46"M2="46"/><JD P1="2429,281"P2="2447,307"c="401709,2,1,1"M1="46"M2="46"/><VL n="Layer7"l="45"/><JD P1="837,294"P2="1103,294"c="ad552f,25,1,1"M1="45"M2="45"/><JD P1="822,277"P2="833,302"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="828,278"P2="967,285"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="829,283"P2="1055,283"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="1055,283"P2="1118,280"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="818,268"P2="974,278"c="36180e,6,1,0"M1="45"M2="45"/><JD P1="972,276"P2="1122,272"c="36180e,6,1,0"M1="45"M2="45"/><JD P1="1118,280"P2="1107,307"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="1112,281"P2="1103,298"c="ad532d,7,1,1"M1="45"M2="45"/><JD P1="972,281"P2="1121,276"c="87330f,6,1,1"M1="45"M2="45"/><JD P1="818,274"P2="974,281"c="87330f,6,1,1"M1="45"M2="45"/><JD P1="1112,308"P2="1126,267"c="87330f,4,1,1"M1="45"M2="45"/><JD P1="829,308"P2="1112,309"c="87330f,4,1,1"M1="45"M2="45"/><JD P1="814,266"P2="829,308"c="87330f,4,1,1"M1="45"M2="45"/><JD P1="814,265"P2="971,273"c="823c21,4,1,0"M1="45"M2="45"/><JD P1="969,273"P2="1125,267"c="823c21,4,1,0"M1="45"M2="45"/><JD P1="844,279"P2="829,300"c="401709,2,1,1"M1="45"M2="45"/><JD P1="876,279"P2="856,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="907,280"P2="886,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="936,281"P2="917,305"c="401709,2,1,1"M1="45"M2="45"/><JD P1="966,284"P2="948,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1001,283"P2="980,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1035,282"P2="1012,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1064,281"P2="1043,305"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1100,279"P2="1073,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="831,278"P2="856,305"c="401709,2,1,1"M1="45"M2="45"/><JD P1="890,281"P2="910,306"c="401709,2,1,1"M1="45"M2="45"/><JD P1="953,284"P2="970,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1016,283"P2="1036,307"c="401709,2,1,1"M1="45"M2="45"/><JD P1="1079,281"P2="1097,307"c="401709,2,1,1"M1="45"M2="45"/><VL n="Layer6"l="-1"/><JD P1="730,224"P2="730,284"c="0bb7de,10,1,0"/><JD P1="733,236"P2="791,232"c="0bb7de,10,1,0"/><JD P1="3090,229"P2="3090,289"c="0bb7de,10,1,0"/><JD P1="3061,235"P2="3087,237"c="0bb7de,10,1,0"/><VL n="Layer3"l="-1"/><JD P1="-500,425"P2="4300,425"c="097d77,250,0.81,1"/><JD P1="-500,675"P2="4300,675"c="097d77,250,0.81,1"/><JD P1="-500,925"P2="4300,925"c="097d77,250,0.81,1"/><JD P1="-500,1175"P2="4300,1175"c="097d77,250,0.81,1"/><JD P1="-500,1425"P2="4300,1425"c="097d77,250,0.81,1"/><JD P1="-500,1675"P2="4300,1675"c="097d77,250,0.81,1"/><JD P1="-500,1925"P2="4300,1925"c="097d77,250,0.81,1"/><JD P1="-500,2175"P2="4300,2175"c="097d77,250,0.81,1"/><JD P1="-500,2425"P2="4300,2425"c="097d77,250,0.81,1"/><JD P1="-500,940"P2="4300,940"c="03111c,100,0.08,1"/><JD P1="-500,1040"P2="4300,1040"c="03111c,100,0.16,1"/><JD P1="-500,1140"P2="4300,1140"c="03111c,100,0.24,1"/><JD P1="-500,1240"P2="4300,1240"c="03111c,100,0.32,1"/><JD P1="-500,1340"P2="4300,1340"c="03111c,100,0.4,1"/><JD P1="-500,1440"P2="4300,1440"c="03111c,100,0.48,1"/><JD P1="-500,1615"P2="4300,1615"c="03111c,250,0.56,1"/><JD P1="-500,1865"P2="4300,1865"c="03111c,250,0.56,1"/><JD P1="-500,2115"P2="4300,2115"c="03111c,250,0.56,1"/><JD P1="-500,2365"P2="4300,2365"c="03111c,250,0.56,1"/><JD P1="-500,2520"P2="4300,2520"c="03111c,60,0.56,1"/><VL n="Layer2"l="-1"/><JPL P1="-500,300"P3="-400,296"P4="-300,297"P2="-200,300"c="046b6b,9,1,1"/><JPL P1="-200,300"P3="-100,303"P4="0,304"P2="100,300"c="046b6b,9,1,1"/><VC P1="-500,300"P2="100,300"C1="-300,285"C2="-100,315"C="046b6b,9,1,1"f="6"/><JPL P1="100,300"P3="200,296"P4="300,297"P2="400,300"c="046969,9,1,1"/><JPL P1="400,300"P3="500,303"P4="600,304"P2="700,300"c="046969,9,1,1"/><VC P1="100,300"P2="700,300"C1="300,285"C2="500,315"C="046969,9,1,1"f="6"/><JPL P1="700,300"P3="800,296"P4="900,297"P2="1000,300"c="046b6b,9,1,1"/><JPL P1="1000,300"P3="1100,303"P4="1200,304"P2="1300,300"c="046b6b,9,1,1"/><VC P1="700,300"P2="1300,300"C1="900,285"C2="1100,315"C="046b6b,9,1,1"f="6"/><JPL P1="1300,300"P3="1400,296"P4="1500,297"P2="1600,300"c="046b6b,9,1,1"/><JPL P1="1600,300"P3="1700,303"P4="1800,304"P2="1900,300"c="046b6b,9,1,1"/><VC P1="1300,300"P2="1900,300"C1="1500,285"C2="1700,315"C="046b6b,9,1,1"f="6"/><JPL P1="1900,300"P3="2000,296"P4="2100,297"P2="2200,300"c="046b6b,9,1,1"/><JPL P1="2200,300"P3="2300,303"P4="2400,304"P2="2500,300"c="046b6b,9,1,1"/><VC P1="1900,300"P2="2500,300"C1="2100,285"C2="2300,315"C="046b6b,9,1,1"f="6"/><JPL P1="2500,300"P3="2600,296"P4="2700,297"P2="2800,300"c="046b6b,9,1,1"/><JPL P1="2800,300"P3="2900,303"P4="3000,304"P2="3100,300"c="046b6b,9,1,1"/><VC P1="2500,300"P2="3100,300"C1="2700,285"C2="2900,315"C="046b6b,9,1,1"f="6"/><JPL P1="3100,300"P3="3200,296"P4="3300,297"P2="3400,300"c="046b6b,9,1,1"/><JPL P1="3400,300"P3="3500,303"P4="3600,304"P2="3700,300"c="046b6b,9,1,1"/><VC P1="3100,300"P2="3700,300"C1="3300,285"C2="3500,315"C="046b6b,9,1,1"f="6"/><JPL P1="3700,300"P3="3800,296"P4="3900,297"P2="4000,300"c="046b6b,9,1,1"/><JPL P1="4000,300"P3="4100,303"P4="4200,304"P2="4300,300"c="046b6b,9,1,1"/><VC P1="3700,300"P2="4300,300"C1="3900,285"C2="4100,315"C="046b6b,9,1,1"f="6"/><JD P1="-500,295"P2="4300,295"c="00435c,13,1,0"/><VL n="Layer5"l="-1"/><JPL P1="-500,305"P3="-400,301"P4="-300,302"P2="-200,305"c="014747,5,1,1"/><JPL P1="-200,305"P3="-100,308"P4="0,309"P2="100,305"c="014747,5,1,1"/><VC P1="-500,305"P2="100,305"C1="-300,290"C2="-100,320"C="014747,5,1,1"f="6"/><JPL P1="100,305"P3="200,301"P4="300,302"P2="400,305"c="014747,5,1,1"/><JPL P1="400,305"P3="500,308"P4="600,309"P2="700,305"c="014747,5,1,1"/><VC P1="100,305"P2="700,305"C1="300,290"C2="500,320"C="014747,5,1,1"f="6"/><JPL P1="700,305"P3="800,301"P4="900,302"P2="1000,305"c="014747,5,1,1"/><JPL P1="1000,305"P3="1100,308"P4="1200,309"P2="1300,305"c="014747,5,1,1"/><VC P1="700,305"P2="1300,305"C1="900,290"C2="1100,320"C="014747,5,1,1"f="6"/><JPL P1="1300,305"P3="1400,301"P4="1500,302"P2="1600,305"c="014747,5,1,1"/><JPL P1="1600,305"P3="1700,308"P4="1800,309"P2="1900,305"c="014747,5,1,1"/><VC P1="1300,305"P2="1900,305"C1="1500,290"C2="1700,320"C="014747,5,1,1"f="6"/><JPL P1="1900,305"P3="2000,301"P4="2100,302"P2="2200,305"c="014747,5,1,1"/><JPL P1="2200,305"P3="2300,308"P4="2400,309"P2="2500,305"c="014747,5,1,1"/><VC P1="1900,305"P2="2500,305"C1="2100,290"C2="2300,320"C="014747,5,1,1"f="6"/><JPL P1="2500,305"P3="2600,301"P4="2700,302"P2="2800,305"c="014747,5,1,1"/><JPL P1="2800,305"P3="2900,308"P4="3000,309"P2="3100,305"c="014747,5,1,1"/><VC P1="2500,305"P2="3100,305"C1="2700,290"C2="2900,320"C="014747,5,1,1"f="6"/><JPL P1="3100,305"P3="3200,301"P4="3300,302"P2="3400,305"c="014747,5,1,1"/><JPL P1="3400,305"P3="3500,308"P4="3600,309"P2="3700,305"c="014747,5,1,1"/><VC P1="3100,305"P2="3700,305"C1="3300,290"C2="3500,320"C="014747,5,1,1"f="6"/><JPL P1="3700,305"P3="3800,301"P4="3900,302"P2="4000,305"c="014747,5,1,1"/><JPL P1="4000,305"P3="4100,308"P4="4200,309"P2="4300,305"c="014747,5,1,1"/><VC P1="3700,305"P2="4300,305"C1="3900,290"C2="4100,320"C="014747,5,1,1"f="6"/><VL n="Copy of Layer2"l="-1"/><JPL P1="-500,289"P3="-400,285"P4="-300,286"P2="-200,289"c="1b6385,8,1,0"/><JPL P1="-200,289"P3="-100,292"P4="0,293"P2="100,289"c="1b6385,8,1,0"/><VC P1="-500,289"P2="100,289"C1="-300,274"C2="-100,304"C="1b6385,8,1,0"f="6"/><JPL P1="100,289"P3="200,285"P4="300,286"P2="400,289"c="1b6385,8,1,0"/><JPL P1="400,289"P3="500,292"P4="600,293"P2="700,289"c="1b6385,8,1,0"/><VC P1="100,289"P2="700,289"C1="300,274"C2="500,304"C="1b6385,8,1,0"f="6"/><JPL P1="700,289"P3="800,285"P4="900,286"P2="1000,289"c="1b6385,8,1,0"/><JPL P1="1000,289"P3="1100,292"P4="1200,293"P2="1300,289"c="1b6385,8,1,0"/><VC P1="700,289"P2="1300,289"C1="900,274"C2="1100,304"C="1b6385,8,1,0"f="6"/><JPL P1="1300,289"P3="1400,285"P4="1500,286"P2="1600,289"c="1b6385,8,1,0"/><JPL P1="1600,289"P3="1700,292"P4="1800,293"P2="1900,289"c="1b6385,8,1,0"/><VC P1="1300,289"P2="1900,289"C1="1500,274"C2="1700,304"C="1b6385,8,1,0"f="6"/><JPL P1="1900,289"P3="2000,285"P4="2100,286"P2="2200,289"c="1b6385,8,1,0"/><JPL P1="2200,289"P3="2300,292"P4="2400,293"P2="2500,289"c="1b6385,8,1,0"/><VC P1="1900,289"P2="2500,289"C1="2100,274"C2="2300,304"C="1b6385,8,1,0"f="6"/><JPL P1="2500,289"P3="2600,285"P4="2700,286"P2="2800,289"c="1b6385,8,1,0"/><JPL P1="2800,289"P3="2900,292"P4="3000,293"P2="3100,289"c="1b6385,8,1,0"/><VC P1="2500,289"P2="3100,289"C1="2700,274"C2="2900,304"C="1b6385,8,1,0"f="6"/><JPL P1="3100,289"P3="3200,285"P4="3300,286"P2="3400,289"c="1b6385,8,1,0"/><JPL P1="3400,289"P3="3500,292"P4="3600,293"P2="3700,289"c="1b6385,8,1,0"/><VC P1="3100,289"P2="3700,289"C1="3300,274"C2="3500,304"C="1b6385,8,1,0"f="6"/><JPL P1="3700,289"P3="3800,285"P4="3900,286"P2="4000,289"c="1b6385,8,1,0"/><JPL P1="4000,289"P3="4100,292"P4="4200,293"P2="4300,289"c="1b6385,8,1,0"/><VC P1="3700,289"P2="4300,289"C1="3900,274"C2="4100,304"C="1b6385,8,1,0"f="6"/><JD P1="4300,-699"P2="4300,3001"c="6a7495,250,1,1"/><JD P1="-500,-699"P2="-500,3001"c="6a7495,250,1,1"/><JD P1="735,236"P2="-500,236"c="0bb7de,6,1,0"/><L /></L></Z></C>')
-ui.setMapName("<ROSE>mapinha de piscina da morgana ♥")
-function eventNewPlayer(name)
-	tfm.exec.respawnPlayer(name)
-end
-function eventPlayerDied(name)
-	tfm.exec.respawnPlayer(name)
-end
-end
-
 initSalto3 = function()
 dados={type = 1,width = 10,height = 60,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
 tfm.exec.disableAutoNewGame(true)
@@ -2843,7 +2807,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.203.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.204<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
@@ -2856,9 +2820,6 @@ else
 	elseif string.find(tfm.get.room.name,"cd3") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'cd3' on room name.<br>Initialising #cd3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initCd3()
-	elseif string.find(tfm.get.room.name,"map1") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'map1' on room name.<br>Initialising #map1 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initMap1()
 	elseif string.find(tfm.get.room.name,"salto3") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'salto3' on room name.<br>Initialising #salto3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initSalto3()
