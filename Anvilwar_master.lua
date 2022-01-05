@@ -1,20 +1,20 @@
--- Transformice #anvilwar module loader - Version 2.206
+-- Transformice #anvilwar module loader - Version 2.206.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #cd3, #salto3.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.206",
-	_MAINV = "45193.166 LTS",
+	_VERSION = "2.206.1",
+	_MAINV = "45294.167",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
---[[ #anvilwar Reborn
+--[[ #anvilwar 2022 Edition
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 45193.166 LTS
-Compilation date : 01/04/2022 00:11 UTC
+Version : RTM 45294.167
+Compilation date : 01/05/2022 16:40 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 167
@@ -38,13 +38,13 @@ playersList={}; helpers={}; mods={
 "Dinamarquers#0000",
 "Flaysama#5935",
 "Chavestomil#0000",
+"Kakashi#2065",
 "Kralizmox#0000"};
 admins={"Spectra_phantom#6089",
 "Morganadxana#0000"}
 ninjas={"Aurelianlua#0000",
 "Viego#0345",
 "Forzaldenon#0000",
-"Ashearcher#0000",
 "Hecarimjhenx#0000"};
 banneds={};
 data={}
@@ -110,7 +110,7 @@ lang.br = {
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
 	red_team = "Time Vermelho",
 	blue_team = "Time Azul",
-	discount = "<J>Todas as bigornas estão com 50% de desconto! Digite !anvils e confira os preços! Promoção por tempo limitado."
+	discount = "<br><J>Todas as bigornas estão com 50% de desconto! Digite !anvils e confira os preços! Promoção por tempo limitado."
 }
 lang.en = {
 	version = "Version",
@@ -172,7 +172,7 @@ lang.en = {
 	timeup = "<ROSE>Time is up! This will be the last shoot!",
 	red_team = "Red Team",
 	blue_team = "Blue Team",
-	discount = "<J>All anvils are with 50% OFF! Type !anvils and see the new prices!"
+	discount = "<br><J>All anvils are with 50% OFF! Type !anvils and see the new prices!"
 }
 if string.find(tfm.get.room.name,"*") then
 	text = lang.en
@@ -265,7 +265,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45193.166 LTS - "..text.comp_date.."01/04/2022 00:11 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45294.167 - "..text.comp_date.."01/05/2022 16:40 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -336,7 +336,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar Reborn</b>   <G>|   <VP>"..text.version.." <b>RTM 45193.166 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45294.167</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -884,7 +884,7 @@ function lobby()
 		tfm.exec.freezePlayer(name,false)
 	end
 	ui.removeTextArea(999,nil)
-	showMessage(text.discount)
+	showMessage(text.legacy..text.discount)
 end
 
 function eventNewGame()
@@ -948,7 +948,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,132,"#anvilwar Changelog - RTM 45193.166 LTS","• New lobby image!<br>• 50% of discount on price of all anvils<br>• Some more bugfixes")
+		showMenu(name,0xa8f233,140,90,520,147,"#anvilwar Changelog - RTM 45294.167","• New lobby image!<br>• 50% of discount on price of all anvils<br>• Some more bugfixes<br>• Re-added the alternative modules text<br>• Changes on temporary players")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2807,7 +2807,7 @@ function eventNewPlayer(name)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.206<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.206.1<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
