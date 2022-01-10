@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.207.1
+-- Transformice #anvilwar module loader - Version 2.208
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #cd3, #salto3.
+-- Included sub-modules: #watercatch, #cd3.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.207.1",
-	_MAINV = "45496.169",
+	_VERSION = "2.208",
+	_MAINV = "45597.170",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 45496.169
-Compilation date : 01/08/2022 22:16 UTC
+Version : RTM 45597.170
+Compilation date : 01/10/2022 19:41 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 170
@@ -87,7 +87,7 @@ lang.br = {
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 15pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 30pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 18pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' ou F5 - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 4  /  Pontuação: 15pts</b><br><br><b>Tecla '6' ou F6 - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 4  /  Pontuação: 20pts</b><br><br><b>Tecla '7' ou F7 - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 5  /  Pontuação: 18pts</b><br><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -105,7 +105,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00salto3<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -150,7 +150,7 @@ lang.en = {
 	leave = "Leave",
 	join = "Join",
 	getr = "Get Ready! The match will start in a few seconds!",
-	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 15pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 30pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 18pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	powerups2 = "<font size='11.5'><b>Key '5' or F5 - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 4  /  Required Score: 15pts</b><br><br><b>Key '6' or F6 - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 4  /  Required Score: 20pts</b><br><br><b>Key '7' or F7 - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 5  /  Required Score: 18pts</b><br><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
 	using = "You are now using the ",
 	ac0 = "You don't have AnvilCoins to buy this anvil.",
 	level = "reached the level",
@@ -268,7 +268,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45496.169 - "..text.comp_date.."01/08/2022 22:16 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45597.170 - "..text.comp_date.."01/10/2022 19:41 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -314,12 +314,12 @@ function eventRanking(name)
 			end
 		end
 	end
-	showMenu(name,0xffffff,200,30,400,340,""..tfm.get.room.name.." Ranking","<font size='12'># / Name                                            Kills  Level   Wins% Kills%")
-	ui.addTextArea(1010,"<p align='left'><font size='12'><font face='Consolas'>"..str1,name,200,65,220,320,0,0,nil,true)
-	ui.addTextArea(1011,"<p align='right'><font size='12'><font face='Consolas'>"..str2,name,420,65,40,320,0,0,nil,true)
-	ui.addTextArea(1007,"<p align='right'><font size='12'><font face='Consolas'>"..str3,name,460,65,40,320,0,0,nil,true)
-	ui.addTextArea(1008,"<p align='right'><font size='12'><font face='Consolas'>"..str4,name,500,65,50,320,0,0,nil,true)
-	ui.addTextArea(1009,"<p align='right'><font size='12'><font face='Consolas'>"..str5,name,550,65,50,320,0,0,nil,true)
+	showMenu(name,0xffffff,200,35,400,340,""..tfm.get.room.name.." Ranking","<font size='12'># / Name                                            Kills  Level   Wins% Kills%")
+	ui.addTextArea(1010,"<p align='left'><font size='12'><font face='Consolas'>"..str1,name,200,70,220,320,0,0,nil,true)
+	ui.addTextArea(1011,"<p align='right'><font size='12'><font face='Consolas'>"..str2,name,420,70,40,320,0,0,nil,true)
+	ui.addTextArea(1007,"<p align='right'><font size='12'><font face='Consolas'>"..str3,name,460,70,40,320,0,0,nil,true)
+	ui.addTextArea(1008,"<p align='right'><font size='12'><font face='Consolas'>"..str4,name,500,70,50,320,0,0,nil,true)
+	ui.addTextArea(1009,"<p align='right'><font size='12'><font face='Consolas'>"..str5,name,550,70,50,320,0,0,nil,true)
 end
 
 function giveRankings(name)
@@ -341,7 +341,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45496.169</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45597.170</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -650,9 +650,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 53 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 54 and data[name].score >= 30 and data[name].level >= 3 then
+				if code == 54 and data[name].score >= 20 and data[name].level >= 2 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-30,true)
+					setScores(name,-20,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -716,9 +716,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 116 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 117 and data[name].score >= 30 and data[name].level >= 3 then
+				if code == 117 and data[name].score >= 20 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-30,true)
+					setScores(name,-20,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -955,7 +955,7 @@ function eventChatCommand(name,command)
 		showMessage(tostring(testmode),name)
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,90,520,185,"#anvilwar Changelog - RTM 45496.169","• Added 3 new maps<br>• Increased the F3 powerup price from 22 to 28 points<br>• Increased the F5 powerup price from 10 to 15 points<br>• Various changes on !tc command<br>• Added translation to reviving command<br>• The Room ranking now displays the 20 best players instead of 10<br>• The level advance text will display only to their players<br>• The !testmap command is available again<br>• Fixed some issues with scores")
+		showMenu(name,0xa8f233,140,90,520,185,"#anvilwar Changelog - RTM 45597.170","• Fixed issues with !testmap command<br>• Decreased F6 powerup price from 30 to 20 points<br>• Increased F6 level requirement from 3 to 4<br>• Small changes on Room ranking")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1019,7 +1019,7 @@ function eventChatCommand(name,command)
 		tfm.exec.killPlayer(command:sub(6))
 	end
 	if (command:sub(0,7) == "testmap") and data[name].ranking >= 2 then
-		if mode == "lobby" and change == true then
+		if mode == "lobby" then
 			if rawlen(command:sub(9)) == 7 or rawlen(command:sub(9)) == 8 then
 				set_map=command:sub(9)
 				showMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
@@ -2802,35 +2802,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-initSalto3 = function()
-dados={type = 1,width = 10,height = 60,foregound = 0,friction = 0.0,restitution = 0.0,angle = 0,color = 0,miceCollision = true,groundCollision = true,dynamic = false}
-tfm.exec.disableAutoNewGame(true)
-tfm.exec.disableAutoShaman(true)
-tfm.exec.disableAutoTimeLeft(true)
-tfm.exec.disableAfkDeath(true)
-tfm.exec.newGame('<C><P L="30090" H="4402" F="8" G="0,9.5" /><Z><S><S L="240" H="125" X="220" Y="4401" T="2" P="0,0,0,2,36,0,0,0" /><S L="3000" o="287a07" X="1810" H="10" Y="4405" T="12" P="0,0,8000,0.2,0,0,0,0" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="4810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="7810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="10810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="13810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="16810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="19810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="22810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="25810" /><S P="0,0,8000,0.2,0,0,0,0" L="3000" o="287a07" H="10" Y="4405" T="12" X="28810" /><S L="160" H="120" X="80" Y="4340" T="6" P="0,0,0.3,0.2,0,0,0,0" /></S><D><DS Y="4265" X="80" /></D><O /><L><VL n="track" l="-1" /><JD c="287a07,7,1,0" P1="311,4387" P2="295,4408" /><JD c="287a07,7,1,0" P1="307,4404" P2="300,4407" /><JD c="287a07,21,1,0" P1="29477,4399" P2="310,4399" /><JD c="287a07,14,1,0" P1="29479,4404" P2="29430,4401" /><JD c="287a07,8,1,0" P1="29496,4383" P2="29484,4403" /><JD c="287a07,14,1,0" P1="313,4386" P2="29489,4386" /><JD c="ffffff,2,1,0" P1="310,4380" P2="290,4410" /><JD c="ffffff,2,1,0" P1="310,4380" P2="29500,4380" /><JD c="ffffff,2,1,0" P1="290,4410" P2="29480,4410" /><JD c="ffffff,2,1,0" P1="29502,4380" P2="29482,4410" /><L /></L></Z></C>')
-tfm.exec.setUIMapName("Salto em distância <ROSE>Remaked III <J>- Versão desenvolvida por <font color='#00a0ff'><b>Fosfus7heads#0000</b><")
-
-for j=1,150 do
-	local a=200*j
-	local b=a-200
-	ui.addTextArea(j,"<b><p align='center'><font size='14'><font color='#000000'>"..b.."",n,110+(a-30),4355,60,20,0,0,1.0,false)
-	ui.addTextArea(j+151,"<p align='center'><font size='14'><font color='#000000'>|||||||||||||||||||||",n,150+(a-30),4355,180,20,0,0,1.0,false)
-end
-for i=1,100 do
-	local c=50*i
-	ui.addTextArea(i+302,"<b><p align='center'><font size='14'><font color='#000000'>"..c.."",n,-4,4400-c,60,20,0,0,1.0,false)
-	ui.addTextArea(i+403,"<b><p align='center'><font size='14'><font color='#000000'>-<br>-<br>-",n,-4,4417-c,60,50,0,0,1.0,false)
-end
-function eventPlayerDied(name)
-	tfm.exec.respawnPlayer(name)
-end
-function eventNewPlayer(name)
-	eventPlayerDied(name)
-end
-end
-
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.207.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.208<br>By Spectra_phantom#6089")
 if string.find(tfm.get.room.name,"*") then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
 	initAnvilwar()
@@ -2843,9 +2815,6 @@ else
 	elseif string.find(tfm.get.room.name,"cd3") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'cd3' on room name.<br>Initialising #cd3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
 		initCd3()
-	elseif string.find(tfm.get.room.name,"salto3") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'salto3' on room name.<br>Initialising #salto3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initSalto3()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
