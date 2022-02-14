@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.210.1
+-- Transformice #anvilwar module loader - Version 2.210.2
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #cd3.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.210.1",
-	_MAINV = "45602.175",
+	_VERSION = "2.210.2",
+	_MAINV = "45603.176",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 45602.175
-Compilation date : 02/09/2022 13:02 UTC
+Version : RTM 45603.176
+Compilation date : 02/14/2022 17:03 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 171
@@ -44,7 +44,6 @@ ninjas={"Aurelianlua#0000",
 "Viego#0345",
 "Forzaldenon#0000",
 "Hecarimjhenx#0000"};
-banneds={};
 data={}
 
 lang = {}
@@ -265,7 +264,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45602.175 - "..text.comp_date.."02/09/2022 13:02 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45603.176 - "..text.comp_date.."02/14/2022 17:03 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -338,7 +337,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45602.175</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45603.176</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -802,7 +801,6 @@ function lobby()
 				setScores(name,0,false)
 			else
 				tfm.exec.killPlayer(name)
-				showMessage("<R>"..text.banned.."",name)
 			end
 		end
 	end
@@ -873,7 +871,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,145,"#anvilwar Changelog - RTM 45602.175","• The !change command was removed<br>• The link to our Discord group was removed<br>• Several code optimizations<br>• Some text changes")
+		showMenu(name,0xa8f233,140,110,520,145,"#anvilwar Changelog - RTM 45603.176","• The !change command was removed<br>• The link to our Discord group was removed<br>• Several code optimizations<br>• Some text changes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2705,7 +2703,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.210.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.210.2<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
