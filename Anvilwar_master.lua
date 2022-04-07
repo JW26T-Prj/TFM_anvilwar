@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.212.1
+-- Transformice #anvilwar module loader - Version 2.213
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #cd3, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.212.1",
-	_MAINV = "45704.177",
+	_VERSION = "2.213",
+	_MAINV = "45805.178",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 45704.177
-Compilation date : 03/18/2022 15:18 UTC
+Version : RTM 45805.178
+Compilation date : 04/07/2022 21:25 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 171
@@ -187,7 +187,7 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","tc","TC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get"} do
+for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get"} do
 	system.disableChatCommandDisplay(g)
 end
 tfm.exec.setRoomMaxPlayers(30)
@@ -263,7 +263,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45704.177 - "..text.comp_date.."03/18/2022 15:18 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><i>"..text.version.." RTM 45805.178 - "..text.comp_date.."04/07/2022 21:25 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,10,379,780,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -336,7 +336,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45704.177</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 45805.178</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -870,7 +870,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,95,"#anvilwar Changelog - RTM 45704.177","• Some code optimizations")
+		showMenu(name,0xa8f233,140,110,520,95,"#anvilwar Changelog - RTM 45805.178","• Bug fixes on !ranking command<br>• Slight changes on !tc command")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -948,7 +948,7 @@ function eventChatCommand(name,command)
 			showMessage(""..map_names[tonumber(command:sub(5))].." - "..maps[tonumber(command:sub(5))].."",name)
 		end
 	end
-	if (command:sub(0,2) == "tc") or (command:sub(0,2) == "TC") then
+	if (command:sub(0,2) == "tc") or (command:sub(0,2) == "TC") or (command:sub(0,2) == "Tc") or (command:sub(0,2) == "tC") then
 		if data[name] then
 			if data[name].team == 1 then
 				for _,p in next,players_red do
@@ -962,7 +962,9 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "ranking" then
-		eventRanking(name)
+		if data[name].opened == false then
+			eventRanking(name)
+		end
 		showMessage("<R>"..text.rankw.."",name)
 	end
 	if command == "anvils" then
@@ -2937,7 +2939,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.212.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.213<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
