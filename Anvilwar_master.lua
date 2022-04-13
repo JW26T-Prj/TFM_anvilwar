@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.214
+-- Transformice #anvilwar module loader - Version 2.214.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #cd3, #mountain.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.214",
+	_VERSION = "2.214.1",
 	_MAINV = "45805.178",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -2756,8 +2756,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12,14,16},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.1   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.1 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><R>MODULE NÃO RECOMENDADO PARA JOGADORES COM PC DA XUXA",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.3   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><VP>Tenha cuidado, pois os deuses da montanha estão furiosos e irão causar grandes contratempos para quem tentar subir!<br><br><ROSE>Versão v1.0.3 - desenvolvido por Morganadxana#0000<br><VP>Agradecimentos especiais a Spectra_phantom#6089, Draw#6691 e Forzaldenon#0000<br><br><R>MODULE NÃO RECOMENDADO PARA JOGADORES COM PC DA XUXA",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -2777,11 +2777,11 @@ lang.br = {
 	reached6 = "<VP>Você chegou no pico da montanha! Os deuses reconheceram sua bravura e coragem e te acolheram para o céu!",
 	reached7 = " <VP>chegou até o topo da montanha!<br><N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
 	nowinners = "<R>Não há vencedores!",
-	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quanto todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000."
+	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com os seguintes contratempos:<br><G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.1   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.1 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.3   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><br><VP>Be careful, because the mountain gods are furious and will cause huge troubles for those who try to scale!<br><br><ROSE>Version v1.0.3 - developed by Morganadxana#0000<br><VP>Translation by Rakan_raster#0000",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -2795,7 +2795,7 @@ lang.en = {
 	recognized = "meters and now is recognized by the mountain gods!",
 	event5 = " is gone!",
 	reached2 = "<G>You reached 2000 meters of height.<br>The cold wings starts to surround you, and the air starts to be rarefied...",
-	reached3 = "<G>You reached 5000 meters of height.<br>It's almost impossible to tolarate the extreme cold temperatures, and you starts to have serious difficulties to breathe correctly.",
+	reached3 = "<G>You reached 5000 meters of height.<br>It's almost impossible to tolerate the extreme cold temperatures, and you starts to have serious difficulties to breathe correctly.",
 	reached4 = "<G>You reached 10000 meters of height.<br>The strong cold wings starts to freeze you, and your mice starts to have serious suffocation problems because of lack of air...",
 	reached5 = "<G>You reached 20000 meters of height.<br>You starts to see the stars with much more clarity, even on the clear day. However, the rarified air and the extremely low temperatures is making your mice to die.",
 	reached6 = "<VP>You reached the peak of the mountain! The gods recognized your bravery and courage. Now, you is part of the heaven!",
@@ -2878,6 +2878,17 @@ function eventPlayerDied(name)
 	end
 	end
 end
+function eventTalkToNPC(name, npc)
+	if npc == "Julia Henderson" then
+		showMessage("<V>[Julia Henderson] <N>Você não me acha linda?",name)
+	elseif npc == "Anderson Darther" then
+		showMessage("<V>[Anderson Darther] <N>Não ligue para ela. Sempre gosta de se exibir com seus visuais...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba...",name)
+	elseif npc == "Mylenne Ganditz" then
+		showMessage("<V>[Mylenne Ganditz] <N>Ei, você! Fique comigo, preciso de amigos!",name)
+	elseif npc == "Lync Dowryammer" then
+		showMessage("<V>[Lync Dowryammer] <N>Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba...",name)
+	end
+end
 function eventNewGame()
 	ui.setBackgroundColor("#000000")
 	if changed == true then
@@ -2894,6 +2905,10 @@ function eventNewGame()
 			ui.setMapName(text.mapname)
 		end
 		showMessage(text.newgame)
+		tfm.exec.addNPC("Anderson Darther",{title = 298, look = "1;123_125508,0,0,4,60_324716+316441+4b926d+900f31+20310+ece674+e47c39+8d2637+900f31+900f31,40_256c23+717a30,31_ef4a6+f3f9bc,0,47",x = 4680,y = 10550,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
+		tfm.exec.addNPC("Lync Dowryammer",{title = 253, look = "176;40_7b00c8+70335,0,20_9d00ff,43_290448,29_729be0+1d0241,0,1_5c00cb+211ce0,0,0",x = 1700,y = 10320,female = false,lookLeft = true,lookAtPlayer = true,interactive = true})
+		tfm.exec.addNPC("Mylenne Ganditz",{title = 244, look = "161;212,38,57,66,62,0,33,0,0",x = 2430,y = 9368,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
+		tfm.exec.addNPC("Julia Henderson",{title = 125, look = "142;234,49_efa5e2+edf1f2+edf1f2+edf1f2,77,0,43,97,3,0,0",x = 3505,y = 9188,female = true,lookLeft = false,lookAtPlayer = true,interactive = true})
 	else
 		tfm.exec.setGameTime(5)
 		if changed == false then
@@ -3015,7 +3030,7 @@ function eventLoop(passado,faltando)
 				showMessage(text.reached5,name)
 				data[name].a=5
 			end
-			if data[name].x >= 24321 and data[name].a == 5 then
+			if data[name].x >= 24650 and data[name].a == 5 then
 				showMessage(text.reached6,name)
 				data[name].a=10
 				for n,player in next,tfm.get.room.playerList do
@@ -3047,7 +3062,7 @@ function eventLoop(passado,faltando)
 			loop=loop+1
 			if loop == 4 then
 				for i=1,2 do
-					x=math.random(2700,3300)
+					x=math.random(2600,3400)
 					tfm.exec.addShamanObject(85, x, 0, 0, 0, 0, false)
 				end
 				loop=0
@@ -3077,7 +3092,7 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.214<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.214.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
