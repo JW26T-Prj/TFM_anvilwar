@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.215
+-- Transformice #anvilwar module loader - Version 2.216
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #cd3, #mountain.
+-- Included sub-modules: #watercatch, #cd3, #mountain, #beach.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.215",
+	_VERSION = "2.216",
 	_MAINV = "45906.179",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
@@ -104,7 +104,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00mountain<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><N>Deseja relatar um bug ou problema no #anvilwar? Relate aqui:<br><b>github.com/JW26T-Prj/TFM_anvilwar/issues</b>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00mountain<br>/sala #anvilwar00beach<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><N>Deseja relatar um bug ou problema no #anvilwar? Relate aqui:<br><b>github.com/JW26T-Prj/TFM_anvilwar/issues</b>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -2763,8 +2763,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.6   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.6 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.0.7   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.0.7 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -2794,8 +2794,8 @@ lang.br = {
 	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.6   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.6 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.0.7   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.0.7 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -2884,7 +2884,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,100,520,240,"Changelog","<font size='11'>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme<br><br>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players<br><br>[v1.0.4]:<br>• Bug fixes on Meteor Rain<br>• Bug fixes on winner selection<br>• Added an altitude marker<br>• English translation for NPCs")
+		showMenu(name,0x2578f6,140,70,520,270,"Changelog","<font size='11'>[v1.0.7]:<br>• Slight changes on winning selection<br><br>[v1.0.6]:<br>• Fixed some issues with the end of game<br>• Added command hiding for !powerups, !changelog and !creditos<br>• Slight changes on the Universal Menu scheme<br><br>[v1.0.5]:<br>• More fixes on winner selection<br>• Added the Universal Menu scheme<br>• Added a protection for avoiding bugs with low memory client players<br><br>[v1.0.4]:<br>• Bug fixes on Meteor Rain<br>• Bug fixes on winner selection<br>• Added an altitude marker<br>• English translation for NPCs")
 	end
 end
 function eventNewPlayer(name)
@@ -3091,16 +3091,15 @@ function eventLoop(passado,faltando)
 			for name,player in next,tfm.get.room.playerList do
 				if not name == vencedor then
 					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.giveCheese(name)
-					tfm.exec.playerVictory(name)
-					tfm.exec.setPlayerScore(name,data[name].a,true)
-					showMessage("<VP><V><b>"..vencedor.."</b> <VP>"..text.winner.."<br><N>"..text.scaled.."<V>"..math.floor(math.pow((tfm.get.room.playerList[vencedor].y/-1+10565)/100,2.2)).." <N>"..text.recognized.."")
-					tfm.exec.setGameTime(15)
-					falt_int=15
-					endgame=true
 				end
 			end
+			tfm.exec.giveCheese(vencedor)
+			tfm.exec.playerVictory(vencedor)
+			tfm.exec.setPlayerScore(vencedor,data[vencedor].a,true)
+			showMessage("<VP><V><b>"..vencedor.."</b> <VP>"..text.winner.."<br><N>"..text.scaled.."<V>"..math.floor(math.pow((tfm.get.room.playerList[vencedor].y/-1+10565)/100,2.2)).." <N>"..text.recognized.."")
+			tfm.exec.setGameTime(15)
+			falt_int=15
+			endgame=true
 		end
 		if falt_int <= 1 and endgame == true then
 			tfm.exec.newGame(xml2,false)
@@ -3173,7 +3172,143 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.215<br>By Spectra_phantom#6089")
+initBeach = function()
+for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables"} do
+	tfm.exec["disable"..f](true)
+end
+debug.disableEventLog(true)
+system.disableChatCommandDisplay("reset")
+tfm.exec.newGame("@7903160")
+data={}; changed=false; xml2='';
+
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	else
+		print(temp_text)
+	end
+end
+function showNPCs()
+	tfm.exec.addNPC("Julia Lynner",{title = 382, look = "1;228,50,72,0,50_d946a7,90,44,0,0",x = 10032,y = 989,female = true,lookLeft = false,lookAtPlayer = false,interactive = true})
+	tfm.exec.addNPC("Brand Northern",{title = 357, look = "1;225,0,46,34,26,104_3c3a87+6e7291+a5a7c1+caccdd+7582b3+f3f5f7,49,0,0",x = 10259,y = 875,female = false,lookLeft = false,lookAtPlayer = false,interactive = true})
+	tfm.exec.addNPC("John Grand",{title = 298, look = "1;231,8,7,34,5,105,0,0,33",x = 9236,y = 1106,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
+	tfm.exec.addNPC("Danniel Victor",{title = 296, look = "1;194,29,27,41,54,103,33,81,57",x = 3172,y = 1202,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
+	tfm.exec.addNPC("Kenner Henderson",{title = 266, look = "27;236,45,22,0,44,0,50,67,35",x = 751,y = 1263,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
+	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 567,y = 2925,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
+end
+function showWater(name)
+	for i=0,2 do
+		-- tfm.exec.addImage("17f74387366.png","!1",-600+(i*6400),1418,name,20,1.2,0,1)
+		-- tfm.exec.addImage("17f74378b9a.png","?1",-600+(i*6396),1376,name,1,1,0,1)
+		-- tfm.exec.addImage("17f7437d864.png","?1",-600+(i*6396),1376,name,1,1,0,0.5)
+		-- tfm.exec.addImage("17f74378b9a.png","!1",-600+(i*6396),1376,name,1,1,0,0.44)
+		-- tfm.exec.addImage("17f74382569.jpg","?1",-600+(i*6390),1418,name,2,0.6,0,1)
+		tfm.exec.addImage("17def3df6c5.jpg","?1",-600+(i*5200),1400,name,1,1.2)
+		tfm.exec.addImage("17def3e4466.png","!1",-600+(i*5200),1374,name,10,1.2,0,1)
+		tfm.exec.addImage("17def3da8f8.png","!1",-600+(i*5194),1387,name,1,1,0,0.75)
+	end
+	for h=0,4 do
+		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
+	end
+	ui.setBackgroundColor("#7DB1E0")
+end
+function eventChatCommand(name,message)
+	if message == "reset" then
+		if name == "Morganadxana#0000" or name == "Ashearcher#0000" then
+			tfm.exec.newGame(xml2,false)
+			ui.removeTextArea(0,nil)
+		end
+	end
+end
+function eventTalkToNPC(name, npc)
+	if npc == "Julia Lynner" then
+		showMessage("<V>[Julia Lynner] <N>Bem-vindo(a) ao Quiosque do Raposo Azul. Confira os preços de nossos produtos...<br><br>Espera, eu perdi meu papel com os preços!",name)
+	elseif npc == "Brand Northern" then
+		showMessage("<V>[Brand Northern] <N>Olha, olha, olha a água mineral, água mineral, água mineral...",name)
+	elseif npc == "John Grand" then
+		showMessage("<V>[John Grand] <J>Ah! Que delícia, cara!",name)
+	elseif npc == "Danniel Victor" then
+		showMessage("<V>[Danniel Victor] <N>Esta é a área conhecida como <R>Ilha do Dragão Vermelho.<N><br><br>Debaixo dela existe um recife de plantas muito grande, no qual vários peixes conseguem viver muito bem. É um lugar muito lindo, vale a pena conhecer. Ah, e tome cuidado com a água. Não fique muito tempo dentro do mar. Você pode afundar e não voltar mais.",name)
+	elseif npc == "Kenner Henderson" then
+		showMessage("<V>[Kenner Henderson] <N>Foi você o <R>fi********* <N>que amarrou aquele pneu nas ligações elétricas?<br><br><VP>Não? Ainda bem. <N>Pois algum ser sem cérebro inventou de colocar um pneu nos fios para tentar fazer uma tirolesa. Como estou furioso por isso...<br><br>Ah, e se está curioso para saber o que é aquela escada, ela dá para o gerador nuclear principal, que fica bem no fundo do mar. Não me aventuraria a descer até lá...",name)
+	elseif npc == "Keith Cramer" then
+		showMessage("<V>[Keith Cramer] <R>NÃO ESTÁ VENDO QUE ESTA É UMA ÁREA RESTRITA? SAIA DAQUI AGORA! QUER SER INFECTADO(A)? NÃO? ENTÃO SAIA AGORA, C******!",name)
+	end
+end
+function eventPlayerWon(name)
+	if changed == true then
+		tfm.exec.respawnPlayer(name)
+	end
+end
+function eventPlayerDied(name)
+	if changed == true then
+		tfm.exec.respawnPlayer(name)
+	end
+end
+function eventNewGame(name)
+	if changed == true then
+		for name,_ in next,tfm.get.room.playerList do
+			showWater(name)
+		end
+		showNPCs()
+		ui.setMapName("<VP>Praia da Reserva Verde")
+		tfm.exec.setGameTime(3600)
+	else
+		tfm.exec.setGameTime(5)
+		if changed == false then
+			xml2=tfm.get.room.xmlMapInfo.xml
+			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
+			ui.setMapName("<J>Carregando mapa. Por favor, aguarde...<")
+		else
+			ui.removeTextArea(0,nil)
+		end
+	end
+end
+function eventNewPlayer(name)
+	tfm.exec.respawnPlayer(name)
+	showWater(name)
+	newData={
+	["z"]=1;
+	};
+	data[name] = newData;
+	if changed == true then
+		ui.setMapName("Praia da Reserva Verde")
+	end
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e <b>Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua",name)
+end
+function eventLoop(p,f)
+	if changed == true then
+		for name,player in next,tfm.get.room.playerList do
+			if tfm.get.room.playerList[name].y >= 1399 then
+				if data[name].z <= 1.45 then
+					data[name].z=data[name].z+0.01
+				end
+			else
+				data[name].z=1
+			end
+			tfm.exec.setPlayerGravityScale(name,data[name].z)
+			if p >= 2000 and p <= 10000 then
+				if tfm.get.room.playerList[name].y <= 400 and tfm.get.room.playerList[name].x <= 800 and not tfm.get.room.playerList[name].isDead then
+					showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
+				end
+			end
+		end
+	else
+		if f <= 1 then
+			changed=true
+			tfm.exec.newGame(xml2,false)
+			ui.removeTextArea(0,nil)
+		end
+	end
+end
+for name,_ in next,tfm.get.room.playerList do
+	eventNewPlayer(name)
+end
+end
+
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.216<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
@@ -3190,6 +3325,9 @@ else
 	elseif string.find(tfm.get.room.name,"mountain") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'mountain' on room name.<br>Initialising #mountain module...")
 		initMountain()
+	elseif string.find(tfm.get.room.name,"beach") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'beach' on room name.<br>Initialising #beach module...")
+		initBeach()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
