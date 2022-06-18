@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.220.1
+-- Transformice #anvilwar module loader - Version 2.221
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #cd3, #mountain, #beach.
+-- Included sub-modules: #watercatch, #mountain, #beach.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.220.1",
-	_MAINV = "46311.184",
+	_VERSION = "2.221",
+	_MAINV = "46412.185",
 	_DEVELOPER = "Spectra_phantom#6089" }
 
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 46311.184
-Compilation date : 06/13/2022 16:47 UTC
+Version : RTM 46412.185
+Compilation date : 06/18/2022 23:25 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -66,7 +66,7 @@ lang.br = {
 	p6 = "usou o powerup Chuva de Bigornas!",
 	p7 = "usou o powerup Anomalia Gravitacional!",
 	p8 = "usou o powerup Bigorna Invisível!",
-	p10 = "Você precisa ser capitão do seu time e possuir 25 pontos para reviver.<br>Além disso, não é possível reviver faltando menos de 30 segundos.",
+	p10 = "Você precisa ser capitão do seu time e possuir 30 pontos para reviver.<br>Além disso, não é possível reviver faltando menos de 30 segundos.",
 	p0 = "Você não possui pontos e/ou níveis suficientes para usar este powerup.",
 	ap = "Potência: ",
 	ag = "Ângulo: ",
@@ -107,7 +107,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00cd3<br>/sala #anvilwar00mountain<br>/sala #anvilwar00beach<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00mountain<br>/sala #anvilwar00beach<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -133,7 +133,7 @@ lang.en = {
 	p6 = "used the powerup Anvil Rain!",
 	p7 = "used the powerup Gravity Anomaly!",
 	p8 = "used the powerup Invisible Anvil!",
-	p10 = "You must be the leader of your team and have at least 25 points to revive.<br>Also, isn't allowed to revive players on the last 30 seconds.",
+	p10 = "You must be the leader of your team and have at least 30 points to revive.<br>Also, isn't allowed to revive players on the last 30 seconds.",
 	p0 = "You don't have level and score to use this powerup.",
 	ap = "Power: ",
 	ag = "Angle: ",
@@ -273,7 +273,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='14'><b><font face='Courier New'><i>"..text.version.." RTM 46311.184 - "..text.comp_date.."06/13/2022 16:47 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,10,379,780,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='14'><b><font face='Courier New'><i>"..text.version.." RTM 46412.185 - "..text.comp_date.."06/18/2022 23:25 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,10,379,780,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -346,7 +346,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 46311.184</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 46412.185</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -893,7 +893,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 46311.184","• Changes on prices of various powerups<br>• Added some temporary moderators<br>• Changed the version status font")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 46412.185","• Changes on prices of various powerups<br>• Added some temporary moderators<br>• Changed the version status font<br>• The reviving score is now back to 30 points")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -901,7 +901,7 @@ function eventChatCommand(name,command)
 				temp_name=command:sub(4)
 				print(temp_name)
 				if data[temp_name] then
-					if data[name].score >= 25 then
+					if data[name].score >= 30 then
 						if tfm.get.room.playerList[temp_name].isDead == true then
 							tfm.exec.respawnPlayer(temp_name)
 							if data[temp_name].team == 2 then
@@ -913,7 +913,7 @@ function eventChatCommand(name,command)
 								data[temp_name].killed=false
 							end
 							showMessage("<J>"..text.revived..""..temp_name.."")
-							setScores(name,-25,true)
+							setScores(name,-30,true)
 						end
 					else
 						showMessage(text.p10,name)
@@ -2364,422 +2364,6 @@ end
 reset()
 end
 
-initCd3 = function()
-admin="" -- colocar seu nome aqui, funcorp!
-for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand"} 
-do
-	tfm.exec["disable"..f](true)
-end
-tfm.exec.disableAfkDeath(false)
-jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
-quant={assasinos=0,detetives=0,medicos=0,vitimas=0,vivos=0}
-limites={assasinos=0,detetives=0,medicos=0}
-modo="inicial"; contador=0; rodada=0; data={}; templist={};
-mapas={"@3110915","@3148619","@4411212","@4477478","@5832272","@3203198","@5113656","@6380942","@7730312","@7712670","@7896560"}
-tfm.exec.setRoomMaxPlayers(40)
-system.disableChatCommandDisplay("reiniciar")
-system.disableChatCommandDisplay("help")
-function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
-	if tfm.get.room.isTribeHouse == false then
-		tfm.exec.chatMessage(message,name)
-	elseif tfm.get.room.isTribeHouse == true then
-		if name == nil then
-			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
-		else
-			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
-		end
-	end
-end
-function showDebugText(text)
-	for _,name in next,{"Rakan_raster#0000","Xayah_raster#7598","Aurelianlua#0000","Forzaldenon#0000","Skyymellu#0000"} do
-		showMessage(text,name)
-	end
-end
-function getTypesPlayers()
-	quant={assasinos=0,detetives=0,medicos=0}
-	for name,player in next,tfm.get.room.playerList do
-		if data[name] and data[name].type == 1 and not tfm.get.room.playerList[name].isDead then
-			quant.assasinos=quant.assasinos+1
-		end
-		if data[name] and data[name].type == 2 and not tfm.get.room.playerList[name].isDead then
-			quant.medicos=quant.medicos+1
-		end
-		if data[name] and data[name].type == 3 and not tfm.get.room.playerList[name].isDead then
-			quant.detetives=quant.detetives+1
-		end
-	end
-end
-function checkNickname(name)
-	for i=1,rawlen(jogadores.lista) do
-		if jogadores.lista[i] == name then
-			return true
-		end
-	end
-end
-function eventChatCommand(name,comando)
-	if comando == "reiniciar" then
-		if name == "Rakan_raster#0000" or name == "Xayah_raster#7598" or name == "Aurelianlua#0000" or name == "Forzaldenon#0000" or name == "Skyymellu#0000" or name == admin then
-			tfm.exec.newGame(mapas[math.random(#mapas)])
-		end
-	end
-	if comando == "help" then
-		showMessage("<p align='center'><VP><b>Bem-vindo ao module Cidade Dorme.</b><br><br><p align='left'><N>Neste module você deverá descobrir quem são os assasinos e impedir que eles matem todos os detetives ou todas as vítimas.<br><br>O jogo consiste basicamente em 4 classes de jogadores:<br><R>• Assasinos: <N>São aqueles que irão tentar matar os outros ratos, não importando suas funções.<br><BL>• Médicos: <N>São aqueles que irão tentar salvar os jogadores dos assasinos.<br><VP>• Detetives: <N>São aqueles que irão tentar descobrir e matar os assasinos.<br><J>• Vítimas: <N>Ficam só rezando pra não serem mortos.<br><br>O jogo acaba sempre quando todos os assasinos, detetives ou vítimas são mortos.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Rakan_raster#0000.",name)
-	end
-end
-function eventNewGame()
-	contador=0
-	tfm.exec.setGameTime(40)
-	jogadores={assasinos={},detetives={},medicos={},vivos=0,lista={}}
-	quant={assasinos=0,detetives=0,medicos=0}
-	modo="inicial"
-	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.setPlayerScore(name,0,false)
-		data[name].type=0
-		if string.find(tfm.get.room.name,name) then
-			admin=name
-			showMessage("<ROSE>Digite !reiniciar quando a sala tiver com 5 ratos ou mais para começar ou reiniciar a partida.")
-		end
-		if name:sub(1,1) == "*" then
-			tfm.exec.killPlayer(name)
-		end
-	end
-	rodada=0
-	ui.setMapName("<N><b>Cidade Dorme v3</b> <VP>RTM 2927.021 LTS <N>- por <J>Rakan_raster#0000<")
-end
-function escolherAssasinos(name)
-	if data[name] and data[name].type == 0 then
-		data[name].type=1
-		quant.assasinos=quant.assasinos+1
-		showMessage("<J>Você foi escolhido(a) como assasino(a).<br><br>Sua função será matar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja matar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
-		showDebugText("<R>Assasino: "..name.."")
-	end
-end
-function escolherMedicos(name)
-	if data[name] and data[name].type == 0 then
-		data[name].type=2
-		quant.medicos=quant.medicos+1
-		showMessage("<J>Você foi escolhido(a) como médico(a).<br><br>Sua função será salvar os outros jogadores. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
-		showDebugText("<BL>Médico: "..name.."")
-	end
-end
-function escolherDetetives(name)
-	if data[name] and data[name].type == 0 then
-		data[name].type=3
-		quant.detetives=quant.detetives+1
-		showMessage("<J>Você foi escolhido(a) como detetive.<br><br>Sua função será de tentar descobrir quem são os assasinos e matar eles. Quando chegar sua vez, digite o nome do rato que deseja salvar (com a #tag) na janela de texto que vai aparecer. Não digite mais nada além do nome do usuário!<br>",name)
-		showDebugText("<VP>Detetive: "..name.."")
-	end
-end
-function eventNewPlayer(name)
-	if not data[name] then
-		showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2927.021 LTS<br><p align='left'>",name)
-	end
-	data[name]={type=-1,morre=false}
-end
-for name,player in next,tfm.get.room.playerList do
-	eventNewPlayer(name)
-end
-function eventPlayerDied(name)
-	if data[name] and data[name].type == 0 then
-		data[name].type=-1
-	end
-	getTypesPlayers()
-	for i=1,rawlen(jogadores.lista) do
-		if jogadores.lista[i] == name then
-			table.remove(jogadores.lista,i)
-			jogadores.vivos=jogadores.vivos-1
-		end
-	end
-end
-function eventPlayerLeft(name)
-	jogadores.lista={}
-	for name,player in next,tfm.get.room.playerList do
-		if not tfm.get.room.playerList[name].isDead then
-			table.insert(jogadores.lista,name)
-		end
-	end
-	getTypesPlayers()
-	data[name].type=-1
-end
-function definirLimites()
-	if jogadores.vivos < 8 then
-		limites.assasinos=1; limites.medicos=1; limites.detetives=1;
-	elseif jogadores.vivos >= 8 and jogadores.vivos < 14 then
-		limites.assasinos=2; limites.medicos=1; limites.detetives=2;
-	elseif jogadores.vivos >= 14 and jogadores.vivos < 20 then
-		limites.assasinos=3; limites.medicos=2; limites.detetives=3;
-	elseif jogadores.vivos >= 20 and jogadores.vivos < 26 then
-		limites.assasinos=4; limites.medicos=3; limites.detetives=4;
-	elseif jogadores.vivos >= 26 and jogadores.vivos < 32 then
-		limites.assasinos=5; limites.medicos=3; limites.detetives=5;
-	elseif jogadores.vivos >= 32 then
-		limites.assasinos=6; limites.medicos=4; limites.detetives=5;
-	end
-end
-function sortearDetetives()
-	for i=1,limites.detetives do
-		local jogador=templist[math.random(#templist)]
-		if data[jogador] and data[jogador].type == 0 then
-			escolherDetetives(jogador)
-			templist={}
-			for name,player in next,tfm.get.room.playerList do
-				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
-					table.insert(templist,name)
-				end
-			end
-		end
-	end
-end
-function sortearMedicos()
-	for i=1,limites.detetives do
-		local jogador=templist[math.random(#templist)]
-		if data[jogador] and data[jogador].type == 0 then
-			escolherMedicos(jogador)
-			templist={}
-			for name,player in next,tfm.get.room.playerList do
-				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
-					table.insert(templist,name)
-				end
-			end
-		end
-	end
-	sortearDetetives()
-end
-function sortearAssasinos()
-	for i=1,limites.assasinos do
-		local jogador=templist[math.random(#templist)]
-		if data[jogador] and data[jogador].type == 0 then
-			escolherAssasinos(jogador)
-			templist={}
-			for name,player in next,tfm.get.room.playerList do
-				if data[name].type == 0 and not tfm.get.room.playerList[name].isDead then
-					table.insert(templist,name)
-				end
-			end
-		end
-	end
-	sortearMedicos()
-end
-function eventLoop()
-	contador=contador+0.5
-	if modo == "aguardando" then
-		ui.setMapName("<J>Assasinos: <R><b>"..quant.assasinos.."</b>  <V>|  <J>Detetives: <VP><b>"..quant.detetives.."</b>  <V>|  <J>Médicos: <N><b>"..quant.medicos.."</b>  <V>|  <N>Rodada: <J><b>"..rodada.."</b>  <BL>|  <N><b>Cidade Dorme v3</b> <VP>RTM 2927.021 LTS<")
-	end
-	if contador == 3 then
-		if admin == "" then
-			showMessage("<VP>O module não pode ser iniciado. <br>Certifique-se de que inseriu seu nome corretamente no nome da sala.<br><br>Exemplo: <b>/sala #anvilwar00cd3#Spectra_phantom#6089</b><br><br>Em caso de um FunCorp, certifique-se que inseriu o nome corretamente no código.<br><br>Script desativado.")
-			contador=-65536
-		else
-			showMessage("<br><br><br><p align='center'><N><b>Bem-vindos ao module Cidade Dorme!</b><br>O objetivo deste module é: Descubra quem são os assassinos, desconfie e se divirta!<br><VP>O jogo irá explicar todo seu funcionamento durante a partida.<br><br><J><b>Script desenvolvido por Rakan_raster#0000</b><br>Conceito original por Spectra_phantom#6089<br><br><ROSE>Versão RTM 2927.021 LTS<br><p align='left'>")
-		end
-	end
-	if contador == 10 then
-		showMessage("<VP>Digite !help caso não saiba como funciona este jogo.")
-	end
-	if contador == 35 then
-		jogadores.lista={}
-		templist={}
-		for name,player in next,tfm.get.room.playerList do
-			if not tfm.get.room.playerList[name].isDead then
-				jogadores.vivos=jogadores.vivos+1
-				data[name]={type=0,morre=false}
-				table.insert(jogadores.lista,name)
-				table.insert(templist,name)
-			end
-		end
-		definirLimites()
-		if jogadores.vivos >= 5 then
-			showMessage("<J>Estamos sorteando as funções dos jogadores! Por favor, aguardem...<br><br><ROSE><b>POR FAVOR, NINGUÉM REVELE SUAS FUNÇÕES PORQUE ESTRAGA O JOGO!!</b>")
-		else
-			showMessage("<R>Ratos ativos insuficientes na sala. Reiniciando o código...")
-			contador=990
-		end
-	end
-	if contador == 40 then
-		sortearAssasinos()
-		modo="aguardando"
-		for name,player in next,tfm.get.room.playerList do
-			if data[name].type == 0 then
-				showMessage("<J>Você foi escolhido como vítima.",name)
-			end
-		end
-	end
-	if contador == 48 then
-		showMessage("<J>A rodada será iniciada em 5 segundos! SE PREPAREM!")
-		jogadores.vitimas=0
-	end
-	if contador == 53 then
-		showMessage("<VP>O JOGO COMEÇOU!")
-		rodada=rodada+1
-	end
-	if contador == 58 then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].type == 1 and tfm.get.room.playerList[name].isDead == false then
-				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
-				showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
-			end
-		end
-	end
-	if contador == 83 then
-		if quant.medicos > 0 then
-			for name,player in next,tfm.get.room.playerList do
-				if data[name] and data[name].type == 1 then
-					ui.addPopup(101,0,"",name,-8910,325,20,true)
-				end
-				if data[name] and data[name].type == 2 and tfm.get.room.playerList[name].isDead == false then
-					ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
-					showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
-				end
-			end
-		else
-			contador=107
-		end
-	end
-	if contador == 108 then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].type == 2 then
-				ui.addPopup(102,0,"",name,-8910,325,20,true)
-			end
-		end
-		showMessage("<VP>Tempo esgotado! Hora da verdade! Vamos ver quem morreu...")
-	end
-	if contador == 115 then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
-				tfm.exec.killPlayer(name)
-				if data[name].type == 0 then
-					showMessage("<R>Os assasinos mataram a vítima <b>"..name.."!</b>")
-				elseif data[name].type == 1 then
-					showMessage("<J>FOGO AMIGO! Os assasinos mataram o assasino <b>"..name.."!</b>")
-				elseif data[name].type == 2 then
-					showMessage("<R>Os assasinos mataram o médico <b>"..name.."!</b>")
-				elseif data[name].type == 3 then
-					showMessage("<R>Os assasinos mataram o detetive <b>"..name.."!</b>")
-				end
-			end
-		end
-		if jogadores.vitimas == 0 then
-			showMessage("<VP>Ufa! Ninguém foi morto!")
-		end
-	end
-	if contador == 120 then
-		if quant.assasinos == 0 and quant.detetives == 0 then
-			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		elseif quant.assasinos == 0 then
-			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		elseif quant.detetives == 0 then
-			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		else
-			showMessage("<VP>Agora é hora dos detetives escolherem quem eles acham que são os assasinos.")
-		end
-	end
-	if contador == 125 then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].type == 3 and tfm.get.room.playerList[name].isDead == false then
-				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
-				showMessage("<J>Insira APENAS o nome do usuário desejado. Não coloque mais nada na caixa de texto e não se esqueça de colocar a #tag!",name)
-			end
-		end
-	end
-	if contador == 150 then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].type == 3 then
-				ui.addPopup(103,0,"",name,-8910,325,20,true)
-			end
-		end
-		showMessage("<VP>Tempo esgotado! Vamos ver no que deu?")
-	end
-	if contador == 155 then
-		for name,player in next,tfm.get.room.playerList do
-			if data[name] and data[name].morre == true and not tfm.get.room.playerList[name].isDead then
-				tfm.exec.killPlayer(name)
-				if data[name].type == 0 then
-					showMessage("<R>OH NÃO! Os detetives mataram a vítima <b>"..name.."!</b>")
-				elseif data[name].type == 1 then
-					showMessage("<VP>Os detetives mataram o assasino <b>"..name.."!</b>")
-				elseif data[name].type == 2 then
-					showMessage("<R>OH NÃO! Os detetives mataram o médico <b>"..name.."!</b>")
-				elseif data[name].type == 3 then
-					showMessage("<J>FOGO AMIGO! Os detetives mataram o detetive <b>"..name.."!</b>")
-				end
-			end
-		end
-	end
-	if contador == 160 then
-		if quant.assasinos == 0 and quant.detetives == 0 then
-			showMessage("<N><b>Todos os assasinos e detetives foram mortos! Temos um empate!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		elseif quant.assasinos == 0 then
-			showMessage("<VP><b>Não há mais assasinos vivos! Os jogadores remanescentes venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		elseif quant.detetives == 0 then
-			showMessage("<R><b>Não há mais detetives vivos! Os assasinos vivos venceram!</b><br><br>Próxima partida começando em 30 segundos.")
-			contador=985
-		else
-			showMessage("<VP>Terminamos esta rodada por aqui. Vamos continuar a brincadeira! hehehehehe")
-			contador=42
-		end
-	end
-	if contador >= 1015 then
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-	end
-end
-function eventPopupAnswer(id,name,message)
-	if id == 101 and contador >= 58 and contador <= 83 then
-		if not checkNickname(message) == true or message == name then
-			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
-			if contador <= 81 then
-				ui.addPopup(101,2,"Quem deseja matar?",name,110,220,580,true)
-			end
-		else
-			if data[message] and data[message].morre == false and tfm.get.room.playerList[message].isDead == false then
-				data[message].morre=true
-				jogadores.vitimas=jogadores.vitimas+1
-				showMessage("Você decidiu matar o jogador "..message..".",name)
-				showDebugText(""..name.." decidiu matar o jogador "..message..".")
-			end			
-		end
-	end
-	if id == 102 and contador >= 83 and contador <= 108 then
-		if not checkNickname(message) == true or message == name then
-			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
-			if contador <= 106 then
-				ui.addPopup(102,2,"Quem deseja salvar dos assasinos?",name,110,220,580,true)
-			end
-		else
-			if data[message] and tfm.get.room.playerList[message].isDead == false then
-				if data[message].morre == true then
-					jogadores.vitimas=jogadores.vitimas-1
-				end
-				data[message].morre=false
-				showMessage("Você decidiu salvar o jogador "..message..".",name)
-				showDebugText(""..name.." decidiu salvar o jogador "..message..".")
-			end
-		end
-	end
-	if id == 103 and contador >= 125 and contador <= 150 then
-		if not checkNickname(message) == true or message == name then
-			showMessage("<R>Escolha inválida. Você tentou matar um jogador que não existe ou que já está morto.",name)
-			if contador <= 148 then
-				ui.addPopup(103,2,"Quem você acha que é o assasino?",name,110,220,580,true)
-			end
-		else
-			if data[message] and data[message].morre == false and tfm.get.room.playerList[message].isDead == false then
-				data[message].morre=true
-				showMessage("Você acha que "..message.." é o assasino.",name)
-				showDebugText(""..name.." acha que o assasino é "..message..".")
-			end
-		end
-	end
-end
-tfm.exec.newGame(mapas[math.random(#mapas)])
-end
-
 initMountain = function()
 for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
@@ -3343,7 +2927,7 @@ for name,_ in next,tfm.get.room.playerList do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.220.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.221<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.")
@@ -3354,9 +2938,6 @@ else
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
-	elseif string.find(tfm.get.room.name,"cd3") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'cd3' on room name.<br>Initialising #cd3 module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initCd3()
 	elseif string.find(tfm.get.room.name,"mountain") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'mountain' on room name.<br>Initialising #mountain module...")
 		initMountain()
