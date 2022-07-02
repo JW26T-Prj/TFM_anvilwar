@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.222.1
+-- Transformice #anvilwar module loader - Version 2.222.2
 -- By Spectra_phantom#6089
 -- Included sub-modules: #mountain, #beach.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.222.1",
+	_VERSION = "2.222.2",
 	_MAINV = "47003.186 LTS",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
@@ -2169,6 +2169,18 @@ function showWater(name)
 	for h=0,4 do
 		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
 	end
+	for k=0,6 do
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(500,7500),math.random(150,700),name)
+	end
+	for l=0,6 do
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(500,7500),math.random(150,700),name)
+	end
+	for m=0,6 do
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(500,7500),math.random(150,700),name)
+	end
+	for n=0,4 do
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(7500,10000),math.random(50,300),name)
+	end
 	ui.setBackgroundColor("#7DB1E0")
 end
 function eventChatCommand(name,message)
@@ -2233,7 +2245,7 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.<br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua",name)
 end
 function eventLoop(p,f)
 	if changed == true then
@@ -2246,7 +2258,7 @@ function eventLoop(p,f)
 				data[name].z=1
 			end
 			tfm.exec.setPlayerGravityScale(name,data[name].z)
-			if p >= 10000 then
+			if p >= 6000 then
 				if tfm.get.room.playerList[name].y <= 400 and tfm.get.room.playerList[name].x <= 800 and not tfm.get.room.playerList[name].isDead then
 					showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
 				end
@@ -2265,7 +2277,7 @@ for name,_ in next,tfm.get.room.playerList do
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.222.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.222.2<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
