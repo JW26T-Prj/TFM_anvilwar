@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.224.1
+-- Transformice #anvilwar module loader - Version 2.224.2
 -- By Spectra_phantom#6089
 -- Included sub-modules: #lake, #beach, #naturalpark.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.224.1",
-	_MAINV = "48005.188",
+	_VERSION = "2.224.2",
+	_MAINV = "48106.189",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 48005.188
-Compilation date : 07/28/2022 23:46 UTC
+Version : RTM 48106.189
+Compilation date : 07/29/2022 00:19 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -210,12 +210,6 @@ function tableSearch(table,element)
 	end
 end
 
-function playAudio(url,name)
-	if data[name] and data[name].sound == true then
-		tfm.exec.playSound(url, 80, nil, nil, name)
-	end
-end
-
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -279,7 +273,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48005.188 - "..text.comp_date.."07/28/2022 23:46 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48106.189 - "..text.comp_date.."07/29/2022 00:19 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -352,7 +346,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48005.188</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48106.189</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -599,7 +593,7 @@ function eventKeyboard(name,code,down,x,y)
 						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
 					end
 				end
-				playAudio("bouboum/x_explosion_3.mp3",nil)
+				tfm.exec.playSound("bouboum/x_explosion_3.mp3", 90)
 			elseif data[name].team == 2 then
 				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
 				if data[name].powerup == 1 then
@@ -609,7 +603,7 @@ function eventKeyboard(name,code,down,x,y)
 						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
 					end
 				end
-				playAudio("bouboum/x_explosion_3.mp3",nil)
+				tfm.exec.playSound("bouboum/x_explosion_3.mp3", 90)
 			end
 			mode="wait3"
 			enabled=false
@@ -622,7 +616,7 @@ function eventKeyboard(name,code,down,x,y)
 					showMessage("<VP><b>"..name.."</b> "..text.p1.."")
 					data[name].powerup=1
 					setScores(name,-8,true)
-					playAudio("/bouboum/x_bonus.mp3",nil)
+					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 49 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -630,7 +624,7 @@ function eventKeyboard(name,code,down,x,y)
 					showMessage("<VP><b>"..name.."</b> "..text.p2.."")
 					data[name].powerup=2
 					setScores(name,-12,true)
-					playAudio("/bouboum/x_bonus.mp3",nil)
+					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 50 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -640,7 +634,7 @@ function eventKeyboard(name,code,down,x,y)
 					data[name].powerup=3
 					mode="wait3"
 					tfm.exec.setGameTime(10)
-					playAudio("/bouboum/x_bonus.mp3",nil)
+					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 51 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -650,7 +644,7 @@ function eventKeyboard(name,code,down,x,y)
 					data[name].powerup=4
 					permafrost=true
 					permaFrost()
-					playAudio("/transformice/son/gel.mp3",nil)
+					tfm.exec.playSound("/bouboum/gel.mp3", 75)
 				elseif code == 52 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -660,7 +654,7 @@ function eventKeyboard(name,code,down,x,y)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
-					playAudio("/transformice/son/dash.mp3",nil)
+					tfm.exec.playSound("/transformice/son/dash.mp3", 85)
 				elseif code == 53 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -672,7 +666,7 @@ function eventKeyboard(name,code,down,x,y)
 					mode="wait3"
 					tfm.exec.setGameTime(10)
 					anvilRain()
-					playAudio("/deadmaze/combat/casse.mp3",nil)
+					tfm.exec.playSound("/deadmaze/combat/casse.mp3", 95)
 				elseif code == 54 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -683,7 +677,7 @@ function eventKeyboard(name,code,down,x,y)
 					tfm.exec.setWorldGravity(0,22)
 					pf_time=-2
 					gravity=false
-					playAudio("/bouboum/x_bonus.mp3",nil)
+					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 55 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -691,7 +685,7 @@ function eventKeyboard(name,code,down,x,y)
 					showMessage("<VP><b>"..name.."</b> "..text.p8.."")
 					setScores(name,-16,true)
 					data[name].powerup=8
-					playAudio("/bouboum/x_bonus.mp3",nil)
+					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 56 then
 					showMessage("<R>"..text.p0.."",name)
 				end
@@ -794,7 +788,7 @@ function eventPlayerDied(name)
 		end
 		data[name].killeds=data[name].killeds+1
 		setScores(name,0,false)
-		playAudio("/bouboum/x_mort.mp3",nil)
+		tfm.exec.playSound("/bouboum/x_mort.mp3", 77)
 	end
 end
 
@@ -913,7 +907,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,90,"#anvilwar Changelog - RTM 48005.188","• New sound effects for #anvilwar!<br>• More bugfixes")
+		showMenu(name,0xa8f233,140,110,520,90,"#anvilwar Changelog - RTM 48106.189","• New sound effects for #anvilwar!<br>• More bugfixes")
 	end
 	if command == "sound" then
 		if data[name] and data[name].sound == true then
@@ -1439,11 +1433,11 @@ function victoryBlue()
 	for _,name in next,players_red do
 		calculatePoints(name)
 		tfm.exec.playEmote(name,2)
-		playAudio("/fortoresse/x_defaite.mp3",name)
+		tfm.exec.playSound("/fortoresse/x_defaite.mp3",63,nil,nil,name)
 	end
 	for _,name in next,players_blue do
 		calculatePoints(name)
-		playAudio("/fortoresse/x_victoire.mp3",name)
+		tfm.exec.playSound("/fortoresse/x_victoire.mp3",78,nil,nil,name)
 	end
 	ui.removeTextArea(750,nil)
 end
@@ -1461,12 +1455,12 @@ function victoryRed()
 	showMessage("<R>"..text.winred.."")
 	for _,name in next,players_red do
 		calculatePoints(name)
-		playAudio("/fortoresse/x_victoire.mp3",name)
+		tfm.exec.playSound("/fortoresse/x_victoire.mp3",78,nil,nil,name)
 	end
 	for _,name in next,players_blue do
 		calculatePoints(name)
 		tfm.exec.playEmote(name,2)
-		playAudio("/fortoresse/x_defaite.mp3",name)
+		tfm.exec.playSound("/fortoresse/x_defaite.mp3",63,nil,nil,name)
 	end
 	ui.removeTextArea(750,nil)
 end
@@ -1501,7 +1495,7 @@ function setShooter()
 	tfm.exec.addShamanObject(0, tfm.get.room.playerList[actual_player].x, tfm.get.room.playerList[actual_player].y-55, 0, 0, 0, false)
 	ui.addTextArea(750,"<i><font size='15'><p align='center'>"..text.as.." <b>"..actual_player.."</b>",nil,10,22,780,22,0x010101,0x010101,1.0,true)
 	showMessage("<VP>"..text.as1..""..data[actual_player].score.."",actual_player)
-	playAudio("/tfmadv/xp.mp3",actual_player)
+	tfm.exec.playSound("/tfmadv/xp.mp3",100,nil,nil,actual_player)
 	enabled=true
 	mode="shoot"
 end
@@ -1609,7 +1603,7 @@ function eventLoop(passed,remain)
 				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm.."",nil,102,97,600,45,0,0,1.0,true)
 				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><i>"..text.rm.."",nil,100,95,600,45,0,0,1.0,true)
 				map_id=math.random(1,rawlen(maps))
-				playAudio("/bouboum/x_pose_bombe.mp3",nil)
+				tfm.exec.playSound("/bouboum/x_pose_bombe.mp3",65)
 			elseif loop == 12 then
 				if def_map > 0 then
 					map_id=def_map
@@ -1619,7 +1613,7 @@ function eventLoop(passed,remain)
 				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..map_names[map_id].." - "..maps[map_id].."",nil,0,95,800,45,0,0,1.0,true)
 				mode="wait1"
 				tfm.exec.setGameTime(10)
-				playAudio("/bouboum/x_bonus_alea.mp3",nil)
+				tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
 			end
 		else
 			current_map=set_map
@@ -1627,7 +1621,7 @@ function eventLoop(passed,remain)
 			ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..set_map.."",nil,0,95,800,45,0,0,1.0,true)
 			mode="wait1"
 			tfm.exec.setGameTime(10)
-			playAudio("/bouboum/x_bonus_alea.mp3",nil)
+			tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
 		end
 		if rawlen(players_red) == 0 or rawlen(players_blue) == 0 then
 			lobby()
@@ -1643,15 +1637,15 @@ function eventLoop(passed,remain)
 			general_time=general_time-0.5
 			if general_time == 60 then
 				showMessage("<ROSE>"..text.t60s.."")
-				playAudio("/tfmadv/parade1.mp3",nil)
+				tfm.exec.playSound("/tfmadv/parade1.mp3",58)
 			end
 			if general_time == 30 then
 				showMessage("<ROSE>"..text.t30s.."")
-				playAudio("/tfmadv/parade1.mp3",nil)
+				tfm.exec.playSound("/tfmadv/parade1.mp3",58)
 			end
 			if mode == "shoot" and general_time == 0.5 then
 				showMessage("<ROSE>"..text.timeup.."")
-				playAudio("/tfmadv/soins7.mp3",nil)
+				tfm.exec.playSound("/tfmadv/soins7.mp3",66)
 			end
 		end
 		if time_passed == 60 and powerups == false then
@@ -2183,7 +2177,7 @@ function eventLoop(p,f)
 end
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.224.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.224.2<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
