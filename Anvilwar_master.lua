@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.226.1
+-- Transformice #anvilwar module loader - Version 2.226.2
 -- By Spectra_phantom#6089
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #fall.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.226.1",
-	_MAINV = "48308.191",
+	_VERSION = "2.226.2",
+	_MAINV = "48409.192",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 48308.191
-Compilation date : 08/23/2022 23:42 UTC
+Version : RTM 48409.192
+Compilation date : 08/24/2022 22:35 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -107,7 +107,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br>/sala #anvilwar00fall<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -271,7 +271,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48308.191 - "..text.comp_date.."08/23/2022 23:42 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,1,380,798,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48409.192 - "..text.comp_date.."08/24/2022 22:35 UTC - "..text.uploaded.."Akwimos#1937</i>",name,1,380,798,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -905,7 +905,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 48308.191","• Adição de mensagem importante<br>• Correções na mensagem de boas-vindas")
+		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 48409.192","• Adição de mensagem")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2708,7 +2708,7 @@ end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.226.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.226.2<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
