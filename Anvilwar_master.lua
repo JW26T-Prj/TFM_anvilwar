@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.227
+-- Transformice #anvilwar module loader - Version 2.227.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #fall.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.227",
+	_VERSION = "2.227.1",
 	_MAINV = "48510.193",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
@@ -2088,7 +2088,7 @@ function eventNewGame()
 	end
 end
 
-if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(40) end
+tfm.exec.setRoomMaxPlayers(40)
 shaman=""; ratos=0; alives=0; cannons=6; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
@@ -2131,6 +2131,18 @@ function showWater(name)
 	end
 	for b=0,1 do
 		tfm.exec.addImage("18200692b61.jpg","?1",-10,545+(b*2992),name,4.5,4)
+	end
+	for w=1,6 do
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
+	for x=1,6 do
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
+	for y=1,6 do
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
+	end
+	for z=1,6 do
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
 	end
 end
 function eventPlayerDied(n)
@@ -2194,7 +2206,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.0","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!")
+		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.1","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!<br>• Adição de novas nuvens no mapa")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2408,7 +2420,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -2727,7 +2739,7 @@ end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.227<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.227.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
