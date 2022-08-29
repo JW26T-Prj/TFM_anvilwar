@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.226.2
+-- Transformice #anvilwar module loader - Version 2.227
 -- By Spectra_phantom#6089
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #fall.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.226.2",
-	_MAINV = "48409.192",
+	_VERSION = "2.227",
+	_MAINV = "48510.193",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 48409.192
-Compilation date : 08/24/2022 22:35 UTC
+Version : RTM 48510.193
+Compilation date : 08/29/2022 18:44 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -45,8 +45,8 @@ admins={"Spectra_phantom#6089",
 "Morganadxana#0000"}
 ninjas={"Viego#0345",
 "Forzaldenon#0000",
-"Aurelianlua#0000",
-"Inthevayron#0000"};
+"Velkozdapic#0000",
+"Akwimos#1937"};
 data={}
 
 lang = {}
@@ -198,7 +198,7 @@ end
 for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","sound"} do
 	system.disableChatCommandDisplay(g)
 end
-tfm.exec.setRoomMaxPlayers(30)
+if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(30) end
 
 function tableSearch(table,element)
 	for i=1,rawlen(table) do
@@ -271,7 +271,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48409.192 - "..text.comp_date.."08/24/2022 22:35 UTC - "..text.uploaded.."Akwimos#1937</i>",name,1,380,798,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48510.193 - "..text.comp_date.."08/29/2022 18:44 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -344,7 +344,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48308.191</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48510.193</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -905,7 +905,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 48409.192","• Adição de mensagem")
+		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 48510.193","• Internal changes<br>• Various bugfixes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2088,7 +2088,7 @@ function eventNewGame()
 	end
 end
 
-tfm.exec.setRoomMaxPlayers(40)
+if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(40) end
 shaman=""; ratos=0; alives=0; cannons=6; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
@@ -2124,11 +2124,14 @@ function verifyAdmin(name)
 	end
 end
 function showWater(name)
-	tfm.exec.addImage("17f74387366.png","!1",-600,513,name,20,2.75,0,1)
-	tfm.exec.addImage("17f74378b9a.png","?1",-600,471,name,1,1,0,1)
-	tfm.exec.addImage("17f7437d864.png","?1",-600,471,name,1,1,0,1)
-	tfm.exec.addImage("17f74378b9a.png","!1",-600,471,name,1,1,0,0.44)
-	tfm.exec.addImage("17f74382569.jpg","?1",-600,513,name,2,1.375,0,1)
+	for i=0,1 do
+		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 545, name, 6, 7.5, 0, 1)
+	end
+	for b=0,1 do
+		tfm.exec.addImage("18200692b61.jpg","?1",-10,545+(b*2992),name,4.5,4)
+	end
 end
 function eventPlayerDied(n)
 	if changed == true then
@@ -2191,7 +2194,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,115,"Changelog da Versão 3.2.0","• O uso de espíritos (sp) volta a ser permitido<br>• Diversas otimizações de código<br>• Correções no contador de jogadores vivos")
+		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.0","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2239,12 +2242,14 @@ function activatePowerup(name,id,number)
 	if id == 1 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CAIXA!</b>")
 		dropPlayer(name)
+		tfm.exec.playSound("/transformice/son/petard.mp3", 75, nil, nil, name)
 	elseif id == 2 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
 		data[name].o=data[name].o+40
 		if data[name].o > 100 then
 			data[name].o=100
 		end
+		tfm.exec.playSound("/deadmaze/objectif2.mp3", 75, nil, nil, name)
 	elseif id == 3 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>VELOCIDADE!</b>")
 		if tfm.get.room.playerList[name].isFacingRight == true then
@@ -2252,18 +2257,22 @@ function activatePowerup(name,id,number)
 		else
 			tfm.exec.movePlayer(name,0,0,true,-120,0,false)
 		end
+		tfm.exec.playSound("/transformice/son/chamane2.mp3", 65, nil, nil, name)
 	elseif id == 4 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>AFUNDAR!</b>")
 		timer=1
+		tfm.exec.playSound("/transformice/son/bulle2.mp3", 75, nil, nil, name)
 	elseif id == 5 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>MEEP!</b>")
 		tfm.exec.giveMeep(name,true)
+		tfm.exec.playSound("/transformice/son/emote.mp3", 75, nil, nil, name)
 	elseif id == 6 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
 		data[name].o=data[name].o-25
 		if data[name].o < 1 then
 			data[name].o=1
 		end
+		tfm.exec.playSound("/cite18/combo2.mp3", 75, nil, nil, name)
 	elseif id == 7 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>CONGELAR!</b>")
 		congelar(name)
@@ -2378,6 +2387,7 @@ end
 function congelar(name)
 	tfm.exec.freezePlayer(name,true)
 	data[name].t=8
+	tfm.exec.playSound("/transformice/son/gel.mp3", 75, nil, nil, name)
 end
 function queijo(name)
 	tfm.exec.giveCheese(name)
@@ -2386,17 +2396,19 @@ end
 function dropPlayer(name)
 	data[name].i=tfm.exec.addShamanObject(61,tfm.get.room.playerList[name].x,tfm.get.room.playerList[name].y+10,0,0,0,false)
 	data[name].t=6
+	tfm.exec.playSound("/transformice/son/tp.mp3", 70, nil, nil, name)
 end
 function reduzir(name)
 	tfm.exec.changePlayerSize(name,0.5)
 	data[name].t=14
+	tfm.exec.playSound("/transformice/son/resu.mp3", 55, nil, nil, name)
 end
 function eventLoop(p,r)
 	if changed == true then
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -2425,6 +2437,7 @@ function eventLoop(p,r)
 				for i=1,4 do
 					genPowerup(i,math.random(1,11),math.random(500,4700),math.random(450,1500))
 				end
+					tfm.exec.playSound("/transformice/son/invoc.mp3", 40, nil, nil, nil)
 				loop=0
 			end
 		end
@@ -2458,6 +2471,8 @@ function eventLoop(p,r)
 					if q.y >= data[shaman].yp - 60 and q.y <= data[shaman].yp + 60 then
 						if not tfm.get.room.playerList[n].isShaman then
 							tfm.exec.killPlayer(n)
+							tfm.exec.playSound("/deadmaze/monstres/m_4/attaque1.mp3", 90, nil, nil, n)
+							tfm.exec.playSound("/deadmaze/monstres/m_4/touche_0.mp3", 90, nil, nil, shaman)
 						end
 					end
 				end
@@ -2489,6 +2504,7 @@ function eventLoop(p,r)
 					end
 				end
 				if data[n].o <= 0 then
+					tfm.exec.playSound("/deadmaze/monstres/mort/mf0.mp3", 80, nil, nil, n)
 					tfm.exec.killPlayer(n)
 					showMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
 					tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
@@ -2497,14 +2513,17 @@ function eventLoop(p,r)
 		end
 		if mode == "game" or mode == "hide" then
 			if data[n].o > 30 then
+				tfm.exec.playSound("/transformice/son/bulle2.mp3", 20, nil, nil, n)
 				ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0xf0f0f0,0x808080,1.0,true)
 				data[n].d=0
 				tfm.exec.setNameColor(n,0xc2c2da)
 			elseif data[n].o > 0 then
+				tfm.exec.playSound("/transformice/son/bulle3.mp3", 30, nil, nil, n)
 				ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0x801500,0xa01000,1.0,true)
 				data[n].d=data[n].d+1
 				tfm.exec.setNameColor(n,0xff4500)
 				if data[n].d == 1 and data[n].o > 0 and tfm.get.room.playerList[n].y >= 598 then
+					tfm.exec.playSound("/deadmaze/monstres/mort/mh0.mp3", 25+(30-math.floor(data[n].o)), nil, nil, n)
 					showMessage("<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",n)
 				end
 				if data[n].d > 7 then
@@ -2591,7 +2610,7 @@ function eventTextAreaCallback(id,name,callback)
 		eventChatCommand(name,"changelog")
 	end
 end
-tfm.exec.newGame("@7913164")
+tfm.exec.newGame("@7914623")
 end
 
 initFall = function()
@@ -2602,7 +2621,7 @@ initFall = function()
 for _,f in next,{"AutoNewGame","AutoShaman","AfkDeath","AutoScore","PhysicalConsumables","MortCommand","DebugCommand","MinimalistMode"} do
 	tfm.exec["disable"..f](true)
 end
-tfm.exec.setRoomMaxPlayers(25)
+if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(25) end
 xml2='';creator="";position=0;objective=50;enabled=false;map="";
 mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
 system.disableChatCommandDisplay("obj")
@@ -2617,7 +2636,7 @@ function showMessage(message,name)
 end
 function eventChatCommand(name,message)
 	if(message:sub(1,3) == "obj") then
-		if name == "Jhinsword350#0000" or name == "Vaicntaefeto#0000" or name == "Spectra_phantom#6089" then
+		if name == "Zed#9431" or name == "Yone#5530" or name == "Akwimos#1937" then
 			objective=tonumber(message:sub(5))
 			showMessage("<J>Objective changed to: "..objective,name)
 		end
@@ -2636,8 +2655,8 @@ function eventNewGame()
 			ui.removeTextArea(0,nil)
 		end
 	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='47'>Fall Racing 2.5",nil,40,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing 2.5! <N>Script made by <R><b>Zed#9431</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.2",nil,40,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.2! <N>Script made by <R><b>Zed#9431</b>.<")
 		tfm.exec.setGameTime(60)
 	end
 end
@@ -2645,7 +2664,7 @@ function eventLoop(p,f)
 	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
 		tfm.exec.newGame(xml2)
 		changed=true
-		ui.setMapName("<J>#fall 2.5   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
+		ui.setMapName("<J>#fall v2.5.2   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
 	end
 	if f <= 1 and enabled == true then
 		changed=false
@@ -2700,15 +2719,15 @@ function eventPlayerDied(name)
 end
 function eventNewPlayer(name)
 	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='47'>Fall Racing 2.5",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing 2.5! <N>Script made by <R><b>Zed#9431</b>.<")
+		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.2",nil,330,42,400,100,0,0,1.0,true)
+		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.2! <N>Script made by <R><b>Zed#9431</b>.<")
 	end
 	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.6GB of RAM to work without problems.<J><br><br>Script made by Zed#9431",name)
 end
 tfm.exec.newGame(lobby)
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.226.2<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.227<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
