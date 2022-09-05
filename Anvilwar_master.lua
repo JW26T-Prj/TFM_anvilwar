@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.227.1
+-- Transformice #anvilwar module loader - Version 2.228
 -- By Spectra_phantom#6089
--- Included sub-modules: #beach, #naturalpark, #watercatch, #fall.
+-- Included sub-modules: #beach, #naturalpark, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.227.1",
-	_MAINV = "48510.193",
+	_VERSION = "2.228",
+	_MAINV = "48611.194",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,12 +13,12 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089, Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 48510.193
-Compilation date : 08/29/2022 18:44 UTC
+Version : RTM 48611.194
+Compilation date : 09/05/2022 21:36 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
-Number of module special members : 11 ]]--
+Number of module special members : 10 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
@@ -45,7 +45,6 @@ admins={"Spectra_phantom#6089",
 "Morganadxana#0000"}
 ninjas={"Viego#0345",
 "Forzaldenon#0000",
-"Velkozdapic#0000",
 "Akwimos#1937"};
 data={}
 
@@ -107,7 +106,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br>/sala #anvilwar00fall<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
+	legacy = "<J><b>Confiram os submódulos do #anvilwar!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br><br><J>Atenção: Daqui a algumas semanas, o criador Spectra_phantom#6089 deixará o Transformice, e o comando total do module será transferido para Morganadxana#0000.<br><br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -271,7 +270,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48510.193 - "..text.comp_date.."08/29/2022 18:44 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 48611.194 - "..text.comp_date.."09/05/2022 21:36 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,1,380,798,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -344,7 +343,7 @@ end
 
 function updateTextBar()
 	if mode == "lobby" or mode == "map_sort" or mode == "wait1" then
-		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48510.193</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar 2022 Edition</b>   <G>|   <VP>"..text.version.." <b>RTM 48611.194</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	elseif mode == "shoot" or mode == "wait2" or mode == "wait3" then
 		local m=math.floor(general_time/60)
 		local s=math.floor(general_time-(m*60))
@@ -905,7 +904,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,110,"#anvilwar Changelog - RTM 48510.193","• Internal changes<br>• Various bugfixes")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 48611.194","• More internal changes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2073,7 +2072,7 @@ admin={""} -- Insira o nome dos FunCorps aqui!
 for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","AutoTimeLeft","DebugCommand","AllShamanSkills","PhysicalConsumables"} do
 	tfm.exec["disable"..f](true)
 end
-for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","reset"} do
+for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","reset","skins"} do
 	system.disableChatCommandDisplay(f)
 end
 
@@ -2088,8 +2087,7 @@ function eventNewGame()
 	end
 end
 
-tfm.exec.setRoomMaxPlayers(40)
-shaman=""; ratos=0; alives=0; cannons=6; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
+shaman=""; ratos=0; alives=0; cannons=8; z=0; data={}; mode="wait"; loop=0; timer=0; xml=''; time_passed=0; time_remain=0; changed=false; xml2='';
 powerups={x1=-1,x2=-1,x3=-1,x4=-1,y1=-1,y2=-1,y3=-1,y4=-1,t1=0,t2=0,t3=0,t4=0}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -2116,6 +2114,63 @@ function defineShaman()
 		end
 	end
 end
+function showAvailableSharks(name)
+	i=0
+	for _,link in next,{"18309d64e58.png","18309d6029f.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",163,170+(i*50),name,0.5,0.5,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	i=0
+	for _,link in next,{"18309d69a5a.png","18309d7325a.png","18309d6e65a.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",383,110+(i*50),name,0.5,0.5,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	ui.addTextArea(1006,"<i><font size='11.5'><b>Rato Normal</b><br><br><a href='event:a0'>Usar!</a><br><br><b>Tubarão Padrão 2</b><br><br><a href='event:a2'>Usar!</a><br><br><b>Tubarão-Branco</b><br><br><a href='event:a4'>Usar!</a>",name,248,157,175,215,0,0,1.0,true)
+	ui.addTextArea(1007,"<i><font size='11.5'><b>Tubarão Normal 1</b><br><br><a href='event:a1'>Usar!</a><br><br><b>Tubarão Normal 3</b><br><br><a href='event:a3'>Usar!</a><br><br><b>Tubarão-Martelo</b><br><br><a href='event:a5'>Usar!</a>",name,478,157,175,215,0,0,1.0,true)
+end
+function removeImagePlayers(name)
+	if rawlen(data[name].active_imgs) > 0 then
+		for _,id in next,data[name].active_imgs do
+			tfm.exec.removeImage(id)
+		end
+		data[name].active_imgs={}
+	end
+end
+function displayShark(name,type,reverse)
+	if type == 1 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d69a5a.png","$"..name.."",85,-42,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d69a5a.png","$"..name.."",-90,-42,nil,1,1)
+		end
+	elseif type == 2 then
+		if reverse == true then
+			data[name].shark_id=tfm.exec.addImage("18309d64e58.png","$"..name.."",85,-31,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d64e58.png","$"..name.."",-90,-31,nil,1,1)
+		end
+	elseif type == 3 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d7325a.png","$"..name.."",78,-50,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d7325a.png","$"..name.."",-80,-50,nil,1,1)
+		end
+	elseif type == 4 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d6029f.png","$"..name.."",70,-29,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d6029f.png","$"..name.."",-50,-29,nil,1,1)
+		end
+	elseif type == 5 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",85,-55,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",-90,-55,nil,1,1)
+		end
+	end
+end
 function verifyAdmin(name)
 	for i=1,rawlen(admin) do
 		if admin[i] == name then
@@ -2125,12 +2180,12 @@ function verifyAdmin(name)
 end
 function showWater(name)
 	for i=0,1 do
-		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.7)
-		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 545, name, 6, 7.5, 0, 1)
+		tfm.exec.addImage("181f9cf5fc5.png", "?1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 1.0)
+		tfm.exec.addImage("181f9cf5fc5.png", "!1", -800+(i*7180), 487, name, 1.0, 1.0, 0, 0.7)
+		tfm.exec.addImage("181f9cfac65.png", "!1", -800+(i*7180), 545, name, 10, 16, 0, 1.0)
 	end
 	for b=0,1 do
-		tfm.exec.addImage("18200692b61.jpg","?1",-10,545+(b*2992),name,4.5,4)
+		tfm.exec.addImage("181f9cff961.jpg","?1",-10,545+(b*3440),name,4.5,4)
 	end
 	for w=1,6 do
 		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5000),math.random(-100,200),name,0.75,0.75)
@@ -2166,6 +2221,8 @@ function eventPlayerDied(n)
 		if alives <= 0 then
 			if mode == "game" then
 				mode="end"
+				tfm.exec.removeImage(data[shaman].shark_id)
+				tfm.exec.changePlayerSize(shaman,1)
 				shaman=""
 				tfm.exec.setGameTime(15)
 				showMessage("<VP><b>O shaman matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.")
@@ -2181,32 +2238,36 @@ function eventNewPlayer(name)
 	if changed == true then
 		tfm.exec.setPlayerScore(name,1,false)
 		ui.setBackgroundColor("#5FA9D4")
-		showWater(name)
 		newData={
-	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5;
+	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["moved"]=0; ["imaget"]=5; ["intoWater"]=false; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
 		data[name] = newData;
 		ratos=ratos+1;
-		showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
-		data[name].imageid2 = tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
-		data[name].imageid3 = tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
-		data[name].imageid4 = tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
+		showMessage("<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module criado por Morganadxana#0000 e Akwimos#1937.<br><br><BL>Atenção: Conexões lentas com a Internet podem fazer com que as artes da água demorem para carregar.<br><br>Caso o mapa não carregue, saia do jogo e entre novamente.",name)
 		data[name].imaget=5
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
 	end
+	showWater(name)
+	tfm.exec.addImage("17a53e1f94c.png",":1",0,350,name)
+	tfm.exec.addImage("17ae4e47000.png","&1",2,22,name)
+	tfm.exec.addImage("17ae4e48770.png","&1",670,22,name)
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo lago e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>6</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo oceano e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>8</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do lago.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do oceano.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
 	end
+	if message == "skins" then
+		showMenu(name,0x949494,140,90,520,220,"Skins","As skins de tubarão serão exibidas apenas quando você for shaman, e estiver dentro do oceano!")
+		showAvailableSharks(name)
+	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,125,"Changelog da Versão 3.3.1","• Diversas mudanças no mapa<br>• Adição de novas decorações<br>• Mudanças nos spawn points<br>• Adição de sons!<br>• Adição de novas nuvens no mapa")
+		showMenu(name,0xf0f0f0,140,90,520,160,"Changelog da Versão 3.5.1","• Adição de skins de tubarão para shamans!<br>• Mais alterações na água<br>• Remoção do gelo para os ratos mortos afogados<br>• Correções no contador de ratos vivos<br>• Mudanças no cálculo do tempo das partida<br>• Mais algumas correções de bugs<br>• Pequenas mudanças no mapa")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2236,6 +2297,7 @@ function eventSummoningEnd(name,id,x,y)
 			showMessage("<VP>O shaman agora pode usar <b>"..cannons.."</b> objetos.")
 		elseif cannons == 0 then
 			showMessage("<VP>O shaman não pode mais usar objetos!")
+			showMessage("<R>Você não pode mais invocar objetos! Fazer isso ocasionará na sua morte e na perda de sua vez de shaman.",shaman)
 		else
 			showMessage("<R>O shaman excedeu o limite de objetos utilizáveis!")
 			tfm.exec.killPlayer(shaman)
@@ -2336,14 +2398,39 @@ function eventKeyboard(name,key,down)
 		if data[name].moved == 0 then
 			data[name].moved=1
 		end
+		if shaman == name and data[name].shark >= 1 then
+			if data[name].intoWater == true then
+				tfm.exec.changePlayerSize(name,0.2)
+				if key == 39 or key == 68 then
+					tfm.exec.removeImage(data[name].shark_id)
+					displayShark(name,data[name].shark,false)
+				elseif key == 37 or key == 65 then
+					tfm.exec.removeImage(data[name].shark_id)
+					displayShark(name,data[name].shark,true)
+				end
+				if key == 38 or key == 40 or key == 83 or key == 87 then
+					if tfm.get.room.playerList[name].isFacingRight then
+						tfm.exec.removeImage(data[name].shark_id)
+						displayShark(name,data[name].shark,false)
+					else
+						tfm.exec.removeImage(data[name].shark_id)
+						displayShark(name,data[name].shark,true)
+					end
+				end
+			else
+				tfm.exec.changePlayerSize(name,1)
+				tfm.exec.removeImage(data[name].shark_id)
+			end
+		end
 	end
 end
 function reset()
-	if ratos >= 4 then
+	if ratos >= 2 then
 		mode="hide"; shaman=""; alives=0;
 		for n,p in next,tfm.get.room.playerList do
 			tfm.exec.respawnPlayer(n)
 			tfm.exec.setShaman(n,false)
+			tfm.exec.removeImage(data[n].shark_id)
 			for i=32,40 do
 				tfm.exec.bindKeyboard(n,i,true,true)
 			end
@@ -2362,12 +2449,12 @@ function reset()
 		end
 		defineShaman()
 		ui.setBackgroundColor("#5FA9D4")
-		z=-1; cannons=6; mode="hide";
+		z=-1; cannons=8; mode="hide";
 		ui.removeTextArea(22,nil)
 		tfm.exec.setGameTime(60)
 	else
 		mode="wait"
-		showMessage("<R>São necessários pelo menos 4 ratos para jogar este module.")
+		showMessage("<R>São necessários pelo menos 2 ratos para jogar este module.")
 		tfm.exec.setGameTime(20)
 	end
 end
@@ -2420,7 +2507,7 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.3.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.5.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -2455,7 +2542,7 @@ function eventLoop(p,r)
 		end
 	end
 	if mode == "game" or mode == "hide" then
-		local lives=alives-1
+		local lives=alives
 		ui.addTextArea(31,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..lives.."</b>",n,135,22,70,54,0,0,1.0,true)
 		ui.addTextArea(30,"<font size='45'><font color='#d0d0d0'><font face='Trebuchet MS'><b><i>"..lives.."</b>",n,132,19,70,54,0,0,1.0,true)
 		if timer > 0 then
@@ -2484,7 +2571,7 @@ function eventLoop(p,r)
 						if not tfm.get.room.playerList[n].isShaman then
 							tfm.exec.killPlayer(n)
 							tfm.exec.playSound("/deadmaze/monstres/m_4/attaque1.mp3", 90, nil, nil, n)
-							tfm.exec.playSound("/deadmaze/monstres/m_4/touche_0.mp3", 90, nil, nil, shaman)
+							tfm.exec.playSound("/deadmaze/monstres/m_4/touche_0.mp3", 60, nil, nil, shaman)
 						end
 					end
 				end
@@ -2501,17 +2588,34 @@ function eventLoop(p,r)
 			if not tfm.get.room.playerList[n].isDead then
 				if mode == "game" or mode == "hide" then
 					if tfm.get.room.playerList[n].y < 500 then
+						data[n].intoWater=false
 						if data[n].o < 99 then
 							data[n].o=data[n].o+1
 						end
 						data[n].y=0
 					else
-						if tfm.get.room.playerList[n].y <= 1200 then
-							data[n].o=data[n].o-0.3; data[n].c=0;
-						elseif tfm.get.room.playerList[n].y > 1200 and tfm.get.room.playerList[n].y <= 3500 then
-							data[n].o=data[n].o-0.4; data[n].c=0;
-						elseif tfm.get.room.playerList[n].y > 3500 then
-							data[n].o=data[n].o-0.8; data[n].c=0;
+						data[n].intoWater=true
+						tfm.exec.playSound("/transformice/son/bulle2.mp3", 5, nil, nil, n)
+						if shaman == n then
+							if tfm.get.room.playerList[n].y <= 1700 then
+								data[n].o=data[n].o-0.2; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 1700 and tfm.get.room.playerList[n].y <= 2500 then
+								data[n].o=data[n].o-0.4; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 2500 and tfm.get.room.playerList[n].y <= 3660 then
+								data[n].o=data[n].o-0.6; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 3700 then
+								data[n].o=data[n].o-0.8; data[n].c=0;
+							end
+						else
+							if tfm.get.room.playerList[n].y <= 1700 then
+								data[n].o=data[n].o-0.3; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 1700 and tfm.get.room.playerList[n].y <= 2500 then
+								data[n].o=data[n].o-0.6; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 2500 and tfm.get.room.playerList[n].y <= 3660 then
+								data[n].o=data[n].o-0.9; data[n].c=0;
+							elseif tfm.get.room.playerList[n].y > 3660 then
+								data[n].o=data[n].o-1.2; data[n].c=0;
+							end
 						end
 					end
 				end
@@ -2519,13 +2623,11 @@ function eventLoop(p,r)
 					tfm.exec.playSound("/deadmaze/monstres/mort/mf0.mp3", 80, nil, nil, n)
 					tfm.exec.killPlayer(n)
 					showMessage("<R>O jogador <b>"..n.."</b> morreu afogado!")
-					tfm.exec.addShamanObject(54, tfm.get.room.playerList[n].x, tfm.get.room.playerList[n].y, 0, 0.1, 0.1, false)
 				end
 			end
 		end
 		if mode == "game" or mode == "hide" then
 			if data[n].o > 30 then
-				tfm.exec.playSound("/transformice/son/bulle2.mp3", 20, nil, nil, n)
 				ui.addTextArea(10,"",n,8,390,(data[n].o*7.9),3,0xf0f0f0,0x808080,1.0,true)
 				data[n].d=0
 				tfm.exec.setNameColor(n,0xc2c2da)
@@ -2549,7 +2651,7 @@ function eventLoop(p,r)
 	end
 	if r <= 2000 and mode == "hide" then
 		mode="game"
-		tfm.exec.setGameTime(240+math.ceil(alives*2.4))
+		tfm.exec.setGameTime(180+math.ceil(alives*2.6))
 		ui.removeTextArea(22,nil)
 		showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <BL>?<N> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.")
 		for n,p in next,tfm.get.room.playerList do
@@ -2574,7 +2676,7 @@ function eventLoop(p,r)
 	end
 	if p >= 5000 and p <= 6125 then
 		for n,p in next,tfm.get.room.playerList do
-			if data[n] and data[n].yp == 334 then
+			if data[n] and tfm.get.room.playerList[n].y == 334 then
 				showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
 			end
 		end
@@ -2597,17 +2699,18 @@ end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a>",name,355,85,90,60,0x000001,0x000001,0.80,true)
+		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a><br><a href='event:skins'>Skins</a>",name,355,85,90,75,0x000001,0x000001,0.80,true)
 	end
 	if callback == "hide_menu" then
 		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
 		ui.removeTextArea(298,name)
 	end
 	if callback == "close" then
-		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
+		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007} do
 			ui.removeTextArea(i,name)
 		end
 		data[name].opened=false
+		removeImagePlayers(name)
 	end
 	if callback == "help" then
 		eventChatCommand(name,"help")
@@ -2621,125 +2724,39 @@ function eventTextAreaCallback(id,name,callback)
 	if callback == "change" then
 		eventChatCommand(name,"changelog")
 	end
+	if callback == "skins" then
+		eventChatCommand(name,"skins")
+	end
+	if callback == "a0" then
+		data[name].shark=0
+		tfm.exec.removeImage(data[name].shark_id)
+		showMessage("<N>Você desativou as skins de tubarão.",name)
+	end
+	if callback == "a1" then
+		data[name].shark=1
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão Normal 1.</b>",name)
+	end
+	if callback == "a2" then
+		data[name].shark=2
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão Normal 2.</b>",name)
+	end
+	if callback == "a3" then
+		data[name].shark=3
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão Normal 3.</b>",name)
+	end
+	if callback == "a4" then
+		data[name].shark=4
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Branco.</b>",name)
+	end
+	if callback == "a5" then
+		data[name].shark=5
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Martelo.</b>",name)
+	end
 end
 tfm.exec.newGame("@7914623")
 end
 
-initFall = function()
--- Script Fall Racing, antes chamado de Queda Livre de Velocidade.
--- Originalmente feito por Haxhhhhhhhhh, antes gerenciado por Vaicntaefeto#0000 e Azirdeathray#0000, e atualmente no controle de Zed#9431.
--- Atenção: Script com alta exigência de memória.
-
-for _,f in next,{"AutoNewGame","AutoShaman","AfkDeath","AutoScore","PhysicalConsumables","MortCommand","DebugCommand","MinimalistMode"} do
-	tfm.exec["disable"..f](true)
-end
-if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(25) end
-xml2='';creator="";position=0;objective=50;enabled=false;map="";
-mapas={"@7411648","@7568910","@7410842","@7568917","@7568919","@7568922","@7568923","@7568928","@7568964","@7568967","@7568965","@7354962","@7569413","@7721624","@6621726","@6316396"}
-system.disableChatCommandDisplay("obj")
-lobby="@7405103"
-changed=false
-function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
-	if tfm.get.room.isTribeHouse == false then
-		tfm.exec.chatMessage(message,name)
-	end
-end
-function eventChatCommand(name,message)
-	if(message:sub(1,3) == "obj") then
-		if name == "Zed#9431" or name == "Yone#5530" or name == "Akwimos#1937" then
-			objective=tonumber(message:sub(5))
-			showMessage("<J>Objective changed to: "..objective,name)
-		end
-	end
-end
-function eventNewGame()
-	if enabled == true then
-		position=0
-		if changed == false and enabled == true then
-			xml2=tfm.get.room.xmlMapInfo.xml
-			creator=tfm.get.room.xmlMapInfo.author
-			map=tfm.get.room.currentMap
-			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Loading map. Please wait...<")
-		else
-			ui.removeTextArea(0,nil)
-		end
-	else
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#ff8000'><font size='39'>Fall Racing v2.5.2",nil,40,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.2! <N>Script made by <R><b>Zed#9431</b>.<")
-		tfm.exec.setGameTime(60)
-	end
-end
-function eventLoop(p,f)
-	if p >= 5000 and p <= 6000 and changed == false and enabled == true then
-		tfm.exec.newGame(xml2)
-		changed=true
-		ui.setMapName("<J>#fall v2.5.2   <BL>|   <J>"..creator.." <BL>- "..map.."   <BL>|   <J>Objective : <J>"..objective.." points<")
-	end
-	if f <= 1 and enabled == true then
-		changed=false
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-	end
-	if enabled == false and f >= 1000 then
-		ui.addTextArea(11,"<font face='Eras Demi ITC'><font size='18'><font color='#ffff00'>Get ready! The match will start on "..math.floor(f/1000).." seconds.",nil,220,375,600,32,0,0,1.0,true)
-	end
-	if f <= 10000 and f >= 9000 and enabled == false then
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.setPlayerScore(name,0,false)
-			changed=false
-		end
-	end
-	if f <= 1 and enabled == false then
-		for i=10,11 do
-			ui.removeTextArea(i,nil)
-		end
-		enabled=true
-		tfm.exec.newGame(mapas[math.random(#mapas)])
-		for name,player in pairs(tfm.get.room.playerList) do
-			tfm.exec.setPlayerScore(name,0,false)
-		end
-	end
-	for name,player in pairs(tfm.get.room.playerList) do
-		if tfm.get.room.playerList[name].score >= objective and enabled == true then
-			enabled=false
-			tfm.exec.newGame(lobby)
-			showMessage("<VP><b>Congratulations!</b> "..name.." wins the game with "..tfm.get.room.playerList[name].score.." points!")
-		end
-	end
-end
-function eventPlayerWon(name)
-	position=position+1
-	if position == 1 then
-		tfm.exec.setGameTime(20)
-	end
-	if position <= 8 then
-		tfm.exec.setPlayerScore(name,10-position,true)
-		showMessage("+ "..tostring(10-position).." points",name)
-	else
-		tfm.exec.setPlayerScore(name,1,true)
-		showMessage("+ 1 points",name)
-	end
-end
-function eventPlayerDied(name)
-	if tfm.get.room.playerList[name].x > 2400 then
-		tfm.exec.respawnPlayer(name)
-		tfm.exec.giveCheese(name)
-		tfm.exec.playerVictory(name)
-	end
-end
-function eventNewPlayer(name)
-	if enabled == false then
-		ui.addTextArea(10,"<font face='Eras Demi ITC'><font color='#00ffff'><font size='39'>Fall Racing v2.5.2",nil,330,42,400,100,0,0,1.0,true)
-		ui.setMapName("<N>Welcome to <J>Fall Racing v2.5.2! <N>Script made by <R><b>Zed#9431</b>.<")
-	end
-	showMessage("<J>Welcome to the #fall2 module!<br><br>The objective of this room is fall to the end of the map!<br>The player that score more points will win the game!<br><br><R>WARNING: This script require at least 1.6GB of RAM to work without problems.<J><br><br>Script made by Zed#9431",name)
-end
-tfm.exec.newGame(lobby)
-end
-
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.227.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.228<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
@@ -2756,9 +2773,6 @@ else
 	elseif string.find(tfm.get.room.name,"naturalpark") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'naturalpark' on room name.<br>Initialising #naturalpark module...")
 		initNP()
-	elseif string.find(tfm.get.room.name,"fall") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'fall' on room name.<br>Initialising #fall module...<br><R><b>WARNING: This module isn't made by #anvilwar developers. Bugs and issues needs to be reported to respective owners.</b>")
-		initFall()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
