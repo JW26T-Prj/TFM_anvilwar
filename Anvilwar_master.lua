@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.228.2
+-- Transformice #anvilwar module loader - Version 2.228.3
 -- By Spectra_phantom#6089
 -- Included sub-modules: #beach, #naturalpark, #watercatch.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.228.2",
+	_VERSION = "2.228.3",
 	_MAINV = "48611.194",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
@@ -2105,7 +2105,7 @@ function getAlivePlayers()
 		if shaman == name then
 			alives=alives-1
 		end
-		if data[name].dead == true then
+		if data[name] and data[name].dead == true then
 			alives=alives-1
 		end
 	end
@@ -2272,7 +2272,7 @@ function eventChatCommand(name,message)
 		showMenu(name,0xf0f0f0,140,90,520,265,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do profundo oceano e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <ROSE>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups. Vale ressaltar que eles funcionam apenas depois que o shaman for liberado.<br><br><N>Caso você seja shaman, você tem um limite de <b>8</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
-		showMenu(name,0xf0f0f0,140,76,520,315,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do oceano.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.<br><ROSE><b>• REDUZIR</b><N><br>Reduz temporariamente o tamanho do seu rato.")
+		showMenu(name,0xf0f0f0,140,86,520,290,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• CAIXA</b><N><br>Faz aparecer uma caixa de acompanhamento em cima de você.<br><ROSE><b>• OXIGÊNIO</b><N><br>Aumenta o seu nível de oxigênio em 40%.<br><ROSE><b>• VELOCIDADE</b><N><br>Te dá um grande impulso de velocidade.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma anomalia temporária que leva todos os ratos em direção ao fundo do oceano.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio em 25%. Caso seu nível esteja abaixo disso e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do oceano, você provavelmente será levado para o fundo dele.")
 	end
 	if message == "creditos" then
 		showMenu(name,0xf0f0f0,140,90,520,130,"Créditos","As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código<br><ROSE><b>• Akwimos#1937</b><N> - Tradução do código original para o Português<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação do mapa e das artes")
@@ -2282,7 +2282,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,130,"Changelog da Versão 3.6.0","• Remoção da mensagem de falta de memória<br>• Jogadores convidados (souris) não podem mais participar<br>• Correções de vários bugs<br>• Mais alterações no consumo de oxigênio<br>• O uso do item de gelo agora é proibido")
+		showMenu(name,0xf0f0f0,140,90,520,110,"Changelog da Versão 3.6.2","• Pequenas correções de bugs<br>• Ajustes no medidor de profundidade<br>• Remoção do powerup REDUZIR<br>• Mudanças nas cores dos quadrados de powerups")
 	end
 	if (message:sub(0,2) == "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2335,7 +2335,7 @@ function activatePowerup(name,id,number)
 	elseif id == 2 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>OXIGÊNIO!</b>")
 		data[name].o=data[name].o+40
-		if data[name].o > 100 then
+		if data[name] and data[name].o > 100 then
 			data[name].o=100
 		end
 		tfm.exec.playSound("/deadmaze/objectif2.mp3", 75, nil, nil, name)
@@ -2358,7 +2358,7 @@ function activatePowerup(name,id,number)
 	elseif id == 6 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>SUFOCO!</b>")
 		data[name].o=data[name].o-25
-		if data[name].o < 1 then
+		if data[name] and data[name].o < 1 then
 			data[name].o=1
 		end
 		tfm.exec.playSound("/cite18/combo2.mp3", 75, nil, nil, name)
@@ -2368,9 +2368,6 @@ function activatePowerup(name,id,number)
 	elseif id == 8 then
 		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>QUEIJO!</b>")
 		queijo(name)
-	elseif id == 9 then
-		showMessage("<N>"..name.." <J>ativou o powerup <ROSE><b>REDUZIR!</b>")
-		reduzir(name)
 	end
 	if number == 1 then
 		powerups.x1=-1; powerups.y1=-1;
@@ -2390,31 +2387,31 @@ function eventKeyboard(name,key,down)
 	if key == 32 and mode == "game" then
 		if tfm.get.room.playerList[name].x > powerups.x1-10 and tfm.get.room.playerList[name].x < powerups.x1+34 then
 			if tfm.get.room.playerList[name].y > powerups.y1-10 and tfm.get.room.playerList[name].y < powerups.y1+34 then
-				activatePowerup(name,math.random(1,9),1)
+				activatePowerup(name,math.random(1,8),1)
 			end
 		end
 		if tfm.get.room.playerList[name].x > powerups.x2-10 and tfm.get.room.playerList[name].x < powerups.x2+34 then
 			if tfm.get.room.playerList[name].y > powerups.y2-10 and tfm.get.room.playerList[name].y < powerups.y2+34 then
-				activatePowerup(name,math.random(1,9),2)
+				activatePowerup(name,math.random(1,8),2)
 			end
 		end
 		if tfm.get.room.playerList[name].x > powerups.x3-10 and tfm.get.room.playerList[name].x < powerups.x3+34 then
 			if tfm.get.room.playerList[name].y > powerups.y3-10 and tfm.get.room.playerList[name].y < powerups.y3+34 then
-				activatePowerup(name,math.random(1,9),3)
+				activatePowerup(name,math.random(1,8),3)
 			end
 		end
 		if tfm.get.room.playerList[name].x > powerups.x4-10 and tfm.get.room.playerList[name].x < powerups.x4+34 then
 			if tfm.get.room.playerList[name].y > powerups.y4-10 and tfm.get.room.playerList[name].y < powerups.y4+34 then
-				activatePowerup(name,math.random(1,9),4)
+				activatePowerup(name,math.random(1,8),4)
 			end
 		end
 	end
 	if key == 37 or key == 38 or key == 39 or key == 40 or key == 65 or key == 68 or key == 83 or key == 87 then
-		if data[name].moved == 0 then
+		if data[name] and data[name].moved == 0 then
 			data[name].moved=1
 		end
 		if shaman == name and data[name].shark >= 1 then
-			if data[name].intoWater == true then
+			if data[name] and data[name].intoWater == true then
 				tfm.exec.changePlayerSize(name,0.2)
 				if key == 39 or key == 68 then
 					tfm.exec.removeImage(data[name].shark_id)
@@ -2486,7 +2483,7 @@ function reset()
 	end
 end
 function showMenu(name,color,x,y,width,height,title,content)
-	if data[name].opened == false then
+	if data[name] and data[name].opened == false then
 		data[name].opened=true
 		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
 		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
@@ -2497,16 +2494,16 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 function genPowerup(pos,type,x,y)
 	if pos == 1 then
-		ui.addTextArea(100,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		ui.addTextArea(100,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
 		powerups.x1=x; powerups.y1=y; powerups.t1=type;
 	elseif pos == 2 then
-		ui.addTextArea(101,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		ui.addTextArea(101,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
 		powerups.x2=x; powerups.y2=y; powerups.t2=type;
 	elseif pos == 3 then
-		ui.addTextArea(102,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		ui.addTextArea(102,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
 		powerups.x3=x; powerups.y3=y; powerups.t3=type;
 	elseif pos == 4 then
-		ui.addTextArea(103,"<font size='18'><p align='center'>?",nil,x,y,22,22,0x161636,0x121224,1.0,false)
+		ui.addTextArea(103,"<font size='18'><font color='#010101'><p align='center'>?",nil,x,y,22,22,0xd0d0d0,0x808080,1.0,false)
 		powerups.x4=x; powerups.y4=y; powerups.t4=type;
 	end
 end
@@ -2524,17 +2521,12 @@ function dropPlayer(name)
 	data[name].t=6
 	tfm.exec.playSound("/transformice/son/tp.mp3", 70, nil, nil, name)
 end
-function reduzir(name)
-	tfm.exec.changePlayerSize(name,0.5)
-	data[name].t=14
-	tfm.exec.playSound("/transformice/son/resu.mp3", 55, nil, nil, name)
-end
 function eventLoop(p,r)
 	if changed == true then
 	loop=loop+0.5
 	time_passed=math.ceil(p/1000)
 	time_remain=math.ceil(r/1000)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.6.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <J><b>v3.6.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b> <N>e <BL><b>Akwimos#1937</b><")
 	local m=math.floor(r/60000)
 	local s=math.floor((((m*60000)-r) * -1) / 1000)
 	ui.addTextArea(-1,"<font size='45'><font color='#222222'><font face='Trebuchet MS'><b><i>"..m..":"..s.."</b>",n,569,22,110,54,0,0,1.0,true)
@@ -2596,7 +2588,7 @@ function eventLoop(p,r)
 		if tfm.get.room.playerList[n].y <= 495 then
 			ui.addTextArea(295,"<p align='center'><font size='13'>Profundidade: 0m",n,310,57,180,21,0x000001,0x000001,0.75,true)
 		else
-			ui.addTextArea(295,"<p align='center'><font size='13'>Profundidade: "..math.floor(math.pow(tfm.get.room.playerList[n].y-495,1.6875)/2500).."m",n,310,57,180,21,0x000001,0x000001,0.75,true)
+			ui.addTextArea(295,"<p align='center'><font size='13'>Profundidade: "..math.floor(math.pow(tfm.get.room.playerList[n].y-495,1.6)/2500).."m",n,310,57,180,21,0x000001,0x000001,0.75,true)
 		end
 		if data[n] then
 			data[n].x=tfm.get.room.playerList[n].x
@@ -2784,7 +2776,7 @@ end
 tfm.exec.newGame("@7914623")
 end
 
-tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.228.2<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<VP><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.228.3<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
