@@ -1,13 +1,11 @@
--- The game ownership is now with Morganadxana#0000. I will leave Transformice in a few days.
-
--- Transformice #anvilwar module loader - Version 2.230
+-- Transformice #anvilwar module loader - Version 2.231
 -- By Morganadxana#0000
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.230",
-	_MAINV = "50013.196",
+	_VERSION = "2.231",
+	_MAINV = "50114.197",
 	_DEVELOPER = "Morganadxana#0000" }
 	
 initAnvilwar = function()
@@ -15,8 +13,8 @@ initAnvilwar = function()
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 50013.196
-Compilation date : 09/21/2022 12:54 UTC
+Version : RTM 50114.197
+Compilation date : 09/23/2022 21:06 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -42,7 +40,7 @@ playersList={}; helpers={}; mods={
 "Flaysama#5935",
 "Chavestomil#0000",
 "Erickvinho#0000",
-"Daniel5445#1936",
+"Nightfury#3411",
 "Spectra_phantom#6089"};
 admins={"Ashearcher#0000",
 "Morganadxana#0000"}
@@ -109,7 +107,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 50% a mais de tempo para atirar do que os outros jogadores.",
-	legacy = "<J><b>Confiram os meus mapas-script e outros modos!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br>/sala #anvilwar00mountain<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.",
+	legacy = "<J><b>Confiram os meus mapas-script e outros modos!</b><br><VP>/sala #anvilwar00watercatch<br>/sala #anvilwar00beach<br>/sala #anvilwar00naturalpark<br>/sala #anvilwar00mountain<br><br><N>Para descobrir as novidades desta versão, digite <b>!changelog</b>.<br>",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -273,7 +271,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50013.196 - "..text.comp_date.."09/21/2022 12:54 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50114.197 - "..text.comp_date.."09/23/2022 21:06 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -348,7 +346,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50013.196</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50114.197</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -911,7 +909,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 50013.196","• Command transferred to Morganadxana#0000<br>• New lobby screen<br>• Custom scoreboard")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 50114.197","• Some text changes<br>• Some fixes on the scoreboard")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1645,10 +1643,10 @@ function eventLoop(passed,remain)
 			ui.addTextArea(5652,"<font size='24'><p align='center'><font color='#050505'><b>"..m..":0"..s.."",nil,337,24,100,40,0,0,1.0,true)
 			ui.addTextArea(5651,"<font size='24'><p align='center'><b>"..m..":0"..s.."",nil,335,22,100,40,0,0,1.0,true)
 		end
-		ui.addTextArea(5654,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(players_red).."",nil,232,24,100,40,0,0,1.0,true)
-		ui.addTextArea(5653,"<font size='28'><p align='center'><b><R>"..rawlen(players_red).."",nil,230,22,100,40,0,0,1.0,true)
-		ui.addTextArea(5656,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(players_blue).."",nil,442,24,100,40,0,0,1.0,true)
-		ui.addTextArea(5655,"<font size='28'><p align='center'><b><BL>"..rawlen(players_blue).."",nil,440,22,100,40,0,0,1.0,true)
+		ui.addTextArea(5654,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_red).."",nil,232,24,100,40,0,0,1.0,true)
+		ui.addTextArea(5653,"<font size='28'><p align='center'><b><R>"..rawlen(alives_red).."",nil,230,22,100,40,0,0,1.0,true)
+		ui.addTextArea(5656,"<font size='28'><p align='center'><font color='#050505'><b>"..rawlen(alives_blue).."",nil,442,24,100,40,0,0,1.0,true)
+		ui.addTextArea(5655,"<font size='28'><p align='center'><b><BL>"..rawlen(alives_blue).."",nil,440,22,100,40,0,0,1.0,true)
 		ui.addTextArea(5658,"<font size='24'><p align='center'><font color='#050505'><b>"..time_remain.."",nil,337,70,100,40,0,0,1.0,true)
 		ui.addTextArea(5657,"<font size='24'><p align='center'><VP><b>"..time_remain.."",nil,335,68,100,40,0,0,1.0,true)
 		if general_time > 0 then
@@ -3260,7 +3258,7 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.230<br>By Morganadxana#0000")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.231<br>By Morganadxana#0000")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
