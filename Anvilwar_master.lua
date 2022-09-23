@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.231
+-- Transformice #anvilwar module loader - Version 2.231.1
 -- By Morganadxana#0000
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.231",
-	_MAINV = "50114.197",
+	_VERSION = "2.231.1",
+	_MAINV = "50115.198",
 	_DEVELOPER = "Morganadxana#0000" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 50114.197
-Compilation date : 09/23/2022 21:06 UTC
+Version : RTM 50115.198
+Compilation date : 09/23/2022 21:21 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 173
@@ -271,7 +271,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50114.197 - "..text.comp_date.."09/23/2022 21:06 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50115.198 - "..text.comp_date.."09/23/2022 21:21 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -346,7 +346,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50114.197</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50115.198</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -909,7 +909,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 50114.197","• Some text changes<br>• Some fixes on the scoreboard")
+		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 50115.198","• Some text changes<br>• Some fixes on the scoreboard<br>• Changes on room managers")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -975,7 +975,7 @@ function eventChatCommand(name,command)
 	if (command:sub(0,7) == "testmap") then
 		if mode == "lobby" then
 			if string.len(command:sub(9)) == 2 or string.len(command:sub(9)) == 8 then
-				if data[name].ranking >= 3 then
+				if data[name].ranking >= 2 then
 					set_map=command:sub(9)
 					showMessage(""..text.load1..""..command:sub(9)..". "..text.load2.."",name)
 				end
@@ -3258,7 +3258,7 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.231<br>By Morganadxana#0000")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.231.1<br>By Morganadxana#0000")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
