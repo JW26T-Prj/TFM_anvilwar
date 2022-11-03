@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.234.3
+-- Transformice #anvilwar module loader - Version 2.235
 -- By Morganadxana#0000
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.234.3",
-	_MAINV = "50519.202",
+	_VERSION = "2.235",
+	_MAINV = "50620.203",
 	_DEVELOPER = "Morganadxana#0000" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Morganadxana#0000
 (C) 2017-2022 Spectra Advanced Module Group
 
-Version : RTM 50519.202
-Compilation date : 10/28/2022 18:33 UTC
+Version : RTM 50620.203
+Compilation date : 11/03/2022 22:34 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 176
@@ -40,7 +40,7 @@ playersList={}; helpers={}; mods={
 "Flaysama#5935",
 "Chavestomil#0000",
 "Erickvinho#0000",
-"Nightfury#3411",
+"Maramara4#0000",
 "Spectra_phantom#6089"};
 admins={"Ashearcher#0000",
 "Morganadxana#0000"}
@@ -293,7 +293,7 @@ function showMenu(name,color,x,y,width,height,title,content)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50519.202 - "..text.comp_date.."10/28/2022 18:33 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='13'><b><font face='Courier New'><i>"..text.version.." RTM 50620.203 - "..text.comp_date.."11/03/2022 22:34 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -372,7 +372,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50519.202</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 50620.203</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -935,7 +935,7 @@ function eventChatCommand(name,command)
 		end
 	end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,110,520,100,"#anvilwar Changelog - RTM 50519.202","• Slight changes on interface<br>• Addiction of a surprise")
+		showMenu(name,0xa8f233,140,110,520,90,"#anvilwar Changelog - RTM 50620.203","• Some bugfixes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2327,6 +2327,7 @@ end
 function eventPlayerDied(n)
 	if not tfm.get.room.playerList[n].isShaman then
 		alives=alives-1
+		tfm.exec.setPlayerScore(shaman,1,true)
 	end
 	if alives <= 0 then
 		mode="end"
@@ -2342,6 +2343,7 @@ function eventPlayerDied(n)
 			tfm.exec.setGameTime(10)
 			for n,_ in next,tfm.get.room.playerList do
 				if not tfm.get.room.playerList[n].isDead then
+					tfm.exec.setPlayerScore(n,1,true)
 					alives=alives+1
 					ui.removeTextArea(300,n)
 				end
@@ -2379,7 +2381,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["imaget"]=5; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -2411,7 +2413,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.0.3","• Correções de bugs na seleção de shamans<br>• Enfraquecimento das zonas de oxigênio")
+		showMenu(name,0xf0f0f0,140,90,520,100,"Changelog da Versão 4.0.4","• Mais correções de bugs na seleção de shamans<br>• Pequenas mudanças de funcionamento")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2680,7 +2682,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.3</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v4.0.4</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='44'><font color='#222222'><font face='Copperplate Gothic Bold,Times New Roman'><b>"..m..":"..s.."</b>",n,557,27,125,54,0,0,1.0,true)
@@ -2810,7 +2812,7 @@ function eventLoop(p,r)
 		end
 		if r <= 2000 and mode == "hide" then
 			mode="game"
-			tfm.exec.setGameTime(210+math.floor(alives*2.5))
+			tfm.exec.setGameTime(210+math.floor(alives*2))
 			ui.removeTextArea(22,nil)
 			showMessage("<J><b>O shaman foi liberado! Salvem-se quem puder!</b><br><N>Os itens marcados com <b>!</b> são poderes especiais, que podem trazer efeitos positivos ou negativos aos ratos. Aperte ESPAÇO para usá-los.<br><br><ROSE>Use o comando !tc [mensagem] para falar no chat sem que o shaman saiba.<br><br><VP>As áreas marcadas por preto e amarelo são zonas de oxigênio. Fique nelas para ter seu consumo de oxigênio reduzido.")
 			moveShaman()
@@ -3368,7 +3370,7 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.234.3<br>By Morganadxana#0000")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.235<br>By Morganadxana#0000")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
