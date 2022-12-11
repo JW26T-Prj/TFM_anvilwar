@@ -214,7 +214,7 @@ end
 for _,f in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables","DebugCommand","MortCommand","AfkDeath"} do
 	tfm.exec["disable"..f](true)
 end
-for _,g in next,{"reset","help","sync","pw","commands","powerups","p","kill","limit","ranking","t","T","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","lc","settings"} do
+for _,g in next,{"help","sync","pw","commands","powerups","p","limit","ranking","t","T","tc","TC","Tc","tC","anvils","set","testmap","defmap","leader","rv","tp","changelog","get","lc","settings"} do
 	system.disableChatCommandDisplay(g)
 end
 if not tfm.get.room.isTribeHouse then tfm.exec.setRoomMaxPlayers(40) end
