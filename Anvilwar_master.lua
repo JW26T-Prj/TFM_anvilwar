@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.249.2
+-- Transformice #anvilwar module loader - Version 2.250
 -- By Morganadxana#0000
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.249.2",
-	_MAINV = "53437.220",
+	_VERSION = "2.2450",
+	_MAINV = "53538.221 LTS",
 	_DEVELOPER = "Morganadxana#0000" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53437.220
-Compilation date : 02/03/2023 00:05 UTC
+Version : RTM 53538.221 LTS
+Compilation date : 03/15/2023 21:59 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 189
@@ -48,7 +48,7 @@ admins={"Ashearcher#0000",
 "Geracionz#0000"}
 ninjas={"Viego#0345",
 "Forzaldenon#0000",
-"Caitlyndma7#0000",
+"Alisson#3938",
 "Aurelianlua#0000"};
 data={}
 
@@ -323,7 +323,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53437.220 - "..text.comp_date.."02/03/2023 00:05 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53538.221 LTS - "..text.comp_date.."03/15/2023 21:59 UTC - "..text.uploaded.."Velkozdapic#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -406,7 +406,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53437.220</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53538.221 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1131,7 +1131,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,110,"#anvilwar Changelog - RTM 53437.220","• The cost to revive players is now back to 30 points<br>• Added 1 new map<br>• Changes on map names")
+		showMenu(name,0xa8f233,140,130,520,95,"#anvilwar Changelog - RTM 53538.221 LTS","• Changes on !settings command")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -1675,7 +1675,7 @@ function eventTextAreaCallback(id,name,callback)
 		showRoomSettings(name)
 	end
 	if callback == "ctimea" then
-		if settings.time > 120 then settings.time=settings.time-10 end
+		if settings.time > 150 then settings.time=settings.time-10 end
 		showRoomSettings(name)
 	end
 	if callback == "ctimeb" then
@@ -1702,7 +1702,7 @@ function eventTextAreaCallback(id,name,callback)
 		showRoomSettings(name)
 	end
 	if callback == "cstimeb" then
-		if settings.shoot_time < 24 then settings.shoot_time=settings.shoot_time+1 end
+		if settings.shoot_time < 30 then settings.shoot_time=settings.shoot_time+1 end
 		showRoomSettings(name)
 	end
 	if callback == "ckami" then
@@ -2132,7 +2132,7 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
-data={}; changed=false; xml2='';
+changed=false; xml2='';
 
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -2147,7 +2147,7 @@ function showNPCs(name)
 	tfm.exec.addNPC("Julia Lynner",{title = 382, look = "1;228,50,72,0,50_d946a7,90,44,0,0",x = 10032,y = 989,female = true,lookLeft = false,lookAtPlayer = false,interactive = true},name)
 	tfm.exec.addNPC("Brand Northern",{title = 357, look = "1;225,0,46,34,26,104_3c3a87+6e7291+a5a7c1+caccdd+7582b3+f3f5f7,49,0,0",x = 10259,y = 875,female = false,lookLeft = false,lookAtPlayer = false,interactive = true},name)
 	tfm.exec.addNPC("John Grand",{title = 298, look = "1;231,8,7,34,5,105,0,0,33",x = 9236,y = 1106,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Danniel Victor",{title = 296, look = "1;194,29,27,41,54,103,33,81,57",x = 3172,y = 1202,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
+	tfm.exec.addNPC("Danniel Victor",{title = 296, look = "1;194,29,27,41,54,103,33,81,57",x = 3172,y = 1302,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Kenner Henderson",{title = 266, look = "27;236,45,22,0,44,0,50,67,35",x = 751,y = 1263,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 648,y = 1337,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 	tfm.exec.addNPC("Mandery Under",{title = 387, look = "138;31,8,69,41,49,0,49,0,0",x = 4778,y = 742,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
@@ -2261,26 +2261,14 @@ function eventNewPlayer(name)
 	tfm.exec.respawnPlayer(name)
 	showWater(name)
 	showNPCs(name)
-	newData={
-	["z"]=1;
-	};
-	data[name] = newData;
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.4",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.5",name)
 end
 function eventLoop(p,f)
 	if changed == true then
 		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].y >= 1399 then
-				if data[name].z <= 1.53 then
-					data[name].z=data[name].z+0.003
-				end
-			else
-				data[name].z=1
-			end
-			tfm.exec.setPlayerGravityScale(name,data[name].z)
 			if p >= 6000 then
 				if tfm.get.room.playerList[name].y <= 400 and tfm.get.room.playerList[name].x <= 800 and not tfm.get.room.playerList[name].isDead then
 					showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
@@ -2312,7 +2300,6 @@ npc_01={title = 5,look = "1;190_dbe10f+767576+585155+c44444+e0ddce+202020+e7e6e5
 npc_02={title = 339,look = "1;40_d0ff+1825e7,6_700ff+b8ff,20_beff,0,29_d99+b2ff,0,1_ffff+ff0000,0,0",x = 40,y = 2950,female = false,lookLeft = false,lookAtPlayer = false,interactive = true}
 npc_03={title = 382,look = "179;236_434f55+434f55+434f55+434f55+605520+a19d88,50,82,0,62,112,44,0,0",x = 3128,y = 1906,female = true,lookLeft = false,lookAtPlayer = false,interactive = true}
 npc_04={title = 115,look = "222;229,46,84_988c5c+d252d6+b8a866+3062c7+d3eb29,0,65,0,52,84,0",x = 5072,y = 1632,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-npc_05={title = 10,look = "1;44,40,89,34,0,0,31,77,2_c918be",x = 1908,y = 2402,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
 npc_06={title = 2,look = "113;223,8,27_252525+383838+242424,31,55_6d2e29+9e9983+ddba1d,0,0,51,48",x = 1088,y = 336,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
 npc_07={title = 42,look = "157;83,0,9,0,6,102_148960+f7eeba+f7eeba,0,79,47",x = 1033,y = 1121,female = false,lookLeft = true,lookAtPlayer = false,interactive = true}
 npc_08={title = 213,look = "223;244,33,89,0,6,102_148960+f7eeba+f7eeba,0,72,47",x = 5117,y = 1417,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
@@ -2324,7 +2311,6 @@ function initNPC(name)
 	tfm.exec.addNPC("Dhanny Dier", npc_02, name)
 	tfm.exec.addNPC("Andressa Nyeder", npc_03, name)
 	tfm.exec.addNPC("Fabia Murray", npc_04, name)
-	tfm.exec.addNPC("Carla Esther", npc_05, name)
 	tfm.exec.addNPC("Dereek Nandertz", npc_06, name)
 	tfm.exec.addNPC("Damian Henderson", npc_07, name)
 	tfm.exec.addNPC("Luciana Bander", npc_08, name)
@@ -2350,15 +2336,6 @@ function eventTalkToNPC(name, npc)
 		showMessage("<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do rio com muito mais clareza.<br><br>As cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",name)
 	elseif npc == "Fabia Murray" then
 		showMessage("<V>[Fabia Murray] <N>Alguém aqui está preparado(a) para grandes emoções? Tomem cuidado apenas com as cobras!",name)
-	elseif npc == "Carla Esther" then
-		local chance=math.random(1,50)
-		if chance == 10 and data[name].below == false then
-			showMessage("<V>[Carla Esther] <R><b>Afunde e conheça as profundezas, seu inconveniente!</b>",name)
-			tfm.exec.giveCheese(name)
-			data[name].below=true
-		else
-			showMessage("<V>[Carla Esther] <J>Alguém me salve! A água está muito gelada e eu não sei nadar!",name)
-		end
 	elseif npc == "Dereek Nandertz" then
 		showMessage("<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.<br><br>Ali na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do rio com muito mais propriedade.<br><br><R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",name)
 	elseif npc == "Damian Henderson" then
@@ -2438,12 +2415,12 @@ function eventPlayerDied(name)
 	if changed == true then
 		tfm.exec.respawnPlayer(name)
 	end
-	data[name].z=1; data[name].below=false; data[name].fs=0; data[name].freezed=false;
+	data[name].below=false; data[name].fs=0; data[name].freezed=false;
 end
 function eventNewGame(name)
 	if changed == true then
 		for name,_ in next,tfm.get.room.playerList do
-			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.1",name)
+			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.2",name)
 			showWater(name)
 			initNPC(name)
 		end
@@ -2463,7 +2440,6 @@ end
 function eventNewPlayer(name)
 	tfm.exec.respawnPlayer(name)
 	newData={
-	["z"]=1;
 	["below"]=false;
 	["fs"]=0;
 	["freezed"]=false;
@@ -2472,7 +2448,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	if changed == true then
 		ui.setMapName("<VP>Parque Aquático Natural das Cobras - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.1",name)
+		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.2",name)
 		showWater(name)
 		initNPC(name)
 	end
@@ -2483,18 +2459,6 @@ end
 function eventLoop(p,f)
 	if changed == true then
 	for name,player in next,tfm.get.room.playerList do
-		if not string.find(tfm.get.room.playerList[name].look,"106") then
-			if tfm.get.room.playerList[name].y >= 2395 then
-				if data[name].z <= 1.32 then
-					data[name].z=data[name].z+0.002
-				end
-			else
-				data[name].z=data[name].z-0.04
-				if data[name].z <= 1 then
-					data[name].z=1
-				end
-			end
-		end
 		if tfm.get.room.playerList[name].y >= 2550 then
 			data[name].fs=data[name].fs+1
 			if data[name].fs == 5 and data[name].warn == false then
@@ -2504,13 +2468,10 @@ function eventLoop(p,f)
 			if data[name].fs == 150 then
 				data[name].freezed=true
 				tfm.exec.freezePlayer(name)
-				tfm.exec.setPlayerGravityScale(name,1.4)
+				tfm.exec.setPlayerGravityScale(name,2)
 			end
 		else
 			data[name].fs=0
-		end
-		if data[name].freezed == false then
-			tfm.exec.setPlayerGravityScale(name,data[name].z)
 		end
 	end
 	else
@@ -2671,17 +2632,17 @@ function showWater(name)
 	for f=1,rawlen(e4) do
 		tfm.exec.addImage("1860ee24f31.png","?1",e3[f],e4[f],name,-0.5,0.5)
 	end
-	tfm.exec.addImage("1860ee2e933.png","?1",1500,2500,name,-1,1)
-	tfm.exec.addImage("1860ee2e933.png","?1",4650,2500,name)
+	tfm.exec.addImage("1860ee2e933.png","?1",1600,2480,name,-1,1)
+	tfm.exec.addImage("1860ee2e933.png","?1",4250,2300,name)
 	for a=0,4 do
 		tfm.exec.addImage("1860ee4bc27.png","?1",-800+(a*1762),680,name,1,1,0,1)
-		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),680,name,1,1,0,0.65)
+		tfm.exec.addImage("1860ee4bc27.png","!1",-800+(a*1762),680,name,1,1,0,0.6)
 	end
 	for b=0,10 do
-		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),1012,name,1,3.5,0,1)
-		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),1012,name,1,3.5,0,1)
-		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),5212,name,1,-3.5,0,1)
-		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),5212,name,1,-3.5,0,1)
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),1012,name,1,3.2,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),1012,name,1,3.2,0,1)
+		tfm.exec.addImage("1860ee46b2e.jpg","?1",-800+(b*690),4852,name,1,-3.2,0,1)
+		tfm.exec.addImage("1860ee41de2.png","!1",-800+(b*690),4852,name,1,-3.2,0,1)
 	end
 	tfm.exec.addImage("17fe3741e5f.jpg","?1",-800,-1000,name,11,1.6,0,1)
 	tfm.exec.addImage("1860ee201fd.png","!1",1640,1888,name,-1,1)
@@ -2689,16 +2650,16 @@ function showWater(name)
 	tfm.exec.addImage("1860ee201fd.png","!1",330,1169,name,-1,1)
 	tfm.exec.addImage("1860ee201fd.png","!1",4000,1304,name,-1,1)
 	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),3508,name,1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(m*1400),3198,name,1,-1.5,0,1)
 	end
 	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),3508,name,-1,-1.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(n*1400),3198,name,-1,-1.5,0,1)
 	end
 	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),3010,name,1,0.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",-1200+(h*1400),2700,name,1,0.5,0,1)
 	end
 	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),3010,name,-1,0.5,0,1)
+		tfm.exec.addImage("18204168d2e.png","!1",200+(j*1400),2700,name,-1,0.5,0,1)
 	end
 end
 function eventPlayerDied(n)
@@ -2739,8 +2700,8 @@ function moveShaman()
 	end
 end
 function checkOxygenZones(name)
-	if tfm.get.room.playerList[name].x >= 960 and tfm.get.room.playerList[name].x <= 1080 then
-		if tfm.get.room.playerList[name].y >= 2180 and tfm.get.room.playerList[name].y <= 2270 then
+	if tfm.get.room.playerList[name].x >= 545 and tfm.get.room.playerList[name].x <= 625 then
+		if tfm.get.room.playerList[name].y >= 1555 and tfm.get.room.playerList[name].y <= 1650 then
 			return true
 		end
 	end
@@ -2758,7 +2719,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -2798,7 +2759,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,90,520,250,"Changelog da Versão 5.0.2","• Novo tema de mapa: Rio Nilo!<br>• Adição de novo powerup: ESCURIDÃO!<br>• Novas imagens para os powerups<br>• O powerup OXIGÊNIO foi removido. Agora, pontos específicos de oxigênio estão disponíveis no rio<br>• Nova barra de medição de oxigênio<br>• O powerup ARMADILHA foi substituído por VAMPIRO<br>• O tempo do powerup CONGELAR foi aumentado de 6 para 9 segundos<br>• Mudanças no cálculo no tempo das partidas<br>• Várias correções de bugs<br>• Ajustes no consumo de oxigênio<br>• Aumento do limite de objetos de shaman de 10 para 12<br>• Os ratos que morrem afogados agora viram bolhas grandes")
+		showMenu(name,0xf0f0f0,140,130,520,100,"Changelog da Versão 5.1.0","• Mudanças na física da água<br>• Mudanças no tamanho do mapa")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2843,7 +2804,7 @@ end
 function resetMap()
 	if xml == '' then
 		tfm.exec.disableAutoShaman(true)
-		tfm.exec.newGame("@7926250")
+		tfm.exec.newGame("@7928958")
 		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
 		changed=false
 		mode="load"
@@ -3048,12 +3009,12 @@ function eventLoop(p,r)
 	loop=loop+0.5
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
-	if time_passed >= 12 and tfm.get.room.currentMap == "@7926250" then
+	if time_passed >= 12 and tfm.get.room.currentMap == "@7928958" then
 		tfm.exec.disableAutoShaman(false)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.0.2</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
@@ -3105,10 +3066,10 @@ function eventLoop(p,r)
 								if tfm.get.room.playerList[n].y <= 1500 then
 									data[n].o=data[n].o-0.2
 									data[n].c=0
-								elseif tfm.get.room.playerList[n].y > 1500 and tfm.get.room.playerList[n].y <= 2700 then
+								elseif tfm.get.room.playerList[n].y > 1500 and tfm.get.room.playerList[n].y <= 2400 then
 									data[n].o=data[n].o-0.4
 									data[n].c=0
-								elseif tfm.get.room.playerList[n].y > 2700 then
+								elseif tfm.get.room.playerList[n].y > 2400 then
 									data[n].o=data[n].o-0.6
 									data[n].c=0
 								end
@@ -3751,7 +3712,7 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.249.2<br>By Morganadxana#0000")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.250<br>By Morganadxana#0000")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
