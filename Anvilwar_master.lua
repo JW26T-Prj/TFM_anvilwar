@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.251
+-- Transformice #anvilwar module loader - Version 2.252
 -- By Morganadxana#0000
 -- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.2450",
-	_MAINV = "53639.222",
+	_VERSION = "2.252",
+	_MAINV = "53740.223",
 	_DEVELOPER = "Morganadxana#0000" }
 	
 initAnvilwar = function()
@@ -13,12 +13,12 @@ initAnvilwar = function()
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53639.222
-Compilation date : 04/15/2023 23:51 UTC
+Version : RTM 53740.223
+Compilation date : 05/24/2023 12:18 UTC
 Sending player : Morganadxana#0000
 
 Number of maps : 191
-Number of module special members : 12 ]]--
+Number of module special members : 11 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Morganadxana#0000"
@@ -31,7 +31,7 @@ players_blue={}; alives_blue={};
 lobby_map="@7884784"
 current_map=""; actual_player="";
 enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false;
-mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=2; sudden_death=false; old_limit=40;
+mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
 settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false}
 mode="lobby"
@@ -40,8 +40,7 @@ images_id={};
 playersList={}; helpers={}; mods={
 "Dinamarquers#0000",
 "Flaysama#5935",
-"Chavestomil#0000",
-"Lacoste#8972"};
+"Chavestomil#0000"};
 admins={"Ashearcher#0000",
 "Spectra_phantom#6089",
 "Morganadxana#0000",
@@ -86,7 +85,7 @@ lang.br = {
 	load2 = "Certifique-se que há pelo menos 1 jogador em cada equipe.",
 	load0 = "Você precisa estar na tela principal para executar esta função. Digite !reset para fazer isso e tente novamente.",
 	ac = "Você atualmente possui ",
-	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 26pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 26pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 16pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
 	commands = "<font size='11.5'>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Morganadxana#0000 e Geracionz#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000, Dinamarquers#0000 e Spectra_phantom#6089<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	adcommands = "<font size='11.5'><N>!pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br>!reset - Cancela a partida atual e retorna à tela inicial.<br>!limit [número] - Altera o limite de jogadores da sala.<br>!lc [0-3] - Altera a configuração do verificador de latência dos jogadores.<br>!settings - Altera as configurações da sala.",
@@ -94,7 +93,7 @@ lang.br = {
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 3  /  Pontuação: 15pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 25pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 4  /  Pontuação: 14pts</b><br><br><b>Tecla '8' - Caixa de Acompanhamento</b><br>Atira uma caixa de acompanhamento ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 15pts</b><br><br><b>Tecla '9' - Tiro Aleatório</b><br>Atira uma objeto aleatório ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 10pts</b><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 3  /  Pontuação: 12pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 20pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 4  /  Pontuação: 14pts</b><br><br><b>Tecla '8' - Caixa de Acompanhamento</b><br>Atira uma caixa de acompanhamento ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 15pts</b><br><br><b>Tecla '9' - Tiro Aleatório</b><br>Atira uma objeto aleatório ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 10pts</b><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -166,7 +165,7 @@ lang.en = {
 	load2 = "The room needs to have a least 1 player into each team.",
 	load0 = "You needs to stay into LOBBY mode to use this command. Use !reset command and try again.",
 	ac = "You currently have ",
-	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 26pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
+	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 26pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 16pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
 	commands = "<font size='11.5'>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!p [username] (or <b>P</b> key) - Show the profile of the specified user. Type !p only to see your profile.<br>!ranking (or <b>R</b> key) - Show the room ranking.",
 	adcommands = "<font size='11.5'><N><br>!pw [password] - Locks the room with a password. Use only !pw to clear the password.<br>!reset - Cancel the current match and returns to the lobby screen.<br>!limit [number] - Change the limit of mices on the room.<br>!lc [0-3] - Change the level of the player's latency checker.<br>!settings - Change the room settings.",
 	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil. Use the <b>SPACEBAR</b> to shoot.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Morganadxana#0000 and Geracionz#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000, Dinamarquers#0000 and Spectra_phantom#6089<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
@@ -174,7 +173,7 @@ lang.en = {
 	leave = "Leave",
 	join = "Join",
 	getr = "Get Ready! The match will start in a few seconds!",
-	powerups2 = "<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 3  /  Required Score: 15pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 25pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 4  /  Required Score: 14pts</b><br><br><b>Key '8' - Companion Box</b><br>Shoot an companion box instead of an anvil.<br><b>Required Level: 2  /  Required Score: 15pts</b><br><br><b>Key '9' - Random Shoot</b><br>Shoot an random object instead of an anvil.<br><b>Required Level: 2  /  Required Score: 10pts</b><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	powerups2 = "<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 3  /  Required Score: 12pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 4  /  Required Score: 14pts</b><br><br><b>Key '8' - Companion Box</b><br>Shoot an companion box instead of an anvil.<br><b>Required Level: 2  /  Required Score: 15pts</b><br><br><b>Key '9' - Random Shoot</b><br>Shoot an random object instead of an anvil.<br><b>Required Level: 2  /  Required Score: 10pts</b><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
 	using = "You are now using the ",
 	ac0 = "You don't have AnvilCoins to buy this anvil.",
 	level = "reached the level",
@@ -323,7 +322,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53639.222 - "..text.comp_date.."04/15/2023 23:51 UTC - "..text.uploaded.."Alisson#3938</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53740.223 - "..text.comp_date.."05/24/2023 12:18 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -406,7 +405,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53639.222</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53740.223</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -764,9 +763,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 51 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 52 and data[name].score >= 20 and data[name].level >= 3 then
+				if code == 52 and data[name].score >= 16 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p4.."")
-					setScores(name,-20,true)
+					setScores(name,-16,true)
 					data[name].powerup=4
 					permafrost=true
 					permaFrost()
@@ -774,9 +773,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 52 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 53 and data[name].score >= 15 and data[name].level >= 3 then
+				if code == 53 and data[name].score >= 12 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-15,true)
+					setScores(name,-12,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
@@ -784,9 +783,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 53 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 54 and data[name].score >= 24 and data[name].level >= 3 then
+				if code == 54 and data[name].score >= 20 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p6.."")
-					setScores(name,-24,true)
+					setScores(name,-20,true)
 					data[name].powerup=6
 					enabled=false
 					mode="wait3"
@@ -1131,7 +1130,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,95,"#anvilwar Changelog - RTM 53639.222","• Added 2 new maps")
+		showMenu(name,0xa8f233,140,130,520,130,"#anvilwar Changelog - RTM 53740.223","• The cost of Permafrost powerup was reduzed from 20 to 16 points<br>• The cost of Night Mode powerup was reduzed from 15 to 12 points<br>• The cost of Anvil Rain powerup was reduzed from 25 to 20 points<br>• The default setting of ping checker is now WEAK")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2495,7 +2494,7 @@ for _,f in next,{"help","ajuda","tc","kill","powerups","creditos","changelog","r
 end
 if tfm.get.room.isTribeHouse == false then tfm.exec.setRoomMaxPlayers(40) end
 
-shaman=""; alives=0; cannons=12; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
+shaman=""; alives=0; cannons=10; z=0; data={}; mode="load"; changed=false; loop=0; timer=0; xml=''; time_passed=0; time_remain=0;
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={};
 d1={2670,5585,3580}; d2={1040,1900,1820};
 e1={5170,4288,3942,3080,2808,2398,123,744,4335,5777,543}; e2={760,1578,850,840,1441,999,987,2144,1953,2578,1132};
@@ -2517,26 +2516,33 @@ function showMessage(message,name)
 end
 function showAvailableSharks(name)
 	i=0
-	for _,link in next,{"18309d69a5a.png","18309d64e58.png","18309d7325a.png","18412b7b55e.png"} do
+	-- 1883efa1974.png
+	for _,link in next,{"18309d69a5a.png","18309d64e58.png","18309d7325a.png","18412b7b55e.png","18412b71ce2.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",83,90+(i*49),name,0.5,0.5,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",83,60+(i*49),name,0.5,0.5,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
 	i=0
-	for _,link in next,{"18309d6029f.png","18412b7695c.png","18309d6e65a.png","18412b71ce2.png"} do
+	for _,link in next,{"18309d6029f.png","18412b7695c.png","1883efa677b.png","18309d6e65a.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",293,90+(i*52),name,0.5,0.5,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",293,60+(i*48),name,0.5,0.5,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
 	i=0
-	for _,link in next,{"185c2e9722e.png","185c2ea0c4f.png","185c2e9bf2f.png"} do
+	for _,link in next,{"1883efa1974.png"} do
 		i=i+1
-		image_id=tfm.exec.addImage(link,"&1",503,90+(i*48),name,0.5,0.5,0,1.0)
+		image_id=tfm.exec.addImage(link,"&1",293,305,name,0.2,0.2,0,1.0)
 		table.insert(data[name].active_imgs,image_id)
 	end
-	ui.addTextArea(1006,"<i><font size='11.5'><b>Tubarão Normal 1</b><br><br><a href='event:a1'>Usar!</a><br><br><b>Tubarão Normal 2</b><br><br><a href='event:a2'>Usar!</a><br><br><b>Tubarão Normal 3</b><br><br><a href='event:a3'>Usar!</a><br><br><b>Tubarão Normal 4</b><br><br><a href='event:a6'>Usar!</a>",name,170,129,175,315,0,0,1.0,true)
-	ui.addTextArea(1007,"<i><font size='11.5'><b>Tubarão Branco 1</b><br><br><a href='event:a4'>Usar!</a><br><br><b>Tubarão Branco 2</b><br><br><a href='event:a7'>Usar!</a><br><br><b>Tubarão-Martelo</b><br><br><a href='event:a5'>Usar!</a><br><br><b>Barracuda</b><br><br><a href='event:a8'>Usar!</a>",name,380,129,175,265,0,0,1.0,true)
-	ui.addTextArea(1008,"<i><font size='11.5'><b>Peixe Diabo-Negro</b><br><br><a href='event:a9'>Usar!</a><br><br><b>Tubarão-Tigre</b><br><br><a href='event:a11'>Usar!</a><br><br><b>Baleia</b><br><br><a href='event:a10'>Usar!</a><br><br><br><b><a href='event:a0'>Desativar skins</a>",name,590,129,175,265,0,0,1.0,true)
+	i=0
+	for _,link in next,{"185c2e9722e.png","185c2ea0c4f.png","185c2e9bf2f.png","1883efb0ba3.png"} do
+		i=i+1
+		image_id=tfm.exec.addImage(link,"&1",503,60+(i*54),name,0.5,0.5,0,1.0)
+		table.insert(data[name].active_imgs,image_id)
+	end
+	ui.addTextArea(1006,"<i><font size='11.5'><b>Tubarão Normal 1</b><br><br><a href='event:a1'>Usar!</a><br><br><b>Tubarão Normal 2</b><br><br><a href='event:a2'>Usar!</a><br><br><b>Tubarão Normal 3</b><br><br><a href='event:a3'>Usar!</a><br><br><b>Tubarão Normal 4</b><br><br><a href='event:a6'>Usar!</a><br><br><b>Barracuda</b><br><br><a href='event:a13'>Usar!</a>",name,170,100,175,315,0,0,1.0,true)
+	ui.addTextArea(1007,"<i><font size='11.5'><b>Tubarão Branco 1</b><br><br><a href='event:a4'>Usar!</a><br><br><b>Tubarão Branco 2</b><br><br><a href='event:a7'>Usar!</a><br><br><b>Tubarão Branco 3</b><br><br><a href='event:a5'>Usar!</a><br><br><b>Tubarão-Martelo</b><br><br><a href='event:a8'>Usar!</a><br><br><b>Baleia 3</b><br><br><a href='event:a14'>Usar!</a>",name,380,100,175,265,0,0,1.0,true)
+	ui.addTextArea(1008,"<i><font size='11.5'><b>Peixe Diabo-Negro</b><br><br><a href='event:a9'>Usar!</a><br><br><b>Tubarão-Tigre</b><br><br><a href='event:a11'>Usar!</a><br><br><b>Baleia 1</b><br><br><a href='event:a10'>Usar!</a><br><br><b>Baleia 2</b><br><br><a href='event:a12'>Usar!</a><br><br><br><b><a href='event:a0'>Desativar skins</a>",name,590,100,175,265,0,0,1.0,true)
 end
 function removeImagePlayers(name)
 	if rawlen(data[name].active_imgs) > 0 then
@@ -2573,9 +2579,9 @@ function displayShark(name,type,reverse)
 		end
 	elseif type == 5 then
 		if reverse == false then
-			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",85,-55,nil,-1,1)
+			data[name].shark_id=tfm.exec.addImage("1883efa677b.png","$"..name.."",-90,-45,nil,1,1)
 		else
-			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",-90,-55,nil,1,1)
+			data[name].shark_id=tfm.exec.addImage("1883efa677b.png","$"..name.."",80,-45,nil,-1,1)
 		end
 	elseif type == 6 then
 		if reverse == false then
@@ -2591,9 +2597,9 @@ function displayShark(name,type,reverse)
 		end
 	elseif type == 8 then
 		if reverse == false then
-			data[name].shark_id=tfm.exec.addImage("18412b71ce2.png","$"..name.."",75,-26,nil,-1,1)
+			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",85,-55,nil,-1,1)
 		else
-			data[name].shark_id=tfm.exec.addImage("18412b71ce2.png","$"..name.."",-80,-26,nil,1,1)
+			data[name].shark_id=tfm.exec.addImage("18309d6e65a.png","$"..name.."",-90,-55,nil,1,1)
 		end
 	elseif type == 9 then
 		if reverse == false then
@@ -2612,6 +2618,24 @@ function displayShark(name,type,reverse)
 			data[name].shark_id=tfm.exec.addImage("185c2ea0c4f.png","$"..name.."",75,-36,nil,-1,1)
 		else
 			data[name].shark_id=tfm.exec.addImage("185c2ea0c4f.png","$"..name.."",-80,-36,nil,1,1)
+		end
+	elseif type == 12 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("1883efb5982.png","$"..name.."",-145,-30,nil,0.5,0.5)
+		else
+			data[name].shark_id=tfm.exec.addImage("1883efb5982.png","$"..name.."",130,-30,nil,-0.5,0.5)
+		end
+	elseif type == 13 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("18412b71ce2.png","$"..name.."",75,-26,nil,-1,1)
+		else
+			data[name].shark_id=tfm.exec.addImage("18412b71ce2.png","$"..name.."",-80,-26,nil,1,1)
+		end
+	elseif type == 14 then
+		if reverse == false then
+			data[name].shark_id=tfm.exec.addImage("1883efa1974.png","$"..name.."",-115,-37,nil,0.5,0.5)
+		else
+			data[name].shark_id=tfm.exec.addImage("1883efa1974.png","$"..name.."",100,-37,nil,-0.5,0.5)
 		end
 	end
 end
@@ -2719,7 +2743,7 @@ end
 function eventNewPlayer(name)
 	tfm.exec.setPlayerScore(name,0,false)
 	showWater(name)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 	newData={
 	["o"]=99; ["i"]=0; ["t"]=0; ["c"]=0; ["opened"]=false; ["imageid"]=-1; ["imageid2"]=-1; ["imageid3"]=-1; ["imageid4"]=-1; ["shark_id"]=0; ["shark"]=0; ["active_imgs"]={};
 	};
@@ -2735,7 +2759,7 @@ for name,player in next,tfm.get.room.playerList do
 end
 function eventChatCommand(name,message)
 	if message == "help" or message == "ajuda" then
-		showMenu(name,0xf0f0f0,140,90,520,250,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do rio e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <N>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>12</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
+		showMenu(name,0xf0f0f0,140,90,520,250,"Ajuda do Module #watercatch","O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do rio e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os quadrados marcados por <N>'!'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>10</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.")
 	end
 	if message == "powerups" then
 		showMenu(name,0xf0f0f0,140,100,520,270,"Powerups do Module #watercatch","<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do rio.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do rio.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do rio, você provavelmente será levado para o fundo dele.")
@@ -2746,12 +2770,12 @@ function eventChatCommand(name,message)
 	if message == "skins" then
 		if name == "Morganadxana#0000" or name == "Akwimos#1937" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
 			showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do rio!",name)
-			showMenu(name,0x949494,65,98,670,240,"Skins","")
+			showMenu(name,0x949494,65,68,670,285,"Skins","")
 			showAvailableSharks(name)
 		else
 			if tfm.get.room.playerList[name].isShaman == false then
 				showMessage("<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do rio!",name)
-				showMenu(name,0x949494,65,98,670,240,"Skins","")
+				showMenu(name,0x949494,65,68,670,285,"Skins","")
 				showAvailableSharks(name)
 			else
 				showMessage("<J>Para evitar bugs, não é mais possível trocar de skin de tubarão enquanto for shaman.",name)
@@ -2759,7 +2783,7 @@ function eventChatCommand(name,message)
 		end
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,130,520,140,"Changelog da Versão 5.1.1","• Correções de bugs nas zonas de oxigênio<br>• Pequeno aumento no tempo das partidas<br>• Mudanças no consumo de oxigênio<br>• Mudanças no powerup VAMPIRO<br>• Correções de texto")
+		showMenu(name,0xf0f0f0,140,130,520,115,"Changelog da Versão 5.2.0","• Pequenas correções de bugs<br>• Adição de 3 novos animais: Baleia 2, Baleia 3 e Tubarão-Martelo 3<br>• A física personalizada da água foi removida<br>• Redução do número de objetos usáveis pelo shaman de 12 para 10")
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2912,7 +2936,7 @@ function eventNewGame()
 	if changed == true then
 		ui.removeTextArea(0,nil)
 		z=-1
-		cannons=12
+		cannons=10
 		ui.removeTextArea(22,nil)
 		alives=0
 		mode="hide"
@@ -3014,7 +3038,7 @@ function eventLoop(p,r)
 		resetMap()
 	end
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.1.1</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> Versão <VP><b>v5.2.0</b><N> - criado por <ROSE><b>Morganadxana#0000</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,222,368,125,54,0,0,1.0,true)
@@ -3232,7 +3256,7 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "a5" then
 		data[name].shark=5
-		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Martelo.</b>",name)
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Branco 3.</b>",name)
 	end
 	if callback == "a6" then
 		data[name].shark=6
@@ -3244,7 +3268,7 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "a8" then
 		data[name].shark=8
-		showMessage("<VP>Você está agora usando a skin <b>Barracuda.</b>",name)
+		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Martelo.</b>",name)
 	end
 	if callback == "a9" then
 		data[name].shark=9
@@ -3252,11 +3276,23 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "a10" then
 		data[name].shark=10
-		showMessage("<VP>Você está agora usando a skin <b>Baleia.</b>",name)
+		showMessage("<VP>Você está agora usando a skin <b>Baleia 1.</b>",name)
 	end
 	if callback == "a11" then
 		data[name].shark=11
 		showMessage("<VP>Você está agora usando a skin <b>Tubarão-Tigre.</b>",name)
+	end
+	if callback == "a12" then
+		data[name].shark=12
+		showMessage("<VP>Você está agora usando a skin <b>Baleia 2.</b>",name)
+	end
+	if callback == "a13" then
+		data[name].shark=13
+		showMessage("<VP>Você está agora usando a skin <b>Barracuda.</b>",name)
+	end
+	if callback == "a14" then
+		data[name].shark=14
+		showMessage("<VP>Você está agora usando a skin <b>Baleia 3.</b>",name)
 	end
 end
 resetMap()
@@ -3278,8 +3314,8 @@ events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Qu
 events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
 power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
 lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.2   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.2 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.3   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
+	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.3 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
 	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
 	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
 	start = "<VP><b>E que comece a batalha!</b>",
@@ -3303,14 +3339,10 @@ lang.br = {
 	powerups = "<G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.",
 	credits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código e criadora do mapa<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código para o Inglês<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes",
 	memory_error = "<R>Aviso: Não há mais memória disponível para o Transformice. Para continuar jogando este module, saia do jogo e entre novamente.",
-	juliahenderson = "Você não me acha linda?",
-	andersondarther = "Não ligue para ela. Sempre gosta de se exibir com seus visuais...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba...",
-	mylenneganditz = "Ei, você! Fique comigo, preciso de amigos!",
-	lyncdowryammer = "Sinto na pele a desgraça que ela passou. Perdeu todos os seus amigos durante uma chuva de meteoros...<br><br>Agora falando sério, os deuses escondem um segredo gigante nesta montanha. Poderes extremamente fortes estão presentes no topo dela.<br><br>No entanto, não se empolgue. Os mesmos deuses estão muito furiosos ultimamente, e não querem que ninguém suba..."
 }
 lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.2   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.2 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
+	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.3   <G>|   <N>Developed by <J>Morganadxana#0000<",
+	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.3 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
 	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
 	getready = "<J>Get ready! The road to the mountain will be opened!",
 	start = "<VP><b>Go!</b>",
@@ -3334,10 +3366,6 @@ lang.en = {
 	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Meteor Rain: <N>Some meteors will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.",
 	credits = "The following players helped on this module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Code developer and creator of the map<br><ROSE><b>• Akwimos#1937</b><N> - English translation<br><ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
 	memory_error = "<R>Warning: There's no more available memory for Transformice. To continue playing this game, log out of your account and enter again.",
-	juliahenderson = "You don't think that I'm beautiful?",
-	andersondarther = "Don't be fooled by her. She always likes to show off...<br><br>Talking serious, the mountain gods are hiding a very powerful secret. Extremely powerful things are present on the peak of the mountain.<br><br>However, don't get carried. The same gods are very furious recently. They like that nobody scale the mountain...",
-	mylenneganditz = "Hey! Stay with me! I need of friends!",
-	lyncdowryammer = "I'm sorry about what happened. She lost all of your friends during a meteor rain...<br><br>However, don't get carried. The same gods are very furious recently. They like that nobody scale the mountain..."
 }
 if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
 	text = lang.br
@@ -3421,7 +3449,7 @@ function eventChatCommand(name,command)
 		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
 	end
 	if command == "changelog" then
-		showMenu(name,0x2578f6,140,70,520,260,"Changelog","<font size='11'>[v1.1.2]:<br>• Addiction of new NPC<br><br>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds")
+		showMenu(name,0x2578f6,140,60,520,290,"Changelog","<font size='11'>[v1.1.3]:<br>• Almost all NPCs was removed<br><br>[v1.1.2]:<br>• Addiction of new NPC<br><br>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds")
 	end
 end
 function eventNewPlayer(name)
@@ -3457,17 +3485,7 @@ function eventPlayerDied(name)
 	end
 end
 function eventTalkToNPC(name, npc)
-	if npc == "Julia Henderson" then
-		showMessage("<V>[Julia Henderson] <N>"..text.juliahenderson.."",name)
-	elseif npc == "Anderson Darther" then
-		showMessage("<V>[Anderson Darther] <N>"..text.andersondarther.."",name)
-	elseif npc == "Mylenne Ganditz" then
-		showMessage("<V>[Mylenne Ganditz] <N>"..text.mylenneganditz.."",name)
-	elseif npc == "Lync Dowryammer" then
-		showMessage("<V>[Lync Dowryammer] <N>"..text.lyncdowryammer.."",name)
-	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-	end
+	showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
 end
 function eventTextAreaCallback(id,name,callback)
 	if callback == "show_menu" then
@@ -3516,10 +3534,6 @@ function eventNewGame()
 		for i=1,24 do
 			ui.addTextArea(i,"<p align='center'>"..tostring(i*1000).."",nil,2980,number_scale[i],40,16,0x010101,0x010101,1.0,false)
 		end
-		tfm.exec.addNPC("Anderson Darther",{title = 298, look = "1;123_125508,0,0,4,60_324716+316441+4b926d+900f31+20310+ece674+e47c39+8d2637+900f31+900f31,40_256c23+717a30,31_ef4a6+f3f9bc,0,47",x = 4680,y = 10550,female = false,lookLeft = false,lookAtPlayer = true,interactive = true})
-		tfm.exec.addNPC("Lync Dowryammer",{title = 253, look = "176;40_7b00c8+70335,0,20_9d00ff,43_290448,29_729be0+1d0241,0,1_5c00cb+211ce0,0,0",x = 1700,y = 10320,female = false,lookLeft = true,lookAtPlayer = true,interactive = true})
-		tfm.exec.addNPC("Mylenne Ganditz",{title = 244, look = "161;212,38,57,66,62,0,33,0,0",x = 2430,y = 9368,female = true,lookLeft = true,lookAtPlayer = true,interactive = true})
-		tfm.exec.addNPC("Julia Henderson",{title = 125, look = "142;234,49_efa5e2+edf1f2+edf1f2+edf1f2,77,0,43,97,3,0,0",x = 3505,y = 9188,female = true,lookLeft = false,lookAtPlayer = true,interactive = true})
 		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 3000,y = 6176,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
 	else
 		tfm.exec.setGameTime(5)
@@ -3712,7 +3726,7 @@ end
 tfm.exec.newGame(map)
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.251<br>By Morganadxana#0000")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.252<br>By Morganadxana#0000")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
