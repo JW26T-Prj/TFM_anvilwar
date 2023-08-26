@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.254
+-- Transformice #anvilwar module loader - Version 2.255
 -- By Morganadxana#0000
--- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain.
+-- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain, #house.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.254",
-	_MAINV = "53942.225",
+	_VERSION = "2.255",
+	_MAINV = "54146.229 LTS",
 	_DEVELOPER = "Morganadxana#0000" }
 	
 initAnvilwar = function()
@@ -13,20 +13,20 @@ initAnvilwar = function()
 Module authors : Morganadxana#0000
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 53942.225
-Compilation date : 08/02/2023 14:59 UTC
+Version : RTM 54146.229 LTS
+Compilation date : 08/26/2023 18:55 UTC
 Sending player : Morganadxana#0000
 
-Number of maps : 191
-Number of module special members : 10 ]]--
+Number of maps : 195
+Number of module special members : 11 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Morganadxana#0000"
 
 funcorps={} -- If you are a FunCorp member, please insert your nicknames (with #tag) here.
 
-maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","The Bridge of Death","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger"}
+maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","The Bridge of Death","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller"}
 objects={1,2,3,4,6,7,10,23,33,34,39,45,46,54,60,61,65,68,69,90,95}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
@@ -39,17 +39,10 @@ settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,sh
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
-playersList={}; helpers={}; mods={
-"Dinamarquers#0000",
-"Flaysama#5935",
-"Chavestomil#0000"};
-admins={"Ashearcher#0000",
-"Spectra_phantom#6089",
-"Morganadxana#0000",
-"Geracionz#0000"}
-ninjas={"Viego#0345",
-"Barodius#9562",
-"Leblanc#5342"};
+playersList={}; helpers={};
+mods={"Dinamarquers#0000","Flaysama#5935","Chavestomil#0000"};
+admins={"Ashearcher#0000","Spectra_phantom#6089","Morganadxana#0000","Geracionz#0000"};
+ninjas={"Viego#0345","Barodius#9562","Leblanc#5342","Dharak#7603"};
 data={}
 
 lang = {}
@@ -321,7 +314,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 53942.225 - "..text.comp_date.."08/02/2023 14:59 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 54146.229 LTS - "..text.comp_date.."08/26/2023 18:55 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -405,7 +398,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 53942.225</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 54146.229 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -710,22 +703,22 @@ function eventKeyboard(name,code,down,x,y)
 	if mode == "shoot" and actual_player == name and enabled == true then
 		if code == 32 then
 			if data[name].team == 1 then
-				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
+				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6),-5-(data[name].power*0.3),false)
 				if data[name].powerup == 1 then
-					id=spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
+					id=spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6),-5-(data[name].power*0.3),false)
 				elseif data[name].powerup == 2 then
 					for i=1,2 do
-						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2),-5-(data[name].power*0.3),false)
+						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6),-5-(data[name].power*0.3),false)
 					end
 				end
 				tfm.exec.playSound("bouboum/x_explosion_3.mp3", 90)
 			elseif data[name].team == 2 then
-				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
+				spawnAnvil(10,x,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6)*-1,-5-(data[name].power*0.3),false)
 				if data[name].powerup == 1 then
-					spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
+					spawnAnvil(10,x+45,y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6)*-1,-5-(data[name].power*0.3),false)
 				elseif data[name].powerup == 2 then
 					for i=1,2 do
-						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.2)*-1,-5-(data[name].power*0.3),false)
+						spawnAnvil(10,x+(45*i),y-55,(data[name].angle)*-1,(2.5+data[name].power*1.6)*-1,-5-(data[name].power*0.3),false)
 					end
 				end
 				tfm.exec.playSound("bouboum/x_explosion_3.mp3", 90)
@@ -937,7 +930,7 @@ function eventPlayerDied(name)
 			if actual_player == name then
 				data[actual_player].current_coins=0
 				setScores(actual_player,0,false)
-				showMessage(""..text.suicide..""..actual_player)
+				showMessage(text.suicide..actual_player)
 				if custom_mode == true and settings.anti_kami == true and data[actual_player].left == false then
 					if data[actual_player].team == 1 then
 						victoryBlue()
@@ -1132,7 +1125,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,105,"#anvilwar Changelog - RTM 53942.225","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members")
+		showMenu(name,0xa8f233,140,130,520,140,"#anvilwar Changelog - RTM 54146.229 LTS","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 4 new maps<br>• The score increasing was slightly reduced")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2054,7 +2047,7 @@ function eventLoop(passed,remain)
 			powerups=true
 			showMessage(text.powerups_a)
 		end
-		if time_passed % 27 == 0 then
+		if time_passed % 30 == 0 then
 			for name,player in next,tfm.get.room.playerList do
 				if data[name] and data[name].team > 0 then
 					if data[name].killed == false then
@@ -2063,7 +2056,7 @@ function eventLoop(passed,remain)
 				end
 			end
 		end
-		if time_passed % 18 == 0 then
+		if time_passed % 22 == 0 then
 			for name,player in next,tfm.get.room.playerList do
 				if data[name] and data[name].team > 0 then
 					if data[name].killed == false then
@@ -3667,7 +3660,7 @@ end
 debug.disableEventLog(true)
 system.disableChatCommandDisplay("reset")
 tfm.exec.newGame("@7917999")
-changed=false; xml2='';
+changed=false; xml2=''; data={};
 
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
@@ -3693,13 +3686,13 @@ function showNPCs(name)
 	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 8586,y = 760,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
 end
 function showWater(name)
-for i=0,5 do
- 	tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, nil, 1, 1, 0, 1)
-end
-for i=0,11 do
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, nil, 5, 1, 0, 1)
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, nil, 5, -1, 0, 1)
-end
+	for i=0,5 do
+ 		tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, name, 1, 1, 0, 1)
+	end
+	for i=0,11 do
+		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, name, 5, 1, 0, 1)
+		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, name, 5, -1, 0, 1)
+	end
 	tfm.exec.addImage("1883b1394a4.png","!1",2500,100,name,0.5,0.5)
 	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
 	for h=0,4 do
@@ -3728,6 +3721,19 @@ function eventChatCommand(name,message)
 		if name == "Morganadxana#0000" or name == "Ashearcher#0000" then
 			tfm.exec.newGame(xml2,false)
 			ui.removeTextArea(0,nil)
+		end
+	end
+end
+function eventKeyboard(name,key,down,x,y)
+	if key >= 0 and key <= 3 then
+		if data[name] and data[name].s > 0 then
+			if key == 2 then
+				tfm.exec.removeImage(data[name].id)
+				displayShark(name,data[name].s,false)
+			elseif key == 0 then
+				tfm.exec.removeImage(data[name].id)
+				displayShark(name,data[name].s,true)
+			end
 		end
 	end
 end
@@ -3794,7 +3800,14 @@ function eventNewPlayer(name)
 	if changed == true then
 		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
 	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 1.7",name)
+	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 2.0",name)
+	newData={
+		["s"]=0; ["id"]=-1;
+	};
+	data[name] = newData;
+	for i=0,3 do
+		system.bindKeyboard(name,i,true,true)
+	end
 end
 function eventLoop(p,f)
 	if changed == true then
@@ -3818,7 +3831,266 @@ for name,_ in next,tfm.get.room.playerList do
 end
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.254<br>By Morganadxana#0000")
+initHouse = function()
+admin={""} -- Insiram seus nicknames aqui!
+
+-- NÃO MEXA EM NADA A PARTIR DESTA LINHA!!
+for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables"} do
+	tfm.exec["disable"..f](true)
+end
+system.disableChatCommandDisplay("mode");
+for _,i in next,{"d1","d2","d3"} do system.disableChatCommandDisplay(i); end
+debug.disableEventLog(true)
+map_depth=1;
+
+xml=''; changed=false; night=0; a1={4505,265,2925,4066}; a2={1529,1493,1742,1862}; a3={3517,6260,1711,4423}; a4={1622,1551,1537,1864};
+b1={888,2520,3095,4692,6810}; c1={560,1378,2048,2802,3307,4555,5369,6004,6750}; d1={1024,1536,2560,3072,4608,5120,6656,7168};
+data={};
+
+ninjas={"Morganadxana#0000","Lacoste#8972","Leblanc#5342","Irelia#7317"}
+
+function showMessage(message,name)
+	temp_text=string.gsub(message,"<b>","")
+	temp_text=string.gsub(temp_text,"</b>","")
+	if tfm.get.room.isTribeHouse == false then
+		tfm.exec.chatMessage(message,name)
+	else
+		ui.addPopup(0,0,temp_text,name,250,75,400,true)
+	end
+end
+
+function showNPCs(name)
+	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 5205,y = 727,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
+end
+
+function verifyAdmin(name)
+	for i=1,rawlen(admin) do
+		if admin[i] == name then
+			return true
+		end
+	end
+end
+
+function verifyNinjas(name)
+	for i=1,rawlen(ninjas) do
+		if ninjas[i] == name then
+			return true
+		end
+	end
+end
+
+function showWater(name)
+	y_factor=0
+	if map_depth == 1 then y_factor=700; elseif map_depth == 2 then y_factor=0; elseif map_depth == 3 then y_factor=-700; end
+	tfm.exec.addImage("189746c6144.png","!1",2840,2588-y_factor,name)
+	tfm.exec.addImage("189746f8a21.png","!1",6836,2679-y_factor,name)
+	for d=1,rawlen(c1) do tfm.exec.addImage("189746d76aa.png","?1",c1[d],2847-y_factor,name); end
+	for d=1,rawlen(d1) do tfm.exec.addImage("189746e4cb8.png","!-1",d1[d],2770-y_factor,name); end
+	for d=1,rawlen(a2) do tfm.exec.addImage("18a053a43b9.png","?1",a1[d],a2[d],name,-1,1); end
+	for d=1,rawlen(a4) do tfm.exec.addImage("18a053a43b9.png","?1",a3[d],a4[d],name); end
+	for d=1,rawlen(b1) do tfm.exec.addImage("189746d10d2.png","!1",b1[d],2903-y_factor,name); end
+	for _,i in next,{0,2,4} do
+		tfm.exec.addImage("189749dd379.png", "?1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 1)
+		tfm.exec.addImage("189749dd379.png", "!-1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 0.65)
+	end
+	for _,i in next,{1,3,5} do
+ 		tfm.exec.addImage("189749dd379.png", "?1", 800+(i*2000), 1295, name, -1, 0.8, 0, 1)
+		tfm.exec.addImage("189749dd379.png", "!-1", 800+(i*2000), 1295, name, -1, 0.8, 0, 0.65)
+	end
+	tfm.exec.addImage("189749ce857.png", "?1", -1200, 1400, name, 8, 6, 0, 1)
+	tfm.exec.addImage("189749ce857.png", "!-1023", -1200, 1934, name, 8, 6, 0, 0.6)
+	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 44, 1.1,0,0.75)
+	for i=0,6 do
+		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 2995-y_factor, name, 1, 1, 0, 1)
+		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 3720-y_factor, name, 1, -3, 0, 1)
+	end
+	for i=0,1 do tfm.exec.addImage("17be536e980.png","!1",-1200+(i*5200),2280-y_factor,name,1,1,0,0.75); end
+	for i=1,2 do
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-50,2300),math.random(-50,630),name)
+		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(5300,7500),math.random(-50,630),name)
+	end
+	for i=1,2 do
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(-50,2300),math.random(-50,630),name)
+		tfm.exec.addImage("181ba86195e.png","!1",math.random(5300,7500),math.random(-50,630),name)
+	end
+	for i=1,2 do
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(-50,2300),math.random(-50,630),name)
+		tfm.exec.addImage("181ba86655c.png","!1",math.random(5300,7500),math.random(-50,630),name)
+	end
+	for i=1,2 do
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(-50,2300),math.random(-50,630),name)
+		tfm.exec.addImage("181ba86b15a.png","!1",math.random(5300,7500),math.random(-50,630),name)
+	end
+	for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.3)); end
+	for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.3)) end
+	data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name)
+	data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.1)
+end
+
+function resetMap()
+	if xml == '' then
+		tfm.exec.disableAutoShaman(true)
+		if map_depth == 1 then
+			tfm.exec.newGame("@7940458")
+		elseif map_depth == 2 then
+			tfm.exec.newGame("@7940307")
+		elseif map_depth == 3 then
+			tfm.exec.newGame("@7940460")
+		else
+			system.exit()
+		end
+		ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
+		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
+		changed=false
+	else
+		changed=true
+		tfm.exec.newGame(xml)
+		ui.removeTextArea(0)
+		for name,_ in next,tfm.get.room.playerList do
+			eventNewPlayer(name)
+		end
+	end
+end
+
+function eventTalkToNPC(name, npc)
+	if npc == "Mayra Flowers" then
+		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●) 🐄 <font face='Verdana'>",name)
+	end
+end
+
+function eventChatCommand(name,message)
+	if changed == true then
+		if message == "0" then
+		tfm.exec.setPlayerGravityScale(name,1)
+		tfm.exec.killPlayer(name);
+	end
+	for i=1,13 do
+		if message == tostring(i) then
+			data[name].s=i
+			tfm.exec.removeImage(data[name].id)
+			displayShark(name,data[name].s,false)
+			tfm.exec.setPlayerCollision(name,3)
+		end
+	end
+	if verifyNinjas(name) == true or verifyAdmin(name) == true then
+	if message == "mode" then
+		if night == 0 then
+			for name,player in next,tfm.get.room.playerList do
+				tfm.exec.removeImage(data[name].backId2,true)
+				tfm.exec.removeImage(data[name].backId1,true)
+				if data[name] then for i=1,rawlen(data[name].backId3) do
+					tfm.exec.removeImage(data[name].backId3[i],true)
+				end end
+				for i=0,5 do for j=0,1 do table.insert(data[name].backId3,tfm.exec.addImage("181b9de5c95.png","?1",-1200+(i*1920),-1050+(j*1080),name,1,1,0,0.15)) end end
+				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.15)); end
+				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.15)) end
+				data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name,1,1,0,0.4)
+				data[name].backId1 = tfm.exec.addImage("17e937f4f5a.png","?1",-800,16500,name,72,-3.6,0,0.75)
+			end
+			night=1
+		elseif night == 1 then
+			for name,player in next,tfm.get.room.playerList do
+				tfm.exec.removeImage(data[name].backId2,true)
+				tfm.exec.removeImage(data[name].backId1,true)
+				if data[name] then for i=1,rawlen(data[name].backId3) do
+						tfm.exec.removeImage(data[name].backId3[i],true)
+				end end
+				for i=0,5 do for j=0,1 do table.insert(data[name].backId3,tfm.exec.addImage("181b9de5c95.png","?1",-1200+(i*1920),-1050+(j*1080),name,1,1,0,1.5)) end end
+				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.05)); end
+				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.05)) end
+				data[name].backId2 = tfm.exec.addImage("1883b125925.png", "?1", 1800, 500,name,1,1,0,2)
+				data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg","?1",0,50,name,13,12,0,1)
+			end
+			night=2		
+		elseif night == 2 then
+			for name,player in next,tfm.get.room.playerList do
+				tfm.exec.removeImage(data[name].backId2,true)
+				tfm.exec.removeImage(data[name].backId1,true)
+				if data[name] then for i=1,rawlen(data[name].backId3) do
+					tfm.exec.removeImage(data[name].backId3[i],true)
+				end end
+				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.3)); end
+				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.3)) end
+				data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name)
+				data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.1)
+			end
+			night=0
+		end
+	end
+	if message == "d1" then
+		xml=''; changed=false; night=0; map_depth=1;
+		resetMap();
+	elseif message == "d2" then
+		xml=''; changed=false; night=0; map_depth=2;
+		resetMap();
+	elseif message == "d3" then
+		xml=''; changed=false; night=0; map_depth=3;
+		resetMap();
+	end
+	end
+	end
+end
+
+function eventPlayerDied(name)
+	tfm.exec.setPlayerGravityScale(name,1)
+	if changed == true then
+		tfm.exec.changePlayerSize(name,1)
+		tfm.exec.setPlayerCollision(name,1)
+		tfm.exec.removeImage(data[name].id)
+		data[name].id=-1
+		data[name].s=0
+		tfm.exec.respawnPlayer(name)
+	end
+end
+
+function eventNewGame()
+	xml=tfm.get.room.xmlMapInfo.xml
+end
+
+function eventNewPlayer(name)
+	if changed == true then
+		tfm.exec.respawnPlayer(name)
+		tfm.exec.setPlayerGravityScale(name,1)
+		tfm.exec.changePlayerSize(name,1)
+		newData={
+			["s"]=0; ["id"]=-1; ["backId1"]=-1; ["backId2"]=-1; ["backId3"]={};
+		};
+		data[name] = newData;
+		for i=0,3 do
+			system.bindKeyboard(name,i,true,true)
+		end
+		ui.setMapName("<N>Casa Oceânica das Arraias Brancas - <ROSE>Morgana's Mechanical Maps<")
+		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Casa%20Oce%C3%A2nica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.0.1",name)
+		ui.setBackgroundColor("#000000")
+		showWater(name)
+		showNPCs(name)
+		if string.find(tfm.get.room.name,name) then
+			table.insert(admin,name)
+		end
+	end
+end
+
+function eventLoop(p,r)
+	if p >= 5500 and changed == true then
+		for name,_ in next,tfm.get.room.playerList do
+			if data[name] then
+				if tfm.get.room.playerList[name].y >= 1310 then
+					tfm.exec.setPlayerGravityScale(name,1-(tfm.get.room.playerList[name].y-1300)*0.001)
+				else
+					tfm.exec.setPlayerGravityScale(name,1)
+				end
+			end
+		end
+	end
+	if p >= 5500 and changed == false then
+		resetMap()
+	end
+end
+
+resetMap()
+end
+
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.255<br>By Morganadxana#0000")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
@@ -3832,6 +4104,9 @@ else
 	elseif string.find(tfm.get.room.name,"beach") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'beach' on room name.<br>Initialising #beach module...")
 		initBeach()
+	elseif string.find(tfm.get.room.name,"house") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'house' on room name.<br>Initialising #house module...")
+		initHouse()
 	elseif string.find(tfm.get.room.name,"naturalpark") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'naturalpark' on room name.<br>Initialising #naturalpark module...")
 		initNP()
