@@ -1,32 +1,32 @@
--- Transformice #anvilwar module loader - Version 2.255
--- By Morganadxana#0000
--- Included sub-modules: #beach, #naturalpark, #watercatch, #mountain, #house.
+-- Transformice #anvilwar module loader - Version 2.256
+-- By Spectra_phantom#6089
+-- Included sub-modules: #watercatch, #truefalse.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.255",
+	_VERSION = "2.256",
 	_MAINV = "54146.229 LTS",
-	_DEVELOPER = "Morganadxana#0000" }
+	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
 --[[ #anvilwar
-Module authors : Morganadxana#0000
+Module authors : Spectra_phantom#6089
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 54146.229 LTS
-Compilation date : 08/26/2023 18:55 UTC
-Sending player : Morganadxana#0000
+Version : RTM 55047.230
+Compilation date : 09/05/2023 02:37 UTC
+Sending player : Spectra_phantom#6089
 
-Number of maps : 195
+Number of maps : 194
 Number of module special members : 11 ]]--
 
 _VERSION = "Lua 5.4"
-_AUTHOR = "Morganadxana#0000"
+_AUTHOR = "Spectra_phantom#6089"
 
 funcorps={} -- If you are a FunCorp member, please insert your nicknames (with #tag) here.
 
-maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7512942","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","The Bridge of Death","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller"}
+maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of Void (Remaked)","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","The Bridge of Death","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller"}
 objects={1,2,3,4,6,7,10,23,33,34,39,45,46,54,60,61,65,68,69,90,95}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
@@ -41,7 +41,7 @@ divider="　　　　　　　　　";
 images_id={};
 playersList={}; helpers={};
 mods={"Dinamarquers#0000","Flaysama#5935","Chavestomil#0000"};
-admins={"Ashearcher#0000","Spectra_phantom#6089","Morganadxana#0000","Geracionz#0000"};
+admins={"Ashearcher#0000","Spectra_phantom#6089","Geracionz#0000"};
 ninjas={"Viego#0345","Barodius#9562","Leblanc#5342","Dharak#7603"};
 data={}
 
@@ -81,7 +81,7 @@ lang.br = {
 	ac = "Você atualmente possui ",
 	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 26pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 16pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
 	commands = "<font size='11.5'>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.",
-	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N> Morganadxana#0000 e Geracionz#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000, Dinamarquers#0000 e Spectra_phantom#6089<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
+	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N>Spectra_phantom#6089 e Geracionz#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	adcommands = "<font size='11.5'><N>!fc [mensagem] - Exibe uma mensagem na cor laranja (apenas para membros da equipe FunCorp).<br>!pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br>!reset - Cancela a partida atual e retorna à tela inicial.<br>!limit [número] - Altera o limite de jogadores da sala.<br>!lc [0-3] - Altera a configuração do verificador de latência dos jogadores.<br>!settings - Altera as configurações da sala.",
 	seconds = " segundos.",
 	leave = "Sair",
@@ -105,7 +105,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 20% a mais de tempo para atirar do que os outros jogadores<br>• Pode voltar a vida uma vez se morto.",
-	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>Um mapa-script tipo village, porém de praia!</b><br><VP>/sala #anvilwar00beach<br><br><J><b>Um mapa-script para quem gosta de aventuras radicais e natureza!</b><br><VP>/sala #anvilwar00naturalpark<br><br><J><b>Teste suas habilidades de WJ escalando a montanha!</b><br><VP>/sala #anvilwar00mountain",
+	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>A resposta é verdadeira ou falsa? Descubra nesta sala!</b><br><VP>/sala #anvilwar00truefalse",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -161,7 +161,7 @@ lang.en = {
 	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 26pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 16pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
 	commands = "<font size='11.5'>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!p [username] (or <b>P</b> key) - Show the profile of the specified user. Type !p only to see your profile.<br>!ranking (or <b>R</b> key) - Show the room ranking.",
 	adcommands = "<font size='11.5'><N>!fc [text] - Shows a text in orange. (only for FunCorp members)<br>!pw [password] - Locks the room with a password. Use only !pw to clear the password.<br>!reset - Cancel the current match and returns to the lobby screen.<br>!limit [number] - Change the limit of mices on the room.<br>!lc [0-3] - Change the level of the player's latency checker.<br>!settings - Change the room settings.",
-	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil. Use the <b>SPACEBAR</b> to shoot.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Morganadxana#0000 and Geracionz#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000, Dinamarquers#0000 and Spectra_phantom#6089<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
+	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil. Use the <b>SPACEBAR</b> to shoot.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 and Geracionz#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
 	seconds = " seconds.",
 	leave = "Leave",
 	join = "Join",
@@ -249,11 +249,6 @@ function showImage(name,link,x,y,scalex,scaley)
 	table.insert(images_id,image_id)
 end
 	
-function showImageBackground(name,link,x,y,scalex,scaley)
-	image_id=tfm.exec.addImage(link,"?1",x,y,name,scalex,scaley,0,1)
-	table.insert(images_id,image_id)
-end
-
 function showAvailableAnvils(name)
 	i=0
 	for _,link in next,{"1788f85d7e2.png","1788f85ef53.png","1788f8606c4.png","1788f861e33.png"} do
@@ -314,7 +309,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 54146.229 LTS - "..text.comp_date.."08/26/2023 18:55 UTC - "..text.uploaded.."Morganadxana#0000</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55047.230 - "..text.comp_date.."09/05/2023 02:37 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -398,7 +393,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 54146.229 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55047.230</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -622,7 +617,7 @@ function eventNewPlayer(name)
 	if mode == "lobby" then
 		if data[name] then
 			if data[name].ranking >= 0 then
-				showImageBackground(name,"1835da9d15e.png",0,1,1.0,1.0)
+				ui.setBackgroundColor("#000000")
 				showTeams(name)
 				showLobbyText(name)
 				tfm.exec.respawnPlayer(name)
@@ -1016,7 +1011,7 @@ function lobby()
 			data[name].opened=false
 			if data[name].ranking >= 0 then
 				showTeams(name)
-				showImageBackground(name,"1835da9d15e.png",0,1,1.0,1.0)
+				ui.setBackgroundColor("#000000")
 				data[name].team=0
 				data[name].current_coins=0
 				setScores(name,0,false)
@@ -1125,7 +1120,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,140,"#anvilwar Changelog - RTM 54146.229 LTS","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 4 new maps<br>• The score increasing was slightly reduced")
+		showMenu(name,0xa8f233,140,130,520,140,"#anvilwar Changelog - RTM 55047.230","• Fixes on the scoreboard<br>• Some text changes<br>• Added commands for FunCorp members<br>• Changes on anvils physics<br>• Added 4 new maps<br>• The score increasing was slightly reduced")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 then
@@ -2119,202 +2114,6 @@ end
 lobby()
 end
 
-initNP = function()
-for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables","AutoTimeLeft"} do
-	tfm.exec["disable"..f](true)
-end
-debug.disableEventLog(true)
-system.disableChatCommandDisplay("reset")
-tfm.exec.newGame("@7917579")
-data={}; changed=false; xml2='';
-npc_01={title = 5,look = "1;190_dbe10f+767576+585155+c44444+e0ddce+202020+e7e6e5,0,30_1f618d+2fb9a2+3a2cf0,0,54,111,49,0,0",x = 141,y = 2275,female = false,lookLeft = false,lookAtPlayer = true,interactive = true}
-npc_02={title = 339,look = "1;40_d0ff+1825e7,6_700ff+b8ff,20_beff,0,29_d99+b2ff,0,1_ffff+ff0000,0,0",x = 40,y = 2950,female = false,lookLeft = false,lookAtPlayer = false,interactive = true}
-npc_03={title = 382,look = "179;236_434f55+434f55+434f55+434f55+605520+a19d88,50,82,0,62,112,44,0,0",x = 3128,y = 1906,female = true,lookLeft = false,lookAtPlayer = false,interactive = true}
-npc_04={title = 115,look = "222;229,46,84_988c5c+d252d6+b8a866+3062c7+d3eb29,0,65,0,52,84,0",x = 5072,y = 1632,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-npc_06={title = 2,look = "113;223,8,27_252525+383838+242424,31,55_6d2e29+9e9983+ddba1d,0,0,51,48",x = 1088,y = 336,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
-npc_07={title = 42,look = "157;83,0,9,0,6,102_148960+f7eeba+f7eeba,0,79,47",x = 1033,y = 1121,female = false,lookLeft = true,lookAtPlayer = false,interactive = true}
-npc_08={title = 213,look = "223;244,33,89,0,6,102_148960+f7eeba+f7eeba,0,72,47",x = 5117,y = 1417,female = true,lookLeft = false,lookAtPlayer = true,interactive = true}
-npc_09={title = 11,look = "213;217_436b98+41d7fb+327548+287f9d+e0e8f3+555e88,23_3976eb+21170d+3488bb+21170d+21170d,23_b68ad,34_1c815b,17,83,49_3477ac+2d2d2d,0,0",x = 883,y = 2985,female = false,lookLeft = true,lookAtPlayer = true,interactive = true}
-npc_10={title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 685,y = 912,female = true,lookLeft = true,lookAtPlayer = true,interactive = true}
-
-function initNPC(name)
-	tfm.exec.addNPC("Keith Hertzon", npc_01, name)
-	tfm.exec.addNPC("Dhanny Dier", npc_02, name)
-	tfm.exec.addNPC("Andressa Nyeder", npc_03, name)
-	tfm.exec.addNPC("Fabia Murray", npc_04, name)
-	tfm.exec.addNPC("Dereek Nandertz", npc_06, name)
-	tfm.exec.addNPC("Damian Henderson", npc_07, name)
-	tfm.exec.addNPC("Luciana Bander", npc_08, name)
-	tfm.exec.addNPC("Jesse Malcolm", npc_09, name)
-	tfm.exec.addNPC("Mayra Flowers", npc_10, name)
-end
-function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
-	if tfm.get.room.isTribeHouse == false then
-		tfm.exec.chatMessage(message,name)
-	else
-		ui.addPopup(0,0,temp_text,name,250,75,400,true)
-	end
-end
-
-function eventTalkToNPC(name, npc)
-	if npc == "Keith Hertzon" then
-		showMessage("<V>[Keith Hertzon] <N>Quem é você? Ah, mais um visitante...<br><br>Bem, se quer saber o destino deste elevador... Bem, eu acho que não deve ser bem o que você espera.<br><br>Você vai descer bastante dentro do rio. Chuto que deva ser uns 20 metros de profundidade... Você vai encontrar umas cápsulas bem antigas que era usadas para navegação, mas aquilo já existe há anos, então duvido que ainda funcione. Mas vai que, né...",name)
-	elseif npc == "Dhanny Dier" then
-		showMessage("<V>[Dhanny Dier] <N>Você é muito(a) corajoso(a) para estar neste lugar. A pressão aqui é bem alta.<br><br>Mas se quiser saber o que são aquelas coisas, são esferas submarinas. Elas eram utilizadas há décadas atrás, mas acredito que estejam todas enferrujadas. Não recomendo tentar ir para lá, a não ser que realmente seja muito curioso(a). <b>E sim, isto é um aviso.</b>",name)
-	elseif npc == "Andressa Nyeder" then
-		showMessage("<V>[Andressa Nyeder] <N>Seja bem-vindo(a). Este é o mirante de observação do Parque Aquático Natural das Cobras. Daqui é possível ver quase toda a extensão do rio com muito mais clareza.<br><br>As cobras não são lindas? E o melhor de tudo, não são venenosas! Você pode fazer carinho nelas sem medo.",name)
-	elseif npc == "Fabia Murray" then
-		showMessage("<V>[Fabia Murray] <N>Alguém aqui está preparado(a) para grandes emoções? Tomem cuidado apenas com as cobras!",name)
-	elseif npc == "Dereek Nandertz" then
-		showMessage("<V>[Dereek Nandertz] <N>Está perdido(a)? Não precisa se preocupar. Eu serei o seu guia.<br><br>Ali na frente, há uma tirolesa bem grande e um trampolim. Desse jeito, você consegue sentir a água gelada do rio com muito mais propriedade.<br><br><R>Só vê se não fica muito tempo pulando no trampolim... Aquilo já quebrou várias vezes por conta de alguns que nem quero comentar.",name)
-	elseif npc == "Damian Henderson" then
-		showMessage("<V>[Damian Henderson] <N>Está preparado? Pois se não estiver, é melhor estar. Esta é o maior escorregador aquático do mundo!<br><br>Com quase 55 metros de altura, é literalmente uma aventura de cair o queixo. Definitivamente não é um brinquedo para medrosos.<br><br>E aí, vai encarar?",name)
-	elseif npc == "Luciana Bander" then
-		showMessage("<V>[Luciana Bander] <N>Espera! Não está chovendo! Como eu queria uma boa chuva por aqui... Faz muito tempo que não cai uma água. Fora a que já tem no rio.",name)
-	elseif npc == "Jesse Malcolm" then
-		showMessage("<V>[Jesse Malcolm] <N>Nunca imaginarei que alguém pudesse chegar neste lugar tão ruim... No fundo de um gelado rio... Mas se quiser saber quem eu sou, então deixe-me explicar.<br><br>Certo dia estava me divertindo aqui no parque e praticando natação no rio, que é meu esporte favorito. Mas certo dia, o feitiço de uma mulher desconhecida me atacou e agora sou obrigado a viver aqui. Na escuridão. No frio.<br><br>Ah, vê se não fica muito tempo aqui em baixo, ou você pode congelar.",name)
-	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-	end
-end
-
-function showWater(name)
-	for _,h in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","?1",-1200+(h*1400),3050,name,1,0.5,0,1)
-	end
-	for _,j in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","?1",200+(j*1400),3050,name,-1,0.5,0,1)
-	end
-	for _,m in next,{0,2,4} do
-		tfm.exec.addImage("18204168d2e.png","?1",-1200+(m*1400),3672,name,1,-2,0,1)
-	end
-	for _,n in next,{1,3,5} do
-		tfm.exec.addImage("18204168d2e.png","?1",200+(n*1400),3672,name,-1,-2,0,1)
-	end
-	for _,as in next,{0,2,4} do
-		tfm.exec.addImage("183bac46d1a.png","?1",-800+(as*1488),3365,name,1,-1,0,0.7)
-	end
-	for _,at in next,{1,3,5} do
-		tfm.exec.addImage("183bac46d1a.png","?1",688+(at*1488),3365,name,-1,-1,0,0.7)
-	end
-	for i=0,1 do
-		tfm.exec.addImage("18200689108.png", "?1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 1.0)
-		tfm.exec.addImage("18200689108.png", "!1", -800+(i*7180), 2387, name, 1.0, 1.0, 0, 0.56)
-		tfm.exec.addImage("1820068de62.png", "!1", -800+(i*7180), 2445, name, 6, 1.5, 0, 0.8)
-	end
-	for w=1,6 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(50,5300),math.random(160,1800),name)
-	end
-	for b=0,1 do
-		tfm.exec.addImage("18200692b61.jpg","?1",-800+(b*1795),2445,name,4,4)
-	end
-	for x=1,6 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(50,5300),math.random(160,1800),name)
-	end
-	for y=1,6 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(50,5300),math.random(160,1800),name)
-	end
-	for z=1,6 do
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(50,5300),math.random(160,1800),name)
-	end
-	for a=0,3 do
-		for c=0,4 do
-			tfm.exec.addImage("181b9de5c95.png","?1",-800+(c*1920),2380-(a*1080),name, 1, 1, 0, 0.2+(a*0.2))
-		end
-	end
-	tfm.exec.addImage("17e937f4f5a.png","?1",-800,-1735,name,30,1)
-	tfm.exec.addImage("182386211f8.png","+1",-90,-90,name)
-	tfm.exec.addImage("182386211f8.png","+2",-90,-90,name)
-	tfm.exec.addImage("182386211f8.png","+3",-90,-90,name)
-end
-function eventChatCommand(name,message)
-	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Ashearcher#0000" then
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-function eventPlayerWon(name)
-	if changed == true then
-		tfm.exec.respawnPlayer(name)
-	end
-end
-function eventPlayerDied(name)
-	if changed == true then
-		tfm.exec.respawnPlayer(name)
-	end
-	data[name].below=false; data[name].fs=0; data[name].freezed=false;
-end
-function eventNewGame(name)
-	if changed == true then
-		for name,_ in next,tfm.get.room.playerList do
-			showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.2",name)
-			showWater(name)
-			initNPC(name)
-		end
-		ui.setMapName("<VP>Parque Aquático Natural das Cobras - <ROSE>Morgana's Mechanical Maps<")
-		tfm.exec.setGameTime(7200)
-	else
-		tfm.exec.setGameTime(5)
-		if changed == false then
-			xml2=tfm.get.room.xmlMapInfo.xml
-			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Carregando mapa. Por favor, aguarde...<")
-		else
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-function eventNewPlayer(name)
-	tfm.exec.respawnPlayer(name)
-	newData={
-	["below"]=false;
-	["fs"]=0;
-	["freezed"]=false;
-	["warn"]=false;
-	};
-	data[name] = newData;
-	if changed == true then
-		ui.setMapName("<VP>Parque Aquático Natural das Cobras - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) ao Parque Aquático Natural das Cobras.</b><br><br><p align='left'><N>Este é um mapa-script bem diferente de tudo o que você já viu.<br>O rio é muito profundo! Caso não saiba nadar, recomendo sair desta sala agora! Mas se souber, apenas aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,2GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para Aurelianlua#0000, Velkozdapic#0000, Lanadelrey#4862, Lorena#0960, Star#8558, Soft#1388, Some#2636, Leticia1k#0000, Draw#6691 e Joanaanne#0000.<b></b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Parque%20Aqu%C3%A1tico%20Natural%20das%20Cobras.lua<br><br><N>Revisão 1.2",name)
-		showWater(name)
-		initNPC(name)
-	end
-end
-for name,player in next,tfm.get.room.playerList do
-	eventNewPlayer(name)
-end
-function eventLoop(p,f)
-	if changed == true then
-	for name,player in next,tfm.get.room.playerList do
-		if tfm.get.room.playerList[name].y >= 2550 then
-			data[name].fs=data[name].fs+1
-			if data[name].fs == 5 and data[name].warn == false then
-				data[name].warn=true
-				showMessage("<VP>Tenha cuidado: A água do rio é muito gelada. Ficar por muito tempo pode congelar seu rato.",name)
-			end
-			if data[name].fs == 150 then
-				data[name].freezed=true
-				tfm.exec.freezePlayer(name)
-				tfm.exec.setPlayerGravityScale(name,2)
-			end
-		else
-			data[name].fs=0
-		end
-	end
-	else
-		if f <= 1 then
-			changed=true
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-end
-
 initWatercatch = function()
 admin={""} -- FunCorps, insiram seus nomes aqui! / FunCorps, insert your nicknames here!
 
@@ -2331,10 +2130,10 @@ active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}
 
 lang.br = {
 	welcome = "<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><VP>Fuja do shaman (tubarão) e sobreviva no perigoso mar!<br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module ",
-	changelog = "• Novo tema de mapa: Ilha dos Piratas!<br>• Mudanças na física da água<br>• Aumento do número de objetos usáveis pelo shaman de 10 para 12<br>• Adição de novas mensagens de informação<br>• Mudanças nos tempos dos powerups<br>• English translation!",
+	changelog = "• Mudanças no comando do module",
 	help = "O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do mar e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os círculos marcados por <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>12</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do mar.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do mar.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do mar, você provavelmente será levado para o fundo dele.",
-	thecredits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código e do mapa<br><ROSE><b>• Shun_kazami#7014</b><N> - Desenvolvimento do do mapa<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação das artes e desenvolvimento do mapa<br><ROSE><b>• Lynet#8558</b><N> - análise de avaliação e envio das imagens<br><ROSE><b>• Perdiaconta#2529</b><N> - análise de avaliação<br><ROSE><b>• Lacoste#8972</b><N> - análise de avaliação<br><ROSE><b>• Maramara4#0000</b><N> - análise de avaliação<br><ROSE><b>• Yuh#0748</b><N> - análise de avaliação<br><ROSE><b>• Rafaelmorai#0000</b><N> - análise de avaliação",
+	thecredits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Desenvolvimento do do mapa<br><ROSE><b>• Spectra_phantom#6089</b><N> - Ideia original, criação das artes, desenvolvimento do mapa e do código<br><ROSE><b>• Lynet#8558</b><N> - análise de avaliação e envio das imagens<br><ROSE><b>• Perdiaconta#2529</b><N> - análise de avaliação<br><ROSE><b>• Lacoste#8972</b><N> - análise de avaliação<br><ROSE><b>• Maramara4#0000</b><N> - análise de avaliação<br><ROSE><b>• Yuh#0748</b><N> - análise de avaliação<br><ROSE><b>• Rafaelmorai#0000</b><N> - análise de avaliação",
 	shark = "Tubarão",
 	whale = "Baleia",
 	pdn = "Peixe Diabo-Negro",
@@ -2369,10 +2168,10 @@ lang.br = {
 }
 lang.en = {
 	welcome = "<font color='#0080ff'><b>Welcome to the #watercatch module!</b><br><VP>Run away from the shark (shaman) and survive in the dangerous sea!<br><J>Type !help to see the game help.<br><br><N>Module ",
-	changelog = "• New map theme: Pirate Island!<br>• Changes on water physics<br>• Increased number of shaman usable objects from 10 to 12<br>• Added new information messages<br>• Changes on powerups timers<br>• English translation!",
+	changelog = "• Changes on module ownership",
 	help = "The goal is very simple: <b>Run away from the shaman</b>, hiding in the sea and keeping caution to don't drown!<br><R><b>Shamans, don't forget to move, or they will dead by AFK!</b><br><br><VP>The circles marked with <N>'?'<VP> are powerups, that generate random effects to your mice.<J><br>These powerups can be activated pressing SPACEBAR on top of them.<br><N>You can see all the possible effects of the powerups going to the Menu and pressing 'Powerups'.<br><br><N>If you are the shaman, you cannot invoke more than <b>12</b> objects, or you will lose your shaman turn.",
 	powerups = "<font size='11'>The following powerups are available at moment:<br><ROSE><b>• VAMPIRE</b><N><br>Turns your mouse into a vampire, forcing you out of the sea.<br><ROSE><b>• DARKNESS</b><N><br>Drastically reduces your mouse's field of view.<br><ROSE><b>• SUBMERGE</b><N><br>Create an anomaly that pushes all the mices to the seabed.<br><ROSE><b>• MEEP</b><N><br>Gives the MEEP ability!<br><ROSE><b>• SUFFOCATE</b><N><br>Reduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the sea.<br><ROSE><b>• FREEZE</b><N><br>Freeze your mice.<br><ROSE><b>• CHEESE</b><N><br>Give cheese to your mice. If you are in the sea and enable this powerup, you will go to the seabed.",
-	thecredits = "The following people helped with the development of this module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Code and map development<br><ROSE><b>• Shun_kazami#7014</b><N> - Map development<br><ROSE><b>• Spectra_phantom#6089</b><N> - Original idea, art creation and map development<br><ROSE><b>• Lynet#8558</b><N> - evaluation analysis and image sending<br><ROSE><b>• Perdiaconta#2529</b><N> - evaluation analysis<br><ROSE><b>• Lacoste#8972</b><N> - evaluation analysis<br><ROSE><b>• Maramara4#0000</b><N> - evaluation analysis<br><ROSE><b>• Yuh#0748</b><N> - evaluation analysis<br><ROSE><b>• Rafaelmorai#0000</b><N> - evaluation analysis",
+	thecredits = "The following people helped with the development of this module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Map development<br><ROSE><b>• Spectra_phantom#6089</b><N> - Original idea, art creation, map and code development<br><ROSE><b>• Lynet#8558</b><N> - evaluation analysis and image sending<br><ROSE><b>• Perdiaconta#2529</b><N> - evaluation analysis<br><ROSE><b>• Lacoste#8972</b><N> - evaluation analysis<br><ROSE><b>• Maramara4#0000</b><N> - evaluation analysis<br><ROSE><b>• Yuh#0748</b><N> - evaluation analysis<br><ROSE><b>• Rafaelmorai#0000</b><N> - evaluation analysis",
 	shark = "Shark",
 	whale = "Whale",
 	pdn = "Black Devil Fish",
@@ -2674,7 +2473,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,130,520,140,"#watercatch Changelog - v6.0.0",text.changelog)
+		showMenu(name,0xf0f0f0,140,130,520,100,"#watercatch Changelog - v6.0.1",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2685,7 +2484,7 @@ function eventChatCommand(name,message)
 			end
 		end
 	end
-	if name == "Morganadxana#0000" or name == "Akwimos#1937" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
+	if name == "Shun_kazami#7014" or name == "Leblanc#5342" or name == "Spectra_phantom#6089" or verifyAdmin(name) == true then
 		if (message:sub(0,3) == "msg") then
 			showMessage("<VP>• [FunCorp - <b>"..name.."</b>] "..message:sub(5).."")
 		end
@@ -2863,7 +2662,7 @@ function eventNewGame()
 			tfm.exec.removeImage(data[n].shark_id)
 			tfm.exec.changePlayerSize(n,1)
 			ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
-			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.0</b><N> - "..text.madeby.." <ROSE><b>Morganadxana#0000</b><")
+			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.1</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage(text.nosouris,name)
@@ -2954,7 +2753,7 @@ function eventLoop(p,r)
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.0</b><N> - "..text.madeby.." <ROSE><b>Morganadxana#0000</b><")
+		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.1</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,267,368,125,54,0,0,1.0,true)
@@ -3121,8 +2920,8 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	showWater(name)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.0</b><N> - "..text.madeby.." <ROSE><b>Morganadxana#0000</b><")
-	showMessage(text.welcome..text.madeby.." Morganadxana#0000.",name)
+	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.0.1</b><N> - "..text.madeby.." <R><b>Spectra_phantom#6089</b><")
+	showMessage(text.welcome..text.madeby.." Spectra_phantom#6089.",name)
 	tfm.exec.setPlayerScore(name,0,false)
 end
 for name,player in next,tfm.get.room.playerList do
@@ -3225,872 +3024,263 @@ end
 resetMap()
 end
 
-initMountain = function()
-for _,f in next,{"AutoNewGame","AutoTimeLeft","AfkDeath","AutoShaman","AutoScore","DebugCommand","PhysicalConsumables"} do
-	tfm.exec["disable"..f](true)
+initTrue = function()
+admin="" -- Insert your nickname here!
+
+-- Admin commands: !limits, !return, !cancel, !at [5-30], !shamdef [nickname#tag].
+
+for _,f in next,{"per","skip","limits","return","cancel","at","shamdef"} do
+	system.disableChatCommandDisplay(f)
 end
-for _,g in next,{"help","powerups","creditos","changelog"} do
-	system.disableChatCommandDisplay(g)
+for _,G in next,{"DebugCommand","AutoScore","AutoNewGame","AfkDeath","PhysicalConsumables","AllShamanSkills"} do
+	tfm.exec["disable"..G](true)
 end
-number_scale={8240,7400,6760,6230,5760,5350,4970,4620,4260,4000,3693,3417,3175,2900,2650,2390,2180,1950,1750,1550,1360,1150,935,770}
-data={}; lang={}; loop=0; map_count=0; event_selected=0; running=false; pass_int=0; falt_int=0; run_int=0; event_int=0; endgame=false; changed=false; vencedor="";
-map="@7901662"; xml2=''
-ground={type = 12,width = 10,height = 210,foregound = 1,friction = 0.0,restitution = 1.0,angle = 0,color = 0xffffff,miceCollision = true,groundCollision = true,dynamic = false}
-powerups={wind=false,meteor=false,gravity=false,cheese=false}
-events_pt={"Fúria da Tormenta","Chuva de Meteoros","Anomalia Gravitacional","Queijo para Todos"}
-events_en={"Wind Fury","Meteor Rain","Gravity Anomaly","Cheese for All"}
-power_d={p2={6,8,10,12},p3={12,14,16,18,20,22}}
-lang.br = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>versão <ROSE>v1.1.3   <G>|   <N>Desenvolvido por <J>Morganadxana#0000<",
-	enter = "<N>Bem-vindo ao module <J><b>#mountain!</b><br><N>Você tem 3 minutos para escalar a grande montanha que há pelo caminho!<br><br><ROSE>Versão v1.1.3 - desenvolvido por Morganadxana#0000<br><VP>O module foi atualizado! Para descobrir as novidades, digite !changelog.",
-	newgame = "<N>Caso não saiba o que fazer neste module, digite <b>!help</b>.",
-	getready = "<J>Se prepare! A estrada para a montanha será liberada em breve!",
-	start = "<VP><b>E que comece a batalha!</b>",
-	event1 = "O evento",
-	event2 = "será iniciado em instantes, e terá duração de ",
-	event3 = "segundos!",
-	event4 = " começou! Salve-se quem puder!",
-	t10secs = "<font color='#ff8000'>Restam apenas 10 segundos! Apenas o rato que estiver mais alto sobreviverá!",
-	winner = "é o grande vencedor!",
-	scaled = "Ele(a) subiu ",
-	recognized = "metros e agora é reconhecido pelos deuses da montanha!",
-	event5 = " foi encerrado!",
-	reached2 = "<G>Você atingiu os 2000 metros de altura.<br>Ventos bem gelados começam a te rodear e você começa a sentir falta de ar.",
-	reached3 = "<G>Você atingiu os 5000 metros de altura.<br>Já está impossível de suportar o extremo frio, e você começa a ter sérias dificuldades para respirar.",
-	reached4 = "<G>Você atingiu os 10000 metros de altura.<br>As correntes geladas começam a te fazer congelar, e seu rato passa a ter um sério problema de asfixia devido a falta de ar.",
-	reached5 = "<G>Você atingiu os 20000 metros de altura.<br>Você começa a ver as estrelas muito mais claramente, mesmo no dia claro. No entanto, isto é um péssimo sinal. O ar rarefeito e as baixíssimas temperaturas fazem seu rato morrer aos poucos.",
-	reached6 = "<VP>Você chegou no pico da montanha! Os deuses reconheceram sua bravura e coragem e te acolheram para o céu!",
-	reached7 = " <VP>chegou até o topo da montanha!<br><N>Ele(a) agora se integra nas estrelas e passa a brilhar como nunca!",
-	nowinners = "<R>Não há vencedores!",
-	help = "<p align='center'><VP><b>Bem-vindo ao module #mountain.</b><br><br><p align='left'><N>Este modo é bem simples. O objetivo é subir o máximo possível a grande montanha que há pela frente.<br><br>No entanto, os deuses da montanha estão furiosos, e podem atacar com vários contratempos.<br><br>A partida acaba depois de 3 minutos, quando todos os ratos morrem ou quando alguém chega no pico da montanha.<br><br><ROSE>Quaisquer bugs ou problemas reporte para Morganadxana#0000.",
-	powerups = "<G>• Fúria da Tormenta: <N>Correntes de vento começam a pairar em volta da montanha.<br><G>• Chuva de Meteoros: <N>Meteoros começam a cair do céu, fazendo com que você caia.<br><G>• Anomalia Gravitacional: <N>Um campo gravítico intenso aparece na montanha, alterando de forma aleatória a gravidade do mapa.<br><G>• Queijo para Todos: <N>Todos os jogadores recebem queijo.",
-	credits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Desenvolvedora do código e criadora do mapa<br><ROSE><b>• Rakan_raster#0000</b><N> - Tradução do código para o Inglês<br><ROSE><b>• Spectra_phantom#6089</b><N> - Criação das artes",
-	memory_error = "<R>Aviso: Não há mais memória disponível para o Transformice. Para continuar jogando este module, saia do jogo e entre novamente.",
-}
-lang.en = {
-	mapname = "<N><b>#mountain</b>  <V>-  <N>version <ROSE>v1.1.3   <G>|   <N>Developed by <J>Morganadxana#0000<",
-	enter = "<N>Welcome to the <J><b>#mountain</b> module!<br><N>You have 3 minutes to scale the big mountain that is on your way!<br><ROSE>Version v1.1.3 - developed by Morganadxana#0000<br><V>Translation by Rakan_raster#0000<br><VP>If you want to see the latest updates, type !changelog.",
-	newgame = "<N>If you don't know about this module, please type <b>!help</b>.",
-	getready = "<J>Get ready! The road to the mountain will be opened!",
-	start = "<VP><b>Go!</b>",
-	event1 = "The event",
-	event2 = "will start in a few seconds, and will last for ",
-	event3 = "seconds!",
-	event4 = " started!",
-	t10secs = "<font color='#ff8000'>10 seconds remaining! The player that scaled more will survive!",
-	winner = "is the winner!",
-	scaled = "(S)he scaled ",
-	recognized = "meters and now is recognized by the mountain gods!",
-	event5 = " is gone!",
-	reached2 = "<G>You reached 2000 meters of height.<br>The cold wings starts to surround you, and the air starts to be rarefied...",
-	reached3 = "<G>You reached 5000 meters of height.<br>It's almost impossible to tolerate the extreme cold temperatures, and you starts to have serious difficulties to breathe correctly.",
-	reached4 = "<G>You reached 10000 meters of height.<br>The strong cold wings starts to freeze you, and your mice starts to have serious suffocation problems because of lack of air...",
-	reached5 = "<G>You reached 20000 meters of height.<br>You starts to see the stars with much more clarity, even on the clear day. However, the rarified air and the extremely low temperatures is making your mice to die.",
-	reached6 = "<VP>You reached the peak of the mountain! The gods recognized your bravery and courage. Now, you is part of the heaven!",
-	reached7 = " <VP>reached the top of the mountain!<br><N>(S)he now is part of the stars and will bright many more!",
-	nowinners = "<R>No winners!",
-	help = "<p align='center'><VP><b>Welcome to the #mountain module.</b><br><br><p align='left'><N>This game is very simple. The objective is scale the big mountain that is in front of you.<br><br>However, the mountain gods are furious, and can attack you with various events.<br><br>The match will end after 3 minutes, when there is no more alive mices or when someone reaches the top of the mountain.<br><br><ROSE>Bugs and problems? Report to Morganadxana#0000.",
-	powerups = "<G>• Wind Fury: <N>Strong winds hover around the mountain.<br><G>• Meteor Rain: <N>Some meteors will fall from the heaven, making you go down.<br><G>• Gravity Anomaly: <N>A strong gravitational field appears on the mountain, randomly changing the gravity of the map.<br><G>• Cheese For All: <N>All the players will have cheese.",
-	credits = "The following players helped on this module:<br><br><ROSE><b>• Morganadxana#0000</b><N> - Code developer and creator of the map<br><ROSE><b>• Akwimos#1937</b><N> - English translation<br><ROSE><b>• Spectra_phantom#6089</b><N> - Image creation",
-	memory_error = "<R>Warning: There's no more available memory for Transformice. To continue playing this game, log out of your account and enter again.",
-}
-if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-	text = lang.br
-else
-	text = lang.en
-end
+blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
+center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
+tfm.exec.setRoomMaxPlayers(35)
+limits={questions=10,time=7,mices_alive=0}
+questions={question="",answer="",round=0}
+current_mode=""; answer_time=20; remain_time=0;
+game_map="@7605289"
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
 	if tfm.get.room.isTribeHouse == false then
 		tfm.exec.chatMessage(message,name)
 	elseif tfm.get.room.isTribeHouse == true then
-		print(temp_text)
-	end
-end
-function showMenu(name,color,x,y,width,height,title,content)
-	if data[name].opened == false then
-		data[name].opened=true
-		ui.addTextArea(1004,"",name,-1000,-600,2800,1600,0x000001,0x000001,0.65,true)
-		ui.addTextArea(1001,"",name,x+5,y+5,width,height,color,color,0.95,true)
-		ui.addTextArea(1000,"<font size='13'><i><br><br>"..content.."",name,x,y,width,height,0x151515,color,0.95,true)
-		ui.addTextArea(1002,"<font color='#f8d802'><font size='14'><p align='center'><i><b>"..title.."",name,x+5,y+5,width-10,22,0x101010,0x101010,0.95,true)
-		ui.addTextArea(1003,"<font color='#ff2300'><font size='14'><b><a href='event:close'>X</a>",name,x+width-25,y+5,width-10,20,0,0,0.95,true)
-	end
-end
-function defineVencedor()
-	max_score=10800
-	winner=""
-	for name,player in next,tfm.get.room.playerList do
-		if tfm.get.room.playerList[name].y < max_score and data[name].enabled == true then
-			winner=name
-			max_score=tfm.get.room.playerList[name].y
+		if name == nil then
+			print("<ROSE>[Test Mode] : <br><BL>"..temp_text.."")
+		else
+			print("<ROSE>[Test Mode] - "..name.." : <br><BL>"..temp_text.."")
 		end
 	end
-	return winner
 end
-function showImages(name)
-	for a=1,2 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(1300,4700),math.random(-450,1000),name) end
-	for b=1,2 do tfm.exec.addImage("182d6e2305b.png","?1",math.random(1300,4700),math.random(-450,1000),name,-1,1) end
-	for c=1,3 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(1300,4700),math.random(-450,1000),name) end
-	for d=1,3 do tfm.exec.addImage("182d6e1e45c.png","?1",math.random(1300,4700),math.random(-450,1000),name,-1,1) end
-	for e=1,12 do tfm.exec.addImage("182d6e197bb.png","?1",math.random(1300,4700),math.random(-250,1200),name) end
-	for k=0,6 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(1700,4300),math.random(4500,8600),name)
-	end
-	for l=0,6 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(1700,4300),math.random(4500,8600),name)
-	end
-	for m=0,6 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(1700,4300),math.random(4500,8600),name)
-	end
-	for n=0,6 do
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(1700,4300),math.random(4500,8600),name)
-	end
-	for j=0,5 do
-		tfm.exec.addImage("181b9de5c95.png","?1",-800+(1920*j),-1240,name)
-		tfm.exec.addImage("181b9de5c95.png","?1",-800+(1920*j),-160,name)
-		tfm.exec.addImage("181b9de5c95.png","?1",-800+(1920*j),920,name)
-	end
-	for i=0,1 do
-		tfm.exec.addImage("17fe373d035.jpg","?1",-400+(i*3400),9592,name,1,1)
-	end
-	tfm.exec.addImage("17fe3741e5f.jpg","?1",-400,800,name,10,10,0,1)
-end
-function resetEvents()
-	wind=false; meteor=false; gravity=false; cheese=false;
-	run_int=0;
+function eventNewGame()
+	ui.removeTextArea(0,nil)
+	limits.mices_alive=0
 	for name,player in next,tfm.get.room.playerList do
-		tfm.exec.removeCheese(name)
+		ui.addPopup(10,0,"",name,-1000,-1000,128,false)
+		ui.addPopup(11,0,"",name,-1100,-1000,128,false)
+		ui.addPopup(20,0,"",name,-1100,-1000,128,false)
+		if not tfm.get.room.playerList[name].isShaman then
+			limits.mices_alive=limits.mices_alive+1
+		else
+			tfm.exec.setPlayerScore(name,-1,false)
+			showMessage("<VP>Please type <b>!per</b> to make a question. Type <b>!skip</b> to skip your turn.",name)
+		end
+		if name:sub(1,1) == "*" then
+			tfm.exec.killPlayer(name)
+			showMessage("<R>Souris cannot play this module. Create an account or log in to play True or False.",name)
+		end
 	end
-	tfm.exec.setWorldGravity(0,10)
-end
-function eventChatCommand(name,command)
-	if command == "help" then
-		showMenu(name,0x808080,150,120,500,250,"Help",text.help)
-	end
-	if command == "powerups" then
-		showMenu(name,0xf2a267,150,120,500,160,"Powerups",text.powerups)
-	end
-	if command == "creditos" then
-		showMenu(name,0xb6e980,140,90,520,130,"Credits",text.credits)
-	end
-	if command == "changelog" then
-		showMenu(name,0x2578f6,140,60,520,290,"Changelog","<font size='11'>[v1.1.3]:<br>• Almost all NPCs was removed<br><br>[v1.1.2]:<br>• Addiction of new NPC<br><br>[v1.1.1]:<br>• Addiction of various decorations on the map<br><br>[v1.1.0]:<br>• Added cloud images<br>• Some modifications on the map<br><br>[v1.0.9]:<br>• Some modifications on the map<br><br>[v1.0.8]:<br>• Various modifications on the map<br>• Increased the game time by 20 seconds")
-	end
+	questions.round=0
 end
 function eventNewPlayer(name)
-	showMessage(text.enter,name)
-	ui.setMapName(text.mapname)
-	newData={
-		["x"]=0; ["a"]=0; ["enabled"]=false; ["opened"]=false; }
-	data[name]=newData;
-	showImages(name)
-	ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
+	tfm.exec.setPlayerScore(name,0,false)
+	ui.setMapName("<N>True or False - version <VP><b>RTM 2913.010 LTS</b> <N>by <R><b>Spectra_phantom#6089</b><")
 end
 for name,player in next,tfm.get.room.playerList do
 	eventNewPlayer(name)
-	tfm.exec.setPlayerScore(name,0,false)
 end
 function eventPlayerDied(name)
-	data[name].enabled=false
-	if changed == true then
-	local i=0
-	local n
-	for pname,player in pairs(tfm.get.room.playerList) do
-		if not player.isDead then
-			i=i+1
-			n=pname
-		end
-	end
-	if i==0 then
-		showMessage(text.nowinners)
-		tfm.exec.setGameTime(15)
-		endgame=true; running=false;
-		tfm.exec.newGame(xml2,false)
-	end
+	if not tfm.get.room.playerList[name].isShaman then
+		limits.mices_alive=limits.mices_alive-1
 	end
 end
-function eventTalkToNPC(name, npc)
-	showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●)<font face='Verdana'>",name)
-end
-function eventTextAreaCallback(id,name,callback)
-	if callback == "show_menu" then
-		ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.addTextArea(298,"<p align='center'><a href='event:help'>Ajuda</a><br><a href='event:powerups'>Powerups</a><br><a href='event:cred'>Créditos</a><br><a href='event:change'>Changelog</a>",name,355,57,90,60,0x000001,0x000001,0.80,true)
-	end
-	if callback == "hide_menu" then
-		ui.addTextArea(299,"<p align='center'><a href='event:show_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-		ui.removeTextArea(298,name)
-	end
-	if callback == "close" then
-		for i=1000,1004 do
-			ui.removeTextArea(i,name)
-		end
-		data[name].opened=false
-	end
-	if callback == "help" then
-		eventChatCommand(name,"help")
-	end
-	if callback == "powerups" then
-		eventChatCommand(name,"powerups")
-	end
-	if callback == "cred" then
-		eventChatCommand(name,"creditos")
-	end
-	if callback == "change" then
-		eventChatCommand(name,"changelog")
-	end
-end
-function eventNewGame()
-	ui.setBackgroundColor("#000000")
-	if changed == true then
-		resetEvents()
-		running=false; map_count=map_count+1; run_int=0; pass_int=0; event_int=0; endgame=false; vencedor="";
-		tfm.exec.setGameTime(246)
-		for i=0,1 do
-			tfm.exec.addPhysicObject(i, 180+(i*5680), 10475, ground)
-		end
-		for name,player in next,tfm.get.room.playerList do
-			data[name].a=0;
-			data[name].enabled=true;
-			showImages(name)
-			ui.setMapName(text.mapname)
-		end
-		showMessage(text.newgame)
-		for i=1,24 do
-			ui.addTextArea(i,"<p align='center'>"..tostring(i*1000).."",nil,2980,number_scale[i],40,16,0x010101,0x010101,1.0,false)
-		end
-		tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 3000,y = 6176,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	else
-		tfm.exec.setGameTime(5)
-		if changed == false then
-			xml2=tfm.get.room.xmlMapInfo.xml
-			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Loading map. Please wait...<")
-		else
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-function eventLoop(passado,faltando)
-	pass_int=pass_int+1
-	falt_int=math.floor(faltando/500)
-	if changed == true then
-	if pass_int == 14 then
-		showMessage(text.getready)
-	elseif pass_int == 28 then
-		showMessage("<BL><b>3...</b>")
-		for name,player in next,tfm.get.room.playerList do
-			if tfm.get.room.playerList[name].y <= 400 and not tfm.get.room.playerList[name].isDead then
-				tfm.exec.killPlayer(name)
-				data[name].enabled=false
-				showMessage(text.memory_error,name)
-			end
-		end
-	elseif pass_int == 30 then
-		showMessage("<BL><b>2...</b>")
-	elseif pass_int == 32 then
-		showMessage("<BL><b>1...</b>")
-	elseif pass_int == 34 then
-		showMessage(text.start)
-		for i=0,1 do
-			tfm.exec.removePhysicObject(i)
-		end	
-		running=true
-	end
-	if running == true then
-		if wind == true then
-			for i=1,24 do
-				x=math.random(2800,3200)
-				y=math.random(2000,10000)
-				tfm.exec.explosion(x, y, -8, 100, true)
-				tfm.exec.displayParticle(math.random(26,27), x, y, 1, 1, 1, 1)
-			end
-		end
-		if meteor == true then
-			loop=loop+1
-			if loop == 4 then
-				for i=1,2 do
-					x=math.random(2600,3400)
-					tfm.exec.addShamanObject(85, x, 0, 0, 0, 0, false)
-				end
-				loop=0
-			end
-		end
-		if gravity == true then
-			loop=loop+1
-			if loop == 4 then
-				tfm.exec.setWorldGravity(0,math.random(10,15))
-				loop=0
-			end
-		end
-		if cheese == true then
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.giveCheese(name)
-			end
-		end
-		run_int=run_int+0.5
-		if run_int == 28 and falt_int >= 48 then
-			event_selected=math.random(1,4)
-			if event_selected == 2 then
-				event_int=power_d.p2[math.random(#power_d.p2)]
-			elseif event_selected == 3 then
-				event_int=power_d.p3[math.random(#power_d.p3)]
-			else
-				event_int=math.random(12,24)
-			end
-			if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-				showMessage("<VP>"..text.event1.." <V><b>"..events_pt[event_selected].."</b> <VP>"..text.event2.."<J><b>"..event_int.."</b> <VP>"..text.event3.."")
-			else
-				showMessage("<VP>"..text.event1.." <V><b>"..events_en[event_selected].."</b> <VP>"..text.event2.."<J><b>"..event_int.."</b> <VP>"..text.event3.."")
-			end
-		end
-		if run_int == 33 and falt_int >= 48 then
-			if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-				showMessage("<VP>"..text.event1.." <V><b>"..events_pt[event_selected].."</b><VP>"..text.event4.."")
-			else
-				showMessage("<VP>"..text.event1.." <V><b>"..events_en[event_selected].."</b><VP>"..text.event4.."")
-			end
-			if event_selected == 1 then
-				wind=true
-			elseif event_selected == 2 then
-				meteor=true
-			elseif event_selected == 3 then
-				gravity=true
-			elseif event_selected == 4 then
-				cheese=true
-			end
-		end
-		if falt_int == 20 and endgame == false then
-			showMessage(text.t10secs)
-		end
-		if falt_int <= 2 and endgame == false then
-			while vencedor == "" do
-				vencedor = defineVencedor()
-			end
-			for name,player in next,tfm.get.room.playerList do
-				if not name == vencedor then
-					tfm.exec.killPlayer(name)
-				end
-			end
-			tfm.exec.giveCheese(vencedor)
-			tfm.exec.playerVictory(vencedor)
-			tfm.exec.setPlayerScore(vencedor,data[vencedor].a,true)
-			showMessage("<VP><V><b>"..vencedor.."</b> <VP>"..text.winner.."<br><N>"..text.scaled.."<V>"..math.floor(math.pow((tfm.get.room.playerList[vencedor].y/-1+10565)/100,2.2)).." <N>"..text.recognized.."")
-			tfm.exec.setGameTime(15)
-			falt_int=15
-			endgame=true
-		end
-		if falt_int <= 1 and endgame == true then
-			tfm.exec.newGame(xml2,false)
-		end
-		if wind == true or meteor == true or gravity == true or cheese == true then
-			event_int=event_int-0.5
-			if event_int == 0 then
-				resetEvents()
-				if tfm.get.room.community == "br" or tfm.get.room.community == "pt" then
-					showMessage("<VP>"..text.event1.." <V><b>"..events_pt[event_selected].."</b><VP>"..text.event5.."")
-				else
-					showMessage("<VP>"..text.event1.." <V><b>"..events_en[event_selected].."</b><VP>"..text.event5.."")
-				end
-				event_selected=0;
-			end
-		end
-	end
+function reset()
+	tfm.exec.newGame(game_map)
+	tfm.exec.setGameTime(60)
+	current_mode="waiting"
 	for name,player in next,tfm.get.room.playerList do
-		if data[name].enabled == true then
-		if running == true then
-			data[name].x=math.floor(math.pow((tfm.get.room.playerList[name].y/-1+10565)/100,2.2))
-			if data[name].x >= 1000 and data[name].a == 0 then
-				data[name].a=1
+		if tfm.get.room.playerList[name].isShaman then
+			tfm.exec.setPlayerScore(name,-1,false)
+		end
+	end
+	ui.setMapName("<N>True or False - version <VP><b>RTM 2913.010 LTS</b> <N>by <R><b>Spectra_phantom#6089</b><")
+end
+function isTrue()
+	showMessage("<VP>The answer is TRUE!")
+	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
+end
+function isFalse()
+	showMessage("<R>The answer is FALSE!")
+	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
+end
+function eventPopupAnswer(id,name,answer)
+	if id == 0 then
+		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
+			limits.questions=tonumber(answer)
+			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 12)",name,350,175,200,true)
+		end
+	end
+	if id == 1 then
+		if tonumber(answer) >= 1 and tonumber(answer) <= 12 then
+			limits.time=tonumber(answer)
+			showMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
+		end
+	end
+	if id == 10 then
+		if string.len(answer) >= 10 and string.len(answer) <= 170 then
+			questions.question=answer
+			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
+		else
+			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
+			showMessage("<R>Your question is too large or too short. Please make a new question.",name)
+		end
+	end
+	if id == 11 then
+		if remain_time > 1 then
+			questions.answer=answer
+			questions.round=questions.round+1
+			current_mode="truefalse"
+			tfm.exec.setGameTime(answer_time)
+			for name,player in next,tfm.get.room.playerList do
+				if not tfm.get.room.playerList[name].isShaman then
+					tfm.exec.movePlayer(name,400,330)
+				else
+					tfm.exec.movePlayer(name,400,1330)
+				end
 			end
-			if data[name].x >= 2000 and data[name].a == 1 then
-				showMessage(text.reached2,name)
-				data[name].a=2
+			showMessage("<N>"..questions.question.."")
+			ui.addTextArea(0,"<font size='18'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
+			for _,i in next,{"Spectra_phantom#6089","Viego#0345","Alisson#3938","Velkozdapic#0000"} do
+				showMessage(questions.answer,i)
 			end
-			if data[name].x >= 5000 and data[name].a == 2 then
-				showMessage(text.reached3,name)
-				data[name].a=3
+		end
+	end
+	if id == 20 then
+		if answer == "yes" then
+			showMessage("<R>"..name.." skipped your turn.")
+			reset()
+		end
+	end
+end
+function eventChatCommand(name,message)
+	if name == "Spectra_phantom#6089" or name == "Leblanc#5342" or name == "Fazenigmalol#0000" or name == admin then
+		if message == "limits" then
+			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
+		end
+		if(message:sub(0,2) == "at") then
+			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
+				answer_time=tonumber(message:sub(4))
+				showMessage("Answer time: "..answer_time.."s.")
 			end
-			if data[name].x >= 10000 and data[name].a == 3 then
-				showMessage(text.reached4,name)
-				data[name].a=4
+		end
+		if(message:sub(0,7) == "shamdef") then
+			if current_mode == "waiting" then
+				tfm.exec.setPlayerScore(message:sub(9),10001,false)
+				reset()
 			end
-			if data[name].x >= 20000 and data[name].a == 4 then
-				showMessage(text.reached5,name)
-				data[name].a=5
-			end
-			if data[name].x >= 24650 and data[name].a == 5 then
-				showMessage(text.reached6,name)
-				data[name].a=10
-				for n,player in next,tfm.get.room.playerList do
-					if not name == n then
-						tfm.exec.killPlayer(name)
-					else
-						tfm.exec.giveCheese(name)
-						tfm.exec.playerVictory(name)
-						tfm.exec.setPlayerScore(name,data[name].a,true)
-						showMessage("<b>"..name.."</b>"..text.reached7.."")
-						tfm.exec.setGameTime(15)
-						falt_int=15
-						endgame=true
-						data[name].enabled=false
+		end
+		if message == "return" then
+			if current_mode == "truefalse" then
+				for name,player in next,tfm.get.room.playerList do
+					if not tfm.get.room.playerList[name].isShaman then
+						tfm.exec.movePlayer(name,400,-100)
 					end
 				end
+				current_mode="waiting"
+				tfm.exec.setGameTime(60)
+				showMessage("<R>This question has been cancelled.")
+				ui.removeTextArea(0,nil)
 			end
 		end
-		end
-	end
-	else
-		if faltando <= 1 then
-			changed=true
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-tfm.exec.newGame(map)
-end
-
-initBeach = function()
-for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables"} do
-	tfm.exec["disable"..f](true)
-end
-debug.disableEventLog(true)
-system.disableChatCommandDisplay("reset")
-tfm.exec.newGame("@7917999")
-changed=false; xml2=''; data={};
-
-function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
-	if tfm.get.room.isTribeHouse == false then
-		tfm.exec.chatMessage(message,name)
-	else
-		ui.addPopup(0,0,temp_text,name,250,75,400,true)
-	end
-end
-function showNPCs(name)
-	tfm.exec.addNPC("Julia Lynner",{title = 382, look = "1;228,50,72,0,50_d946a7,90,44,0,0",x = 10032,y = 989,female = true,lookLeft = false,lookAtPlayer = false,interactive = true},name)
-	tfm.exec.addNPC("Brand Northern",{title = 357, look = "1;225,0,46,34,26,104_3c3a87+6e7291+a5a7c1+caccdd+7582b3+f3f5f7,49,0,0",x = 10259,y = 875,female = false,lookLeft = false,lookAtPlayer = false,interactive = true},name)
-	tfm.exec.addNPC("John Grand",{title = 298, look = "1;231,8,7,34,5,105,0,0,33",x = 9236,y = 1106,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Danniel Victor",{title = 296, look = "1;194,29,27,41,54,103,33,81,57",x = 3172,y = 1302,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Kenner Henderson",{title = 266, look = "27;236,45,22,0,44,0,50,67,35",x = 751,y = 1263,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Keith Cramer",{title = 216, look = "7;190_220b04+767576+585155+c44444+e0ddce+202020+e7e6e5,6_1d1c1c+464646,5_70707+d4c316,9,54,94,36,0,20",x = 648,y = 1337,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Mandery Under",{title = 387, look = "138;31,8,69,41,49,0,49,0,0",x = 4778,y = 742,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Katarina Worlynder",{title = 220, look = "240;101_e0d9d0+1e9fa8+e0d9d0,36,38,0,62,0,0,0,0",x = 4600,y = 750,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 6353,y = 355,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Aaron Grand",{title = 9, look = "4;225,43,38,0,54,104,0,0,20",x = 9450,y = 146,female = false,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Daniel Winngs",{title = 2, look = "1;203,50,20,41,42,103,50,0,0",x = 6174,y = 354,female = false,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-	tfm.exec.addNPC("Camille Sanders",{title = 257, look = "1;44,40,87,3,62,91,37,52,0",x = 8586,y = 760,female = true,lookLeft = false,lookAtPlayer = true,interactive = true},name)
-end
-function showWater(name)
-	for i=0,5 do
- 		tfm.exec.addImage("1897a810bb2.png", "!-1023", -1200+(i*2400), 1385, name, 1, 1, 0, 1)
-	end
-	for i=0,11 do
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 1400, name, 5, 1, 0, 1)
-		tfm.exec.addImage("1897a80b341.png", "!-1024", -1200+(i*1200), 6400, name, 5, -1, 0, 1)
-	end
-	tfm.exec.addImage("1883b1394a4.png","!1",2500,100,name,0.5,0.5)
-	tfm.exec.addImage("17be536e980.png","?1",-800,3680,name)
-	for h=0,4 do
-		tfm.exec.addImage("1803e8e2250.jpg","?1",-1200+(h*2169),1050,name,1,0.75,0,1)
-	end
-	for k=0,5 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(500,7500),math.random(150,550),name)
-	end
-	for l=0,5 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(500,7500),math.random(150,550),name)
-	end
-	for m=0,5 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(500,7500),math.random(150,550),name)
-	end
-	for n=0,4 do
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(7500,10000),math.random(50,300),name)
-	end
-	tfm.exec.addImage("185c2e9252b.png","!1",4761,770,name,1,1,0,0.8)
-	for o=1,3 do
-		tfm.exec.addImage("183b4bf34ba.png","+"..o.."",-50,-48,name)
-	end
-	ui.setBackgroundColor("#7DB1E0")
-end
-function eventChatCommand(name,message)
-	if message == "reset" then
-		if name == "Morganadxana#0000" or name == "Ashearcher#0000" then
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-function eventKeyboard(name,key,down,x,y)
-	if key >= 0 and key <= 3 then
-		if data[name] and data[name].s > 0 then
-			if key == 2 then
-				tfm.exec.removeImage(data[name].id)
-				displayShark(name,data[name].s,false)
-			elseif key == 0 then
-				tfm.exec.removeImage(data[name].id)
-				displayShark(name,data[name].s,true)
+		if message == "cancel" then
+			if current_mode == "truefalse" or current_mode == "waiting" then
+				for name,player in next,tfm.get.room.playerList do
+					tfm.exec.killPlayer(name)
+				end
+				showMessage("<R>This shaman has been skipped.")
+				reset()
 			end
 		end
 	end
-end
-function eventTalkToNPC(name, npc)
-	if npc == "Julia Lynner" then
-		showMessage("<V>[Julia Lynner] <N>Bem-vindo(a) ao Quiosque do Raposo Azul. Confira os preços de nossos produtos...<br><br>Espera, eu perdi meu papel com os preços!",name)
-	elseif npc == "Brand Northern" then
-		showMessage("<V>[Brand Northern] <N>Olha, olha, olha a água mineral, água mineral, água mineral...",name)
-	elseif npc == "John Grand" then
-		showMessage("<V>[John Grand] <J>Ah! Que delícia, cara!",name)
-	elseif npc == "Danniel Victor" then
-		showMessage("<V>[Danniel Victor] <N>Esta é a área conhecida como <R>Ilha do Dragão Vermelho.<N><br><br>Debaixo dela existe um recife de plantas muito grande, no qual vários peixes conseguem viver muito bem. É um lugar muito lindo, vale a pena conhecer. Ah, e tome cuidado com a água. Não fique muito tempo dentro do mar. Você pode afundar e não voltar mais.",name)
-	elseif npc == "Kenner Henderson" then
-		showMessage("<V>[Kenner Henderson] <N>Foi você o <R>fi********* <N>que amarrou aquele pneu nas ligações elétricas?<br><br><VP>Não? Ainda bem. <N>Pois algum ser sem cérebro inventou de colocar um pneu nos fios para tentar fazer uma tirolesa. Como estou furioso por isso...<br><br>Ah, e se está curioso para saber o que é aquela escada, ela dá para o gerador nuclear principal, que fica bem no fundo do mar. Não me aventuraria a descer até lá...",name)
-	elseif npc == "Keith Cramer" then
-		showMessage("<V>[Keith Cramer] <R>NÃO ESTÁ VENDO QUE ESTA É UMA ÁREA RESTRITA? SAIA DAQUI AGORA! QUER SER INFECTADO(A)? NÃO? ENTÃO SAIA AGORA, C******!",name)
-	elseif npc == "Mandery Under" then
-		showMessage("<V>[Mandery Under] <N>Ei, o que está fazendo na minha piscina suspensa?! Isso tudo é meu!",name)
-	elseif npc == "Katarina Worlynder" then
-		showMessage("<V>[Katarina Worlynder] <N>Sou a engenheira que ajudei a construir toda a parte elétrica desta praia, que é 100% ecológica.<br><br>Utilizamos energia renovável para alimentar o bar e as tirolesas, e ao mesmo tempo proteger o meio ambiente. Não é lindo?",name)
-	elseif npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●) 🐄<font face='Verdana'>",name)
-	elseif npc == "Aaron Grand" then
-		showMessage("<V>[Aaron Grand] <N>Esta é a Torre do Nascer do Sol. O lugar mais alto da praia. Daqui dá para ver absolutamente tudo. Incluindo o pôr do sol que é lindo.<br><br>Se eu fosse você, nunca mais sairia daqui. Tenho um baita medo de mar...",name)
-	elseif npc == "Daniel Winngs" then
-		showMessage("<V>[Daniel Winngs] <N>Seja bem-vindo(a). Você definitivamente está em um lugar privilegiado.<br><br>Esta é uma praia totalmente paradisíaca. Com sua água cristinalina, duas tirolesas e uma piscina suspensa, você não vai querer sair daqui tão cedo.",name)
-	elseif npc == "Camille Sanders" then
-		showMessage("<V>[Camille Sanders] <N>Me paga um passeio de barco? Tenho um desejo incrível de conhecer este lugar!",name)
-	end
-end
-function eventPlayerWon(name)
-	if changed == true then
-		tfm.exec.respawnPlayer(name)
-	end
-end
-function eventPlayerDied(name)
-	if changed == true then
-		tfm.exec.respawnPlayer(name)
-	end
-end
-function eventNewGame(name)
-	if changed == true then
-		for name,_ in next,tfm.get.room.playerList do
-			showWater(name)
-			showNPCs(name)
+	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
+		if message == "per" and limits.mices_alive >= 2 then
+			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
 		end
-		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
-		tfm.exec.setGameTime(3600)
-	else
+		if message == "skip" then
+			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
+		end
+	end
+end
+function eventLoop(time,remaining)
+	remain_time=remaining/1000
+	if remain_time < 1 and current_mode == "waiting" then
+		reset()
+		showMessage("<R>Time is up! Other shaman will be choosed.")
+	end
+	if remain_time < 1 and current_mode == "truefalse" then
+		ui.removeTextArea(0,nil)
+		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
 		tfm.exec.setGameTime(5)
-		if changed == false then
-			xml2=tfm.get.room.xmlMapInfo.xml
-			ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-			ui.setMapName("<J>Carregando mapa. Por favor, aguarde...<")
+		current_mode="wait"
+	end
+	if remaining < 300 and current_mode == "wait" then
+		if questions.answer == "yes" then
+			isTrue()
 		else
-			ui.removeTextArea(0,nil)
+			isFalse()
 		end
+		tfm.exec.setGameTime(7)
+		current_mode="answer"
 	end
-end
-function eventNewPlayer(name)
-	tfm.exec.respawnPlayer(name)
-	showWater(name)
-	showNPCs(name)
-	if changed == true then
-		ui.setMapName("Praia da Reserva Verde - <ROSE>Morgana's Mechanical Maps<")
-	end
-	showMessage("<VP><b>Bem-vindo(a) a Praia da Reserva Verde.</b><br><br><p align='left'><N>Este é um mapa-script de praia bem grande e com diversos recursos para se divertir. Aproveite e curta!<br><br><R>Aviso: Este mapa pode consumir até 1,8GB de RAM dependendo de casos específicos.<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Draw#6691, Soft#1388, Viincenzo#9526, Lacoste#8972, Lipersz#9863, Spectra_phantom#6089, Threshlimit#0000, Star#8558 e Lanadelrey#4862.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Praia%20da%20Reserva%20Verde.lua<br><br><N>Revisão 2.0",name)
-	newData={
-		["s"]=0; ["id"]=-1;
-	};
-	data[name] = newData;
-	for i=0,3 do
-		system.bindKeyboard(name,i,true,true)
-	end
-end
-function eventLoop(p,f)
-	if changed == true then
-		for name,player in next,tfm.get.room.playerList do
-			if p >= 6000 then
-				if tfm.get.room.playerList[name].y <= 400 and tfm.get.room.playerList[name].x <= 800 and not tfm.get.room.playerList[name].isDead then
-					showMessage("<R>Aviso: Não há mais memória disponível para o Transformice. Para poder entrar neste mapa, saia do jogo e entre novamente.",name)
-				end
-			end
-		end
-	else
-		if f <= 1 then
-			changed=true
-			tfm.exec.newGame(xml2,false)
-			ui.removeTextArea(0,nil)
-		end
-	end
-end
-for name,_ in next,tfm.get.room.playerList do
-	eventNewPlayer(name)
-end
-end
-
-initHouse = function()
-admin={""} -- Insiram seus nicknames aqui!
-
--- NÃO MEXA EM NADA A PARTIR DESTA LINHA!!
-for _,f in next,{"AutoNewGame","AfkDeath","AutoShaman","MinimalistMode","PhysicalConsumables"} do
-	tfm.exec["disable"..f](true)
-end
-system.disableChatCommandDisplay("mode");
-for _,i in next,{"d1","d2","d3"} do system.disableChatCommandDisplay(i); end
-debug.disableEventLog(true)
-map_depth=1;
-
-xml=''; changed=false; night=0; a1={4505,265,2925,4066}; a2={1529,1493,1742,1862}; a3={3517,6260,1711,4423}; a4={1622,1551,1537,1864};
-b1={888,2520,3095,4692,6810}; c1={560,1378,2048,2802,3307,4555,5369,6004,6750}; d1={1024,1536,2560,3072,4608,5120,6656,7168};
-data={};
-
-ninjas={"Morganadxana#0000","Lacoste#8972","Leblanc#5342","Irelia#7317"}
-
-function showMessage(message,name)
-	temp_text=string.gsub(message,"<b>","")
-	temp_text=string.gsub(temp_text,"</b>","")
-	if tfm.get.room.isTribeHouse == false then
-		tfm.exec.chatMessage(message,name)
-	else
-		ui.addPopup(0,0,temp_text,name,250,75,400,true)
-	end
-end
-
-function showNPCs(name)
-	tfm.exec.addNPC("Mayra Flowers",{title = 1, look = "112;0,4,0,74_212121+d2d2d2,39,39,44,0,1",x = 5205,y = 727,female = true,lookLeft = true,lookAtPlayer = true,interactive = true},name)
-end
-
-function verifyAdmin(name)
-	for i=1,rawlen(admin) do
-		if admin[i] == name then
-			return true
-		end
-	end
-end
-
-function verifyNinjas(name)
-	for i=1,rawlen(ninjas) do
-		if ninjas[i] == name then
-			return true
-		end
-	end
-end
-
-function showWater(name)
-	y_factor=0
-	if map_depth == 1 then y_factor=700; elseif map_depth == 2 then y_factor=0; elseif map_depth == 3 then y_factor=-700; end
-	tfm.exec.addImage("189746c6144.png","!1",2840,2588-y_factor,name)
-	tfm.exec.addImage("189746f8a21.png","!1",6836,2679-y_factor,name)
-	for d=1,rawlen(c1) do tfm.exec.addImage("189746d76aa.png","?1",c1[d],2847-y_factor,name); end
-	for d=1,rawlen(d1) do tfm.exec.addImage("189746e4cb8.png","!-1",d1[d],2770-y_factor,name); end
-	for d=1,rawlen(a2) do tfm.exec.addImage("18a053a43b9.png","?1",a1[d],a2[d],name,-1,1); end
-	for d=1,rawlen(a4) do tfm.exec.addImage("18a053a43b9.png","?1",a3[d],a4[d],name); end
-	for d=1,rawlen(b1) do tfm.exec.addImage("189746d10d2.png","!1",b1[d],2903-y_factor,name); end
-	for _,i in next,{0,2,4} do
-		tfm.exec.addImage("189749dd379.png", "?1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 1)
-		tfm.exec.addImage("189749dd379.png", "!-1", -1200+(i*2000), 1295, name, 1, 0.8, 0, 0.65)
-	end
-	for _,i in next,{1,3,5} do
- 		tfm.exec.addImage("189749dd379.png", "?1", 800+(i*2000), 1295, name, -1, 0.8, 0, 1)
-		tfm.exec.addImage("189749dd379.png", "!-1", 800+(i*2000), 1295, name, -1, 0.8, 0, 0.65)
-	end
-	tfm.exec.addImage("189749ce857.png", "?1", -1200, 1400, name, 8, 6, 0, 1)
-	tfm.exec.addImage("189749ce857.png", "!-1023", -1200, 1934, name, 8, 6, 0, 0.6)
-	tfm.exec.addImage("1897a80b341.png", "!-1023", -1200, 1834, name, 44, 1.1,0,0.75)
-	for i=0,6 do
-		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 2995-y_factor, name, 1, 1, 0, 1)
-		tfm.exec.addImage("189746fe3a4.png", "!0", -1200+(i*2000), 3720-y_factor, name, 1, -3, 0, 1)
-	end
-	for i=0,1 do tfm.exec.addImage("17be536e980.png","!1",-1200+(i*5200),2280-y_factor,name,1,1,0,0.75); end
-	for i=1,2 do
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba85ccc2.png","!1",math.random(5300,7500),math.random(-50,630),name)
-	end
-	for i=1,2 do
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba86195e.png","!1",math.random(5300,7500),math.random(-50,630),name)
-	end
-	for i=1,2 do
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba86655c.png","!1",math.random(5300,7500),math.random(-50,630),name)
-	end
-	for i=1,2 do
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(-50,2300),math.random(-50,630),name)
-		tfm.exec.addImage("181ba86b15a.png","!1",math.random(5300,7500),math.random(-50,630),name)
-	end
-	for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.3)); end
-	for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.3)) end
-	data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name)
-	data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.1)
-end
-
-function resetMap()
-	if xml == '' then
-		tfm.exec.disableAutoShaman(true)
-		if map_depth == 1 then
-			tfm.exec.newGame("@7940458")
-		elseif map_depth == 2 then
-			tfm.exec.newGame("@7940307")
-		elseif map_depth == 3 then
-			tfm.exec.newGame("@7940460")
-		else
-			system.exit()
-		end
-		ui.addTextArea(0,"",nil,-800,-400,2400,1200,0x6a7495,0x6a7495,1.0,true)
-		ui.setMapName("Carregando mapa. Por favor, aguarde...<")
-		changed=false
-	else
-		changed=true
-		tfm.exec.newGame(xml)
-		ui.removeTextArea(0)
-		for name,_ in next,tfm.get.room.playerList do
-			eventNewPlayer(name)
-		end
-	end
-end
-
-function eventTalkToNPC(name, npc)
-	if npc == "Mayra Flowers" then
-		showMessage("<V>[Mayra Flowers] <N>Muuuuuuuu! <font face='Segoe UI Symbol'>(●'◡'●) 🐄 <font face='Verdana'>",name)
-	end
-end
-
-function eventChatCommand(name,message)
-	if changed == true then
-		if message == "0" then
-		tfm.exec.setPlayerGravityScale(name,1)
-		tfm.exec.killPlayer(name);
-	end
-	for i=1,13 do
-		if message == tostring(i) then
-			data[name].s=i
-			tfm.exec.removeImage(data[name].id)
-			displayShark(name,data[name].s,false)
-			tfm.exec.setPlayerCollision(name,3)
-		end
-	end
-	if verifyNinjas(name) == true or verifyAdmin(name) == true then
-	if message == "mode" then
-		if night == 0 then
+	if remaining <= 1 and current_mode == "answer" then
+		if questions.answer == "yes" then
 			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.removeImage(data[name].backId2,true)
-				tfm.exec.removeImage(data[name].backId1,true)
-				if data[name] then for i=1,rawlen(data[name].backId3) do
-					tfm.exec.removeImage(data[name].backId3[i],true)
-				end end
-				for i=0,5 do for j=0,1 do table.insert(data[name].backId3,tfm.exec.addImage("181b9de5c95.png","?1",-1200+(i*1920),-1050+(j*1080),name,1,1,0,0.15)) end end
-				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.15)); end
-				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.15)) end
-				data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name,1,1,0,0.4)
-				data[name].backId1 = tfm.exec.addImage("17e937f4f5a.png","?1",-800,16500,name,72,-3.6,0,0.75)
-			end
-			night=1
-		elseif night == 1 then
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.removeImage(data[name].backId2,true)
-				tfm.exec.removeImage(data[name].backId1,true)
-				if data[name] then for i=1,rawlen(data[name].backId3) do
-						tfm.exec.removeImage(data[name].backId3[i],true)
-				end end
-				for i=0,5 do for j=0,1 do table.insert(data[name].backId3,tfm.exec.addImage("181b9de5c95.png","?1",-1200+(i*1920),-1050+(j*1080),name,1,1,0,1.5)) end end
-				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.05)); end
-				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.05)) end
-				data[name].backId2 = tfm.exec.addImage("1883b125925.png", "?1", 1800, 500,name,1,1,0,2)
-				data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg","?1",0,50,name,13,12,0,1)
-			end
-			night=2		
-		elseif night == 2 then
-			for name,player in next,tfm.get.room.playerList do
-				tfm.exec.removeImage(data[name].backId2,true)
-				tfm.exec.removeImage(data[name].backId1,true)
-				if data[name] then for i=1,rawlen(data[name].backId3) do
-					tfm.exec.removeImage(data[name].backId3[i],true)
-				end end
-				for _,h in next,{0,2,4} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",-1200+(h*1900),888,name,1,1,0,0.3)); end
-				for _,h in next,{1,3} do table.insert(data[name].backId3,tfm.exec.addImage("18773217882.png","?1",700+(h*1900),888,name,-1,1,0,0.3)) end
-				data[name].backId2 = tfm.exec.addImage("1883b1394a4.png","!1",1040,-330,name)
-				data[name].backId1 = tfm.exec.addImage("17fe3741e5f.jpg", "?1", -1200, -950, name,32,2.1)
-			end
-			night=0
-		end
-	end
-	if message == "d1" then
-		xml=''; changed=false; night=0; map_depth=1;
-		resetMap();
-	elseif message == "d2" then
-		xml=''; changed=false; night=0; map_depth=2;
-		resetMap();
-	elseif message == "d3" then
-		xml=''; changed=false; night=0; map_depth=3;
-		resetMap();
-	end
-	end
-	end
-end
-
-function eventPlayerDied(name)
-	tfm.exec.setPlayerGravityScale(name,1)
-	if changed == true then
-		tfm.exec.changePlayerSize(name,1)
-		tfm.exec.setPlayerCollision(name,1)
-		tfm.exec.removeImage(data[name].id)
-		data[name].id=-1
-		data[name].s=0
-		tfm.exec.respawnPlayer(name)
-	end
-end
-
-function eventNewGame()
-	xml=tfm.get.room.xmlMapInfo.xml
-end
-
-function eventNewPlayer(name)
-	if changed == true then
-		tfm.exec.respawnPlayer(name)
-		tfm.exec.setPlayerGravityScale(name,1)
-		tfm.exec.changePlayerSize(name,1)
-		newData={
-			["s"]=0; ["id"]=-1; ["backId1"]=-1; ["backId2"]=-1; ["backId3"]={};
-		};
-		data[name] = newData;
-		for i=0,3 do
-			system.bindKeyboard(name,i,true,true)
-		end
-		ui.setMapName("<N>Casa Oceânica das Arraias Brancas - <ROSE>Morgana's Mechanical Maps<")
-		showMessage("<VP><b>Bem-vindo(a) a Casa Oceânica das Arraias Brancas.</b><br><br><p align='left'><N>Este é um mapa-script cujo intuito é simular uma casa-resort de luxo no meio do oceano. Aproveite e curta!<br><br><ROSE><b>Mapa feito por Morganadxana#0000.</b><br><J>Agradecimentos especiais para <b>Lynet#8558, Shun_kazami#7014, Maramara4#0000, Lacoste#8972, Irelia#7317, Some#2636, Jeancrazzy#0000 e Bielzinnfx#3859.</b><br><br><N>Deseja usar este mapa-script no cafofo de sua tribo? Use o link a seguir:<br><N><VP>raw.githubusercontent.com/JW26T-Prj/FunCorpModules/master/Casa%20Oce%C3%A2nica%20das%20Arraias%20Brancas.lua<br><br><N>Revisão 1.0.1",name)
-		ui.setBackgroundColor("#000000")
-		showWater(name)
-		showNPCs(name)
-		if string.find(tfm.get.room.name,name) then
-			table.insert(admin,name)
-		end
-	end
-end
-
-function eventLoop(p,r)
-	if p >= 5500 and changed == true then
-		for name,_ in next,tfm.get.room.playerList do
-			if data[name] then
-				if tfm.get.room.playerList[name].y >= 1310 then
-					tfm.exec.setPlayerGravityScale(name,1-(tfm.get.room.playerList[name].y-1300)*0.001)
+				if player.x > 400 then
+					tfm.exec.killPlayer(name)
 				else
-					tfm.exec.setPlayerGravityScale(name,1)
+					tfm.exec.movePlayer(name,400,-50)
+				end
+			end
+		else
+			for name,player in next,tfm.get.room.playerList do
+				if player.x < 400 then
+					tfm.exec.killPlayer(name)
+				else
+					tfm.exec.movePlayer(name,400,-50)
 				end
 			end
 		end
+		tfm.exec.removePhysicObject(2)
+		current_mode="waiting"
+		tfm.exec.setGameTime(60)
 	end
-	if p >= 5500 and changed == false then
-		resetMap()
+	if remain_time < 55 and limits.mices_alive <= 0 and current_mode == "waiting" then
+		reset()
+		showMessage("<R>No winners!")
+	end
+	if remain_time < 55 and limits.mices_alive == 1 and current_mode == "waiting" then
+		for name,player in next,tfm.get.room.playerList do
+			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
+				tfm.exec.setPlayerScore(name,10000,false)
+				reset()
+			end
+		end
+	end
+	if remain_time < 55 and remain_time >= 54 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
+		for name,player in next,tfm.get.room.playerList do
+			if not tfm.get.room.playerList[name].isDead then
+				tfm.exec.setPlayerScore(name,1,true)
+				tfm.exec.displayParticle(15,player.x,player.y)
+			end
+		end
+		if questions.round >= limits.questions and current_mode == "waiting" then
+			reset()
+			showMessage("<R>Questions limit reached!")
+		end
+	end
+	if time > limits.time*60000 and current_mode == "waiting" then
+		reset()
+		showMessage("<R>Time limit reached!")
 	end
 end
-
-resetMap()
+reset()
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.255<br>By Morganadxana#0000")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.256<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
@@ -4101,18 +3291,9 @@ else
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
-	elseif string.find(tfm.get.room.name,"beach") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'beach' on room name.<br>Initialising #beach module...")
-		initBeach()
-	elseif string.find(tfm.get.room.name,"house") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'house' on room name.<br>Initialising #house module...")
-		initHouse()
-	elseif string.find(tfm.get.room.name,"naturalpark") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'naturalpark' on room name.<br>Initialising #naturalpark module...")
-		initNP()
-	elseif string.find(tfm.get.room.name,"mountain") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising #mountain module...")
-		initMountain()
+	elseif string.find(tfm.get.room.name,"truefalse") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising #truefalse module...")
+		initTrue()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
