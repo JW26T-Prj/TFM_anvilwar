@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.258
+-- Transformice #anvilwar module loader - Version 2.258.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #truefalse.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.258",
-	_MAINV = "55351.234",
+	_VERSION = "2.258.1",
+	_MAINV = "55352.235",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 55351.234
-Compilation date : 09/30/2023 19:04 UTC
+Version : RTM 55352.235
+Compilation date : 10/01/2023 16:47 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 201
@@ -32,7 +32,7 @@ players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map="@7884784"
 current_map=""; actual_player="";
-enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false;
+enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true;
 mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
 settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2}
@@ -305,7 +305,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55351.234 - "..text.comp_date.."09/30/2023 19:04 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55352.235 - "..text.comp_date.."10/01/2023 16:47 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -395,7 +395,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55351.234</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55352.235</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1099,15 +1099,24 @@ function eventChatCommand(name,command)
 	if command == "reset" and time_passed >= 6 then if data[name].ranking >= 2 then
 		lobby()
 	else showMessage(text.wrong,name) end end
-	if command == "settings" then if data[name].ranking >= 2 then
-		if mode == "lobby" then
-			showRoomSettings(name)
-			mode="define";
-			showMessage(text.defining)
-		else
-			showMessage(text.load0,name)
-		end
-	else showMessage(text.wrong,name) end end
+	if command == "settings" then
+		if dsettings == true then if data[name].ranking >= 2 then
+			if mode == "lobby" then
+				showRoomSettings(name)
+				mode="define";
+				showMessage(text.defining)
+			else	
+				showMessage(text.load0,name)
+			end end
+		elseif dsettings == false then if data[name].ranking >= 3 then
+			if mode == "lobby" then
+				showRoomSettings(name)
+				mode="define";
+				showMessage(text.defining)
+			else	
+				showMessage(text.load0,name)
+			end end
+		else showMessage(text.wrong,name) end end
 	if (command:sub(0,2) == "pw") then if data[name].ranking >= 2 then
 		tfm.exec.setRoomPassword(tostring(command:sub(4)))
 		if string.len(command:sub(4)) > 0 then
@@ -1138,7 +1147,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,118,"#anvilwar Changelog - RTM 55351.234","• Some text changes<br>• Changes on anvils physics<br>• Added 1 new map")
+		showMenu(name,0xa8f233,140,130,520,120,"#anvilwar Changelog - RTM 55352.235","• Some text changes<br>• Changes on anvils physics<br>• Added 1 new map<br>• Added restrictions to !settings command")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 35 then
@@ -1241,8 +1250,9 @@ function eventChatCommand(name,command)
 	if command == "powerups" then
 		showMenu(name,0xc23517,140,90,520,260,"#anvilwar Powerups",text.powerups)
 	end
-	if command == "sound" then
-		showMessage(text.sound,name)
+	if command == "switch" and data[name].ranking >= 3 then
+		if dsettings == true then dsettings=false; else dsettings=true; end
+		showMessage(tostring(dsettings),name)
 	end
 	if command == "leader" then
 		showMenu(name,0x873469,140,90,520,215,"#anvilwar Team Leader Funcions",text.leader)
@@ -3300,7 +3310,7 @@ end
 reset()
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.258<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.258.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
