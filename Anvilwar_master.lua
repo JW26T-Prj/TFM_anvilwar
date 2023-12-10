@@ -18,7 +18,7 @@ Compilation date : 12/10/2023 19:15 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 205
-Number of module special members : 10 ]--
+Number of module special members : 10 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
