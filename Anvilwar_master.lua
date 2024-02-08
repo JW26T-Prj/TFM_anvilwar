@@ -1,10 +1,10 @@
--- Transformice #anvilwar module loader - Version 2.260
+-- Transformice #anvilwar module loader - Version 2.260.1
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #truefalse.
+-- Included sub-modules: #watercatch, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.260",
+	_VERSION = "2.260.1",
 	_MAINV = "55554.237 LTS",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
@@ -18,7 +18,7 @@ Compilation date : 02/06/2024 00:20 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 205
-Number of module special members : 10 ]]--
+Number of module special members : 11 ]]--
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
@@ -101,7 +101,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 20% a mais de tempo para atirar do que os outros jogadores<br>• Pode voltar a vida uma vez se morto.",
-	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>A resposta é verdadeira ou falsa? Descubra nesta sala!</b><br><VP>/sala #anvilwar00truefalse<br><br><N>As avaliações de mapas do #anvilwar estão abertas!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1",
+	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>Cuidado com os objetos que estão caindo do céu!</b><br><VP>/sala #anvilwar00objects<br><br><N>As avaliações de mapas do #anvilwar estão abertas!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -3054,23 +3054,20 @@ end
 resetMap()
 end
 
-initTrue = function()
-admin="" -- Insert your nickname here!
-
-for _,f in next,{"per","skip","limits","return","cancel","at","shamdef"} do
+initObjects = function()
+for _,f in next,{"help","kill","restart"} do
 	system.disableChatCommandDisplay(f)
 end
-for _,G in next,{"DebugCommand","AutoScore","AutoNewGame","AfkDeath","PhysicalConsumables","AllShamanSkills"} do
+for _,G in next,{"AutoShaman","AutoScore","AutoNewGame","AutoTimeLeft","PhysicalConsumables"} do
 	tfm.exec["disable"..G](true)
 end
-blue_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x0000ff,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-red_ground={type = 12,width = 350,height = 800,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0xff0000,miceCollision = true,groundCollision = true,dynamic = true, fixedRotation = true, mass = 999999}
-center_ground={type = 12,width = 20,height = 400,foregound = 1,friction = 0.0,restitution = 0.0,angle = 0,color = 0x000000,miceCollision = true,groundCollision = true,dynamic = false}
+
 tfm.exec.setRoomMaxPlayers(35)
-limits={questions=10,time=7,mices_alive=0}
-questions={question="",answer="",round=0}
-current_mode=""; answer_time=20; remain_time=0;
-game_map="@7605289"
+mapas={"@7565678","@7358458","@7356189","@7513747","@7488224","@7434176","@7566381","@7566353","@7566062","@7566079","@7566040","@7282115","@7284500","@7177229","@3859389","@4122612","@7568657","@7593122","@7593485","@7593959","@7593964","@7594550","@7120063","@7607195","@7627535","@7627546","@7627556","@7631682","@7634571","@4916014","@4005264","@7033610","@7308352","@3222646","@5937915","@7114147","@7288402","@7756165","@7757983","@7754765","@7754518"}
+map_names={"The Beginning of All","Platforms on The Heaven","Simple Circles","The Pyramid of Lava","The Damage of Fall","False Beach","Inside the Fire Cave","","","","A Simple Snow Box","The Maze of Lava","The Grasses that Disappear","Without Limits","Don't Jump!","Don't Touch on Lava","Choose Your Side","Where Are We?","The Island Forest","Black and White - Objects Edition","The Lake of Fall","On the Edge of Void - Objects Edition","White and Black","Mortal Cinema","Background Directions","Without Plans","Defilante Maze","Testing Purposes","Under the Darkness","Fallen Layers","Defilante Platform","Threshold of Boxes","Simple Black","Grassy Walls","Thickness of Clouds","Unreal Illusion","Testing Lava Cave","Ninja Directions","Limits of Tomorrow","",""}
+objects={1,2,3,4,6,7,10,33,35,39,40,45,46,54,60,61,65,68,69,85,89,90}
+actual_map=""; remaining=0; imageId=-1; actual_creator=""; bar=""; loop=0; winner=false; times=0;
+functs={running=false,level=0,count=8}
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -3084,231 +3081,150 @@ function showMessage(message,name)
 		end
 	end
 end
-function eventNewGame()
-	ui.removeTextArea(0,nil)
-	limits.mices_alive=0
-	for name,player in next,tfm.get.room.playerList do
-		ui.addPopup(10,0,"",name,-1000,-1000,128,false)
-		ui.addPopup(11,0,"",name,-1100,-1000,128,false)
-		ui.addPopup(20,0,"",name,-1100,-1000,128,false)
-		if not tfm.get.room.playerList[name].isShaman then
-			limits.mices_alive=limits.mices_alive+1
-		else
-			tfm.exec.setPlayerScore(name,-1,false)
-			showMessage("<VP>Please type <b>!per</b> to make a question. Type <b>!skip</b> to skip your turn.",name)
+function eventChatCommand(name,message)
+	if message == "help" then
+		showMessage("<J>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089",name)
+	end
+	if name == "Spectra_phantom#6089" or name == "Malzahar#8178" or name == "Skyymellu#0000" or name == "Cassiopeia#1749" then
+		if (message:sub(0,4) == "kill") then
+			tfm.exec.killPlayer(message:sub(6))
 		end
-		if name:sub(1,1) == "*" then
-			tfm.exec.killPlayer(name)
-			showMessage("<R>Souris cannot play this module. Create an account or log in to play True or False.",name)
+		if message == "restart" then
+			tfm.exec.newGame(mapas[math.random(#mapas)])
+		end
+		if message == "sd" then
+			system.exit();
 		end
 	end
-	questions.round=0
+end
+function eventNewGame()
+	functs.running=false; functs.level=0; functs.count=8; times=0;
+	tfm.exec.setGameTime(100)
+	removeText()
+	winner=false
+	actual_map=tfm.get.room.currentMap
+	for name,player in pairs(tfm.get.room.playerList) do
+		if name:sub(1,1) == "*" then
+		   	tfm.exec.killPlayer(name)
+		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+		end
+	end
+end
+function showBar()
+	for i=1,41 do
+		if mapas[i] == tfm.get.room.currentMap then
+			local diff=functs.level
+			if map_names[i] == "" then
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9668.052 LTS<")
+			else
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9668.052 LTS<")
+			end
+		end
+	end
+end
+function showText(text)
+	ui.addTextArea(1,"<i><font size='52'><p align='center'><font color='#222222'>"..text.."",nil,103,93,600,80,0,0,1.0,true)
+	ui.addTextArea(0,"<i><font size='52'><p align='center'><font color='#ffffff'>"..text.."",nil,100,90,600,80,0,0,1.0,true)
+end
+function showTextSmall(text)
+	ui.addTextArea(1,"<i><font size='29'><p align='center'><font color='#222222'>"..text.."",nil,103,103,600,80,0,0,1.0,true)
+	ui.addTextArea(0,"<i><font size='29'><p align='center'><font color='#ffffff'>"..text.."",nil,100,100,600,80,0,0,1.0,true)
+end
+function removeText()
+	for i=0,1 do
+		ui.removeTextArea(i,nil)
+	end
+end
+function throw()
+	position=math.random(0,800)
+	tfm.exec.addShamanObject(object,position,-300,0,0,1,false)
+	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	tfm.exec.setPlayerScore(name,0,false)
-	ui.setMapName("<N>True or False - version <VP><b>RTM 2913.010 LTS</b> <N>by <R><b>Spectra_phantom#6089</b><")
+	showMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module made by Spectra_phantom#6089<br><br><R>This game have several restrictions when loaded by FunCorp players.",name)
 end
-for name,player in next,tfm.get.room.playerList do
+for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
+function eventLoop(p,f)
+	remaining=math.floor(f/1000)
+	showBar()
+	if f <= 3000 and functs.running == true and winner == false then
+		for name,player in pairs(tfm.get.room.playerList) do
+			tfm.exec.giveCheese(name)
+			tfm.exec.playerVictory(name)
+			functs.running=false
+			showText("Time is up!")
+		end
+	end
+	if f <= 1 and functs.running == false then
+		tfm.exec.newGame(mapas[math.random(#mapas)])
+	end
+	if functs.running == false and winner == false and p < 20000 then
+		functs.count=functs.count-0.5
+		if functs.count == 3 then imageId = tfm.exec.addImage("17a4e9afa86.png","&1",358,80,nul) end
+		if functs.count == 2.5 then tfm.exec.removeImage(imageId,true) end
+		if functs.count == 2 then imageId = tfm.exec.addImage("17a4e9ae302.png","&1",358,80,nul) end
+		if functs.count == 1.5 then tfm.exec.removeImage(imageId,true) end
+		if functs.count == 1 then imageId = tfm.exec.addImage("17a4e9acb8f.png","&1",358,80,nul) end
+		if functs.count == 0.5 then tfm.exec.removeImage(imageId,true) end
+		if functs.count <= 0 and p < 20000 and winner == false then
+			functs.running=true
+			functs.level=1
+			loop=9
+		end
+	end
+	if functs.running == true then
+		loop=loop+1
+		object=objects[math.random(#objects)]
+		if loop >= 10-functs.level and winner == false then
+			removeText()
+			times=times+1
+			if times >= 3 and functs.level <= 7 then
+				times=0
+				functs.level=functs.level+1
+			end
+			loop=0
+			if functs.level <= 7 then
+				for i=1,functs.level do
+					throw()
+				end
+			else
+				for i=1,7 do
+					throw()
+				end
+			end
+		end
+	end
+end
 function eventPlayerDied(name)
-	if not tfm.get.room.playerList[name].isShaman then
-		limits.mices_alive=limits.mices_alive-1
-	end
-end
-function reset()
-	tfm.exec.newGame(game_map)
-	tfm.exec.setGameTime(60)
-	current_mode="waiting"
-	for name,player in next,tfm.get.room.playerList do
-		if tfm.get.room.playerList[name].isShaman then
-			tfm.exec.setPlayerScore(name,-1,false)
+	local i=0
+	local name
+	for pname,player in pairs(tfm.get.room.playerList) do
+		if not player.isDead then
+			i=i+1
+			name=pname
 		end
 	end
-	ui.setMapName("<N>True or False - version <VP><b>RTM 2913.010 LTS</b> <N>by <R><b>Spectra_phantom#6089</b><")
-end
-function isTrue()
-	showMessage("<VP>The answer is TRUE!")
-	tfm.exec.addPhysicObject(1, 585, -400, red_ground)
-end
-function isFalse()
-	showMessage("<R>The answer is FALSE!")
-	tfm.exec.addPhysicObject(0, 215, -400, blue_ground)
-end
-function eventPopupAnswer(id,name,answer)
-	if id == 0 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 15 then
-			limits.questions=tonumber(answer)
-			ui.addPopup(1,2,"Type the time limit of the round in minutes (min: 1, max: 12)",name,350,175,200,true)
-		end
-	end
-	if id == 1 then
-		if tonumber(answer) >= 1 and tonumber(answer) <= 12 then
-			limits.time=tonumber(answer)
-			showMessage("Questions limit changed to "..limits.questions.." and time limit changed to "..limits.time.."")
-		end
-	end
-	if id == 10 then
-		if string.len(answer) >= 10 and string.len(answer) <= 170 then
-			questions.question=answer
-			ui.addPopup(11,1,"Click YES if your answer is TRUE<br>Click NO if your answer is FALSE",name,350,175,200,true)
-		else
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-			showMessage("<R>Your question is too large or too short. Please make a new question.",name)
-		end
-	end
-	if id == 11 then
-		if remain_time > 1 then
-			questions.answer=answer
-			questions.round=questions.round+1
-			current_mode="truefalse"
-			tfm.exec.setGameTime(answer_time)
-			for name,player in next,tfm.get.room.playerList do
-				if not tfm.get.room.playerList[name].isShaman then
-					tfm.exec.movePlayer(name,400,330)
-				else
-					tfm.exec.movePlayer(name,400,1330)
-				end
-			end
-			showMessage("<N>"..questions.question.."")
-			ui.addTextArea(0,"<font size='18'><p align='center'><font face='Segoe UI,Arial'>"..questions.question.."",nil,15,25,770,50,0x010101,0x010101,0.95,true)
-			for _,i in next,{"Spectra_phantom#6089","Viego#0345","Alisson#3938","Leblanc#5342"} do
-				showMessage(questions.answer,i)
-			end
-		end
-	end
-	if id == 20 then
-		if answer == "yes" then
-			showMessage("<R>"..name.." skipped your turn.")
-			reset()
-		end
-	end
-end
-function eventChatCommand(name,message)
-	if name == "Spectra_phantom#6089" or name == "Leblanc#5342" or name == "Alisson#3938" or name == admin then
-		if message == "limits" then
-			ui.addPopup(0,2,"Type the limit of questions (min: 1, max: 15)",name,350,175,200,true)
-		end
-		if(message:sub(0,2) == "at") then
-			if tonumber(message:sub(4)) >= 5 and tonumber(message:sub(4)) <= 30 then
-				answer_time=tonumber(message:sub(4))
-				showMessage("Answer time: "..answer_time.."s.")
-			end
-		end
-		if(message:sub(0,7) == "shamdef") then
-			if current_mode == "waiting" then
-				tfm.exec.setPlayerScore(message:sub(9),10001,false)
-				reset()
-			end
-		end
-		if message == "return" then
-			if current_mode == "truefalse" then
-				for name,player in next,tfm.get.room.playerList do
-					if not tfm.get.room.playerList[name].isShaman then
-						tfm.exec.movePlayer(name,400,-100)
-					end
-				end
-				current_mode="waiting"
-				tfm.exec.setGameTime(60)
-				showMessage("<R>This question has been cancelled.")
-				ui.removeTextArea(0,nil)
-			end
-		end
-		if message == "cancel" then
-			if current_mode == "truefalse" or current_mode == "waiting" then
-				for name,player in next,tfm.get.room.playerList do
-					tfm.exec.killPlayer(name)
-				end
-				showMessage("<R>This shaman has been skipped.")
-				reset()
-			end
-		end
-	end
-	if tfm.get.room.playerList[name].isShaman and current_mode == "waiting" then
-		if message == "per" and limits.mices_alive >= 2 then
-			ui.addPopup(10,2,"Type your question:",name,350,175,200,true)
-		end
-		if message == "skip" then
-			ui.addPopup(20,1,"Skip your turn?",name,350,175,200,true)
-		end
-	end
-end
-function eventLoop(time,remaining)
-	remain_time=remaining/1000
-	if remain_time < 1 and current_mode == "waiting" then
-		reset()
-		showMessage("<R>Time is up! Other shaman will be choosed.")
-	end
-	if remain_time < 1 and current_mode == "truefalse" then
-		ui.removeTextArea(0,nil)
-		tfm.exec.addPhysicObject(2, 400, 200, center_ground)
+	if i==0 then
+		functs.running=false
+		winner=true
+		showText("No winners!")
 		tfm.exec.setGameTime(5)
-		current_mode="wait"
-	end
-	if remaining < 300 and current_mode == "wait" then
-		if questions.answer == "yes" then
-			isTrue()
-		else
-			isFalse()
-		end
-		tfm.exec.setGameTime(7)
-		current_mode="answer"
-	end
-	if remaining <= 1 and current_mode == "answer" then
-		if questions.answer == "yes" then
-			for name,player in next,tfm.get.room.playerList do
-				if player.x > 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		else
-			for name,player in next,tfm.get.room.playerList do
-				if player.x < 400 then
-					tfm.exec.killPlayer(name)
-				else
-					tfm.exec.movePlayer(name,400,-50)
-				end
-			end
-		end
-		tfm.exec.removePhysicObject(2)
-		current_mode="waiting"
-		tfm.exec.setGameTime(60)
-	end
-	if remain_time < 55 and limits.mices_alive <= 0 and current_mode == "waiting" then
-		reset()
-		showMessage("<R>No winners!")
-	end
-	if remain_time < 55 and limits.mices_alive == 1 and current_mode == "waiting" then
-		for name,player in next,tfm.get.room.playerList do
-			if not tfm.get.room.playerList[name].isDead and not tfm.get.room.playerList[name].isShaman then
-				tfm.exec.setPlayerScore(name,10000,false)
-				reset()
-			end
-		end
-	end
-	if remain_time < 55 and remain_time >= 54 and limits.mices_alive >= 2 and questions.round >= 1 and current_mode == "waiting" then
-		for name,player in next,tfm.get.room.playerList do
-			if not tfm.get.room.playerList[name].isDead then
-				tfm.exec.setPlayerScore(name,1,true)
-				tfm.exec.displayParticle(15,player.x,player.y)
-			end
-		end
-		if questions.round >= limits.questions and current_mode == "waiting" then
-			reset()
-			showMessage("<R>Questions limit reached!")
-		end
-	end
-	if time > limits.time*60000 and current_mode == "waiting" then
-		reset()
-		showMessage("<R>Time limit reached!")
+	elseif i==1 then
+		functs.running=false
+		showTextSmall(""..name.." wins the game!")
+		tfm.exec.giveCheese(name)
+		tfm.exec.playerVictory(name)
+		tfm.exec.setPlayerScore(name,1,true)
+		tfm.exec.setGameTime(5)
+		winner=true
 	end
 end
-reset()
+tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.260<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.260.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
@@ -3319,9 +3235,9 @@ else
 	elseif string.find(tfm.get.room.name,"watercatch") then
 		tfm.exec.chatMessage("<br><VP>Detected keyword 'watercatch' on room name.<br>Initialising #watercatch module...")
 		initWatercatch()
-	elseif string.find(tfm.get.room.name,"truefalse") then
-		tfm.exec.chatMessage("<br><VP>Detected keyword 'truefalse' on room name.<br>Initialising #truefalse module...")
-		initTrue()
+	elseif string.find(tfm.get.room.name,"objects") then
+		tfm.exec.chatMessage("<br><VP>Detected keyword 'objects' on room name.<br>Initialising #objects module...")
+		initObjects()
 	else
 		tfm.exec.chatMessage("<br><VP>Additional keywords was not detected. Initialising main #anvilwar module.")
 		initAnvilwar()
