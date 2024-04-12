@@ -1,24 +1,24 @@
--- Transformice #anvilwar module loader - Version 2.261
+-- Transformice #anvilwar module loader - Version 2.261.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.261",
-	_MAINV = "56055.258",
+	_VERSION = "2.261.1",
+	_MAINV = "56056.259",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
---[[ #anvilwar
-Module authors : Spectra_phantom#6089
-(C) 2017-2023 Spectra Advanced Module Group
+-- #anvilwar
+-- Module authors : Spectra_phantom#6089
+-- (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 56055.258
-Compilation date : 04/12/2024 13:10 UTC
-Sending player : Spectra_phantom#6089
+-- Version : RTM 56056.259
+-- Compilation date : 04/12/2024 18:55 UTC
+-- Sending player : Samira#4387
 
-Number of maps : 205
-Number of module special members : 11 ]]--
+-- Number of maps : 205
+-- Number of module special members : 10
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
@@ -30,10 +30,8 @@ players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map="@7884784"
 current_map=""; actual_player="";
-enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true;
-mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40;
-points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
-settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2,autoping=true}
+enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true; mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40; points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
+settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2,autoping=true,manual=false}
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
@@ -121,6 +119,7 @@ lang.br = {
 	life1 = "<VP>O capitão do time <BL>azul <VP>foi morto, e agora possui apenas ", life3 = " vida(s).",
 	life2 = "<VP>O capitão do time <R>vermelho <VP>foi morto, e agora possui apenas ",
 	player_sync = "Jogador com menor ping para sync: ",
+	startmatch = "<VP><b>Para iniciar uma partida no modo de inserção manual, digite !start.</b>",
 }
 lang.en = {
 	version = "Version",
@@ -201,6 +200,7 @@ lang.en = {
 	life1 = "<VP>The capitain of the <BL>blue <VP>was killed. (S)he has now ", life3 = " life(s).",
 	life2 = "<VP>The capitain of the <R>red <VP>was killed. (S)he has now ",
 	player_sync = "Player with lowest ping for sync: ",
+	startmatch = "<VP><b>To start a match in the Manual insertion mode, type !start.</b>",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -277,6 +277,12 @@ function showTeams(name)
 	ui.addTextArea(481,"<font size='18'><font color='#0045ff'><p align='center'><b><a href='event:enter_blue'>"..text.join.."",name,320,230,150,25,0,0,0.9,true)
 end
 
+function showTeamsManual(name)
+	ui.addTextArea(480,"<font size='18'><font color='#ff4500'><p align='center'><b><a href='event:enter_red'>"..text.join.."",name,320,140,150,25,0,0,0.9,true)
+	ui.addTextArea(481,"<font size='18'><font color='#0045ff'><p align='center'><b><a href='event:enter_blue'>"..text.join.."",name,320,230,150,25,0,0,0.9,true)
+	ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,186,150,25,0,0,0.9,true)
+end
+
 function showMenu(name,color,x,y,width,height,title,content)
 	if data[name].opened == false then
 		data[name].opened=true
@@ -300,12 +306,12 @@ function showRoomSettings(name)
 		elseif settings.map_mode == 1 then
 			string1="@code"
 		end
-		showMenu(name,0x405401,200,125,400,265,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a><br>Automatic sync selection : <b>"..tostring(settings.autoping).."</b> <a href='event:aping'>[change]</a>")
+		showMenu(name,0x405401,200,125,400,253,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br><font size='12'>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a><br>Automatic sync selection : <b>"..tostring(settings.autoping).."</b> <a href='event:aping'>[change]</a><br>Manual insertion mode : <b>"..tostring(settings.manual).."</b> <a href='event:manu'>[change]</a>")
 	end
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56055.258 - "..text.comp_date.."04/12/2024 13:10 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56056.259 - "..text.comp_date.."04/12/2024 18:55 UTC - "..text.uploaded.."Samira#4387</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -370,7 +376,7 @@ function eventRanking(name)
 	ui.addTextArea(1009,"<p align='right'><font size='12'><font face='Consolas'>"..str5,name,550,70,50,320,0,0,nil,true)
 end
 
-ninjas={"Barodius#9562","Leblanc#5342","Rakan#3159","Riven#1630","Skyymellu#0000","Irelia#7317"};
+ninjas={"Barodius#9562","Leblanc#5342","Cassiopeia#1749","Riven#1630","Skyymellu#0000"};
 
 function giveRankings(name)
 	if data[name] then
@@ -390,7 +396,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56055.258</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56056.259</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -644,7 +650,9 @@ function eventNewPlayer(name)
 		if data[name] then
 			if data[name].ranking >= 0 then
 				ui.setBackgroundColor("#000000")
-				showTeams(name)
+				if settings.manual == false or custom_mode == false then
+					showTeams(name)
+				end
 				showLobbyText(name)
 				showMainText(name)
 				tfm.exec.respawnPlayer(name)
@@ -1017,15 +1025,15 @@ function eventMouse(name,x,y)
 end
 
 function lobby()
-	mode="lobby"; choose_time=30; powerups=false;
+	mode="lobby"; powerups=false;
+	if settings.manual == true and custom_mode == true then choose_time=65536; else choose_time=30; end
 	tfm.exec.newGame(lobby_map)
 	tfm.exec.setGameTime(36000)
 	tfm.exec.setRoomMaxPlayers(old_limit)
-	ui.removeTextArea(750,nil)
-	players_red={};	players_blue={}; loop=0;
-	for i=-8, -1 do
-		ui.removeTextArea(i,nil)
+	for i=-8,1011 do
+		ui.removeTextArea(i,name)
 	end
+	players_red={};	players_blue={}; loop=0;
 	for name,player in next,tfm.get.room.playerList do
 		ui.removeTextArea(999,name)
 		tfm.exec.freezePlayer(name,false)
@@ -1034,18 +1042,24 @@ function lobby()
 		showMainText(name)
 		removeScoreboard(name)
 		if data[name] then
-			for i=1000,1011 do
-				ui.removeTextArea(i,name)
-			end
 			data[name].opened=false
-			if data[name].ranking >= 0 then
-				showTeams(name)
-				ui.setBackgroundColor("#000000")
-				data[name].team=0
-				data[name].current_coins=0
-				setScores(name,0,false)
+			ui.setBackgroundColor("#000000")
+			data[name].team=0
+			data[name].current_coins=0
+			setScores(name,0,false)
+			if settings.manual == false or custom_mode == false then
+				if data[name].ranking >= 0 then
+					showTeams(name)
+				else
+					tfm.exec.killPlayer(name)
+				end
 			else
-				tfm.exec.killPlayer(name)
+				for name,player in next,tfm.get.room.playerList do
+					if data[name] and data[name].ranking >= 2 then
+						showTeamsManual(name)
+						showMessage(text.startmatch)
+					end
+				end
 			end
 		end
 	end
@@ -1158,7 +1172,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,112,"#anvilwar Changelog - RTM 56055.258","• Several reductions on powerups prices<br>• New automatic player sync selection based on average ping<br>• Some adjustments in the anvil angle control")
+		showMenu(name,0xa8f233,140,130,520,130,"#anvilwar Changelog - RTM 56056.259","• Several reductions on powerups prices<br>• New automatic player sync selection based on average ping<br>• Some adjustments in the anvil angle control<br>• Introduction of Manual inserting mode: The room administrators can choose manually the teams (useful for tribe events)")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 35 then
@@ -1264,10 +1278,17 @@ function eventChatCommand(name,command)
 	if command == "powerups" then
 		showMenu(name,0xc23517,140,90,520,260,"#anvilwar Powerups",text.powerups)
 	end
-	if command == "switch" and data[name].ranking >= 3 then
+	if command == "switch" then if data[name].ranking >= 3 then
 		if dsettings == true then dsettings=false; else dsettings=true; end
 		showMessage(tostring(dsettings),name)
-	end
+	else showMessage(text.wrong,name) end end
+	if command == "start" then if data[name].ranking >= 2 then
+		if custom_mode == true and settings.manual == true and mode == "lobby" then
+			if rawlen(players_red) > 0 and rawlen(players_blue) > 0 then
+				choose_time=1
+			end
+		end
+	else showMessage(text.wrong,name) end end
 	if command == "leader" then
 		showMenu(name,0x873469,140,90,520,215,"#anvilwar Team Leader Funcions",text.leader)
 	end
@@ -1300,6 +1321,21 @@ function eventPopupAnswer(id,name,message)
 			setScores(temp_name,tonumber(message),true)
 		end
 	end
+	if id == 281 then
+		if data[message] then
+			enterRedTeam(message)
+		end
+	end
+	if id == 282 then
+		if data[message] then
+			enterBlueTeam(message)
+		end
+	end
+	if id == 283 then
+		if data[message] then
+			removeTeam(message)
+		end
+	end
 	if id == 1000 then
 		if message == "0" then
 			settings.map_mode=0
@@ -1327,10 +1363,12 @@ function enterRedTeam(name)
 				updatePlayerList()
 				tfm.exec.movePlayer(name,200,280,false,0,0,false)
 				data[name].team=1
-				for i=479,481 do
-					ui.removeTextArea(i,name)
-					ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
-				end
+				if settings.manual == false or custom_mode == false then
+					for i=479,481 do
+						ui.removeTextArea(i,name)
+						ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+					end
+				end	
 			else
 				showMessage(text.errorbg1,name)
 			end
@@ -1340,9 +1378,11 @@ function enterRedTeam(name)
 			updatePlayerList()
 			tfm.exec.movePlayer(name,200,280,false,0,0,false)
 			data[name].team=1
-			for i=479,481 do
-				ui.removeTextArea(i,name)
-				ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+			if settings.manual == false or custom_mode == false then
+				for i=479,481 do
+					ui.removeTextArea(i,name)
+					ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+				end
 			end
 		end
 	end
@@ -1350,7 +1390,6 @@ end
 
 function enterBlueTeam(name)
 	if custom_mode == false then limit=13 else limit=settings.plimit; end
-
 	if choose_time > 1 and data[name].team == 0 and rawlen(players_blue) < limit then
 		if settings.bg_switch == true and custom_mode == true then
 			if tfm.get.room.playerList[name].gender == 2 then
@@ -1359,9 +1398,11 @@ function enterBlueTeam(name)
 				updatePlayerList()
 				data[name].team=2
 				tfm.exec.movePlayer(name,600,280,false,0,0,false)
-				for i=479,481 do
-					ui.removeTextArea(i,name)
-					ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+				if settings.manual == false or custom_mode == false then
+					for i=479,481 do
+						ui.removeTextArea(i,name)
+						ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+					end
 				end
 			else
 				showMessage(text.errorbg2,name)
@@ -1372,9 +1413,11 @@ function enterBlueTeam(name)
 			updatePlayerList()
 			data[name].team=2
 			tfm.exec.movePlayer(name,600,280,false,0,0,false)
-			for i=479,481 do
-				ui.removeTextArea(i,name)
-				ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+			if settings.manual == false or custom_mode == false then
+				for i=479,481 do
+					ui.removeTextArea(i,name)
+					ui.addTextArea(482,"<font size='16'><font color='#ffffff'><p align='center'><b><a href='event:quit'>"..text.leave.."",name,320,250,150,25,0,0,0.9,true)
+				end
 			end
 		end
 	end
@@ -1421,39 +1464,57 @@ function removeTeam(name)
 		if players_red[i] == name then
 			table.remove(players_red,i)
 			updatePlayerList()
-			showTeams(name)
+			if settings.manual == false or custom_mode == false then
+				showTeams(name)
+				ui.removeTextArea(482,name)
+			end
 			data[name].team=0
-			ui.removeTextArea(482,name); break
+			break
 		end
 	end
 	for i=1,length2 do
 		if players_blue[i] == name then
 			table.remove(players_blue,i)
 			updatePlayerList()
-			showTeams(name)
+			if settings.manual == false or custom_mode == false then
+				showTeams(name)
+				ui.removeTextArea(482,name)
+			end
 			data[name].team=0
-			ui.removeTextArea(482,name); break
+			break
 		end
 	end
 end
 
 function eventTextAreaCallback(id,name,callback)
 	if callback == "enter_red" then
-		if checkPing(name) == false then
-			enterRedTeam(name)
+		if custom_mode == false or settings.manual == false then
+			if checkPing(name) == false then
+				enterRedTeam(name)
+			else
+				showMessage(text.latency,name)
+			end
 		else
-			showMessage(text.latency,name)
+			ui.addPopup(281,2,"",name,350,175,200,true)
 		end
 	end
 	if callback == "enter_blue" then
-		if checkPing(name) == false then
-			enterBlueTeam(name)
+		if custom_mode == false or settings.manual == false then
+			if checkPing(name) == false then
+				enterBlueTeam(name)
+			else
+				showMessage(text.latency,name)
+			end
 		else
-			showMessage(text.latency,name)
+			ui.addPopup(282,2,"",name,350,175,200,true)
 		end
 	end
 	if callback == "quit" then
-		removeTeam(name)
+		if custom_mode == false or settings.manual == false then
+			removeTeam(name)
+		else
+			ui.addPopup(283,2,"",name,350,175,200,true)
+		end
 	end
 	if callback == "close" then
 		for _,i in next,{1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011} do
@@ -1764,6 +1825,10 @@ function eventTextAreaCallback(id,name,callback)
 		if settings.autoping == false then settings.autoping=true else settings.autoping=false end
 		showRoomSettings(name)
 	end
+	if callback == "manu" then
+		if settings.manual == false then settings.manual=true else settings.manual=false end
+		showRoomSettings(name)
+	end
 end
 
 function advanceLevel(name)
@@ -1977,15 +2042,17 @@ function eventLoop(passed,remain)
 			choose_time=choose_time-0.5
 			for name,player in next,tfm.get.room.playerList do
 				if data[name] and data[name].opened == false then
-					ui.addTextArea(483,"<font size='55'><p align='center'><font color='#000001'>"..math.ceil(choose_time).."",name,357,162,80,60,0,0,0.97,true)
-					ui.addTextArea(484,"<font size='55'><p align='center'>"..math.ceil(choose_time).."",name,355,160,80,60,0,0,0.97,true)
+					if settings.manual == false or custom_mode == false then
+						ui.addTextArea(483,"<font size='55'><p align='center'><font color='#000001'>"..math.ceil(choose_time).."",name,357,162,80,60,0,0,0.97,true)
+						ui.addTextArea(484,"<font size='55'><p align='center'>"..math.ceil(choose_time).."",name,355,160,80,60,0,0,0.97,true)
+					end
 				end
 			end
 		end
 		if choose_time == 0 then
 			if rawlen(players_red) > 0 and rawlen(players_blue) > 0 then
 				if rawlen(players_red) - rawlen(players_blue) <= 1 and rawlen(players_red) - rawlen(players_blue) >= -1 then
-					for i=478,484 do ui.removeTextArea(i,nil) end
+					for i=478,494 do ui.removeTextArea(i,nil) end
 					mode="map_sort"
 				else
 					choose_time=15
@@ -1993,7 +2060,7 @@ function eventLoop(passed,remain)
 			else
 				choose_time=30
 			end
-		end
+		end		
 	end
 	if mode == "map_sort" then
 		if custom_mode == false then
@@ -3251,7 +3318,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.261<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.261.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
