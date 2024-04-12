@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.260.1
+-- Transformice #anvilwar module loader - Version 2.261
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.260.1",
-	_MAINV = "55554.237 LTS",
+	_VERSION = "2.261",
+	_MAINV = "56055.258",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 Module authors : Spectra_phantom#6089
 (C) 2017-2023 Spectra Advanced Module Group
 
-Version : RTM 55554.237 LTS
-Compilation date : 02/06/2024 00:20 UTC
+Version : RTM 56055.258
+Compilation date : 04/12/2024 13:10 UTC
 Sending player : Spectra_phantom#6089
 
 Number of maps : 205
@@ -33,7 +33,7 @@ current_map=""; actual_player="";
 enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true;
 mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40;
 points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
-settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2}
+settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2,autoping=true}
 mode="lobby"
 divider="　　　　　　　　　";
 images_id={};
@@ -75,7 +75,7 @@ lang.br = {
 	load2 = "Certifique-se que há pelo menos 1 jogador em cada equipe.",
 	load0 = "Você precisa estar na tela principal para executar esta função. Digite !reset para fazer isso e tente novamente.",
 	ac = "Você atualmente possui ",
-	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 22pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 14pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 6pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 14pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
 	commands = "<font size='11.5'>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N>Spectra_phantom#6089 e Geracionz#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	adcommands = "<font size='11.5'><N><br>!pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br>!reset - Cancela a partida atual e retorna à tela inicial.<br>!limit [número] - Altera o limite de jogadores da sala.<br>!lc [0-4] - Altera a configuração do verificador de latência dos jogadores.<br>!settings - Altera as configurações da sala.",
@@ -83,7 +83,7 @@ lang.br = {
 	leave = "Sair",
 	join = "Entrar",
 	getr = "Preparem-se! A partida vai começar em instantes!",
-	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 3  /  Pontuação: 12pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 18pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 4  /  Pontuação: 14pts</b><br><br><b>Tecla '8' - Caixa de Acompanhamento</b><br>Atira uma caixa de acompanhamento ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 15pts</b><br><br><b>Tecla '9' - Tiro Aleatório</b><br>Atira uma objeto aleatório ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 10pts</b><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 3  /  Pontuação: 10pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 18pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 4  /  Pontuação: 12pts</b><br><br><b>Tecla '8' - Caixa de Acompanhamento</b><br>Atira uma caixa de acompanhamento ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 12pts</b><br><br><b>Tecla '9' - Tiro Aleatório</b><br>Atira uma objeto aleatório ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 10pts</b><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	using = "Bigorna sendo utilizada: ",
 	ac0 = "Você não possui AnvilCoins suficientes para comprar esta bigorna :(",
 	level = "avançou para o nível ",
@@ -120,6 +120,7 @@ lang.br = {
 	tmaperror = "O comando !testmap foi descontinuado. Para rodar um mapa personalizado, use o comando !settings e crie uma partida personalizada.",
 	life1 = "<VP>O capitão do time <BL>azul <VP>foi morto, e agora possui apenas ", life3 = " vida(s).",
 	life2 = "<VP>O capitão do time <R>vermelho <VP>foi morto, e agora possui apenas ",
+	player_sync = "Jogador com menor ping para sync: ",
 }
 lang.en = {
 	version = "Version",
@@ -199,6 +200,7 @@ lang.en = {
 	tmaperror = "The !testmap command was discontinued. To run a custom map, create a custom match using the !settings command.",
 	life1 = "<VP>The capitain of the <BL>blue <VP>was killed. (S)he has now ", life3 = " life(s).",
 	life2 = "<VP>The capitain of the <R>red <VP>was killed. (S)he has now ",
+	player_sync = "Player with lowest ping for sync: ",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -298,12 +300,12 @@ function showRoomSettings(name)
 		elseif settings.map_mode == 1 then
 			string1="@code"
 		end
-		showMenu(name,0x405401,200,125,400,250,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a>")
+		showMenu(name,0x405401,200,125,400,265,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a><br>Automatic sync selection : <b>"..tostring(settings.autoping).."</b> <a href='event:aping'>[change]</a>")
 	end
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 55554.237 LTS - "..text.comp_date.."02/06/2024 00:20 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56055.258 - "..text.comp_date.."04/12/2024 13:10 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -388,7 +390,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 55554.237 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56055.258</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -569,6 +571,22 @@ function removeScoreboard(name)
 	end
 end
 
+function checkLatencies()
+	latency=65536; player="";
+	for name,_ in next,tfm.get.room.playerList do
+		if tfm.get.room.playerList[name].averageLatency < latency then
+			latency=tfm.get.room.playerList[name].averageLatency
+			player=name
+		end
+	end
+	if custom_mode == true and settings.autoping == true then
+		showMessage(""..text.player_sync..player.." ("..latency.."ms)")
+	elseif custom_mode == false then
+		showMessage(""..text.player_sync..player.." ("..latency.."ms)")
+	end
+	return player
+end
+
 function checkPing(name)
 	if data[name] then
 		if ping_check == 0 then
@@ -659,11 +677,11 @@ end
 
 function anvilRain()
 	if data[actual_player].team == 1 then
-		for i=1,7 do
+		for i=1,8 do
 			spawnAnvil(10,math.random(850,1599),100,0,1,false)
 		end
 	elseif data[actual_player].team == 2 then
-		for i=1,7 do
+		for i=1,8 do
 			spawnAnvil(10,math.random(1,750),100,0,1,false)
 		end
 	end
@@ -734,10 +752,10 @@ function eventKeyboard(name,code,down,x,y)
 		end
 		if powerups == true then
 			if data[name].powerup == 0 then
-				if code == 49 and data[name].score >= 8 and data[name].level >= 1 then
+				if code == 49 and data[name].score >= 6 and data[name].level >= 1 then
 					showMessage("<VP><b>"..name.."</b> "..text.p1.."")
 					data[name].powerup=1
-					setScores(name,-8,true)
+					setScores(name,-6,true)
 					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 49 then
 					showMessage("<R>"..text.p0.."",name)
@@ -750,9 +768,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 50 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 51 and data[name].score >= 22 and data[name].level >= 3 then
+				if code == 51 and data[name].score >= 20 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p3.."")
-					setScores(name,-22,true)
+					setScores(name,-20,true)
 					data[name].powerup=3
 					mode="wait3"
 					tfm.exec.setGameTime(10)
@@ -770,9 +788,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 52 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 53 and data[name].score >= 12 and data[name].level >= 3 then
+				if code == 53 and data[name].score >= 10 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-12,true)
+					setScores(name,-10,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
@@ -792,9 +810,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 54 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 55 and data[name].score >= 14 and data[name].level >= 4 then
+				if code == 55 and data[name].score >= 12 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p7.."")
-					setScores(name,-14,true)
+					setScores(name,-12,true)
 					data[name].powerup=7
 					tfm.exec.setWorldGravity(0,20)
 					pf_time=-2
@@ -803,9 +821,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 55 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 56 and data[name].score >= 15 and data[name].level >= 2 then
+				if code == 56 and data[name].score >= 12 and data[name].level >= 2 then
 					showMessage("<VP><b>"..name.."</b> "..text.p8.."")
-					setScores(name,-15,true)
+					setScores(name,-12,true)
 					data[name].powerup=8
 					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 56 then
@@ -836,13 +854,13 @@ function eventKeyboard(name,code,down,x,y)
 		end
 		if code == 67 then
 			if data[name].angle > 0 then
-				data[name].angle=data[name].angle-10
+				data[name].angle=data[name].angle-15
 			end
 			showAngleMeter(name)
 		end
 		if code == 86 then
 			if data[name].angle < 90 then
-				data[name].angle=data[name].angle+10
+				data[name].angle=data[name].angle+15
 			end
 			showAngleMeter(name)
 		end
@@ -1140,7 +1158,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,105,"#anvilwar Changelog - RTM 55554.237 LTS","• #anvilwar rooms can now have up to 35 players<br>• Several room restrictions for FunCorp players and managers")
+		showMenu(name,0xa8f233,140,130,520,112,"#anvilwar Changelog - RTM 56055.258","• Several reductions on powerups prices<br>• New automatic player sync selection based on average ping<br>• Some adjustments in the anvil angle control")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 35 then
@@ -1372,6 +1390,11 @@ function moveTeams()
 	for _,id in next,images_id do
 		tfm.exec.removeImage(id)
 		images_id={}
+	end
+	if custom_mode == true and settings.autoping == true then
+		tfm.exec.setPlayerSync(checkLatencies())
+	elseif custom_mode == false then
+		tfm.exec.setPlayerSync(checkLatencies())
 	end
 	if mode == "wait2" then
 		for _,name in next,players_red do
@@ -1735,6 +1758,10 @@ function eventTextAreaCallback(id,name,callback)
 	end
 	if callback == "bgd" then
 		if settings.bg_switch == false then settings.bg_switch=true else settings.bg_switch=false end
+		showRoomSettings(name)
+	end
+	if callback == "aping" then
+		if settings.autoping == false then settings.autoping=true else settings.autoping=false end
 		showRoomSettings(name)
 	end
 end
@@ -3224,7 +3251,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.260.1<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.261<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
