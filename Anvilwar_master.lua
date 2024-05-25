@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.262
+-- Transformice #anvilwar module loader - Version 2.263
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.262",
-	_MAINV = "56157.260",
+	_VERSION = "2.263",
+	_MAINV = "56258.261",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,9 +13,9 @@ initAnvilwar = function()
 -- Module authors : Spectra_phantom#6089
 -- (C) 2017-2023 Spectra Advanced Module Group
 
--- Version : RTM 56157.260
--- Compilation date : 05/08/2024 15:02 UTC
--- Sending player : Fabia_sheen#2561
+-- Version : RTM 56258.261
+-- Compilation date : 05/25/2024 22:51 UTC
+-- Sending player : Spectra_phantom#6089
 
 -- Number of maps : 205
 -- Number of module special members : 10
@@ -226,6 +226,14 @@ function tableSearch(table,element)
 	end
 end
 
+function findString(object,tb)
+	for i=1,rawlen(tb) do
+		if tb[i] == object then
+			return true
+		end
+	end
+end
+
 function showMessage(message,name)
 	temp_text=string.gsub(message,"<b>","")
 	temp_text=string.gsub(temp_text,"</b>","")
@@ -311,7 +319,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56157.260 - "..text.comp_date.."05/08/2024 15:02 UTC - "..text.uploaded.."Fabia_sheen#2561</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56258.261 - "..text.comp_date.."05/25/2024 22:51 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -376,7 +384,7 @@ function eventRanking(name)
 	ui.addTextArea(1009,"<p align='right'><font size='12'><font face='Consolas'>"..str5,name,550,70,50,320,0,0,nil,true)
 end
 
-ninjas={"Barodius#9562","Leblanc#5342","Cassiopeia#1749","Riven#1630","Skyymellu#0000"};
+ninjas={"Barodius#9562","Irelia#7317","G484#5825","Riven#1630","Globo_rural#6532","Qiyana#2797","Skyymellu#0000","Rakan#3159"}
 
 function giveRankings(name)
 	if data[name] then
@@ -396,7 +404,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56157.260</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56258.261</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1172,7 +1180,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,95,"#anvilwar Changelog - RTM 56157.260","• Some minor bugfixes<br>• Behavior changes on some commands")
+		showMenu(name,0xa8f233,140,130,520,90,"#anvilwar Changelog - RTM 56258.261","• Some bugfixes<")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 35 then
@@ -2257,8 +2265,8 @@ shaman=""; alives=0; cannons=15; z=0; data={}; lang={}; mode="load"; changed=fal
 active_imgs={}; active_imgs2={}; powerups_x={}; powerups_y={}; powerups_types={}; oxygen_x={}; oxygen_y={}; id=0; round=0;
 
 lang.br = {
-	welcome = "<font color='#0080ff'><b>Bem-vindos ao module #watercatch!</b><br><VP>Fuja do shaman (tubarão) e sobreviva no perigoso mar!<br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module ",
-	changelog = "• Mudanças no comando do module<br>• Remoção da imagem de boas-vindas<br>• Redução do número de objetos utilizáveis pelo shaman de 24 para 15",
+	welcome = "<font color='#0080ff'><b>Bem-vindos ao module Rakan's Watercatch!</b><br><VP>Fuja do shaman (tubarão) e sobreviva no perigoso mar!<br><J>Digite !help para ver a ajuda deste module.<br><br><N>Module ",
+	changelog = "• Mudanças de nomenclatura",
 	help = "O objetivo é bem simples: <b>Fugir do shaman</b>, se escondendo dentro do mar e tomando cuidado para não morrer afogado!<br><R><b>Shamans, não esqueçam de se mexer, ou irão morrer AFK!</b><br><br><VP>Os círculos marcados por <N>'?'<VP> são powerups, que geram efeitos aleatórios nos ratos.<J><br>Estes powerups podem ser acionados pressionando ESPAÇO em cima deles.<br><N>Você pode ver os possíveis efeitos dos powerups indo no Menu e clicando em Powerups.<br><br><N>Caso você seja shaman, você tem um limite de <b>15</b> objetos que podem ser utilizados. Exceder este limite fará com que a partida acabe.",
 	powerups = "<font size='11'>Os seguintes powerups estão disponíveis no momento:<br><ROSE><b>• VAMPIRO</b><N><br>Transforma seu rato em um vampiro, forçando você a ir para fora do mar.<br><ROSE><b>• ESCURIDÃO</b><N><br>Reduz drasticamente o campo de visão do seu rato.<br><ROSE><b>• AFUNDAR</b><N><br>Cria uma curta anomalia que puxa todos os ratos em direção ao fundo do mar.<br><ROSE><b>• MEEP</b><N><br>Te dá o poder de usar o Meep!<br><ROSE><b>• SUFOCO</b><N><br>Diminui o seu nível de oxigênio. Caso seu nível de oxigênio esteja muito baixo e você pegue este powerup, você morrerá afogado.<br><ROSE><b>• CONGELAR</b><N><br>Congela o seu rato.<br><ROSE><b>• QUEIJO</b><N><br>Dá queijo para o seu rato. Caso você esteja dentro do mar, você provavelmente será levado para o fundo dele.",
 	thecredits = "As seguintes pessoas ajudaram no desenvolvimento deste module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Desenvolvimento do do mapa<br><ROSE><b>• Rakan#3159</b><N> - Ideia original, criação das artes e do mapa<br><ROSE><b>• Lynet#8558</b><N> - análise de avaliação e envio das imagens<br><ROSE><b>• Perdiaconta#2529</b><N> - análise de avaliação<br><ROSE><b>• Lacoste#8972</b><N> - análise de avaliação<br><ROSE><b>• Maramara4#0000</b><N> - análise de avaliação<br><ROSE><b>• Yuh#0748</b><N> - análise de avaliação<br><ROSE><b>• Rafaelmorai#0000</b><N> - análise de avaliação",
@@ -2272,8 +2280,8 @@ lang.br = {
 	dskins = "Desativar skins",
 	shamwin = "<VP><b>O shaman matou todos os ratos e venceu o jogo!</b><br><N>Próxima rodada iniciando em 15 segundos.",
 	nosham = "<R>O shaman morreu, está AFK ou saiu da sala. Iniciando nova partida...",
-	watercatch_help = "Ajuda do Module #watercatch",
-	watercatch_power = "Powerups do Module #watercatch",
+	watercatch_help = "Ajuda do Module Rakan's Watercatch",
+	watercatch_power = "Powerups do Module Rakan's Watercatch",
 	credits = "Créditos",
 	skinwarn = "<R>As skins de tubarão serão exibidas quando você for shaman, e estiver dentro do mar!",
 	loadingmap = "Carregando mapa. Por favor, aguarde...<",
@@ -2284,7 +2292,7 @@ lang.br = {
 	activate = "acionou o powerup",
 	vampire = "VAMPIRO", cheese = "QUEIJO", darkness = "ESCURIDÃO", submerge = "AFUNDAR", suffocation = "SUFOCO", freeze = "CONGELAR",
 	madeby = "desenvolvido por",
-	nosouris = "<R>Jogadores convidados não podem jogar este jogo. Logue em uma conta para jogar #watercatch.",
+	nosouris = "<R>Jogadores convidados não podem jogar este jogo. Logue em uma conta para jogar.",
 	shammove = "<ROSE>Não esqueça de se mover, ou você perderá sua vez de shaman!",
 	drowned = "morreu afogado!",
 	lowoxygen = "<R>Você está ficando sem oxigênio! Saia da água o mais rápido possível ou você morrerá afogado!",
@@ -2295,8 +2303,8 @@ lang.br = {
 	remain60 = "<ROSE>Restam 60 segundos!", remain30 = "<ROSE>Restam 30 segundos!", 
 }
 lang.en = {
-	welcome = "<font color='#0080ff'><b>Welcome to the #watercatch module!</b><br><VP>Run away from the shark (shaman) and survive in the dangerous sea!<br><J>Type !help to see the game help.<br><br><N>Module ",
-	changelog = "• New module owner<br>• Remotion of welcome image<br>• Reduction of usable shaman objects from 24 to 15",
+	welcome = "<font color='#0080ff'><b>Welcome to the Rakan's Watercatch module!</b><br><VP>Run away from the shark (shaman) and survive in the dangerous sea!<br><J>Type !help to see the game help.<br><br><N>Module ",
+	changelog = "• Naming changes",
 	help = "The goal is very simple: <b>Run away from the shaman</b>, hiding in the sea and keeping caution to don't drown!<br><R><b>Shamans, don't forget to move, or they will dead by AFK!</b><br><br><VP>The circles marked with <N>'?'<VP> are powerups, that generate random effects to your mice.<J><br>These powerups can be activated pressing SPACEBAR on top of them.<br><N>You can see all the possible effects of the powerups going to the Menu and pressing 'Powerups'.<br><br><N>If you are the shaman, you cannot invoke more than <b>15</b> objects, or you will lose your shaman turn.",
 	powerups = "<font size='11'>The following powerups are available at moment:<br><ROSE><b>• VAMPIRE</b><N><br>Turns your mouse into a vampire, forcing you out of the sea.<br><ROSE><b>• DARKNESS</b><N><br>Drastically reduces your mouse's field of view.<br><ROSE><b>• SUBMERGE</b><N><br>Create an anomaly that pushes all the mices to the seabed.<br><ROSE><b>• MEEP</b><N><br>Gives the MEEP ability!<br><ROSE><b>• SUFFOCATE</b><N><br>Reduces your oxygen level. If your oxygen level is very low and you enable this powerup, you will drown in the sea.<br><ROSE><b>• FREEZE</b><N><br>Freeze your mice.<br><ROSE><b>• CHEESE</b><N><br>Give cheese to your mice. If you are in the sea and enable this powerup, you will go to the seabed.",
 	thecredits = "The following people helped with the development of this module:<br><br><ROSE><b>• Shun_kazami#7014</b><N> - Map development<br><ROSE><b>• Spectra_phantom#6089</b><N> - Original idea, art creation and creation of map<br><ROSE><b>• Lynet#8558</b><N> - evaluation analysis and image sending<br><ROSE><b>• Perdiaconta#2529</b><N> - evaluation analysis<br><ROSE><b>• Lacoste#8972</b><N> - evaluation analysis<br><ROSE><b>• Maramara4#0000</b><N> - evaluation analysis<br><ROSE><b>• Yuh#0748</b><N> - evaluation analysis<br><ROSE><b>• Rafaelmorai#0000</b><N> - evaluation analysis",
@@ -2310,9 +2318,9 @@ lang.en = {
 	dskins = "Remove skins",
 	shamwin = "<VP><b>The shaman killed all the mices and won the game!</b><br><N>Next round starting in 15 seconds.",
 	nosham = "<R>The shaman died, is AFK or leaved the room. Starting new round...",
-	watercatch_help = "#watercatch Help",
-	watercatch_power = "#watercatch Powerups",
-	credits = "#watercatch Credits",
+	watercatch_help = "Rakan's Watercatch Help",
+	watercatch_power = "Rakan's Watercatch Powerups",
+	credits = "Rakan's Watercatch Credits",
 	skinwarn = "<R>The shark skins will only be visible when you are the shaman, and when you are underwater!",
 	loadingmap = "Loading map. Please wait...<",
 	noobjects = "<VP>The shaman cannot invoke objects!",
@@ -2322,7 +2330,7 @@ lang.en = {
 	activate = "enabled the following powerup:",
 	vampire = "VAMPIRE", cheese = "CHEESE", darkness = "DARKNESS", submerge = "SUBMERGE", suffocation = "SUFFOCATION", freeze = "FREEZE",
 	madeby = "developed by",
-	nosouris = "<R>Souris players cannot enter this game. Login into an account to play #watercatch.",
+	nosouris = "<R>Souris players cannot enter this game. Login into an account to play.",
 	shammove = "<ROSE>Don't forget to move, or you will lose your shaman turn!",
 	drowned = "drowned in the sea!",
 	lowoxygen = "<R>Your oxygen level is very low! Get out of the water as quickly as possible or you will drown!",
@@ -2594,7 +2602,7 @@ function eventChatCommand(name,message)
 		showAvailableSharks(name)
 	end
 	if message == "changelog" then
-		showMenu(name,0xf0f0f0,140,130,520,110,"#watercatch Changelog - v6.1",text.changelog)
+		showMenu(name,0xf0f0f0,140,130,520,100,"Rakan's Watercatch Changelog - v6.2",text.changelog)
 	end
 	if (message:sub(0,2)== "tc") then
 		if tfm.get.room.playerList[name].isShaman == false then
@@ -2605,7 +2613,7 @@ function eventChatCommand(name,message)
 			end
 		end
 	end
-	if name == "Shun_kazami#7014" or name == "Leblanc#5342" or name == "Rakan#3159" then
+	if name == "Shun_kazami#7014" or name == "Namideepwin#0000" or name == "Rakan#3159" or name == "Riven#1630" then
 		if (message:sub(0,4) == "kill") then
 			tfm.exec.killPlayer(message:sub(6))
 		end
@@ -2783,7 +2791,7 @@ function eventNewGame()
 			tfm.exec.removeImage(data[n].shark_id)
 			tfm.exec.changePlayerSize(n,1)
 			ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",n,365,25,70,24,0x000001,0x000001,0.75,true)
-			ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
+			ui.setMapName("<font color='#0080ff'><b>Rakan's Watercatch!</b><N> <VP><b>v6.2</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
 			if n:sub(1,1) == "*" then
 				tfm.exec.killPlayer(n)
 				showMessage(text.nosouris,name)
@@ -2874,7 +2882,7 @@ function eventLoop(p,r)
 	time_passed=math.ceil(p/500)
 	time_remain=math.ceil(r/500)
 	if changed == true then
-		ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
+		ui.setMapName("<font color='#0080ff'><b>Rakan's Watercatch!</b><N> <VP><b>v6.2</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
 		local m=math.floor(r/60000)
 		local s=math.floor((((m*60000)-r) * -1) / 1000)
 		ui.addTextArea(-1,"<font size='30'><font color='#222222'><font face='Calisto MT,Times New Roman'><b>"..m..":"..s.."</b>",n,267,368,125,54,0,0,1.0,true)
@@ -3041,7 +3049,7 @@ function eventNewPlayer(name)
 	data[name] = newData;
 	showWater(name)
 	ui.addTextArea(299,"<p align='center'><a href='event:hide_menu'><font size='18'>Menu",name,365,25,70,24,0x000001,0x000001,0.75,true)
-	ui.setMapName("<font color='#0080ff'><b>#watercatch!</b><N> <VP><b>v6.1</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
+	ui.setMapName("<font color='#0080ff'><b>Rakan's Watercatch!</b><N> <VP><b>v6.2</b><N> - "..text.madeby.." <R><b>Rakan#3159</b><")
 	showMessage(text.welcome..text.madeby.." Rakan#3159.",name)
 	tfm.exec.setPlayerScore(name,0,false)
 end
@@ -3197,7 +3205,7 @@ function eventNewGame()
 	for name,player in pairs(tfm.get.room.playerList) do
 		if name:sub(1,1) == "*" then
 		   	tfm.exec.killPlayer(name)
-		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play Objects.",name)
+		   	showMessage("<R>Souris aren't allowed to play on this module. Create an account or log in to play.",name)
 		end
 	end
 end
@@ -3206,9 +3214,9 @@ function showBar()
 		if mapas[i] == tfm.get.room.currentMap then
 			local diff=functs.level
 			if map_names[i] == "" then
-				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9769.053<")
+				ui.setMapName("<J><b>"..tfm.get.room.currentMap.."   </b><V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>Rakan's Objects<")
 			else
-				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>#objects <ROSE>RTM 9769.053<")
+				ui.setMapName("<J><b>"..map_names[i].."</b> <BL>- "..tfm.get.room.currentMap.."   <V>|   <N>Difficulty : <R>"..diff.."   <V>|   <N>Rakan's Objects<")
 			end
 		end
 	end
@@ -3232,7 +3240,7 @@ function throw()
 	tfm.exec.addShamanObject(0,position,100,0,0,1,false)
 end
 function eventNewPlayer(name)
-	showMessage("<J><b>Welcome to #objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module developed by Rakan#3159",name)
+	showMessage("<J><b>Welcome to Rakan's Objects!</b><br><br>The objective of this module is survive! Don't hit the objects that are falling! The last alive player wins the game!<br><br><ROSE>Module developed by Rakan#3159",name)
 end
 for name,player in pairs(tfm.get.room.playerList) do
 	eventNewPlayer(name)
@@ -3315,7 +3323,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.262<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.263<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
