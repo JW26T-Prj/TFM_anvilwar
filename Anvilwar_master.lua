@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.263
+-- Transformice #anvilwar module loader - Version 2.264
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.263",
-	_MAINV = "56258.261",
+	_VERSION = "2.264",
+	_MAINV = "56359.262 LTS",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 -- Module authors : Spectra_phantom#6089
 -- (C) 2017-2023 Spectra Advanced Module Group
 
--- Version : RTM 56258.261
--- Compilation date : 05/25/2024 22:51 UTC
+-- Version : RTM 56359.262 LTS
+-- Compilation date : 05/31/2024 15:01 UTC
 -- Sending player : Spectra_phantom#6089
 
 -- Number of maps : 205
@@ -120,6 +120,7 @@ lang.br = {
 	life2 = "<VP>O capitão do time <R>vermelho <VP>foi morto, e agora possui apenas ",
 	player_sync = "Jogador com menor ping para sync: ",
 	startmatch = "<VP><b>Para iniciar uma partida no modo de inserção manual, digite !start.</b>",
+	compet = "<VP>O Modo Competitivo está habilitado nesta sala. Os times são definidos pelo gerenciador da mesma.",
 }
 lang.en = {
 	version = "Version",
@@ -201,6 +202,7 @@ lang.en = {
 	life2 = "<VP>The capitain of the <R>red <VP>was killed. (S)he has now ",
 	player_sync = "Player with lowest ping for sync: ",
 	startmatch = "<VP><b>To start a match in the Manual insertion mode, type !start.</b>",
+	compet = "<VP>The Competitive Mode is now enabled in this room. The teams are defined by the room manager.",
 }
 if tfm.get.room.isTribeHouse == true then
 	text = lang.en
@@ -314,12 +316,12 @@ function showRoomSettings(name)
 		elseif settings.map_mode == 1 then
 			string1="@code"
 		end
-		showMenu(name,0x405401,200,125,400,253,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br><font size='12'>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a><br>Automatic sync selection : <b>"..tostring(settings.autoping).."</b> <a href='event:aping'>[change]</a><br>Manual insertion mode : <b>"..tostring(settings.manual).."</b> <a href='event:manu'>[change]</a>")
+		showMenu(name,0x405401,200,125,400,253,""..tfm.get.room.name.." Room Settings","<p align='center'>Custom Room Mode : <b>"..tostring(custom_mode).."</b> <a href='event:cmode'>[change]</a></p><br>------------------ CUSTOM ROOM SETTINGS ------------------<br><font size='12'>Game Time : <b>"..tostring(settings.time).."</b> sec <a href='event:ctimea'>[-]</a> <a href='event:ctimeb'>[+]</a><br>Max Players/Team : <b>"..tostring(settings.plimit).."</b> <a href='event:cplayersa'>[-]</a> <a href='event:cplayersb'>[+]</a><br>Map Mode : <b>"..string1.."</b> <a href='event:cmap'>[change]</a><br>Map @code (for @CODE mode) : <b>"..tostring(settings.map_select).."</b></a><br>Powerups : <b>"..tostring(settings.g_powerups).."</b> <a href='event:cpowerups'>[change]</a><br>Shooting Time : <b>"..tostring(settings.shoot_time).."</b> sec <a href='event:cstimea'>[-]</a> <a href='event:cstimeb'>[+]</a><br>Anti-Kamikaze Mode : <b>"..tostring(settings.anti_kami).."</b> <a href='event:ckami'>[change]</a><br>Sudden Death : <b>"..tostring(settings.sd_switch).."</b> <a href='event:csd'>[change]</a><br>Boys against Girls mode : <b>"..tostring(settings.bg_switch).."</b> <a href='event:bgd'>[change]</a><br>Team Leader Lifes : <b>"..tostring(settings.cap_lifes).."</b> <a href='event:clifesa'>[-]</a> <a href='event:clifesb'>[+]</a><br>Automatic sync selection : <b>"..tostring(settings.autoping).."</b> <a href='event:aping'>[change]</a><br>Competitive mode : <b>"..tostring(settings.manual).."</b> <a href='event:manu'>[change]</a>")
 	end
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56258.261 - "..text.comp_date.."05/25/2024 22:51 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56359.262 LTS - "..text.comp_date.."05/31/2024 15:01 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -384,7 +386,7 @@ function eventRanking(name)
 	ui.addTextArea(1009,"<p align='right'><font size='12'><font face='Consolas'>"..str5,name,550,70,50,320,0,0,nil,true)
 end
 
-ninjas={"Barodius#9562","Irelia#7317","G484#5825","Riven#1630","Globo_rural#6532","Qiyana#2797","Skyymellu#0000","Rakan#3159"}
+ninjas={"Irelia#7317","G484#5825","Riven#1630","Globo_rural#6532","Qiyana#2797","Skyymellu#0000","Rakan#3159"}
 
 function giveRankings(name)
 	if data[name] then
@@ -404,7 +406,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56258.261</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56359.262 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1073,8 +1075,10 @@ function lobby()
 	end
 	permafrost=false; night_mode=false;
 	showMessage(text.legacy)
-	if custom_mode == true then
+	if custom_mode == true and settings.manual == false then
 		showMessage(text.custom)
+	elseif custom_mode == true and settings.manual == true then
+		showMessage(text.compet)
 	end
 end
 
@@ -1180,7 +1184,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,90,"#anvilwar Changelog - RTM 56258.261","• Some bugfixes<")
+		showMenu(name,0xa8f233,140,130,520,90,"#anvilwar Changelog - RTM 56359.262 LTS","• The manual insertion mode is now called Competitive mode")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 35 then
@@ -3323,7 +3327,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.263<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.264<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
