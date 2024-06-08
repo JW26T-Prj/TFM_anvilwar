@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.264
+-- Transformice #anvilwar module loader - Version 2.264.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #objects.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.264",
-	_MAINV = "56359.262 LTS",
+	_VERSION = "2.264.1",
+	_MAINV = "56360.263",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,12 +13,12 @@ initAnvilwar = function()
 -- Module authors : Spectra_phantom#6089
 -- (C) 2017-2023 Spectra Advanced Module Group
 
--- Version : RTM 56359.262 LTS
--- Compilation date : 05/31/2024 15:01 UTC
+-- Version : RTM 56360.263
+-- Compilation date : 06/08/2024 21:15 UTC
 -- Sending player : Spectra_phantom#6089
 
 -- Number of maps : 205
--- Number of module special members : 10
+-- Number of module special members : 11
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
@@ -30,7 +30,7 @@ players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map="@7884784"
 current_map=""; actual_player="";
-enabled=false; powerups=false; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true; mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40; points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
+enabled=false; powerups=false; custom_map=true; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true; mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40; points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
 settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2,autoping=true,manual=false}
 mode="lobby"
 divider="　　　　　　　　　";
@@ -321,7 +321,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56359.262 LTS - "..text.comp_date.."05/31/2024 15:01 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56360.263 - "..text.comp_date.."06/08/2024 21:15 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -386,7 +386,7 @@ function eventRanking(name)
 	ui.addTextArea(1009,"<p align='right'><font size='12'><font face='Consolas'>"..str5,name,550,70,50,320,0,0,nil,true)
 end
 
-ninjas={"Irelia#7317","G484#5825","Riven#1630","Globo_rural#6532","Qiyana#2797","Skyymellu#0000","Rakan#3159"}
+ninjas={"Irelia#7317","G484#5825","Dharak#7603","Qiyana#2797","Skyymellu#0000","Akwimos#1937","Hwei#1027","Rakan#3159"}
 
 function giveRankings(name)
 	if data[name] then
@@ -406,7 +406,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56359.262 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56360.263</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -1184,7 +1184,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,90,"#anvilwar Changelog - RTM 56359.262 LTS","• The manual insertion mode is now called Competitive mode")
+		showMenu(name,0xa8f233,140,130,520,90,"#anvilwar Changelog - RTM 56360.263","• Small bugfixes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 35 then
@@ -1300,6 +1300,10 @@ function eventChatCommand(name,command)
 	if command == "switch" then if data[name].ranking >= 3 then
 		if dsettings == true then dsettings=false; else dsettings=true; end
 		showMessage(tostring(dsettings),name)
+	else showMessage(text.wrong,name) end end
+	if command == "switch2" then if data[name].ranking >= 3 then
+		if custom_map == true then custom_map=false; else custom_map=true; end
+		showMessage(tostring(custom_map),name)
 	else showMessage(text.wrong,name) end end
 	if command == "start" then if data[name].ranking >= 2 then
 		if custom_mode == true and settings.manual == true and mode == "lobby" then
@@ -2119,7 +2123,7 @@ function eventLoop(passed,remain)
 					tfm.exec.setGameTime(10)
 					tfm.exec.playSound("/bouboum/x_bonus_alea.mp3",75)
 				end
-			elseif settings.map_mode == 1 then
+			elseif settings.map_mode == 1 and custom_map == true then
 				current_map=settings.map_select
 				ui.addTextArea(-6,"<font face='Arial'><p align='center'><font color='#000000'><font size='24'><i>"..text.rm1..""..settings.map_select.."",nil,2,95,800,45,0,0,1.0,true)
 				ui.addTextArea(-5,"<font face='Arial'><p align='center'><font size='24'><VP><i>"..text.rm1..""..settings.map_select.."",nil,0,95,800,45,0,0,1.0,true)
@@ -3327,7 +3331,7 @@ end
 tfm.exec.newGame(mapas[math.random(#mapas)])
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.264<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.264.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
