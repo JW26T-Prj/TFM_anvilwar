@@ -1,6 +1,6 @@
 -- Transformice #anvilwar module loader - Version 2.266
 -- By Spectra_phantom#6089
--- Included sub-modules: #watercatch, #objects.
+-- Included sub-modules: #watercatch, #objects, #truefalse.
 
 local anvilwar = {
 	_NAME = "anvilwar",
