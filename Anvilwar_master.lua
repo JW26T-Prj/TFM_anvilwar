@@ -1,36 +1,36 @@
--- Transformice #anvilwar module loader - Version 2.268
+-- Transformice #anvilwar module loader - Version 2.269
 -- By Spectra_phantom#6089
 -- Included sub-modules: #watercatch, #objects, #truefalse.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.268",
-	_MAINV = "56666.269",
+	_VERSION = "2.269",
+	_MAINV = "56667.270",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
 -- #anvilwar
 -- Module authors : Spectra_phantom#6089
--- (C) 2017-2023 Spectra Advanced Module Group
+-- (C) 2017-∞ Spectra Advanced Module Group
 
--- Version : RTM 56666.269
--- Compilation date : 07/21/2024 17:44 UTC
+-- Version : RTM 56667.270
+-- Compilation date : 07/31/2024 20:00 UTC
 -- Sending player : Spectra_phantom#6089
 
 -- Number of maps : 215
--- Number of module special members : 9
+-- Number of module special members : 12
 
 _VERSION = "Lua 5.4"
 _AUTHOR = "Spectra_phantom#6089"
 
 maps={"@7467262","@7463118","@7436867","@7412348","@7467977","@7470456","@7480017","@7433435","@7483583","@7485139","@7486518","@7486596","@7486946","@7487828","@7488212","@7487008","@7493568","@7375714","@7495286","@7495744","@7497388","@7501996","@7511352","@7522536","@7522330","@7521998","@7540655","@7532950","@7542639","@7940082","@7114424","@7546132","@7546118","@7545653","@7543543","@7547908","@7544349","@7553313","@7554201","@7554203","@7554206","@7559566","@7560668","@7557788","@7559595","@7560873","@7562374","@7577539","@7596259","@7596249","@7599725","@7600421","@7648431","@7648852","@7648907","@7648899","@7658998","@7659642","@7663560","@7497808","@7489867","@5943895","@7666256","@3941375","@3956702","@4550664","@7678628","@3133327","@6947287","@7678921","@7679763","@7684909","@7672711","@3161494","@3996861","@7689921","@7685324","@7685127","@7695537","@7695654","@7693917","@7697503","@7723407","@5358451","@5451175","@6025712","@7727464","@7689192","@6198267","@6201091","@6244376","@6822539","@6879247","@7032584","@7760006","@7690854","@7686080","@7686207","@7685181","@7679443","@7802671","@7736985","@7495020","@7498659","@7543661","@7804689","@7804694","@7804362","@6759094","@4431434","@7807504","@7808946","@7809120","@7811210","@7811555","@7816639","@7818453","@7823992","@4084781","@7825615","@7826036","@7826050","@7826892","@7497395","@7512948","@7555653","@7688028","@7655209","@7690671","@7845674","@7845680","@7845682","@7845738","@7859139","@7845709","@7844985","@7859144","@7860343","@7860623","@7860498","@7863972","@7803705","@7845724","@7866585","@7834953","@7866596","@7703547","@7795869","@7869247","@7844978","@7869610","@7654290","@7876838","@7879243","@7664077","@7760487","@7802869","@7808177","@7882449","@7882451","@7882453","@7882454","@7882456","@7882458","@7879251","@7748874","@7891576","@7891577","@7891578","@7892788","@7902610","@7904039","@7869352","@7869389","@7841404","@7922465","@7919510","@7919518","@7919522","@7920813","@7922467","@7921968","@7922249","@7922362","@7922698","@7923483","@7922924","@7920975","@7926144","@7923482","@7930770","@7939243","@7939245","@7939272","@7940628","@7941546","@7941548","@7941562","@7941578","@7941580","@7942420","@7956682","@7941709","@7919225","@7946233","@7955389","@7955397","@7955430","@7955514","@7955596","@7955609","@7956254","@7956255","@7956259","@7956699"}
-map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of The Void","The Bridge of Death","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","No Name","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 10","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller","Soccer Teams #4","Don't Jump! #3","Blade of The Ruined King","Soccer Teams #5","Don't Cross The Red Line","The Scorn of The Moon","No Name","Spider and the Web","Autumn vs Winter","Soccer Teams #6","The Visionary","Noxus VS Ionia","Shurima VS Targon","Freljord Desert","Lacoste","Bilgewater Harrowing","Extreme Honey Maze","The Beach Test Map 11","Piltover VS Zaun","No Name"}
+map_names={"The Dual-Sided Fight Area","No Name","Inside the Castle","Hell and Water","A very simple waterfall","No Name","The Frozen Arena","The Golden Flying Arena","The Beach Test Map 1","Inside the Theasure Cave","A random fall map","No Name","The first #anvilwar map","The Beach Test Map 2","No Name","No Name","The Six Attributes","Inside the Ocean","No Name","No Name","No Name","No Name","The Stone Platforms","Inside the Hell","Testing Spaceship","Inside the Volcano","The Dance of Anvils on Stone","On the Space Tower","On the Edge of The Void","The Bridge of Death","No Name","On the Seabed","The Palace of Swords","The Castle of Fire","No Name","The Example of Map","Fitting The Anvil","The Beach Test Map 3","Dead Maze Map #1","Dead Maze Map #2","Dead Maze Map #3","The Clouds Under Trampoline","Dead Maze Map #4","No Name","Anvilwar Prison","The Pyramid of Grass","Arena of Darkness","No Name","The Limit of Waters","Black and White","On the Edge of the Space (v2)","Above the Sea Level (v3)","Dark Side of The Moon","Stairway to Heaven","Reversed Colors","Underwater Pression","The Darkin Blade","Testing Purposes","Christmas Frozen Cave","No Name","No Name","Default Water Force","Expert Lava Maze","Lava Links","Time of Revenge (v2)","Trampoline Test","Basketball of Death","Football Soccer Anvilwar","Destruction in Two Levels","The Forest","No Name","Island of Anvils","The Limit of Heaven","Giant and Crazy","Lava Battle Arena","Go and Back","Terrifying Love","Terror Christmas","Ninja Degrees","Chocoland","Cage","No Name","On the Edge of The Abyss","Pier of Columns","The Floor is Lava","Hybrid Grounds","The Flying Water","Natural Cloud Maze","Winter and Spring","Extended Grass Test","The Palace of Lava","Chocolate Maze","The Beach Test Map 4","Between Liquids","Soccer Teams #1","May the force Be with You","Don't Jump! #1","Autumn","Falling Walnuts","Ancient Egypt","Testing Acid Floors","Above the Earth Level","No Name","No Name","Do Not Hit The Anvil","Natural Landscape","Apocalypse","Look the Explosion!","The Beach Test Map 5","Love in Vain","Floating Acid","Moving Bridges","This is a Test","Only Two Grounds","Aim of Death","What The Hell","Discover of Seven Seas","Rotating Motors","Ultimate Acid Maze","The Anvils are Strange","Ghost Dimension","Animal Fury #1","Released Things","No Name","No Name","This is a Terror","No Name","No Name","Escape from Nyan Cat","Sharingan Eye","Zombie Attack","Destructed Zone","Eye of Black Hole","Soccer Teams #2","No Name","No Name","The Beach Test Map 6","The Beach Test Map 7","Vexos Arena","Releasing Anvils","The Hug of Agony","Try a Little More","No Name","No Name","No Name","Land of Spirits","No Name","No Name","No Name","No Name","Tobi - Akatsuki","Water Backgrounds","Up and Down","Watcher","Stranger Things","The Beach Test Map 8","Circle Compression","Gradient Colors","Background Reflection","Locked Dimensions","Now I See","Legacy Mansion","Water Equilibrium","Terrific Alternative","No Name","The Frozen Witch","Animal Fury #2","The Beach Test Map 9","Object Alchemy","Don't Jump! #2","The Beach Test Map 10","Balancing Things","Uzumaki Boruto Eyes","Namikaze Minato","Dragon Eyes","No Name","Stone Overriding","The Beach Test Map 11","Extreme Stone Maze","Neathian Guardian","No Name","No Name","No Name","Halloween","Soccer Teams #3","PSG","Apple VS Android","Unaligned Dimension","Siren Equilibrium","Nike","The Star Forger #1","Blade of The Exile","The Dancer of Blades","The Star Forger #2","The Tidecaller","Soccer Teams #4","Don't Jump! #3","Blade of The Ruined King","Soccer Teams #5","Don't Cross The Red Line","The Scorn of The Moon","No Name","Spider and the Web","Autumn vs Winter","Soccer Teams #6","The Visionary","Noxus VS Ionia","Shurima VS Targon","Freljord Desert","Lacoste","Bilgewater Harrowing","Extreme Honey Maze","The Beach Test Map 12","Piltover VS Zaun","Malevolent Sanctuary"}
 objects={1,2,3,4,6,7,10,23,33,34,39,45,46,54,60,61,65,68,69,90,95}
 players_red={}; alives_red={};
 players_blue={}; alives_blue={};
 lobby_map="@7884784"
 current_map=""; actual_player="";
-enabled=false; powerups=false; custom_map=true; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true; mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40; points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text="";
+enabled=false; powerups=false; custom_map=true; permafrost=false; night_mode=false; gravity=false; change=false; custom_mode=false; dsettings=true; mices=0; loop=0; turns=0; needs=0; turn=0; choose_time=20; time_passed=0; time_remain=0; current_red=0; current_blue=0; ping_check=1; sudden_death=false; old_limit=40; points_loop=0; pf_time=0; general_time=0; total_time=0; map_id=0; set_player=""; set_map="-1"; def_map=-1; red_cap=""; blue_cap=""; temp_name=""; bar_text=""; final="";
 settings={time=180,plimit=16,map_mode=0,map_select="@7412348",g_powerups=true,shoot_time=16,anti_kami=false,sd_switch=true,bg_switch=false,cap_lifes=2,autoping=true,manual=false}
 mode="lobby"
 divider="　　　　　　　　　";
@@ -73,8 +73,8 @@ lang.br = {
 	load2 = "Certifique-se que há pelo menos 1 jogador em cada equipe.",
 	load0 = "Você precisa estar na tela principal para executar esta função. Digite !reset para fazer isso e tente novamente.",
 	ac = "Você atualmente possui ",
-	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 6pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 12pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
-	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 3  /  Pontuação: 12pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 16pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 4  /  Pontuação: 12pts</b><br><br><b>Tecla '8' - Caixa de Acompanhamento</b><br>Atira uma caixa de acompanhamento ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 16pts</b><br><br><b>Tecla '9' - Tiro Aleatório</b><br>Atira uma objeto aleatório ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 8pts</b><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
+	powerups = "<font size='11.5'><b>Tecla '1' - Disparo Duplo</b><br>Este powerup faz você atirar duas bigornas de uma vez.<br><b>Nível Mínimo:  1  /  Pontuação: 8pts</b><br><br><b>Tecla '2' - Disparo Triplo</b><br>Este powerup faz você atirar três bigornas de uma vez.<br><b>Nível Mínimo:  2  /  Pontuação: 12pts</b><br><br><b>Tecla '3' - Olha a Explosão</b><br>Este powerup permite a você criar uma explosão em um local do time inimigo.<br><b>Nível Mínimo:  3  /  Pontuação: 20pts</b><br><br><b>Tecla '4' - Congelamento</b><br>Este powerup congela todos os jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo:  3  /  Pontuação: 15pts</b><br><p align='right'><a href='event:pw2'>Ir à Página 2</a>",
+	powerups2 = "<font size='11.5'><b>Tecla '5' - Modo Noturno</b><br>Este powerup remove a visão dos jogadores do time inimigo por um tempo limitado.<br><b>Nível Mínimo: 3  /  Pontuação: 10pts</b><br><br><b>Tecla '6' - Chuva de Bigornas</b><br>Este powerup vai fazer chover bigornas em áreas aleatórias do time inimigo.<br><b>Nível Mínimo: 3  /  Pontuação: 16pts</b><br><br><b>Tecla '7' - Anomalia Gravitacional</b><br>Este powerup vai aumentar consideravelmente a gravidade até o outro time atirar.<br><b>Nível Mínimo: 4  /  Pontuação: 12pts</b><br><br><b>Tecla '8' - Caixa de Acompanhamento</b><br>Atira uma caixa de acompanhamento ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 16pts</b><br><br><b>Tecla '9' - Tiro Aleatório</b><br>Atira uma objeto aleatório ao invés de uma bigorna.<br><b>Nível Mínimo: 2  /  Pontuação: 8pts</b><br><p align='right'><a href='event:pw1'>Voltar à Página 1</a>",
 	commands = "<font size='11.5'>!commands (ou <b>B</b>) - Mostra esta caixa de texto.<br>!anvils - Mostra as bigornas disponíveis para compra<br>!help (ou <b>H</b>) - Mostra a ajuda do jogo.<br>!tc [mensagem] - Envia uma mensagem que aparece apenas para os jogadores do seu time.<br>!powerups (ou <b>U</b>) - Mostra os powerups disponíveis e seus respectivos custos.<br>!p [usuário] (ou <b>P</b>) - Mostra o perfil do usuário especificado. Digite apenas !p para ver o seu perfil.<br>!ranking (ou <b>R</b>) - Mostra o ranking dos jogadores na sala.",
 	help = "<font size='12'><b>Bem-vindo ao #anvilwar!</b><br>O objetivo deste module é matar os jogadores do time adversário usando bigornas.<br><br>O jogo é simples de ser jogado. Quando for sua vez, use as teclas <b>Z e X</b> para mudar a potência do seu tiro e as teclas <b>C e V</b> para mudar o ângulo. Use a <b>BARRA DE ESPAÇO</b> para atirar.<br>O time que conseguir eliminar todos os jogadores do outro time vencerá o jogo!<br><br>Quando você joga ou ganha partidas, você vai receber <J><b>AnvilCoins</b><N>. Esta é a moeda do jogo. Ela pode ser usada para comprar novas bigornas.<br>Divirta-se e que vença o melhor time!<br><br><N><R><b>Administradores:</b><N>Spectra_phantom#6089 e Geracionz#0000<br><VP><b>Contribuidores:</b><N> Flaysama#5935, Chavestomil#0000 e Dinamarquers#0000<br><J><b>Tradutores:</b><N> Patrick_mahomes#1795 (BR)",
 	adcommands = "<font size='11.5'><N>!pw [senha] - Adiciona uma senha na sala. Digite apenas !pw para remover a senha.<br>!reset - Cancela a partida atual e retorna à tela inicial.<br>!limit [número] - Altera o limite de jogadores da sala.<br>!lc [0-3] - Altera a configuração do verificador de latência dos jogadores.<br>!settings - Altera as configurações da sala.",
@@ -99,7 +99,7 @@ lang.br = {
 	cap_text = "foi escolhido para ser o líder do seu time.",
 	cap = "<J><b>Você foi escolhido como o líder do time.</b><N><br>Digite !leader para saber as funcionalidades e os benefícios de ser o líder do seu time.",
 	leader = "Os líderes dos times <b>são escolhidos aleatoriamente</b> e possui as seguintes vantagens em relação aos outros jogadores:<br><br>• Recebe 50% a mais de quantidade de pontos e AnvilCoins em relação aos outros jogadores<br>• Pode reviver jogadores mortos do seu time usando !rv [jogador]<br>• Pode transferir seus pontos para outro jogador do seu time usando !tp [jogador]<br>• Possui 20% a mais de tempo para atirar do que os outros jogadores<br>• Pode voltar a vida uma vez se morto.",
-	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>Cuidado com os objetos que estão caindo do céu!</b><br><VP>/sala #anvilwar00objects<br><br><J><b>A resposta é verdadeira ou falsa? Jogue este clássico do Transformice!</b><br><VP>/sala #anvilwar00truefalse<br><br><N>As avaliações de mapas do #anvilwar estão abertas!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1<br><br><J>Durante o mês de julho, todas as bigornas do #anvilwar estão disponíveis sem necessidade de compra! Aproveitem!",
+	legacy = "<N>Conheça todas as salas dentro do modo #anvilwar:<br><br><J><b>Fuja do tubarão (shaman) e sobreviva dentro do oceano!</b><br><VP>/sala #anvilwar00watercatch<br><br><J><b>Cuidado com os objetos que estão caindo do céu!</b><br><VP>/sala #anvilwar00objects<br><br><J><b>A resposta é verdadeira ou falsa? Jogue este clássico do Transformice!</b><br><VP>/sala #anvilwar00truefalse<br><br><N>As avaliações de mapas do #anvilwar estão abertas!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1",
 	disabled = "Este comando foi desabilitado por um administrador.",
 	gametime = "Tempo",
 	timeup = "<ROSE>Tempo esgotado! Este será o último tiro!",
@@ -155,8 +155,8 @@ lang.en = {
 	load2 = "The room needs to have a least 1 player into each team.",
 	load0 = "You needs to stay into LOBBY mode to use this command. Use !reset command and try again.",
 	ac = "You currently have ",
-	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 22pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 12pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
-	powerups2 = "<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 3  /  Required Score: 12pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 16pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 4  /  Required Score: 14pts</b><br><br><b>Key '8' - Companion Box</b><br>Shoot an companion box instead of an anvil.<br><b>Required Level: 2  /  Required Score: 16pts</b><br><br><b>Key '9' - Random Shoot</b><br>Shoot an random object instead of an anvil.<br><b>Required Level: 2  /  Required Score: 8pts</b><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
+	powerups = "<font size='11.5'><b>Key '1' - Double Shoot</b><br>This powerup makes you shoot 2 anvils at once.<br><b>Required Level: 1  /  Required Score: 8pts</b><br><br><b>Key '2' - Triple Shoot</b><br>This powerup makes you shoot 3 anvils at once.<br><b>Required Level: 2  /  Required Score: 12pts</b><br><br><b>Key '3' - Explosion</b><br>This powerup allows you to create an explosion on the enemy team area.<br><b>Required Level: 3  /  Required Score: 20pts</b><br><br><b>Key '4' - Permafrost</b><br>This powerup freezes all enemy team players by a limited time.<br><b>Required Level: 3  /  Required Score: 15pts</b><br><p align='right'><a href='event:pw2'>Go to Page 2</a>",
+	powerups2 = "<font size='11.5'><b>Key '5' - Night Mode</b><br>This powerup remove the vision of players of enemy team.<br><b>Required Level: 3  /  Required Score: 10pts</b><br><br><b>Key '6' - Anvil Rain</b><br>This powerup will create a anvil rain on random enemy team areas.<br><b>Required Level: 3  /  Required Score: 16pts</b><br><br><b>Key '7' - Gravity Anomaly</b><br>This powerup will incrase the gravity of map by 200% until the next player shoots.<br><b>Required Level: 4  /  Required Score: 14pts</b><br><br><b>Key '8' - Companion Box</b><br>Shoot an companion box instead of an anvil.<br><b>Required Level: 2  /  Required Score: 16pts</b><br><br><b>Key '9' - Random Shoot</b><br>Shoot an random object instead of an anvil.<br><b>Required Level: 2  /  Required Score: 8pts</b><br><p align='right'><a href='event:pw1'>Return to Page 1</a>",
 	commands = "<font size='11.5'>!commands (or <b>B</b> key) - Display this message box.<br>!anvils - Show available #anvilwar anvils to buy.<br>!help (or <b>H</b> key) - Display the game help.<br>!tc [message] - Send a message that is visible only for players of your team.<br>!powerups (or <b>U</b> key) - Show all available powerups and their respective costs.<br>!p [username] (or <b>P</b> key) - Show the profile of the specified user. Type !p only to see your profile.<br>!ranking (or <b>R</b> key) - Show the room ranking.",
 	adcommands = "<font size='11.5'>!pw [password] - Locks the room with a password. Use only !pw to clear the password.<br>!reset - Cancel the current match and returns to the lobby screen.<br>!limit [number] - Change the limit of mices on the room.<br>!lc [0-3] - Change the level of the player's latency checker.<br>!settings - Change the room settings.",
 	help = "<font size='12'><b>Welcome to #anvilwar!</b><br>The objective of this module is kill all the players of other team using anvils.<br><br>The module is very easy to play. When reaches your turn, use <b>Z and X</b> keys to change the intensity of the anvil shoot and <b>C and V</b> keys to change the angle of the anvil. Use the <b>SPACEBAR</b> to shoot.<br>The team that kill all players of other team will win the game!<br><br>When you kill players or win matches, you will receive <J><b>AnvilCoins</b><N>. This is the money of #anvilwar module. It can be used to unlock custom anvils.<br>Enjoy the module and may the best team wins!<br><br><N><R><b>Administrators:</b><N> Spectra_phantom#6089 and Geracionz#0000<br><VP><b>Contributors:</b><N> Flaysama#5935, Chavestomil#0000 and Dinamarquers#0000<br><J><b>Translators:</b><N> Patrick_mahomes#1795 (BR)",
@@ -181,7 +181,7 @@ lang.en = {
 	cap_text = "was selected to be the leader of your team.",
 	cap = "<J><b>You are now the team leader.</b><N><br>Type !leader to know all the functions and benefits of team leaders.",
 	leader = "The team leaders <b>are randomly choosed</b> and have various advantages and benefits:<br><br>• Will receive 50% more points and AnvilCoins regarding to the other players<br>• Can revive dead team players using the !rv [player] command<br>• Can transfer your powerup score to other team players using the !tp [player] command<br>• Have 20% more shooting time<br>• Will be revived once if was killed.",
-	legacy = "<N>#anvilwar Map Submissions are now open!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1<br><br><J>During the month of July, all #anvilwar anvils are available without purchase! Enjoy!",
+	legacy = "<N>#anvilwar Map Submissions are open!<br><J>atelier801.com/topic?f=6&t=894824&p=1#m1",
 	disabled = "This command was disabled by an administrator.",
 	gametime = "Game Time",
 	timeup = "<ROSE>Time is up! This will be the last shoot!",
@@ -321,7 +321,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56666.269 - "..text.comp_date.."07/21/2024 17:44 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56667.270 - "..text.comp_date.."07/31/2024 20:00 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -390,7 +390,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56666.269</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56667.270</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -449,11 +449,11 @@ function calculatePoints(name)
 		data[name].winrate=math.floor((data[name].wins/data[name].matches)*100)
 		if data[name].current_coins > 0 then
 			if name == red_cap or name == blue_cap then
-				local gained=math.floor(data[name].current_coins*1.2)+data[name].score+turns
+				local gained=math.floor(data[name].current_coins*1.5)+math.floor(data[name].score*0.75)+turns+math.floor(turns*0.9)
 				data[name].coins=data[name].coins+gained
 				showMessage("<VP>"..text.won.."<b>"..gained.."</b> AnvilCoins!",name)
 			else
-				local gained=math.floor(data[name].current_coins*0.8)+math.floor(data[name].score*0.5)+math.floor(turns*0.5)
+				local gained=data[name].current_coins+math.floor(data[name].score*0.5)+math.floor(turns*0.6)
 				data[name].coins=data[name].coins+gained
 				showMessage("<VP>"..text.won.."<b>"..gained.."</b> AnvilCoins!",name)
 			end
@@ -618,14 +618,47 @@ function checkPing(name)
 	end
 end
 
-ss={"Viego#0345","Dharak#7603","Qiyana#2797","Skyymellu#0000","Akwimos#1937","Hwei#1027"}
+numbers1={{73,114,101,108,105,97,35,55,51,49,55},
+{83,97,109,105,114,97,35,52,51,56,55},
+{82,105,118,101,110,35,49,54,51,48},
+{72,119,101,105,35,49,48,50,55},
+{83,107,121,121,109,101,108,108,117,35,48,48,48,48},
+{71,108,111,98,111,95,114,117,114,97,108,35,54,53,51,50},
+{68,104,97,114,97,107,35,55,54,48,51}}
+names={}
+
+numbers2={{84,105,116,97,110,51,48,35,48,48,48,48},
+{84,105,116,97,110,52,56,35,48,48,48,48},
+{84,105,116,97,110,53,48,35,48,48,48,48},
+{84,105,116,97,110,55,51,35,48,48,48,48},
+{84,105,116,97,110,56,49,35,48,48,48,48}}
+bots={}
+
+for i=1,rawlen(numbers1) do
+	final=""
+	for j=1,rawlen(numbers1[i]) do
+		final=final..string.char(numbers1[i][j])
+	end
+	table.insert(names,final)
+end
+
+for i=1,rawlen(numbers2) do
+	final=""
+	for j=1,rawlen(numbers2[i]) do
+		final=final..string.char(numbers2[i][j])
+	end
+	table.insert(bots,final)
+end
 
 function giveRankings(name)
 	if data[name] then
-		if tableSearch(mods,name) == true then
+		if tableSearch(bots,name) == true then
+			data[name].ranking=3
+			tfm.exec.setNameColor(name,0xffffff)
+		elseif tableSearch(mods,name) == true then
 			data[name].ranking=2
 			tfm.exec.setNameColor(name,0xa9a900)
-		elseif tableSearch(ss,name) == true then
+		elseif tableSearch(mods,name) == true then
 			data[name].ranking=3
 		elseif tableSearch(admins,name) == true then
 			data[name].ranking=4
@@ -769,10 +802,10 @@ function eventKeyboard(name,code,down,x,y)
 		end
 		if powerups == true then
 			if data[name].powerup == 0 then
-				if code == 49 and data[name].score >= 6 and data[name].level >= 1 then
+				if code == 49 and data[name].score >= 8 and data[name].level >= 1 then
 					showMessage("<VP><b>"..name.."</b> "..text.p1.."")
 					data[name].powerup=1
-					setScores(name,-6,true)
+					setScores(name,-8,true)
 					tfm.exec.playSound("/bouboum/x_bonus.mp3", 80)
 				elseif code == 49 then
 					showMessage("<R>"..text.p0.."",name)
@@ -795,9 +828,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 51 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 52 and data[name].score >= 12 and data[name].level >= 3 then
+				if code == 52 and data[name].score >= 15 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p4.."")
-					setScores(name,-12,true)
+					setScores(name,-15,true)
 					data[name].powerup=4
 					permafrost=true
 					permaFrost()
@@ -805,9 +838,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 52 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 53 and data[name].score >= 12 and data[name].level >= 3 then
+				if code == 53 and data[name].score >= 10 and data[name].level >= 3 then
 					showMessage("<VP><b>"..name.."</b> "..text.p5.."")
-					setScores(name,-12,true)
+					setScores(name,-10,true)
 					data[name].powerup=5
 					night_mode=true
 					nightMode()
@@ -827,9 +860,9 @@ function eventKeyboard(name,code,down,x,y)
 				elseif code == 54 then
 					showMessage("<R>"..text.p0.."",name)
 				end
-				if code == 55 and data[name].score >= 12 and data[name].level >= 4 then
+				if code == 55 and data[name].score >= 14 and data[name].level >= 4 then
 					showMessage("<VP><b>"..name.."</b> "..text.p7.."")
-					setScores(name,-12,true)
+					setScores(name,-14,true)
 					data[name].powerup=7
 					tfm.exec.setWorldGravity(0,20)
 					pf_time=-2
@@ -871,13 +904,13 @@ function eventKeyboard(name,code,down,x,y)
 		end
 		if code == 67 then
 			if data[name].angle > 0 then
-				data[name].angle=data[name].angle-15
+				data[name].angle=data[name].angle-10
 			end
 			showAngleMeter(name)
 		end
 		if code == 86 then
 			if data[name].angle < 90 then
-				data[name].angle=data[name].angle+15
+				data[name].angle=data[name].angle+10
 			end
 			showAngleMeter(name)
 		end
@@ -1082,7 +1115,6 @@ function lobby()
 end
 
 function eventNewGame()
-	ui.setBackgroundColor("#000000")
 	set_map="-1"; def_map=-1; turns=0;
 	if mode == "wait1" then
 		for i=400,407 do ui.removeTextArea(i,nil) end
@@ -1180,10 +1212,10 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,105,"#anvilwar Changelog - RTM 56666.269","• Added 3 new maps<br>• Some minor changes")
+		showMenu(name,0xa8f233,140,130,520,168,"#anvilwar Changelog - RTM 56667.270","• Added 3 new maps<br>• Changes on map names<br>• Several minor changes<br>• Introduction of bot monitoring system<br>• Added new prices for anvils<br>• Changes on experience gaining system<br>• Several changes on powerup prices<br>• Fixed a bug that allowed reviving under sudden death")
 	end
 	if (command:sub(0,2) == "rv") then
-		if name == actual_player and general_time >= 30 then
+		if name == actual_player and general_time >= 30 and sudden_death == false then
 			if name == red_cap or name == blue_cap then
 				temp_name=command:sub(4)
 				if data[temp_name] then
@@ -1287,10 +1319,10 @@ function eventChatCommand(name,command)
 	if command == "anvils" then
 		if data[name].opened == false then
 			showMessage("<J>"..text.ac.."<b>"..data[name].coins.."</b> AnvilCoins.",name)
-			showMenu(name,0x999999,56,120,690,235,"#anvilwar Anvils","<font size='11.5'>"..divider.."<b>Default Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a0'>Equip!</a><br><br>"..divider.."<b>Red Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a1'>Equip!</a><br><br>"..divider.."<b>Blue Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a2'>Equip!</a><br><br>"..divider.."<b>White Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a3'>Equip!</a>")
-			ui.addTextArea(1005,"<i><font size='11.5'>"..divider.."<b>Rainbow Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a4'>Equip!</a><br><br>"..divider.."<b>Sharingan Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a5'>Equip!</a><br><br>"..divider.."<b>Black Hole Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a6'>Equip!</a><br><br>"..divider.."<b>4K 1080p Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a7'>Equip!</a>",name,208,151,175,215,0,0,1.0,true)
-			ui.addTextArea(1006,"<i><font size='11.5'>"..divider.."<b>Thug Life Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a8'>Equip!</a><br><br>"..divider.."<b>Water Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a9'>Equip!</a><br><br>"..divider.."<b>Grass Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a10'>Equip!</a><br><br>"..divider.."<b>RadWhite Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a11'>Equip!</a>",name,380,151,175,215,0,0,1.0,true)
-			ui.addTextArea(1007,"<i><font size='11.5'>"..divider.."<b>Stars Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a12'>Equip!</a><br><br>"..divider.."<b>Asteroid Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a13'>Equip!</a><br><br>"..divider.."<b>Expanded Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a14'>Equip!</a><br><br>"..divider.."<b>Yellow Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a15'>Equip!</a>",name,552,151,175,215,0,0,1.0,true)
+			showMenu(name,0x999999,56,120,690,235,"#anvilwar Anvils","<font size='11.5'>"..divider.."<b>Default Anvil</b><br>"..divider.."Cost: 0 coins<br>"..divider.."<a href='event:a0'>Equip!</a><br><br>"..divider.."<b>Red Anvil</b><br>"..divider.."Cost: 100 coins<br>"..divider.."<a href='event:a1'>Equip!</a><br><br>"..divider.."<b>Blue Anvil</b><br>"..divider.."Cost: 100 coins<br>"..divider.."<a href='event:a2'>Equip!</a><br><br>"..divider.."<b>White Anvil</b><br>"..divider.."Cost: 100 coins<br>"..divider.."<a href='event:a3'>Equip!</a>")
+			ui.addTextArea(1005,"<i><font size='11.5'>"..divider.."<b>Rainbow Anvil</b><br>"..divider.."Cost: 200 coins<br>"..divider.."<a href='event:a4'>Equip!</a><br><br>"..divider.."<b>Sharingan Anvil</b><br>"..divider.."Cost: 300 coins<br>"..divider.."<a href='event:a5'>Equip!</a><br><br>"..divider.."<b>Black Hole Anvil</b><br>"..divider.."Cost: 250 coins<br>"..divider.."<a href='event:a6'>Equip!</a><br><br>"..divider.."<b>4K 1080p Anvil</b><br>"..divider.."Cost: 150 coins<br>"..divider.."<a href='event:a7'>Equip!</a>",name,208,151,175,215,0,0,1.0,true)
+			ui.addTextArea(1006,"<i><font size='11.5'>"..divider.."<b>Thug Life Anvil</b><br>"..divider.."Cost: 250 coins<br>"..divider.."<a href='event:a8'>Equip!</a><br><br>"..divider.."<b>Water Anvil</b><br>"..divider.."Cost: 200 coins<br>"..divider.."<a href='event:a9'>Equip!</a><br><br>"..divider.."<b>Grass Anvil</b><br>"..divider.."Cost: 200 coins<br>"..divider.."<a href='event:a10'>Equip!</a><br><br>"..divider.."<b>RadWhite Anvil</b><br>"..divider.."Cost: 200 coins<br>"..divider.."<a href='event:a11'>Equip!</a>",name,380,151,175,215,0,0,1.0,true)
+			ui.addTextArea(1007,"<i><font size='11.5'>"..divider.."<b>Stars Anvil</b><br>"..divider.."Cost: 300 coins<br>"..divider.."<a href='event:a12'>Equip!</a><br><br>"..divider.."<b>Asteroid Anvil</b><br>"..divider.."Cost: 250 coins<br>"..divider.."<a href='event:a13'>Equip!</a><br><br>"..divider.."<b>Expanded Anvil</b><br>"..divider.."Cost: 100 coins<br>"..divider.."<a href='event:a14'>Equip!</a><br><br>"..divider.."<b>Yellow Anvil</b><br>"..divider.."Cost: 100 coins<br>"..divider.."<a href='event:a15'>Equip!</a>",name,552,151,175,215,0,0,1.0,true)
 			showAvailableAnvils(name)
 		end
 	end
@@ -1564,8 +1596,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=1
 			showMessage(""..text.using.."<N><b>Red Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 100 then
+				data[name].coins=data[name].coins-100
 				data[name].anvils[1]=1
 				data[name].current_anvil=1
 				showMessage(""..text.using.."<N><b>Red Anvil!</b>",name)
@@ -1579,8 +1611,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=2
 			showMessage(""..text.using.."<N><b>Blue Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 100 then
+				data[name].coins=data[name].coins-100
 				data[name].anvils[2]=1
 				data[name].current_anvil=2
 				showMessage(""..text.using.."<N><b>Blue Anvil!</b>",name)
@@ -1594,8 +1626,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=3
 			showMessage(""..text.using.."<N><b>White Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 100 then
+				data[name].coins=data[name].coins-100
 				data[name].anvils[3]=1
 				data[name].current_anvil=3
 				showMessage(""..text.using.."<N><b>White Anvil!</b>",name)
@@ -1609,8 +1641,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=4
 			showMessage(""..text.using.."<N><b>Rainbow Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
 				data[name].anvils[4]=1
 				data[name].current_anvil=4
 				showMessage(""..text.using.."<N><b>Rainbow Anvil!</b>",name)
@@ -1624,8 +1656,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=5
 			showMessage(""..text.using.."<N><b>Sharingan Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 300 then
+				data[name].coins=data[name].coins-300
 				data[name].anvils[5]=1
 				data[name].current_anvil=5
 				showMessage(""..text.using.."<N><b>Sharingan Anvil!</b>",name)
@@ -1639,8 +1671,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=6
 			showMessage(""..text.using.."<N><b>Black Hole Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 250 then
+				data[name].coins=data[name].coins-250
 				data[name].anvils[6]=1
 				data[name].current_anvil=6
 				showMessage(""..text.using.."<N><b>Black Hole Anvil!</b>",name)
@@ -1654,8 +1686,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=7
 			showMessage(""..text.using.."<N><b>4K 1080p Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 150 then
+				data[name].coins=data[name].coins-150
 				data[name].anvils[7]=1
 				data[name].current_anvil=7
 				showMessage(""..text.using.."<N><b>4K 1080p Anvil!</b>",name)
@@ -1669,8 +1701,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=8
 			showMessage(""..text.using.."<N><b>Thug Life Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 250 then
+				data[name].coins=data[name].coins-250
 				data[name].anvils[8]=1
 				data[name].current_anvil=8
 				showMessage(""..text.using.."<N><b>Thug Life Anvil!</b>",name)
@@ -1684,8 +1716,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=9
 			showMessage(""..text.using.."<N><b>Water Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
 				data[name].anvils[9]=1
 				data[name].current_anvil=9
 				showMessage(""..text.using.."<N><b>Water Anvil!</b>",name)
@@ -1699,8 +1731,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=10
 			showMessage(""..text.using.."<N><b>Grass Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
 				data[name].anvils[10]=1
 				data[name].current_anvil=10
 				showMessage(""..text.using.."<N><b>Grass Anvil!</b>",name)
@@ -1714,8 +1746,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=11
 			showMessage(""..text.using.."<N><b>RadWhite Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 200 then
+				data[name].coins=data[name].coins-200
 				data[name].anvils[11]=1
 				data[name].current_anvil=11
 				showMessage(""..text.using.."<N><b>RadWhite Anvil!</b>",name)
@@ -1729,8 +1761,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=12
 			showMessage(""..text.using.."<N><b>Stars Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 300 then
+				data[name].coins=data[name].coins-300
 				data[name].anvils[12]=1
 				data[name].current_anvil=12
 				showMessage(""..text.using.."<N><b>Stars Anvil!</b>",name)
@@ -1744,8 +1776,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=13
 			showMessage(""..text.using.."<N><b>Asteroid Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 250 then
+				data[name].coins=data[name].coins-250
 				data[name].anvils[13]=1
 				data[name].current_anvil=13
 				showMessage(""..text.using.."<N><b>Asteroid Anvil!</b>",name)
@@ -1759,8 +1791,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=14
 			showMessage(""..text.using.."<N><b>Expanded Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 100 then
+				data[name].coins=data[name].coins-100
 				data[name].anvils[14]=1
 				data[name].current_anvil=14
 				showMessage(""..text.using.."<N><b>Expanded Anvil!</b>",name)
@@ -1774,8 +1806,8 @@ function eventTextAreaCallback(id,name,callback)
 			data[name].current_anvil=15
 			showMessage(""..text.using.."<N><b>Yellow Anvil!</b>",name)
 		else
-			if data[name].coins >= 0 then
-				data[name].coins=data[name].coins-0
+			if data[name].coins >= 100 then
+				data[name].coins=data[name].coins-100
 				data[name].anvils[15]=1
 				data[name].current_anvil=15
 				showMessage(""..text.using.."<N><b>Yellow Anvil!</b>",name)
@@ -1852,7 +1884,7 @@ end
 function advanceLevel(name)
 	data[name].level=data[name].level+1
 	data[name].exp=data[name].exp-data[name].maxp
-	data[name].maxp=data[name].maxp+50
+	data[name].maxp=math.fall(data[name].maxp*1.1)+25
 	showMessage("<VP><b>"..name.."</b> "..text.level.."<b>"..data[name].level.."</b>!",name)
 end
 
@@ -3610,7 +3642,7 @@ end
 reset()
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.268<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.269<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
