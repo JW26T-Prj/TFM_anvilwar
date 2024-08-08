@@ -1,11 +1,11 @@
--- Transformice #anvilwar module loader - Version 2.270
+-- Transformice #anvilwar module loader - Version 2.270.1
 -- By Spectra_phantom#6089
 -- Included sub-modules: #objects, #truefalse.
 
 local anvilwar = {
 	_NAME = "anvilwar",
-	_VERSION = "2.270",
-	_MAINV = "56668.271",
+	_VERSION = "2.270.1",
+	_MAINV = "56669.272 LTS",
 	_DEVELOPER = "Spectra_phantom#6089" }
 	
 initAnvilwar = function()
@@ -13,8 +13,8 @@ initAnvilwar = function()
 -- Module authors : Spectra_phantom#6089
 -- (C) 2017-∞ Spectra Advanced Module Group
 
--- Version : RTM 56668.271
--- Compilation date : 08/02/2024 23:07 UTC
+-- Version : RTM 56669.272 LTS
+-- Compilation date : 08/08/2024 18:03 UTC
 -- Sending player : Spectra_phantom#6089
 
 -- Number of maps : 215
@@ -321,7 +321,7 @@ function showRoomSettings(name)
 end
 
 function showLobbyText(name)
-	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56668.271 - "..text.comp_date.."08/02/2024 23:07 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
+	ui.addTextArea(402,"<p align='center'><font size='12'><b><font face='Courier New'><i>"..text.version.." RTM 56669.272 LTS - "..text.comp_date.."08/08/2024 18:03 UTC - "..text.uploaded.."Spectra_phantom#6089</i>",name,-10,380,820,36,0,0,1.0,true)
 end
 
 function setLeaders()
@@ -390,7 +390,7 @@ function updateTextBar()
 	if mode == "end" then
 		ui.setMapName("<VP><b>"..text.ending.."</b>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	else
-		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56668.271</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
+		ui.setMapName("<N><b>#anvilwar</b>   <G>|   <VP>"..text.version.." <b>RTM 56669.272 LTS</b> <R>   <G>|   <N>"..text.mices_room.."<V><b>"..mices.."</b><")
 	end
 end
 
@@ -627,13 +627,6 @@ numbers1={{73,114,101,108,105,97,35,55,51,49,55},
 {68,104,97,114,97,107,35,55,54,48,51}}
 names={}
 
-numbers2={{84,105,116,97,110,51,48,35,48,48,48,48},
-{84,105,116,97,110,52,56,35,48,48,48,48},
-{84,105,116,97,110,53,48,35,48,48,48,48},
-{84,105,116,97,110,55,51,35,48,48,48,48},
-{84,105,116,97,110,56,49,35,48,48,48,48}}
-bots={}
-
 for i=1,rawlen(numbers1) do
 	final=""
 	for j=1,rawlen(numbers1[i]) do
@@ -642,20 +635,9 @@ for i=1,rawlen(numbers1) do
 	table.insert(names,final)
 end
 
-for i=1,rawlen(numbers2) do
-	final=""
-	for j=1,rawlen(numbers2[i]) do
-		final=final..string.char(numbers2[i][j])
-	end
-	table.insert(bots,final)
-end
-
 function giveRankings(name)
 	if data[name] then
-		if tableSearch(bots,name) == true then
-			data[name].ranking=3
-			tfm.exec.setNameColor(name,0xffffff)
-		elseif tableSearch(mods,name) == true then
+		if tableSearch(mods,name) == true then
 			data[name].ranking=2
 			tfm.exec.setNameColor(name,0xa9a900)
 		elseif tableSearch(names,name) == true then
@@ -1212,7 +1194,7 @@ function eventChatCommand(name,command)
 		end
 	else showMessage(text.wrong,name) end end
 	if command == "changelog" then
-		showMenu(name,0xa8f233,140,130,520,98,"#anvilwar Changelog - RTM 56668.271","• The bot monitoring system is disabled temporarily<br>• Various minor bugfixes")
+		showMenu(name,0xa8f233,140,130,520,98,"#anvilwar Changelog - RTM 56669.272 LTS","• The bot monitoring system is disabled temporarily<br>• Various minor bugfixes")
 	end
 	if (command:sub(0,2) == "rv") then
 		if name == actual_player and general_time >= 30 and sudden_death == false then
@@ -2743,7 +2725,7 @@ end
 reset()
 end
 
-tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.270<br>By Spectra_phantom#6089")
+tfm.exec.chatMessage("<ROSE><b>#anvilwar</b> Multiple Module Loader revision 2<br>Version 2.270.1<br>By Spectra_phantom#6089")
 
 if tfm.get.room.isTribeHouse == true then
 	tfm.exec.chatMessage("<br><VP>Tribehouse detected. Initialising main #anvilwar module.<br><ROSE>The game will be available only in English.")
